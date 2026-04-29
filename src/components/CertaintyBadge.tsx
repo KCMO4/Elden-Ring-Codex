@@ -1,0 +1,32 @@
+import type { Certainty } from '../data/types'
+
+const config: Record<Certainty, { label: string; color: string; bg: string; border: string }> = {
+  confirmado: {
+    label: 'Confirmado',
+    color: 'text-codex-gold-bright',
+    bg: 'bg-codex-gold/10',
+    border: 'border-codex-gold/40',
+  },
+  inferencia: {
+    label: 'Inferencia Fuerte',
+    color: 'text-amber-300',
+    bg: 'bg-amber-900/20',
+    border: 'border-amber-700/40',
+  },
+  teoria: {
+    label: 'Teoría',
+    color: 'text-codex-parchment-dim',
+    bg: 'bg-codex-brown/30',
+    border: 'border-codex-parchment-dim/30',
+  },
+}
+
+export function CertaintyBadge({ certainty }: { certainty: Certainty }) {
+  const c = config[certainty]
+  return (
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm text-xs font-medium tracking-wider uppercase border ${c.color} ${c.bg} ${c.border}`}>
+      <span className="w-1.5 h-1.5 rounded-full bg-current inline-block" />
+      {c.label}
+    </span>
+  )
+}

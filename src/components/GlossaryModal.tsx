@@ -1,0 +1,177 @@
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { X } from 'lucide-react'
+import type { GlossaryEntry } from '../data/types'
+import { CertaintyBadge } from './CertaintyBadge'
+import { CodexImage } from './images/CodexImage'
+import { getConceptArt } from '../lib/assetPaths'
+import { glossaryFallbacks } from '../lib/fallbackMap'
+
+interface Props {
+  entries: GlossaryEntry[]
+  onTermClick?: (term: string) => void
+}
+
+export function GlossarySection({ entries, onTermClick }: Props) {
+  const [selected, setSelected] = useState<GlossaryEntry | null>(null)
+  const [search, setSearch] = useState('')
+
+  const filtered = entries.filter(
+    (e) =>
+      e.term.toLowerCase().includes(search.toLowerCase()) ||
+      e.definition.toLowerCase().includes(search.toLowerCase())
+  )
+
+  return (
+    <>
+      <div className="mb-6">
+        <input
+          type="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Buscar término..."
+          className="w-full max-w-md px-4 py-2.5 bg-codex-brown/50 border border-codex-gold-dim/30
+                     text-codex-parchment placeholder-codex-parchment-dim/50 font-body text-sm rounded-sm
+                     focus:outline-none focus:border-codex-gold/60 transition-all"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {filtered.map((entry) => {
+          const fallback = glossaryFallbacks[entry.id] ?? 'concept'
+          return (
+            <motion.button
+              key={entry.id}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              onClick={() => setSelected(entry)}
+              className="parchment-panel overflow-hidden text-left group hover:border-codex-gold-dim/50 transition-all duration-200"
+            >
+              {/* Small concept art strip */}
+              <div className="h-20 relative overflow-hidden">
+                <CodexImage
+                  src={getConceptArt(entry.id)}
+                  alt={entry.term}
+                  fallbackType={fallback}
+                  variant="banner"
+                  overlayOpacity={0.5}
+                  hoverZoom
+                />
+              </div>
+              <div className="p-4">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h4 className="font-heading text-sm text-codex-gold-bright group-hover:text-glow transition-all leading-tight">
+                    {entry.term}
+                  </h4>
+                  <CertaintyBadge certainty={entry.certainty} />
+                </div>
+                <p className="text-xs text-codex-parchment-dim leading-relaxed line-clamp-3">
+                  {entry.definition}
+                </p>
+              </div>
+            </motion.button>
+          )
+        })}
+      </div>
+
+      {/* Detail Modal */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelected(null)}
+          >
+            <div className="absolute inset-0 bg-codex-black/85 backdrop-blur-sm" />
+
+            <motion.div
+              className="relative w-full max-w-2xl parchment-panel border-codex-gold-dim/50 max-h-[90vh] overflow-hidden flex flex-col"
+              style={{ boxShadow: '0 0 60px rgba(197,160,89,0.18)' }}
+              initial={{ scale: 0.93, opacity: 0, y: 24 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.93, opacity: 0, y: 12 }}
+              transition={{ duration: 0.28 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header art */}
+              <div className="h-40 relative shrink-0">
+                <CodexImage
+                  src={getConceptArt(selected.id)}
+                  alt={selected.term}
+                  fallbackType={glossaryFallbacks[selected.id] ?? 'concept'}
+                  variant="banner"
+                  overlayOpacity={0.5}
+                  hoverZoom={false}
+                />
+
+                {/* Corner frames */}
+                <div className="absolute top-2 left-2 w-4 h-4 border-l border-t border-codex-gold-dim/50 pointer-events-none" />
+                <div className="absolute top-2 right-2 w-4 h-4 border-r border-t border-codex-gold-dim/50 pointer-events-none" />
+
+                {/* Title over art */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <CertaintyBadge certainty={selected.certainty} />
+                  <h3 className="font-heading text-2xl text-codex-gold-bright mt-2 drop-shadow-lg"
+                    style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}>
+                    {selected.term}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Body - scrollable */}
+              <div className="overflow-y-auto p-6 space-y-5">
+                <button
+                  onClick={() => setSelected(null)}
+                  className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-sm bg-codex-black/60 text-codex-parchment-dim hover:text-codex-parchment transition-colors"
+                  aria-label="Cerrar"
+                >
+                  <X size={16} />
+                </button>
+
+                <p className="font-body text-base text-codex-parchment leading-loose">
+                  {selected.definition}
+                </p>
+
+                <div className="bg-codex-green/15 border border-codex-gold-dim/20 p-4 rounded-sm">
+                  <p className="font-heading text-xs text-codex-gold-dim tracking-wider uppercase mb-3">
+                    Análisis Profundo
+                  </p>
+                  <p className="font-body text-sm text-codex-parchment-dim leading-loose">
+                    {selected.deepDive}
+                  </p>
+                </div>
+
+                {selected.related.length > 0 && (
+                  <div>
+                    <p className="font-heading text-xs text-codex-gold-dim tracking-wider uppercase mb-3">
+                      Conceptos Relacionados
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {selected.related.map((r) => (
+                        <button
+                          key={r}
+                          onClick={() => {
+                            const found = entries.find(
+                              (e) => e.term === r || e.id === r.toLowerCase().replace(/[\s/]+/g, '-')
+                            )
+                            if (found) setSelected(found)
+                            else onTermClick?.(r)
+                          }}
+                          className="px-3 py-1.5 text-xs bg-codex-brown/50 text-codex-parchment-dim border border-codex-gold-dim/30 rounded-sm hover:border-codex-gold-dim/60 hover:text-codex-parchment transition-all font-body"
+                        >
+                          {r}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  )
+}

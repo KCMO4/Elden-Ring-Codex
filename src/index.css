@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-codex-black text-codex-parchment font-body;
+    background-color: #0a0a08;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(197, 160, 89, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(107, 45, 74, 0.03) 0%, transparent 50%);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-wide;
+  }
+  ::selection {
+    @apply bg-codex-gold text-codex-black;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-codex-black;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-codex-gold-dim rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-codex-gold;
+  }
+}
+
+@layer components {
+  .parchment-panel {
+    @apply bg-codex-brown/50 border border-codex-gold-dim/30 rounded-lg backdrop-blur-sm;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 0 15px rgba(197,160,89,0.05);
+  }
+  .gold-border {
+    @apply border border-codex-gold-dim/50;
+    box-shadow: 0 0 10px rgba(197,160,89,0.1);
+  }
+  .text-glow {
+    text-shadow: 0 0 10px rgba(197,160,89,0.3);
+  }
+  .codex-section {
+    @apply py-16 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto;
+  }
+  .codex-reading-width {
+    @apply max-w-3xl mx-auto;
+  }
+}
