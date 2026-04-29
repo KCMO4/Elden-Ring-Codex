@@ -3,6 +3,7 @@ import type { TimelineEntry, Certainty } from '../data/types'
 import { SectionHeader } from './SectionHeader'
 import { SectionHero } from './SectionHero'
 import { TimelineEntryCard } from './TimelineEntryCard'
+import { TimelineRibbon } from './TimelineRibbon'
 import { SearchBar } from './SearchBar'
 import { TagPill } from './TagPill'
 
@@ -51,6 +52,8 @@ export function TimelineSection({ entries, readingMode }: Props) {
           title="Timeline Profundo"
           subtitle="Del Vacío a la Fractura — Historia completa del Interregno"
         />
+
+        {!readingMode && <TimelineRibbon entries={entries} />}
 
         {!readingMode && (
           <div className="mb-8 space-y-4">

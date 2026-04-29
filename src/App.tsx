@@ -20,6 +20,9 @@ import { FactionDetailPage } from './pages/FactionDetailPage'
 import { ConceptDetailPage } from './pages/ConceptDetailPage'
 import { TimelineDetailPage } from './pages/TimelineDetailPage'
 import { EndingDetailPage } from './pages/EndingDetailPage'
+import { RoutesListPage } from './pages/RoutesListPage'
+import { RouteDetailPage } from './pages/RouteDetailPage'
+import { MapPage } from './pages/MapPage'
 import { SearchPage } from './pages/SearchPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
@@ -40,6 +43,8 @@ const sectionTitleByPath: Array<[RegExp, string]> = [
   [/^\/regiones/, 'Regiones'],
   [/^\/conceptos/, 'Conceptos'],
   [/^\/finales/, 'Finales'],
+  [/^\/rutas/, 'Rutas Narrativas'],
+  [/^\/mapa/, 'Mapa del Interregno'],
   [/^\/busqueda/, 'Búsqueda'],
 ]
 
@@ -162,6 +167,9 @@ function AppShell() {
                 <Route path="/conceptos/:slug" element={<ConceptDetailPage />} />
                 <Route path="/finales" element={<EndingsSection />} />
                 <Route path="/finales/:slug" element={<EndingDetailPage />} />
+                <Route path="/rutas" element={<RoutesListPage />} />
+                <Route path="/rutas/:id" element={<RouteDetailPage />} />
+                <Route path="/mapa" element={<MapPage />} />
                 <Route path="/busqueda" element={<SearchPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

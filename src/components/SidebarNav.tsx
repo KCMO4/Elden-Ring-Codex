@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
-import { X, BookOpen, Clock, Users, Shield, Map, BookMarked, Scroll } from 'lucide-react'
+import { X, BookOpen, Clock, Users, Shield, Map, BookMarked, Scroll, Compass, Globe2 } from 'lucide-react'
 import { RuneOrnament } from './illustrations/RuneSeparator'
 
 const navItems: { to: string; label: string; icon: React.ReactNode; sub?: string; end?: boolean }[] = [
@@ -9,8 +9,10 @@ const navItems: { to: string; label: string; icon: React.ReactNode; sub?: string
   { to: '/personajes', label: 'Enciclopedia', icon: <Users size={14} />, sub: 'Personajes' },
   { to: '/facciones', label: 'Facciones', icon: <Shield size={14} />, sub: 'Facciones y Enemigos' },
   { to: '/regiones', label: 'Regiones', icon: <Map size={14} />, sub: 'Geografía del Lore' },
+  { to: '/mapa', label: 'Mapa del Interregno', icon: <Globe2 size={14} />, sub: 'Cartografía interactiva' },
   { to: '/conceptos', label: 'Conceptos', icon: <BookMarked size={14} />, sub: 'Glosario del Interregno' },
   { to: '/finales', label: 'Los Finales', icon: <Scroll size={14} />, sub: 'Las 6 Eras' },
+  { to: '/rutas', label: 'Rutas Narrativas', icon: <Compass size={14} />, sub: 'Lecturas guiadas' },
 ]
 
 interface Props {
