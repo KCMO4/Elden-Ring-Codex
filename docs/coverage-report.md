@@ -4,28 +4,30 @@
 
 > Documento generado a partir de `src/data/coveragePlan.ts`. Actualizar simultáneamente cuando se añadan entidades nuevas.
 
-> **Última actualización: Batches 1–10 completos.** Cobertura profunda al 71 %. Solo 18 de 313 entradas catalogadas siguen como `missing` y 71 como `partial`. Las categorías `major-characters`, `demigods`, `regions (mayores)`, `subregions`, `historical-unseen` y `endings` están al 100 % de cobertura profunda.
+> **Última actualización: Batch Final completo.** **Cero entradas missing.** Cobertura profunda al **78 %** (246 / 317 entradas con `existing`). Las 71 entradas `partial` restantes tienen base data substantiva y rendering funcional; solo les falta el supplement de lore profundo opcional.
 
 ---
 
 ## Resumen ejecutivo
 
-El plan de cobertura contempla **313 entradas categorizadas** (algunas entidades aparecen en más de una categoría). Las entradas únicas son aproximadamente **240** una vez deduplicadas.
+El plan de cobertura contempla **317 entradas categorizadas** (algunas entidades aparecen en más de una categoría). Las entradas únicas son aproximadamente **245** una vez deduplicadas.
 
 | Estado | Cantidad | % | Δ acumulada |
 |---|---:|---:|---:|
-| **existing** (data + lore profundo) | 224 | 72 % | +109 |
-| **partial** (data sí, lore profundo no) | 71 | 23 % | -23 |
-| **missing** (sin entrada) | 18 | 6 % | -86 |
+| **existing** (data + lore profundo) | 246 | **78 %** | +131 |
+| **partial** (data sí, lore profundo no) | 71 | 22 % | -23 |
+| **missing** (sin entrada) | **0** | **0 %** | -104 |
 
-Cobertura base (data presente): **295 / 94 %**.
-Cobertura profunda (página dedicada con lore expandido): **224 / 72 %**.
+Cobertura base (data presente): **317 / 100 %** ✅
+Cobertura profunda (página dedicada con lore expandido): **246 / 78 %**.
+
+**Toda entidad relevante del juego base tiene al menos entrada base navegable. Cero entradas missing.**
 
 > **Lectura honesta**: el codex tiene fundamentos sólidos para el lore central (Marika, Radagon, demigods, conceptos cosmológicos clave, las 12 regiones principales completas, los 6 finales) pero le falta densidad en bosses específicos (especialmente dragones individuales), NPCs menores, especies enemigas, figuras históricas no vistas, y subdivisión del timeline en eventos atómicos.
 
 ---
 
-## Cobertura por categoría (post Batches 1–10)
+## Cobertura por categoría (post Batch Final)
 
 | Categoría | Total | Existing | Partial | Missing |
 |---|---:|---:|---:|---:|
@@ -34,22 +36,23 @@ Cobertura profunda (página dedicada con lore expandido): **224 / 72 %**.
 | 3. Quest NPCs | 4 | 1 | 3 | 0 |
 | 4. Invaders / hostiles | 9 | 0 | 9 | 0 |
 | 5. Demigods | 10 | **10** ✓ | 0 | 0 |
-| 6. Remembrance bosses | 5 | 2 | 1 | 2 |
-| 7. Major non-remembrance bosses | 15 | 4 | 4 | 7 |
-| 8. Dragons | 19 | 17 | 1 | 1 |
-| 9. Astral / cosmic | 12 | 2 | 3 | 7 |
+| 6. Remembrance bosses | 5 | 4 | 1 | 0 |
+| 7. Major non-remembrance bosses | 19 | 15 | 4 | 0 |
+| 8. Dragons | 19 | 18 | 1 | 0 |
+| 9. Astral / cosmic | 12 | 9 | 3 | 0 |
 | 10. Outer Gods / cosmic forces | 13 | 12 | 1 | 0 |
 | 11. Historical / unseen | 12 | **12** ✓ | 0 | 0 |
 | 12. Enemy races / species | 35 | 29 | 6 | 0 |
-| 13. Factions | 19 | 13 | 5 | 1 |
+| 13. Factions | 19 | 14 | 5 | 0 |
 | 14. Regions (mayores) | 12 | **12** ✓ | 0 | 0 |
 | 15. Subregions | 18 | **18** ✓ | 0 | 0 |
 | 16. Concepts | 33 | 27 | 6 | 0 |
 | 17. Timeline events | 53 | 35 | 18 | 0 |
 | 18. Endings | 6 | **6** ✓ | 0 | 0 |
-| **TOTAL** | **313** | **224** | **71** | **18** |
+| **TOTAL** | **317** | **246** | **71** | **0** ✅ |
 
 > Categorías al 100 % de cobertura profunda: **major-characters · demigods · regions (mayores) · subregions · historical-unseen · endings**.
+> Categorías al 100 % sin missing: **todas las 18 categorías**.
 
 > Los números totales por categoría suman más que la cuenta de entidades únicas porque algunas entradas figuran en más de una categoría conceptualmente. P. ej. **Placidusax** aparece como dragón, como remembrance-boss y como historical-unseen; **Astel** aparece como astral-cosmic y como remembrance-boss.
 
@@ -279,6 +282,22 @@ Completado. Seis personajes pasaron de `partial` a `existing` con estructura ult
 - **Godrick** — decadencia aristocrática, injerto como compensación, imitación patética de Godfrey
 
 Resultado neto: **+7 entradas en `existing`** (Gloam-Eyed Queen aparece en dos categorías). Las categorías `major-characters` y `demigods` quedan al 100 %.
+
+### ✅ Batch Final — Cierre de las 18 entradas missing
+
+**Phase astral/cósmico (7 entradas)**: Astel Naturalborn (Remembrance boss), Astel Stars of Darkness (variante), Withered Astels / Malformed Stars, Fallingstar Beasts, Full-Grown Fallingstar Beast (Mt Gelmir), Alabaster Lords, Onyx Lords.
+
+**Phase ancestral/espiritual (3 entradas)**: Ancestor Spirit (variante menor), Regal Ancestor Spirit (Remembrance), Ancestral Followers (ya existía como faction).
+
+**Phase culto dragónico (1 entrada)**: Ancient Dragon Cult con conexión explícita a Godwyn, Fortissax y Lansseax.
+
+**Phase bosses / compactos (8 entradas)**: Tree Sentinel, Grafted Scion, Crucible Knight Ordovis, Black Blade Kindred, Bell Bearing Hunter, Godskin Duo, Cemetery Shade, Erdtree Burial Watchdog.
+
+**Plus entradas históricamente missing absorbidas**: Ulcerated Tree Spirit, Fire Giant (boss único), Mercaderes Nómadas (faction).
+
+Resultado neto: **+22 entradas en `existing`** (de 224 a 246, total ahora 317 con 4 entradas nuevas añadidas al plan). **0 missing** por primera vez en la historia del codex.
+
+---
 
 ### ✅ Batches 7–10 — Subdivisión y completitud horizontal
 Completados en bloque. Resumen del trabajo:
