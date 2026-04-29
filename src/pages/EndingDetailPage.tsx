@@ -34,6 +34,7 @@ export function EndingDetailPage() {
       deepLore={ending.deepLore ?? []}
       confirmed={ending.confirmed}
       inferred={ending.inferred}
+      theories={ending.theories}
       ambiguous={ending.ambiguous}
       relatedGroups={[
         { label: 'Personajes', items: resolveCharacterIds(ending.relatedCharacters) },

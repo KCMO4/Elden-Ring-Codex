@@ -45,6 +45,7 @@ export function FactionDetailPage() {
       deepLore={faction.deepLore ?? []}
       confirmed={faction.confirmed}
       inferred={faction.inferred}
+      theories={faction.theories}
       ambiguous={faction.ambiguous}
       beneficiaries={faction.beneficiaries}
       victims={faction.victims}

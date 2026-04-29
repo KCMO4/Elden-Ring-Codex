@@ -40,6 +40,7 @@ export function CharacterDetailPage() {
       deepLore={character.deepLore ?? []}
       confirmed={character.confirmed}
       inferred={character.inferred}
+      theories={character.theories}
       ambiguous={character.ambiguous}
       beneficiaries={character.beneficiaries}
       victims={character.victims}

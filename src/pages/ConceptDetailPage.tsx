@@ -32,6 +32,7 @@ export function ConceptDetailPage() {
       deepLore={concept.deepLore ?? []}
       confirmed={concept.confirmed}
       inferred={concept.inferred}
+      theories={concept.theories}
       ambiguous={concept.ambiguous}
       relatedGroups={[
         { label: 'Personajes vinculados', items: resolveCharacterIds(concept.relatedCharacters) },

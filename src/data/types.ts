@@ -80,6 +80,8 @@ export interface DeepEntity {
   /** Bullet lists of canonical knowledge buckets */
   confirmed?: string[]
   inferred?: string[]
+  /** Theories — plausible interpretations not directly stated by the game */
+  theories?: string[]
   ambiguous?: string[]
   /** Who benefited / who suffered from this entity's existence/actions */
   beneficiaries?: string

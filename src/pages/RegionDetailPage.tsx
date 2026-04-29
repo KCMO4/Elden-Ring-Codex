@@ -39,6 +39,7 @@ export function RegionDetailPage() {
       deepLore={region.deepLore ?? []}
       confirmed={region.confirmed}
       inferred={region.inferred}
+      theories={region.theories}
       ambiguous={region.ambiguous}
       beneficiaries={region.beneficiaries}
       victims={region.victims}

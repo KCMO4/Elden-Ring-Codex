@@ -48,6 +48,7 @@ interface DetailLayoutProps {
   deepLore?: RichBlock[]
   confirmed?: string[]
   inferred?: string[]
+  theories?: string[]
   ambiguous?: string[]
   beneficiaries?: string
   victims?: string
@@ -72,6 +73,7 @@ export function DetailLayout({
   deepLore = [],
   confirmed,
   inferred,
+  theories,
   ambiguous,
   beneficiaries,
   victims,
@@ -160,20 +162,23 @@ export function DetailLayout({
             {deepLore.length > 0 && <RichLoreText blocks={deepLore} />}
 
             {/* Knowledge buckets */}
-            {(confirmed?.length || inferred?.length || ambiguous?.length || beneficiaries || victims) && (
+            {(confirmed?.length || inferred?.length || theories?.length || ambiguous?.length || beneficiaries || victims) && (
               <section className="mt-12">
                 <h2 className="font-heading text-2xl text-codex-gold-bright tracking-wide mb-5 pb-2 border-b border-codex-gold-dim/30">
-                  Lo confirmado, lo inferido, lo ambiguo
+                  Hechos, inferencias, teorías y ambigüedades
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {confirmed && confirmed.length > 0 && (
-                    <KnowledgeBox label="Confirmado" tone="gold" items={confirmed} />
+                    <KnowledgeBox label="Hechos confirmados" tone="gold" items={confirmed} />
                   )}
                   {inferred && inferred.length > 0 && (
-                    <KnowledgeBox label="Inferencia" tone="parchment" items={inferred} />
+                    <KnowledgeBox label="Inferencias fuertes" tone="parchment" items={inferred} />
+                  )}
+                  {theories && theories.length > 0 && (
+                    <KnowledgeBox label="Teorías razonables" tone="moon" items={theories} />
                   )}
                   {ambiguous && ambiguous.length > 0 && (
-                    <KnowledgeBox label="Ambiguo" tone="rot" items={ambiguous} />
+                    <KnowledgeBox label="Ambigüedades abiertas" tone="rot" items={ambiguous} />
                   )}
                 </div>
 
@@ -286,13 +291,14 @@ function KnowledgeBox({
   label, tone, items,
 }: {
   label: string
-  tone: 'gold' | 'parchment' | 'rot'
+  tone: 'gold' | 'parchment' | 'rot' | 'moon'
   items: string[]
 }) {
   const toneClasses = {
     gold:      'border-codex-gold/30 text-codex-gold',
     parchment: 'border-codex-gold-dim/30 text-codex-parchment',
     rot:       'border-codex-rot/40 text-codex-rot',
+    moon:      'border-blue-400/30 text-blue-300',
   }[tone]
 
   return (

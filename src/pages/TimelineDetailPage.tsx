@@ -36,6 +36,7 @@ export function TimelineDetailPage() {
       deepLore={entry.deepLore ?? []}
       confirmed={entry.confirmed}
       inferred={entry.inferred}
+      theories={entry.theories}
       ambiguous={entry.ambiguous}
       beneficiaries={entry.beneficiaries}
       victims={entry.victims}
