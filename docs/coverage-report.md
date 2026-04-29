@@ -4,7 +4,7 @@
 
 > Documento generado a partir de `src/data/coveragePlan.ts`. Actualizar simultáneamente cuando se añadan entidades nuevas.
 
-> **Última actualización: Batch Final completo.** **Cero entradas missing.** Cobertura profunda al **78 %** (246 / 317 entradas con `existing`). Las 71 entradas `partial` restantes tienen base data substantiva y rendering funcional; solo les falta el supplement de lore profundo opcional.
+> **Última actualización: Batch de Cierre Total.** **97 % de cobertura profunda.** Solo 9 entradas (2.8 %) siguen como `partial` — todas NPCs compact con base data suficiente. **Cero missing.** 16 de 18 categorías al 100 %.
 
 ---
 
@@ -14,45 +14,44 @@ El plan de cobertura contempla **317 entradas categorizadas** (algunas entidades
 
 | Estado | Cantidad | % | Δ acumulada |
 |---|---:|---:|---:|
-| **existing** (data + lore profundo) | 246 | **78 %** | +131 |
-| **partial** (data sí, lore profundo no) | 71 | 22 % | -23 |
+| **existing** (data + lore profundo) | **308** | **97.2 %** | +193 |
+| **partial** (data sí, lore profundo no) | 9 | 2.8 % | -85 |
 | **missing** (sin entrada) | **0** | **0 %** | -104 |
 
 Cobertura base (data presente): **317 / 100 %** ✅
-Cobertura profunda (página dedicada con lore expandido): **246 / 78 %**.
+Cobertura profunda (página dedicada con lore expandido): **308 / 97.2 %** ✅
 
-**Toda entidad relevante del juego base tiene al menos entrada base navegable. Cero entradas missing.**
+**Las 9 entradas partial restantes son todas NPCs compact (priority menor) con base data suficiente. Su promoción sería trabajo marginal sin impacto narrativo significativo.**
 
 > **Lectura honesta**: el codex tiene fundamentos sólidos para el lore central (Marika, Radagon, demigods, conceptos cosmológicos clave, las 12 regiones principales completas, los 6 finales) pero le falta densidad en bosses específicos (especialmente dragones individuales), NPCs menores, especies enemigas, figuras históricas no vistas, y subdivisión del timeline en eventos atómicos.
 
 ---
 
-## Cobertura por categoría (post Batch Final)
+## Cobertura por categoría (post Batch de Cierre Total)
 
 | Categoría | Total | Existing | Partial | Missing |
 |---|---:|---:|---:|---:|
 | 1. Major characters | 6 | **6** ✓ | 0 | 0 |
-| 2. Secondary NPCs | 32 | 18 | 14 | 0 |
-| 3. Quest NPCs | 4 | 1 | 3 | 0 |
-| 4. Invaders / hostiles | 9 | 0 | 9 | 0 |
+| 2. Secondary NPCs | 32 | 25 | 7 | 0 |
+| 3. Quest NPCs | 4 | 2 | 2 | 0 |
+| 4. Invaders / hostiles | 9 | **9** ✓ | 0 | 0 |
 | 5. Demigods | 10 | **10** ✓ | 0 | 0 |
-| 6. Remembrance bosses | 5 | 4 | 1 | 0 |
-| 7. Major non-remembrance bosses | 19 | 15 | 4 | 0 |
-| 8. Dragons | 19 | 18 | 1 | 0 |
-| 9. Astral / cosmic | 12 | 9 | 3 | 0 |
-| 10. Outer Gods / cosmic forces | 13 | 12 | 1 | 0 |
+| 6. Remembrance bosses | 5 | **5** ✓ | 0 | 0 |
+| 7. Major non-remembrance bosses | 19 | **19** ✓ | 0 | 0 |
+| 8. Dragons | 19 | **19** ✓ | 0 | 0 |
+| 9. Astral / cosmic | 12 | **12** ✓ | 0 | 0 |
+| 10. Outer Gods / cosmic forces | 13 | **13** ✓ | 0 | 0 |
 | 11. Historical / unseen | 12 | **12** ✓ | 0 | 0 |
-| 12. Enemy races / species | 35 | 29 | 6 | 0 |
-| 13. Factions | 19 | 14 | 5 | 0 |
+| 12. Enemy races / species | 35 | **35** ✓ | 0 | 0 |
+| 13. Factions | 19 | **19** ✓ | 0 | 0 |
 | 14. Regions (mayores) | 12 | **12** ✓ | 0 | 0 |
 | 15. Subregions | 18 | **18** ✓ | 0 | 0 |
-| 16. Concepts | 33 | 27 | 6 | 0 |
-| 17. Timeline events | 53 | 35 | 18 | 0 |
+| 16. Concepts | 33 | **33** ✓ | 0 | 0 |
+| 17. Timeline events | 53 | **53** ✓ | 0 | 0 |
 | 18. Endings | 6 | **6** ✓ | 0 | 0 |
-| **TOTAL** | **317** | **246** | **71** | **0** ✅ |
+| **TOTAL** | **317** | **308** | **9** | **0** ✅ |
 
-> Categorías al 100 % de cobertura profunda: **major-characters · demigods · regions (mayores) · subregions · historical-unseen · endings**.
-> Categorías al 100 % sin missing: **todas las 18 categorías**.
+> **16 de 18 categorías al 100 % de cobertura profunda.** Solo `secondary-npcs` y `quest-npcs` mantienen unas pocas entradas compact como partial (Kenneth Haight, Roderika, Hewg, Boc, Jar-Bairn, Albus, Thops, Irina, Edgar). Su base data es completa y funcional — la promoción sería marginal.
 
 > Los números totales por categoría suman más que la cuenta de entidades únicas porque algunas entradas figuran en más de una categoría conceptualmente. P. ej. **Placidusax** aparece como dragón, como remembrance-boss y como historical-unseen; **Astel** aparece como astral-cosmic y como remembrance-boss.
 

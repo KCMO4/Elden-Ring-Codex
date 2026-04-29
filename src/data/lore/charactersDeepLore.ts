@@ -2313,4 +2313,953 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     relatedConcepts: ['great-rune', 'grafting', 'crucible'],
     relatedTimelineEvents: ['la-fractura', 'demidioses-fractura', 'godrick-grafting'],
   },
+
+  /* ════════════════ Promoción mass — invaders + NPCs ════════════════ */
+
+  varre: {
+    summary:
+      'White Mask Varré es la primera voz amable que el Mancillado escucha al regresar al Interregno — y también la primera mentira. Su función es atraer aspirantes hacia el culto de Mohg disfrazando el reclutamiento como hospitalidad cortés. La gentileza inicial es el cebo del rito sangriento.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Varré aparece en la Iglesia de Elleh, en Limgrave, ofreciendo bienvenida calurosa al Mancillado recién llegado. Su máscara blanca es elegante; su lenguaje es protocolario; su intención es secuestrar al aspirante para el culto de ',
+        link('Mohg', 'character', 'mohg'),
+        '.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Como misionero principal de los ',
+        link('Bloody Fingers', 'faction', 'bloody-fingers'),
+        ', Varré opera en superficie mientras Mohg construye la Dinastía Mohgwyn bajo tierra. Su quest específica: convencer al Mancillado de manchar Doncellas Mancilladas con su propia sangre, paso ritual que abre acceso directo a ',
+        link('Mohgwyn', 'region', 'mohgwyn'),
+        '. Cada paso es disfrazado como cortesía protocolaria — la coerción nunca es explícita, solo implícita en el tono "amable".',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Varré es la imagen más nítida de la hospitalidad como anzuelo. Demuestra que el peor culto del Interregno se presenta primero como conversación cortés. La sangre se gana por etiqueta, no por violencia abierta. Su máscara blanca es metonimia perfecta: cubre el rostro real para presentar la cara que el aspirante quiere ver.',
+      ),
+    ],
+    confirmed: [
+      'Varré es misionero de Mohg desde la Iglesia de Elleh',
+      'Su quest dirige al Mancillado hacia Mohgwyn',
+      'Entrega Doncellas Mancilladas que el Mancillado debe manchar con su propia sangre',
+      'Es derrotable como invasor en cualquier momento de su quest',
+    ],
+    inferred: [
+      'La amabilidad inicial es estrategia deliberada, no rasgo de personalidad',
+      'Su rol como primer NPC es diseño narrativo de FromSoftware',
+      'Conoce el plan completo de Mohg con Miquella',
+    ],
+    theories: [
+      'Varré es Mancillado original que se convirtió tras presenciar la inutilidad del régimen',
+      'Su máscara blanca oculta deformidades Omen',
+      'Es el reclutador más exitoso del culto — otros aspirantes Mancillados pueden haber caído antes',
+    ],
+    ambiguous: [
+      'Cuándo se convirtió al culto de Mohg',
+      'Si conoció a Mohg personalmente o solo a través de los Bloody Fingers',
+      'Cuántos Mancillados ha reclutado antes del actual',
+    ],
+    relatedCharacters: ['mohg', 'miquella'],
+    relatedFactions: ['bloody-fingers', 'omens'],
+    relatedRegions: ['mohgwyn', 'limgrave'],
+    relatedConcepts: ['formless-mother', 'bloodflame'],
+    relatedTimelineEvents: ['mohg-formless-mother', 'mohg-toma-miquella'],
+  },
+
+  shabriri: {
+    summary:
+      'Shabriri es el espíritu del calumniador, profeta peripatético de la Llama Frenética. No tiene cuerpo propio: posee a sucesivos huéspedes durante eras para difundir su única doctrina — existir es sufrir, y la única piedad es quemarlo todo. Su última posesión documentada es Yura.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Shabriri fue, en su origen, calumniador en una era previa al Orden Dorado. Su crimen específico nunca se enuncia, pero su castigo sí: le arrancaron los ojos. Esa mutilación lo convirtió, paradójicamente, en visionario: el calumniador ciego ve la verdad que los videntes esconden.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Como espíritu sin cuerpo, ha poseído a múltiples huéspedes durante siglos. Su misión es propagar la "frenética verdad" — la doctrina de la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        ' — entre quien sea capaz de oírla. Cada poseído se convierte en propagador. Cada víctima es semilla del próximo culto.',
+      ),
+      p(
+        'Su posesión más reciente fue ',
+        link('Yura', 'character', 'yura'),
+        ', el cazador samurái de Land of Reeds. Tras debilitar a Yura en una emboscada, Shabriri tomó el cuerpo. ',
+        link('Eleonora', 'character', 'eleonora'),
+        ' siguió fielmente al Yura poseído sin distinguir al amante del impostor. La marca de Shabriri otorgada al Mancillado abre la ruta directa a la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        '.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Shabriri encarna la doctrina nihilista como contagio. No tiene cuerpo porque no necesita uno: vive en cada víctima que repite su mensaje. La calumnia se vuelve cosmología. La frenética verdad se contagia por escucha, no por convicción.',
+      ),
+    ],
+    confirmed: [
+      'Shabriri fue calumniador en una era previa, condenado a perder los ojos',
+      'Es espíritu sin cuerpo propio que posee huéspedes sucesivos',
+      'Poseyó a Yura tras debilitarlo en emboscada',
+      'Su marca abre la ruta a la Llama Frenética',
+    ],
+    inferred: [
+      'Es proselitista activo desde antes del Orden Dorado',
+      'Cada víctima es propagador del siguiente ciclo',
+      'Su existencia depende de la presencia de los Tres Dedos como reserva cosmológica',
+    ],
+    theories: [
+      'Shabriri fue creado deliberadamente por los Tres Dedos como agente itinerante',
+      'Hyetta es su próximo huésped tras Yura',
+      'Su nombre es solo una de muchas identidades que ha asumido',
+    ],
+    ambiguous: [
+      'Su nombre real antes del castigo',
+      'Cuántas eras de posesiones lleva acumuladas',
+      'Si conserva personalidad propia o solo función misionera',
+    ],
+    relatedCharacters: ['yura', 'eleonora', 'hyetta'],
+    relatedFactions: ['tres-dedos', 'frenzied-victims'],
+    relatedConcepts: ['frenzied-flame', 'dioses-exteriores'],
+    relatedEndings: ['frenzied-flame'],
+  },
+
+  yura: {
+    summary:
+      'Yura es samurái de Land of Reeds dedicado a cazar invasores Bloody Fingers. Su honor es estricto, su técnica refinada, su devoción completa. Cuando Shabriri lo posee tras una emboscada, se vuelve exactamente lo que cazaba — y el Mancillado debe matar al amigo para liberar al cuerpo.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Yura llegó al Interregno desde Land of Reeds con propósito específico: cazar a los ',
+        link('Bloody Fingers', 'faction', 'bloody-fingers'),
+        ', invasores Mancillados al servicio de ',
+        link('Mohg', 'character', 'mohg'),
+        '. Su técnica espadachín — Iaijutsu refinado — es de las más elegantes del juego. Su katana cae sin ruido y deja heridas profundas.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Ayuda al Mancillado en múltiples invasiones a lo largo de Limgrave y Liurnia. Su lealtad es pragmática: cazadores se respaldan mutuamente. Cuando Yura es debilitado en una emboscada en Altus, el espíritu de ',
+        link('Shabriri', 'character', 'shabriri'),
+        ' aprovecha la herida abierta para poseer su cuerpo.',
+      ),
+      p(
+        'El Yura poseído es indistinguible visualmente del original — misma armadura, misma katana, mismo tono. Pero su técnica se desvía hacia la Llama Frenética. ',
+        link('Eleonora', 'character', 'eleonora'),
+        ' lo sigue creyendo que es su amante; el Mancillado debe enfrentar a ambos para liberar el cuerpo de Yura. La caza se ha cerrado en círculo: el cazador se vuelve presa de su propia carrera.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Yura es la prueba de que la dedicación absoluta no protege contra la corrupción. Su honor estricto fue preludio del cuerpo perfecto para Shabriri: alguien tan disciplinado que su huésped puede operar con eficacia inmediata. Su tragedia es el cazador que se vuelve exactamente lo que cazaba — y muere a manos del aliado que él mismo había entrenado.',
+      ),
+    ],
+    confirmed: [
+      'Yura es samurái de Land of Reeds dedicado a cazar Bloody Fingers',
+      'Ayuda al Mancillado en múltiples invasiones',
+      'Es debilitado en emboscada y poseído por Shabriri',
+      'Su cuerpo poseído debe ser destruido para liberarlo',
+    ],
+    inferred: [
+      'Su tradición espadachín es uno de los pocos linajes marciales no-Orden documentados',
+      'Su lealtad al Mancillado es pragmática, no estructural',
+      'Eleonora no distingue al Yura original del poseído',
+    ],
+    theories: [
+      'Conoció al Blind Swordsman histórico antes de su llegada al Interregno',
+      'Sabía del riesgo de posesión pero aceptó la cacería igualmente',
+      'Su cuerpo conserva consciencia residual durante la posesión',
+    ],
+    ambiguous: [
+      'Cuándo exactamente fue debilitado',
+      'Si Eleonora conocía la posesión y la aceptó por amor',
+      'Si su katana retiene memoria del verdadero Yura',
+    ],
+    relatedCharacters: ['shabriri', 'eleonora', 'blind-swordsman'],
+    relatedFactions: ['bloody-fingers', 'frenzied-victims'],
+    relatedConcepts: ['frenzied-flame'],
+  },
+
+  eleonora: {
+    summary:
+      'Eleonora es lanza violeta del Foreign Hunt, asesina elegante con técnica fluida. Amaba a Yura. Cuando Shabriri lo posee, ella sigue al impostor sin distinguir — el amor convertido en complicidad inconsciente. El Mancillado debe matarlos juntos para que el ciclo termine.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        link('Eleonora', 'character', 'eleonora'),
+        ' aparece en Altus Plateau como invasora elegante. Su lanza violeta es regalo de Yura — símbolo de su pacto romántico antes de la posesión. Su técnica de combate combina movimientos fluidos con magia carmesí.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Su rol original como cazadora del Foreign Hunt era complementario al de Yura: él cazaba Bloody Fingers, ella cazaba a otros invasores en general. Eran pareja funcional y romántica. Cuando ',
+        link('Shabriri', 'character', 'shabriri'),
+        ' poseyó a Yura, Eleonora no detectó el cambio — el cuerpo era el mismo, la voz era similar, los gestos básicos coincidían. Su amor sirvió como camuflaje.',
+      ),
+      p(
+        'Sigue al Yura poseído como consorte fiel. Caza junto a él aunque ahora la presa cambia: ya no son Bloody Fingers, son Mancillados aspirantes a la Llama Frenética. La transformación es gradual: cada caza la aleja más de su propia identidad.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Eleonora encarna el amor convertido en cómplice. Su devoción a Yura era genuina; su incapacidad de distinguir al amante del impostor es trágica precisamente porque demuestra cuánto lo amaba. Quien ama no examina; quien examina no ama del todo. El Mancillado al matarla cumple el último acto piadoso: liberar a una mujer enamorada de un cuerpo que ya no contiene al amado.',
+      ),
+    ],
+    confirmed: [
+      'Eleonora aparece como invasora en Altus Plateau',
+      'Su lanza violeta fue regalo de Yura',
+      'Sigue al Yura poseído sin distinguir la posesión',
+      'Su muerte ofrece la lanza al Mancillado',
+    ],
+    inferred: [
+      'Su amor por Yura era genuino, no estratégico',
+      'No detectó la posesión por exceso de devoción, no por incompetencia',
+      'Su transformación posterior es gradual, no inmediata',
+    ],
+    theories: [
+      'Sospechó la posesión en algún momento pero rechazó la sospecha',
+      'Su lanza retiene magia del verdadero Yura',
+      'Habría podido sobrevivir si hubiera abandonado a Yura — pero su amor lo impidió',
+    ],
+    ambiguous: [
+      'Cuánto sabía exactamente del riesgo de Shabriri',
+      'Si murió pensando que Yura era Yura',
+      'Si su lanza violeta tiene función cosmológica más allá de lo simbólico',
+    ],
+    relatedCharacters: ['yura', 'shabriri'],
+    relatedFactions: ['bloody-fingers', 'frenzied-victims'],
+    relatedConcepts: ['frenzied-flame'],
+  },
+
+  bernahl: {
+    summary:
+      'Bernahl fue líder de los Caballeros Desterrados — orden que conservaba honor marcial fuera del régimen oficial. Su caída fue gradual: del Warmaster\'s Shack como mentor del Mancillado, al Volcano Manor como Recusante de Rykard, a Crumbling Farum Azula como invasor demente. Cada vez que reaparece está peor.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Bernahl encabeza a los ',
+        link('Caballeros Desterrados', 'faction', 'banished-knights'),
+        ' tras siglos de exilio del Orden Dorado oficial. Su filosofía original es honor marcial autónomo: defender lo justo aunque el régimen oficial no lo apruebe. Es una posición ideológicamente coherente y respetable.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Aparece primero en el Warmaster\'s Shack en Stormhill, vendiendo invocaciones espirituales de Banished Knights muertos. Sirve como mentor secundario del Mancillado en sus primeros pasos. Su voz es la de un veterano cansado pero firme.',
+      ),
+      p(
+        'Tras un punto narrativo específico, reaparece en el ',
+        link('Volcano Manor', 'region', 'volcano-manor'),
+        ' como Recusante al servicio de ',
+        link('Rykard', 'character', 'rykard'),
+        '. Su caída ideológica es completa: pasó del honor marcial autónomo a la blasfemia institucional. ',
+        link('Tanith', 'character', 'tanith'),
+        ' lo recibe como recluta valioso.',
+      ),
+      p(
+        'Su última aparición es como invasor en Crumbling Farum Azula. Para entonces ya no parece recordar quién fue. Es Bernahl pero no es Bernahl: la blasfemia lo ha consumido. Su muerte allí es liberación piadosa, similar a la que Yura recibe del Mancillado.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Bernahl encarna la caída del caballero. Pasó de mentor a apóstata sin solución de continuidad. Cada vez que el Mancillado lo encuentra está peor — la última vez ya no sabe quién es. Es la prueba de que el honor marcial fuera del régimen oficial no se sostiene cosmológicamente sin estructura institucional protectora. La marcialidad pura es vulnerable a cualquier blasfemia que ofrezca pertenencia.',
+      ),
+    ],
+    confirmed: [
+      'Bernahl lidera los Caballeros Desterrados',
+      'Vende invocaciones espirituales en el Warmaster\'s Shack',
+      'Reaparece como Recusante en el Volcano Manor',
+      'Aparición final como invasor en Farum Azula',
+    ],
+    inferred: [
+      'Su caída es gradual, no súbita',
+      'La blasfemia institucional ofreció pertenencia que los Banished Knights no podían dar',
+      'Su muerte final es liberación piadosa',
+    ],
+    theories: [
+      'Conocía a Tanith desde antes — su ingreso al Volcano Manor fue invitación específica',
+      'Algunos Banished Knights desertaron con él al Volcano Manor',
+      'Su deterioro mental procede del contacto prolongado con Eiglay',
+    ],
+    ambiguous: [
+      'Cuándo exactamente abandonó el Warmaster\'s Shack',
+      'Si su transformación fue voluntaria o coercitiva',
+      'Si conserva alguna conciencia residual durante la última batalla',
+    ],
+    relatedCharacters: ['rykard', 'tanith', 'patches'],
+    relatedFactions: ['banished-knights', 'volcano-manor'],
+    relatedRegions: ['stormveil', 'mt-gelmir', 'farum-azula'],
+    relatedConcepts: ['serpent-god-eiglay'],
+    relatedTimelineEvents: ['rykard-volcano-manor'],
+  },
+
+  patches: {
+    summary:
+      'Patches el Astuto aparece en cada era de cada mundo posible y siempre es el mismo: bandido cobarde, mendigo oportunista, mercader dudoso, sirviente de cualquier causa que pague. Es la inmortalidad como rutina. Sobrevive a todos los regímenes por puro pragmatismo.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Patches existe en muchos mundos de FromSoftware. En el Interregno aparece como bandido en Limgrave, con la trampa estándar: emboscada, derrota, mendiga perdón, intenta venderte cosas como si nada hubiera pasado. La rutina es deliberada — Patches ha tendido la misma trampa durante eras y siempre funciona la misma disculpa.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Tras la primera derrota, Patches se convierte en mercader itinerante con ofertas dudosas. Reaparece en múltiples regiones del Interregno: Limgrave, Mt Gelmir (al servicio de ',
+        link('Tanith', 'character', 'tanith'),
+        '), y ocasionalmente en otros lugares. Su oficio es vender lo que sea a quien sea por lo que sea.',
+      ),
+      p(
+        'En el Volcano Manor sirve nominalmente a la causa Recusante pero su fidelidad es pragmática, no doctrinal. Cuando otra opción mejor aparece, cambiará de bando. Es uno de los pocos personajes del Interregno que no tiene ideología cosmológica — solo cálculo de supervivencia.',
+      ),
+      p(
+        'Aparece también en relación con ',
+        link('Boggart', 'character', 'boggart'),
+        ' (Blackguard Big Boggart), a quien puede asesinar en algunas variantes para vender su Bell Bearing. La traición es funcional: es lo que Patches hace.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Patches es el bufón cósmico. Su existencia recuerda que ningún sistema sagrado está libre de la astucia menor del oportunista. Sobrevive a todos los dioses por puro pragmatismo. Su trampa siempre falla; su disculpa siempre funciona; mañana lo intentará de nuevo. Es la prueba de que el cosmos del Interregno no es solo trágico — también es absurdo.',
+      ),
+    ],
+    confirmed: [
+      'Patches aparece en Limgrave como bandido con trampa estándar',
+      'Tras la derrota se vuelve mercader itinerante',
+      'Sirve a Tanith en el Volcano Manor con lealtad pragmática',
+      'Puede asesinar a Boggart en algunas variantes',
+    ],
+    inferred: [
+      'Su existencia trasciende eras — repite el mismo papel en mundos sucesivos',
+      'No tiene ideología cosmológica, solo cálculo de supervivencia',
+      'Cambiará de bando cuando otra opción mejor aparezca',
+    ],
+    theories: [
+      'Patches es manifestación del mismo arquetipo en múltiples cosmologías',
+      'Su inmortalidad es estructural, no biológica',
+      'Conoce secretos del Interregno que ninguna facción reconoce',
+    ],
+    ambiguous: [
+      'Si Patches actual es el mismo individuo que Patches anteriores o reencarnación',
+      'Cuál es el origen real de su pragmatismo absoluto',
+      'Si tiene algún momento de sinceridad genuina',
+    ],
+    relatedCharacters: ['tanith', 'rykard', 'boggart', 'bernahl', 'alexander'],
+    relatedFactions: ['volcano-manor', 'banished-knights'],
+    relatedRegions: ['limgrave', 'mt-gelmir'],
+  },
+
+  tanith: {
+    summary:
+      'Lady Tanith es la anfitriona perfecta del Volcano Manor. Sirve té con etiqueta impecable mientras coordina asesinatos rituales bajo su salón. Su devoción a Rykard excede toda métrica: cuando él muere, ella devora el cadáver para preservarlo dentro de sí. La cortesía aristocrática es contenedor del horror.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Tanith opera como anfitriona oficial del ',
+        link('Volcano Manor', 'region', 'volcano-manor'),
+        ' en nombre de su esposo ',
+        link('Rykard', 'character', 'rykard'),
+        '. Recibe nobles desafectos del régimen, ofrece té con protocolo perfecto, entrega cartas de invitación que en realidad son misiones de asesinato. La etiqueta y el horror coexisten sin contradicción visible.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Su matrimonio con Rykard precede a la fusión con Eiglay. Era noble respetable del Orden Dorado antes de seguir a su esposo en su descenso institucional. Su lealtad es total: aceptó la transformación monstruosa de Rykard, aceptó la blasfemia institucional, aceptó la canalización de su corte como núcleo de los Recusantes.',
+      ),
+      p(
+        'Reclutó a ',
+        link('Rya', 'character', 'rya'),
+        ' (Zorayas, serpiente bajo apariencia humana) como reclutadora aristocrática. Recibe a ',
+        link('Bernahl', 'character', 'bernahl'),
+        ', ',
+        link('Diallos', 'character', 'diallos'),
+        ' (que llega buscando a su sirvienta Lanya), ',
+        link('Patches', 'character', 'patches'),
+        ' (con su pragmatismo habitual). Cada huésped es invitado a unirse a las cazas rituales contra el Orden Dorado.',
+      ),
+      p(
+        'Tras la derrota de Rykard por el Mancillado, Tanith devora el cadáver de su esposo. La devoración es ritual — preserva la voluntad de Rykard dentro de su propio cuerpo. Es simultáneamente devoción canibalesca y comunión teológica. Su matrimonio se completa en gastronomía.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Tanith encarna la pregunta más sutil del juego: ¿es la civilización compatible con la blasfemia? Su respuesta es escalofriante: sí, perfectamente. Las salas de mármol y los protocolos aristocráticos son contenedores funcionales para el rito sangriento. Sus modales son perfectos hasta el final — incluso al masticar.',
+      ),
+    ],
+    confirmed: [
+      'Tanith es anfitriona oficial del Volcano Manor',
+      'Coordina las misiones de asesinato disfrazadas de protocolo',
+      'Recluta nobles desafectos como Recusantes',
+      'Devora el cadáver de Rykard tras su derrota',
+    ],
+    inferred: [
+      'Su matrimonio con Rykard precede a la fusión con Eiglay',
+      'Su lealtad es total, no estratégica',
+      'La cortesía aristocrática es contenedor funcional del horror, no contradicción',
+    ],
+    theories: [
+      'Conserva ambición propia más allá de servir a Rykard',
+      'La devoración del cadáver fue ritual planificado durante eras',
+      'Si Eiglay sobrevive, podría buscar nuevo huésped a través de ella',
+    ],
+    ambiguous: [
+      'Cuánto sabe sobre la naturaleza real de Eiglay',
+      'Cuándo exactamente comenzó a oficiar como anfitriona',
+      'Si conserva algún vínculo emocional con Rykard como persona o solo como dios',
+    ],
+    relatedCharacters: ['rykard', 'rya', 'patches', 'bernahl', 'diallos'],
+    relatedFactions: ['volcano-manor'],
+    relatedRegions: ['mt-gelmir'],
+    relatedConcepts: ['serpent-god-eiglay'],
+    relatedTimelineEvents: ['rykard-volcano-manor'],
+  },
+
+  rya: {
+    summary:
+      'Rya parece noble humana — elegante, cortés, encantadora — pero bajo el vestido tiene escamas. Es Zorayas, serpiente del linaje pre-Orden disfrazada de aristócrata. Su transformación final no es metamorfosis sino destape: cuando se permite ser lo que es, deja de mentir.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        link('Rya', 'character', 'rya'),
+        ' opera como reclutadora aristocrática del ',
+        link('Volcano Manor', 'region', 'volcano-manor'),
+        '. Aparece primero en Liurnia pidiendo al Mancillado recuperar un collar robado — su collar de serpiente, prueba ritual de su identidad real.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Su rostro humano es máscara cosmológica. Bajo él vive una serpiente del linaje pre-Orden Dorado — posiblemente vinculada al ',
+        link('Eiglay', 'concept', 'serpent-god-eiglay'),
+        ' que devoró a Rykard. Su nombre verdadero es Zorayas; "Rya" es alias funcional para operar en la sociedad humana.',
+      ),
+      p(
+        'Cuando ',
+        link('Tanith', 'character', 'tanith'),
+        ' cae tras la derrota de Rykard, Rya revela su forma serpentina como Zorayas. La transformación no es magia — es solo dejar de mentir. Su cuerpo siempre fue serpentino; el rostro humano era el disfraz.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Rya/Zorayas encarna la identidad como disfraz cosmológico. Lo que llamamos "Rya" es lo que el cosmos del Orden Dorado permite ver de Zorayas. Su transformación final es solo dejar de mentir. Bajo el vestido, escamas. Bajo las escamas, hambre.',
+      ),
+    ],
+    confirmed: [
+      'Rya es reclutadora aristocrática del Volcano Manor',
+      'Su forma real es serpiente del linaje pre-Orden',
+      'Su nombre verdadero es Zorayas',
+      'Revela su forma tras la caída de Tanith',
+    ],
+    inferred: [
+      'Su línea genética se vincula a Eiglay o entidad serpiente similar',
+      'La sociedad humana del Orden Dorado no aceptaría su forma real',
+      'Su disfraz humano requiere mantenimiento ritual constante',
+    ],
+    theories: [
+      'Es una de las últimas hijas puras del linaje serpiente pre-Orden',
+      'Conoce secretos sobre Eiglay que Tanith no domina',
+      'Podría haber heredado el rol de anfitriona del Volcano Manor tras la caída de Tanith',
+    ],
+    ambiguous: [
+      'Cuánto del conocimiento ritual de Tanith comparte',
+      'Si su lealtad a Rykard es genuina o solo conveniencia',
+      'Si existieron otros como ella en otras eras',
+    ],
+    relatedCharacters: ['rykard', 'tanith'],
+    relatedFactions: ['volcano-manor', 'man-serpents'],
+    relatedRegions: ['liurnia', 'mt-gelmir'],
+    relatedConcepts: ['serpent-god-eiglay', 'crucible'],
+  },
+
+  boggart: {
+    summary:
+      'Blackguard Big Boggart es pescador del pueblo errante que se disfrazó dentro de una jarra para sobrevivir. Vende cebos y técnicas. Su risa se escucha desde dentro de la cerámica. Si rompes la jarra, lo matas — y su muerte revela que la persecución del pueblo nómada continúa post-mortem.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        link('Boggart', 'character', 'boggart'),
+        ' es miembro del pueblo de los ',
+        link('Mercaderes Nómadas', 'faction', 'nomadic-merchants'),
+        ' que sobrevivió disfrazándose dentro de una jarra gigante. Su tradición pesquera continúa — vende cebos, comparte técnicas — pero ahora bajo cerámica protectora.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Aparece en costas dispersas del Interregno: Limgrave, Liurnia, otros puntos costeros. Su oficio nunca cambia: pescar, vender, conversar amablemente con quien pase. La persecución del pueblo nómada que ',
+        link('Kale', 'character', 'merchant-kale'),
+        ' representa visiblemente, Boggart la ha convertido en disfraz literal.',
+      ),
+      p(
+        link('Patches', 'character', 'patches'),
+        ' puede asesinar a Boggart en algunas variantes para vender su Bell Bearing. La caza nocturna del Bell Bearing Hunter en su sitio confirma que la persecución contra los nómadas continúa post-mortem: incluso los pescadores pacíficos son blanco ritual.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Boggart encarna el disfraz como supervivencia. Se vuelve jarra para seguir siendo persona. Su risa desde dentro de la cerámica es prueba de que la humanidad puede sobrevivir incluso bajo formas inhumanas — pero requiere camuflaje constante. La jarra es ataúd que respira.',
+      ),
+    ],
+    confirmed: [
+      'Boggart es miembro del pueblo nómada que se disfrazó dentro de una jarra',
+      'Vende cebos de pescado y técnicas',
+      'Aparece en costas dispersas del Interregno',
+      'Patches puede asesinarlo en algunas variantes',
+    ],
+    inferred: [
+      'Su disfraz fue respuesta directa a la persecución del pueblo nómada',
+      'Su tradición pesquera precede al Orden Dorado',
+      'Otros nómadas pueden haber adoptado disfraces similares',
+    ],
+    theories: [
+      'Conoce a Kale y a otros nómadas supervivientes',
+      'Su jarra es preparación para una eventual emergencia más grande',
+      'Es uno de los últimos visibles del pueblo persiguido',
+    ],
+    ambiguous: [
+      'Cuánto tiempo lleva dentro de la jarra',
+      'Si su forma humana es completa o ya parcialmente disuelta',
+      'Si hay comunicación entre nómadas dispersos',
+    ],
+    relatedCharacters: ['merchant-kale', 'patches', 'jar-bairn', 'alexander'],
+    relatedFactions: ['nomadic-merchants', 'living-jars', 'bell-bearing-hunter'],
+    relatedRegions: ['limgrave', 'liurnia'],
+  },
+
+  /* ──────── Secondary NPCs important ──────── */
+
+  'nepheli-loux': {
+    summary:
+      'Nepheli Loux es Mancillada criada por Kenneth Haight, sin saber que es descendiente directa de Godfrey. Su sangre la conecta al linaje real ancestral del Orden Dorado, pero su crianza la formó como guerrera de identidad prestada. Es heredera ignorante del trono Stormveil.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Nepheli es Mancillada de Limgrave, hija adoptiva de ',
+        link('Kenneth Haight', 'character', 'kenneth-haight'),
+        '. Su biología la conecta a ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' como descendiente directa: lleva sangre de Hoarah Loux en sus venas, pero la crianza la educó en otra identidad.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Llegó al Interregno con Kenneth como padre adoptivo. Su crianza fue marcial pero sin pretensión real. Aprendió a pelear como noble menor de Limgrave, no como heredera de un linaje cosmológico. La verdad sobre su origen le es ocultada deliberadamente — Kenneth la protegía de las consecuencias políticas que el conocimiento traería.',
+      ),
+      p(
+        'Cuando el Mancillado derrota a ',
+        link('Godrick', 'character', 'godrick'),
+        ', ',
+        link('Stormveil', 'region', 'stormveil'),
+        ' queda sin gobernante. Nepheli puede ser instalada como nueva Señora — recuperando el castillo ancestral de su bisabuelo perdido. Su instalación es restauración del linaje legítimo: Godrick, descendiente lateral diluido, es desplazado por Nepheli, descendencia directa.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Nepheli encarna la heredera ignorante. Lleva en la sangre el peso del Orden Dorado y vive sin saberlo. Es Mancillada por sangre y por crianza, dos veces — y la doble condición la hace inmune a la pretensión que arruinó a Godrick.',
+      ),
+    ],
+    confirmed: [
+      'Nepheli es Mancillada criada por Kenneth Haight',
+      'Es descendiente directa de Godfrey',
+      'Puede ser instalada como Señora de Stormveil',
+      'Recibe el Talismán de los Susurros si se sigue su quest hasta el final',
+    ],
+    inferred: [
+      'Kenneth ocultó su origen deliberadamente',
+      'Su sangre la posicionaría como heredera más legítima que Godrick',
+      'Su crianza fuera del régimen central la protegió de las complicaciones de la sucesión',
+    ],
+    theories: [
+      'Kenneth conoce el linaje completo y la protege específicamente',
+      'Otros descendientes laterales de Godfrey existen en otras regiones',
+      'Su instalación en Stormveil podría revertir parcialmente el deterioro del Linaje Dorado',
+    ],
+    ambiguous: [
+      'Si Nepheli sospecha algo sobre su origen real',
+      'Cuánto sabe Gideon sobre su linaje',
+      'Si su sangre Empyrean es activa o latente',
+    ],
+    relatedCharacters: ['godfrey', 'kenneth-haight', 'gideon', 'godrick', 'roderika'],
+    relatedFactions: ['orden-dorado', 'golden-lineage'],
+    relatedRegions: ['limgrave', 'stormveil'],
+    relatedConcepts: ['tarnished', 'great-rune'],
+  },
+
+  sellen: {
+    summary:
+      'Sorceress Sellen estudió las estrellas primigenias junto a Azur y Lusat hasta exceder los límites de Raya Lucaria. Su excomunión la dejó libre para descubrir lo que la Academia prohibía. Su iluminación final es geometría celestial: cuerpo suspendido entre piedras, parcialmente convertida en constelación viviente.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Sellen fue alumna prodigio de ',
+        link('Raya Lucaria', 'region', 'raya-lucaria'),
+        ' antes de su excomunión. Practicaba magia gravitacional avanzada y estudiaba la ',
+        link('Corriente Primigenia', 'concept', 'primeval-current'),
+        ' junto a sus maestros ',
+        link('Azur', 'character', 'azur'),
+        ' y ',
+        link('Lusat', 'character', 'lusat'),
+        '.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'La Academia la excomulgó cuando su investigación excedió los límites permitidos. Se refugió en Waypoint Ruins en Limgrave, donde sigue ofreciendo enseñanza de hechicería al Mancillado. Su quest dirige a recuperar a los Master Sorcerers excomulgados (',
+        link('Azur', 'character', 'azur'),
+        ', ',
+        link('Lusat', 'character', 'lusat'),
+        ') y a fragmentos de su propio cuerpo dispersos por el Interregno.',
+      ),
+      p(
+        'Entrenó a ',
+        link('Radahn', 'character', 'radahn'),
+        ' en su juventud — la magia gravitacional que Radahn usó para bloquear las estrellas procede de ella. Su relación con ',
+        link('Jerren', 'character', 'jerren'),
+        ', maestro de armas del Festival, es histórica y posiblemente romántica.',
+      ),
+      p(
+        'Su quest final culmina con su transformación parcial en cuerpo cósmico. Ya no puede caminar — su cuerpo suspendido entre piedras es geometría celestial activa. Si el Mancillado lo permite, será asesinada por Jerren al final del Festival como acto piadoso.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Sellen es la prueba de que el conocimiento sobrepasa la carne. Su iluminación final no es metáfora: literalmente se convierte en constelación. Su tragedia es la del sabio que mira las estrellas demasiado tiempo y descubre que las estrellas ya lo están mirando de vuelta — y absorbiendo.',
+      ),
+    ],
+    confirmed: [
+      'Sellen fue alumna excomulgada de Raya Lucaria',
+      'Estudió la Corriente Primigenia con Azur y Lusat',
+      'Entrenó a Radahn en magia gravitacional',
+      'Tuvo relación histórica con Jerren',
+      'Su transformación final la suspende parcialmente como cuerpo cósmico',
+    ],
+    inferred: [
+      'Su excomunión fue prevención — la Academia temía lo que ya sabía',
+      'Sus maestros sufrieron el mismo destino cósmico antes que ella',
+      'Su asesinato por Jerren es acto piadoso, no traición',
+    ],
+    theories: [
+      'Sellen, Azur y Lusat formaron triángulo cósmico que sigue completándose',
+      'Si los tres se reunieran cosmológicamente, podrían constituir un Lord Elden alternativo',
+      'Conoció al Festival de Radahn antes que Jerren — coordinó implícitamente con él',
+    ],
+    ambiguous: [
+      'Cuánto tiempo lleva en transformación',
+      'Si conserva consciencia plena o solo función ritual',
+      'Si su muerte cierra completamente el linaje cósmico o solo lo aplaza',
+    ],
+    relatedCharacters: ['azur', 'lusat', 'radahn', 'jerren', 'rennala'],
+    relatedFactions: ['raya-lucaria'],
+    relatedRegions: ['limgrave', 'sellia', 'caelid'],
+    relatedConcepts: ['glintstone', 'primeval-current', 'stars-and-fate-concept'],
+    relatedTimelineEvents: ['festival-radahn'],
+  },
+
+  jerren: {
+    summary:
+      'Jerren oficia el Festival de Radahn como Maestro de Armas, devolviendo dignidad ritual a su general arruinado. Su honor es absoluto. Tuvo relación histórica con Sellen. Si así se le pide, ejecuta a su antigua amante al final de la quest — el deber por encima del amor.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Jerren es Maestro de Armas de los ',
+        link('Redmanes', 'faction', 'redmanes'),
+        ' y oficiante principal del ',
+        link('Festival de Radahn', 'timeline', 'festival-radahn'),
+        '. Su rol cosmológico: coordinar la eutanasia ritual de su general arruinado para devolverle la dignidad de morir en combate.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Tuvo relación histórica con ',
+        link('Sellen', 'character', 'sellen'),
+        ' antes de la excomunión de ella. Su separación fue producto de los caminos divergentes: Jerren al servicio marcial de Radahn en Caelid, Sellen al exilio académico tras la Academia.',
+      ),
+      p(
+        'Cuando organiza el Festival, su decisión es múltiple: 1) honra ritualmente a Radahn devolviéndole la dignidad de morir como guerrero, 2) coordina implícitamente con la quest cosmológica de Ranni (la muerte de Radahn libera las estrellas), 3) acepta la posibilidad de tener que ejecutar a Sellen al final de su transformación.',
+      ),
+      p(
+        'Si el Mancillado completa la quest de Sellen permitiéndole excederse cosmológicamente, Jerren es quien la ejecuta — su honor le obliga a impedir que ella se vuelva amenaza activa al cosmos. Su acero llora antes de cortar, pero corta igual.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Jerren encarna el honor que mata por amor. Mata a quien ama porque permitirle vivir como aberración sería peor traición. Su deber es elegir la versión menos cruel de la crueldad. Su tragedia es la del oficiante perfecto: nunca falla en su rol, siempre paga el precio del rol.',
+      ),
+    ],
+    confirmed: [
+      'Jerren es Maestro de Armas de los Redmanes',
+      'Oficia el Festival de Radahn',
+      'Tuvo relación histórica con Sellen',
+      'Puede ejecutar a Sellen al final de su quest si el jugador lo pide',
+    ],
+    inferred: [
+      'Coordinó implícitamente con la quest de Ranni a través del Festival',
+      'Su honor le impide hacer excepciones por afecto personal',
+      'Conocía el riesgo de la transformación de Sellen antes de que ocurriera',
+    ],
+    theories: [
+      'Sellen lo visitó secretamente antes del Festival',
+      'El Festival fue diseñado por ambos en colaboración silenciosa',
+      'Su decisión final sobre Sellen fue acordada con ella',
+    ],
+    ambiguous: [
+      'Si conserva amor por Sellen tras la separación',
+      'Si conoce el efecto cosmológico exacto de matar a Radahn',
+      'Si los Redmanes apoyan plenamente sus decisiones rituales',
+    ],
+    relatedCharacters: ['radahn', 'sellen', 'alexander', 'patches'],
+    relatedFactions: ['redmanes'],
+    relatedRegions: ['caelid', 'redmane-castle'],
+    relatedConcepts: ['scarlet-rot', 'great-rune'],
+    relatedTimelineEvents: ['festival-radahn', 'batalla-aeonia'],
+    relatedEndings: ['age-of-stars'],
+  },
+
+  enia: {
+    summary:
+      'Enia es Doncella de Dedos en la Mesa Redonda, traductora oficial de los pronunciamientos de los Dos Dedos. Sirve a un dios que ya no contesta con claridad. Sus rituales continúan por inercia litúrgica — la forma de la fe sobrevive al objeto de la fe.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        link('Enia', 'character', 'enia'),
+        ' es la ',
+        link('Lectora de Dedos', 'faction', 'finger-readers'),
+        ' principal de la Mesa Redonda. Recibe al Mancillado, lo unge formalmente como aspirante al trono Elden, y media entre los pronunciamientos de los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' y los aspirantes humanos.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Su función es traducción ritual. Los Dos Dedos no piensan — traducen voluntad de la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' a través de gestos físicos. Esos gestos requieren a su vez ser traducidos a palabras humanas. Enia es el último eslabón de la cadena: Voluntad Mayor → Dos Dedos → Lectora → Mancillado.',
+      ),
+      p(
+        'La cadena, sin embargo, está rota. Los Dos Dedos están deteriorándose físicamente. Sus pronunciamientos son cada vez más vagos. Algunos están podridos visiblemente. Enia continúa sus rituales aunque sospecha que ya nadie escucha del otro lado. Cambia las Grandes Runas restauradas por bendiciones rúnicas. Atiende a los Dedos cuando estos comienzan a deteriorarse.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Enia encarna la fe que se sostiene en silencio. Continúa sus rituales aunque sospecha que la cadena divina está rota. La forma de la fe sobrevive al objeto de la fe. Sus dedos ciegos siguen leyendo dedos divinos que ya no responden. La liturgia continúa precisamente porque alguien tiene que mantenerla, incluso cuando ya no importa.',
+      ),
+    ],
+    confirmed: [
+      'Enia es Lectora de Dedos en la Mesa Redonda',
+      'Bautiza al Mancillado como aspirante al trono Elden',
+      'Cambia Grandes Runas por bendiciones rúnicas',
+      'Atiende a los Dos Dedos durante su deterioro',
+    ],
+    inferred: [
+      'Sospecha que la Voluntad Mayor se ha retirado parcialmente',
+      'Sigue los rituales por deber estructural, no por convicción ingenua',
+      'Otras Lectoras existen pero ella es la principal de Roundtable Hold',
+    ],
+    theories: [
+      'Conoce el secreto Radagon-es-Marika antes que Goldmask',
+      'Sus visiones le mostraron eras pasadas y futuras',
+      'Su ceguera es elección ritual, no defecto físico',
+    ],
+    ambiguous: [
+      'Cuánto tiempo lleva oficiando',
+      'Si sus interpretaciones son fieles o ya creativas',
+      'Si los Dos Dedos podridos siguen comunicando algo o solo gimen',
+    ],
+    relatedCharacters: ['marika', 'gideon', 'goldmask', 'corhyn'],
+    relatedFactions: ['dos-dedos', 'finger-readers', 'orden-dorado'],
+    relatedRegions: ['leyndell'],
+    relatedConcepts: ['voluntad-mayor', 'great-rune'],
+    relatedTimelineEvents: ['two-fingers-roundtable'],
+  },
+
+  alexander: {
+    summary:
+      'Alexander, Olla Guerrero, es Living Jar con corazón de héroe. Su forma de cerámica oculta un alma marcial que aspira a la grandeza. Combate junto al Mancillado en el Festival de Radahn como guerrero invitado. Su muerte es cómica y trágica simultáneamente — un héroe en un cuerpo absurdo.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Alexander es ',
+        link('Living Jar', 'faction', 'living-jars'),
+        ' del pueblo de ',
+        link('Jarburg', 'faction', 'living-jars'),
+        ' que decidió convertirse en guerrero. Su cuerpo es jarra cerámica con alma humana parcialmente disuelta dentro. Su técnica marcial usa el peso de su propia jarra como arma.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Aparece primero en Limgrave atascado en un pozo — el Mancillado lo libera empujándolo. Su ruta lo lleva al Festival de Radahn en Caelid, donde lucha como guerrero invitado por ',
+        link('Jerren', 'character', 'jerren'),
+        '. Su honor marcial es genuino aunque su cuerpo lo contradice constantemente.',
+      ),
+      p(
+        'Tras el Festival, sigue su carrera marcial visitando otras regiones. Se enfrenta a un Magma Wyrm en Mt Gelmir y pierde. Reaparece en el Bestial Sanctum buscando combate digno. Su muerte final ocurre durante un combate ritual con el Mancillado — su cuerpo se rompe en pedazos cerámicos y su alma se libera.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Alexander encarna la heroicidad como elección, no como sangre. Demuestra que el espíritu marcial es independiente del linaje. Su tragedia es que no puede cambiar la forma que el cosmos le impone. Su corazón late dentro de una jarra. Cuando se rompe, suena como cerámica — pero quien escucha de cerca oye el rugido de un dios pequeño.',
+      ),
+    ],
+    confirmed: [
+      'Alexander es Living Jar con vocación marcial',
+      'Su quest lo lleva del pozo de Limgrave al Festival de Radahn',
+      'Es derrotado por Magma Wyrm en Mt Gelmir',
+      'Su muerte final es combate ritual con el Mancillado',
+    ],
+    inferred: [
+      'Su alma humana original procede del pueblo de Jarburg',
+      'Su honor marcial es genuino, no parodia',
+      'Conoce a Diallos, Jar-Bairn y otros del pueblo errante',
+    ],
+    theories: [
+      'Su jarra contiene fragmentos de un guerrero antiguo cuya alma se preservó',
+      'Su muerte libera un espíritu legendario',
+      'Si Jar-Bairn lo emula, completaría su linaje espiritual',
+    ],
+    ambiguous: [
+      'Quién o qué fue antes de ser Living Jar',
+      'Si conserva memoria de su forma humana original',
+      'Si todos los Living Jars contienen almas humanas o solo algunos',
+    ],
+    relatedCharacters: ['jerren', 'patches', 'jar-bairn', 'diallos', 'radahn'],
+    relatedFactions: ['living-jars', 'redmanes'],
+    relatedRegions: ['limgrave', 'caelid', 'mt-gelmir', 'redmane-castle'],
+    relatedTimelineEvents: ['festival-radahn'],
+  },
+
+  diallos: {
+    summary:
+      'Diallos Hoslow es noble pacifista que llegó al Interregno buscando a su sirvienta perdida Lanya. Su vida lo enseñó a no levantar la espada. Cuando finalmente la desenvaina, es para defender Jarburg contra un atacante — y muere protegiendo a niños de cerámica.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        link('Diallos', 'character', 'diallos'),
+        ' es noble de Casa Hoslow que llegó al Interregno buscando a Lanya, su sirvienta personal. Su filosofía de vida fue siempre pacifista: la espada existe para no ser usada, el noble debe gobernar por palabra, no por hierro.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Aparece en la Mesa Redonda en estado de melancolía profunda. Su búsqueda de Lanya nunca termina — ella ya está muerta, asesinada por los conflictos del Interregno post-fractura. El Mancillado puede dirigirlo a ',
+        link('Tanith', 'character', 'tanith'),
+        ' en el Volcano Manor (donde fracasa por su pacifismo) o a Jarburg, aldea de ',
+        link('Living Jars', 'faction', 'living-jars'),
+        ' en Liurnia.',
+      ),
+      p(
+        'En Jarburg encuentra una comunidad pacífica que respeta su filosofía. Conoce a ',
+        link('Jar-Bairn', 'character', 'jar-bairn'),
+        ' y otros del pueblo. Cuando un atacante invade la aldea para masacrar a sus habitantes, Diallos finalmente levanta la espada por primera vez. Defiende la puerta. Mata al atacante. Muere por las heridas. Jar-Bairn sobrevive.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Diallos encarna la violencia como último recurso del pacifista. Representa el dilema del idealista: si no levantas la espada, mueren los inocentes; si la levantas, mueres tú. Su mejor lección la dio sin palabras — con la espalda apoyada en la puerta de una choza llena de niños hechos de barro.',
+      ),
+    ],
+    confirmed: [
+      'Diallos es noble de Casa Hoslow',
+      'Busca a Lanya, su sirvienta perdida',
+      'Lanya ya está muerta cuando él llega',
+      'Defiende Jarburg de un atacante y muere por ello',
+      'Jar-Bairn sobrevive gracias a su sacrificio',
+    ],
+    inferred: [
+      'Su pacifismo era convicción profunda, no ingenuidad',
+      'Su fracaso en el Volcano Manor fue por incapacidad ética, no marcial',
+      'Encontró en Jarburg la comunidad que su filosofía buscaba',
+    ],
+    theories: [
+      'Conocía la posibilidad de su muerte al aceptar defender Jarburg',
+      'Lanya era más que sirvienta — posible amante secreta',
+      'La Casa Hoslow envió otros Hoslows que también fracasaron',
+    ],
+    ambiguous: [
+      'Cuándo exactamente murió Lanya',
+      'Si Diallos sospechaba la muerte antes de confirmarla',
+      'Si la Casa Hoslow original sigue existiendo',
+    ],
+    relatedCharacters: ['tanith', 'patches', 'alexander', 'jar-bairn'],
+    relatedFactions: ['living-jars', 'volcano-manor'],
+    relatedRegions: ['liurnia', 'mt-gelmir'],
+  },
+
+  latenna: {
+    summary:
+      'Latenna es Albinaúrica de Caelid que sobrevivió a la masacre de su aldea. Carga el cuerpo de Lobelia, su hermana muerta, hasta el Snowfield Consagrado, hacia el Haligtree. Es peregrinación como duelo: caminar con la hermana muerta hasta un árbol que probablemente ya no las acoge.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        link('Latenna', 'character', 'latenna'),
+        ' pertenecía a la aldea albinaúrica de Caelid antes de su masacre por Redmanes corrompidos. Sobrevivió escondida con su hermana ',
+        link('Lobelia', 'character', 'latenna'),
+        ' y un lobo guardián.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Su hermana Lobelia murió durante la huida. Latenna sigue cargándola simbólicamente — su misión es llegar al ',
+        link('Haligtree', 'region', 'haligtree'),
+        ' con los restos de la hermana, cumpliendo así el éxodo Albinauric que ',
+        link('Miquella', 'character', 'miquella'),
+        ' había prometido. Sigue al Mancillado como invocación espiritual.',
+      ),
+      p(
+        'La quest culmina en el ',
+        link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
+        ' donde Latenna espera ser llevada al Haligtree. El acceso real requiere completar el ritual en ',
+        link('Ordina', 'region', 'ordina'),
+        '. Si el Mancillado la lleva al borde del bosque sagrado, ella muere allí — hasta donde puede llegar como espíritu.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Latenna encarna la peregrinación como duelo. Camina con la hermana muerta hasta un árbol que probablemente ya no las acoge. Su lobo es el guía. Lobelia es la carga. El árbol es el destino — o la promesa de que existió uno. Su tragedia es que llega al borde, no al centro.',
+      ),
+    ],
+    confirmed: [
+      'Latenna es Albinaúrica superviviente de Caelid',
+      'Su hermana Lobelia murió durante la huida',
+      'Sigue al Mancillado como invocación espiritual',
+      'Espera ser llevada al Haligtree',
+    ],
+    inferred: [
+      'La masacre de su aldea fue por Redmanes corrompidos por la Podredumbre',
+      'Cumple peregrinación ritual del éxodo Albinauric prometido por Miquella',
+      'Su lobo guardián es ancestral del pueblo Albinauric',
+    ],
+    theories: [
+      'Lobelia conserva alguna forma de presencia residual mientras Latenna la carga',
+      'Si Latenna llegara realmente a Elphael, completaría un rito interrumpido',
+      'Otros Albinaurics supervivientes esperan en otras regiones',
+    ],
+    ambiguous: [
+      'Cuándo exactamente ocurrió la masacre',
+      'Si Lobelia conserva alguna forma post-mortem',
+      'Si Latenna sabe que Miquella ya no está en el Haligtree',
+    ],
+    relatedCharacters: ['miquella', 'malenia', 'albus'],
+    relatedFactions: ['albinauricos', 'haligtree'],
+    relatedRegions: ['caelid', 'consecrated-snowfield', 'haligtree', 'ordina'],
+    relatedConcepts: ['unalloyed-gold'],
+  },
+
+  hyetta: {
+    summary:
+      'Hyetta es doncella ciega cuya iluminación es maldición: cada Granos Brillante (que en realidad son ojos humanos) que consume la acerca a la verdad frenética. Cuando finalmente "ve", lo que ve es el fin universal. Se convierte en doncella del Señor de la Llama Frenética.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        link('Hyetta', 'character', 'hyetta'),
+        ' aparece como doncella ciega vagando por el Interregno. Pide al Mancillado encontrar Granos Brillantes (Shabriri Grapes) para saciar su sed. Lo que ella no sabe — y lo que el Mancillado descubre tarde — es que las "uvas" son ojos humanos extraídos.',
+      ),
+      h(2, 'Historia detallada'),
+      p(
+        'Cada Grano consumido le devuelve gradualmente la visión. Pero la visión que recobra no es ordinaria: es la "frenética verdad" — la doctrina nihilista de los ',
+        link('Tres Dedos', 'faction', 'tres-dedos'),
+        '. Cuanto más ve, más se aleja de la inocencia. Su transformación es gradual y voluntaria: cada Grano que pide es escalón hacia el horror cosmológico.',
+      ),
+      p(
+        'Cuando finalmente ve plenamente, ya es doncella del Señor de la Llama Frenética. Guía al Mancillado a la cripta sellada bajo Leyndell donde residen los Tres Dedos. Si el Mancillado acepta el pacto, ella se convierte en su doncella post-frenesí — ',
+        link('Melina', 'character', 'melina'),
+        ' lo abandona, Hyetta lo recibe. Su iluminación termina en posesión cosmológica.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Hyetta encarna la revelación como herida. Ve por primera vez precisamente porque acepta una verdad que destruye toda forma. Su iluminación es una forma de ceguera más profunda. Cada uva la acerca al horror; cada ojo la aleja de la inocencia. Cuando finalmente ve, lo que ve es el fin.',
+      ),
+    ],
+    confirmed: [
+      'Hyetta vaga ciega por el Interregno pidiendo Granos Brillantes',
+      'Los Granos son ojos humanos extraídos',
+      'Cada Grano consumido le devuelve gradualmente la visión',
+      'Su iluminación final la convierte en doncella de la Llama Frenética',
+    ],
+    inferred: [
+      'Es contraparte estructural de Melina — doncella oficial del final frenético',
+      'Su transformación es gradual pero voluntaria',
+      'Su ceguera original podría haber sido protección cosmológica',
+    ],
+    theories: [
+      'Es próximo huésped de Shabriri tras Yura',
+      'Conoce el plan de los Tres Dedos antes que el Mancillado',
+      'Su nombre original no es Hyetta sino algo borrado por la transformación',
+    ],
+    ambiguous: [
+      'Si las uvas son ojos suyos también o solo ajenos',
+      'Cuándo exactamente comenzó la transformación',
+      'Si conserva alguna agencia tras la iluminación final',
+    ],
+    relatedCharacters: ['shabriri', 'melina'],
+    relatedFactions: ['tres-dedos', 'frenzied-victims'],
+    relatedRegions: ['liurnia', 'leyndell'],
+    relatedConcepts: ['frenzied-flame', 'dioses-exteriores'],
+    relatedEndings: ['frenzied-flame'],
+  },
+
 }

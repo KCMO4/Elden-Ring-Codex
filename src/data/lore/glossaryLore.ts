@@ -603,4 +603,426 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     relatedConcepts: ['dark-moon', 'voluntad-mayor', 'empyrean'],
     relatedEndings: ['age-of-stars'],
   },
+
+  /* ════════════════ Mass promotion batch — conceptos partial ════════════════ */
+
+  'minor-erdtrees': {
+    summary:
+      'Los Erdtrees Menores son árboles dorados secundarios diseminados por el Interregno. Cada región tiene al menos uno como capilla satélite del Erdtree principal. Funcionan como infraestructura de gracia: distribuyen la luz dorada a peregrinos lejos del centro.',
+    deepLore: [
+      h(2, 'Estructura jerárquica'),
+      p(
+        'El ',
+        link('Erdtree', 'concept', 'erdtree'),
+        ' principal en ',
+        link('Leyndell', 'region', 'leyndell'),
+        ' es catedral cosmológica; los Erdtrees Menores son parroquias regionales. Cada uno recibe gracia derivada y la redistribuye localmente. Sus avatares — los Erdtree Avatars que los custodian — son guardianes pétreos animados con luz dorada.',
+      ),
+      h(2, 'Función ritual'),
+      p(
+        'Cada Erdtree Menor es santuario activo. Los peregrinos pueden recibir bendiciones rúnicas dejando ofrendas en su base. Su luz dorada es indistinguible visualmente de la del árbol principal — solo la magnitud difiere. Funcionalmente, son extensiones cosmológicas distribuidas.',
+      ),
+    ],
+    confirmed: [
+      'Cada región tiene al menos un Erdtree Menor',
+      'Sus avatares custodian las bendiciones',
+      'Reciben gracia derivada del Erdtree principal',
+      'Funcionan como capillas satélites',
+    ],
+    inferred: [
+      'Su existencia documenta la distribución institucional de la gracia',
+      'La gracia que reciben se debilitó tras la fractura',
+      'Los avatares son creación específica del Orden Dorado, no reliquias previas',
+    ],
+    theories: [
+      'Si el Erdtree principal cae, los Menores se apagan en cadena',
+      'Algunos Avatares conservan consciencia parcial',
+      'Los Menores podrían ser reactivados independientemente bajo otra cosmología',
+    ],
+    ambiguous: [
+      'Cuántos Erdtrees Menores existen exactamente',
+      'Si fueron plantados o crecieron espontáneamente',
+      'Si su gracia es la misma o diferente cualitativamente',
+    ],
+    relatedConcepts: ['erdtree', 'grace', 'golden-order'],
+    relatedFactions: ['orden-dorado'],
+  },
+
+  'full-moon-concept': {
+    summary:
+      'La Luna Llena es magia lunar tradicional de la familia Caria, especialmente dominada por Rennala. Es magia "diurna" del linaje — luz lunar luminosa, redonda, integradora — opuesta cosmológicamente a la Luna Oscura de Ranni que invierte el polo sin cambiar la sustancia.',
+    deepLore: [
+      h(2, 'Tradición Caria'),
+      p(
+        'La Luna Llena es magia ancestral del clan ',
+        link('Caria', 'faction', 'caria'),
+        ', cultivada en Liurnia desde antes del matrimonio mestizo con Radagon. ',
+        link('Rennala', 'character', 'rennala'),
+        ' es su practicante suprema — su título oficial era "Reina de la Luna Llena" precisamente por dominar esta tradición.',
+      ),
+      h(2, 'Polo cosmológico'),
+      p(
+        'La Luna Llena convoca cuerpos lunares luminosos que congelan o iluminan a los enemigos. Es magia integradora: agrupa fuerzas celestes en lugar de dispersarlas. Su contraparte cosmológica, la ',
+        link('Luna Oscura', 'concept', 'dark-moon'),
+        ' de Ranni, es la misma sustancia con polaridad invertida — donde Llena ilumina, Oscura absorbe.',
+      ),
+      h(2, 'Hechizos visibles'),
+      p(
+        'Hechizos como Full Moon de Rennala invocan una luna gigante que castiga a los enemigos con luz lunar concentrada. Su magia se enseñaba en Raya Lucaria como tradición Caria oficial. Tras el colapso de Rennala, los discípulos vivos son escasos.',
+      ),
+    ],
+    confirmed: [
+      'La Luna Llena es magia tradicional Caria',
+      'Rennala es su practicante suprema',
+      'Es contraparte cosmológica de la Luna Oscura',
+      'Se enseñaba en Raya Lucaria',
+    ],
+    inferred: [
+      'La tradición Caria predata el matrimonio con Radagon',
+      'Después de Rennala los practicantes vivos son escasos',
+      'La Luna Llena y Luna Oscura son la misma sustancia con polaridad invertida',
+    ],
+    theories: [
+      'Existió un dios externo de la luna al que la familia Caria estaba ligada',
+      'Ranni invertió la polaridad por razones cosmológicas específicas, no estilísticas',
+      'La tradición original incluía cuartos lunares — fases intermedias que se han perdido',
+    ],
+    ambiguous: [
+      'Origen exacto de la magia Caria',
+      'Si la luna a la que se invoca es física o cosmológica',
+      'Si la tradición puede ser revivida sin Rennala',
+    ],
+    relatedCharacters: ['rennala', 'ranni', 'radagon'],
+    relatedFactions: ['caria', 'raya-lucaria'],
+    relatedRegions: ['liurnia', 'caria-manor', 'raya-lucaria'],
+    relatedConcepts: ['dark-moon', 'glintstone', 'great-rune'],
+  },
+
+  glintstone: {
+    summary:
+      'Los Glintstones son cristales primigenios que reflejan estrellas y constituyen el material de toda hechicería académica. Cada glintstone contiene una porción de la luz primordial. Hechizar a través de ellos es invocar a la propia estrella reflejada.',
+    deepLore: [
+      h(2, 'Naturaleza física'),
+      p(
+        'Los Glintstones son cristales naturales que crecen en cuevas profundas y montañas específicas. Su característica única: reflejan la luz de cuerpos celestes con perfección absoluta. Cada Glintstone contiene una porción de la luz primigenia atrapada cosmológicamente.',
+      ),
+      h(2, 'Aplicación mágica'),
+      p(
+        'La hechicería académica de ',
+        link('Raya Lucaria', 'region', 'raya-lucaria'),
+        ' usa Glintstones como vehículo: el mago canaliza su voluntad a través del cristal, y el cristal invoca a la estrella reflejada. Cada hechizo es comunicación astronómica directa.',
+      ),
+      h(2, 'Origen y custodios'),
+      p(
+        'Los ',
+        link('Crystalians', 'faction', 'crystalians'),
+        ' son seres minerales que custodian las cuevas de Glintstone. Su existencia precede a Raya Lucaria — la Academia descubrió la magia estudiando a los Crystalians, no creó la magia desde cero. La tradición Carian de la Luna Llena depende también de Glintstones específicos.',
+      ),
+    ],
+    confirmed: [
+      'Los Glintstones son cristales que reflejan estrellas',
+      'Son material de toda hechicería académica',
+      'Crecen naturalmente en cuevas y montañas',
+      'Los Crystalians los custodian',
+    ],
+    inferred: [
+      'Cada Glintstone contiene una porción específica de luz primigenia',
+      'La Academia descubrió, no inventó, su uso mágico',
+      'Hechizar es invocar directamente a la estrella reflejada',
+    ],
+    theories: [
+      'Existieron civilizaciones pre-Raya Lucaria que ya usaban Glintstones',
+      'Algunos Glintstones contienen almas de antiguos magos absorbidos',
+      'Los Glintstones podrían ser fragmentos físicos de cuerpos celestes caídos',
+    ],
+    ambiguous: [
+      'Cómo exactamente reflejan estrellas específicas',
+      'Si todos los Glintstones son del mismo tipo',
+      'Si su producción puede ser controlada o solo descubierta',
+    ],
+    relatedFactions: ['raya-lucaria', 'crystalians', 'caria'],
+    relatedRegions: ['raya-lucaria', 'liurnia', 'sellia'],
+    relatedConcepts: ['primeval-current', 'stars-and-fate-concept', 'dark-moon', 'full-moon-concept'],
+  },
+
+  'primeval-current-concept': {
+    summary:
+      'La Corriente Primigenia es magia gravitacional avanzada que canaliza el flujo astronómico de los cuerpos cósmicos. Sellen, Azur y Lusat fueron sus principales investigadores. Su práctica produjo conocimiento que excede los límites permitidos por la Academia — y eventualmente convirtió a sus practicantes en cuerpos cósmicos parciales.',
+    deepLore: [
+      h(2, 'Naturaleza de la corriente'),
+      p(
+        'La Corriente Primigenia es flujo cosmológico real, no metáfora. Los cuerpos celestes ejercen gravedad sobre el Interregno; esa gravedad sigue trayectorias específicas a través del cosmos; la Corriente es esa trayectoria misma. Manipularla requiere intervención magnífica avanzada.',
+      ),
+      h(2, 'Investigadores'),
+      p(
+        link('Sellen', 'character', 'sellen'),
+        ', ',
+        link('Azur', 'character', 'azur'),
+        ' y ',
+        link('Lusat', 'character', 'lusat'),
+        ' fueron los principales investigadores documentados. Su trabajo excedió los límites permitidos por ',
+        link('Raya Lucaria', 'region', 'raya-lucaria'),
+        '. Los tres fueron excomulgados por aplicación de la Corriente más allá de lo doctrinalmente seguro.',
+      ),
+      h(2, 'Costo cósmico'),
+      p(
+        'La aplicación prolongada de la Corriente convierte al practicante en cuerpo cósmico parcial. Azur y Lusat ya están suspendidos como reliquias parcialmente celestiales. Sellen está en proceso. La excomunión académica es prevención: la Academia teme producir más cuerpos cósmicos no controlables.',
+      ),
+    ],
+    confirmed: [
+      'La Corriente Primigenia es flujo gravitacional cosmológico real',
+      'Sellen, Azur y Lusat fueron sus investigadores principales',
+      'Los tres fueron excomulgados de Raya Lucaria',
+      'La aplicación prolongada convierte al practicante en cuerpo cósmico parcial',
+    ],
+    inferred: [
+      'La Academia conoce los riesgos pero no la cura',
+      'La Corriente es prerequisito de la magia gravitacional avanzada de Radahn',
+      'Otros investigadores pre-Sellen sufrieron destinos similares',
+    ],
+    theories: [
+      'Si los tres se reunieran cosmológicamente, podrían formar un Lord Elden alternativo',
+      'La Corriente puede ser usada para detener estrellas (como hizo Radahn)',
+      'Los cuerpos parcialmente cósmicos pueden comunicarse entre sí a distancias estelares',
+    ],
+    ambiguous: [
+      'Si la Corriente tiene voluntad propia',
+      'Si la transformación es reversible',
+      'Si la Academia podría producir un curso seguro de aplicación',
+    ],
+    relatedCharacters: ['sellen', 'azur', 'lusat', 'radahn'],
+    relatedFactions: ['raya-lucaria', 'ancient-astrologers'],
+    relatedRegions: ['sellia', 'raya-lucaria'],
+    relatedConcepts: ['glintstone', 'stars-and-fate-concept', 'gravity-magic'],
+  },
+
+  'law-of-regression': {
+    summary:
+      'La Ley de la Regresión es principio metafísico fundamentalista que considera que toda forma debe regresar a su versión más simple y coherente. Goldmask la usa para descifrar la falla del Orden Dorado. Su aplicación produce la Era del Orden — perfección lógica al precio de la individualidad.',
+    deepLore: [
+      h(2, 'Origen filosófico'),
+      p(
+        'La Ley de la Regresión fue codificada por ',
+        link('Radagon', 'character', 'radagon'),
+        ' durante sus eras de reparación del Anillo Elden. Su aplicación específica: identificar contradicciones internas en el ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' y reducirlas a su forma más simple. Es herramienta intelectual, no hechizo.',
+      ),
+      h(2, 'Uso por Goldmask'),
+      p(
+        link('Goldmask', 'character', 'goldmask'),
+        ' es el único monje vivo capaz de operar la Ley de la Regresión hasta sus consecuencias finales. Su silencio absoluto es disciplina ritual: la formulación de la Ley requiere meditación pura. ',
+        link('Corhyn', 'character', 'corhyn'),
+        ' lo acompaña como traductor parcial de sus pensamientos no pronunciados.',
+      ),
+      h(2, 'Resultado cosmológico'),
+      p(
+        'La aplicación final identifica la falla del Orden Dorado: la fusión Marika-Radagon es contradicción interna. Corregirla produce la ',
+        link('Era del Orden', 'ending', 'order'),
+        ' — un cosmos perfectamente coherente, frío, geométrico, sin grietas. Pero también sin humanidad, sin excepciones, sin espacio para lo no encajable.',
+      ),
+    ],
+    confirmed: [
+      'La Ley de la Regresión es codificación intelectual, no hechizo',
+      'Procede de la tradición fundamentalista de Radagon',
+      'Goldmask la opera hasta sus consecuencias finales',
+      'Su aplicación produce la Era del Orden',
+    ],
+    inferred: [
+      'Reduce contradicciones a sus formas más simples',
+      'Identifica la fusión Marika-Radagon como falla central',
+      'La Era resultante es geométricamente perfecta pero estructuralmente fría',
+    ],
+    theories: [
+      'Marika misma alentó secretamente esta línea filosófica',
+      'La Ley no fue inventada por Radagon — la heredó de tradiciones pre-Orden',
+      'Su aplicación tiene límites — algunas contradicciones cosmológicas resisten',
+    ],
+    ambiguous: [
+      'Si Corhyn comprende plenamente la Ley o solo la transmite',
+      'Si la Era del Orden elimina la individualidad o solo la regula',
+      'Si existen versiones alternativas de la Ley para otras cosmologías',
+    ],
+    relatedCharacters: ['goldmask', 'corhyn', 'radagon', 'marika'],
+    relatedFactions: ['fundamentalistas', 'orden-dorado'],
+    relatedConcepts: ['golden-order', 'voluntad-mayor', 'law-of-causality'],
+    relatedEndings: ['order'],
+  },
+
+  'law-of-causality': {
+    summary:
+      'La Ley de la Causalidad regula causas y efectos en el Interregno. La rotura del Anillo Elden la fragmentó: ciertas causas dejaron de generar sus efectos. Por eso eventos imposibles (Godwyn vivo sin alma, Marika encadenada en su propio árbol) coexisten sin contradicción aparente.',
+    deepLore: [
+      h(2, 'Función pre-fractura'),
+      p(
+        'Antes de la fractura, la Ley de la Causalidad mantenía el flujo natural de eventos. Cada causa producía sus efectos correspondientes. La inmortalidad funcional del régimen del Orden Dorado dependía estructuralmente de esta Ley operando coherentemente.',
+      ),
+      h(2, 'Quiebre cosmológico'),
+      p(
+        'Cuando ',
+        link('Marika', 'character', 'marika'),
+        ' rompió el ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ', la Ley de la Causalidad se fragmentó parcialmente. Eventos que deberían haber producido efectos no los produjeron. ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' fue asesinado pero no murió. Marika rompió el cosmos pero queda encadenada en su propio árbol. Estos son síntomas: la causalidad del Interregno post-fractura ya no funciona como antes.',
+      ),
+      h(2, 'Manifestaciones del quiebre'),
+      p(
+        'Cada anomalía cosmológica del Interregno actual es manifestación del quiebre causal. ',
+        link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
+        ' existen porque la causa "muerte del alma" ya no produce el efecto "muerte del cuerpo". La ',
+        link('Deathroot', 'concept', 'deathroot'),
+        ' fluye porque la descomposición de Godwyn no encuentra el ciclo cosmológico que debería procesarla.',
+      ),
+    ],
+    confirmed: [
+      'La Ley de la Causalidad regulaba el flujo de eventos pre-fractura',
+      'La rotura del Anillo Elden la fragmentó',
+      'Eventos imposibles coexisten sin contradicción visible',
+      'Cada anomalía cosmológica del Interregno es síntoma del quiebre causal',
+    ],
+    inferred: [
+      'La Ley es estructural al Anillo Elden, no externa',
+      'Su restauración requeriría reensamblar el Anillo completamente',
+      'Los seis finales del juego son distintos modos de restaurar parcialmente la causalidad',
+    ],
+    theories: [
+      'La Bestia Elden es la Ley de la Causalidad personificada',
+      'Marika rompió la Ley deliberadamente — sabía que era el único modo de detener al régimen',
+      'Los Mancillados pueden actuar precisamente porque la Ley no aplica plenamente sobre ellos',
+    ],
+    ambiguous: [
+      'Si la Ley se restaura completamente en algún final o solo parcialmente',
+      'Si afecta a la Voluntad Mayor o solo al Interregno',
+      'Si fue creada por Marika o existía antes de ella',
+    ],
+    relatedCharacters: ['marika', 'godwyn', 'radagon'],
+    relatedConcepts: ['elden-ring', 'bestia-elden', 'law-of-regression', 'destined-death'],
+    relatedTimelineEvents: ['la-fractura', 'godwyn-prince-of-death'],
+  },
+
+  /* ──────── Astral / cosmic partials ──────── */
+
+  'gravity-magic': {
+    summary:
+      'La Magia Gravitacional es disciplina académica que manipula el campo gravitacional del Interregno. Procede de la Corriente Primigenia. Sellen la enseñó a Radahn; Radahn la usó para bloquear las estrellas. Es la magia más cosmológicamente potente del juego.',
+    deepLore: [
+      h(2, 'Origen y disciplina'),
+      p(
+        'La Magia Gravitacional procede del estudio de la ',
+        link('Corriente Primigenia', 'concept', 'primeval-current-concept'),
+        ' — el flujo gravitacional cosmológico que conecta cuerpos celestes. Su aplicación local manipula el campo gravitacional inmediato: levantar objetos, detener proyectiles, atraer enemigos. Su aplicación cosmológica puede detener estrellas.',
+      ),
+      h(2, 'Practicantes históricos'),
+      p(
+        link('Sellen', 'character', 'sellen'),
+        ' enseñó la disciplina a ',
+        link('Radahn', 'character', 'radahn'),
+        ' en su juventud. Radahn la dominó hasta el punto de bloquear las estrellas en el cielo de Caelid — gesto cosmológico sin precedentes que detuvo el destino Empyrean de Ranni durante eras.',
+      ),
+      h(2, 'Limitaciones'),
+      p(
+        'La aplicación prolongada convierte al practicante en cuerpo parcialmente cósmico (caso Sellen, Azur, Lusat). Radahn pudo escapar de esa transformación porque su masa marcial colosal absorbió el costo. Otros practicantes menores se transforman gradualmente.',
+      ),
+    ],
+    confirmed: [
+      'La Magia Gravitacional procede de la Corriente Primigenia',
+      'Sellen enseñó a Radahn',
+      'Radahn la usó para bloquear las estrellas',
+      'Su aplicación prolongada transforma al practicante',
+    ],
+    inferred: [
+      'Es la magia más cosmológicamente potente documentada',
+      'Los Lords Alabastro y Onyx son practicantes residuales pre-Sellen',
+      'Radahn evitó la transformación por su masa marcial específica',
+    ],
+    theories: [
+      'Existen aplicaciones aún más avanzadas que ningún practicante actual conoce',
+      'La Magia Gravitacional puede ser arma anti-divinidad si se aplica correctamente',
+      'Es heredera técnica de los Antiguos Astrólogos',
+    ],
+    ambiguous: [
+      'Si tiene límites máximos teóricos',
+      'Si afecta a la Voluntad Mayor o solo al espacio físico',
+      'Si la Academia conoce más sobre ella de lo que enseña',
+    ],
+    relatedCharacters: ['sellen', 'azur', 'lusat', 'radahn', 'alabaster-lords', 'onyx-lords'],
+    relatedFactions: ['raya-lucaria', 'ancient-astrologers'],
+    relatedConcepts: ['primeval-current-concept', 'glintstone', 'stars-and-fate-concept'],
+  },
+
+  'primeval-current': {
+    summary:
+      'Variante referencial de la Corriente Primigenia (ver primeval-current-concept). Mantenida como entrada por compatibilidad histórica del plan de cobertura.',
+    deepLore: [
+      h(2, 'Referencia cruzada'),
+      p(
+        'La entrada principal está en ',
+        link('Corriente Primigenia', 'concept', 'primeval-current-concept'),
+        '. Esta variante existe en el plan original como entrada distinta pero conceptualmente coincide con la otra.',
+      ),
+    ],
+    confirmed: ['Conceptualmente idéntica a primeval-current-concept'],
+    inferred: ['Mantenida como entrada referencial'],
+    theories: ['No requiere desarrollo adicional'],
+    ambiguous: [],
+    relatedConcepts: ['primeval-current-concept', 'glintstone', 'stars-and-fate-concept'],
+  },
+
+  'radahn-holds-stars': {
+    summary:
+      'El bloqueo cosmológico de Radahn detuvo las estrellas en el cielo de Caelid durante eras. Su gesto era amor fraterno hacia Ranni — proteger a su hermana del destino Empyrean. Pero el efecto colateral fue cancelar la posibilidad de la Era de las Estrellas. Su muerte en el Festival libera el flujo astronómico.',
+    deepLore: [
+      h(2, 'Naturaleza del bloqueo'),
+      p(
+        'Las estrellas del Interregno no son puramente decorativas — son inscripción material del destino. Bloquearlas detiene un destino específico. ',
+        link('Radahn', 'character', 'radahn'),
+        ' usó su Magia Gravitacional para sostener cosmológicamente el cielo en posición fija sobre Caelid, anclando el destino Empyrean de su hermana ',
+        link('Ranni', 'character', 'ranni'),
+        ' en suspensión.',
+      ),
+      h(2, 'Motivación fraternal'),
+      p(
+        'El bloqueo era acto de amor. Radahn comprendía que el destino Empyrean encadenaría a Ranni a la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' por toda la eternidad. Detener las estrellas era ofrecerle tiempo para encontrar otra salida — tiempo que ella usó para orquestar la Noche de los Cuchillos Negros y matar su propio cuerpo Empyrean.',
+      ),
+      h(2, 'Liberación posthuma'),
+      p(
+        'Cuando ',
+        link('Malenia', 'character', 'malenia'),
+        ' arruinó marcialmente a Radahn en la Batalla de Aeonia, el bloqueo persistió porque su cuerpo seguía técnicamente vivo. El ',
+        link('Festival de Radahn', 'timeline', 'festival-radahn'),
+        ' diseñado por Jerren completó la liberación: matar a Radahn libera el flujo estelar. Ranni puede ahora consolidar la Era de las Estrellas.',
+      ),
+    ],
+    confirmed: [
+      'Radahn bloqueó las estrellas con su Magia Gravitacional',
+      'El bloqueo detenía el destino Empyrean de Ranni',
+      'Su motivación era proteger a su hermana, no rivalidad',
+      'Su muerte en el Festival libera el flujo astronómico',
+    ],
+    inferred: [
+      'Era el único demidiós con capacidad técnica para bloquear las estrellas',
+      'Sabía que la liberación eventual permitiría la Era de las Estrellas',
+      'Su bloqueo retrasó la rebelión cosmológica de Ranni durante eras',
+    ],
+    theories: [
+      'Radahn aceptó el riesgo de la Floración Escarlata como precio del bloqueo',
+      'Sabía desde Aeonia que su muerte ritual era inevitable',
+      'Su gravedad bloqueaba específicamente las estrellas Carian',
+    ],
+    ambiguous: [
+      'Cuándo exactamente comenzó el bloqueo',
+      'Si Ranni le pidió específicamente que bloqueara o si Radahn decidió solo',
+      'Si otros demidioses conocían la operación cosmológica',
+    ],
+    relatedCharacters: ['radahn', 'ranni', 'malenia', 'sellen', 'jerren'],
+    relatedFactions: ['redmanes', 'caria'],
+    relatedRegions: ['caelid', 'sellia', 'redmane-castle'],
+    relatedConcepts: ['gravity-magic', 'primeval-current-concept', 'stars-and-fate-concept'],
+    relatedTimelineEvents: ['batalla-aeonia', 'festival-radahn'],
+    relatedEndings: ['age-of-stars'],
+  },
 }
