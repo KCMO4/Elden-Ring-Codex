@@ -1,5 +1,6 @@
 import type { Region } from './types'
 import { regionsLore } from './lore/regionsLore'
+import { regionsDeepLore } from './lore/regionsDeepLore'
 
 const baseRegions: Region[] = [
   {
@@ -350,4 +351,5 @@ const baseRegions: Region[] = [
 export const regionsData: Region[] = baseRegions.map((r) => ({
   ...r,
   ...(regionsLore[r.id] ?? {}),
+  ...(regionsDeepLore[r.id] ?? {}),
 }))
