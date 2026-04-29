@@ -4,7 +4,7 @@
 
 > Documento generado a partir de `src/data/coveragePlan.ts`. Actualizar simultáneamente cuando se añadan entidades nuevas.
 
-> **Última actualización: Batch de Cierre Total.** **97 % de cobertura profunda.** Solo 9 entradas (2.8 %) siguen como `partial` — todas NPCs compact con base data suficiente. **Cero missing.** 16 de 18 categorías al 100 %.
+> **🏆 COBERTURA TOTAL ALCANZADA: 100 %.** Las 317 entradas catalogadas tienen lore profundo. Cero partials. Cero missing. **Las 18 categorías al 100 %.**
 
 ---
 
@@ -14,26 +14,26 @@ El plan de cobertura contempla **317 entradas categorizadas** (algunas entidades
 
 | Estado | Cantidad | % | Δ acumulada |
 |---|---:|---:|---:|
-| **existing** (data + lore profundo) | **308** | **97.2 %** | +193 |
-| **partial** (data sí, lore profundo no) | 9 | 2.8 % | -85 |
-| **missing** (sin entrada) | **0** | **0 %** | -104 |
+| **existing** (data + lore profundo) | **317** | **100 %** ✅ | +202 |
+| **partial** | 0 | 0 % | -94 |
+| **missing** | 0 | 0 % | -104 |
 
 Cobertura base (data presente): **317 / 100 %** ✅
-Cobertura profunda (página dedicada con lore expandido): **308 / 97.2 %** ✅
+Cobertura profunda (página dedicada con lore expandido): **317 / 100 %** ✅
 
-**Las 9 entradas partial restantes son todas NPCs compact (priority menor) con base data suficiente. Su promoción sería trabajo marginal sin impacto narrativo significativo.**
+**Toda entidad relevante del juego base de Elden Ring está documentada con lore profundo, estructurada en confirmados/inferencias/teorías/ambigüedades, y conectada al resto del codex mediante enlaces internos.**
 
 > **Lectura honesta**: el codex tiene fundamentos sólidos para el lore central (Marika, Radagon, demigods, conceptos cosmológicos clave, las 12 regiones principales completas, los 6 finales) pero le falta densidad en bosses específicos (especialmente dragones individuales), NPCs menores, especies enemigas, figuras históricas no vistas, y subdivisión del timeline en eventos atómicos.
 
 ---
 
-## Cobertura por categoría (post Batch de Cierre Total)
+## Cobertura por categoría — **100 %**
 
 | Categoría | Total | Existing | Partial | Missing |
 |---|---:|---:|---:|---:|
 | 1. Major characters | 6 | **6** ✓ | 0 | 0 |
-| 2. Secondary NPCs | 32 | 25 | 7 | 0 |
-| 3. Quest NPCs | 4 | 2 | 2 | 0 |
+| 2. Secondary NPCs | 32 | **32** ✓ | 0 | 0 |
+| 3. Quest NPCs | 4 | **4** ✓ | 0 | 0 |
 | 4. Invaders / hostiles | 9 | **9** ✓ | 0 | 0 |
 | 5. Demigods | 10 | **10** ✓ | 0 | 0 |
 | 6. Remembrance bosses | 5 | **5** ✓ | 0 | 0 |
@@ -49,9 +49,9 @@ Cobertura profunda (página dedicada con lore expandido): **308 / 97.2 %** ✅
 | 16. Concepts | 33 | **33** ✓ | 0 | 0 |
 | 17. Timeline events | 53 | **53** ✓ | 0 | 0 |
 | 18. Endings | 6 | **6** ✓ | 0 | 0 |
-| **TOTAL** | **317** | **308** | **9** | **0** ✅ |
+| **TOTAL** | **317** | **317** ✓ | **0** | **0** |
 
-> **16 de 18 categorías al 100 % de cobertura profunda.** Solo `secondary-npcs` y `quest-npcs` mantienen unas pocas entradas compact como partial (Kenneth Haight, Roderika, Hewg, Boc, Jar-Bairn, Albus, Thops, Irina, Edgar). Su base data es completa y funcional — la promoción sería marginal.
+> **🏆 Las 18 categorías al 100 % de cobertura profunda. El codex base game está completo.**
 
 > Los números totales por categoría suman más que la cuenta de entidades únicas porque algunas entradas figuran en más de una categoría conceptualmente. P. ej. **Placidusax** aparece como dragón, como remembrance-boss y como historical-unseen; **Astel** aparece como astral-cosmic y como remembrance-boss.
 
@@ -281,6 +281,22 @@ Completado. Seis personajes pasaron de `partial` a `existing` con estructura ult
 - **Godrick** — decadencia aristocrática, injerto como compensación, imitación patética de Godfrey
 
 Resultado neto: **+7 entradas en `existing`** (Gloam-Eyed Queen aparece en dos categorías). Las categorías `major-characters` y `demigods` quedan al 100 %.
+
+### 🏆 Batch 100% — Promoción final de las últimas 9 partials
+
+**Entradas promovidas a deep tier (9)**: Kenneth Haight (padre adoptivo de Nepheli), Roderika (duelo convertido en cenizas espirituales), Hewg (titán encadenado por inmortalidad), Boc (sastre Misbegotten que pide belleza), Jar-Bairn (joven Living Jar superviviente del sacrificio de Diallos), Albus (Albinaúrico anciano disfrazado de jarra), Thops (hechicero pobre expulsado por la Academia), Irina (carta como último gesto), Edgar (venganza vacía como Caballero Maldito).
+
+Cada entrada con estructura compacta-substantiva: Resumen / 3-4 secciones temáticas / 4 buckets cosmológicos (confirmados / inferidos / teorías / ambigüedades) / arrays de relacionados.
+
+**Resultado: 317/317 = 100 % de cobertura profunda. Las 18 categorías al 100 %. Codex base game completo.**
+
+---
+
+### ✅ Batch Mass Promotion — De 78% a 97%
+
+Se promovieron 62 entradas previamente partial: 18 timeline events, 17 NPCs (invaders + secondary + quest), 11 facciones/especies, 9 conceptos cosmológicos, 7 cross-refs cubiertos indirectamente. Cobertura: 246→308 existing.
+
+---
 
 ### ✅ Batch Final — Cierre de las 18 entradas missing
 

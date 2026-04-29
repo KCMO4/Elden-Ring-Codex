@@ -3262,4 +3262,510 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     relatedEndings: ['frenzied-flame'],
   },
 
+  /* ════════════════ Cierre Total — últimos NPCs compact ════════════════ */
+
+  'kenneth-haight': {
+    summary:
+      'Kenneth Haight es noble destronado de Limgrave, lord nominal del Fuerte Haight cuando el Mancillado lo encuentra. Padre adoptivo de Nepheli Loux — la crió sin contarle que es descendiente directa de Godfrey. Pelea por una colina mientras el cosmos se desgarra; se aferra a un título cuyo significado se ha vaciado.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Kenneth aparece en una colina de Limgrave pidiendo al Mancillado liberar el Fuerte Haight de los enemigos que lo ocupan. Su lenguaje aristocrático — "Soy Kenneth Haight, undécimo del Fuerte Haight" — es residuo de protocolos cosmológicos que ya nadie sigue. Su séptimo de séptimo de séptimo del linaje original; el último vivo de su familia inmediata.',
+      ),
+      h(2, 'El padre adoptivo'),
+      p(
+        link('Nepheli Loux', 'character', 'nepheli-loux'),
+        ' fue criada por Kenneth como hija propia. La verdad sobre su linaje real — descendiente directa de ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' — Kenneth la oculta deliberadamente. Las razones nunca se enuncian, pero las inferencias son razonables: protegerla de los riesgos políticos del linaje, o quizás porque el propio Kenneth no se atreve a entregar a Nepheli al peso del Linaje Dorado real.',
+      ),
+      h(2, 'El destino paralelo'),
+      p(
+        'Si el Mancillado completa la quest de Nepheli y la corona como Señora de ',
+        link('Stormveil', 'region', 'stormveil'),
+        ', Kenneth migra al castillo y se autoproclama "Lord de Stormveil" — heredero por adopción del trono que su hija realmente debería gobernar por sangre. La maniobra es cómica y trágica: el padre adoptivo aprovecha la ascensión de la hija para inflar su propio rango.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Kenneth encarna la nobleza como costumbre. Recuerda lo que el Orden Dorado significaba antes de la fractura, pero ese recuerdo ya es más útil al disfraz que a la realidad. Su título sigue intacto, su autoridad ha ido por el camino que va de la batalla a la anécdota. Es prueba viva de que las jerarquías sobreviven a su contenido.',
+      ),
+    ],
+    confirmed: [
+      'Kenneth es lord nominal del Fuerte Haight en Limgrave',
+      'Padre adoptivo de Nepheli Loux',
+      'Pide al Mancillado liberar el fuerte de enemigos',
+      'Si Nepheli es coronada en Stormveil, Kenneth migra como "Lord"',
+    ],
+    inferred: [
+      'Conoce el linaje real de Nepheli pero lo oculta deliberadamente',
+      'Su pretensión nobiliaria post-fractura es residuo, no autoridad real',
+      'Su séptimo undécimo del Fuerte Haight indica decadencia generacional larga',
+    ],
+    theories: [
+      'Recibió a Nepheli de mensajeros del Orden Dorado oficial encubiertos',
+      'Su propio linaje incluye sangre lateral del Linaje Dorado',
+      'Sospecha que Nepheli es heredera más legítima que Godrick y la mantiene oculta por seguridad',
+    ],
+    ambiguous: [
+      'Quién entregó originalmente a Nepheli a su cuidado',
+      'Si Nepheli sospecha algo sobre su origen real',
+      'Si Kenneth siente afecto genuino o pragmatismo aristocrático',
+    ],
+    relatedCharacters: ['nepheli-loux', 'godfrey', 'godrick', 'gideon'],
+    relatedFactions: ['orden-dorado', 'golden-lineage'],
+    relatedRegions: ['limgrave', 'stormveil'],
+    relatedConcepts: ['great-rune', 'tarnished'],
+  },
+
+  roderika: {
+    summary:
+      'Roderika es doncella espiritual única superviviente de Stormhill: su grupo de Mancillados fue masacrado antes de llegar a Stormveil. Carga el peso de las almas que no pudo proteger. En la Mesa Redonda aprende el arte de las cenizas con Hewg, transformando duelo en oficio: ya que no pudo salvar a sus compañeros, los hace acompañarla como espectros invocables.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'El Mancillado encuentra a Roderika al pie de Stormhill, en estado de shock catatónico. Es la única superviviente de un grupo Mancillado masacrado en el camino. Sus compañeros muertos no pueden ser sepultados — la violencia fue tan reciente que sus almas todavía vagan. Roderika lleva consigo el dolor sin cuerpo de varios.',
+      ),
+      h(2, 'La aprendiz'),
+      p(
+        'El Mancillado la dirige a la ',
+        link('Mesa Redonda', 'region', 'leyndell'),
+        ' donde puede encontrar refugio. Allí descubre su afinidad con el arte de las cenizas espirituales: conjurar a los muertos como aliados invocables. ',
+        link('Hewg', 'character', 'hewg'),
+        ', el maestro herrero, la enseña sin pretender mentor — solo accede porque ella insiste con dulzura.',
+      ),
+      h(2, 'El oficio del duelo'),
+      p(
+        'Roderika se convierte en la maestra de cenizas espirituales del juego. Mejora las invocaciones del Mancillado convirtiendo cenizas básicas en versiones potenciadas. Cada espíritu mejorado es un duelo trabajado — una transmutación del dolor original en herramienta funcional. Sus fantasmas pelean por ella ahora; cuando lo hacen, sonríe — porque al menos siguen existiendo.',
+      ),
+      h(2, 'La relación con Hewg'),
+      p(
+        'Su relación con Hewg evoluciona del respeto profesional al afecto silencioso. Roderika nota la maldición del herrero — la imposibilidad de morir — y le da, sin saberlo, lo que él más necesita: alguien que crea en su capacidad de hacer algo nuevo. Su cariño implícito es una forma de devolverle a Hewg parte de la humanidad que la diosa le había arrancado.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Roderika encarna el duelo convertido en oficio. Transforma trauma en herramienta: ya que no pudo salvar a sus compañeros, los hace acompañarla en cada batalla. Es la prueba más limpia del juego de que el cariño sobrevive a la pérdida — y de que la pérdida puede convertirse, con tiempo y trabajo, en algo útil sin dejar de ser pérdida.',
+      ),
+    ],
+    confirmed: [
+      'Roderika sobrevive a la masacre de su grupo Mancillado en Stormhill',
+      'Es dirigida a la Mesa Redonda por el Mancillado',
+      'Aprende el arte de las cenizas espirituales con Hewg',
+      'Mejora las invocaciones espirituales del Mancillado',
+    ],
+    inferred: [
+      'Su afinidad espiritual procede del trauma de la masacre',
+      'Su relación con Hewg evoluciona a afecto silencioso',
+      'Cada invocación que potencia es un proceso de duelo',
+    ],
+    theories: [
+      'Sus compañeros caídos conservan algún tipo de presencia residual a través de ella',
+      'Si Hewg eventualmente acepta la maldición de la diosa, Roderika sería la única capaz de liberarlo',
+      'Su don es heredado de una línea familiar de Doncellas Espirituales pre-Orden',
+    ],
+    ambiguous: [
+      'Cuántos compañeros tenía exactamente antes de la masacre',
+      'Quién o qué los masacró',
+      'Si conoce el pasado real de Hewg como titán',
+    ],
+    relatedCharacters: ['hewg', 'nepheli-loux', 'godrick'],
+    relatedFactions: ['orden-dorado'],
+    relatedRegions: ['stormveil', 'leyndell'],
+    relatedConcepts: ['tarnished', 'grace'],
+  },
+
+  hewg: {
+    summary:
+      'Hewg es maestro herrero de la Mesa Redonda, antiguo titán encadenado al taller por una maldición divina. Una diosa lo condenó a no poder morir; ahora desea ser asesinado por las armas que él mismo forja. Roderika, sin saberlo, le devuelve gradualmente la esperanza humana.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Hewg es titán antiguo de raza casi extinta — posiblemente vinculado a los Gigantes del Fuego o a alguna línea pre-Orden similar. Una diosa cuya identidad nunca se enuncia (probable: Marika misma, o una entidad relacionada) lo maldijo a la inmortalidad forzada. Su cuerpo no envejece, no se enferma, no puede ser herido fatalmente por causas comunes. Solo armas específicas — las que él mismo ayuda a forjar — podrían cortar la maldición.',
+      ),
+      h(2, 'El maestro herrero'),
+      p(
+        'Encadenado a su taller en la ',
+        link('Mesa Redonda', 'region', 'leyndell'),
+        ', Hewg sirve como herrero principal de los Mancillados. Forja todo: armas mejoradas, escudos, talismanes potenciados. Su técnica es ancestral — combina conocimientos pre-Orden con tradiciones doradas oficiales. Cada arma que sale de su martillo es objeto cosmológicamente refinado.',
+      ),
+      h(2, 'El deseo de morir'),
+      p(
+        'Confiesa al Mancillado, en un momento específico de su quest, que desea ser eliminado por uno de los aspirantes. Su lenguaje es deliberado: no busca suicidarse — busca ser asesinado por las armas que él mismo forjó. La paradoja es ritual: el herrero pide que su trabajo lo libere de su trabajo. La maldición lo mantiene; las armas que la maldición permite forjar son, en teoría, lo único que podría romperla.',
+      ),
+      h(2, 'La luz de Roderika'),
+      p(
+        link('Roderika', 'character', 'roderika'),
+        ' lo cambia gradualmente. Su afecto silencioso — el respeto profesional que evoluciona en cariño — le devuelve a Hewg algo que la maldición le había arrancado: la posibilidad de tener algo nuevo que perder. Si Hewg muere ahora, deja a alguien atrás. La ironía cósmica es completa: la maldición lo condenó a no morir, y la única razón emocional para querer vivir le llegó precisamente cuando llevaba siglos pidiendo morir.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Hewg encarna la inmortalidad como castigo. Es la inversa de Marika: ella construyó el régimen sobre la inmortalidad ritualizada del Erdtree; Hewg fue condenado individualmente al mismo principio. Su tragedia es inversa también — Marika rogó implícitamente para no haber sellado la Muerte; Hewg ruega explícitamente que alguien lo mate. Ninguno es escuchado por el cosmos.',
+      ),
+    ],
+    confirmed: [
+      'Hewg es titán encadenado por maldición divina',
+      'Sirve como maestro herrero en la Mesa Redonda',
+      'No puede morir por causas comunes',
+      'Confiesa al Mancillado que desea ser eliminado',
+      'Su relación con Roderika evoluciona a afecto silencioso',
+    ],
+    inferred: [
+      'Es contemporáneo de eras pre-Orden o muy tempranas del régimen',
+      'La diosa que lo maldijo es probablemente Marika o entidad relacionada',
+      'Solo armas que él mismo forja podrían cortar la maldición',
+    ],
+    theories: [
+      'Hewg fue uno de los Gigantes del Fuego encadenado tras la guerra',
+      'Su maldición fue castigo por intentar forjar un arma capaz de matar dioses',
+      'Si Roderika alcanza nivel suficiente, podría ser quien lo libere',
+    ],
+    ambiguous: [
+      'Identidad exacta de la diosa que lo maldijo',
+      'Cuántos siglos lleva encadenado',
+      'Si su martillo es residuo de su forma titánica original',
+    ],
+    relatedCharacters: ['roderika', 'marika', 'iji'],
+    relatedFactions: ['fire-giants', 'orden-dorado'],
+    relatedRegions: ['leyndell'],
+    relatedConcepts: ['destined-death'],
+  },
+
+  boc: {
+    summary:
+      'Boc es Misbegotten sastre de corazón delicado. Su madre lo abandonó por su forma. Cose vestidos para extraños esperando que alguien le diga que es hermoso. Es el único Misbegotten del Interregno cuya identidad gira en torno al cuidado del otro, no a la rabia o la violencia.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Boc pertenece a la raza de los ',
+        link('Misbegotten', 'faction', 'misbegotten'),
+        ' — humanos malformados clasificados como aberraciones por el Orden Dorado. Pero su carácter es excepcional dentro de su categoría: donde otros Misbegotten responden con violencia a la opresión, Boc respondió con dulzura. Aprendió costura. Cose para quien sea.',
+      ),
+      h(2, 'La madre que lo abandonó'),
+      p(
+        'La historia personal de Boc es el dolor estructural de su raza llevado al caso individual. Su madre — humana — lo abandonó al verlo nacer Misbegotten. Boc creció solo, aprendiendo costura por necesidad y por afición. Su confesión al Mancillado es directa: "Mi madre… ella me dijo que yo era hermoso. Pero solo una vez". Esa única vez le sostiene la identidad entera.',
+      ),
+      h(2, 'El sastre del Mancillado'),
+      p(
+        'Cuando el Mancillado lo encuentra en Liurnia, Boc está siendo atacado por sus propios iguales — Misbegotten enloquecidos por la rabia. El Mancillado lo rescata. Desde ese momento, Boc se convierte en sastre personal del Mancillado: arregla la armadura, repara los rasgones, mejora la apariencia ritual del aspirante.',
+      ),
+      h(2, 'La transformación opcional'),
+      p(
+        'Si el Mancillado completa la quest de ',
+        link('Rennala', 'character', 'rennala'),
+        ' y obtiene una invocación específica del rito del Renacimiento, puede ofrecérsela a Boc. La invocación lo transforma temporalmente en humano. Pero Boc rechaza la transformación cuando el Mancillado le ofrece la opción real: prefiere ser quien es sabiendo que alguien lo aceptó como tal. La aceptación pesa más que la transformación.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Boc encarna la belleza como ofrecimiento. No quiere conquistar nada — solo que alguien lo mire sin asco. Su tragedia y su gracia es saber que el cariño existe, aunque no para él (excepto del Mancillado). Cada hilo que cose es una pregunta: ¿soy suficiente? Y cada armadura reparada es una respuesta provisional: para alguien, sí.',
+      ),
+    ],
+    confirmed: [
+      'Boc es Misbegotten sastre de Liurnia',
+      'Su madre lo abandonó al verlo nacer',
+      'Es atacado por otros Misbegotten enloquecidos cuando el Mancillado lo encuentra',
+      'Cose y mejora la armadura del Mancillado',
+      'Puede ser transformado en humano usando una invocación de Rennala',
+    ],
+    inferred: [
+      'Su carácter dulce es excepcional dentro de su raza',
+      'Su única afirmación maternal sostiene su identidad entera',
+      'Rechaza la transformación si el Mancillado lo acepta como es',
+    ],
+    theories: [
+      'Boc fue criado en secreto por algún Misbegotten anciano antes de quedar solo',
+      'Su don con la costura procede de una tradición Misbegotten pre-revuelta',
+      'Si Boc sobreviviese al final del juego, podría iniciar una comunidad nueva de Misbegotten pacíficos',
+    ],
+    ambiguous: [
+      'Identidad de su madre',
+      'Si sobrevive más allá del final del juego',
+      'Si conserva contacto con otros Misbegotten supervivientes',
+    ],
+    relatedCharacters: ['rennala', 'miquella'],
+    relatedFactions: ['misbegotten', 'haligtree'],
+    relatedRegions: ['liurnia', 'limgrave'],
+    relatedConcepts: ['crucible', 'rebirth'],
+  },
+
+  'jar-bairn': {
+    summary:
+      'Jar-Bairn es el joven Living Jar de Jarburg, criado por Iris su tutora. Aspira a ser Olla Guerrera como Alexander. Sobrevive al ataque de invasores gracias al sacrificio de Diallos. Es la inocencia preservada por sangre adulta — vive porque otros eligieron no seguir viviendo.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Jar-Bairn habita la aldea de Jarburg, comunidad de ',
+        link('Living Jars', 'faction', 'living-jars'),
+        ' en Liurnia. Es el más joven de su pueblo — una jarra cerámica pequeña con alma humana parcialmente disuelta dentro. Iris, su tutora, lo cría con dulzura. Su modelo simbólico es ',
+        link('Alexander', 'character', 'alexander'),
+        ', el Olla Guerrera legendario de su raza.',
+      ),
+      h(2, 'La aldea pacífica'),
+      p(
+        'Jarburg es uno de los pocos lugares plenamente no-violentos del Interregno. Sus habitantes cultivan flores, cuidan a los más jóvenes, mantienen tradiciones rituales sin pretensiones cosmológicas. La paz es deliberada: el pueblo eligió esta forma de existencia precisamente para escapar de las violencias del régimen exterior.',
+      ),
+      h(2, 'El ataque y el sacrificio'),
+      p(
+        'En cierto momento de su quest, un atacante humano invade Jarburg para masacrar a sus habitantes. Los Living Jars no son combatientes — son frágiles cerámicamente. Sin defensa, la aldea entera caería. ',
+        link('Diallos', 'character', 'diallos'),
+        ', noble pacifista que había encontrado refugio espiritual en Jarburg, levanta la espada por primera vez en su vida. Defiende la puerta. Mata al atacante. Muere por las heridas. Jar-Bairn sobrevive.',
+      ),
+      h(2, 'El heredero'),
+      p(
+        'Tras el ataque, Jar-Bairn carga con el peso de ser superviviente. Su quest culmina con su decisión de viajar al ',
+        link('Castillo Redmane', 'region', 'redmane-castle'),
+        ' para emular a Alexander — convertirse en Olla Guerrera. La transformación es ritual: un joven que aspira a ser héroe carga el legado de un noble que murió defendiéndolo. Su viaje es continuidad cosmológica del pueblo nómada-cerámico.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Jar-Bairn encarna la inocencia preservada por sangre adulta. Vive porque Diallos eligió morir. Es niño porque otros eligieron no serlo más. Su aspiración a ser Olla Guerrera es ambición legítima — pero también es, implícitamente, agradecimiento al sacrificio del que lo salvó. Cada paso futuro es deuda devuelta.',
+      ),
+    ],
+    confirmed: [
+      'Jar-Bairn es el joven Living Jar de Jarburg',
+      'Iris es su tutora',
+      'Aspira a ser Olla Guerrera como Alexander',
+      'Diallos muere defendiéndolo de un atacante',
+      'Sobrevive al ataque y planea viajar al Redmane Castle',
+    ],
+    inferred: [
+      'Su pueblo eligió la paz deliberadamente',
+      'El atacante específico procedía del Volcano Manor o de los Bloody Fingers',
+      'Su transformación final lo conectaría con el legado completo de Alexander',
+    ],
+    theories: [
+      'Iris fue alguna vez humana antes de convertirse en Living Jar',
+      'Jar-Bairn contiene un alma humana específica con memoria latente',
+      'La aldea de Jarburg es resto de una comunidad mucho mayor masacrada en eras pasadas',
+    ],
+    ambiguous: [
+      'Origen del atacante específico',
+      'Si Jar-Bairn alcanza Redmane Castle más allá del final del juego',
+      'Si conserva memoria humana original o solo identidad cerámica nueva',
+    ],
+    relatedCharacters: ['diallos', 'alexander', 'boggart'],
+    relatedFactions: ['living-jars', 'nomadic-merchants'],
+    relatedRegions: ['liurnia', 'redmane-castle'],
+  },
+
+  albus: {
+    summary:
+      'Albus es Albinaúrico anciano disfrazado dentro de una jarra rota — sobreviviente literal del genocidio sistemático contra su pueblo. Custodia la mitad del Mapa Secreto del Snowfield Consagrado. La memoria es su herencia. La jarra es su camuflaje.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Albus pertenece a la raza de los ',
+        link('Albinaurics', 'faction', 'albinauricos'),
+        ' — humanos artificiales creados en eras antiguas, frágiles, perseguidos por el Orden Dorado. Su pueblo fue casi exterminado durante el éxodo al Haligtree, y los pocos supervivientes viven escondidos. Albus es uno de ellos.',
+      ),
+      h(2, 'La jarra rota'),
+      p(
+        'Su disfraz es literal: vive dentro de una jarra cerámica rota en la Aldea de los Albinaurics en Liurnia. Aparenta ser objeto inanimado. Cuando un visitante pasa, no responde. Solo cuando alguien lo identifica correctamente — usando información específica que solo ',
+        link('Latenna', 'character', 'latenna'),
+        ' u otros Albinaurics conocen — se revela como persona. La identificación es contraseña ritual; sin ella, Albus permanece estatua.',
+      ),
+      h(2, 'El custodio del mapa'),
+      p(
+        'Albus guarda la mitad del Mapa Secreto necesario para entrar al ',
+        link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
+        '. La otra mitad la guarda Latenna. La división es deliberada — si un atacante encontrara a uno de los dos, no obtendría el mapa completo. Es protección distribuida ante una persecución que continúa post-mortem.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Albus encarna la memoria como camuflaje. Sobrevive porque dejó de aparentar ser él mismo. Una jarra rota que recuerda más que cualquier biblioteca: contiene rituales del pueblo Albinauric, conocimiento del éxodo, geografía secreta del refugio prometido por Miquella. Su silencio aparente es archivo viviente.',
+      ),
+    ],
+    confirmed: [
+      'Albus es Albinaúrico superviviente',
+      'Vive disfrazado dentro de una jarra rota en Liurnia',
+      'Custodia la mitad del Mapa Secreto del Snowfield',
+      'Latenna guarda la otra mitad',
+      'Solo se revela cuando un visitante lo identifica correctamente',
+    ],
+    inferred: [
+      'Su disfraz fue respuesta directa a la persecución sistemática',
+      'Conoce los rituales perdidos del pueblo Albinauric',
+      'Otros Albinaurics supervivientes operan en disfraz similar en otras regiones',
+    ],
+    theories: [
+      'Albus fue uno de los pocos que llegó al borde del Haligtree antes de retroceder',
+      'Su memoria contiene la ubicación de otros sobrevivientes ocultos',
+      'Si Miquella despertara, Albus podría guiar a los supervivientes restantes a Elphael',
+    ],
+    ambiguous: [
+      'Cuántos siglos lleva escondido en la jarra',
+      'Si conoció personalmente a Miquella o solo a través de leyendas Albinauric',
+      'Si Latenna conoce la ubicación específica de Albus o solo el procedimiento de identificación',
+    ],
+    relatedCharacters: ['latenna', 'miquella'],
+    relatedFactions: ['albinauricos', 'haligtree'],
+    relatedRegions: ['liurnia', 'consecrated-snowfield', 'haligtree'],
+    relatedConcepts: ['unalloyed-gold'],
+  },
+
+  thops: {
+    summary:
+      'Thops es hechicero pobre expulsado de Raya Lucaria por incapacidad económica. Vive en una cabaña a las afueras de la Academia, prepara clases que nunca dará, espera una llave que probablemente nunca tendrá. Si la consigue por intervención del Mancillado, su entusiasmo lo mata: muere intentando entrar a la Academia que ya lo había rechazado.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Thops fue alumno de ',
+        link('Raya Lucaria', 'region', 'raya-lucaria'),
+        ' antes de ser expulsado. Su expulsión no fue por desviación doctrinal (como ',
+        link('Sellen', 'character', 'sellen'),
+        ', ',
+        link('Azur', 'character', 'azur'),
+        ' o ',
+        link('Lusat', 'character', 'lusat'),
+        ') — fue por pobreza pura. La Academia cobra precios cosmológicos a sus alumnos; Thops no podía pagar. La exclusión es estructural: no hay caso filosófico que defender, solo una factura impagada.',
+      ),
+      h(2, 'La cabaña del aspirante'),
+      p(
+        'Vive en el Schoolhouse Classroom en Liurnia — una cabaña al borde de la Academia. Allí prepara clases que nunca dará, estudia textos básicos que ya domina, repite hechizos elementales como ritual privado. Su entusiasmo por la magia sobrevive a la institución que se lo negó. Es estudiante eterno sin clase eterna.',
+      ),
+      h(2, 'La quest de la llave'),
+      p(
+        'Pide al Mancillado encontrar la Llave Académica que abre los pasajes restringidos de la Academia. Si el Mancillado se la trae, Thops sale corriendo de su cabaña hacia la entrada. Lo siguiente que el Mancillado encuentra, regresando, es su cuerpo: muerto en la entrada de la Academia, posiblemente por trampas mágicas activadas, posiblemente por un hechicero superior que lo identificó como intruso.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Thops encarna la sed de saber como condena. No aprende — porque aprender requiere una institución que ya no lo quiere. Sus apuntes están manchados de lluvia. Las palabras se borran antes de ser escritas. Su muerte al recibir la llave es ironía perfecta: el sistema lo rechazó por falta de dinero, y cuando un agente externo le permite acceder, el propio acceso es lo que lo mata.',
+      ),
+    ],
+    confirmed: [
+      'Thops fue alumno expulsado de Raya Lucaria por pobreza',
+      'Vive en una cabaña a las afueras de la Academia',
+      'Pide al Mancillado encontrar la Llave Académica',
+      'Si recibe la llave, muere intentando entrar a la Academia',
+    ],
+    inferred: [
+      'Su expulsión fue estructural, no doctrinal',
+      'La Academia cobra precios cosmológicos a sus alumnos',
+      'Su muerte fue causada por trampas mágicas o por un hechicero superior',
+    ],
+    theories: [
+      'Conocía a Sellen y a otros excomulgados pero no se le permitió unirse a su causa',
+      'Su muerte fue trampa específica del régimen académico contra disidencia económica',
+      'Si Sellen alcanzara el control de la Academia, Thops habría sido recibido póstumamente',
+    ],
+    ambiguous: [
+      'Quién o qué exactamente lo mató al entrar',
+      'Si su muerte es accidente o asesinato deliberado',
+      'Si dejó textos que documentan su investigación',
+    ],
+    relatedCharacters: ['sellen', 'azur', 'lusat', 'rennala'],
+    relatedFactions: ['raya-lucaria'],
+    relatedRegions: ['liurnia', 'raya-lucaria'],
+    relatedConcepts: ['glintstone', 'primeval-current-concept'],
+  },
+
+  irina: {
+    summary:
+      'Irina es hija ciega del Lord Edgar de Castle Morne. Escapó del castillo durante la rebelión Misbegotten y llegó ciega a la costa de la Península Llorosa con una carta para su padre. Pidió al Mancillado entregarla. Murió antes de saber que la carta llegaría — su voz pidiendo ayuda se desvanece como lluvia entre las rocas.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Irina pertenece a la familia Volmer de ',
+        link('Castillo Morne', 'region', 'castle-morne'),
+        '. Es hija de Edgar, lord nominal del castillo. Su ceguera es congénita pero no la incapacita socialmente: la familia Volmer la protegió y la educó como noble plena. Cuando los ',
+        link('Misbegotten', 'faction', 'misbegotten'),
+        ' se rebelaron y tomaron el castillo, Irina escapó con uno de los pocos sirvientes leales que le quedaban.',
+      ),
+      h(2, 'La carta'),
+      p(
+        'Llegó ciega a la costa rocosa de la ',
+        link('Península Llorosa', 'region', 'peninsula-llorosa'),
+        ', sola tras la muerte de su sirviente. El Mancillado la encuentra exhausta, sosteniendo una carta sellada para su padre. La carta es testimonio: explica la situación, pide ayuda, expresa amor filial. Irina no puede entregarla ella misma — está demasiado débil para regresar al castillo. Pide al Mancillado.',
+      ),
+      h(2, 'La muerte invisible'),
+      p(
+        'El Mancillado lleva la carta a Edgar. Edgar, al leerla, decide partir a vengar a Irina — sabe instintivamente que su hija está muriendo o ya muerta. Cuando el Mancillado regresa a la costa, encuentra el cuerpo de Irina sin vida, todavía mirando al horizonte donde nunca verá nada. La timing es trágico: Edgar parte cuando Irina ya está muriendo, ambos sin saberlo.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Irina encarna la carta como último gesto. Escribe palabras que llegarán cuando ella ya no esté para recibir respuesta. No puede ver a quién le escribe; pero confía en que la lluvia llevará el papel. Su muerte es invisible doblemente — no la ve el padre que parte a vengarla, no la ve ella misma porque era ciega de nacimiento. Solo el Mancillado, mensajero involuntario, es testigo.',
+      ),
+    ],
+    confirmed: [
+      'Irina es hija ciega del Lord Edgar',
+      'Escapó de Castle Morne durante la rebelión Misbegotten',
+      'Pide al Mancillado entregar una carta a su padre',
+      'Muere antes de que Edgar reciba la carta',
+    ],
+    inferred: [
+      'Su ceguera es congénita',
+      'Su sirviente murió en el camino antes de llegar a la costa',
+      'Su muerte es por agotamiento y heridas no tratadas, no por ataque directo',
+    ],
+    theories: [
+      'La carta contiene información específica sobre la rebelión que solo Irina presenció',
+      'Su muerte está relacionada con la persecución continua contra los nobles Volmer',
+      'Si Edgar hubiera regresado a tiempo, ambos habrían sobrevivido juntos',
+    ],
+    ambiguous: [
+      'Quién la atacó en el camino o si murió por causas naturales',
+      'Cuánto tiempo medió entre su huida y la entrega de la carta',
+      'Si conserva consciencia post-mortem mínima',
+    ],
+    relatedCharacters: ['edgar', 'hyetta'],
+    relatedFactions: ['misbegotten'],
+    relatedRegions: ['castle-morne', 'peninsula-llorosa'],
+  },
+
+  edgar: {
+    summary:
+      'Edgar es lord superviviente de Castle Morne, defensor del último sector residual del castillo tras la rebelión Misbegotten. Cuando recibe la carta de su hija Irina, abandona el castillo para vengarla — sabiendo intuitivamente que ya está muriendo o muerta. Reaparece en Liurnia transformado en Caballero Maldito de Misericordia, masacrando inocentes en venganza ciega.',
+    deepLore: [
+      h(2, 'Resumen esencial'),
+      p(
+        'Edgar es lord nominal de la Casa Volmer de ',
+        link('Castillo Morne', 'region', 'castle-morne'),
+        '. Cuando los ',
+        link('Misbegotten', 'faction', 'misbegotten'),
+        ' se rebelaron contra siglos de esclavitud y tomaron el castillo, Edgar fue uno de los pocos defensores supervivientes. Se atrincheró en un sector residual del complejo, manteniendo posiciones casi imposibles. Su devoción a su familia — particularmente a su hija ',
+        link('Irina', 'character', 'irina'),
+        ' — era el motor de su resistencia.',
+      ),
+      h(2, 'La carta y la partida'),
+      p(
+        'Cuando el Mancillado le entrega la carta de Irina, Edgar lee de inmediato. Sabe que la carta procede de la costa — sabe que Irina escapó pero quedó vulnerable. Su reacción es rápida y absoluta: parte del castillo. La defensa que había sostenido durante meses se abandona en horas. Su misión cambia de protector institucional a vengador personal.',
+      ),
+      h(2, 'La transformación post-Irina'),
+      p(
+        'Cuando reaparece, Edgar ya está roto. Irina ya está muerta. Las heridas que él trataba de evitar ya ocurrieron. Su mente se rompió con la confirmación. Sigue avanzando — pero el avance ya no tiene dirección coherente. Su martillo cae sobre quien se cruce: Misbegotten dispersos, soldados Volcano Manor, viajeros aleatorios. La venganza se ha vuelto ciega porque ya no recuerda contra quién dirigirla.',
+      ),
+      h(2, 'El Caballero Maldito'),
+      p(
+        'En Liurnia, transformado en Caballero Maldito de Misericordia (Knight of the Misbegotten reclassified post-traumatically), Edgar es invasor errante. El Mancillado puede enfrentarlo ahí. Su muerte es liberación piadosa, similar a la de Bernahl en Farum Azula: matar al hombre roto antes de que rompa a más inocentes. Su martillo cae al final por última vez sobre nadie — y por fin descansa.',
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Edgar encarna la venganza vacía. Mata sin objetivo después de que su único objetivo se haya muerto. Su espada sigue cayendo, aunque ya no recuerda contra quién. Es la prueba más triste del juego de que la pérdida puede destruir la coherencia entera de una persona. La defensa institucional se desmoronó en horas; el padre se desmoronó en minutos; el Caballero Maldito sigue caminando porque el cuerpo no recibió el aviso.',
+      ),
+    ],
+    confirmed: [
+      'Edgar es lord superviviente de Castle Morne',
+      'Recibe la carta de Irina y abandona el castillo',
+      'Reaparece en Liurnia transformado en Caballero Maldito de Misericordia',
+      'Mata Misbegotten y otros viajeros como invasor',
+      'Su muerte por el Mancillado es liberación piadosa',
+    ],
+    inferred: [
+      'Sabe instintivamente al leer la carta que Irina ya está muriendo',
+      'Su transformación es psicológica primero, marcial después',
+      'Su mente se rompió con la confirmación de la muerte de Irina',
+    ],
+    theories: [
+      'Edgar pudo haber salvado a Irina si hubiera partido antes — la culpa lo persigue',
+      'Su transformación fue acelerada por contacto con podredumbre o frenética en el camino',
+      'Su martillo retiene memoria residual de Irina, lo que lo hace especialmente letal',
+    ],
+    ambiguous: [
+      'Si conserva alguna consciencia residual durante el estado de Caballero Maldito',
+      'Cuánto tiempo medió entre la partida y su transformación visible',
+      'Si encontró el cuerpo de Irina antes de su deterioro mental',
+    ],
+    relatedCharacters: ['irina'],
+    relatedFactions: ['misbegotten'],
+    relatedRegions: ['castle-morne', 'peninsula-llorosa', 'liurnia'],
+  },
+
 }
