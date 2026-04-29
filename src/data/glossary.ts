@@ -1,6 +1,7 @@
 import type { GlossaryEntry } from './types'
+import { glossaryLore } from './lore/glossaryLore'
 
-export const glossaryData: GlossaryEntry[] = [
+const baseGlossary: GlossaryEntry[] = [
   {
     id: 'elden-ring',
     term: 'Elden Ring',
@@ -210,3 +211,8 @@ export const glossaryData: GlossaryEntry[] = [
     certainty: 'confirmado',
   },
 ]
+
+export const glossaryData: GlossaryEntry[] = baseGlossary.map((g) => ({
+  ...g,
+  ...(glossaryLore[g.id] ?? {}),
+}))

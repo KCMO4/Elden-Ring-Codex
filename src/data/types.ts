@@ -7,12 +7,97 @@ export type FallbackType =
   | 'concept' | 'ending-fracture' | 'ending-order' | 'ending-dusk'
   | 'ending-despair' | 'ending-frenzied' | 'ending-stars'
 
+export type EntityType =
+  | 'character'
+  | 'region'
+  | 'faction'
+  | 'concept'
+  | 'ending'
+  | 'timeline'
+
 export interface Tag {
   label: string
   category: 'personaje' | 'faccion' | 'region' | 'dios' | 'batalla' | 'concepto'
 }
 
-export interface TimelineEntry {
+/* ──────────────────────────────────────────────────────────── */
+/* Rich text format for cross-linked lore                      */
+/* ──────────────────────────────────────────────────────────── */
+
+export interface RichLink {
+  type: 'link'
+  label: string
+  targetType: EntityType
+  slug: string
+}
+
+export interface RichEmphasis {
+  type: 'em' | 'strong'
+  text: string
+}
+
+export type RichInline = string | RichLink | RichEmphasis
+
+export interface RichParagraph {
+  type: 'paragraph'
+  children: RichInline[]
+}
+
+export interface RichHeading {
+  type: 'heading'
+  level: 2 | 3
+  text: string
+  id?: string
+}
+
+export interface RichQuote {
+  type: 'quote'
+  text: string
+  attribution?: string
+}
+
+export interface RichList {
+  type: 'list'
+  ordered?: boolean
+  items: RichInline[][]
+}
+
+export type RichBlock = RichParagraph | RichHeading | RichQuote | RichList
+
+/* ──────────────────────────────────────────────────────────── */
+/* Shared "deep page" mixin                                    */
+/* ──────────────────────────────────────────────────────────── */
+
+export interface DeepEntity {
+  /** Page slug (defaults to id when omitted) */
+  slug?: string
+  /** Short subtitle / epithet shown under the title on the detail page */
+  subtitle?: string
+  /** ~1-2 sentence summary used on cards and SEO description */
+  summary?: string
+  /** The full ultra-detailed lore — array of RichBlocks */
+  deepLore?: RichBlock[]
+  /** Bullet lists of canonical knowledge buckets */
+  confirmed?: string[]
+  inferred?: string[]
+  ambiguous?: string[]
+  /** Who benefited / who suffered from this entity's existence/actions */
+  beneficiaries?: string
+  victims?: string
+  /** Cross-linked entity IDs */
+  relatedCharacters?: string[]
+  relatedRegions?: string[]
+  relatedFactions?: string[]
+  relatedConcepts?: string[]
+  relatedTimelineEvents?: string[]
+  relatedEndings?: string[]
+}
+
+/* ──────────────────────────────────────────────────────────── */
+/* Concrete entity shapes                                      */
+/* ──────────────────────────────────────────────────────────── */
+
+export interface TimelineEntry extends DeepEntity {
   id: string
   chapter: string
   chapterNumber: string
@@ -25,7 +110,7 @@ export interface TimelineEntry {
   fallbackType?: FallbackType
 }
 
-export interface Character {
+export interface Character extends DeepEntity {
   id: string
   name: string
   role: string
@@ -41,7 +126,7 @@ export interface Character {
   fallbackType?: FallbackType
 }
 
-export interface Faction {
+export interface Faction extends DeepEntity {
   id: string
   name: string
   what: string
@@ -54,7 +139,7 @@ export interface Faction {
   keyMembers?: string[]
 }
 
-export interface Region {
+export interface Region extends DeepEntity {
   id: string
   name: string
   historical: string
@@ -67,7 +152,7 @@ export interface Region {
   fallbackType?: FallbackType
 }
 
-export interface GlossaryEntry {
+export interface GlossaryEntry extends DeepEntity {
   id: string
   term: string
   definition: string
@@ -77,7 +162,7 @@ export interface GlossaryEntry {
   fallbackType?: FallbackType
 }
 
-export interface Ending {
+export interface Ending extends DeepEntity {
   id: string
   name: string
   description: string

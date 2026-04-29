@@ -3,13 +3,16 @@ import { Clock, Search, BookOpen } from 'lucide-react'
 import { GoldenTree } from './illustrations/GoldenTree'
 import { BrokenRing } from './illustrations/BrokenRing'
 import { RuneSeparator } from './illustrations/RuneSeparator'
-import type { Section } from './SidebarNav'
 
 interface Props {
-  onNavigate: (s: Section) => void
+  /** Optional legacy navigation callback (string section id). Pages now have proper URLs. */
+  onNavigate?: (s: string) => void
 }
 
 export function LandingPage({ onNavigate }: Props) {
+  const navTo = (section: string) => {
+    if (onNavigate) onNavigate(section)
+  }
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-20">
       {/* Background atmospheric effects */}
@@ -108,17 +111,17 @@ export function LandingPage({ onNavigate }: Props) {
             icon={<BookOpen size={16} />}
             label="Comenzar Lectura"
             primary
-            onClick={() => onNavigate('timeline')}
+            onClick={() => navTo('timeline')}
           />
           <CtaButton
             icon={<Clock size={16} />}
             label="Ver Timeline"
-            onClick={() => onNavigate('timeline')}
+            onClick={() => navTo('timeline')}
           />
           <CtaButton
             icon={<Search size={16} />}
             label="Buscar Personaje"
-            onClick={() => onNavigate('personajes')}
+            onClick={() => navTo('personajes')}
           />
         </motion.div>
 

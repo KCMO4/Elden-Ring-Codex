@@ -1,6 +1,7 @@
 import type { Faction } from './types'
+import { factionsLore } from './lore/factionsLore'
 
-export const factionsData: Faction[] = [
+const baseFactions: Faction[] = [
   {
     id: 'orden-dorado',
     name: 'El Orden Dorado',
@@ -212,3 +213,8 @@ export const factionsData: Faction[] = [
     tags: ['Caria', 'Liurnia', 'Luna Oscura', 'Rennala', 'Ranni'],
   },
 ]
+
+export const factionsData: Faction[] = baseFactions.map((f) => ({
+  ...f,
+  ...(factionsLore[f.id] ?? {}),
+}))

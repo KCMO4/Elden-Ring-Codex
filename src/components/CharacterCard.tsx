@@ -1,12 +1,13 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, Users, BookOpen } from 'lucide-react'
+import { MapPin, Users, BookOpen, ArrowRight } from 'lucide-react'
 import type { Character } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { TagPill } from './TagPill'
 import { CodexImage } from './images/CodexImage'
-import { getCharacterArt } from '../lib/assetPaths'
 import { characterFallbacks } from '../lib/fallbackMap'
+import { pathFor } from '../data/lookups'
 import { RuneSeparator } from './illustrations/RuneSeparator'
 
 interface Props {
@@ -33,10 +34,11 @@ export function CharacterCard({ character, onTagClick }: Props) {
       {/* Portrait image */}
       <div className="relative">
         <CodexImage
-          src={getCharacterArt(character.id)}
           alt={character.name}
           fallbackType={fallback}
           variant="portrait"
+          entityCategory="characters"
+          entityId={character.id}
           overlayOpacity={0.35}
           hoverZoom
         >
@@ -145,11 +147,19 @@ export function CharacterCard({ character, onTagClick }: Props) {
           )}
         </AnimatePresence>
 
-        {/* Toggle button */}
-        <div className="mt-3 pt-3 border-t border-codex-gold-dim/15 flex justify-end">
+        {/* Footer: expand toggle + leer más */}
+        <div className="mt-3 pt-3 border-t border-codex-gold-dim/15 flex items-center justify-between gap-3">
           <span className="font-heading text-xs tracking-wider uppercase text-codex-gold-dim group-hover:text-codex-gold transition-colors">
             {open ? '↑ Cerrar' : '↓ Expandir'}
           </span>
+          <Link
+            to={pathFor.character(character)}
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1 font-heading text-xs tracking-wider uppercase text-codex-gold/80 hover:text-codex-gold-bright transition-colors"
+          >
+            Leer más
+            <ArrowRight size={11} />
+          </Link>
         </div>
       </div>
     </motion.article>

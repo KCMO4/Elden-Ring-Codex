@@ -1,5 +1,29 @@
-node_modules/ 
-dist/ 
-build/ 
-.env 
-.env.local 
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Local-only image override config — NEVER commit
+public/image-sources.local.json
+
+# Local image files dropped by user — never commit raw assets
+public/art/characters/*
+public/art/regions/*
+public/art/factions/*
+public/art/endings/*
+public/art/concepts/*
+!public/art/characters/.gitkeep
+!public/art/regions/.gitkeep
+!public/art/factions/.gitkeep
+!public/art/endings/.gitkeep
+!public/art/concepts/.gitkeep
+!public/art/**/LEEME.md
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

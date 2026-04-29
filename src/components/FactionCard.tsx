@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import type { Faction } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { TagPill } from './TagPill'
 import { CodexImage } from './images/CodexImage'
-import { getFactionArt } from '../lib/assetPaths'
 import { factionFallbacks } from '../lib/fallbackMap'
+import { pathFor } from '../data/lookups'
 import { RuneSeparator } from './illustrations/RuneSeparator'
 
 interface Props {
@@ -29,10 +31,11 @@ export function FactionCard({ faction, onTagClick }: Props) {
       {/* Emblem / artwork */}
       <div className="relative">
         <CodexImage
-          src={getFactionArt(faction.id)}
           alt={faction.name}
           fallbackType={fallback}
           variant="card"
+          entityCategory="factions"
+          entityId={faction.id}
           overlayOpacity={0.45}
           hoverZoom
         >
@@ -117,10 +120,18 @@ export function FactionCard({ faction, onTagClick }: Props) {
           )}
         </AnimatePresence>
 
-        <div className="mt-3 pt-3 border-t border-codex-gold-dim/15 flex justify-end">
+        <div className="mt-3 pt-3 border-t border-codex-gold-dim/15 flex items-center justify-between gap-3">
           <span className="font-heading text-xs tracking-wider uppercase text-codex-gold-dim group-hover:text-codex-gold transition-colors">
-            {open ? '↑ Cerrar' : '↓ Leer más'}
+            {open ? '↑ Cerrar' : '↓ Resumen'}
           </span>
+          <Link
+            to={pathFor.faction(faction)}
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1 font-heading text-xs tracking-wider uppercase text-codex-gold/80 hover:text-codex-gold-bright transition-colors"
+          >
+            Leer más
+            <ArrowRight size={11} />
+          </Link>
         </div>
       </div>
     </motion.article>

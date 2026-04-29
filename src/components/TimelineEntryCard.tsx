@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
 import type { TimelineEntry } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { TagPill } from './TagPill'
 import { RuneSeparator } from './illustrations/RuneSeparator'
+import { pathFor } from '../data/lookups'
 
 interface Props {
   entry: TimelineEntry
@@ -102,18 +104,27 @@ export function TimelineEntryCard({ entry, onTagClick, readingMode }: Props) {
                 <TagPill key={tag} tag={tag} onClick={onTagClick} />
               ))}
             </div>
-            {!readingMode && (
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-1.5 text-xs text-codex-gold-dim hover:text-codex-gold transition-colors font-heading tracking-wider uppercase"
+            <div className="flex items-center gap-3">
+              {!readingMode && (
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="flex items-center gap-1.5 text-xs text-codex-gold-dim hover:text-codex-gold transition-colors font-heading tracking-wider uppercase"
+                >
+                  {expanded ? (
+                    <><ChevronUp size={14} /> Contraer</>
+                  ) : (
+                    <><ChevronDown size={14} /> Expandir</>
+                  )}
+                </button>
+              )}
+              <Link
+                to={pathFor.timeline(entry)}
+                className="flex items-center gap-1 text-xs text-codex-gold/80 hover:text-codex-gold-bright transition-colors font-heading tracking-wider uppercase"
               >
-                {expanded ? (
-                  <><ChevronUp size={14} /> Contraer</>
-                ) : (
-                  <><ChevronDown size={14} /> Expandir</>
-                )}
-              </button>
-            )}
+                Leer más
+                <ArrowRight size={11} />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

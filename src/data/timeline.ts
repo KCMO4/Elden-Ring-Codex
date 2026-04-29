@@ -1,6 +1,7 @@
 import type { TimelineEntry } from './types'
+import { timelineLore } from './lore/timelineLore'
 
-export const timelineData: TimelineEntry[] = [
+const baseTimeline: TimelineEntry[] = [
   {
     id: 'antes-orden-dorado',
     chapter: 'I',
@@ -281,3 +282,8 @@ export const timelineData: TimelineEntry[] = [
     tags: ['Finales', 'Era de la Fractura', 'Era del Orden', 'Era del Crepúsculo', 'Llama Frenética', 'Era de las Estrellas', 'Ranni', 'Fia', 'Goldmask'],
   },
 ]
+
+export const timelineData: TimelineEntry[] = baseTimeline.map((t) => ({
+  ...t,
+  ...(timelineLore[t.id] ?? {}),
+}))

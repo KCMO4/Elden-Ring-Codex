@@ -1,12 +1,13 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sword } from 'lucide-react'
+import { Sword, ArrowRight } from 'lucide-react'
 import type { Region } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { TagPill } from './TagPill'
 import { CodexImage } from './images/CodexImage'
-import { getRegionArt } from '../lib/assetPaths'
 import { regionFallbacks } from '../lib/fallbackMap'
+import { pathFor } from '../data/lookups'
 
 interface Props {
   region: Region
@@ -35,10 +36,11 @@ export function RegionCard({ region, selected, onSelect, onTagClick }: Props) {
       {/* Banner image */}
       <div className="relative">
         <CodexImage
-          src={getRegionArt(region.id)}
           alt={region.name}
           fallbackType={fallback}
           variant="banner"
+          entityCategory="regions"
+          entityId={region.id}
           overlayOpacity={0.4}
           hoverZoom
         >
@@ -135,13 +137,21 @@ export function RegionCard({ region, selected, onSelect, onTagClick }: Props) {
           )}
         </AnimatePresence>
 
-        <div
-          className="mt-3 pt-3 border-t border-codex-gold-dim/15 flex justify-end"
-          onClick={(e) => { e.stopPropagation(); setExpanded(!expanded) }}
-        >
-          <span className="font-heading text-xs tracking-wider uppercase text-codex-gold-dim group-hover:text-codex-gold transition-colors">
+        <div className="mt-3 pt-3 border-t border-codex-gold-dim/15 flex items-center justify-between gap-3">
+          <span
+            onClick={(e) => { e.stopPropagation(); setExpanded(!expanded) }}
+            className="font-heading text-xs tracking-wider uppercase text-codex-gold-dim group-hover:text-codex-gold transition-colors cursor-pointer"
+          >
             {isOpen ? '↑ Contraer' : '↓ Explorar'}
           </span>
+          <Link
+            to={pathFor.region(region)}
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1 font-heading text-xs tracking-wider uppercase text-codex-gold/80 hover:text-codex-gold-bright transition-colors"
+          >
+            Leer más
+            <ArrowRight size={11} />
+          </Link>
         </div>
       </div>
     </motion.article>

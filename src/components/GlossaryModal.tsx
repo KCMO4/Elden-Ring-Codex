@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import { X, ArrowRight } from 'lucide-react'
 import type { GlossaryEntry } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { CodexImage } from './images/CodexImage'
-import { getConceptArt } from '../lib/assetPaths'
 import { glossaryFallbacks } from '../lib/fallbackMap'
+import { pathFor } from '../data/lookups'
 
 interface Props {
   entries: GlossaryEntry[]
@@ -50,10 +51,11 @@ export function GlossarySection({ entries, onTermClick }: Props) {
               {/* Small concept art strip */}
               <div className="h-20 relative overflow-hidden">
                 <CodexImage
-                  src={getConceptArt(entry.id)}
                   alt={entry.term}
                   fallbackType={fallback}
                   variant="banner"
+                  entityCategory="concepts"
+                  entityId={entry.id}
                   overlayOpacity={0.5}
                   hoverZoom
                 />
@@ -98,10 +100,11 @@ export function GlossarySection({ entries, onTermClick }: Props) {
               {/* Header art */}
               <div className="h-40 relative shrink-0">
                 <CodexImage
-                  src={getConceptArt(selected.id)}
                   alt={selected.term}
                   fallbackType={glossaryFallbacks[selected.id] ?? 'concept'}
                   variant="banner"
+                  entityCategory="concepts"
+                  entityId={selected.id}
                   overlayOpacity={0.5}
                   hoverZoom={false}
                 />
@@ -167,6 +170,17 @@ export function GlossarySection({ entries, onTermClick }: Props) {
                     </div>
                   </div>
                 )}
+
+                <div className="pt-3 border-t border-codex-gold-dim/20">
+                  <Link
+                    to={pathFor.concept(selected)}
+                    onClick={() => setSelected(null)}
+                    className="flex items-center justify-end gap-1.5 font-heading text-xs tracking-wider uppercase text-codex-gold hover:text-codex-gold-bright transition-colors"
+                  >
+                    Página completa
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </motion.div>

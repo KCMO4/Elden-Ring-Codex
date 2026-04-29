@@ -1,0 +1,85 @@
+{
+  "_meta": {
+    "purpose": "Plantilla de configuración de imágenes locales. Cópiala como image-sources.local.json y rellena con URLs propias.",
+    "warning": "NUNCA hagas commit de image-sources.local.json. Está en .gitignore y debe permanecer fuera del repositorio.",
+    "priority": [
+      "1) URL en image-sources.local.json (override remoto)",
+      "2) Archivo local en public/art/{categoria}/{id}.{jpg|png|webp}",
+      "3) Ilustración SVG fallback generada automáticamente"
+    ],
+    "fields": {
+      "image": "URL principal (retrato/imagen característica)",
+      "banner": "URL para variante banner (opcional, formato horizontal)",
+      "source": "URL de la página origen",
+      "credit": "Artista o fuente atribuida",
+      "localOnly": "Siempre true — recordatorio de que es solo para uso personal",
+      "note": "Nota libre"
+    }
+  },
+  "characters": {
+    "malenia": {
+      "image": "",
+      "banner": "",
+      "source": "",
+      "credit": "",
+      "localOnly": true,
+      "note": "Imagen configurada localmente para uso personal en localhost"
+    },
+    "marika": {
+      "image": "",
+      "banner": "",
+      "source": "",
+      "credit": "",
+      "localOnly": true,
+      "note": "Imagen configurada localmente para uso personal en localhost"
+    }
+  },
+  "regions": {
+    "caelid": {
+      "image": "",
+      "banner": "",
+      "source": "",
+      "credit": "",
+      "localOnly": true,
+      "note": "Imagen configurada localmente para uso personal en localhost"
+    }
+  },
+  "factions": {
+    "orden-dorado": {
+      "image": "",
+      "source": "",
+      "credit": "",
+      "localOnly": true,
+      "note": "Imagen configurada localmente para uso personal en localhost"
+    }
+  },
+  "concepts": {
+    "scarlet-rot": {
+      "image": "",
+      "banner": "",
+      "source": "",
+      "credit": "",
+      "localOnly": true,
+      "note": "Imagen configurada localmente para uso personal en localhost"
+    }
+  },
+  "endings": {
+    "fracture": {
+      "image": "",
+      "source": "",
+      "credit": "",
+      "localOnly": true,
+      "note": "Imagen configurada localmente para uso personal en localhost"
+    }
+  },
+  "timelineEvents": {
+    "la-fractura": {
+      "image": "",
+      "banner": "",
+      "source": "",
+      "credit": "",
+      "localOnly": true,
+      "note": "Imagen configurada localmente para uso personal en localhost"
+    }
+  }
+}

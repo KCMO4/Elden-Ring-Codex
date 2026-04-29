@@ -1,6 +1,7 @@
 import type { Region } from './types'
+import { regionsLore } from './lore/regionsLore'
 
-export const regionsData: Region[] = [
+const baseRegions: Region[] = [
   {
     id: 'limgrave',
     name: 'Limgrave',
@@ -200,3 +201,8 @@ export const regionsData: Region[] = [
     tags: ['Farum Azula', 'Placidusax', 'Maliketh', 'Dragones Antiguos', 'Tiempo'],
   },
 ]
+
+export const regionsData: Region[] = baseRegions.map((r) => ({
+  ...r,
+  ...(regionsLore[r.id] ?? {}),
+}))
