@@ -20,6 +20,13 @@ public/art/concepts/*
 !public/art/concepts/.gitkeep
 !public/art/**/LEEME.md
 
+# Local AI tools (Real-ESRGAN binary, models) — NEVER commit
+tools/
+
+# Trash + intermediate report files from image audit pipeline
+.trash-art/
+reports/
+
 # IDE/editor
 .vscode/
 .idea/

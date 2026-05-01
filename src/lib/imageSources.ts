@@ -29,16 +29,23 @@ export function ImageSourcesProvider({ children }: { children: ReactNode }) {
   const [sources, setSources] = useState<ImageSources>({})
 
   useEffect(() => {
-    let alive = true
-    fetch('/image-sources.local.json', { cache: 'no-store' })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (alive && data && typeof data === 'object') setSources(data as ImageSources)
-      })
-      .catch(() => {})
-    return () => {
-      alive = false
-    }
+    const controller = new AbortController()
+    ;(async () => {
+      try {
+        const r = await fetch('/image-sources.local.json', {
+          cache: 'no-store',
+          signal: controller.signal,
+        })
+        if (!r.ok) return
+        const data = await r.json()
+        if (data && typeof data === 'object') {
+          setSources(data as ImageSources)
+        }
+      } catch {
+        /* override file is optional — silently ignore network/parse errors */
+      }
+    })()
+    return () => controller.abort()
   }, [])
 
   return createElement(ImageSourcesContext.Provider, { value: sources }, children)

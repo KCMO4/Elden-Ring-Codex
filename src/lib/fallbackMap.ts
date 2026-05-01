@@ -32,6 +32,8 @@ export const characterFallbacks: Record<string, FallbackType> = {
   fortissax:        'dragon',
   placidusax:       'dragon',
   'gloam-eyed-queen': 'flame',
+  irina:            'character',
+  'stormhawk-deenh': 'war',
 }
 
 export const regionFallbacks: Record<string, FallbackType> = {
@@ -105,14 +107,5 @@ export const glossaryFallbacks: Record<string, FallbackType> = {
   ghostflame:         'death',
   bloodflame:         'blood',
   haligtree:          'haligtree',
-  'age-of-stars':     'ending-stars',
-}
-
-export const endingFallbacks: Record<string, FallbackType> = {
-  fracture:           'ending-fracture',
-  order:              'ending-order',
-  duskborn:           'ending-dusk',
-  despair:            'ending-despair',
-  'frenzied-flame':   'ending-frenzied',
   'age-of-stars':     'ending-stars',
 }

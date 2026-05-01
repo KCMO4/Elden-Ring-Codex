@@ -37,11 +37,11 @@ export function EndingDetailPage() {
       theories={ending.theories}
       ambiguous={ending.ambiguous}
       relatedGroups={[
-        { label: 'Personajes', items: resolveCharacterIds(ending.relatedCharacters) },
-        { label: 'Regiones', items: resolveRegionIds(ending.relatedRegions) },
-        { label: 'Facciones', items: resolveFactionIds(ending.relatedFactions) },
-        { label: 'Conceptos', items: resolveConceptIds(ending.relatedConcepts) },
-        { label: 'Timeline', items: resolveTimelineIds(ending.relatedTimelineEvents) },
+        { label: 'Personajes', type: 'character', items: resolveCharacterIds(ending.relatedCharacters) },
+        { label: 'Regiones', type: 'region', items: resolveRegionIds(ending.relatedRegions) },
+        { label: 'Facciones', type: 'faction', items: resolveFactionIds(ending.relatedFactions) },
+        { label: 'Conceptos', type: 'concept', items: resolveConceptIds(ending.relatedConcepts) },
+        { label: 'Timeline', type: 'timeline', items: resolveTimelineIds(ending.relatedTimelineEvents) },
       ]}
       legacyContent={
         (!ending.deepLore || ending.deepLore.length === 0) && (
@@ -63,6 +63,7 @@ export function EndingDetailPage() {
       }
       prev={prev}
       next={next}
+      bookmark={{ type: 'ending', slug: ending.slug ?? ending.id }}
     />
   )
 }

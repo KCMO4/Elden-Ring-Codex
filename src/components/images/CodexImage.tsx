@@ -1,10 +1,17 @@
-import { useState, useMemo } from 'react'
-import { FallbackIllustration } from './FallbackIllustrations'
+import { useState, useMemo, lazy, Suspense } from 'react'
 import type { FallbackType } from '../../data/types'
 import { useEntityImage, type ImageCategory, type ImageKind } from '../../lib/imageSources'
 import { categoryToArtPath } from '../../lib/assetPaths'
 
-export type ImageVariant = 'portrait' | 'banner' | 'square' | 'card'
+/* FallbackIllustrations is a 1953-line bundle of decorative SVG fallbacks.
+   It only renders when an entity has no image AND no override — extracting
+   it into its own chunk keeps the initial bundle leaner without affecting
+   the common "image loads" path. */
+const FallbackIllustration = lazy(() =>
+  import('./FallbackIllustrations').then((m) => ({ default: m.FallbackIllustration })),
+)
+
+export type ImageVariant = 'portrait' | 'banner' | 'square' | 'card' | 'landscape'
 
 interface CodexImageProps {
   /** Manually supplied src (used only when entityCategory/entityId not provided) */
@@ -25,17 +32,29 @@ interface CodexImageProps {
 }
 
 const aspectMap: Record<ImageVariant, string> = {
-  portrait: 'aspect-[4/5]',
-  banner:   'aspect-[16/7]',
-  square:   'aspect-square',
-  card:     'aspect-[3/2]',
+  portrait:  'aspect-[4/5]',
+  banner:    'aspect-[16/9]',
+  square:    'aspect-square',
+  card:      'aspect-[3/2]',
+  landscape: 'aspect-[16/9]',
 }
 
 const fallbackAspectMap: Record<ImageVariant, 'portrait' | 'landscape' | 'square'> = {
-  portrait: 'portrait',
-  banner:   'landscape',
-  square:   'square',
-  card:     'landscape',
+  portrait:  'portrait',
+  banner:    'landscape',
+  square:    'square',
+  card:      'landscape',
+  landscape: 'landscape',
+}
+
+// Variantes donde la cabeza/sujeto suele estar arriba: forzamos object-position top
+// para que object-cover no recorte cabezas cuando la imagen es más alta que el spot.
+const objectPositionMap: Record<ImageVariant, string> = {
+  portrait:  'object-[center_top]',
+  landscape: 'object-[center_30%]',
+  card:      'object-[center_30%]',
+  banner:    'object-center',
+  square:    'object-center',
 }
 
 export function CodexImage({
@@ -66,11 +85,13 @@ export function CodexImage({
 
   const [chainIndex, setChainIndex] = useState(0)
   const [allFailed, setAllFailed] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const currentSrc = resolutionChain[chainIndex]
 
   const handleError = () => {
     if (chainIndex + 1 < resolutionChain.length) {
       setChainIndex(chainIndex + 1)
+      setLoaded(false)
     } else {
       setAllFailed(true)
     }
@@ -80,23 +101,37 @@ export function CodexImage({
 
   return (
     <div className={`relative overflow-hidden ${aspectMap[variant]} ${className}`}>
+      {showImage && !loaded && (
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-br from-codex-brown/40 via-codex-black/60 to-codex-brown/30 animate-pulse"
+        />
+      )}
       {showImage ? (
         <img
           key={currentSrc}
           src={currentSrc}
           alt={alt}
           loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
           onError={handleError}
-          className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700
+          style={{ imageRendering: 'auto' }}
+          className={`absolute inset-0 w-full h-full object-cover ${objectPositionMap[variant]} transition-all duration-700
+            ${loaded ? 'opacity-100' : 'opacity-0'}
             ${hoverZoom ? 'group-hover:scale-105' : ''}`}
         />
       ) : (
         <div className="absolute inset-0">
-          <FallbackIllustration
-            type={fallbackType}
-            aspect={fallbackAspectMap[variant]}
-            className="w-full h-full"
-          />
+          <Suspense fallback={
+            <div className="w-full h-full bg-gradient-to-br from-codex-brown/40 via-codex-black/60 to-codex-brown/30" />
+          }>
+            <FallbackIllustration
+              type={fallbackType}
+              aspect={fallbackAspectMap[variant]}
+              className="w-full h-full"
+            />
+          </Suspense>
         </div>
       )}
 

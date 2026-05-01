@@ -37,9 +37,9 @@ export const narrativeRoutes: NarrativeRoute[] = [
     ending: 'fracture',
     accent: 'gold',
     description:
-      'La ruta canónica del Mancillado: derrotar demidioses, reunir Grandes Runas, ascender al trono Elden y restaurar el Orden Dorado en su forma básica. Sin reformas, sin rebelión, sin alternativa cosmológica. Es el camino que asume que el régimen merece continuar tal como era — incluso después de saber por qué se rompió.',
+      'La ruta canónica del Tarnished: derrotar demidioses, reunir Grandes Runas, ascender al trono Elden y restaurar el Orden Dorado en su forma básica. Sin reformas, sin rebelión, sin alternativa cosmológica. Es el camino que asume que el régimen merece continuar tal como era — incluso después de saber por qué se rompió.',
     poeticIntro:
-      'El árbol llama. El Mancillado responde. Lo demás es ritual repetido por inercia.',
+      'El árbol llama. El Tarnished responde. Lo demás es ritual repetido por inercia.',
     stops: [
       { slug: 'tarnished',           type: 'concept',   why: 'Empieza por entender qué eres: descendiente exiliado generaciones atrás, ahora portador improbable de la gracia restituida.' },
       { slug: 'tarnished-return',    type: 'timeline',  why: 'Marika dejó un discurso convocando a tu pueblo. La gracia regresó cuando el Anillo se rompió. Ese mismo día comenzó tu viaje.' },
@@ -99,7 +99,7 @@ export const narrativeRoutes: NarrativeRoute[] = [
     ending: 'duskborn',
     accent: 'dusk',
     description:
-      'Cuando Marika selló la Muerte Predestinada, los seres del Interregno dejaron de poder morir verdaderamente. Godwyn fue el primer caso visible: alma destruida, cuerpo eterno bajo Deeproot Depths. Fia dedica su quest a sanar esa herida cosmológica devolviendo la Muerte al cosmos. Es la era más misericordiosa — y quizás la más honesta con la naturaleza humana.',
+      'Cuando Marika selló la Muerte Predestinada, los seres de las Tierras Intermedias dejaron de poder morir verdaderamente. Godwyn fue el primer caso visible: alma destruida, cuerpo eterno bajo Deeproot Depths. Fia dedica su quest a sanar esa herida cosmológica devolviendo la Muerte al cosmos. Es la era más misericordiosa — y quizás la más honesta con la naturaleza humana.',
     poeticIntro:
       'Dejar morir a quienes han muerto. Dejar descansar al hijo dorado. La piedad como cosmología.',
     stops: [
@@ -111,10 +111,10 @@ export const narrativeRoutes: NarrativeRoute[] = [
       { slug: 'godwyn-dragones',     type: 'timeline',  why: 'El pacto que precede a la Noche. Sin él, Fortissax no estaría atrapado. Es la única reforma religiosa positiva del régimen.' },
       { slug: 'cuchillos-negros',    type: 'faction',   why: 'Las hojas forjadas con la mecha robada de la Runa de la Muerte. Únicas armas capaces de matar a un demidiós.' },
       { slug: 'ranni-noche-cuchillos', type: 'timeline', why: 'La conjura que mató parcialmente a Godwyn. Daño colateral de la rebelión cosmológica de Ranni.' },
-      { slug: 'godwyn-prince-of-death', type: 'timeline', why: 'El cuerpo sin alma se hunde en las raíces del Erdtree. Comienza la fuga de Deathroot que infectará el Interregno entero.' },
+      { slug: 'godwyn-prince-of-death', type: 'timeline', why: 'El cuerpo sin alma se hunde en las raíces del Árbol Áureo. Comienza la fuga de Deathroot que infectará las Tierras Intermedias enteras.' },
       { slug: 'deathroot',           type: 'concept',   why: 'La sustancia necrótica que emana del cadáver eterno. Cada cadáver reanimado del juego procede de aquí.' },
       { slug: 'those-who-live-in-death', type: 'concept', why: 'El estado de existencia parcial: cuerpo sin alma, animado por la Deathroot. Existen porque la Muerte verdadera no funciona.' },
-      { slug: 'deeproot-depths',     type: 'region',    why: 'El sótano del Interregno donde yace Godwyn. La pesadilla se materializa aquí.' },
+      { slug: 'deeproot-depths',     type: 'region',    why: 'El sótano de las Tierras Intermedias donde yace Godwyn. La pesadilla se materializa aquí.' },
       { slug: 'd',                   type: 'character', why: 'El cazador de Aquellos que Viven en la Muerte. Antagonista cosmológico de Fia. Su muerte es bisagra de la quest.' },
       { slug: 'rogier',              type: 'character', why: 'El investigador académico que descifra parte del caso. Sus notas guían a Fia. Muere por exposición a la Deathroot.' },
       { slug: 'fia',                 type: 'character', why: 'La Doncella de Muerte. Su devoción a Godwyn es lo que sostiene la quest entera. Solo ella obtiene la Runa Mendaz.' },
@@ -134,7 +134,7 @@ export const narrativeRoutes: NarrativeRoute[] = [
     ending: 'frenzied-flame',
     accent: 'frenzied',
     description:
-      'La respuesta más radical al sufrimiento universal: borrarlo todo. Los Tres Dedos predican que existir es sufrir y la única piedad es quemarlo. El Mancillado que abraza esta llama abandona a Melina, se entrega al dios externo nihilista, y consume el Interregno entero en una conflagración dorada caótica. Si Melina sobrevive, jura venganza desde la oscuridad.',
+      'La respuesta más radical al sufrimiento universal: borrarlo todo. Los Tres Dedos predican que existir es sufrir y la única piedad es quemarlo. El Tarnished que abraza esta llama abandona a Melina, se entrega al dios externo nihilista, y consume las Tierras Intermedias enteras en una conflagración dorada caótica. Si Melina sobrevive, jura venganza desde la oscuridad.',
     poeticIntro:
       'Que la individualidad se disuelva. Que el sufrimiento termine en su forma más completa: borrando a quien sufre.',
     stops: [
@@ -148,8 +148,8 @@ export const narrativeRoutes: NarrativeRoute[] = [
       { slug: 'subterranean-shunning-grounds', type: 'region', why: 'El subsuelo de Leyndell. La cárcel oficial del régimen donde duermen los Tres Dedos sellados.' },
       { slug: 'frenzied-victims',    type: 'faction',   why: 'Los infectados anónimos: campesinos, peregrinos, cuerpos cualesquiera. Sus voces predican lo que sus dueños no eligieron decir.' },
       { slug: 'melina',              type: 'character', why: 'Tu compañera silenciosa. Te abandonará si abrazas la llama. Su última frase es promesa de venganza.' },
-      { slug: 'gideon',              type: 'character', why: 'El erudito de la Mesa Redonda. Cuando comprende que el Mancillado eligió la Llama, se rebela. Su traición es predecible — alguien tiene que detenerte.' },
-      { slug: 'frenzied-flame',      type: 'ending',    why: 'El Señor de la Llama Frenética. El Interregno se quema en océano dorado caótico. Si Melina sobrevive, regresa con un cuchillo desde la oscuridad.' },
+      { slug: 'gideon',              type: 'character', why: 'El erudito de la Mesa Redonda. Cuando comprende que el Tarnished eligió la Llama, se rebela. Su traición es predecible — alguien tiene que detenerte.' },
+      { slug: 'frenzied-flame',      type: 'ending',    why: 'El Señor de la Llama Frenética. El Tierras Intermedias se quema en océano dorado caótico. Si Melina sobrevive, regresa con un cuchillo desde la oscuridad.' },
     ],
   },
 
@@ -163,7 +163,7 @@ export const narrativeRoutes: NarrativeRoute[] = [
     ending: 'age-of-stars',
     accent: 'stars',
     description:
-      'Ranni la Bruja conspiró durante siglos para liberarse del contrato Empyrean impuesto por los Dos Dedos. Su Era de las Estrellas reemplaza la luz cercana del Erdtree con la luna oscura distante. Es la única rebelión cosmológica del Interregno que tuvo éxito estructural. El Mancillado que la sigue parte con ella entre las estrellas como su consorte.',
+      'Ranni la Bruja conspiró durante siglos para liberarse del contrato Empyrean impuesto por los Dos Dedos. Su Era de las Estrellas reemplaza la luz cercana del Árbol Áureo con la luna oscura distante. Es la única rebelión cosmológica de las Tierras Intermedias que tuvo éxito estructural. El Tarnished que la sigue parte con ella entre las estrellas como su consorte.',
     poeticIntro:
       'Que los dioses se alejen. Que la luna fría reemplace al árbol cálido. Que el cosmos quede libre — y completamente solo.',
     stops: [
@@ -175,7 +175,7 @@ export const narrativeRoutes: NarrativeRoute[] = [
       { slug: 'maliketh',            type: 'character', why: 'El verdugo de Marika cuya Runa de la Muerte Ranni necesita robar. Sin esa mecha, no hay Cuchillos Negros.' },
       { slug: 'ranni-noche-cuchillos', type: 'timeline', why: 'La conjura. Una sola noche cambia el cosmos: Godwyn muere parcialmente, Ranni mata su propio cuerpo Empyrean.' },
       { slug: 'ranni-bodily-death',  type: 'timeline',  why: 'El acto cosmológico más radical del juego: la Empyrean asesina su propia carne para escapar del contrato divino.' },
-      { slug: 'ranni',               type: 'character', why: 'La Bruja muñeca. Su frialdad es estrategia, no patología. Es la única mente del Interregno que pensó el problema cosmológico hasta el final.' },
+      { slug: 'ranni',               type: 'character', why: 'La Bruja muñeca. Su frialdad es estrategia, no patología. Es la única mente de las Tierras Intermedias que pensó el problema cosmológico hasta el final.' },
       { slug: 'three-sisters',       type: 'region',    why: 'El centro de operaciones de la rebelión. Tres torres, tres herederas Carian, tres respuestas distintas a la pérdida.' },
       { slug: 'blaidd',              type: 'character', why: 'La Bestia Sombra de Ranni. Su lealtad es estructural pero su locura instalada como freno la consume.' },
       { slug: 'iji',                 type: 'character', why: 'El gigante reformado. Forja la espada lunar y muere sabiendo que su sacrificio es precio del plan.' },
@@ -186,8 +186,8 @@ export const narrativeRoutes: NarrativeRoute[] = [
       { slug: 'hoja-mata-dedos',     type: 'concept',   why: 'El arma forjada por los Nox para cortar a los Dos Dedos. Ranni la recupera. Es lo que asegura que los Dedos no retomen control.' },
       { slug: 'radahn',              type: 'character', why: 'El hermano que bloqueó las estrellas para protegerla. Su muerte en el Festival es lo que libera el destino estelar.' },
       { slug: 'radahn-holds-stars',  type: 'concept',   why: 'El bloqueo que Ranni necesita romper. Su hermano la protegía sin saber que su protección era la cárcel.' },
-      { slug: 'dark-moon',           type: 'concept',   why: 'La magia lunar que reemplazará al sol del Erdtree. Espadón de la Luna Oscura es el cetro cosmológico de la nueva era.' },
-      { slug: 'age-of-stars',        type: 'ending',    why: 'La Era de las Estrellas. El cosmos se aleja de los dioses cercanos. Frío. Libre. El Mancillado parte con Ranni entre constelaciones.' },
+      { slug: 'dark-moon',           type: 'concept',   why: 'La magia lunar que reemplazará al sol del Árbol Áureo. Espadón de la Luna Oscura es el cetro cosmológico de la nueva era.' },
+      { slug: 'age-of-stars',        type: 'ending',    why: 'La Era de las Estrellas. El cosmos se aleja de los dioses cercanos. Frío. Libre. El Tarnished parte con Ranni entre constelaciones.' },
     ],
   },
 

@@ -1,18 +1,26 @@
 import { motion } from 'framer-motion'
-import { Clock, Search, BookOpen } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import {
+  Clock, Search, BookOpen, ArrowRight,
+  Users, Shield, Map as MapIcon, BookMarked, Scroll, Flag,
+  type LucideIcon,
+} from 'lucide-react'
 import { GoldenTree } from './illustrations/GoldenTree'
 import { BrokenRing } from './illustrations/BrokenRing'
 import { RuneSeparator } from './illustrations/RuneSeparator'
+import { FeaturedEntry } from './FeaturedEntry'
+import { useReadingHistory, type HistoryItem } from '../lib/readingHistory'
+import { entityTypePath } from '../data/lookups'
+import type { EntityType } from '../data/types'
 
-interface Props {
-  /** Optional legacy navigation callback (string section id). Pages now have proper URLs. */
-  onNavigate?: (s: string) => void
-}
+/* The legacy `onNavigate?` prop existed during the pre-Router era and was
+   kept by App.tsx via a string transform. With proper Link support here it
+   is no longer needed; App.tsx renders <LandingPage/> with no props. */
 
-export function LandingPage({ onNavigate }: Props) {
-  const navTo = (section: string) => {
-    if (onNavigate) onNavigate(section)
-  }
+export function LandingPage() {
+  const { items: history } = useReadingHistory()
+  const recent = history.slice(0, 6)
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-20">
       {/* Background atmospheric effects */}
@@ -97,7 +105,7 @@ export function LandingPage({ onNavigate }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.7 }}
         >
-          "Timeline profundo del lore base, personajes, batallas, dioses, regiones y tragedias del Interregno"
+          "Timeline profundo del lore base, personajes, batallas, dioses, regiones y tragedias de las Tierras Intermedias"
         </motion.p>
 
         {/* CTA buttons */}
@@ -107,36 +115,57 @@ export function LandingPage({ onNavigate }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.6 }}
         >
-          <CtaButton
+          <CtaLink
             icon={<BookOpen size={16} />}
             label="Comenzar Lectura"
+            to="/timeline"
             primary
-            onClick={() => navTo('timeline')}
           />
-          <CtaButton
+          <CtaLink
             icon={<Clock size={16} />}
             label="Ver Timeline"
-            onClick={() => navTo('timeline')}
+            to="/timeline"
           />
-          <CtaButton
+          <CtaLink
             icon={<Search size={16} />}
             label="Buscar Personaje"
-            onClick={() => navTo('personajes')}
+            to="/personajes"
           />
         </motion.div>
+
+        <FeaturedEntry />
+
+        {/* Continue reading — only renders when localStorage has visited entries */}
+        {recent.length > 0 && (
+          <motion.section
+            className="mt-16 text-left"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.6 }}
+          >
+            <p className="font-heading text-xs text-codex-gold-dim tracking-[0.3em] uppercase mb-4 text-center">
+              Continuar leyendo
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {recent.map((item) => (
+                <ContinueReadingCard key={`${item.type}:${item.slug}`} item={item} />
+              ))}
+            </div>
+          </motion.section>
+        )}
 
         {/* Bottom stats */}
         <motion.div
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.6 }}
+          transition={{ delay: 1.7 }}
         >
           {[
-            { num: '16', label: 'Capítulos' },
-            { num: '30', label: 'Personajes' },
-            { num: '21', label: 'Facciones' },
-            { num: '18', label: 'Regiones' },
+            { num: '70+', label: 'Capítulos' },
+            { num: '190+', label: 'Personajes' },
+            { num: '32', label: 'Facciones' },
+            { num: '30+', label: 'Regiones' },
           ].map(({ num, label }) => (
             <div key={label} className="parchment-panel p-4 text-center">
               <p className="font-heading text-2xl text-codex-gold mb-1" style={{ textShadow: '0 0 10px rgba(197,160,89,0.4)' }}>
@@ -151,24 +180,71 @@ export function LandingPage({ onNavigate }: Props) {
   )
 }
 
-function CtaButton({
-  icon, label, primary, onClick,
+const TYPE_META: Record<EntityType, { label: string; icon: LucideIcon }> = {
+  character: { label: 'Personaje', icon: Users },
+  region:    { label: 'Región',    icon: MapIcon },
+  faction:   { label: 'Facción',   icon: Shield },
+  concept:   { label: 'Concepto',  icon: BookMarked },
+  timeline:  { label: 'Capítulo',  icon: Clock },
+  ending:    { label: 'Final',     icon: Flag },
+}
+
+function ContinueReadingCard({ item }: { item: HistoryItem }) {
+  const meta = TYPE_META[item.type]
+  const Icon = meta?.icon ?? Scroll
+
+  return (
+    <Link
+      to={entityTypePath(item.type, item.slug)}
+      className="parchment-panel p-3 group hover:border-codex-gold-dim/60
+                 hover:shadow-[0_0_15px_rgba(197,160,89,0.08)] transition-all"
+    >
+      <div className="flex items-start gap-3">
+        <div className="shrink-0 mt-0.5 w-8 h-8 flex items-center justify-center rounded-sm
+                        bg-codex-brown/40 border border-codex-gold-dim/20 text-codex-gold-dim
+                        group-hover:text-codex-gold-bright transition-colors">
+          <Icon size={14} />
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="font-heading text-[10px] text-codex-gold-dim/80 tracking-widest uppercase">
+            {meta?.label ?? 'Entrada'}
+          </p>
+          <p className="font-subheading text-sm text-codex-parchment group-hover:text-codex-gold-bright
+                        transition-colors leading-snug truncate">
+            {item.label}
+          </p>
+          {item.sublabel && (
+            <p className="font-body text-[11px] text-codex-parchment-dim/70 truncate">
+              {item.sublabel}
+            </p>
+          )}
+        </div>
+        <ArrowRight size={12} className="shrink-0 mt-1.5 text-codex-gold-dim/60 group-hover:text-codex-gold transition-colors" />
+      </div>
+    </Link>
+  )
+}
+
+function CtaLink({
+  icon, label, to, primary,
 }: {
-  icon: React.ReactNode; label: string; primary?: boolean; onClick: () => void
+  icon: React.ReactNode
+  label: string
+  to: string
+  primary?: boolean
 }) {
   return (
-    <motion.button
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      onClick={onClick}
-      className={`flex items-center gap-2 px-6 py-3 font-heading text-sm tracking-widest uppercase transition-all duration-200
+    <Link
+      to={to}
+      className={`flex items-center gap-2 px-6 py-3 font-heading text-sm tracking-widest uppercase rounded-sm
+                  transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]
         ${primary
           ? 'bg-codex-gold/15 border border-codex-gold/50 text-codex-gold-bright hover:bg-codex-gold/25 hover:shadow-[0_0_20px_rgba(197,160,89,0.2)]'
           : 'bg-codex-brown/50 border border-codex-gold-dim/30 text-codex-parchment-dim hover:border-codex-gold-dim/50 hover:text-codex-parchment'
-        } rounded-sm`}
+        }`}
     >
       {icon}
       {label}
-    </motion.button>
+    </Link>
   )
 }

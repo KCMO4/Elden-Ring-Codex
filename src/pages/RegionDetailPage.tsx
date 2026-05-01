@@ -44,11 +44,11 @@ export function RegionDetailPage() {
       beneficiaries={region.beneficiaries}
       victims={region.victims}
       relatedGroups={[
-        { label: 'Personajes', items: resolveCharacterIds(region.relatedCharacters) },
-        { label: 'Facciones', items: resolveFactionIds(region.relatedFactions) },
-        { label: 'Regiones vinculadas', items: resolveRegionIds(region.relatedRegions) },
-        { label: 'Conceptos', items: resolveConceptIds(region.relatedConcepts) },
-        { label: 'Timeline', items: resolveTimelineIds(region.relatedTimelineEvents) },
+        { label: 'Personajes', type: 'character', items: resolveCharacterIds(region.relatedCharacters) },
+        { label: 'Facciones', type: 'faction', items: resolveFactionIds(region.relatedFactions) },
+        { label: 'Regiones vinculadas', type: 'region', items: resolveRegionIds(region.relatedRegions) },
+        { label: 'Conceptos', type: 'concept', items: resolveConceptIds(region.relatedConcepts) },
+        { label: 'Timeline', type: 'timeline', items: resolveTimelineIds(region.relatedTimelineEvents) },
       ]}
       legacyContent={
         (!region.deepLore || region.deepLore.length === 0) && (
@@ -76,6 +76,7 @@ export function RegionDetailPage() {
       }
       prev={prev}
       next={next}
+      bookmark={{ type: 'region', slug: region.slug ?? region.id }}
     />
   )
 }

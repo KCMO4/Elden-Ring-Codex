@@ -14,20 +14,20 @@ interface Props {
  * Maps the human-readable `chapter` field to an era category for color-coding.
  * Roman numeral chapters (I, II, ...) are mapped via their numeric prefix in chapterNumber.
  */
-function classifyEra(entry: TimelineEntry): 'pre-orden' | 'orden-dorado' | 'pre-fractura' | 'fractura' | 'mancillado' {
+function classifyEra(entry: TimelineEntry): 'pre-orden' | 'orden-dorado' | 'pre-fractura' | 'fractura' | 'Tarnished' {
   const c = (entry.chapter ?? '').toLowerCase()
   if (c.includes('pre-orden') || c.includes('antiguos') || c.includes('transición')) return 'pre-orden'
   if (c.includes('orden dorado')) return 'orden-dorado'
   if (c.includes('pre-fractura') || c.includes('post-noche')) return 'pre-fractura'
   if (c.includes('fractura')) return 'fractura'
-  if (c.includes('mancillado')) return 'mancillado'
+  if (c.includes('Tarnished')) return 'Tarnished'
   // Roman numeral chapters: classify by chapterNumber prefix
   const num = romanToInt(entry.chapterNumber.split('·')[0].trim())
   if (num <= 3) return 'pre-orden'
   if (num <= 10) return 'orden-dorado'
   if (num <= 12) return 'pre-fractura'
   if (num <= 14) return 'fractura'
-  return 'mancillado'
+  return 'Tarnished'
 }
 
 function romanToInt(s: string): number {
@@ -46,7 +46,7 @@ const eraStyles: Record<string, { label: string; bg: string; border: string; dot
   'orden-dorado':  { label: 'Orden Dorado',      bg: 'bg-codex-gold/10',  border: 'border-codex-gold/40',  dot: 'bg-codex-gold',  text: 'text-codex-gold' },
   'pre-fractura':  { label: 'Pre-Fractura',      bg: 'bg-amber-900/15',   border: 'border-amber-600/40',   dot: 'bg-amber-500',   text: 'text-amber-400' },
   'fractura':      { label: 'Era de la Fractura', bg: 'bg-codex-rot/15',  border: 'border-codex-rot/40',   dot: 'bg-codex-rot',   text: 'text-rose-300' },
-  'mancillado':    { label: 'Era del Mancillado', bg: 'bg-blue-900/15',   border: 'border-blue-500/30',    dot: 'bg-blue-400',    text: 'text-blue-300' },
+  'Tarnished':    { label: 'Era del Tarnished', bg: 'bg-blue-900/15',   border: 'border-blue-500/30',    dot: 'bg-blue-400',    text: 'text-blue-300' },
 }
 
 const ZOOM_LEVELS = [180, 240, 320, 420] // card widths in px
@@ -134,8 +134,11 @@ export function TimelineRibbon({ entries }: Props) {
       <div className="relative">
         <div
           ref={scrollRef}
-          className="overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-codex-gold-dim/40 scrollbar-track-codex-brown/20"
-          style={{ scrollbarColor: 'rgba(138,112,64,0.4) rgba(63,40,28,0.2)' }}
+          className="overflow-x-auto pb-4"
+          style={{
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'rgba(138,112,64,0.4) rgba(63,40,28,0.2)',
+          }}
         >
           {/* Spine */}
           <div className="relative" style={{ minWidth: `${entries.length * (cardWidth + 12)}px` }}>
@@ -188,7 +191,7 @@ export function TimelineRibbon({ entries }: Props) {
                     </div>
 
                     {/* Index number under spine */}
-                    <span className="font-heading text-[10px] text-codex-parchment-dim/50 tracking-wider mt-1.5">
+                    <span className="font-heading text-[10px] text-codex-parchment-dim/70 tracking-wider mt-1.5">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </motion.div>
@@ -199,7 +202,7 @@ export function TimelineRibbon({ entries }: Props) {
         </div>
       </div>
 
-      <p className="font-heading text-[10px] text-codex-parchment-dim/50 tracking-wider uppercase text-center mt-2">
+      <p className="font-heading text-[10px] text-codex-parchment-dim/70 tracking-wider uppercase text-center mt-2">
         Desliza horizontalmente · Click en cualquier evento para abrirlo
       </p>
     </div>

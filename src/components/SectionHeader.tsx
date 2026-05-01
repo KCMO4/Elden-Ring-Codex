@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { BookOpen } from 'lucide-react'
 import { RuneSeparator } from './illustrations/RuneSeparator'
 
 interface SectionHeaderProps {
@@ -6,9 +8,11 @@ interface SectionHeaderProps {
   title: string
   subtitle?: string
   poeticIntro?: string
+  /** If provided, renders a "Lectura completa" link to /lectura/<readingCategory>. */
+  readingCategory?: 'personajes' | 'facciones' | 'regiones' | 'conceptos' | 'timeline' | 'finales'
 }
 
-export function SectionHeader({ chapter, title, subtitle, poeticIntro }: SectionHeaderProps) {
+export function SectionHeader({ chapter, title, subtitle, poeticIntro, readingCategory }: SectionHeaderProps) {
   return (
     <motion.div
       className="text-center mb-12"
@@ -27,6 +31,18 @@ export function SectionHeader({ chapter, title, subtitle, poeticIntro }: Section
       </h2>
       {subtitle && (
         <p className="font-subheading text-lg text-codex-parchment-dim italic">{subtitle}</p>
+      )}
+      {readingCategory && (
+        <Link
+          to={`/lectura/${readingCategory}`}
+          className="inline-flex items-center gap-1.5 mt-4 px-3 py-1.5 rounded-sm
+                     border border-codex-gold-dim/30 bg-codex-brown/30
+                     font-heading text-[11px] tracking-wider uppercase text-codex-parchment-dim
+                     hover:border-codex-gold-dim/60 hover:text-codex-gold transition-all"
+        >
+          <BookOpen size={11} />
+          Lectura completa
+        </Link>
       )}
       <div className="mt-6">
         <RuneSeparator />

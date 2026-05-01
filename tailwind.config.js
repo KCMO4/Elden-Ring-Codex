@@ -8,19 +8,19 @@ export default {
     extend: {
       colors: {
         codex: {
-          black: '#0a0a08',
-          brown: '#1c1410',
-          green: '#0f1a15',
-          gold: '#c5a059',
-          'gold-dim': '#8a7040',
-          'gold-bright': '#e8d5a3',
-          parchment: '#e3d5b8',
-          'parchment-dim': '#b0a28a',
-          ink: '#2b2118',
-          crimson: '#8a2e2e',
-          rot: '#6b2d4a',
-          ghost: '#3a506b',
-          flame: '#8c4a2f',
+          black: '#13110d',
+          brown: '#261b15',
+          green: '#15211c',
+          gold: '#d4ad62',
+          'gold-dim': '#b08e58',
+          'gold-bright': '#f2deb0',
+          parchment: '#ede0c5',
+          'parchment-dim': '#d4c8b0',
+          ink: '#352a20',
+          crimson: '#bf4848',
+          rot: '#a04270',
+          ghost: '#5a72b5',
+          flame: '#c97352',
         }
       },
       fontFamily: {

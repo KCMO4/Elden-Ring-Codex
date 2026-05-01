@@ -1,7 +1,9 @@
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { NavLink } from 'react-router-dom'
-import { X, BookOpen, Clock, Users, Shield, Map, BookMarked, Scroll, Compass, Globe2 } from 'lucide-react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { X, BookOpen, Clock, Users, Shield, Map, BookMarked, Scroll, Compass, Bookmark, GitBranch, Shuffle } from 'lucide-react'
 import { RuneOrnament } from './illustrations/RuneSeparator'
+import { randomEntryPath } from '../data/lookups'
 
 const navItems: { to: string; label: string; icon: React.ReactNode; sub?: string; end?: boolean }[] = [
   { to: '/', label: 'Portada', icon: <BookOpen size={14} />, sub: 'Códice del Orden Fracturado', end: true },
@@ -9,10 +11,11 @@ const navItems: { to: string; label: string; icon: React.ReactNode; sub?: string
   { to: '/personajes', label: 'Enciclopedia', icon: <Users size={14} />, sub: 'Personajes' },
   { to: '/facciones', label: 'Facciones', icon: <Shield size={14} />, sub: 'Facciones y Enemigos' },
   { to: '/regiones', label: 'Regiones', icon: <Map size={14} />, sub: 'Geografía del Lore' },
-  { to: '/mapa', label: 'Mapa del Interregno', icon: <Globe2 size={14} />, sub: 'Cartografía interactiva' },
-  { to: '/conceptos', label: 'Conceptos', icon: <BookMarked size={14} />, sub: 'Glosario del Interregno' },
+  { to: '/conceptos', label: 'Conceptos', icon: <BookMarked size={14} />, sub: 'Glosario de las Tierras Intermedias' },
   { to: '/finales', label: 'Los Finales', icon: <Scroll size={14} />, sub: 'Las 6 Eras' },
   { to: '/rutas', label: 'Rutas Narrativas', icon: <Compass size={14} />, sub: 'Lecturas guiadas' },
+  { to: '/genealogia', label: 'Genealogía', icon: <GitBranch size={14} />, sub: 'Dinastía del Árbol Áureo' },
+  { to: '/favoritos', label: 'Favoritos', icon: <Bookmark size={14} />, sub: 'Tus entradas guardadas' },
 ]
 
 interface Props {
@@ -23,6 +26,23 @@ interface Props {
 }
 
 export function SidebarNav({ mobileOpen, onClose, readingMode, onToggleReading }: Props) {
+  const navigate = useNavigate()
+
+  /* Body scroll lock while mobile menu is open — prevents background from
+     scrolling on touch and avoids janky overscroll on iOS Safari. */
+  useEffect(() => {
+    if (mobileOpen) {
+      const prev = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => { document.body.style.overflow = prev }
+    }
+  }, [mobileOpen])
+
+  const handleRandom = () => {
+    onClose()
+    navigate(randomEntryPath())
+  }
+
   const content = (
     <div className="h-full flex flex-col">
       <div className="p-5 border-b border-codex-gold-dim/20">
@@ -69,8 +89,19 @@ export function SidebarNav({ mobileOpen, onClose, readingMode, onToggleReading }
         ))}
       </nav>
 
-      <div className="p-4 border-t border-codex-gold-dim/20">
+      <div className="p-4 border-t border-codex-gold-dim/20 space-y-2">
         <button
+          type="button"
+          onClick={handleRandom}
+          className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-sm font-heading text-xs tracking-wider uppercase
+                     bg-codex-brown/40 border border-codex-gold-dim/20 text-codex-parchment-dim
+                     hover:border-codex-gold-dim/50 hover:text-codex-gold transition-all"
+        >
+          <Shuffle size={12} />
+          Entrada aleatoria
+        </button>
+        <button
+          type="button"
           onClick={onToggleReading}
           className={`w-full px-3 py-2 rounded-sm font-heading text-xs tracking-wider uppercase transition-all
             ${readingMode

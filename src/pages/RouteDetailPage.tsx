@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, BookOpen, MapPin } from 'lucide-react'
 import { SectionHero } from '../components/SectionHero'
-import { findRoute, type RouteStop } from '../data/narrativeRoutes'
+import { findRoute, type NarrativeRoute, type RouteStop } from '../data/narrativeRoutes'
 import { entityTypePath } from '../data/lookups'
 import {
   charactersData, regionsData, factionsData, glossaryData, timelineData,
@@ -42,15 +42,20 @@ const typeLabels: Record<string, string> = {
 export function RouteDetailPage() {
   const { id } = useParams<{ id: string }>()
   const route = id ? findRoute(id) : undefined
+  if (!route) return <Navigate to="/rutas" replace />
+  /* `key={route.id}` forces React to remount RouteContent when navigating
+     between routes, naturally resetting `activeIndex` to 0 without an extra
+     useEffect that would briefly render the old stop with the new route. */
+  return <RouteContent key={route.id} route={route} />
+}
+
+function RouteContent({ route }: { route: NarrativeRoute }) {
   const [activeIndex, setActiveIndex] = useState(0)
 
-  useEffect(() => { setActiveIndex(0) }, [id])
   useEffect(() => {
-    if (route) document.title = `${route.title} · Códice`
+    document.title = `${route.title} · Códice`
     return () => { document.title = 'Códice del Orden Fracturado' }
-  }, [route])
-
-  if (!route) return <Navigate to="/rutas" replace />
+  }, [route.title])
 
   const accent = accentClasses[route.accent]
   const currentStop = route.stops[activeIndex]

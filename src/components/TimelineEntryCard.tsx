@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
 import type { TimelineEntry } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
+import { EraBadge } from './EraBadge'
+import { ReadCheck } from './ReadCheck'
 import { TagPill } from './TagPill'
 import { RuneSeparator } from './illustrations/RuneSeparator'
 import { pathFor } from '../data/lookups'
@@ -12,17 +14,20 @@ interface Props {
   entry: TimelineEntry
   onTagClick?: (tag: string) => void
   readingMode?: boolean
+  /** Optional position in a grid — used for subtle stagger entrance */
+  index?: number
 }
 
-export function TimelineEntryCard({ entry, onTagClick, readingMode }: Props) {
+export function TimelineEntryCard({ entry, onTagClick, readingMode, index = 0 }: Props) {
   const [expanded, setExpanded] = useState(false)
 
   return (
     <motion.article
+      layout
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, delay: (index % 8) * 0.05, ease: [0.22, 1, 0.36, 1], layout: { duration: 0.3 } }}
       className="relative"
     >
       {/* Timeline connector */}
@@ -43,11 +48,15 @@ export function TimelineEntryCard({ entry, onTagClick, readingMode }: Props) {
             <span className="font-heading text-xs text-codex-gold-dim tracking-[0.25em] uppercase">
               {entry.chapterNumber}
             </span>
-            <h3 className="font-heading text-xl text-codex-gold-bright text-glow mt-1">
+            <h3 className="font-heading text-base text-codex-gold-bright text-glow mt-1">
               {entry.title}
             </h3>
           </div>
-          <CertaintyBadge certainty={entry.certainty} />
+          <div className="flex items-center gap-2 flex-wrap">
+            <ReadCheck type="timeline" slug={entry.id} />
+            <EraBadge entity={entry} size="compact" />
+            <CertaintyBadge certainty={entry.certainty} />
+          </div>
         </div>
 
         {/* Poetic intro */}

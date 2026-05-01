@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ArrowRight } from 'lucide-react'
@@ -15,30 +15,56 @@ interface Props {
 
 export function GlossarySection({ entries, onTermClick }: Props) {
   const [selected, setSelected] = useState<GlossaryEntry | null>(null)
-  const [search, setSearch] = useState('')
+  const modalRef = useRef<HTMLDivElement>(null)
+  const previouslyFocused = useRef<HTMLElement | null>(null)
 
-  const filtered = entries.filter(
-    (e) =>
-      e.term.toLowerCase().includes(search.toLowerCase()) ||
-      e.definition.toLowerCase().includes(search.toLowerCase())
-  )
+  /* Focus trap + Escape close + restore focus on modal lifecycle. */
+  useEffect(() => {
+    if (!selected) return
+
+    previouslyFocused.current = document.activeElement as HTMLElement | null
+
+    const focusables = () => {
+      if (!modalRef.current) return [] as HTMLElement[]
+      const sel = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      return Array.from(modalRef.current.querySelectorAll<HTMLElement>(sel))
+    }
+
+    /* Focus first focusable element when modal opens. */
+    const focusables0 = focusables()
+    focusables0[0]?.focus()
+
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        setSelected(null)
+        return
+      }
+      if (e.key !== 'Tab') return
+      const list = focusables()
+      if (list.length === 0) return
+      const first = list[0]
+      const last = list[list.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handler)
+    return () => {
+      document.removeEventListener('keydown', handler)
+      previouslyFocused.current?.focus()
+    }
+  }, [selected])
 
   return (
     <>
-      <div className="mb-6">
-        <input
-          type="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Buscar término..."
-          className="w-full max-w-md px-4 py-2.5 bg-codex-brown/50 border border-codex-gold-dim/30
-                     text-codex-parchment placeholder-codex-parchment-dim/50 font-body text-sm rounded-sm
-                     focus:outline-none focus:border-codex-gold/60 transition-all"
-        />
-      </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filtered.map((entry) => {
+        {entries.map((entry) => {
           const fallback = glossaryFallbacks[entry.id] ?? 'concept'
           return (
             <motion.button
@@ -89,6 +115,10 @@ export function GlossarySection({ entries, onTermClick }: Props) {
             <div className="absolute inset-0 bg-codex-black/85 backdrop-blur-sm" />
 
             <motion.div
+              ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="glossary-modal-title"
               className="relative w-full max-w-2xl parchment-panel border-codex-gold-dim/50 max-h-[90vh] overflow-hidden flex flex-col"
               style={{ boxShadow: '0 0 60px rgba(197,160,89,0.18)' }}
               initial={{ scale: 0.93, opacity: 0, y: 24 }}
@@ -116,7 +146,7 @@ export function GlossarySection({ entries, onTermClick }: Props) {
                 {/* Title over art */}
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <CertaintyBadge certainty={selected.certainty} />
-                  <h3 className="font-heading text-2xl text-codex-gold-bright mt-2 drop-shadow-lg"
+                  <h3 id="glossary-modal-title" className="font-heading text-2xl text-codex-gold-bright mt-2 drop-shadow-lg"
                     style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}>
                     {selected.term}
                   </h3>

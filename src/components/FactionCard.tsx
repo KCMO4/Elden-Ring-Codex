@@ -6,26 +6,38 @@ import type { Faction } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { TagPill } from './TagPill'
 import { CodexImage } from './images/CodexImage'
+import { CornerOrnaments } from './CornerOrnaments'
 import { factionFallbacks } from '../lib/fallbackMap'
+import { factionTone, toneBorderClass } from '../lib/factionColors'
+import { EraBadge } from './EraBadge'
+import { ReadCheck } from './ReadCheck'
 import { pathFor } from '../data/lookups'
 import { RuneSeparator } from './illustrations/RuneSeparator'
 
 interface Props {
   faction: Faction
   onTagClick?: (tag: string) => void
+  /** Optional position in a grid — used for subtle stagger entrance */
+  index?: number
 }
 
-export function FactionCard({ faction, onTagClick }: Props) {
+export function FactionCard({ faction, onTagClick, index = 0 }: Props) {
   const [open, setOpen] = useState(false)
   const fallback = factionFallbacks[faction.id] ?? 'faction'
+  const tone = factionTone(faction.id)
 
   return (
     <motion.article
+      layout
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      className="parchment-panel overflow-hidden cursor-pointer group hover:border-codex-gold-dim/50 hover:shadow-[0_0_20px_rgba(197,160,89,0.08)] transition-all duration-300"
+      viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.45, delay: (index % 12) * 0.04, ease: [0.22, 1, 0.36, 1], layout: { duration: 0.3 } }}
+      className={`parchment-panel overflow-hidden cursor-pointer group transition-all duration-500
+                  border-l-[3px] ${toneBorderClass[tone]}
+                  hover:border-codex-gold/60
+                  hover:shadow-[0_0_0_1px_rgba(197,160,89,0.25),0_8px_30px_rgba(197,160,89,0.18),0_0_60px_rgba(197,160,89,0.08)]`}
       onClick={() => setOpen(!open)}
     >
       {/* Emblem / artwork */}
@@ -39,26 +51,24 @@ export function FactionCard({ faction, onTagClick }: Props) {
           overlayOpacity={0.45}
           hoverZoom
         >
-          <div className="p-4">
-            <div className="flex items-end justify-between gap-2">
-              <h3 className="font-heading text-lg text-codex-gold-bright leading-tight drop-shadow-lg"
-                style={{ textShadow: '0 2px 8px rgba(0,0,0,0.95)' }}>
-                {faction.name}
-              </h3>
-              <CertaintyBadge certainty={faction.certainty} />
-            </div>
+          {/* Certainty badge — top right corner only */}
+          <div className="absolute top-2 right-2 z-10">
+            <CertaintyBadge certainty={faction.certainty} />
           </div>
         </CodexImage>
 
-        {/* Corner frames */}
-        <div className="absolute top-2 left-2 w-3 h-3 border-l border-t border-codex-gold-dim/50 pointer-events-none" />
-        <div className="absolute top-2 right-2 w-3 h-3 border-r border-t border-codex-gold-dim/50 pointer-events-none" />
-        <div className="absolute bottom-2 left-2 w-3 h-3 border-l border-b border-codex-gold-dim/50 pointer-events-none" />
-        <div className="absolute bottom-2 right-2 w-3 h-3 border-r border-b border-codex-gold-dim/50 pointer-events-none" />
+        <CornerOrnaments size="sm" />
       </div>
 
       {/* Card body */}
       <div className="p-4">
+        <div className="flex items-center justify-end gap-1.5 mb-1 -mt-1">
+          <ReadCheck type="faction" slug={faction.id} />
+          <EraBadge entity={faction} size="compact" />
+        </div>
+        <h3 className="font-heading text-base text-codex-gold-bright leading-tight mb-2">
+          {faction.name}
+        </h3>
         <p className="text-sm text-codex-parchment-dim leading-relaxed line-clamp-2 mb-2">
           {faction.what}
         </p>

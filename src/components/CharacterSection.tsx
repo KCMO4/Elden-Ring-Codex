@@ -1,36 +1,79 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import type { Character } from '../data/types'
 import { SectionHeader } from './SectionHeader'
 import { SectionHero } from './SectionHero'
 import { CharacterCard } from './CharacterCard'
-import { SearchBar } from './SearchBar'
+import { FilterBar, type SortOption } from './FilterBar'
+import { TagPicker, type TagOption } from './TagPicker'
+import { EmptyState } from './EmptyState'
+import { ColorLegend } from './ColorLegend'
+import { useFilters } from '../lib/useFilters'
+import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
 
 interface Props {
   characters: Character[]
 }
 
-export function CharacterSection({ characters }: Props) {
-  const [search, setSearch] = useState('')
-  const [activeTag, setActiveTag] = useState<string | null>(null)
+const SORT_OPTIONS: SortOption[] = [
+  { value: 'default',    label: 'Orden canónico' },
+  { value: 'name-asc',   label: 'A → Z' },
+  { value: 'name-desc',  label: 'Z → A' },
+  { value: 'certainty',  label: 'Por certeza' },
+]
 
-  const allFactions = useMemo(() => {
-    const set = new Set(characters.map((c) => c.faction))
-    return Array.from(set).sort()
-  }, [characters])
+const VALID_SORTS = ['default', 'name-asc', 'name-desc', 'certainty'] as const
+type CharacterSort = typeof VALID_SORTS[number]
+
+export function CharacterSection({ characters }: Props) {
+  const f = useFilters<CharacterSort>({
+    defaultSort: 'default',
+    validSorts: VALID_SORTS,
+    withSecondaryTags: true,
+    storageKey: 'characters',
+  })
+
+  const factionOptions: TagOption[] = useMemo(
+    () => buildTagOptions(characters, (c) => c.faction),
+    [characters],
+  )
+
+  const tagOptions: TagOption[] = useMemo(
+    () => buildTagOptions(characters, (c) => c.tags),
+    [characters],
+  )
 
   const filtered = useMemo(() => {
-    return characters.filter((c) => {
-      const q = search.toLowerCase()
+    const q = f.search.toLowerCase()
+    const result = characters.filter((c) => {
       const matchSearch =
-        !search ||
+        !f.search ||
         c.name.toLowerCase().includes(q) ||
         c.role.toLowerCase().includes(q) ||
         c.tragedy.toLowerCase().includes(q) ||
-        c.faction.toLowerCase().includes(q)
-      const matchTag = !activeTag || c.faction === activeTag || c.tags.includes(activeTag)
-      return matchSearch && matchTag
+        c.faction.toLowerCase().includes(q) ||
+        c.region.toLowerCase().includes(q)
+      const matchCertainty = f.certainty === 'all' || c.certainty === f.certainty
+      const matchFactions =
+        f.secondaryTags.length === 0 || f.secondaryTags.includes(c.faction)
+      const matchTags =
+        f.tags.length === 0 || f.tags.every((t) => c.tags.includes(t))
+      return matchSearch && matchCertainty && matchFactions && matchTags
     })
-  }, [characters, search, activeTag])
+
+    switch (f.sort) {
+      case 'name-asc':
+        return [...result].sort((a, b) => a.name.localeCompare(b.name))
+      case 'name-desc':
+        return [...result].sort((a, b) => b.name.localeCompare(a.name))
+      case 'certainty':
+        return [...result].sort(compareByCertainty((c) => c.name))
+      default:
+        return result
+    }
+  }, [characters, f.search, f.certainty, f.secondaryTags, f.tags, f.sort])
+
+  const toggleTag = (t: string) =>
+    f.setTags(f.tags.includes(t) ? f.tags.filter((x) => x !== t) : [...f.tags, t])
 
   return (
     <section id="personajes">
@@ -39,47 +82,59 @@ export function CharacterSection({ characters }: Props) {
       <div className="codex-section pt-6">
         <SectionHeader
           title="Enciclopedia de Personajes"
-          subtitle="Las almas que dieron forma al Interregno"
+          subtitle="Las almas que dieron forma a las Tierras Intermedias"
+          readingCategory="personajes"
         />
 
-        <div className="mb-8 space-y-4">
-          <SearchBar value={search} onChange={setSearch} placeholder="Buscar personaje..." />
+        <FilterBar
+          search={f.search}
+          onSearchChange={f.setSearch}
+          searchPlaceholder="Buscar personaje, rol, tragedia, región…"
+          certainty={f.certainty}
+          onCertaintyChange={f.setCertainty}
+          tags={factionOptions}
+          selectedTags={f.secondaryTags}
+          onTagsChange={f.setSecondaryTags}
+          tagsLabel="Facciones"
+          tagSearchPlaceholder="Buscar facción..."
+          popularTagCount={6}
+          sortOptions={SORT_OPTIONS}
+          sort={f.sort}
+          onSortChange={(v) => f.setSort(v as CharacterSort)}
+          totalCount={characters.length}
+          filteredCount={filtered.length}
+          unitLabel="personaje"
+          unitLabelPlural="personajes"
+        />
 
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setActiveTag(null)}
-              className={`px-3 py-1.5 font-heading text-xs tracking-wider uppercase rounded-sm border transition-all
-                ${!activeTag ? 'bg-codex-gold/15 border-codex-gold/40 text-codex-gold' : 'bg-codex-brown/30 border-codex-gold-dim/20 text-codex-parchment-dim hover:border-codex-gold-dim/40'}`}
-            >
-              Todos
-            </button>
-            {allFactions.map((f) => (
-              <button
-                key={f}
-                onClick={() => setActiveTag(activeTag === f ? null : f)}
-                className={`px-3 py-1.5 font-heading text-xs tracking-wider uppercase rounded-sm border transition-all
-                  ${activeTag === f ? 'bg-codex-gold/15 border-codex-gold/40 text-codex-gold' : 'bg-codex-brown/30 border-codex-gold-dim/20 text-codex-parchment-dim hover:border-codex-gold-dim/40'}`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
-
-          <p className="font-heading text-xs text-codex-gold-dim tracking-wider">
-            {filtered.length} personaje{filtered.length !== 1 ? 's' : ''}
-          </p>
+        {/* Secondary picker: tags (separate axis from faction) */}
+        <div className="-mt-5 mb-8">
+          <TagPicker
+            tags={tagOptions}
+            selected={f.tags}
+            onChange={f.setTags}
+            label="Etiquetas"
+            searchPlaceholder="Buscar etiqueta..."
+            popularCount={8}
+          />
         </div>
+
+        <ColorLegend />
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {filtered.map((char) => (
-            <CharacterCard key={char.id} character={char} onTagClick={setActiveTag} />
+          {filtered.map((char, i) => (
+            <CharacterCard key={char.id} character={char} onTagClick={toggleTag} index={i} />
           ))}
-          {filtered.length === 0 && (
-            <div className="col-span-full parchment-panel p-12 text-center">
-              <p className="font-heading text-codex-gold-dim tracking-wider">Sin personajes encontrados</p>
-            </div>
-          )}
         </div>
+        {filtered.length === 0 && (
+          <EmptyState
+            variant="filter"
+            title="Sin personajes encontrados"
+            description="Ninguna alma de las Tierras Intermedias coincide con los filtros. Prueba a quitar facción, etiqueta o certeza para ampliar."
+            actionLabel="Limpiar todos los filtros"
+            onAction={f.clearAll}
+          />
+        )}
       </div>
     </section>
   )

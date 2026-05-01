@@ -14,8 +14,9 @@ export function EndingsSection() {
       <div className="codex-section pt-6">
         <SectionHeader
           title="Los Finales"
-          subtitle="Las seis eras que el Mancillado puede instaurar"
+          subtitle="Las seis eras que el Tarnished puede instaurar"
           poeticIntro="No hay final correcto. Solo diferentes respuestas a la misma pregunta: si tuvieras el poder de definir una era, ¿qué elegirías?"
+          readingCategory="finales"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -42,31 +43,17 @@ export function EndingsSection() {
                     entityId={ending.id}
                     overlayOpacity={0.4}
                     hoverZoom
+                  />
+                  <span
+                    className="absolute top-2 left-2 text-2xl leading-none z-10"
+                    style={{
+                      color: ending.accentColor,
+                      fontFamily: 'Cinzel, serif',
+                      textShadow: `0 0 12px ${ending.accentColor}, 0 2px 6px rgba(0,0,0,0.9)`,
+                    }}
                   >
-                    <div className="p-4 pt-6">
-                      <div className="flex items-end gap-3">
-                        <span
-                          className="text-3xl leading-none"
-                          style={{
-                            color: ending.accentColor,
-                            fontFamily: 'Cinzel, serif',
-                            textShadow: `0 0 12px ${ending.accentColor}`,
-                          }}
-                        >
-                          {ending.icon}
-                        </span>
-                        <h3
-                          className="font-heading text-lg leading-tight drop-shadow-lg"
-                          style={{
-                            color: ending.accentColor,
-                            textShadow: '0 2px 8px rgba(0,0,0,0.95)',
-                          }}
-                        >
-                          {ending.name}
-                        </h3>
-                      </div>
-                    </div>
-                  </CodexImage>
+                    {ending.icon}
+                  </span>
 
                   <div
                     className="absolute top-2 left-2 w-3 h-3 border-l border-t pointer-events-none"
@@ -79,6 +66,12 @@ export function EndingsSection() {
                 </div>
 
                 <div className="p-4">
+                  <h3
+                    className="font-heading text-base leading-tight mb-3"
+                    style={{ color: ending.accentColor }}
+                  >
+                    {ending.name}
+                  </h3>
                   <p className="text-sm text-codex-parchment-dim leading-relaxed mb-3 line-clamp-3">
                     {ending.description}
                   </p>

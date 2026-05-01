@@ -50,11 +50,11 @@ export function FactionDetailPage() {
       beneficiaries={faction.beneficiaries}
       victims={faction.victims}
       relatedGroups={[
-        { label: 'Personajes', items: resolveCharacterIds(faction.relatedCharacters) },
-        { label: 'Regiones', items: resolveRegionIds(faction.relatedRegions) },
-        { label: 'Facciones rivales / aliadas', items: resolveFactionIds(faction.relatedFactions) },
-        { label: 'Conceptos', items: resolveConceptIds(faction.relatedConcepts) },
-        { label: 'Timeline', items: resolveTimelineIds(faction.relatedTimelineEvents) },
+        { label: 'Personajes', type: 'character', items: resolveCharacterIds(faction.relatedCharacters) },
+        { label: 'Regiones', type: 'region', items: resolveRegionIds(faction.relatedRegions) },
+        { label: 'Facciones rivales / aliadas', type: 'faction', items: resolveFactionIds(faction.relatedFactions) },
+        { label: 'Conceptos', type: 'concept', items: resolveConceptIds(faction.relatedConcepts) },
+        { label: 'Timeline', type: 'timeline', items: resolveTimelineIds(faction.relatedTimelineEvents) },
       ]}
       legacyContent={
         (!faction.deepLore || faction.deepLore.length === 0) && (
@@ -88,6 +88,7 @@ export function FactionDetailPage() {
       }
       prev={prev}
       next={next}
+      bookmark={{ type: 'faction', slug: faction.slug ?? faction.id }}
     />
   )
 }

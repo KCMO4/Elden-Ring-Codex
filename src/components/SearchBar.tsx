@@ -26,7 +26,9 @@ export function SearchBar({ value, onChange, placeholder = 'Buscar en el Códice
       />
       {value && (
         <button
+          type="button"
           onClick={() => onChange('')}
+          aria-label="Limpiar búsqueda"
           className="absolute right-2.5 top-1/2 -translate-y-1/2 text-codex-parchment-dim hover:text-codex-parchment"
         >
           <X size={14} />

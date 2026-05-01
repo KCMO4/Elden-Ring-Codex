@@ -6,28 +6,38 @@ import type { Character } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { TagPill } from './TagPill'
 import { CodexImage } from './images/CodexImage'
+import { CornerOrnaments } from './CornerOrnaments'
+import { EraBadge } from './EraBadge'
+import { ReadCheck } from './ReadCheck'
 import { characterFallbacks } from '../lib/fallbackMap'
+import { factionTone, toneBorderClass, toneTextClass } from '../lib/factionColors'
 import { pathFor } from '../data/lookups'
 import { RuneSeparator } from './illustrations/RuneSeparator'
 
 interface Props {
   character: Character
   onTagClick?: (tag: string) => void
+  /** Optional position in a grid — used for subtle stagger entrance */
+  index?: number
 }
 
-export function CharacterCard({ character, onTagClick }: Props) {
+export function CharacterCard({ character, onTagClick, index = 0 }: Props) {
   const [open, setOpen] = useState(false)
   const fallback = characterFallbacks[character.id] ?? 'character'
+  const tone = factionTone(character.faction)
 
   return (
     <motion.article
       layout
-      initial={{ opacity: 0, scale: 0.97 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      className={`parchment-panel overflow-hidden cursor-pointer transition-all duration-300 group
-        hover:border-codex-gold-dim/60 hover:shadow-[0_0_30px_rgba(197,160,89,0.12)]
+      initial={{ opacity: 0, y: 12, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.45, delay: (index % 12) * 0.04, ease: [0.22, 1, 0.36, 1] }}
+      className={`parchment-panel overflow-hidden cursor-pointer transition-all duration-500 group
+        border-l-[3px] ${toneBorderClass[tone]}
+        hover:border-codex-gold/60
+        hover:shadow-[0_0_0_1px_rgba(197,160,89,0.25),0_8px_30px_rgba(197,160,89,0.18),0_0_60px_rgba(197,160,89,0.08)]
         ${open ? 'border-codex-gold-dim/60' : ''}`}
       onClick={() => setOpen(!open)}
     >
@@ -36,38 +46,35 @@ export function CharacterCard({ character, onTagClick }: Props) {
         <CodexImage
           alt={character.name}
           fallbackType={fallback}
-          variant="portrait"
+          variant="landscape"
           entityCategory="characters"
           entityId={character.id}
           overlayOpacity={0.35}
           hoverZoom
         >
-          {/* Overlay content */}
-          <div className="p-4">
-            <div className="flex items-end justify-between gap-2">
-              <div>
-                <p className="font-heading text-xs text-codex-gold-dim/80 tracking-widest uppercase mb-0.5">
-                  {character.faction}
-                </p>
-                <h3 className="font-heading text-xl text-codex-gold-bright leading-tight drop-shadow-lg"
-                  style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
-                  {character.name}
-                </h3>
-              </div>
-              <CertaintyBadge certainty={character.certainty} />
-            </div>
+          {/* Certainty badge — top right corner only */}
+          <div className="absolute top-2 right-2 z-10">
+            <CertaintyBadge certainty={character.certainty} />
           </div>
         </CodexImage>
 
-        {/* Gold corner ornament */}
-        <div className="absolute top-2 left-2 w-4 h-4 border-l border-t border-codex-gold-dim/50 pointer-events-none" />
-        <div className="absolute top-2 right-2 w-4 h-4 border-r border-t border-codex-gold-dim/50 pointer-events-none" />
-        <div className="absolute bottom-2 left-2 w-4 h-4 border-l border-b border-codex-gold-dim/50 pointer-events-none" />
-        <div className="absolute bottom-2 right-2 w-4 h-4 border-r border-b border-codex-gold-dim/50 pointer-events-none" />
+        <CornerOrnaments />
       </div>
 
       {/* Card body */}
       <div className="p-4">
+        <div className="flex items-center justify-between gap-2 mb-1">
+          <p className={`font-heading text-[10px] tracking-widest uppercase ${toneTextClass[tone]}`}>
+            {character.faction}
+          </p>
+          <div className="flex items-center gap-1.5">
+            <ReadCheck type="character" slug={character.id} />
+            <EraBadge entity={character} size="compact" />
+          </div>
+        </div>
+        <h3 className="font-heading text-base text-codex-gold-bright leading-tight mb-3">
+          {character.name}
+        </h3>
         <p className="font-body text-sm text-codex-parchment-dim leading-relaxed mb-3 line-clamp-2">
           {character.role}
         </p>

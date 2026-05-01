@@ -48,11 +48,11 @@ export function TimelineDetailPage() {
         beneficiaries={entry.beneficiaries}
         victims={entry.victims}
         relatedGroups={[
-          { label: 'Personajes', items: resolveCharacterIds(entry.relatedCharacters) },
-          { label: 'Regiones', items: resolveRegionIds(entry.relatedRegions) },
-          { label: 'Facciones', items: resolveFactionIds(entry.relatedFactions) },
-          { label: 'Conceptos', items: resolveConceptIds(entry.relatedConcepts) },
-          { label: 'Eventos relacionados', items: resolveTimelineIds(entry.relatedTimelineEvents) },
+          { label: 'Personajes', type: 'character', items: resolveCharacterIds(entry.relatedCharacters) },
+          { label: 'Regiones', type: 'region', items: resolveRegionIds(entry.relatedRegions) },
+          { label: 'Facciones', type: 'faction', items: resolveFactionIds(entry.relatedFactions) },
+          { label: 'Conceptos', type: 'concept', items: resolveConceptIds(entry.relatedConcepts) },
+          { label: 'Eventos relacionados', type: 'timeline', items: resolveTimelineIds(entry.relatedTimelineEvents) },
         ]}
         legacyContent={
           (!entry.deepLore || entry.deepLore.length === 0) && (
@@ -71,6 +71,7 @@ export function TimelineDetailPage() {
         }
         prev={prev ? { ...prev, label: `${prev.label}` } : null}
         next={next ? { ...next, label: `${next.label}` } : null}
+        bookmark={{ type: 'timeline', slug: entry.slug ?? entry.id }}
       />
 
       <ChronoFloatingBar

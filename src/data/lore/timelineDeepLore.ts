@@ -17,9 +17,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'placidusax-elden-lord': {
     slug: 'placidusax-elden-lord',
-    subtitle: 'Era previa al Erdtree · Reinado de los Antiguos Dragones',
+    subtitle: 'Era previa al Árbol Áureo · Reinado de los Antiguos Dragones',
     summary:
-      'Antes de Marika, antes del Orden Dorado, antes incluso del Erdtree como árbol cosmológico, hubo otro régimen: Placidusax fue Lord Elden de una era dragónica cuyo dios externo desapareció sin dejar registro. Su mero recuerdo desautoriza la pretensión del Orden Dorado a ser cosmología única.',
+      'Antes de Marika, antes del Orden Dorado, antes incluso del Árbol Áureo como árbol cosmológico, hubo otro régimen: Placidusax fue Lord Elden de una era dragónica cuyo dios externo desapareció sin dejar registro. Su mero recuerdo desautoriza la pretensión del Orden Dorado a ser cosmología única.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -29,7 +29,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Farum Azula', 'region', 'farum-azula'),
         ', ciudad-fortaleza dragónica que aún hoy flota fuera del tiempo. El cosmos estaba bajo la autoridad de los ',
         link('Antiguos Dragones', 'faction', 'dragones-antiguos'),
-        ' y de un dios externo cuya identidad nunca se enuncia en los textos del juego base.',
+        ' y de un dios externo cuya identidad nunca se enuncia en los textos del juego base.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -37,9 +37,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Crisol primigenio', 'concept', 'crucible'),
         ' como cosmología dominante en algunos relatos, o lo coexistía como capa paralela. Placidusax operaba con la autoridad de su dios externo: legislaba, regulaba, sostenía la coherencia cósmica. Cuando ese dios desapareció — sin batalla, sin testigo, sin sucesor inmediato — el régimen dragónico perdió eje. ',
         link('Farum Azula', 'region', 'farum-azula'),
-        ' quedó suspendida en su tormenta atemporal; los Antiguos Dragones se dispersaron por el Interregno (',
+        ' quedó suspendida en su tormenta atemporal; los Antiguos Dragones se dispersaron por las Tierras Intermedias (',
         link('Fortissax', 'character', 'fortissax'),
-        ', Lansseax, Greyoll), algunos pactaron con los humanos del Orden Dorado naciente, otros se retiraron a tumbas dispersas.',
+        ', Lansseax, Greyoll), algunos pactaron con los humanos del Orden Dorado naciente, otros se retiraron a tumbas dispersas.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -48,36 +48,36 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         ' eventualmente ocuparía al elegir a ',
         link('Marika', 'character', 'marika'),
         ' como nueva vasija. Así, el Orden Dorado no es la primera cosmología — es la actual. Esta sucesión documenta una verdad estructural: ',
-        em('los regímenes cosmológicos del Interregno son seriales, no eternos'),
-        '. Cada uno se considera definitivo durante su tiempo y es eventualmente reemplazado.',
+        em('los regímenes cosmológicos de las Tierras Intermedias son seriales, no eternos'),
+        '. Cada uno se considera definitivo durante su tiempo y es eventualmente reemplazado.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Placidusax dormido en su cámara escondida es el monumento del juego al dios olvidado. Su existencia silenciosa — opcional incluso para el Mancillado — recuerda que toda era termina y nadie la registra. Su régimen no fue derrotado: fue ',
+        'Placidusax dormido en su cámara escondida es el monumento del juego al dios olvidado. Su existencia silenciosa — opcional incluso para el Tarnished — recuerda que toda era termina y nadie la registra. Su régimen no fue derrotado: fue ',
         em('abandonado'),
-        ' por su propia divinidad. Ese precedente plantea la pregunta más oscura sobre el régimen actual: ¿qué pasaría si la Voluntad Mayor también se retirase?',
-      ),
+        ' por su propia divinidad. Ese precedente plantea la pregunta más oscura sobre el régimen actual: ¿qué pasaría si la Voluntad Mayor también se retirase?'
+      )
     ],
     confirmed: [
       'Placidusax fue Señor Elden de una era anterior al Orden Dorado',
       'Su capital era Farum Azula',
       'Su dios externo desapareció sin batalla registrada',
-      'Antiguos Dragones como Fortissax sobrevivieron a la transición',
+      'Antiguos Dragones como Fortissax sobrevivieron a la transición'
     ],
     inferred: [
-      'El régimen dragónico precede tanto al Erdtree como al Crisol como cosmología dominante',
+      'El régimen dragónico precede tanto al Árbol Áureo como al Crisol como cosmología dominante',
       'La caída fue por abandono divino, no por derrota militar',
-      'La Voluntad Mayor llenó la vacante cosmológica al elegir a Marika',
+      'La Voluntad Mayor llenó la vacante cosmológica al elegir a Marika'
     ],
     theories: [
       'El dios externo de Placidusax no murió: se desplazó a otra dimensión y podría regresar',
       'Farum Azula está atemporal precisamente porque su régimen aún no ha terminado de caer',
-      'Placidusax dormita esperando un retorno cosmológico que la Voluntad Mayor sabe que ocurrirá',
+      'Placidusax dormita esperando un retorno cosmológico que la Voluntad Mayor sabe que ocurrirá'
     ],
     ambiguous: [
       'Identidad del dios externo desaparecido',
       'Cuánto tiempo duró el régimen dragónico antes de caer',
-      'Si los Antiguos Dragones siguen leales a Placidusax o han aceptado el Orden Dorado',
+      'Si los Antiguos Dragones siguen leales a Placidusax o han aceptado el Orden Dorado'
     ],
     relatedCharacters: ['placidusax', 'fortissax', 'maliketh', 'marika'],
     relatedRegions: ['farum-azula'],
@@ -100,20 +100,20 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Nokron', 'region', 'nokron'),
         ' y ',
         link('Nokstella', 'region', 'nokstella'),
-        ' como sede de una civilización cosmológicamente avanzada. Entre sus logros más extraños: las Lágrimas de Plata, criaturas líquidas con capacidad de mímica perfecta.',
+        ' como sede de una civilización cosmológicamente avanzada. Entre sus logros más extraños: las Lágrimas de Plata, criaturas líquidas con capacidad de mímica perfecta.'
       ),
       h(2, 'Historia detallada'),
       p(
         'Las Silver Tears parecen haber sido producto de un proyecto deliberado: crear vida artificial capaz de adoptar cualquier forma, posiblemente como prototipo de un nuevo cuerpo divino. La hipótesis más sostenida en los textos: los Nox querían forjar a su propio Lord Elden — una vasija humana sustituta que les permitiera tener divinidad propia, independiente de la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        '. Las Lágrimas habrían sido los primeros experimentos de ese proyecto.',
+        '. Las Lágrimas habrían sido los primeros experimentos de ese proyecto.'
       ),
       p(
-        'Los Mimic Tears, variantes superiores, copian al observador con perfección absoluta — equipo, estadísticas, tácticas, todo. Que tal tecnología existiera siglos antes del Orden Dorado y que sobreviva en sus ciudades enterradas indica que los Nox manejaban niveles de manipulación cosmológica que el régimen dorado jamás documenta haber alcanzado.',
+        'Los Mimic Tears, variantes superiores, copian al observador con perfección absoluta — equipo, estadísticas, tácticas, todo. Que tal tecnología existiera siglos antes del Orden Dorado y que sobreviva en sus ciudades enterradas indica que los Nox manejaban niveles de manipulación cosmológica que el régimen dorado jamás documenta haber alcanzado.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El proyecto Nox fue interpretado como blasfemia por la Voluntad Mayor. El castigo cayó en forma de Astel — una entidad estelar cósmica que destruyó las ciudades y enterró a los Nox bajo tierra. Pero las Lágrimas sobrevivieron en las ruinas. El Mancillado puede usarlas como espíritus invocables. Cada uso es eco residual del proyecto blasfemo más sofisticado del Interregno.',
+        'El proyecto Nox fue interpretado como blasfemia por la Voluntad Mayor. El castigo cayó en forma de Astel — una entidad estelar cósmica que destruyó las ciudades y enterró a los Nox bajo tierra. Pero las Lágrimas sobrevivieron en las ruinas. El Tarnished puede usarlas como espíritus invocables. Cada uso es eco residual del proyecto blasfemo más sofisticado de las Tierras Intermedias.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -121,29 +121,29 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         ', heredera filosófica del sueño Nox, completa lo que ellos no pudieron: instaurar la ',
         link('Era de las Estrellas', 'ending', 'age-of-stars'),
-        ' como cosmos sin Voluntad Mayor cercana.',
-      ),
+        ' como cosmos sin Voluntad Mayor cercana.'
+      )
     ],
     confirmed: [
       'Los Nox crearon Silver Tears y Mimic Tears',
       'Las Lágrimas perduran en las ruinas de Nokron y Nokstella',
       'Los Mimic Tears imitan al observador con precisión absoluta',
-      'Astel destruyó la civilización Nox como castigo cósmico',
+      'Astel destruyó la civilización Nox como castigo cósmico'
     ],
     inferred: [
       'El proyecto era crear un cuerpo divino propio, independiente de la Voluntad Mayor',
       'La sofisticación cosmológica Nox excedía la del Orden Dorado',
-      'Los Mimic Tears son variantes superiores de un experimento más temprano',
+      'Los Mimic Tears son variantes superiores de un experimento más temprano'
     ],
     theories: [
       'Cada Mimic Tear contiene el alma fragmentaria de un noble Nox',
       'Eran prototipos para fabricar un Lord Elden Nox',
-      'Su tecnología está latente: bajo condiciones específicas podrían producir un dios completo',
+      'Su tecnología está latente: bajo condiciones específicas podrían producir un dios completo'
     ],
     ambiguous: [
       'Si las Lágrimas tienen consciencia o son puramente reactivas',
       'Si el proyecto del cuerpo divino llegó a producir un prototipo completo',
-      'Si Ranni hereda directamente esta tradición o solo paralelamente',
+      'Si Ranni hereda directamente esta tradición o solo paralelamente'
     ],
     relatedCharacters: ['ranni'],
     relatedRegions: ['nokron', 'nokstella', 'ainsel-river'],
@@ -166,11 +166,11 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Llama Negra', 'concept', 'black-flame'),
         ' a un clero específico: los ',
         link('Pieles de Dios', 'faction', 'pieles-de-dios'),
-        ', cazadores rituales de divinidades.',
+        ', cazadores rituales de divinidades.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La Llama Negra no era llama común: era arma teológica capaz de quemar incluso dioses. Su distribución a los Pieles de Dios fue acto político deliberado. Los apóstoles operaban como tribunal de la propia divinidad: si un dios excedía sus límites, la Llama Negra podía corregirlo. Es el único momento documentado del Interregno donde una cosmología incluyó explícitamente mecanismos para asesinar a sus propios dioses.',
+        'La Llama Negra no era llama común: era arma teológica capaz de quemar incluso dioses. Su distribución a los Pieles de Dios fue acto político deliberado. Los apóstoles operaban como tribunal de la propia divinidad: si un dios excedía sus límites, la Llama Negra podía corregirlo. Es el único momento documentado de las Tierras Intermedias donde una cosmología incluyó explícitamente mecanismos para asesinar a sus propios dioses.'
       ),
       p(
         'La ',
@@ -179,39 +179,39 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Llama Espectral', 'concept', 'ghostflame'),
         ' como llama de cremación, y los ',
         link('Deathbirds', 'faction', 'deathbirds'),
-        ' eran sacerdotes alados de los muertos. La cosmología funcionaba — porque la muerte funcionaba.',
+        ' eran sacerdotes alados de los muertos. La cosmología funcionaba — porque la muerte funcionaba.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
         'El régimen de la Reina representaba todo lo que el Orden Dorado por venir consideraría inaceptable: muerte real, instrumentos contra dioses, límite a la divinidad. La elevación de Marika por la Voluntad Mayor implicó la necesidad de derrocarlo. ',
         link('Maliketh', 'character', 'maliketh'),
-        ' fue enviado como verdugo. Tras la derrota de la Reina, los Pieles de Dios sobrevivieron como secta perseguida pero su cantidad se redujo drásticamente; la Llama Negra quedó relegada a artefacto raro.',
+        ' fue enviado como verdugo. Tras la derrota de la Reina, los Pieles de Dios sobrevivieron como secta perseguida pero su cantidad se redujo drásticamente; la Llama Negra quedó relegada a artefacto raro.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Este régimen es la cosmología "no-dorada" más documentada. Su existencia previa demuestra que el cosmos puede funcionar sin sellar la muerte y sin proteger la divinidad. La pregunta abierta es por qué el cosmos eligió cambiar a esa cosmología — o por qué la Voluntad Mayor decidió que necesitaba reemplazarla.',
-      ),
+        'Este régimen es la cosmología "no-dorada" más documentada. Su existencia previa demuestra que el cosmos puede funcionar sin sellar la muerte y sin proteger la divinidad. La pregunta abierta es por qué el cosmos eligió cambiar a esa cosmología — o por qué la Voluntad Mayor decidió que necesitaba reemplazarla.'
+      )
     ],
     confirmed: [
       'La Gloam-Eyed Queen fue Empyrean del régimen previo',
       'Distribuyó la Llama Negra a los Pieles de Dios',
       'La Muerte Predestinada operaba sin sello durante su reinado',
-      'Los Deathbirds y Ghostflame son reliquias de su cosmología funeraria',
+      'Los Deathbirds y Ghostflame son reliquias de su cosmología funeraria'
     ],
     inferred: [
       'Su régimen era cosmológicamente coherente — la muerte real lo sostenía estructuralmente',
       'La Llama Negra fue arma política deliberada, no don accidental',
-      'La transición al Orden Dorado fue intervención de la Voluntad Mayor, no evolución natural',
+      'La transición al Orden Dorado fue intervención de la Voluntad Mayor, no evolución natural'
     ],
     theories: [
       'El régimen de la Reina podría haber sido auspiciado por un dios externo distinto, hostil a la Voluntad Mayor',
       'Los Pieles de Dios son guardianes de un secreto que el Orden quiso borrar',
-      'La Llama Negra fue creada específicamente contra la Voluntad Mayor antes de su ascensión',
+      'La Llama Negra fue creada específicamente contra la Voluntad Mayor antes de su ascensión'
     ],
     ambiguous: [
       'Cuánto duró su reinado',
       'Si su Empyrean era de la Voluntad Mayor o de otro dios externo',
-      'Si la cosmología funeraria era diseño suyo o tradición heredada',
+      'Si la cosmología funeraria era diseño suyo o tradición heredada'
     ],
     relatedCharacters: ['gloam-eyed-queen', 'maliketh', 'marika'],
     relatedFactions: ['pieles-de-dios', 'deathbirds'],
@@ -232,48 +232,48 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' como Bestia Sombra, fue enviado a derrotar a la ',
         link('Reina de Ojos Crepusculares', 'character', 'gloam-eyed-queen'),
-        '. La operación tuvo éxito. Su victoria abrió el camino al sello posterior de la Muerte Predestinada y al Orden Dorado.',
+        '. La operación tuvo éxito. Su victoria abrió el camino al sello posterior de la Muerte Predestinada y al Orden Dorado.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La derrota es uno de los pocos eventos cosmológicos del Interregno que se sostiene en evidencia material directa: la Hoja Negra de Maliketh integra fragmentos de la propia ',
+        'La derrota es uno de los pocos eventos cosmológicos de las Tierras Intermedias que se sostiene en evidencia material directa: la Hoja Negra de Maliketh integra fragmentos de la propia ',
         link('Llama Negra', 'concept', 'black-flame'),
-        ' que portaban los Pieles de Dios. Maliketh no solo derrotó a la Reina — absorbió parte de su arsenal teológico. Su espada actual es prueba simbólica del trofeo.',
+        ' que portaban los Pieles de Dios. Maliketh no solo derrotó a la Reina — absorbió parte de su arsenal teológico. Su espada actual es prueba simbólica del trofeo.'
       ),
       p(
-        'Los Pieles de Dios sobrevivieron pero perdieron a su Empyrean. La cantidad de Black Flame disponible se redujo drásticamente. El cosmos quedó técnicamente listo para un nuevo régimen.',
+        'Los Pieles de Dios sobrevivieron pero perdieron a su Empyrean. La cantidad de Black Flame disponible se redujo drásticamente. El cosmos quedó técnicamente listo para un nuevo régimen.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
         'Sin esta derrota, no hay Orden Dorado. La derrota es precondición técnica del régimen actual. Tras ella, Marika selló la ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
-        ' dentro del propio cuerpo de Maliketh — irónicamente, dentro del verdugo que había usado esa misma fuerza para derrotar a la Reina. La cárcel de la Muerte fue construida con las manos del que la había desplegado libremente.',
+        ' dentro del propio cuerpo de Maliketh — irónicamente, dentro del verdugo que había usado esa misma fuerza para derrotar a la Reina. La cárcel de la Muerte fue construida con las manos del que la había desplegado libremente.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El acto fundacional del Orden Dorado contiene su propia condena. Maliketh, vencedor de la era anterior, se convirtió en prisionero de la siguiente. Su servicio post-victoria es indistinguible de su tortura. Cada régimen cosmológico parece estructurarse así: el héroe que lo posibilita acaba pagando el costo de mantenerlo.',
-      ),
+        'El acto fundacional del Orden Dorado contiene su propia condena. Maliketh, vencedor de la era anterior, se convirtió en prisionero de la siguiente. Su servicio post-victoria es indistinguible de su tortura. Cada régimen cosmológico parece estructurarse así: el héroe que lo posibilita acaba pagando el costo de mantenerlo.'
+      )
     ],
     confirmed: [
       'Maliketh derrotó a la Gloam-Eyed Queen',
       'Su Hoja Negra incorpora Llama Negra absorbida durante o tras la derrota',
       'La derrota fue precondición técnica del Orden Dorado',
-      'Los Pieles de Dios sobrevivieron pero como secta perseguida menor',
+      'Los Pieles de Dios sobrevivieron pero como secta perseguida menor'
     ],
     inferred: [
       'La operación fue ordenada por Marika como preparación para sellar la Muerte',
       'Maliketh absorbió la Llama Negra deliberadamente como trofeo y herramienta',
-      'La derrota fue militar pero también ritual: cosmología destronando cosmología',
+      'La derrota fue militar pero también ritual: cosmología destronando cosmología'
     ],
     theories: [
       'La Reina aceptó la derrota — sabía que su régimen había agotado su tiempo',
       'Maliketh sintió ambivalencia al destruir un orden que también valoraba la muerte real',
-      'La fuga parcial de la Muerte que más tarde escapará por la herida de Maliketh procede de este combate, no del robo de Ranni',
+      'La fuga parcial de la Muerte que más tarde escapará por la herida de Maliketh procede de este combate, no del robo de Ranni'
     ],
     ambiguous: [
       'Cuánto tiempo medió entre esta derrota y el sello posterior de la Muerte',
       'Si la Reina realmente murió o solo fue depuesta',
-      'Si Maliketh actuó por convicción propia o por mandato puro',
+      'Si Maliketh actuó por convicción propia o por mandato puro'
     ],
     relatedCharacters: ['maliketh', 'gloam-eyed-queen', 'marika'],
     relatedFactions: ['pieles-de-dios', 'hombres-bestia'],
@@ -283,9 +283,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'birth-golden-order': {
     slug: 'birth-golden-order',
-    subtitle: 'Sello de la Muerte · Ascensión del Erdtree · Inauguración cosmológica del régimen actual',
+    subtitle: 'Sello de la Muerte · Ascensión del Árbol Áureo · Inauguración cosmológica del régimen actual',
     summary:
-      'El nacimiento del Orden Dorado fue un acto cosmológico simultáneo: Marika selló la Muerte Predestinada, el Erdtree se erigió como árbol-ley, y la Voluntad Mayor instaló su régimen sobre el Interregno. La era dorada empezó como inmortalidad, no como mortalidad.',
+      'El nacimiento del Orden Dorado fue un acto cosmológico simultáneo: Marika selló la Muerte Predestinada, el Árbol Áureo se erigió como árbol-ley, y la Voluntad Mayor instaló su régimen sobre las Tierras Intermedias. La era dorada empezó como inmortalidad, no como mortalidad.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -298,21 +298,21 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         ' dentro del cuerpo de ',
         link('Maliketh', 'character', 'maliketh'),
         '; alzó el ',
-        link('Erdtree', 'concept', 'erdtree'),
-        ' como árbol cosmológico central; e instituyó la inmortalidad ritual a través del reciclaje de almas.',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' como árbol cosmológico central; e instituyó la inmortalidad ritual a través del reciclaje de almas.'
       ),
       h(2, 'Historia detallada'),
       p(
         'El sello de la Muerte fue el acto técnicamente más violento. La ',
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
-        ' fue arrancada del Anillo Elden y cosida al alma de Maliketh. Desde ese momento, los seres del Interregno dejaron de poder morir verdaderamente: sus cuerpos podían ser destruidos, pero sus almas regresaban al Erdtree para ser recicladas.',
+        ' fue arrancada del Anillo Elden y cosida al alma de Maliketh. Desde ese momento, los seres de las Tierras Intermedias dejaron de poder morir verdaderamente: sus cuerpos podían ser destruidos, pero sus almas regresaban al Árbol Áureo para ser recicladas.'
       ),
       p(
-        'El Erdtree creció hasta convertirse en estructura cosmológica central. Su gracia se distribuyó por el Interregno como signo del régimen. La autoridad de Marika quedó ungida por la ',
+        'El Árbol Áureo creció hasta convertirse en estructura cosmológica central. Su gracia se distribuyó por las Tierras Intermedias como signo del régimen. La autoridad de Marika quedó ungida por la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' a través de los ',
         link('Dos Dedos', 'faction', 'dos-dedos'),
-        ' como mensajeros físicos.',
+        ' como mensajeros físicos.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -320,33 +320,33 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godwyn', 'character', 'godwyn'),
         ' incapaz de morir, ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
-        ', la rotura del Anillo — se rastrea a este momento fundacional. La inmortalidad forzada es la condición de toda la lore que viene después.',
+        ', la rotura del Anillo — se rastrea a este momento fundacional. La inmortalidad forzada es la condición de toda la lore que viene después.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El nacimiento del Orden Dorado es la imagen más clara del juego de la creación divina como acto de mutilación. Para que la era dorada existiese, la muerte verdadera tuvo que ser amputada del cosmos. La era se sostiene sobre una herida — y eventualmente esa herida se reabre por sí misma.',
-      ),
+        'El nacimiento del Orden Dorado es la imagen más clara del juego de la creación divina como acto de mutilación. Para que la era dorada existiese, la muerte verdadera tuvo que ser amputada del cosmos. La era se sostiene sobre una herida — y eventualmente esa herida se reabre por sí misma.'
+      )
     ],
     confirmed: [
       'Marika selló la Muerte Predestinada en Maliketh',
-      'El Erdtree fue erigido como árbol cosmológico central',
+      'El Árbol Áureo fue erigido como árbol cosmológico central',
       'Los Dos Dedos fueron designados como mensajeros físicos de la Voluntad Mayor',
-      'La inmortalidad ritual a través del reciclaje del Erdtree comenzó con este acto',
+      'La inmortalidad ritual a través del reciclaje del Árbol Áureo comenzó con este acto'
     ],
     inferred: [
       'La Voluntad Mayor exigió el sello como condición para apoyar el régimen',
       'Marika comprendió desde el principio que el sello era estructuralmente inestable',
-      'El Erdtree no existía con su forma actual antes de este acto — fue alzado simbólicamente',
+      'El Árbol Áureo no existía con su forma actual antes de este acto — fue alzado simbólicamente'
     ],
     theories: [
       'Marika aceptó el sello sabiendo que eventualmente lo rompería',
-      'El Erdtree es una versión modificada del árbol del Crisol primigenio',
-      'Maliketh aceptó la carga voluntariamente, no por servicio puro',
+      'El Árbol Áureo es una versión modificada del árbol del Crisol primigenio',
+      'Maliketh aceptó la carga voluntariamente, no por servicio puro'
     ],
     ambiguous: [
       'Cuánto duró el período entre la derrota de la Reina y el sello',
       'Si Godfrey ya era consorte cuando se produjo el sello',
-      'Si la Voluntad Mayor fue agente activo o solo aprobador del proceso',
+      'Si la Voluntad Mayor fue agente activo o solo aprobador del proceso'
     ],
     relatedCharacters: ['marika', 'maliketh', 'godfrey'],
     relatedFactions: ['orden-dorado', 'dos-dedos'],
@@ -356,9 +356,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'flame-of-ruin-confined': {
     slug: 'flame-of-ruin-confined',
-    subtitle: 'La llama hostil al Erdtree custodiada por el último gigante',
+    subtitle: 'La llama hostil al Árbol Áureo custodiada por el último gigante',
     summary:
-      'Tras la guerra contra los Gigantes del Fuego, la Voluntad Mayor no pudo destruir su llama — solo confinarla. La Llama Quemadora, hostil al Erdtree, fue encerrada en una forja con el último gigante encadenado como custodio eterno. Esa llama es lo que Melina usará para quemar el árbol.',
+      'Tras la guerra contra los Gigantes del Fuego, la Voluntad Mayor no pudo destruir su llama — solo confinarla. La Llama Quemadora, hostil al Árbol Áureo, fue encerrada en una forja con el último gigante encadenado como custodio eterno. Esa llama es lo que Melina usará para quemar el árbol.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -369,44 +369,44 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         ' bajo orden de ',
         link('Marika', 'character', 'marika'),
         ', su llama no pudo ser destruida. Era llama hostil al ',
-        link('Erdtree', 'concept', 'erdtree'),
-        ' por designio cosmológico — vinculada a su Fell God, dios externo distinto de la Voluntad Mayor. Lo único posible fue confinarla.',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' por designio cosmológico — vinculada a su Fell God, dios externo distinto de la Voluntad Mayor. Lo único posible fue confinarla.'
       ),
       h(2, 'Historia detallada'),
       p(
         'La Forja de los Gigantes en las ',
         link('Mountaintops', 'region', 'mountaintops'),
-        ' fue convertida en cárcel. El último gigante superviviente fue encadenado como custodio eterno. La llama latente quedó atrapada en su forja, esperando un momento en que el Orden necesitase usarla — o un momento en que pudiera escaparse.',
+        ' fue convertida en cárcel. El último gigante superviviente fue encadenado como custodio eterno. La llama latente quedó atrapada en su forja, esperando un momento en que el Orden necesitase usarla — o un momento en que pudiera escaparse.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El confinamiento contiene la ironía estructural del Orden Dorado: para sostener su cosmología, conserva intacta el arma capaz de destruirla. La llama esperó eras. Cuando llegó el momento — la fractura del Anillo Elden y la necesidad del Mancillado de acceder al trono — la propia Marika (a través de Melina, su hija implícita) hizo arder al Erdtree con esa misma llama. La era dorada se quemó con la llama que ella misma había confinado.',
+        'El confinamiento contiene la ironía estructural del Orden Dorado: para sostener su cosmología, conserva intacta el arma capaz de destruirla. La llama esperó eras. Cuando llegó el momento — la fractura del Anillo Elden y la necesidad del Tarnished de acceder al trono — la propia Marika (a través de Melina, su hija implícita) hizo arder al Árbol Áureo con esa misma llama. La era dorada se quemó con la llama que ella misma había confinado.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La Llama Quemadora simboliza la imposibilidad cosmológica de la pureza absoluta. El Orden Dorado no puede destruir todo lo que se le opone — solo encerrarlo. Pero cada cosa encerrada espera. La cárcel se vuelve, eventualmente, herramienta del régimen siguiente.',
-      ),
+        'La Llama Quemadora simboliza la imposibilidad cosmológica de la pureza absoluta. El Orden Dorado no puede destruir todo lo que se le opone — solo encerrarlo. Pero cada cosa encerrada espera. La cárcel se vuelve, eventualmente, herramienta del régimen siguiente.'
+      )
     ],
     confirmed: [
-      'La Llama Quemadora era hostil al Erdtree por designio cosmológico',
+      'La Llama Quemadora era hostil al Árbol Áureo por designio cosmológico',
       'No pudo ser destruida tras la guerra — solo confinada',
       'El último Gigante del Fuego fue encadenado como custodio eterno',
-      'Melina usa esta misma llama para incendiar el Erdtree en el final del juego',
+      'Melina usa esta misma llama para incendiar el Árbol Áureo en el final del juego'
     ],
     inferred: [
       'La llama está vinculada al Fell God, dios externo del fuego primigenio',
       'Marika comprendía que la llama eventualmente sería necesaria',
-      'El custodio gigante fue mantenido vivo deliberadamente por su función ritual',
+      'El custodio gigante fue mantenido vivo deliberadamente por su función ritual'
     ],
     theories: [
       'El gigante custodio sigue consciente y aceptaría su muerte como parte del rito',
       'Marika diseñó el confinamiento sabiendo que sería la herramienta del fin',
-      'La Llama Quemadora es contraparte de la Llama Negra: ambas pueden destruir lo divino',
+      'La Llama Quemadora es contraparte de la Llama Negra: ambas pueden destruir lo divino'
     ],
     ambiguous: [
       'Si Godfrey participó del confinamiento o solo de la guerra previa',
       'Si la llama tiene consciencia propia o es solo materia hostil',
-      'Si el Fell God sigue activo o se retiró tras el confinamiento',
+      'Si el Fell God sigue activo o se retiró tras el confinamiento'
     ],
     relatedCharacters: ['godfrey', 'marika', 'melina'],
     relatedFactions: ['fire-giants', 'orden-dorado'],
@@ -435,7 +435,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Omens', 'faction', 'omens'),
         ' como aberraciones malditas. Los gemelos fueron encarcelados en el ',
         link('Subsuelo Shunning-Grounds', 'region', 'subterranean-shunning-grounds'),
-        '.',
+        '.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -443,7 +443,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Crisol primigenio', 'concept', 'crucible'),
         ' que él arrastraba sin proclamar. Los gemelos crecieron en mazmorras, vigilados por ',
         link('Verdugos Omen', 'faction', 'omenkillers'),
-        ' que oficiaban rituales para "neutralizar" su naturaleza maldita. Su existencia era secreto público: todos sabían que existían, nadie hablaba de ellos.',
+        ' que oficiaban rituales para "neutralizar" su naturaleza maldita. Su existencia era secreto público: todos sabían que existían, nadie hablaba de ellos.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -453,33 +453,33 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Mohg', 'character', 'mohg'),
         ' eligió la rebelión absoluta a través del pacto con la ',
         link('Madre Informe', 'concept', 'formless-mother'),
-        '. Ambas respuestas son productos directos del trauma juvenil.',
+        '. Ambas respuestas son productos directos del trauma juvenil.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El encarcelamiento de los gemelos es la grieta moral del Orden Dorado en su forma más íntima. La ley se aplica incluso a los hijos del trono — excepto que la propia diosa los engendró en violación de la categoría que la ley protege. La hipocresía no es excepción del régimen: es su estructura. Cada cosmología tiene su mazmorra escondida bajo la capital.',
-      ),
+        'El encarcelamiento de los gemelos es la grieta moral del Orden Dorado en su forma más íntima. La ley se aplica incluso a los hijos del trono — excepto que la propia diosa los engendró en violación de la categoría que la ley protege. La hipocresía no es excepción del régimen: es su estructura. Cada cosmología tiene su mazmorra escondida bajo la capital.'
+      )
     ],
     confirmed: [
       'Morgott y Mohg son gemelos Omen hijos de Marika y Radagon',
       'Fueron encarcelados en el Subsuelo Shunning-Grounds bajo Leyndell',
       'Los Omenkillers oficiaban rituales sobre ellos durante su juventud',
-      'Su existencia fue secreto público del régimen',
+      'Su existencia fue secreto público del régimen'
     ],
     inferred: [
       'La sangre Omen procede del lado Radagon, no del lado Marika',
       'Marika consintió o no pudo evitar el encarcelamiento',
-      'Las dos respuestas opuestas de los gemelos son producto directo del trauma',
+      'Las dos respuestas opuestas de los gemelos son producto directo del trauma'
     ],
     theories: [
       'Marika lloraba en privado por sus hijos pero no podía contradecir la ley pública',
       'Los gemelos pudieron haber sido visitados secretamente por algún miembro del régimen',
-      'El encarcelamiento fue prueba ritualizada para que la Voluntad Mayor confirmara la legitimidad del Orden',
+      'El encarcelamiento fue prueba ritualizada para que la Voluntad Mayor confirmara la legitimidad del Orden'
     ],
     ambiguous: [
       'Cuánto tiempo permanecieron en las mazmorras',
       'Cómo y cuándo escaparon (Morgott primero, posiblemente Mohg poco después)',
-      'Si compartieron celda o estuvieron separados durante la juventud',
+      'Si compartieron celda o estuvieron separados durante la juventud'
     ],
     relatedCharacters: ['morgott', 'mohg', 'marika', 'radagon'],
     relatedFactions: ['omens', 'omenkillers', 'orden-dorado'],
@@ -502,16 +502,16 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
         ' — apuñaló el cuerpo de ',
         link('Ranni', 'character', 'ranni'),
-        '. La hoja era una de las pocas armas capaces de matar a un Empyrean. La operación tuvo éxito parcial: el cuerpo Empyrean murió, pero como la Muerte Predestinada estaba sellada, la transferencia no fue limpia.',
+        '. La hoja era una de las pocas armas capaces de matar a un Empyrean. La operación tuvo éxito parcial: el cuerpo Empyrean murió, pero como la Muerte Predestinada estaba sellada, la transferencia no fue limpia.'
       ),
       h(2, 'Historia detallada'),
       p(
         'Ranni había preparado la operación durante siglos. Conocía la limitación cosmológica del sello: si su cuerpo Empyrean moría incompletamente, su mente podría transferirse a un cuerpo de respaldo. Eligió una muñeca articulada — diseñada o adaptada por sus aliados, probablemente con asistencia de ',
         link('Iji', 'character', 'iji'),
-        ' como herrero — como nuevo recipiente.',
+        ' como herrero — como nuevo recipiente.'
       ),
       p(
-        'El acto la marcó con una "Marca de Maldición de Muerte" (Cursemark of Death), residuo cosmológico del corte que la separó de su contrato Empyrean. Esa marca quedó como reliquia: el Mancillado puede recuperarla durante su quest. Ranni dejó atrás su cuerpo asesinado en una de las Tres Hermanas y descendió, ahora habitando porcelana, hacia los recovecos donde planeaba el resto de su revolución cosmológica.',
+        'El acto la marcó con una "Marca de Maldición de Muerte" (Cursemark of Death), residuo cosmológico del corte que la separó de su contrato Empyrean. Esa marca quedó como reliquia: el Tarnished puede recuperarla durante su quest. Ranni dejó atrás su cuerpo asesinado en una de las Tres Hermanas y descendió, ahora habitando porcelana, hacia los recovecos donde planeaba el resto de su revolución cosmológica.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -519,35 +519,35 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Dos Dedos', 'faction', 'dos-dedos'),
         ' perdieron control sobre ella. Pero el daño colateral fue masivo: ',
         link('Godwyn', 'character', 'godwyn'),
-        ' también fue asesinado en la misma noche, y su muerte parcial detonó la pena de Marika que rompió el Anillo Elden. La fractura entera del Interregno empieza aquí.',
+        ' también fue asesinado en la misma noche, y su muerte parcial detonó la pena de Marika que rompió el Anillo Elden. La fractura entera de las Tierras Intermedias empieza aquí.'
       ),
       h(2, 'Significado simbólico'),
       p(
         'La auto-muerte de Ranni es la rebelión cosmológica más radical del juego: rechazar la divinidad ofrecida ',
         em('matándose a sí misma'),
-        ' para evitar aceptarla. Ningún otro personaje del Interregno se atreve a este nivel de operación. La porcelana fría de su muñeca actual es el símbolo perfecto: ya no es de carne, ya no es susceptible al ciclo del Erdtree. Su libertad fue conquistada por amputación literal.',
-      ),
+        ' para evitar aceptarla. Ningún otro personaje de las Tierras Intermedias se atreve a este nivel de operación. La porcelana fría de su muñeca actual es el símbolo perfecto: ya no es de carne, ya no es susceptible al ciclo del Árbol Áureo. Su libertad fue conquistada por amputación literal.'
+      )
     ],
     confirmed: [
       'El cuerpo Empyrean de Ranni fue asesinado durante la Noche de los Cuchillos Negros',
       'Su mente fue transferida a una muñeca articulada como cuerpo de respaldo',
       'La operación la liberó del contrato con los Dos Dedos',
-      'La Cursemark of Death es residuo cosmológico del corte',
+      'La Cursemark of Death es residuo cosmológico del corte'
     ],
     inferred: [
       'La operación estuvo en preparación durante siglos',
       'Iji o algún otro aliado herrero adaptó la muñeca como recipiente',
-      'La Voluntad Mayor no detectó la operación a tiempo para impedirla',
+      'La Voluntad Mayor no detectó la operación a tiempo para impedirla'
     ],
     theories: [
       'La muñeca fue creación deliberada, posiblemente vinculada a tradiciones Caria de magia de marionetas',
       'Ranni preparó múltiples cuerpos de respaldo por si el primero fallaba',
-      'La Cursemark of Death es la huella física de su nueva naturaleza no-Empyrean',
+      'La Cursemark of Death es la huella física de su nueva naturaleza no-Empyrean'
     ],
     ambiguous: [
       'Si Ranni planeó la coordinación con el asesinato de Godwyn o aprovechó una operación independiente',
       'Si la transferencia conservó toda su consciencia o solo parte',
-      'Si los Dos Dedos sospechaban su rebelión antes del corte',
+      'Si los Dos Dedos sospechaban su rebelión antes del corte'
     ],
     relatedCharacters: ['ranni', 'godwyn', 'maliketh', 'iji', 'blaidd', 'seluvis'],
     relatedFactions: ['cuchillos-negros', 'caria', 'dos-dedos'],
@@ -561,63 +561,63 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'godwyn-prince-of-death',
     subtitle: 'Cuerpo eterno bajo Deeproot · Origen de la Deathroot · Príncipe que no termina de morir',
     summary:
-      'Tras la Noche de los Cuchillos Negros, el cuerpo sin alma de Godwyn se hundió en las raíces del Erdtree y se transformó en el primer caso de Aquellos que Viven en la Muerte. Su descomposición eterna genera Deathroot, sustancia que infecta el Interregno desde abajo. La cosmología del Orden no puede procesarlo.',
+      'Tras la Noche de los Cuchillos Negros, el cuerpo sin alma de Godwyn se hundió en las raíces del Árbol Áureo y se transformó en el primer caso de Aquellos que Viven en la Muerte. Su descomposición eterna genera Deathroot, sustancia que infecta las Tierras Intermedias desde abajo. La cosmología del Orden no puede procesarlo.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         link('Godwyn', 'character', 'godwyn'),
         ' fue asesinado en su alma durante la Noche, pero su cuerpo no murió porque la ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
-        ' estaba sellada. El cadáver sin alma se hundió en las raíces del Erdtree y comenzó una transformación monstruosa: crecimiento eterno entrelazado con dragones, raíces y necrosis luminosa. Hoy yace bajo ',
+        ' estaba sellada. El cadáver sin alma se hundió en las raíces del Árbol Áureo y comenzó una transformación monstruosa: crecimiento eterno entrelazado con dragones, raíces y necrosis luminosa. Hoy yace bajo ',
         link('Deeproot Depths', 'region', 'deeproot-depths'),
-        ' como Príncipe de la Muerte.',
+        ' como Príncipe de la Muerte.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'El proceso fue inédito. Ningún demidiós había muerto parcialmente antes — la inmortalidad ritual del Erdtree procesaba a los muertos completos, no a almas-cuerpo desincronizados. El cadáver de Godwyn quedó cosmológicamente atascado: incapaz de morir por completo, incapaz de regresar al ciclo del Erdtree. Su descomposición eterna generó ',
+        'El proceso fue inédito. Ningún demidiós había muerto parcialmente antes — la inmortalidad ritual del Árbol Áureo procesaba a los muertos completos, no a almas-cuerpo desincronizados. El cadáver de Godwyn quedó cosmológicamente atascado: incapaz de morir por completo, incapaz de regresar al ciclo del Árbol Áureo. Su descomposición eterna generó ',
         link('Deathroot', 'concept', 'deathroot'),
-        ', sustancia necrótica que se filtra por las raíces del árbol y emerge en cada cripta del Interregno animando cadáveres.',
+        ', sustancia necrótica que se filtra por las raíces del árbol y emerge en cada cripta de las Tierras Intermedias animando cadáveres.'
       ),
       p(
         'El cuerpo está fusionado con serpientes draconicídas, incluyendo el cuerpo onírico de ',
         link('Fortissax', 'character', 'fortissax'),
         ' que sigue luchando eternamente contra la corrupción del antiguo amigo. ',
         link('Fia', 'character', 'fia'),
-        ' dedica su quest a sanar la herida cosmológica que el cadáver representa, recuperando la Runa Mendaz que devolverá la Muerte Predestinada al Anillo Elden.',
+        ' dedica su quest a sanar la herida cosmológica que el cadáver representa, recuperando la Runa Mendaz que devolverá la Muerte Predestinada al Anillo Elden.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La existencia del Príncipe de la Muerte es prueba de que el sello de Marika fue estructuralmente fallido. La inmortalidad ritual no funciona cuando el alma muere antes del cuerpo. Cada cadáver reanimado del Interregno, cada criatura de los ',
+        'La existencia del Príncipe de la Muerte es prueba de que el sello de Marika fue estructuralmente fallido. La inmortalidad ritual no funciona cuando el alma muere antes del cuerpo. Cada cadáver reanimado de las Tierras Intermedias, cada criatura de los ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
         ', cada filtración de Deathroot — todo es eco de este caso original. La ',
         link('Era del Crepúsculo', 'ending', 'duskborn'),
-        ' es el final que cierra esta herida.',
+        ' es el final que cierra esta herida.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Godwyn como Príncipe de la Muerte es el monumento subterráneo del juego. Lo que el régimen no puede mirar de frente: un dios que no muere ni vive, una herida que no se cicatriza, una verdad cosmológica que el sello de Marika nunca supo procesar. Bajo el oro del Erdtree crece el cadáver del hijo amado. Es la imagen más exacta del Orden Dorado completo.',
-      ),
+        'Godwyn como Príncipe de la Muerte es el monumento subterráneo del juego. Lo que el régimen no puede mirar de frente: un dios que no muere ni vive, una herida que no se cicatriza, una verdad cosmológica que el sello de Marika nunca supo procesar. Bajo el oro del Árbol Áureo crece el cadáver del hijo amado. Es la imagen más exacta del Orden Dorado completo.'
+      )
     ],
     confirmed: [
-      'El cuerpo sin alma de Godwyn se hundió en las raíces del Erdtree tras la Noche',
+      'El cuerpo sin alma de Godwyn se hundió en las raíces del Árbol Áureo tras la Noche',
       'Su descomposición eterna genera Deathroot',
       'Es el primer caso de Aquellos que Viven en la Muerte',
-      'Fortissax está atrapado en la pesadilla del demidiós muerto',
+      'Fortissax está atrapado en la pesadilla del demidiós muerto'
     ],
     inferred: [
       'El sello de la Muerte Predestinada hizo posible esta transformación monstruosa',
-      'La Deathroot que infecta el Interregno entero emana de su cadáver',
-      'Conserva alguna forma de presencia onírica que afecta a Fortissax',
+      'La Deathroot que infecta las Tierras Intermedias enteras emana de su cadáver',
+      'Conserva alguna forma de presencia onírica que afecta a Fortissax'
     ],
     theories: [
       'Godwyn no es solo cadáver: conserva voluntad residual que intenta alcanzar el cosmos',
       'La Deathroot es expresión de su anhelo de muerte real',
-      'La Era del Crepúsculo le devuelve dignidad al permitirle finalmente morir',
+      'La Era del Crepúsculo le devuelve dignidad al permitirle finalmente morir'
     ],
     ambiguous: [
       'Si conserva consciencia bajo Deeproot Depths',
       'Si su pacto con Fortissax sobrevive en el cadáver eterno',
-      'Si su transformación todavía progresa o se ha estabilizado',
+      'Si su transformación todavía progresa o se ha estabilizado'
     ],
     relatedCharacters: ['godwyn', 'fortissax', 'fia', 'd', 'rogier', 'maliketh'],
     relatedFactions: ['those-who-live-in-death'],
@@ -639,13 +639,13 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ', su otro aspecto ',
         link('Radagon', 'character', 'radagon'),
-        ' inició una campaña silenciosa de reparación. Su martillo característico — luego conocido como Martillo de Reparación o Martillo Marika — golpeaba las grietas del Anillo intentando hacer que se cerrasen. La operación nunca tuvo éxito: las grietas eran estructurales, no superficiales.',
+        ' inició una campaña silenciosa de reparación. Su martillo característico — luego conocido como Martillo de Reparación o Martillo Marika — golpeaba las grietas del Anillo intentando hacer que se cerrasen. La operación nunca tuvo éxito: las grietas eran estructurales, no superficiales.'
       ),
       h(2, 'Historia detallada'),
       p(
         'Radagon, fundamentalista del ',
         link('Orden Dorado', 'concept', 'golden-order'),
-        ' por convicción, no podía aceptar que su otra mitad hubiese destruido el régimen. Sus martillazos son acto teológico antes que ingenieril: cada golpe es afirmación de que el Anillo aún puede sostenerse. Las cadenas doradas que recubren su cuerpo en su forma de jefe final son cicatrices auto-impuestas — el residuo material del conflicto interno con Marika dentro del cuerpo común.',
+        ' por convicción, no podía aceptar que su otra mitad hubiese destruido el régimen. Sus martillazos son acto teológico antes que ingenieril: cada golpe es afirmación de que el Anillo aún puede sostenerse. Las cadenas doradas que recubren su cuerpo en su forma de jefe final son cicatrices auto-impuestas — el residuo material del conflicto interno con Marika dentro del cuerpo común.'
       ),
       p(
         'Su filosofía codificó lo que más tarde se conocería como ',
@@ -654,37 +654,37 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Goldmask', 'character', 'goldmask'),
         ' eventualmente perfeccionaría. La ',
         link('Ley de la Regresión', 'concept', 'law-of-regression'),
-        ' es heredera filosófica directa de los intentos de Radagon de regresar al Anillo a su estado pre-rotura.',
+        ' es heredera filosófica directa de los intentos de Radagon de regresar al Anillo a su estado pre-rotura.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El esfuerzo de Radagon fue inútil técnicamente, pero retrasó el colapso. Sin sus reparaciones constantes, el régimen probablemente habría caído antes. Cuando el Mancillado lo enfrenta como segunda fase tras Marika encadenada, lo hace bajo el peso acumulado de eras de martillazos fallidos. Su última batalla es la última manifestación de esa empresa imposible.',
+        'El esfuerzo de Radagon fue inútil técnicamente, pero retrasó el colapso. Sin sus reparaciones constantes, el régimen probablemente habría caído antes. Cuando el Tarnished lo enfrenta como segunda fase tras Marika encadenada, lo hace bajo el peso acumulado de eras de martillazos fallidos. Su última batalla es la última manifestación de esa empresa imposible.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Radagon es la imagen del reformista cuyo reformismo solo es posible porque hay revolución. En el mismo cuerpo conviven el revolucionario y el conservador y ninguno puede ganar sin matar al otro. Su martillo simboliza la imposibilidad de la auto-reconciliación divina.',
-      ),
+        'Radagon es la imagen del reformista cuyo reformismo solo es posible porque hay revolución. En el mismo cuerpo conviven el revolucionario y el conservador y ninguno puede ganar sin matar al otro. Su martillo simboliza la imposibilidad de la auto-reconciliación divina.'
+      )
     ],
     confirmed: [
       'Radagon golpeó eternamente las grietas del Anillo Elden con su martillo',
       'Sus cadenas doradas son resultado del conflicto interno con Marika',
       'Su filosofía generó el Fundamentalismo del Orden Dorado',
-      'Goldmask y Corhyn son herederos filosóficos directos',
+      'Goldmask y Corhyn son herederos filosóficos directos'
     ],
     inferred: [
       'Las reparaciones nunca cerraron las grietas pero retrasaron el colapso',
       'Marika sentía cada martillazo como tortura interna',
-      'Las cadenas son auto-impuestas, no impuestas por la Voluntad Mayor',
+      'Las cadenas son auto-impuestas, no impuestas por la Voluntad Mayor'
     ],
     theories: [
       'Radagon sabía que la reparación era imposible pero seguía por deber teológico puro',
       'La Voluntad Mayor toleró la reparación porque retrasaba la sucesión cosmológica',
-      'El Anillo eventualmente se reparó parcialmente — solo no del modo que Radagon esperaba',
+      'El Anillo eventualmente se reparó parcialmente — solo no del modo que Radagon esperaba'
     ],
     ambiguous: [
       'Cuánto tiempo dedicó Radagon a la reparación antes de la batalla final',
       'Si Marika lo apoyaba en silencio o lo aborrecía interiormente',
-      'Si conocía el plan de Goldmask o lo desconocía',
+      'Si conocía el plan de Goldmask o lo desconocía'
     ],
     relatedCharacters: ['radagon', 'marika', 'goldmask', 'corhyn'],
     relatedFactions: ['orden-dorado', 'fundamentalistas'],
@@ -697,7 +697,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'shattering-war',
     subtitle: 'Guerra civil entre demidioses · Sin vencedor · Colapso político y metafísico simultáneo',
     summary:
-      'Tras la fractura del Anillo Elden, los demidioses se dispersaron por el Interregno reclamando Grandes Runas. La guerra civil que siguió no produjo vencedor: cada combatiente quedó parcialmente arruinado. La era dorada terminó políticamente sin que ningún régimen alternativo pudiese consolidarse.',
+      'Tras la fractura del Anillo Elden, los demidioses se dispersaron por las Tierras Intermedias reclamando Grandes Runas. La guerra civil que siguió no produjo vencedor: cada combatiente quedó parcialmente arruinado. La era dorada terminó políticamente sin que ningún régimen alternativo pudiese consolidarse.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -705,7 +705,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' rompió el Anillo, sus Grandes Runas se dispersaron entre sus hijos demidiós. Cada uno reclamó la suya y se lanzó a la guerra contra los demás. La ',
         link('Guerra del Shattering', 'timeline', 'shattering-war'),
-        ' duró un período de duración no exacta pero suficiente para arruinar el Interregno entero.',
+        ' duró un período de duración no exacta pero suficiente para arruinar las Tierras Intermedias enteras.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -725,44 +725,44 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Malenia', 'character', 'malenia'),
         ' (marchando a Caelid en nombre de ',
         link('Miquella', 'character', 'miquella'),
-        ').',
+        ').'
       ),
       p(
         'Ninguno venció. La ',
         link('Batalla de Aeonia', 'timeline', 'batalla-aeonia'),
-        ' arruinó simultáneamente a Radahn y a Malenia. Mohg secuestró a Miquella pero su proyecto sangriento se estancó. Rykard se fundió con Eiglay y dejó de ser plenamente humano. Godrick se volvió caricatura. Morgott se atrincheró. La guerra terminó por agotamiento estructural, no por victoria.',
+        ' arruinó simultáneamente a Radahn y a Malenia. Mohg secuestró a Miquella pero su proyecto sangriento se estancó. Rykard se fundió con Eiglay y dejó de ser plenamente humano. Godrick se volvió caricatura. Morgott se atrincheró. La guerra terminó por agotamiento estructural, no por victoria.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El estado del Interregno cuando llega el Mancillado es producto directo de esta guerra. Cada región arrasada, cada demidiós encerrado en su pequeño reino fallido, cada ',
-        link('Mancillado', 'concept', 'tarnished'),
-        ' candidato improbable al trono — todo es consecuencia de que ningún demidiós pudo consolidar un régimen alternativo. La ausencia de vencedor es lo que abre el espacio para que un agente externo, como el Mancillado, pueda decidir el destino del cosmos.',
+        'El estado de las Tierras Intermedias cuando llega el Tarnished es producto directo de esta guerra. Cada región arrasada, cada demidiós encerrado en su pequeño reino fallido, cada ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' candidato improbable al trono — todo es consecuencia de que ningún demidiós pudo consolidar un régimen alternativo. La ausencia de vencedor es lo que abre el espacio para que un agente externo, como el Tarnished, pueda decidir el destino del cosmos.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La Guerra del Shattering encarna la imposibilidad estructural del régimen post-fractura. Cada demidiós cargó con un fragmento del Anillo y descubrió que el fragmento no le bastaba. Necesitaban a los demás — pero la enemistad mutua los hacía incompatibles. El régimen del Orden Dorado se demostró indisoluble: solo unido funcionaba; dividido, no producía nada coherente.',
-      ),
+        'La Guerra del Shattering encarna la imposibilidad estructural del régimen post-fractura. Cada demidiós cargó con un fragmento del Anillo y descubrió que el fragmento no le bastaba. Necesitaban a los demás — pero la enemistad mutua los hacía incompatibles. El régimen del Orden Dorado se demostró indisoluble: solo unido funcionaba; dividido, no producía nada coherente.'
+      )
     ],
     confirmed: [
       'Los demidioses reclamaron Grandes Runas tras la fractura',
       'Ningún demidiós venció a los demás',
       'La Batalla de Aeonia arruinó a Radahn y a Malenia simultáneamente',
-      'El estado actual del Interregno es producto directo de esta guerra',
+      'El estado actual de las Tierras Intermedias son producto directo de esta guerra'
     ],
     inferred: [
-      'La guerra duró siglos según el ritmo cosmológico del Interregno',
-      'La Voluntad Mayor permitió que se desarrollase para producir un candidato externo (el Mancillado)',
-      'Cada demidiós comprendió individualmente que no podría vencer pero ninguno admitió la rendición',
+      'La guerra duró siglos según el ritmo cosmológico de las Tierras Intermedias',
+      'La Voluntad Mayor permitió que se desarrollase para producir un candidato externo (el Tarnished)',
+      'Cada demidiós comprendió individualmente que no podría vencer pero ninguno admitió la rendición'
     ],
     theories: [
       'Marika orquestó la dispersión deliberadamente para producir el escenario actual',
       'Algunas alianzas existieron en secreto (Mohg y los Bloody Fingers infiltrando otras facciones)',
-      'La guerra continúa cosmológicamente — solo que ya nadie pelea activamente',
+      'La guerra continúa cosmológicamente — solo que ya nadie pelea activamente'
     ],
     ambiguous: [
       'Cuánto tiempo duró exactamente',
       'Si hubo treguas formales entre demidioses',
-      'Si todos los demidioses recibieron Grandes Runas o solo algunos',
+      'Si todos los demidioses recibieron Grandes Runas o solo algunos'
     ],
     relatedCharacters: ['godrick', 'rennala', 'radahn', 'rykard', 'morgott', 'mohg', 'malenia', 'miquella'],
     relatedFactions: ['golden-lineage', 'redmanes', 'volcano-manor', 'cleanrot-knights'],
@@ -784,7 +784,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Linaje Dorado', 'faction', 'golden-lineage'),
         '. Su Gran Runa es la más débil del juego; su sangre Empyrean ha pasado por demasiadas generaciones laterales como para conservar potencia. Para mantener autoridad, recurrió a una tecnología antigua: el ',
         link('injerto', 'concept', 'grafting'),
-        ', cosido de partes de cuerpos ajenos al propio.',
+        ', cosido de partes de cuerpos ajenos al propio.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -792,7 +792,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Crisol primigenio', 'concept', 'crucible'),
         ' que el Orden Dorado nunca purgó del todo. Los ',
         link('Crucible Knights', 'concept', 'crucible-knights'),
-        ' conservan iconografía de mezcla corporal — alas, escamas, cuernos — como marca de continuidad con el Crisol. Godrick adaptó esta tradición a un uso más crudo: en lugar de portar simbólicamente la sangre primigenia, literalmente cose partes de soldados caídos a su propio cuerpo.',
+        ' conservan iconografía de mezcla corporal — alas, escamas, cuernos — como marca de continuidad con el Crisol. Godrick adaptó esta tradición a un uso más crudo: en lugar de portar simbólicamente la sangre primigenia, literalmente cose partes de soldados caídos a su propio cuerpo.'
       ),
       p(
         'Sus salas en ',
@@ -801,37 +801,37 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godwyn', 'character', 'godwyn'),
         ' con ',
         link('Fortissax', 'character', 'fortissax'),
-        '. Su muerte injertando el brazo del Mancillado es cierre perfecto: hasta su última agonía, Godrick injerta.',
+        '. Su muerte injertando el brazo del Tarnished es cierre perfecto: hasta su última agonía, Godrick injerta.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El injerto de Godrick es síntoma de la decadencia estructural del Linaje Dorado. Cada generación lateral diluyó la sangre. Cuando la fractura llegó, el linaje principal estaba muerto (Godwyn) o disperso (los demidioses Caria). Solo quedaba la línea menor de Godrick. La técnica del injerto es lo único que mantiene la apariencia. Sin ella, no habría demidiós Golden Lineage activo.',
+        'El injerto de Godrick es síntoma de la decadencia estructural del Linaje Dorado. Cada generación lateral diluyó la sangre. Cuando la fractura llegó, el linaje principal estaba muerto (Godwyn) o disperso (los demidioses Caria). Solo quedaba la línea menor de Godrick. La técnica del injerto es lo único que mantiene la apariencia. Sin ella, no habría demidiós Golden Lineage activo.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Godrick es el régimen entero llevado al absurdo cosmológico. Cada brazo extra cosido a su torso es metáfora perfecta del Orden Dorado actual: un sistema que solo puede sostener apariencia de poder acumulando partes ajenas. La diferencia entre Godrick y los demás demidioses es de esencia, no de magnitud: su verbo característico es transitivo y patético — él no hace, él pega.',
-      ),
+        'Godrick es el régimen entero llevado al absurdo cosmológico. Cada brazo extra cosido a su torso es metáfora perfecta del Orden Dorado actual: un sistema que solo puede sostener apariencia de poder acumulando partes ajenas. La diferencia entre Godrick y los demás demidioses es de esencia, no de magnitud: su verbo característico es transitivo y patético — él no hace, él pega.'
+      )
     ],
     confirmed: [
       'Godrick cose partes de cuerpos ajenos a su propio cuerpo y a sus salas',
       'La técnica del injerto procede del Crisol primigenio',
-      'Su muerte injertando al Mancillado cierra el ciclo',
-      'Los Grafted Scions son experimentos preliminares de la técnica',
+      'Su muerte injertando al Tarnished cierra el ciclo',
+      'Los Grafted Scions son experimentos preliminares de la técnica'
     ],
     inferred: [
       'Los injertos compensan la debilidad estructural de su sangre Empyrean diluida',
       'Su obsesión con dragones imita el pacto de Godwyn con Fortissax',
-      'Sin injertar, Godrick no podría sostener su Gran Runa',
+      'Sin injertar, Godrick no podría sostener su Gran Runa'
     ],
     theories: [
       'El conocimiento del injerto fue heredado secretamente de los Crucible Knights',
       'Sus súbditos en Stormveil le sirven por miedo, no por lealtad',
-      'Si Nepheli ascendiera al trono ancestral, la técnica del injerto se purgaría del régimen',
+      'Si Nepheli ascendiera al trono ancestral, la técnica del injerto se purgaría del régimen'
     ],
     ambiguous: [
       'Cuántos siglos lleva injertándose',
       'Si conocía la disolución progresiva de su sangre o vivía en autoengaño',
-      'Si los Grafted Scions son experimentos suyos o reliquias anteriores',
+      'Si los Grafted Scions son experimentos suyos o reliquias anteriores'
     ],
     relatedCharacters: ['godrick', 'godfrey', 'godwyn', 'nepheli-loux', 'fortissax'],
     relatedFactions: ['golden-lineage', 'orden-dorado'],
@@ -844,7 +844,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'morgott-defends-leyndell',
     subtitle: 'El Rey Caído defiende el régimen que lo encarceló · "Último de todos los reyes"',
     summary:
-      'Tras la fractura, Morgott — Omen encarcelado durante su juventud — eligió defender el Orden Dorado contra los Mancillados aspirantes. Bajo el alias de Margit, vigiló los accesos al trono. Como Rey Omen reinó sobre Leyndell. Su lealtad excede toda lógica de privilegio: defendió hasta la muerte el régimen que lo había despreciado.',
+      'Tras la fractura, Morgott — Omen encarcelado durante su juventud — eligió defender el Orden Dorado contra los Tarnished aspirantes. Bajo el alias de Margit, vigiló los accesos al trono. Como Rey Omen reinó sobre Leyndell. Su lealtad excede toda lógica de privilegio: defendió hasta la muerte el régimen que lo había despreciado.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -853,46 +853,46 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Subsuelo Shunning-Grounds', 'region', 'subterranean-shunning-grounds'),
         ' en algún momento posterior a la fractura del Anillo Elden. Asumió el alias de Margit el Presagio Caído como identidad de campo y, posteriormente, la corona de Rey Omen como autoridad pública en ',
         link('Leyndell', 'region', 'leyndell'),
-        '.',
+        '.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Como Margit aparece tres veces ante el Mancillado: en Stormhill (portero de Stormveil), en el camino a la Mesa Redonda (guardián fantasmal), y antes de Leyndell. Cada aparición es advertencia ritual: "Mancillado, retírate". Su fraseología sugiere que conoce los nombres de los aspirantes y los considera blasfemos por la mera ambición de retomar el trono. La paradoja es total: el demidiós que el régimen desprecia es el guardián más eficaz de ese mismo régimen.',
+        'Como Margit aparece tres veces ante el Tarnished: en Stormhill (portero de Stormveil), en el camino a la Mesa Redonda (guardián fantasmal), y antes de Leyndell. Cada aparición es advertencia ritual: "Tarnished, retírate". Su fraseología sugiere que conoce los nombres de los aspirantes y los considera blasfemos por la mera ambición de retomar el trono. La paradoja es total: el demidiós que el régimen desprecia es el guardián más eficaz de ese mismo régimen.'
       ),
       p(
         'Como Rey Omen, Morgott reside en Leyndell defendiendo la capital. Su gracia es prestada y dolorosa — su sangre Omen genera la "',
         link('Maldición Omen', 'concept', 'omen-curse'),
-        '" como dolor crónico. Cada paso que da en su corona dorada le recuerda que su forma natural es la maldición Omen oculta debajo. Pero sigue. Su lealtad es elección teológica deliberada, no ignorancia.',
+        '" como dolor crónico. Cada paso que da en su corona dorada le recuerda que su forma natural es la maldición Omen oculta debajo. Pero sigue. Su lealtad es elección teológica deliberada, no ignorancia.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'Sin Morgott, Leyndell habría caído antes. Su defensa fue lo que mantuvo el último bastión del Orden Dorado activo durante toda la fractura. Su muerte ante el Mancillado abre el camino al trono. Sus últimas palabras — "vagabundo Mancillado, sigue el camino justo" — son las de un mártir que muere por una causa que nunca le perteneció.',
+        'Sin Morgott, Leyndell habría caído antes. Su defensa fue lo que mantuvo el último bastión del Orden Dorado activo durante toda la fractura. Su muerte ante el Tarnished abre el camino al trono. Sus últimas palabras — "vagabundo Tarnished, sigue el camino justo" — son las de un mártir que muere por una causa que nunca le perteneció.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Morgott es la pregunta más oscura del juego: ¿se puede ser leal a un sistema que te aborrece? Su existencia desafía toda teoría de "los oprimidos siempre se rebelan". Su tragedia es la del que entiende perfectamente la injusticia que sufre y decide, contra toda lógica emocional, sostener el sistema que la perpetúa. "Último de todos los reyes" — el título que el juego le otorga — describe exactamente su rol: el último guardián de un linaje que ya no lo reconoce como heredero legítimo.',
-      ),
+        'Morgott es la pregunta más oscura del juego: ¿se puede ser leal a un sistema que te aborrece? Su existencia desafía toda teoría de "los oprimidos siempre se rebelan". Su tragedia es la del que entiende perfectamente la injusticia que sufre y decide, contra toda lógica emocional, sostener el sistema que la perpetúa. "Último de todos los reyes" — el título que el juego le otorga — describe exactamente su rol: el último guardián de un linaje que ya no lo reconoce como heredero legítimo.'
+      )
     ],
     confirmed: [
       'Morgott escapó del Subsuelo Shunning-Grounds tras la fractura',
       'Adoptó el alias de Margit el Presagio Caído',
       'Defendió Leyndell como Rey Omen hasta la muerte',
-      'Sus últimas palabras al Mancillado son palabras de mártir',
+      'Sus últimas palabras al Tarnished son palabras de mártir'
     ],
     inferred: [
       'Su devoción al Orden es elección teológica, no ignorancia',
       'La Maldición Omen le genera dolor crónico durante toda su defensa',
-      'Mohg, su gemelo, podría haberlo apoyado pero eligió la rebelión opuesta',
+      'Mohg, su gemelo, podría haberlo apoyado pero eligió la rebelión opuesta'
     ],
     theories: [
-      'Sus apariciones como Margit son advertencias deliberadas — da al Mancillado oportunidad de retirarse',
+      'Sus apariciones como Margit son advertencias deliberadas — da al Tarnished oportunidad de retirarse',
       'Marika sabe de su existencia y secretamente lo apoya como su último guardián',
-      'Si el Mancillado siguiera el "camino justo" que Morgott pide, ningún régimen alternativo se establecería',
+      'Si el Tarnished siguiera el "camino justo" que Morgott pide, ningún régimen alternativo se establecería'
     ],
     ambiguous: [
       'Cómo y cuándo escapó exactamente del subsuelo',
       'Si su lealtad incluye conocimiento del crimen original (su propio encarcelamiento) o lo ignora deliberadamente',
-      'Si su muerte es liberación o tragedia desde su propia perspectiva',
+      'Si su muerte es liberación o tragedia desde su propia perspectiva'
     ],
     relatedCharacters: ['morgott', 'mohg', 'marika', 'godfrey'],
     relatedFactions: ['orden-dorado', 'omens'],
@@ -916,13 +916,13 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Madre Informe', 'concept', 'formless-mother'),
         ', uno de los ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
-        ' del Interregno. El pacto le otorgó la ',
+        ' de las Tierras Intermedias. El pacto le otorgó la ',
         link('Bloodflame', 'concept', 'bloodflame'),
-        ' como magia personal y la autoridad teológica para construir un régimen alternativo.',
+        ' como magia personal y la autoridad teológica para construir un régimen alternativo.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La Madre Informe es entidad cuya naturaleza el juego deliberadamente no especifica: no tiene cuerpo fijo, opera a través de fluido y carne, su nombre la describe en negativo. Mohg se ofreció como huésped y profeta. Su transformación física fue completa: alas, cuernos coronados, cuerpo cubierto de marcas de sangre, dominio de fuego carmesí extraído de su propia sangre.',
+        'La Madre Informe es entidad cuya naturaleza el juego deliberadamente no especifica: no tiene cuerpo fijo, opera a través de fluido y carne, su nombre la describe en negativo. Mohg se ofreció como huésped y profeta. Su transformación física fue completa: alas, cuernos coronados, cuerpo cubierto de marcas de sangre, dominio de fuego carmesí extraído de su propia sangre.'
       ),
       p(
         'Reclutó a los ',
@@ -931,7 +931,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Varré', 'character', 'varre'),
         ' opera como reclutador en superficie. La sangre derramada por sus invasores alimenta el lago carmesí de ',
         link('Mohgwyn', 'region', 'mohgwyn'),
-        ', sede de la dinastía sangrienta donde Mohg planeaba criar a un consorte divino.',
+        ', sede de la dinastía sangrienta donde Mohg planeaba criar a un consorte divino.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -939,33 +939,33 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Miquella', 'character', 'miquella'),
         ' durante su sueño en el ',
         link('Haligtree', 'region', 'haligtree'),
-        '. Mohg necesitaba un Empyrean para ungir su régimen alternativo. El plan fracasó porque el capullo de Oro sin Aleación protegía a Miquella incluso del rito sangriento. Pero la dinastía Mohgwyn quedó activa: una sociedad paralela operando bajo otra cosmología, prueba de que el Orden Dorado no es la única opción cosmológica disponible.',
+        '. Mohg necesitaba un Empyrean para ungir su régimen alternativo. El plan fracasó porque el capullo de Oro sin Aleación protegía a Miquella incluso del rito sangriento. Pero la dinastía Mohgwyn quedó activa: una sociedad paralela operando bajo otra cosmología, prueba de que el Orden Dorado no es la única opción cosmológica disponible.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El pacto de Mohg con la Madre Informe es la rebelión cosmológica más estructuralmente similar al crimen original del Orden Dorado: secuestrar a una figura sagrada y forzarla en el rol de consorte para fundar una era. Donde Marika usó a Godfrey, Mohg usaría a Miquella. La revolución reproduce la opresión. El profeta sangriento es estructuralmente idéntico al fundador dorado.',
-      ),
+        'El pacto de Mohg con la Madre Informe es la rebelión cosmológica más estructuralmente similar al crimen original del Orden Dorado: secuestrar a una figura sagrada y forzarla en el rol de consorte para fundar una era. Donde Marika usó a Godfrey, Mohg usaría a Miquella. La revolución reproduce la opresión. El profeta sangriento es estructuralmente idéntico al fundador dorado.'
+      )
     ],
     confirmed: [
       'Mohg pactó con la Madre Informe tras su escape del subsuelo',
       'Recibió la Bloodflame como magia personal',
       'Construyó la Dinastía Mohgwyn como reino paralelo',
-      'Secuestró a Miquella para usarlo como consorte divino',
+      'Secuestró a Miquella para usarlo como consorte divino'
     ],
     inferred: [
       'La Madre Informe lo usó tanto como él la usó a ella',
       'El proyecto reproduce estructuralmente el crimen original de Marika',
-      'Varré opera como puente entre superficie y dinastía subterránea',
+      'Varré opera como puente entre superficie y dinastía subterránea'
     ],
     theories: [
       'La Madre Informe es entidad cosmológica autónoma, no creación de Mohg',
       'Mohg sabía que su régimen reproducía el crimen original — lo aceptó como precio',
-      'Si Miquella hubiera despertado dentro de Mohgwyn, el cosmos habría tenido dos Erdtrees rivales',
+      'Si Miquella hubiera despertado dentro de Mohgwyn, el cosmos habría tenido dos Árboles Áureos rivales'
     ],
     ambiguous: [
       'Cuándo exactamente Mohg estableció el pacto',
       'Si la Madre Informe sigue activa tras su muerte',
-      'Si el Bloodflame es regalo de ella o robo cosmológico',
+      'Si el Bloodflame es regalo de ella o robo cosmológico'
     ],
     relatedCharacters: ['mohg', 'miquella', 'varre', 'morgott'],
     relatedFactions: ['bloody-fingers', 'omens'],
@@ -978,7 +978,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'rykard-volcano-manor',
     subtitle: 'Devorado voluntariamente por la Serpiente-Dios · Blasfemia institucional con dientes',
     summary:
-      'Tras la fractura, Rykard descendió al santuario subterráneo bajo Mt. Gelmir y permitió que la serpiente-dios Eiglay lo devorara. La fusión que resultó es la blasfemia más completa del Interregno: el demidiós conserva voluntad humana dentro del cuerpo de un dios pre-Orden devorador.',
+      'Tras la fractura, Rykard descendió al santuario subterráneo bajo Mt. Gelmir y permitió que la serpiente-dios Eiglay lo devorara. La fusión que resultó es la blasfemia más completa de las Tierras Intermedias: el demidiós conserva voluntad humana dentro del cuerpo de un dios pre-Orden devorador.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -991,7 +991,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Mt. Gelmir', 'region', 'mt-gelmir'),
         '. Encontró a la serpiente-dios ',
         link('Eiglay', 'concept', 'serpent-god-eiglay'),
-        ' y se entregó a ella.',
+        ' y se entregó a ella.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -999,10 +999,10 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Crisol primigenio', 'concept', 'crucible'),
         ' que sobrevivió a la purga del Orden, o ',
         link('Antiguo Dragón', 'faction', 'dragones-antiguos'),
-        ' degenerado en serpiente-dragón, o entidad cosmológica autónoma de origen desconocido. Su característica funcional: hostil al Erdtree y capaz de digerir dioses.',
+        ' degenerado en serpiente-dragón, o entidad cosmológica autónoma de origen desconocido. Su característica funcional: hostil al Árbol Áureo y capaz de digerir dioses.'
       ),
       p(
-        'Rykard descendió al santuario y consintió la devoración. La fusión que resultó es físicamente monstruosa: cabeza humana en cuello de hombre saliendo del cuerpo descomunal de la serpiente, todo bañado en magma. Conservó memoria, voluntad y autoridad — pero la frontera entre el demidiós y el dios devorador se ha disuelto.',
+        'Rykard descendió al santuario y consintió la devoración. La fusión que resultó es físicamente monstruosa: cabeza humana en cuello de hombre saliendo del cuerpo descomunal de la serpiente, todo bañado en magma. Conservó memoria, voluntad y autoridad — pero la frontera entre el demidiós y el dios devorador se ha disuelto.'
       ),
       p(
         'Desde el ',
@@ -1011,38 +1011,38 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Tanith', 'character', 'tanith'),
         ' funge como anfitriona oficial. ',
         link('Rya', 'character', 'rya'),
-        ' (en realidad serpiente bajo apariencia humana) recluta nobles desafectos. Las cartas de invitación que Tanith envía son misiones de asesinato disfrazadas de rituales aristocráticos.',
+        ' (en realidad serpiente bajo apariencia humana) recluta nobles desafectos. Las cartas de invitación que Tanith envía son misiones de asesinato disfrazadas de rituales aristocráticos.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La existencia del régimen sangriento de Rykard documenta dos cosas estructurales. Primero: el Orden Dorado no es cosmología única — entidades pre-Orden sobreviven en sus márgenes y pueden ser invocadas. Segundo: la rebelión cosmológica no garantiza superación. Rykard quiso destruir el régimen y construyó otro idéntico bajo otra deidad. Tras su muerte, Tanith devora su cadáver en un acto de comunión que es simultáneamente devoción y preservación.',
+        'La existencia del régimen sangriento de Rykard documenta dos cosas estructurales. Primero: el Orden Dorado no es cosmología única — entidades pre-Orden sobreviven en sus márgenes y pueden ser invocadas. Segundo: la rebelión cosmológica no garantiza superación. Rykard quiso destruir el régimen y construyó otro idéntico bajo otra deidad. Tras su muerte, Tanith devora su cadáver en un acto de comunión que es simultáneamente devoción y preservación.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La fusión de Rykard con Eiglay es la imagen literal del rebelde que se ha vuelto la cosa contra la que se rebelaba. Su tridente "Devoraadios" promete liberación universal y entrega únicamente comida. Su matrimonio con Tanith — quien literalmente lo devora al final — completa el ciclo: el blasfemo se vuelve alimento de su propia anfitriona, y la anfitriona se vuelve sede de la nueva blasfemia.',
-      ),
+        'La fusión de Rykard con Eiglay es la imagen literal del rebelde que se ha vuelto la cosa contra la que se rebelaba. Su tridente "Devoraadios" promete liberación universal y entrega únicamente comida. Su matrimonio con Tanith — quien literalmente lo devora al final — completa el ciclo: el blasfemo se vuelve alimento de su propia anfitriona, y la anfitriona se vuelve sede de la nueva blasfemia.'
+      )
     ],
     confirmed: [
       'Rykard permitió que Eiglay lo devorara',
       'La fusión preserva su voluntad humana dentro del cuerpo de la serpiente',
-      'Tanith devora su cadáver tras la batalla con el Mancillado',
-      'Los Recusantes son su secta institucional alternativa',
+      'Tanith devora su cadáver tras la batalla con el Tarnished',
+      'Los Recusantes son su secta institucional alternativa'
     ],
     inferred: [
-      'Eiglay es entidad pre-Orden hostil al Erdtree',
+      'Eiglay es entidad pre-Orden hostil al Árbol Áureo',
       'Rykard sabía que reproducía estructuralmente el Orden que combatía',
-      'Su devoración fue ritual planificado, no acto impulsivo',
+      'Su devoración fue ritual planificado, no acto impulsivo'
     ],
     theories: [
       'Eiglay es manifestación residual del Crisol primigenio',
       'Rykard conserva voluntad propia plena: la serpiente solo le presta cuerpo',
       'Tanith lo devoraba por compasión — preservar al amado en lugar de dejarlo desintegrarse',
-      'Si Eiglay sobreviviese a Tanith, podría buscar un nuevo huésped',
+      'Si Eiglay sobreviviese a Tanith, podría buscar un nuevo huésped'
     ],
     ambiguous: [
       'El origen exacto de Eiglay',
       'Si Rykard conserva su voluntad humana o es marioneta de la serpiente',
-      'Cuánto tiempo medió entre la fractura y la devoración',
+      'Cuánto tiempo medió entre la fractura y la devoración'
     ],
     relatedCharacters: ['rykard', 'tanith', 'rya', 'patches', 'bernahl', 'rennala', 'radagon'],
     relatedFactions: ['volcano-manor', 'dragones-antiguos', 'banished-knights'],
@@ -1065,7 +1065,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Batalla de Aeonia', 'timeline', 'batalla-aeonia'),
         ' no fue infección física común. Fue manifestación material directa del dios exterior asociado a la ',
         link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
-        '. Caelid entero fue ocupado por esa presencia divina.',
+        '. Caelid entero fue ocupado por esa presencia divina.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -1073,46 +1073,46 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Redmanes', 'faction', 'redmanes'),
         ' supervivientes intentan quemarla con fuego ritual — práctica conocida como "quemar podredumbre" — pero el efecto es local y temporal. Los hechiceros de ',
         link('Sellia', 'region', 'sellia'),
-        ' documentan su patología sin lograr cura.',
+        ' documentan su patología sin lograr cura.'
       ),
       p(
         'Las criaturas de Caelid han sido transformadas: perros gigantes deformes, escolopendras carmesíes, dragones corrompidos como ',
         link('Decaying Ekzykes', 'character', 'dragon-ekzykes'),
         '. Solo ',
         link('Dragonbarrow', 'region', 'dragonbarrow'),
-        ' — la meseta superior de Caelid — se mantiene relativamente al margen, refugio de los Antiguos Dragones residuales que rodean a Greyoll.',
+        ' — la meseta superior de Caelid — se mantiene relativamente al margen, refugio de los Antiguos Dragones residuales que rodean a Greyoll.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La devastación de Caelid es la primera prueba pública del Interregno post-fractura de que un dios externo puede ocupar geografía a escala regional. Antes de Aeonia, los dioses externos operaban a través de cuerpos humanos individuales (Marika, Mohg, etc.). Tras Aeonia, queda demostrado que la presencia divina puede saturar el paisaje mismo. La existencia del ',
+        'La devastación de Caelid es la primera prueba pública de las Tierras Intermedias post-fractura de que un dios externo puede ocupar geografía a escala regional. Antes de Aeonia, los dioses externos operaban a través de cuerpos humanos individuales (Marika, Mohg, etc.). Tras Aeonia, queda demostrado que la presencia divina puede saturar el paisaje mismo. La existencia del ',
         link('Lago de Podredumbre', 'region', 'lake-of-rot'),
-        ' bajo Liurnia es eco posterior del mismo principio.',
+        ' bajo Liurnia es eco posterior del mismo principio.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Caelid arrasada es el monumento del juego al costo cosmológico de la guerra divina. La podredumbre no es maldición ambiental — es presencia. El paisaje no está enfermo, está ocupado. Cualquier visitante respira al dios exterior. La región demuestra que las consecuencias de la fractura son geográficas, no solo políticas.',
-      ),
+        'Caelid arrasada es el monumento del juego al costo cosmológico de la guerra divina. La podredumbre no es maldición ambiental — es presencia. El paisaje no está enfermo, está ocupado. Cualquier visitante respira al dios exterior. La región demuestra que las consecuencias de la fractura son geográficas, no solo políticas.'
+      )
     ],
     confirmed: [
       'Caelid quedó cubierto de Podredumbre Escarlata permanente tras Aeonia',
       'Los Redmanes intentan quemar la podredumbre como práctica ritual',
       'Sellia documenta la patología sin lograr cura',
-      'Dragonbarrow se mantiene relativamente al margen',
+      'Dragonbarrow se mantiene relativamente al margen'
     ],
     inferred: [
       'La Podredumbre es presencia material del dios exterior, no infección común',
       'La región nunca se recuperará bajo la cosmología actual',
-      'El Lago de Podredumbre bajo Liurnia es eco menor del mismo principio',
+      'El Lago de Podredumbre bajo Liurnia es eco menor del mismo principio'
     ],
     theories: [
       'La Floración Escarlata fue inevitable cosmológicamente — Malenia no decidió, ejecutó',
       'Caelid podría sanarse si Miquella despertara y aplicase Oro sin Aleación a escala regional',
-      'Las criaturas transformadas conservan rastros de su forma original que podrían ser restaurados',
+      'Las criaturas transformadas conservan rastros de su forma original que podrían ser restaurados'
     ],
     ambiguous: [
       'Si la Podredumbre seguirá expandiéndose lentamente o se ha estabilizado',
       'Si Radahn corrupto sigue siendo factor activo en la devastación',
-      'Cuánto tiempo lleva exactamente desde la Batalla',
+      'Cuánto tiempo lleva exactamente desde la Batalla'
     ],
     relatedCharacters: ['malenia', 'radahn', 'millicent', 'gowry', 'jerren', 'sellen'],
     relatedFactions: ['redmanes', 'kindred-of-rot', 'cleanrot-knights'],
@@ -1125,20 +1125,20 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'tarnished-return',
     subtitle: 'La gracia regresó a los exiliados · Aspirantes improbables al trono',
     summary:
-      'Tras la fractura, la gracia que Marika había retirado a los seguidores de Godfrey volvió misteriosamente a sus descendientes. Los Mancillados — exiliados generaciones atrás, sin tierra, sin trono — fueron readmitidos como candidatos al Anillo Elden. Marika dejó incluso un discurso registrado convocándolos.',
+      'Tras la fractura, la gracia que Marika había retirado a los seguidores de Godfrey volvió misteriosamente a sus descendientes. Los Tarnished — exiliados generaciones atrás, sin tierra, sin trono — fueron readmitidos como candidatos al Anillo Elden. Marika dejó incluso un discurso registrado convocándolos.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         'La gracia retirada a ',
         link('Godfrey', 'character', 'godfrey'),
-        ' y sus seguidores generaciones atrás — el acto fundacional del exilio Mancillado — comenzó a brillar de nuevo en sus descendientes. La activación fue post-fractura: los textos sugieren que ocurrió específicamente cuando Marika rompió el Anillo. La causa-efecto es ambigua, pero la coincidencia temporal es exacta.',
+        ' y sus seguidores generaciones atrás — el acto fundacional del exilio Tarnished — comenzó a brillar de nuevo en sus descendientes. La activación fue post-fractura: los textos sugieren que ocurrió específicamente cuando Marika rompió el Anillo. La causa-efecto es ambigua, pero la coincidencia temporal es exacta.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Marika dejó un discurso registrado convocando a los Mancillados de regreso. Su contenido es ambiguo en tono: invita pero no perdona, llama pero no explica. La frase clave: "Mancillados de hueso, vagad por las tierras del Interregno". Es invocación, no rehabilitación.',
+        'Marika dejó un discurso registrado convocando a los Tarnished de regreso. Su contenido es ambiguo en tono: invita pero no perdona, llama pero no explica. La frase clave: "Tarnished de hueso, vagad por las tierras de las Tierras Intermedias". Es invocación, no rehabilitación.'
       ),
       p(
-        'Los Mancillados llegaron de las "tierras exteriores" — regiones más allá del Interregno donde habían reconstruido vidas durante el exilio. Sus ideologías eran heterogéneas: algunos buscaban restauración pura, otros venganza, otros conocimiento. ',
+        'Los Tarnished llegaron de las "tierras exteriores" — regiones más allá de las Tierras Intermedias donde habían reconstruido vidas durante el exilio. Sus ideologías eran heterogéneas: algunos buscaban restauración pura, otros venganza, otros conocimiento. ',
         link('Gideon Ofnir', 'character', 'gideon'),
         ', ',
         link('Goldmask', 'character', 'goldmask'),
@@ -1150,42 +1150,42 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('D', 'character', 'd'),
         ', ',
         link('Rogier', 'character', 'rogier'),
-        ' representan facciones ideológicas distintas dentro del cuerpo de retornados.',
+        ' representan facciones ideológicas distintas dentro del cuerpo de retornados.'
       ),
       p(
         'La ',
         link('Mesa Redonda', 'region', 'leyndell'),
-        ' — más precisamente Roundtable Hold, refugio extra-dimensional ofrecido por los Dos Dedos — es el centro de operaciones donde estas ideologías coexisten. Cada Mancillado opera con autonomía pero comparte recursos.',
+        ' — más precisamente Roundtable Hold, refugio extra-dimensional ofrecido por los Dos Dedos — es el centro de operaciones donde estas ideologías coexisten. Cada Tarnished opera con autonomía pero comparte recursos.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'Sin el regreso de los Mancillados, no habría candidatos al trono. Los demidioses están agotados o muertos; los Empyreans rebeldes (Ranni) o secuestrados (Miquella) o irrecuperables (Malenia, Radahn). Los Mancillados son los únicos posibles sucesores. Su existencia como agentes externos al régimen es lo que permite que cualquiera de los seis finales del juego ocurra.',
+        'Sin el regreso de los Tarnished, no habría candidatos al trono. Los demidioses están agotados o muertos; los Empyreans rebeldes (Ranni) o secuestrados (Miquella) o irrecuperables (Malenia, Radahn). Los Tarnished son los únicos posibles sucesores. Su existencia como agentes externos al régimen es lo que permite que cualquiera de los seis finales del juego ocurra.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El regreso de los Mancillados es la prueba definitiva de que Marika diseñó el escenario actual. Si la gracia regresó precisamente cuando el Anillo se rompió, alguien — quien tenía control sobre la gracia — la reactivó deliberadamente. La hipótesis más sostenible es que la propia Marika lo hizo, sembrando candidatos exteriores generaciones antes para tener instrumento disponible cuando llegase el momento de la fractura.',
-      ),
+        'El regreso de los Tarnished es la prueba definitiva de que Marika diseñó el escenario actual. Si la gracia regresó precisamente cuando el Anillo se rompió, alguien — quien tenía control sobre la gracia — la reactivó deliberadamente. La hipótesis más sostenible es que la propia Marika lo hizo, sembrando candidatos exteriores generaciones antes para tener instrumento disponible cuando llegase el momento de la fractura.'
+      )
     ],
     confirmed: [
-      'La gracia regresó a los Mancillados tras la fractura',
+      'La gracia regresó a los Tarnished tras la fractura',
       'Marika dejó un discurso registrado convocándolos',
-      'Llegaron de las "tierras exteriores" más allá del Interregno',
-      'Sus ideologías eran heterogéneas — Roundtable Hold permite coexistencia',
+      'Llegaron de las "tierras exteriores" más allá de las Tierras Intermedias',
+      'Sus ideologías eran heterogéneas — Roundtable Hold permite coexistencia'
     ],
     inferred: [
       'La activación de la gracia fue acto deliberado, probablemente de Marika',
       'El exilio original fue siembra a largo plazo de candidatos externos al régimen',
-      'Sin Mancillados, ningún final del juego sería posible',
+      'Sin Tarnished, ningún final del juego sería posible'
     ],
     theories: [
       'Marika orquestó cuidadosamente la sucesión: exilio → fractura → regreso',
-      'Los Mancillados no son hijos biológicos directos de Godfrey sino de sus seguidores',
-      'Algunos retornaron antes de la fractura y vivieron en secreto durante eras',
+      'Los Tarnished no son hijos biológicos directos de Godfrey sino de sus seguidores',
+      'Algunos retornaron antes de la fractura y vivieron en secreto durante eras'
     ],
     ambiguous: [
-      'Cuántos Mancillados regresaron exactamente',
+      'Cuántos Tarnished regresaron exactamente',
       'Si el discurso de Marika es genuino o una falsificación de los Dos Dedos',
-      'Si la coincidencia temporal entre fractura y regreso es exacta o aproximada',
+      'Si la coincidencia temporal entre fractura y regreso es exacta o aproximada'
     ],
     relatedCharacters: ['marika', 'godfrey', 'melina', 'gideon', 'goldmask', 'corhyn', 'fia', 'd', 'rogier', 'roderika'],
     relatedFactions: ['orden-dorado', 'dos-dedos'],
@@ -1198,7 +1198,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'two-fingers-roundtable',
     subtitle: 'Mensajeros divinos como burocracia residual · Mesa Redonda como foro ideológico',
     summary:
-      'Los Dos Dedos recibieron a los Mancillados retornados en Roundtable Hold y los ungieron como aspirantes potenciales al trono. La Mesa Redonda funcionó como foro donde Mancillados de ideologías distintas coexistían. Pero los Dedos ya estaban deteriorándose: sus pronunciamientos eran cada vez más vagos.',
+      'Los Dos Dedos recibieron a los Tarnished retornados en Roundtable Hold y los ungieron como aspirantes potenciales al trono. La Mesa Redonda funcionó como foro donde Tarnished de ideologías distintas coexistían. Pero los Dedos ya estaban deteriorándose: sus pronunciamientos eran cada vez más vagos.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -1206,16 +1206,16 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Dos Dedos', 'faction', 'dos-dedos'),
         ', mensajeros físicos de la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        ', mantenían su sede en Roundtable Hold — refugio extra-dimensional accesible a través de un anillo de gracia. Tras la fractura, recibieron a los Mancillados retornados y los ungieron formalmente como aspirantes al trono Elden.',
+        ', mantenían su sede en Roundtable Hold — refugio extra-dimensional accesible a través de un anillo de gracia. Tras la fractura, recibieron a los Tarnished retornados y los ungieron formalmente como aspirantes al trono Elden.'
       ),
       h(2, 'Historia detallada'),
       p(
         'La doncella ',
         link('Enia', 'character', 'enia'),
-        ' funge como Lectora de Dedos, traduciendo los pronunciamientos divinos para los mortales. Su rol es crucial: los Dedos no piensan, traducen — y necesitan a su vez ser traducidos. La cadena de mediación es larga: Voluntad Mayor → Dos Dedos → Lectora → Mancillado.',
+        ' funge como Lectora de Dedos, traduciendo los pronunciamientos divinos para los mortales. Su rol es crucial: los Dedos no piensan, traducen — y necesitan a su vez ser traducidos. La cadena de mediación es larga: Voluntad Mayor → Dos Dedos → Lectora → Tarnished.'
       ),
       p(
-        'La Mesa Redonda misma alberga a Mancillados de ideologías distintas: ',
+        'La Mesa Redonda misma alberga a Tarnished de ideologías distintas: ',
         link('Gideon Ofnir', 'character', 'gideon'),
         ' como erudito-asesor, ',
         link('Goldmask', 'character', 'goldmask'),
@@ -1231,37 +1231,37 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Diallos', 'character', 'diallos'),
         ' como noble pacifista, ',
         link('Roderika', 'character', 'roderika'),
-        ' como aprendiz de cenizas. Cada uno representa una respuesta posible al problema cosmológico.',
+        ' como aprendiz de cenizas. Cada uno representa una respuesta posible al problema cosmológico.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'Pero los Dedos están deteriorándose. Sus pronunciamientos son cada vez más vagos. Algunos están físicamente dañados — el "Dos Dedos podridos" del Roundtable Hold posterior es prueba visible. La Voluntad Mayor parece haberse retirado parcialmente; los Dedos siguen apuntando, pero apuntan a un cosmos que ya no responde con claridad. La fragmentación ideológica de los Mancillados ocurre porque ya no hay autoridad central que dirima sus disputas.',
+        'Pero los Dedos están deteriorándose. Sus pronunciamientos son cada vez más vagos. Algunos están físicamente dañados — el "Dos Dedos podridos" del Roundtable Hold posterior es prueba visible. La Voluntad Mayor parece haberse retirado parcialmente; los Dedos siguen apuntando, pero apuntan a un cosmos que ya no responde con claridad. La fragmentación ideológica de los Tarnished ocurre porque ya no hay autoridad central que dirima sus disputas.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La Mesa Redonda es el foro de la era post-fractura: institución residual donde sobreviven los rituales del régimen anterior aunque ya nadie sepa con claridad qué dictan. Cada Mancillado opera con autonomía progresivamente mayor. La fragmentación final que produce los seis posibles finales del juego se incuba aquí: las distintas ideologías Mancilladas que comen en la misma mesa son las que después instaurarán las distintas eras.',
-      ),
+        'La Mesa Redonda es el foro de la era post-fractura: institución residual donde sobreviven los rituales del régimen anterior aunque ya nadie sepa con claridad qué dictan. Cada Tarnished opera con autonomía progresivamente mayor. La fragmentación final que produce los seis posibles finales del juego se incuba aquí: las distintas ideologías Tarnished que comen en la misma mesa son las que después instaurarán las distintas eras.'
+      )
     ],
     confirmed: [
-      'Los Dos Dedos recibieron a los Mancillados retornados',
+      'Los Dos Dedos recibieron a los Tarnished retornados',
       'Roundtable Hold es refugio extra-dimensional bajo control de los Dedos',
       'Enia es Lectora oficial',
-      'Cada Mancillado de la Mesa Redonda representa una ideología distinta',
+      'Cada Tarnished de la Mesa Redonda representa una ideología distinta'
     ],
     inferred: [
       'Los Dedos están deteriorándose físicamente y cosmológicamente',
-      'La Voluntad Mayor se ha retirado parcialmente del Interregno',
-      'La fragmentación ideológica produce las posibles eras post-Mancillado',
+      'La Voluntad Mayor se ha retirado parcialmente de las Tierras Intermedias',
+      'La fragmentación ideológica produce las posibles eras post-Mancillado'
     ],
     theories: [
       'El Dos Dedos podrido es resultado de actividad heretica activa, no degeneración natural',
       'Goldmask abandonó la Mesa Redonda al descubrir el secreto Radagon-es-Marika',
-      'Gideon traiciona al Mancillado precisamente porque comprende que ningún final es satisfactorio según los Dedos',
+      'Gideon traiciona al Tarnished precisamente porque comprende que ningún final es satisfactorio según los Dedos'
     ],
     ambiguous: [
       'Cuánto tiempo lleva la Mesa Redonda en su forma actual',
       'Si los Dedos pueden ser reemplazados o son únicos',
-      'Cuál es la naturaleza extra-dimensional exacta de Roundtable Hold',
+      'Cuál es la naturaleza extra-dimensional exacta de Roundtable Hold'
     ],
     relatedCharacters: ['enia', 'gideon', 'goldmask', 'corhyn', 'fia', 'd', 'rogier', 'diallos', 'roderika', 'hewg'],
     relatedFactions: ['dos-dedos', 'finger-readers', 'orden-dorado'],
@@ -1274,60 +1274,60 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'erdtree-rejection',
     subtitle: 'El árbol cierra sus raíces · Las instrucciones oficiales fracasan · Necesidad de la pira',
     summary:
-      'Cuando el Mancillado reúne las Grandes Runas y se aproxima al Erdtree para ser ungido como Señor Elden, el árbol literalmente lo rechaza. Las raíces se cierran. Los Dos Dedos no tienen explicación. La instrucción oficial del régimen ha fracasado: el camino al trono ya no pasa por la coronación tradicional.',
+      'Cuando el Tarnished reúne las Grandes Runas y se aproxima al Árbol Áureo para ser ungido como Señor Elden, el árbol literalmente lo rechaza. Las raíces se cierran. Los Dos Dedos no tienen explicación. La instrucción oficial del régimen ha fracasado: el camino al trono ya no pasa por la coronación tradicional.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         'Tras derrotar a ',
         link('Morgott', 'character', 'morgott'),
         ' y obtener acceso al ',
-        link('Erdtree', 'concept', 'erdtree'),
-        ', el Mancillado descubre que el árbol cierra sus raíces ante él. Ningún ritual de gracia, ninguna runa, ninguna instrucción de los Dos Dedos basta para abrir el camino. El régimen oficial ha quedado técnicamente bloqueado.',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ', el Tarnished descubre que el árbol cierra sus raíces ante él. Ningún ritual de gracia, ninguna runa, ninguna instrucción de los Dos Dedos basta para abrir el camino. El régimen oficial ha quedado técnicamente bloqueado.'
       ),
       h(2, 'Historia detallada'),
       p(
         'Los ',
         link('Dos Dedos', 'faction', 'dos-dedos'),
-        ' no anticipaban este rechazo. Sus instrucciones procedían del régimen estable pre-fractura: derrotar demidioses, reunir runas, ascender al trono. Pero el Erdtree post-fractura ha desarrollado una autonomía que los Dedos no comprenden. El árbol — o algo dentro del árbol, posiblemente ',
+        ' no anticipaban este rechazo. Sus instrucciones procedían del régimen estable pre-fractura: derrotar demidioses, reunir runas, ascender al trono. Pero el Árbol Áureo post-fractura ha desarrollado una autonomía que los Dedos no comprenden. El árbol — o algo dentro del árbol, posiblemente ',
         link('Marika', 'character', 'marika'),
-        ' encadenada — ha decidido que el aspirante no entra por las raíces.',
+        ' encadenada — ha decidido que el aspirante no entra por las raíces.'
       ),
       p(
         'La única solución viable es quemar el árbol. ',
         link('Melina', 'character', 'melina'),
         ' aparece exactamente en este momento con la solución: subir a las ',
         link('Mountaintops', 'region', 'mountaintops'),
-        ', encender la Llama Quemadora, sacrificarla a ella misma como portadora ritual, prender el Erdtree. Su disponibilidad parece anticipada — Melina sabía que este momento llegaría.',
+        ', encender la Llama Quemadora, sacrificarla a ella misma como portadora ritual, prender el Árbol Áureo. Su disponibilidad parece anticipada — Melina sabía que este momento llegaría.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El rechazo del árbol es el indicador más claro de que el régimen del Orden Dorado ya no puede sostenerse en su forma actual. La cosmología pre-fractura está clínicamente muerta: sus mecanismos formales ya no funcionan. Lo que viene es necesariamente nuevo. Cualquier final del juego — incluso el más conservador, la Era de la Fractura — implica intervención adicional: quemar el árbol, derrotar a Marika encadenada, enfrentar a Radagon, vencer a la Bestia Elden.',
+        'El rechazo del árbol es el indicador más claro de que el régimen del Orden Dorado ya no puede sostenerse en su forma actual. La cosmología pre-fractura está clínicamente muerta: sus mecanismos formales ya no funcionan. Lo que viene es necesariamente nuevo. Cualquier final del juego — incluso el más conservador, la Era de la Fractura — implica intervención adicional: quemar el árbol, derrotar a Marika encadenada, enfrentar a Radagon, vencer a la Bestia Elden.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El Erdtree rechazando al Mancillado es la imagen del fracaso institucional del régimen. La cosmología oficial ya no produce sus propios sucesores. Cualquier era venidera se construirá rompiendo la liturgia anterior. La quema del árbol es el primer acto de ruptura cosmológica deliberada que el Mancillado realiza.',
-      ),
+        'El Árbol Áureo rechazando al Tarnished es la imagen del fracaso institucional del régimen. La cosmología oficial ya no produce sus propios sucesores. Cualquier era venidera se construirá rompiendo la liturgia anterior. La quema del árbol es el primer acto de ruptura cosmológica deliberada que el Tarnished realiza.'
+      )
     ],
     confirmed: [
-      'El Erdtree cierra sus raíces ante el Mancillado tras derrotar a Morgott',
+      'El Árbol Áureo cierra sus raíces ante el Tarnished tras derrotar a Morgott',
       'Los Dos Dedos no tienen explicación oficial',
       'Melina aparece con la solución de quemar el árbol',
-      'Quemar el árbol es necesario para todos los finales del juego',
+      'Quemar el árbol es necesario para todos los finales del juego'
     ],
     inferred: [
       'El árbol post-fractura tiene autonomía cosmológica que los Dedos no controlan',
       'Marika encadenada decide o influye en el rechazo',
-      'Melina sabía que este momento llegaría — su disponibilidad era anticipada',
+      'Melina sabía que este momento llegaría — su disponibilidad era anticipada'
     ],
     theories: [
-      'El Erdtree rechaza al Mancillado precisamente porque Marika quiere que el régimen termine',
-      'Sin el rechazo, ningún Mancillado habría logrado quemar el árbol — la decisión cosmológica es deliberada',
-      'Los Dos Dedos podridos no son síntoma — son la causa: su deterioro impide al árbol procesar al aspirante',
+      'El Árbol Áureo rechaza al Tarnished precisamente porque Marika quiere que el régimen termine',
+      'Sin el rechazo, ningún Tarnished habría logrado quemar el árbol — la decisión cosmológica es deliberada',
+      'Los Dos Dedos podridos no son síntoma — son la causa: su deterioro impide al árbol procesar al aspirante'
     ],
     ambiguous: [
-      'Si el rechazo viene de Marika, de los Dedos, del Erdtree mismo o de la Voluntad Mayor',
+      'Si el rechazo viene de Marika, de los Dedos, del Árbol Áureo mismo o de la Voluntad Mayor',
       'Si versiones anteriores del Anillo Elden producían este mismo rechazo a aspirantes',
-      'Si la quema del árbol es solución única o una de varias posibilidades',
+      'Si la quema del árbol es solución única o una de varias posibilidades'
     ],
     relatedCharacters: ['marika', 'melina', 'morgott', 'godfrey', 'enia'],
     relatedFactions: ['dos-dedos', 'orden-dorado'],
@@ -1340,19 +1340,19 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'crisol-vida-primordial': {
     summary:
-      'Antes del Erdtree, antes incluso del régimen dragónico de Placidusax, el Crisol fue la fuerza vital primordial del Interregno: una sustancia donde todas las formas de vida nacían mezcladas. Cuernos, escamas, alas, raíces, podredumbre — todo de la misma cocina cosmológica. El Orden Dorado lo declaró impuro, pero su sangre persiste irreductible bajo cada generación.',
+      'Antes del Árbol Áureo, antes incluso del régimen dragónico de Placidusax, el Crisol fue la fuerza vital primordial de las Tierras Intermedias: una sustancia donde todas las formas de vida nacían mezcladas. Cuernos, escamas, alas, raíces, podredumbre — todo de la misma cocina cosmológica. El Orden Dorado lo declaró impuro, pero su sangre persiste irreductible bajo cada generación.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         'El ',
         link('Crisol', 'concept', 'crucible'),
-        ' fue una era cosmológica en la que la vida no se distribuía en categorías estancas. Los seres existían en formas mixtas: humanos con cuernos, dragones con elementos vegetales, lobos con voces sapientes. Era un cosmos sin pureza específica, donde las taxonomías que el Orden Dorado posteriormente impuso no tenían sentido aún.',
+        ' fue una era cosmológica en la que la vida no se distribuía en categorías estancas. Los seres existían en formas mixtas: humanos con cuernos, dragones con elementos vegetales, lobos con voces sapientes. Era un cosmos sin pureza específica, donde las taxonomías que el Orden Dorado posteriormente impuso no tenían sentido aún.'
       ),
       h(2, 'Historia detallada'),
       p(
         'No hay régimen central documentado durante la era del Crisol. Los textos sugieren más una atmósfera cosmológica que una política: existió mientras existió, sin gobierno ungido, sin liturgia centralizada. Su árbol asociado — el Crucible Tree, anterior al ',
-        link('Erdtree', 'concept', 'erdtree'),
-        ' — distribuía vida orgánica primigenia. Sus seres eran híbridos por defecto.',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' — distribuía vida orgánica primigenia. Sus seres eran híbridos por defecto.'
       ),
       p(
         'Cuando la ',
@@ -1363,7 +1363,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Omens', 'faction', 'omens'),
         ', ',
         link('Misbegotten', 'faction', 'misbegotten'),
-        ' y aberraciones — categorías nuevas que solo tenían sentido dentro del régimen taxonómico del Orden.',
+        ' y aberraciones — categorías nuevas que solo tenían sentido dentro del régimen taxonómico del Orden.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -1377,33 +1377,33 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('injerto', 'concept', 'grafting'),
         ' que ',
         link('Godrick', 'character', 'godrick'),
-        ' practica procede del mismo linaje.',
+        ' practica procede del mismo linaje.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El Crisol representa el cosmos sin categorías fijas. Su existencia previa al Orden Dorado documenta que las divisiones actuales — humano/bestia, sagrado/profano, puro/aberración — son construcciones políticas, no leyes naturales. La nostalgia del Crisol es la nostalgia de un cosmos donde la vida no exigía clasificación.',
-      ),
+        'El Crisol representa el cosmos sin categorías fijas. Su existencia previa al Orden Dorado documenta que las divisiones actuales — humano/bestia, sagrado/profano, puro/aberración — son construcciones políticas, no leyes naturales. La nostalgia del Crisol es la nostalgia de un cosmos donde la vida no exigía clasificación.'
+      )
     ],
     confirmed: [
       'El Crisol precede al Orden Dorado como sustancia vital primigenia',
       'Los Crucible Knights portan iconografía ritual del Crisol',
       'Los Hombres-Bestia y Misbegotten conservan biología del Crisol',
-      'La técnica del injerto procede de tradiciones del Crisol',
+      'La técnica del injerto procede de tradiciones del Crisol'
     ],
     inferred: [
       'No hubo régimen político central durante la era del Crisol',
       'La purga del Orden Dorado contra el Crisol fue deliberada y nunca completa',
-      'El Crucible Tree precede al Erdtree como árbol cosmológico',
+      'El Crucible Tree precede al Árbol Áureo como árbol cosmológico'
     ],
     theories: [
-      'El Crisol podría reactivarse cosmológicamente si el Erdtree cae completamente',
+      'El Crisol podría reactivarse cosmológicamente si el Árbol Áureo cae completamente',
       'Algunos Omens conservan recuerdos genéticos de su forma del Crisol',
-      'Los dragones antiguos de Placidusax procederían en parte del Crisol',
+      'Los dragones antiguos de Placidusax procederían en parte del Crisol'
     ],
     ambiguous: [
       'Cuánto duró exactamente la era del Crisol',
       'Si el Crisol fue creación de algún dios externo o estado natural espontáneo',
-      'Si el Erdtree devoró al Crucible Tree o coexistieron por un tiempo',
+      'Si el Árbol Áureo devoró al Crucible Tree o coexistieron por un tiempo'
     ],
     relatedCharacters: ['marika', 'maliketh', 'godrick', 'morgott', 'mohg'],
     relatedFactions: ['omens', 'misbegotten', 'hombres-bestia'],
@@ -1413,13 +1413,13 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'antiguos-ritos-muerte': {
     summary:
-      'Antes del sello marikiano de la Muerte Predestinada, el Interregno tenía una cosmología funeraria funcional. Los muertos se cremaban con Llama Espectral, los Deathbirds oficiaban como sacerdotes alados, y las almas regresaban al ciclo cosmológico sin necesidad del reciclaje del Erdtree. Esa cosmología fue cancelada — pero sus rituales persisten en catacumbas dispersas.',
+      'Antes del sello marikiano de la Muerte Predestinada, las Tierras Intermedias tenía una cosmología funeraria funcional. Los muertos se cremaban con Llama Espectral, los Deathbirds oficiaban como sacerdotes alados, y las almas regresaban al ciclo cosmológico sin necesidad del reciclaje del Árbol Áureo. Esa cosmología fue cancelada — pero sus rituales persisten en catacumbas dispersas.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         'Durante la era de la ',
         link('Reina de Ojos Crepusculares', 'character', 'gloam-eyed-queen'),
-        ' y posiblemente antes, el Interregno operaba con una cosmología funeraria autónoma: los muertos eran procesados a través de rituales específicos que devolvían sus almas al ciclo cosmológico sin pasar por el árbol oficial.',
+        ' y posiblemente antes, las Tierras Intermedias operaba con una cosmología funeraria autónoma: los muertos eran procesados a través de rituales específicos que devolvían sus almas al ciclo cosmológico sin pasar por el árbol oficial.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -1427,7 +1427,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Llama Espectral', 'concept', 'ghostflame'),
         ' (Ghostflame) — fuego azul-blanco capaz de cremar correctamente cuerpos liberando sus almas. Los ',
         link('Deathbirds', 'faction', 'deathbirds'),
-        ' eran criaturas-cementerio gigantes que oficiaban como sacerdotes alados: sus cuerpos parcialmente formados de cenizas acumuladas indican siglos de práctica funeraria centralizada en sus territorios.',
+        ' eran criaturas-cementerio gigantes que oficiaban como sacerdotes alados: sus cuerpos parcialmente formados de cenizas acumuladas indican siglos de práctica funeraria centralizada en sus territorios.'
       ),
       p(
         'Cuando ',
@@ -1436,7 +1436,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Muerte Predestinada', 'concept', 'destined-death'),
         ' dentro de ',
         link('Maliketh', 'character', 'maliketh'),
-        ', estos rituales perdieron su sustento cosmológico. El Erdtree absorbió la función funeraria como reciclador centralizado de almas. Los Deathbirds quedaron como reliquias hostiles; las catacumbas con altares de Ghostflame se convirtieron en peregrinajes prohibidos por el régimen oficial.',
+        ', estos rituales perdieron su sustento cosmológico. El Árbol Áureo absorbió la función funeraria como reciclador centralizado de almas. Los Deathbirds quedaron como reliquias hostiles; las catacumbas con altares de Ghostflame se convirtieron en peregrinajes prohibidos por el régimen oficial.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -1446,33 +1446,33 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Misbegotten', 'faction', 'misbegotten'),
         ' — esas almas quedan flotando. Cuando el sello de la Muerte falla parcialmente (caso ',
         link('Godwyn', 'character', 'godwyn'),
-        '), no hay liturgia residual capaz de procesarlo: solo el rito antiguo podría haberlo cerrado, y el rito antiguo ha sido borrado.',
+        '), no hay liturgia residual capaz de procesarlo: solo el rito antiguo podría haberlo cerrado, y el rito antiguo ha sido borrado.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Los antiguos ritos son la prueba arqueológica de que el cosmos funcionaba sin la inmortalidad ritual del Erdtree. Cada catacumba con Ghostflame activa es testimonio silencioso: hubo una manera de morir bien, y el régimen actual la suprimió.',
-      ),
+        'Los antiguos ritos son la prueba arqueológica de que el cosmos funcionaba sin la inmortalidad ritual del Árbol Áureo. Cada catacumba con Ghostflame activa es testimonio silencioso: hubo una manera de morir bien, y el régimen actual la suprimió.'
+      )
     ],
     confirmed: [
       'La Llama Espectral era llama ritual de cremación pre-Orden',
       'Los Deathbirds operaban como sacerdotes funerarios alados',
       'Las catacumbas dispersas conservan altares de la cosmología antigua',
-      'El sello de la Muerte canceló la funcionalidad de estos rituales',
+      'El sello de la Muerte canceló la funcionalidad de estos rituales'
     ],
     inferred: [
       'La práctica funeraria estaba descentralizada — múltiples sitios con autonomía ritual',
       'La Reina de Ojos Crepusculares oficiaba o protegía estos rituales',
-      'El Erdtree absorbió la función para centralizar el control cosmológico',
+      'El Árbol Áureo absorbió la función para centralizar el control cosmológico'
     ],
     theories: [
       'Algunos Deathbirds conservan consciencia ritual y aceptarían oficiar de nuevo si el sello cae',
       'La Era del Crepúsculo restauraría parcialmente la funcionalidad de estos ritos',
-      'Las almas Omen no procesadas alimentan la Deathroot bajo el Erdtree',
+      'Las almas Omen no procesadas alimentan la Deathroot bajo el Árbol Áureo'
     ],
     ambiguous: [
       'Quién oficiaba los rituales antes de los Deathbirds',
       'Cuántas tradiciones funerarias paralelas coexistían',
-      'Si el rito antiguo podía procesar a demidioses muertos parcialmente',
+      'Si el rito antiguo podía procesar a demidioses muertos parcialmente'
     ],
     relatedCharacters: ['gloam-eyed-queen', 'maliketh', 'marika', 'godwyn'],
     relatedFactions: ['deathbirds', 'pieles-de-dios'],
@@ -1488,11 +1488,11 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Los ',
         link('Nox', 'faction', 'nox'),
-        ' fueron una raza nocturna del Interregno que desarrolló una sofisticación cosmológica que el Orden Dorado nunca igualó. Construyeron ',
+        ' fueron una raza nocturna de las Tierras Intermedias que desarrolló una sofisticación cosmológica que el Orden Dorado nunca igualó. Construyeron ',
         link('Nokron', 'region', 'nokron'),
         ' y ',
         link('Nokstella', 'region', 'nokstella'),
-        ' como ciudades-templo dedicadas a un proyecto teológico ambicioso: forjar un dios propio.',
+        ' como ciudades-templo dedicadas a un proyecto teológico ambicioso: forjar un dios propio.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -1500,14 +1500,14 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Lágrimas de Plata', 'concept', 'mimic-tear'),
         ' (vida artificial mimética), magia astronómica avanzada, y arquitectura subterránea con cielos estrellados pintados que reflejaban constelaciones reales. Su rebelión específica contra la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        ' implicaba intentar fabricar una vasija divina propia — un Lord Elden alternativo que les permitiera independencia cosmológica.',
+        ' implicaba intentar fabricar una vasija divina propia — un Lord Elden alternativo que les permitiera independencia cosmológica.'
       ),
       p(
         'El castigo cósmico llegó como ',
         link('Astel', 'character', 'astel-naturalborn'),
         ', entidad estelar enviada para destruir la civilización. Su impacto enterró Nokron y Nokstella bajo tierra. Los supervivientes Nox descendieron a las profundidades junto con los ',
         link('Claymen', 'faction', 'claymen'),
-        ' como guardianes residuales. Sus ciudades quedaron como mausoleos activos: aún funcionando ritualmente, pero sin posibilidad de cumplir su proyecto original.',
+        ' como guardianes residuales. Sus ciudades quedaron como mausoleos activos: aún funcionando ritualmente, pero sin posibilidad de cumplir su proyecto original.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -1517,34 +1517,34 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         ' — cuya ',
         link('Era de las Estrellas', 'ending', 'age-of-stars'),
-        ' es exactamente lo que los Nox intentaron lograr: un cosmos sin Voluntad Mayor cercana.',
+        ' es exactamente lo que los Nox intentaron lograr: un cosmos sin Voluntad Mayor cercana.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Los Nox son la primera rebelión cosmológica fallida documentada. Su existencia subterránea silenciosa es la imagen del rebelde castigado pero no derrotado: enterrado, no extinto. La continuidad entre Nox y Ranni convierte la Era de las Estrellas en cumplimiento histórico, no innovación reciente. La Bruja muñeca culmina lo que los Nox iniciaron eras atrás.',
-      ),
+        'Los Nox son la primera rebelión cosmológica fallida documentada. Su existencia subterránea silenciosa es la imagen del rebelde castigado pero no derrotado: enterrado, no extinto. La continuidad entre Nox y Ranni convierte la Era de las Estrellas en cumplimiento histórico, no innovación reciente. La Bruja muñeca culmina lo que los Nox iniciaron eras atrás.'
+      )
     ],
     confirmed: [
       'Los Nox construyeron Nokron y Nokstella como cosmología subterránea',
       'Su transgresión fue intentar forjar su propio dios',
       'Astel cayó como castigo cósmico contra ellos',
       'Sobrevivieron en silencio bajo tierra',
-      'La Hoja Mata-Dedos es reliquia Nox usable contra los Dos Dedos',
+      'La Hoja Mata-Dedos es reliquia Nox usable contra los Dos Dedos'
     ],
     inferred: [
       'La sofisticación cosmológica Nox excedía la del Orden Dorado',
       'Las Lágrimas de Plata fueron prototipos del proyecto del cuerpo divino',
-      'Ranni hereda directamente el sueño Nox a través de la Era de las Estrellas',
+      'Ranni hereda directamente el sueño Nox a través de la Era de las Estrellas'
     ],
     theories: [
       'Los Claymen son Nox transformados después de la caída',
       'Existieron múltiples ciudades Nox; solo Nokron y Nokstella son visitables',
-      'La Era de las Estrellas reactivaría parcialmente la civilización Nox enterrada',
+      'La Era de las Estrellas reactivaría parcialmente la civilización Nox enterrada'
     ],
     ambiguous: [
       'Cuándo exactamente cayeron — la datación es completamente opaca',
       'Si los Nox actuales conservan consciencia plena o solo función ritual',
-      'Si Ranni es heredera deliberada de los Nox o paralela cosmológicamente',
+      'Si Ranni es heredera deliberada de los Nox o paralela cosmológicamente'
     ],
     relatedCharacters: ['ranni', 'astel-naturalborn'],
     relatedFactions: ['nox', 'claymen', 'silver-mimic-tears'],
@@ -1556,7 +1556,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'guerra-gigantes-fuego': {
     summary:
-      'La guerra del Orden Dorado contra los Gigantes del Fuego fue genocidio cosmológico. Marika ordenó el exterminio porque su llama — ligada al Fell God, dios externo del fuego primigenio — era la única capaz de quemar el Erdtree. Godfrey lideró la matanza. La llama no pudo destruirse: fue confinada con el último gigante encadenado como custodio.',
+      'La guerra del Orden Dorado contra los Gigantes del Fuego fue genocidio cosmológico. Marika ordenó el exterminio porque su llama — ligada al Fell God, dios externo del fuego primigenio — era la única capaz de quemar el Árbol Áureo. Godfrey lideró la matanza. La llama no pudo destruirse: fue confinada con el último gigante encadenado como custodio.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -1566,14 +1566,14 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Mountaintops', 'region', 'mountaintops'),
         ' como pueblo cosmológicamente independiente. Adoraban al ',
         link('Fell God', 'concept', 'fell-god'),
-        ', dios externo del fuego primigenio cuya llama era hostil al Erdtree por designio cosmológico. ',
+        ', dios externo del fuego primigenio cuya llama era hostil al Árbol Áureo por designio cosmológico. ',
         link('Marika', 'character', 'marika'),
-        ' los identificó como amenaza estructural y ordenó su exterminio.',
+        ' los identificó como amenaza estructural y ordenó su exterminio.'
       ),
       h(2, 'Historia detallada'),
       p(
         link('Godfrey', 'character', 'godfrey'),
-        ', en su forma primal de Hoarah Loux, lideró la guerra. Era operación marcial colosal: los Gigantes del Fuego eran combatientes cosmológicamente formidables, y su tradición ritual incluía hechicerías de fuego primigenio capaces de herir incluso a divinidades del régimen. La guerra duró eras y consumió generaciones de soldados doraods.',
+        ', en su forma primal de Hoarah Loux, lideró la guerra. Era operación marcial colosal: los Gigantes del Fuego eran combatientes cosmológicamente formidables, y su tradición ritual incluía hechicerías de fuego primigenio capaces de herir incluso a divinidades del régimen. La guerra duró eras y consumió generaciones de soldados doraods.'
       ),
       p(
         'El resultado fue casi total: prácticamente todos los gigantes fueron asesinados. Los pocos supervivientes — incluyendo a ',
@@ -1582,49 +1582,49 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Último Gigante del Fuego', 'character', 'fire-giant'),
         ' (encadenado en la Forja) — fueron sometidos a condiciones específicas. Los ',
         link('Héroes Zamor', 'character', 'zamor-heroes'),
-        ' del pueblo cazador de gigantes recibieron honores oficiales del régimen.',
+        ' del pueblo cazador de gigantes recibieron honores oficiales del régimen.'
       ),
       p(
-        'La Llama del Fell God, sin embargo, no pudo ser destruida — era manifestación material de un dios externo, no propiedad de los gigantes en sí. Fue confinada en la Forja de los Gigantes con el último superviviente encadenado como custodio eterno. La operación es paradójica: para sostener el Orden Dorado, el régimen tuvo que conservar intacta la única arma capaz de destruirlo.',
+        'La Llama del Fell God, sin embargo, no pudo ser destruida — era manifestación material de un dios externo, no propiedad de los gigantes en sí. Fue confinada en la Forja de los Gigantes con el último superviviente encadenado como custodio eterno. La operación es paradójica: para sostener el Orden Dorado, el régimen tuvo que conservar intacta la única arma capaz de destruirlo.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La llama confinada esperó eras hasta su uso eventual. Cuando el Erdtree rechazó al ',
-        link('Mancillado', 'concept', 'tarnished'),
+        'La llama confinada esperó eras hasta su uso eventual. Cuando el Árbol Áureo rechazó al ',
+        link('Tarnished', 'concept', 'tarnished'),
         ', la única solución posible fue subir a la Forja, derrotar al último gigante, y prender la llama hostil. ',
         link('Melina', 'character', 'melina'),
         ' se inmoló como portadora ritual. Así, el ',
         link('genocidio inicial', 'timeline', 'guerra-gigantes-fuego'),
-        ' creó la herramienta exacta del fin posterior — los Gigantes del Fuego, exterminados eras atrás, fueron quienes hicieron posible el final del régimen que los exterminó.',
+        ' creó la herramienta exacta del fin posterior — los Gigantes del Fuego, exterminados eras atrás, fueron quienes hicieron posible el final del régimen que los exterminó.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La guerra es la imagen más nítida del genocidio cosmológico justificado por amenaza estructural. El Orden Dorado no toleraba la coexistencia con un dios externo rival cuyo arma podía destruirlo. La paradoja final — que el arma confinada se vuelve herramienta del fin del propio régimen — es justicia cosmológica retrasada eras: los muertos esperan, y eventualmente cobran.',
-      ),
+        'La guerra es la imagen más nítida del genocidio cosmológico justificado por amenaza estructural. El Orden Dorado no toleraba la coexistencia con un dios externo rival cuyo arma podía destruirlo. La paradoja final — que el arma confinada se vuelve herramienta del fin del propio régimen — es justicia cosmológica retrasada eras: los muertos esperan, y eventualmente cobran.'
+      )
     ],
     confirmed: [
       'Marika ordenó el exterminio de los Gigantes del Fuego',
       'Godfrey lideró la guerra como Hoarah Loux',
       'Casi todos los gigantes fueron asesinados',
       'La Llama del Fell God no pudo ser destruida — solo confinada',
-      'El último Gigante del Fuego fue encadenado como custodio eterno',
+      'El último Gigante del Fuego fue encadenado como custodio eterno'
     ],
     inferred: [
       'La guerra duró eras y consumió generaciones de soldados',
       'El Fell God es dios externo distinto de la Voluntad Mayor',
-      'Iji fue uno de los pocos gigantes que se reformó al servicio del régimen',
+      'Iji fue uno de los pocos gigantes que se reformó al servicio del régimen'
     ],
     theories: [
       'Marika sabía que la llama eventualmente sería necesaria — el confinamiento fue siembra estratégica, no precaución',
       'Algunos Gigantes del Fuego sobrevivieron escondidos en otras regiones',
-      'La Llama Frenética y la Llama del Fell God son manifestaciones diferentes de la misma fuerza primigenia hostil',
+      'La Llama Frenética y la Llama del Fell God son manifestaciones diferentes de la misma fuerza primigenia hostil'
     ],
     ambiguous: [
       'Cuántos gigantes había antes de la guerra',
       'Si los Zamor fueron aliados o solo cazadores oportunistas',
-      'Si el Fell God sigue activo o se retiró tras el exterminio de su pueblo',
+      'Si el Fell God sigue activo o se retiró tras el exterminio de su pueblo'
     ],
-    relatedCharacters: ['godfrey', 'marika', 'melina', 'fire-giant', 'iji', 'zamor-heroes'],
+    relatedCharacters: ['godfrey', 'marika', 'melina', 'fire-giant', 'iji' ],
     relatedFactions: ['fire-giants', 'orden-dorado'],
     relatedRegions: ['mountaintops'],
     relatedConcepts: ['fell-god', 'erdtree', 'dioses-exteriores'],
@@ -1645,7 +1645,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godfrey', 'character', 'godfrey'),
         ' fue su Primer Señor Elden y consorte original; juntos engendraron a ',
         link('Godwyn', 'character', 'godwyn'),
-        ' como primogénito amado.',
+        ' como primogénito amado.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -1653,7 +1653,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Antiguos Dragones', 'faction', 'dragones-antiguos'),
         ' a través de su unión con ',
         link('Fortissax', 'character', 'fortissax'),
-        '. Su existencia visible justificaba la legitimidad cosmológica del Orden Dorado: si Marika podía producir un heredero perfecto, el régimen era teológicamente válido.',
+        '. Su existencia visible justificaba la legitimidad cosmológica del Orden Dorado: si Marika podía producir un heredero perfecto, el régimen era teológicamente válido.'
       ),
       p(
         'Pero la siguiente generación reveló contradicciones. Cuando Marika tomó a ',
@@ -1666,46 +1666,46 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Omens', 'faction', 'omens'),
         ' por la sangre antigua de Radagon. La ley del régimen los clasificaba como aberraciones malditas. Fueron encarcelados secretamente bajo la capital, en el ',
         link('Subsuelo Shunning-Grounds', 'region', 'subterranean-shunning-grounds'),
-        '. Su existencia fue silenciada públicamente.',
+        '. Su existencia fue silenciada públicamente.'
       ),
       p(
         'Posteriormente nacieron los Empyreans gemelos ',
         link('Malenia', 'character', 'malenia'),
         ' y ',
         link('Miquella', 'character', 'miquella'),
-        ' — ambos malditos cosmológicamente desde el nacimiento (Podredumbre Escarlata y eterno-niño respectivamente). El régimen oficialmente celebraba el linaje; en privado, cada generación traía una nueva grieta.',
+        ' — ambos malditos cosmológicamente desde el nacimiento (Podredumbre Escarlata y eterno-niño respectivamente). El régimen oficialmente celebraba el linaje; en privado, cada generación traía una nueva grieta.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La hipocresía estructural del Linaje Dorado — celebrar la pureza pública mientras se encarcelaban Omens reales en privado — generó las dos respuestas opuestas que dividirán el régimen tras la fractura. Morgott, el Omen leal, defendió el régimen que lo encerró. Mohg, el Omen rebelde, fundó un régimen alternativo. Ambas respuestas son consecuencia directa del trauma juvenil.',
+        'La hipocresía estructural del Linaje Dorado — celebrar la pureza pública mientras se encarcelaban Omens reales en privado — generó las dos respuestas opuestas que dividirán el régimen tras la fractura. Morgott, el Omen leal, defendió el régimen que lo encerró. Mohg, el Omen rebelde, fundó un régimen alternativo. Ambas respuestas son consecuencia directa del trauma juvenil.'
       ),
       h(2, 'Significado simbólico'),
       p(
         'El Linaje Dorado encarna la mentira fundacional del régimen. La línea oficial muestra a Godwyn como ejemplo de pureza; la línea real incluye Omens, Empyreans malditos, gemelos encarcelados, hijos no nacidos como ',
         link('Melina', 'character', 'melina'),
-        '. La sucesión cosmológica funciona porque oculta sus contradicciones, hasta que las contradicciones se vuelven imposibles de ocultar.',
-      ),
+        '. La sucesión cosmológica funciona porque oculta sus contradicciones, hasta que las contradicciones se vuelven imposibles de ocultar.'
+      )
     ],
     confirmed: [
       'Godwyn fue primogénito de Marika y Godfrey',
       'Morgott y Mohg son gemelos Omens encarcelados bajo Leyndell',
       'Malenia y Miquella son Empyreans gemelos malditos',
-      'La línea pública oficial mostraba solo a Godwyn como heredero visible',
+      'La línea pública oficial mostraba solo a Godwyn como heredero visible'
     ],
     inferred: [
       'La sangre Omen procede del lado Radagon, no del lado Marika',
       'El régimen ocultó deliberadamente la existencia de los gemelos encarcelados',
-      'Las dos respuestas opuestas de Morgott y Mohg derivan directamente del trauma juvenil',
+      'Las dos respuestas opuestas de Morgott y Mohg derivan directamente del trauma juvenil'
     ],
     theories: [
       'Marika lloraba en privado por sus hijos Omens pero no podía contradecir la ley pública',
       'Godwyn fue diseñado iconográficamente — su rol era propaganda cosmológica',
-      'Otros hijos pudieron existir y ser eliminados antes de que su existencia se documentara',
+      'Otros hijos pudieron existir y ser eliminados antes de que su existencia se documentara'
     ],
     ambiguous: [
       'Cuántos hijos engendró Marika en total',
       'Si Godfrey conocía la existencia de los gemelos Omens',
-      'Si la decisión de encarcelar fue de Marika, de los Dos Dedos, o de la propia ley impersonal',
+      'Si la decisión de encarcelar fue de Marika, de los Dos Dedos, o de la propia ley impersonal'
     ],
     relatedCharacters: ['marika', 'godfrey', 'godwyn', 'morgott', 'mohg', 'malenia', 'miquella', 'melina', 'radagon'],
     relatedFactions: ['orden-dorado', 'omens', 'golden-lineage'],
@@ -1727,18 +1727,18 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Antiguos Dragones', 'faction', 'dragones-antiguos'),
         ' residuales. Donde su padre había exterminado pueblos enteros como los Gigantes del Fuego, Godwyn buscó la integración. Persuadió a ',
         link('Fortissax', 'character', 'fortissax'),
-        ' — uno de los dragones más poderosos sobrevivientes de la era de Placidusax — y forjó con él un pacto sagrado de fraternidad eterna.',
+        ' — uno de los dragones más poderosos sobrevivientes de la era de Placidusax — y forjó con él un pacto sagrado de fraternidad eterna.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'El pacto fue concreto: Godwyn aprendería el rayo dragónico, Fortissax obtendría protección cosmológica como aliado del régimen dorado, y ambos cooperarían en la defensa del Interregno. La unión ritual generó el ',
+        'El pacto fue concreto: Godwyn aprendería el rayo dragónico, Fortissax obtendría protección cosmológica como aliado del régimen dorado, y ambos cooperarían en la defensa de las Tierras Intermedias. La unión ritual generó el ',
         link('Culto del Antiguo Dragón', 'faction', 'ancient-dragon-cult'),
-        ' como secta sincrética. Sus rezos celebraban la unión — no la dominación — de demidiós y dragón. Su iconografía mezclaba relámpagos cervidos con escamas doradas.',
+        ' como secta sincrética. Sus rezos celebraban la unión — no la dominación — de demidiós y dragón. Su iconografía mezclaba relámpagos cervidos con escamas doradas.'
       ),
       p(
         'Otras facciones del régimen consideraron este pacto debilidad. La purga oficial contra los dragones nunca se completó por la presencia de Godwyn como protector implícito. ',
         link('Lansseax', 'character', 'lansseax'),
-        ' (hermana de Fortissax) sobrevivió en Altus en parte gracias a este pacto. Otros dragones residuales encontraron tolerancia tácita.',
+        ' (hermana de Fortissax) sobrevivió en Altus en parte gracias a este pacto. Otros dragones residuales encontraron tolerancia tácita.'
       ),
       p(
         'Cuando ',
@@ -1747,37 +1747,37 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Noche de los Cuchillos Negros', 'timeline', 'ranni-noche-cuchillos'),
         ', el asesinato parcial de Godwyn cortó toda posibilidad de continuidad reformista. Fortissax quedó atrapado en pesadilla onírica luchando eternamente contra la ',
         link('Deathroot', 'concept', 'deathroot'),
-        ' que invadió el cuerpo de su amigo. El pacto sigue activo en el sueño de un cadáver — testimonio horrorizante de la única reforma positiva del régimen.',
+        ' que invadió el cuerpo de su amigo. El pacto sigue activo en el sueño de un cadáver — testimonio horrorizante de la única reforma positiva del régimen.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'Sin el asesinato de Godwyn, la integración Orden Dorado-Antiguos Dragones podría haber continuado. Era el único modelo cosmológico documentado del régimen para reconciliar al pre-Orden con el Orden — no purgándolo, no exterminándolo, sino acomodándolo. Su muerte demuestra estructuralmente que el régimen no toleraba modelos integradores: cualquier camino reformista era amenaza al orden establecido.',
+        'Sin el asesinato de Godwyn, la integración Orden Dorado-Antiguos Dragones podría haber continuado. Era el único modelo cosmológico documentado del régimen para reconciliar al pre-Orden con el Orden — no purgándolo, no exterminándolo, sino acomodándolo. Su muerte demuestra estructuralmente que el régimen no toleraba modelos integradores: cualquier camino reformista era amenaza al orden establecido.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Godwyn y Fortissax representan la promesa cosmológica perdida del Interregno. Toda la historia post-fractura — la Guerra del Shattering, los demidioses irreconciliables, la imposibilidad de un régimen alternativo coherente — se incuba en el momento exacto en que esta única reforma positiva fue eliminada. La pesadilla compartida bajo Deeproot Depths es el monumento subterráneo a lo que pudo haber sido.',
-      ),
+        'Godwyn y Fortissax representan la promesa cosmológica perdida de las Tierras Intermedias. Toda la historia post-fractura — la Guerra del Shattering, los demidioses irreconciliables, la imposibilidad de un régimen alternativo coherente — se incuba en el momento exacto en que esta única reforma positiva fue eliminada. La pesadilla compartida bajo Deeproot Depths es el monumento subterráneo a lo que pudo haber sido.'
+      )
     ],
     confirmed: [
       'Godwyn pactó con Fortissax como aliado eterno',
       'El pacto generó el Culto del Antiguo Dragón',
       'Fortissax quedó atrapado en la pesadilla onírica de Godwyn tras su asesinato parcial',
-      'Lansseax sobrevivió posiblemente gracias al paraguas protector del pacto',
+      'Lansseax sobrevivió posiblemente gracias al paraguas protector del pacto'
     ],
     inferred: [
       'El pacto fue la primera y única reforma religiosa positiva del Orden Dorado',
       'Otras facciones del régimen consideraban el pacto debilidad teológica',
-      'La protección implícita de Godwyn fue lo que detuvo la purga total contra dragones',
+      'La protección implícita de Godwyn fue lo que detuvo la purga total contra dragones'
     ],
     theories: [
       'Godwyn aprendió secretos cosmológicos de Fortissax que el régimen oficial no documentó',
       'Si el pacto continúa activo en el sueño, Fortissax podría aún ser despertado por una intervención específica',
-      'La Era del Crepúsculo restauraría el pacto al permitir que ambos finalmente mueran como aliados',
+      'La Era del Crepúsculo restauraría el pacto al permitir que ambos finalmente mueran como aliados'
     ],
     ambiguous: [
       'Cuándo exactamente ocurrió el pacto inicial',
       'Si otros dragones aceptaron unirse o solo Fortissax',
-      'Si el rayo dragónico de Godwyn era poder propio o préstamo cosmológico',
+      'Si el rayo dragónico de Godwyn era poder propio o préstamo cosmológico'
     ],
     relatedCharacters: ['godwyn', 'fortissax', 'godfrey', 'lansseax', 'placidusax'],
     relatedFactions: ['ancient-dragon-cult', 'dragones-antiguos'],
@@ -1789,7 +1789,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'rennala-colapso': {
     summary:
-      'El colapso emocional de Rennala fue el primer evento documentado del Interregno donde una figura cosmológica de primer nivel fue destruida por dolor personal puro. La maldición del Renacimiento que le entregó Lazuli Conspector no fue impuesta — fue voluntariamente aceptada como escudo psicológico contra el abandono de Radagon. Hoy hechiza eternamente al Amber Egg.',
+      'El colapso emocional de Rennala fue el primer evento documentado de las Tierras Intermedias donde una figura cosmológica de primer nivel fue destruida por dolor personal puro. La maldición del Renacimiento que le entregó Lazuli Conspector no fue impuesta — fue voluntariamente aceptada como escudo psicológico contra el abandono de Radagon. Hoy hechiza eternamente al Amber Egg.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -1799,19 +1799,19 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' — ',
         link('Rennala', 'character', 'rennala'),
-        ' colapsó funcionalmente. No por debilidad: era la mayor hechicera viva del Interregno. Por dolor específico: el esposo amado se llevaba consigo el último vínculo cosmológico que la sostenía como persona.',
+        ' colapsó funcionalmente. No por debilidad: era la mayor hechicera viva de las Tierras Intermedias. Por dolor específico: el esposo amado se llevaba consigo el último vínculo cosmológico que la sostenía como persona.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Radagon dejó como prenda de despedida un Amber Egg — símbolo ritual de los nacimientos divinos. La intención del gesto sigue siendo opaca: ¿reconocimiento del vínculo? ¿substituto cosmológico? ¿simple cortesía protocolaria? Lo que es indudable es que Rennala lo aceptó como núcleo de su identidad post-abandono.',
+        'Radagon dejó como prenda de despedida un Amber Egg — símbolo ritual de los nacimientos divinos. La intención del gesto sigue siendo opaca: ¿reconocimiento del vínculo? ¿substituto cosmológico? ¿simple cortesía protocolaria? Lo que es indudable es que Rennala lo aceptó como núcleo de su identidad post-abandono.'
       ),
       p(
         'Un académico llamado Lazuli Conspector regresó del más allá con la maldición del ',
         link('Renacimiento', 'concept', 'rebirth'),
-        ' — magia ontológica capaz de "renacer" sujetos en versiones rediseñadas. Por compasión, por crueldad o por instrucción específica, se la entregó a Rennala. Desde entonces ella usa ese poder en bucle infinito sobre el Amber Egg, hechizándolo como si fuera un bebé que está por nacer.',
+        ' — magia ontológica capaz de "renacer" sujetos en versiones rediseñadas. Por compasión, por crueldad o por instrucción específica, se la entregó a Rennala. Desde entonces ella usa ese poder en bucle infinito sobre el Amber Egg, hechizándolo como si fuera un bebé que está por nacer.'
       ),
       p(
-        'La función accidental que esto generó fue valiosa: los Mancillados pueden usar a Rennala para reorganizar sus propios atributos. Ella canta sobre el cuerpo del aspirante y "lo renace" como una versión rediseñada de sí mismo. La mayor tragedia personal del Interregno se convirtió en la herramienta más útil para los aspirantes al trono.',
+        'La función accidental que esto generó fue valiosa: los Tarnished pueden usar a Rennala para reorganizar sus propios atributos. Ella canta sobre el cuerpo del aspirante y "lo renace" como una versión rediseñada de sí mismo. La mayor tragedia personal de las Tierras Intermedias se convirtió en la herramienta más útil para los aspirantes al trono.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -1825,39 +1825,39 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Radahn', 'character', 'radahn'),
         ' en idolatría obsesiva al modelo paterno (Godfrey, no Radagon), ',
         link('Rykard', 'character', 'rykard'),
-        ' en blasfemia institucional. Cada respuesta es legible como reacción al colapso materno.',
+        ' en blasfemia institucional. Cada respuesta es legible como reacción al colapso materno.'
       ),
       p(
-        'Durante el combate con el Mancillado, ',
+        'Durante el combate con el Tarnished, ',
         link('Ranni', 'character', 'ranni'),
-        ' invoca una ilusión protectora alrededor de su madre — primer signo en todo el juego de que Rennala conserva afecto activo de al menos una hija. La ilusión no la cura, solo la cuida durante el rito.',
+        ' invoca una ilusión protectora alrededor de su madre — primer signo en todo el juego de que Rennala conserva afecto activo de al menos una hija. La ilusión no la cura, solo la cuida durante el rito.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Rennala es la imagen más nítida del costo personal de la cosmología institucional. Marika exigió a Radagon, Radagon obedeció, Rennala quedó destruida. El Orden Dorado funciona porque otros pagan el precio. Su Amber Egg — nacimiento eterno sin parto — simboliza la imposibilidad del cierre: duelo sin etapa final, gestación que nunca culmina.',
-      ),
+        'Rennala es la imagen más nítida del costo personal de la cosmología institucional. Marika exigió a Radagon, Radagon obedeció, Rennala quedó destruida. El Orden Dorado funciona porque otros pagan el precio. Su Amber Egg — nacimiento eterno sin parto — simboliza la imposibilidad del cierre: duelo sin etapa final, gestación que nunca culmina.'
+      )
     ],
     confirmed: [
       'Rennala recibió el Amber Egg como prenda de despedida de Radagon',
       'Lazuli Conspector le entregó la maldición del Renacimiento',
       'Rennala hechiza eternamente al Amber Egg en bucle',
-      'Los Mancillados pueden usar el rito para reorganizar atributos',
-      'Ranni invoca una ilusión protectora durante el combate final',
+      'Los Tarnished pueden usar el rito para reorganizar atributos',
+      'Ranni invoca una ilusión protectora durante el combate final'
     ],
     inferred: [
       'Su regresión es escudo psicológico activo, no demencia involuntaria',
       'Sus tres hijos arrastran cicatrices del colapso',
-      'Aún ama a Radagon a pesar de saber sobre la fusión con Marika',
+      'Aún ama a Radagon a pesar de saber sobre la fusión con Marika'
     ],
     theories: [
       'Rennala conserva consciencia plena pero rechaza activamente salir del bucle',
       'El Amber Egg contiene un poder cosmológico real que ella ha decidido no usar',
-      'Lazuli Conspector le entregó la maldición por instrucción específica de algún tercero',
+      'Lazuli Conspector le entregó la maldición por instrucción específica de algún tercero'
     ],
     ambiguous: [
       'Si conoció el destino Empyrean de Ranni y lo aprobó',
       'Si la ilusión protectora la consultó o se impuso sin consentimiento',
-      'Cuál es exactamente el contenido del Amber Egg — embrión real, símbolo, vehículo cosmológico latente',
+      'Cuál es exactamente el contenido del Amber Egg — embrión real, símbolo, vehículo cosmológico latente'
     ],
     relatedCharacters: ['rennala', 'radagon', 'ranni', 'radahn', 'rykard', 'marika'],
     relatedFactions: ['caria', 'raya-lucaria'],
@@ -1868,16 +1868,16 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'unalloyed-gold-haligtree': {
     summary:
-      'El proyecto del Oro sin Aleación de Miquella fue la única tentativa positiva de curar el cosmos del Interregno. Plantó el Haligtree como árbol alternativo independiente de la Voluntad Mayor; acogió a los excluidos del régimen oficial; desarrolló las Agujas curativas. Su sueño esperaba un cosmos transformado. Mohg lo secuestró antes de que despertara.',
+      'El proyecto del Oro sin Aleación de Miquella fue la única tentativa positiva de curar el cosmos de las Tierras Intermedias. Plantó el Haligtree como árbol alternativo independiente de la Voluntad Mayor; acogió a los excluidos del régimen oficial; desarrolló las Agujas curativas. Su sueño esperaba un cosmos transformado. Mohg lo secuestró antes de que despertara.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         link('Miquella', 'character', 'miquella'),
-        ' comprendió temprano que el cosmos del Interregno estaba estructuralmente contaminado por dioses externos parásitos. Su gemela ',
+        ' comprendió temprano que el cosmos de las Tierras Intermedias estaba estructuralmente contaminado por dioses externos parásitos. Su gemela ',
         link('Malenia', 'character', 'malenia'),
         ' era prueba viviente: nacida con la ',
         link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
-        ' como parásito divino desde el nacimiento. La pregunta filosófica de Miquella fue: ¿se puede curar al cosmos?',
+        ' como parásito divino desde el nacimiento. La pregunta filosófica de Miquella fue: ¿se puede curar al cosmos?'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -1887,12 +1887,12 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
         '. Las ',
         link('Agujas de Oro sin Aleación', 'concept', 'unalloyed-gold'),
-        ' pueden expulsar a un dios externo del cuerpo de su huésped. Son los únicos objetos puramente curativos del juego — no defensivos, no ofensivos, sino estructuralmente sanadores.',
+        ' pueden expulsar a un dios externo del cuerpo de su huésped. Son los únicos objetos puramente curativos del juego — no defensivos, no ofensivos, sino estructuralmente sanadores.'
       ),
       p(
         'Plantó el ',
         link('Haligtree', 'region', 'haligtree'),
-        ' en las tierras nevadas más allá de las Mountaintops como cosmología alternativa. No era simplemente un refugio — era propuesta cosmológica completa: un árbol independiente de la Voluntad Mayor, alimentado por luz propia, capaz de proveer reciclaje de almas sin contrato divino.',
+        ' en las tierras nevadas más allá de las Mountaintops como cosmología alternativa. No era simplemente un refugio — era propuesta cosmológica completa: un árbol independiente de la Voluntad Mayor, alimentado por luz propia, capaz de proveer reciclaje de almas sin contrato divino.'
       ),
       p(
         'Acogió a los excluidos del Orden Dorado: ',
@@ -1903,7 +1903,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
         ' costó la vida a la mayoría — cuerpos de peregrinos congelados aún yacen en las nieves. Los que llegaron a ',
         link('Elphael', 'region', 'elphael'),
-        ' construyeron la primera ciudad utópica documentada del Interregno: una urbe donde nadie era rechazado por su forma.',
+        ' construyeron la primera ciudad utópica documentada de las Tierras Intermedias: una urbe donde nadie era rechazado por su forma.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -1911,37 +1911,37 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Malenia', 'character', 'malenia'),
         ' regresó mutilada de la Batalla de Aeonia, la Podredumbre Escarlata residual comenzó a infectar al árbol mismo. Los Albinaurics enloquecieron y se transformaron en Albinaurics carmesíes. Los Cleanrot Knights perdieron control progresivo. Y ',
         link('Mohg', 'character', 'mohg'),
-        ' aprovechó la debilidad de la guardiana para secuestrar a Miquella durante su sueño curativo.',
+        ' aprovechó la debilidad de la guardiana para secuestrar a Miquella durante su sueño curativo.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El proyecto del Haligtree encarna la única filosofía positiva del Interregno: no destruir el sistema, no reformarlo, sino curarlo de los dioses parásitos. Su fracaso es la respuesta más oscura del juego a la pregunta de si el régimen actual es reformable. Ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.',
-      ),
+        'El proyecto del Haligtree encarna la única filosofía positiva de las Tierras Intermedias: no destruir el sistema, no reformarlo, sino curarlo de los dioses parásitos. Su fracaso es la respuesta más oscura del juego a la pregunta de si el régimen actual es reformable. Ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.'
+      )
     ],
     confirmed: [
       'Miquella desarrolló el Oro sin Aleación contra los dioses exteriores',
-      'Plantó el Haligtree como cosmología alternativa al Erdtree',
+      'Plantó el Haligtree como cosmología alternativa al Árbol Áureo',
       'Acogió a Albinaurics y Misbegotten como refugiados',
       'Las Agujas curativas pueden expulsar dioses exteriores',
-      'La Podredumbre infectó el árbol tras la mutilación de Malenia',
+      'La Podredumbre infectó el árbol tras la mutilación de Malenia'
     ],
     inferred: [
-      'El proyecto era el más radical positivo del Interregno',
+      'El proyecto era el más radical positivo de las Tierras Intermedias',
       'El éxodo a través del Snowfield costó muchas vidas',
-      'La utopía dependía estructuralmente de la protección de Malenia',
+      'La utopía dependía estructuralmente de la protección de Malenia'
     ],
     theories: [
       'El Oro sin Aleación amenazaba a la Voluntad Mayor tanto como a los dioses externos',
       'Si Miquella despertara, podría revertir parcialmente la Podredumbre del Haligtree',
-      'Marika sabía del proyecto y lo aprobaba secretamente',
+      'Marika sabía del proyecto y lo aprobaba secretamente'
     ],
     ambiguous: [
       'Cuándo exactamente plantó el Haligtree',
       'Si Miquella conserva alguna conciencia durante el secuestro en Mohgwyn',
-      'Si su despertar habría sido benigno o autoritario en su propio modo',
+      'Si su despertar habría sido benigno o autoritario en su propio modo'
     ],
     relatedCharacters: ['miquella', 'malenia', 'mohg', 'millicent'],
-    relatedFactions: ['haligtree', 'cleanrot-knights', 'albinauricos', 'misbegotten'],
+    relatedFactions: ['cleanrot-knights', 'albinauricos', 'misbegotten'],
     relatedRegions: ['haligtree', 'consecrated-snowfield', 'elphael', 'ordina'],
     relatedConcepts: ['unalloyed-gold', 'erdtree', 'dioses-exteriores'],
     relatedTimelineEvents: ['miquella-malenia', 'mohg-toma-miquella', 'batalla-aeonia'],
@@ -1959,54 +1959,54 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Dos Dedos', 'faction', 'dos-dedos'),
         ', mensajeros físicos de la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        '. Era arma deliberadamente teológica.',
+        '. Era arma deliberadamente teológica.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La existencia de la Hoja confirma que la rebelión Nox no era ingenua. Antes de intentar forjar su propio dios, los Nox habían anticipado la respuesta del régimen establecido y habían construido herramientas defensivas específicas. La Hoja era la última carta — el arma que les permitiría cortar la cadena de mando si los Dos Dedos llegaban a intervenir directamente.',
+        'La existencia de la Hoja confirma que la rebelión Nox no era ingenua. Antes de intentar forjar su propio dios, los Nox habían anticipado la respuesta del régimen establecido y habían construido herramientas defensivas específicas. La Hoja era la última carta — el arma que les permitiría cortar la cadena de mando si los Dos Dedos llegaban a intervenir directamente.'
       ),
       p(
         'Tras la caída de los Nox por el impacto de ',
         link('Astel', 'character', 'astel-naturalborn'),
         ', la Hoja quedó enterrada en las ruinas de ',
         link('Nokron', 'region', 'nokron'),
-        '. Conservó su filo cosmológico durante eras, esperando un sucesor de la rebelión.',
+        '. Conservó su filo cosmológico durante eras, esperando un sucesor de la rebelión.'
       ),
       p(
         link('Ranni', 'character', 'ranni'),
         ' recupera la Hoja como parte central de su quest. Su rebelión cosmológica hereda directamente la línea Nox: forjar un cosmos sin Voluntad Mayor cercana. La Hoja es el instrumento que asegura que los Dos Dedos no puedan retomar control durante la transición a la ',
         link('Era de las Estrellas', 'ending', 'age-of-stars'),
-        '.',
+        '.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La Hoja Mata-Dedos es prueba ontológica de que los regímenes cosmológicos tienen vulnerabilidades específicas. Los Dos Dedos no son indestructibles — solo escasamente atacables. La existencia de la Hoja documenta que civilizaciones rivales han preparado defensas durante eras y que esas defensas siguen activas siglos después.',
+        'La Hoja Mata-Dedos es prueba ontológica de que los regímenes cosmológicos tienen vulnerabilidades específicas. Los Dos Dedos no son indestructibles — solo escasamente atacables. La existencia de la Hoja documenta que civilizaciones rivales han preparado defensas durante eras y que esas defensas siguen activas siglos después.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La Hoja simboliza la continuidad de la rebelión cosmológica como tradición. Lo que los Nox iniciaron, Ranni completa. La rebelión contra la Voluntad Mayor no es invento reciente — es legado heredado. Cada generación rebelde añade un paso al plan que la generación anterior dejó incompleto.',
-      ),
+        'La Hoja simboliza la continuidad de la rebelión cosmológica como tradición. Lo que los Nox iniciaron, Ranni completa. La rebelión contra la Voluntad Mayor no es invento reciente — es legado heredado. Cada generación rebelde añade un paso al plan que la generación anterior dejó incompleto.'
+      )
     ],
     confirmed: [
       'Los Nox forjaron la Hoja Mata-Dedos antes de su caída',
       'Su propósito específico es cortar a los Dos Dedos',
       'La Hoja sobrevive enterrada en Nokron',
-      'Ranni la recupera durante su quest',
+      'Ranni la recupera durante su quest'
     ],
     inferred: [
       'Los Nox anticipaban intervención directa de los Dos Dedos',
       'La Hoja fue construcción defensiva, no ofensiva',
-      'Ranni hereda directamente la línea técnica Nox',
+      'Ranni hereda directamente la línea técnica Nox'
     ],
     theories: [
       'Existen otras armas Nox similares aún no descubiertas',
       'La Hoja conserva voluntad residual de los Nox que la forjaron',
-      'Cortar a los Dos Dedos no los mata cosmológicamente — solo los desactiva temporalmente',
+      'Cortar a los Dos Dedos no los mata cosmológicamente — solo los desactiva temporalmente'
     ],
     ambiguous: [
       'Cuándo exactamente fue forjada',
       'Si los Nox la usaron contra los Dos Dedos durante su rebelión inicial',
-      'Si Marika conocía su existencia',
+      'Si Marika conocía su existencia'
     ],
     relatedCharacters: ['ranni', 'astel-naturalborn'],
     relatedFactions: ['nox', 'dos-dedos'],
@@ -2018,7 +2018,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'tormenta-lord-conquista': {
     summary:
-      'Antes de servir a Marika, Hoarah Loux conquistó los reinos primigenios del Interregno como Storm Lord. Domesticó al Espíritu Tormenta Serosh y absorbió cada cultura conquistada — Hombres Tormenta, Antiguos Dragones residuales, gigantes de las cumbres. Su biografía pre-Orden es la guerra absoluta del cosmos pre-régimen.',
+      'Antes de servir a Marika, Hoarah Loux conquistó los reinos primigenios de las Tierras Intermedias como Storm Lord. Domesticó al Espíritu Tormenta Serosh y absorbió cada cultura conquistada — Hombres Tormenta, Antiguos Dragones residuales, gigantes de las cumbres. Su biografía pre-Orden es la guerra absoluta del cosmos pre-régimen.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -2026,54 +2026,54 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Primer Señor Elden', 'character', 'godfrey'),
         ', el guerrero conocido como Hoarah Loux era jefe nómada del lejano norte. Su título primigenio — ',
         link('Storm Lord', 'concept', 'storm-lord'),
-        ' — procede de los Hombres Tormenta cuyas tradiciones absorbió durante sus conquistas. La era pre-Orden conocía la fuerza marcial absoluta antes de conocer la liturgia dorada.',
+        ' — procede de los Hombres Tormenta cuyas tradiciones absorbió durante sus conquistas. La era pre-Orden conocía la fuerza marcial absoluta antes de conocer la liturgia dorada.'
       ),
       h(2, 'Historia detallada'),
       p(
         'Su primera operación documentada fue dominar al Espíritu Tormenta ',
         link('Serosh', 'character', 'serosh'),
-        ', criatura leonina sapiente vinculada a una entidad cosmológica de la tormenta. Hoarah Loux no lo asesinó — lo encadenó en su propia frente como talismán regulador. La presencia de Serosh sirvió durante eras como freno civilizatorio: el sabio león susurraba contención al rey guerrero cuando éste estaba a punto de ceder al instinto.',
+        ', criatura leonina sapiente vinculada a una entidad cosmológica de la tormenta. Hoarah Loux no lo asesinó — lo encadenó en su propia frente como talismán regulador. La presencia de Serosh sirvió durante eras como freno civilizatorio: el sabio león susurraba contención al rey guerrero cuando éste estaba a punto de ceder al instinto.'
       ),
       p(
-        'Bajo Marika, Hoarah Loux se convirtió en Godfrey y conquistó el Interregno entero. Su campaña incluyó: la guerra contra los ',
+        'Bajo Marika, Hoarah Loux se convirtió en Godfrey y conquistó las Tierras Intermedias enteras. Su campaña incluyó: la guerra contra los ',
         link('Gigantes del Fuego', 'faction', 'fire-giants'),
-        ' en las Mountaintops; el sometimiento de los Hombres Tormenta del lejano norte; ataques contra los Antiguos Dragones residuales que sobrevivían a la era de Placidusax; el sometimiento de pueblos del Crisol que rechazaban el régimen dorado naciente.',
+        ' en las Mountaintops; el sometimiento de los Hombres Tormenta del lejano norte; ataques contra los Antiguos Dragones residuales que sobrevivían a la era de Placidusax; el sometimiento de pueblos del Crisol que rechazaban el régimen dorado naciente.'
       ),
       p(
         'De cada cultura conquistada absorbió un don marcial específico. El ',
         em('Stormhawk Deenh'),
-        ' — el ave-rayo de Godfrey — procede de los Hombres Tormenta. Las técnicas de pelea con espadas dobles vienen de tradiciones del Crisol. La ferocidad pura de Hoarah Loux es residuo del Storm Lord pre-régimen, conservado como reserva ritual durante todos sus años civilizados.',
+        ' — el ave-rayo de Godfrey — procede de los Hombres Tormenta. Las técnicas de pelea con espadas dobles vienen de tradiciones del Crisol. La ferocidad pura de Hoarah Loux es residuo del Storm Lord pre-régimen, conservado como reserva ritual durante todos sus años civilizados.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La conquista de Godfrey definió la geografía política del Interregno actual. Cada región del juego es escenario directo o indirecto de sus campañas. Su retorno final como espectro dorado ante el Mancillado completa el ciclo: el primer rey regresa a defender el trono que ya no le pertenece, y descarta a Serosh para volver a ser Hoarah Loux completo. La transformación final es ritual: el rey civilizado quita la máscara y deja al cazador desnudo terminar la pelea.',
+        'La conquista de Godfrey definió la geografía política de las Tierras Intermedias actuales. Cada región del juego es escenario directo o indirecto de sus campañas. Su retorno final como espectro dorado ante el Tarnished completa el ciclo: el primer rey regresa a defender el trono que ya no le pertenece, y descarta a Serosh para volver a ser Hoarah Loux completo. La transformación final es ritual: el rey civilizado quita la máscara y deja al cazador desnudo terminar la pelea.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Hoarah Loux como Storm Lord encarna la marcialidad pre-régimen. El Orden Dorado no domesticó al guerrero primal — solo lo vistió. Bajo cada rey civilizado vive un cazador desnudo. Cuando llega el momento, el cazador regresa con todo su poder original. La civilización es ropa que se quita.',
-      ),
+        'Hoarah Loux como Storm Lord encarna la marcialidad pre-régimen. El Orden Dorado no domesticó al guerrero primal — solo lo vistió. Bajo cada rey civilizado vive un cazador desnudo. Cuando llega el momento, el cazador regresa con todo su poder original. La civilización es ropa que se quita.'
+      )
     ],
     confirmed: [
       'Hoarah Loux fue Storm Lord antes del Orden Dorado',
       'Dominó a Serosh y lo encadenó en su frente como talismán',
       'Conquistó múltiples pueblos primigenios bajo Marika',
       'Stormhawk Deenh procede de los Hombres Tormenta',
-      'Su forma final descarta a Serosh y vuelve a Hoarah Loux completo',
+      'Su forma final descarta a Serosh y vuelve a Hoarah Loux completo'
     ],
     inferred: [
       'Storm Lord era título cosmológicamente vinculado a una entidad del cielo',
       'La conquista pre-Marika ya había establecido a Hoarah Loux como gobernante regional',
-      'Serosh ofrecía consejo activo durante los años civilizados, no solo regulación pasiva',
+      'Serosh ofrecía consejo activo durante los años civilizados, no solo regulación pasiva'
     ],
     theories: [
       'Existió un dios externo de la tormenta al que Hoarah Loux estaba ritualmente vinculado',
       'Otros guerreros Storm Lord coexistieron y fueron eliminados durante la conquista',
-      'La transformación final del rey al cazador es ritual ensayado durante eras, no espontánea',
+      'La transformación final del rey al cazador es ritual ensayado durante eras, no espontánea'
     ],
     ambiguous: [
       'Cuántas tribus dominó antes de unirse al régimen de Marika',
       'Si Serosh era voluntariamente subordinado o cautivo perpetuo',
-      'Si la entidad de la tormenta sigue activa o se retiró tras la elevación de Hoarah Loux',
+      'Si la entidad de la tormenta sigue activa o se retiró tras la elevación de Hoarah Loux'
     ],
     relatedCharacters: ['godfrey', 'serosh', 'marika'],
     relatedFactions: ['fire-giants', 'dragones-antiguos'],
@@ -2094,7 +2094,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         ' como Empyrean. La protección era acto de amor fraterno — pero su efecto cosmológico era cancelar la posibilidad de la ',
         link('Era de las Estrellas', 'ending', 'age-of-stars'),
-        ' por tiempo indefinido.',
+        ' por tiempo indefinido.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -2103,12 +2103,12 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Cleanrot Knights', 'faction', 'cleanrot-knights'),
         ' desde ',
         link('Elphael', 'region', 'elphael'),
-        ' a través del Snowfield, las Mountaintops, el Altus Plateau, hasta llegar a la frontera de Caelid. La marcha es una de las operaciones militares más documentadas del Interregno post-fractura.',
+        ' a través del Snowfield, las Mountaintops, el Altus Plateau, hasta llegar a la frontera de Caelid. La marcha es una de las operaciones militares más documentadas de las Tierras Intermedias post-fractura.'
       ),
       p(
         'Sus motivaciones eran múltiples y honestas: 1) restaurar el flujo cosmológico bloqueado, 2) probar su honor marcial contra el rival más respetado, 3) servir indirectamente al proyecto de ',
         link('Miquella', 'character', 'miquella'),
-        ' al permitir que la cosmología siguiera moviéndose. No era venganza personal — Malenia y Radahn se admiraban mutuamente como guerreros invictos.',
+        ' al permitir que la cosmología siguiera moviéndose. No era venganza personal — Malenia y Radahn se admiraban mutuamente como guerreros invictos.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -2116,34 +2116,34 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Batalla de Aeonia', 'timeline', 'batalla-aeonia'),
         ' estaba listo. La ',
         link('Floración Escarlata', 'concept', 'scarlet-rot'),
-        ' que ocurrió allí no fue accidente — fue consecuencia directa de que Malenia se vio incapaz de vencer marcialmente al guerrero invicto.',
+        ' que ocurrió allí no fue accidente — fue consecuencia directa de que Malenia se vio incapaz de vencer marcialmente al guerrero invicto.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La marcha encarna la disonancia trágica del Interregno post-fractura: amor familiar que produce bloqueo cosmológico, honor marcial que requiere combate fratricida, fidelidad a un hermano dormido (Miquella) que demanda matar al admirado adversario (Radahn). Cada acción honorable produce consecuencias catastróficas. El régimen post-fractura no permite buenas decisiones.',
-      ),
+        'La marcha encarna la disonancia trágica de las Tierras Intermedias post-fractura: amor familiar que produce bloqueo cosmológico, honor marcial que requiere combate fratricida, fidelidad a un hermano dormido (Miquella) que demanda matar al admirado adversario (Radahn). Cada acción honorable produce consecuencias catastróficas. El régimen post-fractura no permite buenas decisiones.'
+      )
     ],
     confirmed: [
       'Radahn bloqueó las estrellas con su gravedad para proteger a Ranni',
       'Malenia marchó desde el Haligtree a Caelid con los Cleanrot Knights',
       'La motivación primaria fue restaurar el flujo cosmológico bloqueado',
       'Malenia y Radahn se admiraban mutuamente como guerreros',
-      'La marcha consumió a la mayoría de sus Cleanrot Knights',
+      'La marcha consumió a la mayoría de sus Cleanrot Knights'
     ],
     inferred: [
       'Miquella estaba dormido durante la marcha — la decisión fue de Malenia sola',
       'Caelid ya estaba en proceso de degeneración pre-Aeonia',
-      'Ningún demidiós central apoyaba o se oponía abiertamente a la marcha',
+      'Ningún demidiós central apoyaba o se oponía abiertamente a la marcha'
     ],
     theories: [
       'Sellen, antigua maestra de Radahn, anticipó la confrontación pero no intervino',
       'Algunos Cleanrot Knights desertaron al ver la magnitud del costo',
-      'La Floración Escarlata era inevitable cosmológicamente desde que Malenia salió del Haligtree',
+      'La Floración Escarlata era inevitable cosmológicamente desde que Malenia salió del Haligtree'
     ],
     ambiguous: [
       'Si Malenia conocía el riesgo de su propia Floración antes de partir',
       'Cuánto tiempo duró la marcha exactamente',
-      'Si los Cleanrot Knights aceptaron voluntariamente la infección o fueron infectados durante la marcha',
+      'Si los Cleanrot Knights aceptaron voluntariamente la infección o fueron infectados durante la marcha'
     ],
     relatedCharacters: ['malenia', 'radahn', 'miquella', 'ranni'],
     relatedFactions: ['cleanrot-knights', 'redmanes'],
@@ -2155,7 +2155,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'batalla-aeonia': {
     summary:
-      'La Batalla de Aeonia fue el duelo más legendario del Interregno post-fractura: Malenia contra Radahn, dos guerreros invictos midiéndose en lo único que les importaba. Cuando Malenia comprendió que no podía vencer marcialmente, desplegó su Scarlet Aeonia — la primera Floración real. Caelid quedó arrasado para siempre. Ambos perdieron.',
+      'La Batalla de Aeonia fue el duelo más legendario de las Tierras Intermedias post-fractura: Malenia contra Radahn, dos guerreros invictos midiéndose en lo único que les importaba. Cuando Malenia comprendió que no podía vencer marcialmente, desplegó su Scarlet Aeonia — la primera Floración real. Caelid quedó arrasado para siempre. Ambos perdieron.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
@@ -2165,56 +2165,56 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Radahn', 'character', 'radahn'),
         ' tuvo lugar en los pantanos centrales de ',
         link('Caelid', 'region', 'caelid'),
-        ' tras la marcha de Malenia desde el Haligtree. Era el duelo cosmológico más esperado del Interregno: dos demidioses invictos cuyas técnicas eran radicalmente distintas (combate cuerpo a cuerpo vs gravedad de campo abierto) midiéndose mutuamente sin reservas.',
+        ' tras la marcha de Malenia desde el Haligtree. Era el duelo cosmológico más esperado de las Tierras Intermedias: dos demidioses invictos cuyas técnicas eran radicalmente distintas (combate cuerpo a cuerpo vs gravedad de campo abierto) midiéndose mutuamente sin reservas.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La batalla fue prolongada. Radahn dominaba el campo abierto con su gravedad astronómica — atrayendo proyectiles, sosteniendo su armadura colosal, lanzando lluvia de meteoritos. Malenia respondía con la Danza Floreciente, los pasos del Lirio del Valle, ataques de profundidad imposible que parecían anticipar cada movimiento gravitacional.',
+        'La batalla fue prolongada. Radahn dominaba el campo abierto con su gravedad astronómica — atrayendo proyectiles, sosteniendo su armadura colosal, lanzando lluvia de meteoritos. Malenia respondía con la Danza Floreciente, los pasos del Lirio del Valle, ataques de profundidad imposible que parecían anticipar cada movimiento gravitacional.'
       ),
       p(
         'Cuando Malenia comprendió que la batalla se extendía sin que pudiera prevalecer marcialmente, desplegó su ',
         em('Scarlet Aeonia'),
         ' — la primera Floración real de la ',
         link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
-        '. No fue decisión estratégica fría: fue desesperación divina. La Floración brotó de su cuerpo como flor carmesí monstruosa que se expandió por toda la región.',
+        '. No fue decisión estratégica fría: fue desesperación divina. La Floración brotó de su cuerpo como flor carmesí monstruosa que se expandió por toda la región.'
       ),
       p(
-        'El efecto fue total. Caelid entero quedó cubierto de podredumbre permanente. Los Redmanes presentes fueron infectados. Radahn quedó corrompido — su mente devorada por la podredumbre sin que su honor marcial le permitiera rendirse. La región se transformó en yermo carmesí en cuestión de horas. Malenia ganó técnicamente: Radahn no pudo continuar peleando con coherencia. Pero perdió ontológicamente: su propio cuerpo quedó tan deteriorado que perdió piernas, ojo, capacidad de caminar.',
+        'El efecto fue total. Caelid entero quedó cubierto de podredumbre permanente. Los Redmanes presentes fueron infectados. Radahn quedó corrompido — su mente devorada por la podredumbre sin que su honor marcial le permitiera rendirse. La región se transformó en yermo carmesí en cuestión de horas. Malenia ganó técnicamente: Radahn no pudo continuar peleando con coherencia. Pero perdió ontológicamente: su propio cuerpo quedó tan deteriorado que perdió piernas, ojo, capacidad de caminar.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La Batalla de Aeonia es uno de los eventos más consecuentes del Interregno post-fractura. Arruinó Caelid permanentemente. Generó las hijas escarlatas (incluyendo a la única humana, ',
+        'La Batalla de Aeonia es uno de los eventos más consecuentes de las Tierras Intermedias post-fractura. Arruinó Caelid permanentemente. Generó las hijas escarlatas (incluyendo a la única humana, ',
         link('Millicent', 'character', 'millicent'),
         '). Debilitó al Haligtree durante años (Malenia ya no podía proteger a Miquella). Y creó la condición para el secuestro posterior: ',
         link('Mohg', 'character', 'mohg'),
-        ' aprovechó la ausencia/incapacidad de Malenia para entrar al Haligtree y robar a Miquella.',
+        ' aprovechó la ausencia/incapacidad de Malenia para entrar al Haligtree y robar a Miquella.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La Batalla encarna la imposibilidad ética del Interregno post-fractura. Dos guerreros honorables se enfrentaron sin animosidad personal y produjeron una catástrofe regional. La devoción de Malenia a Miquella, la fidelidad de Radahn a la protección de Ranni, ambas honorables, ambas conducentes a destrucción masiva. El régimen post-fractura no permite que el honor produzca buenos resultados: solo produce ruinas con dignidad.',
-      ),
+        'La Batalla encarna la imposibilidad ética de las Tierras Intermedias post-fractura. Dos guerreros honorables se enfrentaron sin animosidad personal y produjeron una catástrofe regional. La devoción de Malenia a Miquella, la fidelidad de Radahn a la protección de Ranni, ambas honorables, ambas conducentes a destrucción masiva. El régimen post-fractura no permite que el honor produzca buenos resultados: solo produce ruinas con dignidad.'
+      )
     ],
     confirmed: [
       'Malenia y Radahn se enfrentaron en Aeonia como duelo de honor mutuo',
       'Malenia desplegó la Scarlet Aeonia cuando vio que no podía vencer marcialmente',
       'Caelid quedó cubierto de Podredumbre Escarlata permanente',
       'Radahn fue corrompido y reducido a bestia honorable demente',
-      'Malenia perdió piernas y ojo en la operación',
+      'Malenia perdió piernas y ojo en la operación'
     ],
     inferred: [
       'La Floración no fue decisión estratégica fría sino desesperación divina',
       'Los Redmanes presentes en Aeonia fueron infectados o murieron',
-      'La Batalla creó la condición material para el posterior secuestro de Miquella',
+      'La Batalla creó la condición material para el posterior secuestro de Miquella'
     ],
     theories: [
       'Radahn supo durante la batalla que Malenia liberaría la Floración y aceptó el riesgo',
       'La Floración era inevitable cosmológicamente — Malenia no decidió, ejecutó',
-      'El honor marcial impidió a Radahn rendirse incluso cuando habría sido razonable',
+      'El honor marcial impidió a Radahn rendirse incluso cuando habría sido razonable'
     ],
     ambiguous: [
       'Cuánto duró exactamente el duelo',
       'Si Malenia conocía el costo personal de la Floración antes de desplegarla',
-      'Si Radahn habría podido prevalecer si Malenia no hubiera florecido',
+      'Si Radahn habría podido prevalecer si Malenia no hubiera florecido'
     ],
     relatedCharacters: ['malenia', 'radahn', 'miquella', 'jerren', 'millicent', 'gowry'],
     relatedFactions: ['cleanrot-knights', 'redmanes', 'kindred-of-rot'],
@@ -2235,67 +2235,67 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
         ' en la Batalla de Aeonia, los ',
         link('Redmanes', 'faction', 'redmanes'),
-        ' supervivientes diseñaron una solución ritual sin precedentes en el Interregno: invitar a guerreros legendarios a derrotar a su general arruinado, devolviéndole la dignidad de morir en combate y no por envenenamiento crónico.',
+        ' supervivientes diseñaron una solución ritual sin precedentes en las Tierras Intermedias: invitar a guerreros legendarios a derrotar a su general arruinado, devolviéndole la dignidad de morir en combate y no por envenenamiento crónico.'
       ),
       h(2, 'Historia detallada'),
       p(
         link('Jerren', 'character', 'jerren'),
         ', maestro de armas y posiblemente amante histórico de ',
         link('Sellen', 'character', 'sellen'),
-        ', oficia el Festival. Es la única figura del Interregno con autoridad ritual para coordinar lo que es, técnicamente, una operación de eutanasia honorífica colectiva. La sede es ',
+        ', oficia el Festival. Es la única figura de las Tierras Intermedias con autoridad ritual para coordinar lo que es, técnicamente, una operación de eutanasia honorífica colectiva. La sede es ',
         link('Castillo Redmane', 'region', 'redmane-castle'),
-        '.',
+        '.'
       ),
       p(
-        'Los combatientes invitados llegaron de todo el Interregno: ',
+        'Los combatientes invitados llegaron de todas las Tierras Intermedias: ',
         link('Alexander', 'character', 'alexander'),
         ' (la Olla Guerrera), ',
         link('Patches', 'character', 'patches'),
         ' (el oportunista eterno), ',
         link('Bernahl', 'character', 'bernahl'),
-        ' (el Caballero Desterrado, antes de su caída), Blaidd y otros héroes legendarios. Cada invitación es un honor — y un compromiso: aceptar combatir al ser que protegió las estrellas significa aceptar liberarlas también.',
+        ' (el Caballero Desterrado, antes de su caída), Blaidd y otros héroes legendarios. Cada invitación es un honor — y un compromiso: aceptar combatir al ser que protegió las estrellas significa aceptar liberarlas también.'
       ),
       p(
         'La operación ritual tiene tres efectos simultáneos: 1) liberar a Radahn del cuerpo arruinado, 2) devolverle dignidad de morir como guerrero y no como bestia, 3) restaurar el flujo de las estrellas que él había bloqueado — cumpliendo paradójicamente lo que ',
         link('Malenia', 'character', 'malenia'),
-        ' había iniciado al provocarlo a la Batalla de Aeonia. Cada movimiento del Festival es triple: piedad, honor, cosmología.',
+        ' había iniciado al provocarlo a la Batalla de Aeonia. Cada movimiento del Festival es triple: piedad, honor, cosmología.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'Cuando el Mancillado finalmente derrota a Radahn, las estrellas vuelven a moverse. La quest de ',
+        'Cuando el Tarnished finalmente derrota a Radahn, las estrellas vuelven a moverse. La quest de ',
         link('Ranni', 'character', 'ranni'),
         ' se vuelve completable. La ',
         link('Era de las Estrellas', 'ending', 'age-of-stars'),
-        ' se vuelve posible. El Festival no es solo despedida — es habilitación cosmológica del final más radical del juego. Los Redmanes lo saben: están organizando, sin poder decirlo abiertamente, el evento que termina con el régimen del Orden Dorado.',
+        ' se vuelve posible. El Festival no es solo despedida — es habilitación cosmológica del final más radical del juego. Los Redmanes lo saben: están organizando, sin poder decirlo abiertamente, el evento que termina con el régimen del Orden Dorado.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El Festival es uno de los pocos rituales benéficos del Interregno post-fractura. No es exterminio, no es purga, no es venganza — es reconocimiento. Los Redmanes son los únicos seguidores del Interregno que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de ',
+        'El Festival es uno de los pocos rituales benéficos de las Tierras Intermedias post-fractura. No es exterminio, no es purga, no es venganza — es reconocimiento. Los Redmanes son los únicos seguidores de las Tierras Intermedias que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de ',
         link('Morgott', 'character', 'morgott'),
-        ' a Marika: aquellos sirven hasta la muerte propia, los Redmanes sirven matando al servido.',
-      ),
+        ' a Marika: aquellos sirven hasta la muerte propia, los Redmanes sirven matando al servido.'
+      )
     ],
     confirmed: [
       'Los Redmanes diseñaron el Festival como eutanasia ritual',
       'Jerren oficia',
       'Alexander, Patches, Bernahl participan como combatientes invitados',
       'La derrota de Radahn libera las estrellas que él bloqueaba',
-      'El Festival está activado cuando el Mancillado llega a Caelid',
+      'El Festival está activado cuando el Tarnished llega a Caelid'
     ],
     inferred: [
       'Jerren tuvo relación previa con Sellen, posiblemente romántica',
       'Los Redmanes saben que el Festival es eutanasia',
-      'La fidelidad marcial Redmane se opone éticamente a la lealtad de Morgott',
+      'La fidelidad marcial Redmane se opone éticamente a la lealtad de Morgott'
     ],
     theories: [
       'Jerren conocía la conexión cosmológica entre la muerte de Radahn y la quest de Ranni',
       'Algunos Redmanes esperan que la liberación les devuelva memoria de su líder no-corrupto',
-      'Sellen visitó secretamente Redmane antes del Festival para coordinar con Jerren',
+      'Sellen visitó secretamente Redmane antes del Festival para coordinar con Jerren'
     ],
     ambiguous: [
-      'Cuánto tiempo lleva el Festival activo antes del Mancillado',
+      'Cuánto tiempo lleva el Festival activo antes del Tarnished',
       'Si todos los Redmanes apoyan la operación o algunos disienten',
-      'Cuántos guerreros invitados aceptaron y cuántos fallecieron antes del Mancillado',
+      'Cuántos guerreros invitados aceptaron y cuántos fallecieron antes del Tarnished'
     ],
     relatedCharacters: ['radahn', 'jerren', 'sellen', 'alexander', 'patches', 'bernahl', 'ranni', 'malenia'],
     relatedFactions: ['redmanes', 'banished-knights'],
@@ -2317,7 +2317,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Miquella', 'character', 'miquella'),
         ' dormía en su capullo dorado de ',
         link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
-        ', esperando despertar como dios completo cuando el cosmos cambiase. El proyecto curativo dependía estructuralmente de la protección de su gemela.',
+        ', esperando despertar como dios completo cuando el cosmos cambiase. El proyecto curativo dependía estructuralmente de la protección de su gemela.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -2328,52 +2328,52 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Dinastía Mohgwyn', 'region', 'mohgwyn'),
         ' como reino subterráneo paralelo. Su proyecto requería un consorte ',
         link('Empyrean', 'concept', 'empyrean'),
-        ' para ungir su régimen alternativo como auténtica era cosmológica. Eligió a Miquella precisamente porque dormía: el Empyrean indefenso era el blanco perfecto.',
+        ' para ungir su régimen alternativo como auténtica era cosmológica. Eligió a Miquella precisamente porque dormía: el Empyrean indefenso era el blanco perfecto.'
       ),
       p(
-        'Mohg aprovechó la debilidad de Malenia post-Aeonia para infiltrarse en el Haligtree. Robó el cuerpo dormido de Miquella — capullo dorado incluido — y lo trasladó a Mohgwyn. El acto fue silencioso: ningún Cleanrot Knight pudo detenerlo, ninguna Albinauric pudo dar la voz de alarma. Cuando Malenia despertó al rapto, ya era demasiado tarde.',
+        'Mohg aprovechó la debilidad de Malenia post-Aeonia para infiltrarse en el Haligtree. Robó el cuerpo dormido de Miquella — capullo dorado incluido — y lo trasladó a Mohgwyn. El acto fue silencioso: ningún Cleanrot Knight pudo detenerlo, ninguna Albinauric pudo dar la voz de alarma. Cuando Malenia despertó al rapto, ya era demasiado tarde.'
       ),
       p(
         'En Mohgwyn, Mohg inició el ritual de incubación sangrienta. El cuerpo dormido de Miquella sería bañado en sangre de los Albinaurics traficados durante eras hasta despertar como dios consorte de la Madre Informe. ',
         link('Varré', 'character', 'varre'),
-        ' opera como reclutador en superficie atrayendo Mancillados como ofrendas adicionales.',
+        ' opera como reclutador en superficie atrayendo Tarnished como ofrendas adicionales.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El plan fracasó por dos razones simultáneas. Primero, el capullo de Oro sin Aleación protegía a Miquella incluso del rito sangriento — la sangre carmesí no podía penetrar el oro purificado. Miquella nunca despertó dentro de Mohgwyn. Segundo, el Mancillado eventualmente derrotó a Mohg antes de la consumación. La dinastía sangrienta queda detenida en su acto de gestación: un altar a un dios que nunca despertó.',
+        'El plan fracasó por dos razones simultáneas. Primero, el capullo de Oro sin Aleación protegía a Miquella incluso del rito sangriento — la sangre carmesí no podía penetrar el oro purificado. Miquella nunca despertó dentro de Mohgwyn. Segundo, el Tarnished eventualmente derrotó a Mohg antes de la consumación. La dinastía sangrienta queda detenida en su acto de gestación: un altar a un dios que nunca despertó.'
       ),
       p(
-        'Las consecuencias colaterales son enormes. El proyecto curativo de Miquella quedó paralizado. Su sueño ya no puede completarse. Malenia espera en Elphael un retorno que nunca llegará — capullo vacío como única compañía. La utopía del Haligtree se infectó por la Podredumbre residual y los Albinaurics enloquecieron. La única filosofía positiva del Interregno se cancela técnicamente.',
+        'Las consecuencias colaterales son enormes. El proyecto curativo de Miquella quedó paralizado. Su sueño ya no puede completarse. Malenia espera en Elphael un retorno que nunca llegará — capullo vacío como única compañía. La utopía del Haligtree se infectó por la Podredumbre residual y los Albinaurics enloquecieron. La única filosofía positiva de las Tierras Intermedias se cancela técnicamente.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El secuestro encarna la lógica depredadora del Interregno: ningún proyecto curativo sobrevive sin protección armada, y la protección armada eventualmente se contamina. Mohg no destruyó el Haligtree — solo robó su núcleo. El árbol sigue en pie, pero sin propósito. Es la imagen más exacta del régimen post-fractura: estructuras cosmológicas activas pero sin núcleo vital.',
-      ),
+        'El secuestro encarna la lógica depredadora de las Tierras Intermedias: ningún proyecto curativo sobrevive sin protección armada, y la protección armada eventualmente se contamina. Mohg no destruyó el Haligtree — solo robó su núcleo. El árbol sigue en pie, pero sin propósito. Es la imagen más exacta del régimen post-fractura: estructuras cosmológicas activas pero sin núcleo vital.'
+      )
     ],
     confirmed: [
       'Mohg se infiltró en el Haligtree mientras Malenia se recuperaba',
       'Robó el cuerpo dormido de Miquella en su capullo',
       'Lo trasladó a Mohgwyn para el ritual de incubación sangrienta',
       'El capullo de Oro sin Aleación protegió a Miquella del rito',
-      'Miquella nunca despertó durante el secuestro',
+      'Miquella nunca despertó durante el secuestro'
     ],
     inferred: [
       'Mohg planeaba ungir su régimen alternativo con Miquella como consorte divino',
       'El secuestro fue silencioso — ningún defensor pudo detenerlo',
-      'Cuando Malenia despertó al rapto ya era demasiado tarde',
+      'Cuando Malenia despertó al rapto ya era demasiado tarde'
     ],
     theories: [
       'Varré opera como puente entre superficie y dinastía subterránea desde mucho antes del rapto',
       'Mohg aprendió la ubicación del Haligtree de algún informante',
-      'Miquella conserva alguna conciencia residual durante el secuestro',
+      'Miquella conserva alguna conciencia residual durante el secuestro'
     ],
     ambiguous: [
       'Cuánto tiempo medió entre la Batalla de Aeonia y el rapto',
       'Si Malenia detectó algo durante el secuestro o estaba completamente inconsciente',
-      'Si Mohg sabía que el capullo protegería a Miquella del rito',
+      'Si Mohg sabía que el capullo protegería a Miquella del rito'
     ],
     relatedCharacters: ['mohg', 'miquella', 'malenia', 'varre'],
-    relatedFactions: ['bloody-fingers', 'haligtree', 'cleanrot-knights'],
+    relatedFactions: ['bloody-fingers', 'cleanrot-knights'],
     relatedRegions: ['mohgwyn', 'haligtree', 'elphael'],
     relatedConcepts: ['formless-mother', 'unalloyed-gold', 'bloodflame', 'empyrean'],
     relatedTimelineEvents: ['batalla-aeonia', 'mohg-formless-mother', 'unalloyed-gold-haligtree'],
@@ -2381,17 +2381,17 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'erdtree-quemado': {
     summary:
-      'Cuando el Erdtree rechazó al Mancillado tras la derrota de Morgott, Melina se ofreció como llama portadora ritual. Subió a las Mountaintops, encendió la Llama Quemadora confinada con el último Gigante del Fuego, y se inmoló para prender el árbol entero. La era dorada terminó técnicamente cuando Melina ardió.',
+      'Cuando el Árbol Áureo rechazó al Tarnished tras la derrota de Morgott, Melina se ofreció como llama portadora ritual. Subió a las Mountaintops, encendió la Llama Quemadora confinada con el último Gigante del Fuego, y se inmoló para prender el árbol entero. La era dorada terminó técnicamente cuando Melina ardió.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         'Tras la derrota de ',
         link('Morgott', 'character', 'morgott'),
         ', el ',
-        link('Erdtree', 'concept', 'erdtree'),
-        ' literalmente cerró sus raíces ante el Mancillado. La instrucción oficial de los ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' literalmente cerró sus raíces ante el Tarnished. La instrucción oficial de los ',
         link('Dos Dedos', 'faction', 'dos-dedos'),
-        ' falló: ningún ritual reunido era suficiente para abrir el árbol. La cosmología pre-fractura quedó técnicamente bloqueada.',
+        ' falló: ningún ritual reunido era suficiente para abrir el árbol. La cosmología pre-fractura quedó técnicamente bloqueada.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -2400,46 +2400,46 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Mountaintops', 'region', 'mountaintops'),
         ', derrotar al ',
         link('último Gigante del Fuego', 'character', 'fire-giant'),
-        ' encadenado en la Forja, y usar la Llama Quemadora confinada eras atrás como herramienta para incendiar el Erdtree. Su disponibilidad parecía anticipada — Melina sabía que este momento llegaría.',
+        ' encadenado en la Forja, y usar la Llama Quemadora confinada eras atrás como herramienta para incendiar el Árbol Áureo. Su disponibilidad parecía anticipada — Melina sabía que este momento llegaría.'
       ),
       p(
-        'La Llama Quemadora, hostil al Erdtree por designio cosmológico, era la única llama capaz de consumirlo. Pero requería un portador ritual: un cuerpo divino dispuesto a inmolarse. Melina ofreció el suyo. Su discurso final mencionó explícitamente "el destino de los dioses" como propio. La frase confirma que su sacrificio fue diseñado cosmológicamente — no decisión espontánea.',
+        'La Llama Quemadora, hostil al Árbol Áureo por designio cosmológico, era la única llama capaz de consumirlo. Pero requería un portador ritual: un cuerpo divino dispuesto a inmolarse. Melina ofreció el suyo. Su discurso final mencionó explícitamente "el destino de los dioses" como propio. La frase confirma que su sacrificio fue diseñado cosmológicamente — no decisión espontánea.'
       ),
       p(
-        'La inmolación fue total. Melina ardió como antorcha portadora; el Erdtree entero se incendió en respuesta. La era dorada ardió simultáneamente: cada raíz del árbol, cada altar dedicado, cada estructura ritual del régimen. La quema duró días según el ritmo cosmológico del Interregno. Cuando terminó, el camino al trono Elden estaba abierto — pero todo el régimen había sido reducido a cenizas doradas.',
+        'La inmolación fue total. Melina ardió como antorcha portadora; el Árbol Áureo entero se incendió en respuesta. La era dorada ardió simultáneamente: cada raíz del árbol, cada altar dedicado, cada estructura ritual del régimen. La quema duró días según el ritmo cosmológico de las Tierras Intermedias. Cuando terminó, el camino al trono Elden estaba abierto — pero todo el régimen había sido reducido a cenizas doradas.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'Si el Mancillado había abrazado la ',
+        'Si el Tarnished había abrazado la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
-        ' antes de este punto, Melina lo abandonó — y el árbol se quemó solo, devorado por el fuego nihilista. En cualquier ruta que no sea la frenética, Melina es la portadora ritual cuya inmolación posibilita el final.',
+        ' antes de este punto, Melina lo abandonó — y el árbol se quemó solo, devorado por el fuego nihilista. En cualquier ruta que no sea la frenética, Melina es la portadora ritual cuya inmolación posibilita el final.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La quema del Erdtree es el primer acto de ruptura cosmológica deliberada que el Mancillado realiza. Marika rompió el Anillo eras atrás; el Mancillado completa la ruptura prendiendo el árbol que la sostenía. Melina como antorcha es la imagen más nítida del juego de la generosidad cosmológica: una doncella sin tumba ardiendo para que un agente externo pueda elegir el destino del cosmos.',
-      ),
+        'La quema del Árbol Áureo es el primer acto de ruptura cosmológica deliberada que el Tarnished realiza. Marika rompió el Anillo eras atrás; el Tarnished completa la ruptura prendiendo el árbol que la sostenía. Melina como antorcha es la imagen más nítida del juego de la generosidad cosmológica: una doncella sin tumba ardiendo para que un agente externo pueda elegir el destino del cosmos.'
+      )
     ],
     confirmed: [
-      'El Erdtree cerró sus raíces ante el Mancillado tras Morgott',
+      'El Árbol Áureo cerró sus raíces ante el Tarnished tras Morgott',
       'Melina apareció con la solución específica de quemarlo',
       'La Llama Quemadora confinada en las Mountaintops era la única llama capaz de quemarlo',
       'Melina se inmoló como portadora ritual',
-      'En la ruta de la Llama Frenética, Melina abandona y el árbol arde solo',
+      'En la ruta de la Llama Frenética, Melina abandona y el árbol arde solo'
     ],
     inferred: [
       'Melina anticipaba este momento — su disponibilidad fue diseñada',
       'Su discurso final identifica su sacrificio con "el destino de los dioses"',
-      'La quema técnicamente termina la era dorada antes de la coronación final',
+      'La quema técnicamente termina la era dorada antes de la coronación final'
     ],
     theories: [
       'Marika diseñó cosmológicamente el momento de la quema',
       'Melina es hija no nacida de Marika programada específicamente para este acto',
-      'La Llama Quemadora confinada eras atrás fue siembra estratégica',
+      'La Llama Quemadora confinada eras atrás fue siembra estratégica'
     ],
     ambiguous: [
       'Si Melina conserva conciencia tras la inmolación',
       'Si su "venganza" prometida en el final frenético es real o duelo simbólico',
-      'Si el Erdtree podría haber sido evitado de quemarse mediante alguna ruta no documentada',
+      'Si el Árbol Áureo podría haber sido evitado de quemarse mediante alguna ruta no documentada'
     ],
     relatedCharacters: ['melina', 'marika', 'morgott', 'fire-giant', 'godfrey'],
     relatedFactions: ['fire-giants', 'orden-dorado'],
@@ -2451,30 +2451,30 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'maliketh-libera-muerte': {
     summary:
-      'En Crumbling Farum Azula, Maliketh acepta su derrota como Bestia de la Muerte Negra. Su muerte libera la Runa de la Muerte que había contenido durante eras. La era dorada termina técnicamente cuando Maliketh cae — lo que sigue es decisión del Mancillado sobre qué cosmos viene después.',
+      'En Crumbling Farum Azula, Maliketh acepta su derrota como Bestia de la Muerte Negra. Su muerte libera la Runa de la Muerte que había contenido durante eras. La era dorada termina técnicamente cuando Maliketh cae — lo que sigue es decisión del Tarnished sobre qué cosmos viene después.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
         'En ',
         link('Crumbling Farum Azula', 'region', 'farum-azula'),
-        ', el Mancillado enfrenta a ',
+        ', el Tarnished enfrenta a ',
         link('Maliketh', 'character', 'maliketh'),
         ' en su forma final como Bestia de la Muerte Negra. Es la última fase del verdugo cosmológico de Marika: un Hombre-Bestia primigenio cuya carne carga la ',
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
-        ' desde el sello marikiano original.',
+        ' desde el sello marikiano original.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La transformación de Maliketh en su forma final es desesperación, no orgullo. Sabe que perder libera la Muerte Predestinada que ha contenido durante eras. Sabe que su servicio post-mortem habrá sido inútil si el cosmos colapsa después. Sabe que su sacrificio cosmológico solo termina si encuentra a alguien capaz de derrotarlo.',
+        'La transformación de Maliketh en su forma final es desesperación, no orgullo. Sabe que perder libera la Muerte Predestinada que ha contenido durante eras. Sabe que su servicio post-mortem habrá sido inútil si el cosmos colapsa después. Sabe que su sacrificio cosmológico solo termina si encuentra a alguien capaz de derrotarlo.'
       ),
       p(
         'Cuando cae, la ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
-        ' vuelve a fluir parcialmente al cosmos. Los seres del Interregno pueden volver a morir verdaderamente — al menos en algunos casos. La fuga es parcial, no total: el sello completo solo se cierra si ',
+        ' vuelve a fluir parcialmente al cosmos. Los seres de las Tierras Intermedias pueden volver a morir verdaderamente — al menos en algunos casos. La fuga es parcial, no total: el sello completo solo se cierra si ',
         link('Fia', 'character', 'fia'),
         ' entrega la Runa Mendaz al Anillo Elden restaurado durante la elección final, instaurando la ',
         link('Era del Crepúsculo', 'ending', 'duskborn'),
-        '.',
+        '.'
       ),
       p(
         'Su muerte abre además el camino físico al trono Elden: la cámara de coronación se vuelve accesible solo después. ',
@@ -2483,42 +2483,42 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' encadenada y ',
         link('Radagon', 'character', 'radagon'),
-        ' como guardián residual aguardan en el centro del Erdtree quemado.',
+        ' como guardián residual aguardan en el centro del Árbol Áureo quemado.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El evento cierra parcialmente la herida cosmológica del sello original de Marika. La era dorada terminó técnicamente cuando Maliketh cayó: lo que sigue es decisión del Mancillado sobre qué cosmos viene después. Sin esta liberación, ',
+        'El evento cierra parcialmente la herida cosmológica del sello original de Marika. La era dorada terminó técnicamente cuando Maliketh cayó: lo que sigue es decisión del Tarnished sobre qué cosmos viene después. Sin esta liberación, ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
         ' no podrían descansar en ningún final. Sin esta liberación, ',
         link('Godwyn', 'character', 'godwyn'),
-        ' continuaría descomponiéndose eternamente bajo Deeproot Depths.',
+        ' continuaría descomponiéndose eternamente bajo Deeproot Depths.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La derrota voluntaria de Maliketh es el acto más misericordioso del Mancillado, aunque parezca violencia. El verdugo cosmológico que cargó la Muerte durante eras encuentra finalmente a alguien capaz de cerrar el ciclo. Su servicio post-mortem se convierte en su último acto consciente: aceptar perder para que el cosmos pueda finalmente respirar.',
-      ),
+        'La derrota voluntaria de Maliketh es el acto más misericordioso del Tarnished, aunque parezca violencia. El verdugo cosmológico que cargó la Muerte durante eras encuentra finalmente a alguien capaz de cerrar el ciclo. Su servicio post-mortem se convierte en su último acto consciente: aceptar perder para que el cosmos pueda finalmente respirar.'
+      )
     ],
     confirmed: [
       'Maliketh es derrotado en Crumbling Farum Azula',
       'Su muerte libera parcialmente la Runa de la Muerte',
       'Los seres pueden volver a morir verdaderamente en algunos casos',
       'Su muerte abre el acceso a la cámara de coronación',
-      'La fuga completa solo se cierra con la Runa Mendaz de Fia',
+      'La fuga completa solo se cierra con la Runa Mendaz de Fia'
     ],
     inferred: [
       'La transformación final es desesperación, no orgullo',
       'Maliketh aceptó perder para cerrar el ciclo cosmológico',
-      'La era dorada termina técnicamente con su muerte',
+      'La era dorada termina técnicamente con su muerte'
     ],
     theories: [
       'Maliketh estuvo esperando durante eras a alguien capaz de derrotarlo',
       'Su servicio post-mortem es voluntad propia, no mandato puro',
-      'La atemporalidad de Farum Azula retrasaba la fuga de muerte de su cuerpo',
+      'La atemporalidad de Farum Azula retrasaba la fuga de muerte de su cuerpo'
     ],
     ambiguous: [
       'Si Maliketh conserva alguna forma de conciencia tras la derrota',
       'Cuánto exactamente se libera la Muerte Predestinada sin la Runa Mendaz',
-      'Si la liberación parcial afecta a los demidioses ya muertos retrospectivamente',
+      'Si la liberación parcial afecta a los demidioses ya muertos retrospectivamente'
     ],
     relatedCharacters: ['maliketh', 'marika', 'godwyn', 'fia', 'd', 'gloam-eyed-queen'],
     relatedFactions: ['hombres-bestia', 'cuchillos-negros', 'those-who-live-in-death'],
@@ -2530,57 +2530,57 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'godfrey-regresa': {
     summary:
-      'Tras la quema del Erdtree y la liberación de la Muerte por Maliketh, Godfrey regresa como espectro dorado para defender el trono que ya no le pertenece. Su lealtad estructural al rol del Señor Elden — no a Marika personalmente — es lo que lo trae de regreso. Pelea en dos formas: rey blindado y, finalmente, Hoarah Loux desnudo.',
+      'Tras la quema del Árbol Áureo y la liberación de la Muerte por Maliketh, Godfrey regresa como espectro dorado para defender el trono que ya no le pertenece. Su lealtad estructural al rol del Señor Elden — no a Marika personalmente — es lo que lo trae de regreso. Pelea en dos formas: rey blindado y, finalmente, Hoarah Loux desnudo.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
-        'Tras quemar el Erdtree y derrotar a Maliketh, el Mancillado entra a la sala del trono Elden en ',
+        'Tras quemar el Árbol Áureo y derrotar a Maliketh, el Tarnished entra a la sala del trono Elden en ',
         link('Leyndell', 'region', 'leyndell'),
         '. ',
         link('Godfrey', 'character', 'godfrey'),
-        ' aparece como espectro dorado, defendiendo el trono que ya no le pertenece. Su retorno es excepcional cosmológicamente: ningún demidiós actual está dispuesto a defender el régimen — solo el ancestro original, exiliado hace eones, aceptaría volver.',
+        ' aparece como espectro dorado, defendiendo el trono que ya no le pertenece. Su retorno es excepcional cosmológicamente: ningún demidiós actual está dispuesto a defender el régimen — solo el ancestro original, exiliado hace eones, aceptaría volver.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La activación de su retorno coincide exactamente con la quema del Erdtree y la liberación de la Muerte. La causa-efecto es ambigua, pero la coincidencia es deliberada: cuando el régimen está técnicamente terminando, Godfrey regresa. Su lealtad no es a Marika personalmente — Marika ya está rota dentro del árbol quemado. Su lealtad es estructural: a la idea del Señor Elden, al rol cosmológico, al deber del primer rey.',
+        'La activación de su retorno coincide exactamente con la quema del Árbol Áureo y la liberación de la Muerte. La causa-efecto es ambigua, pero la coincidencia es deliberada: cuando el régimen está técnicamente terminando, Godfrey regresa. Su lealtad no es a Marika personalmente — Marika ya está rota dentro del árbol quemado. Su lealtad es estructural: a la idea del Señor Elden, al rol cosmológico, al deber del primer rey.'
       ),
       p(
-        'Pelea en dos formas. Primera: el rey blindado, con armadura completa de Señor Elden, hacha gigante, y técnica marcial refinada por eras. Su Stormhawk Deenh todavía obedece. Su Stomp todavía sacude el suelo. Es el rey civilizado peleando como rey.',
+        'Pelea en dos formas. Primera: el rey blindado, con armadura completa de Señor Elden, hacha gigante, y técnica marcial refinada por eras. Su Stormhawk Deenh todavía obedece. Su Stomp todavía sacude el suelo. Es el rey civilizado peleando como rey.'
       ),
       p(
         'Cuando esa máscara cae, queda Hoarah Loux: el guerrero primigenio desnudo, peleando con sus manos como un cazador del lejano norte antes del Orden Dorado. Descarta a ',
         link('Serosh', 'character', 'serosh'),
-        ' — el espíritu leonino encadenado en su frente — para liberar su instinto sin restricciones. Es la transformación ritual perfecta: bajo cada rey civilizado vive un cazador desnudo, y al final el cazador regresa.',
+        ' — el espíritu leonino encadenado en su frente — para liberar su instinto sin restricciones. Es la transformación ritual perfecta: bajo cada rey civilizado vive un cazador desnudo, y al final el cazador regresa.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La derrota de Godfrey abre el camino directo a Marika encadenada. Su muerte completa el ciclo: el primer rey regresó a defender el último altar y cae como guerrero ancestral. Sus reliquias — el martillo de Serosh, las técnicas de Stormhawk, las técnicas de Hoarah Loux — quedan disponibles como aprendizajes finales del juego.',
+        'La derrota de Godfrey abre el camino directo a Marika encadenada. Su muerte completa el ciclo: el primer rey regresó a defender el último altar y cae como guerrero ancestral. Sus reliquias — el martillo de Serosh, las técnicas de Stormhawk, las técnicas de Hoarah Loux — quedan disponibles como aprendizajes finales del juego.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Godfrey encarna la fidelidad estructural llevada al límite. Aceptó el exilio cuando Marika lo despidió. Aceptó eras de gobierno como Hoarah Loux en las tierras exteriores. Y, cuando el régimen lo llamó de regreso, regresó. Su transformación final — quitarse la armadura y combatir como cazador primal — es la imagen central del juego: la civilización es ropa, lo primal es la carne. El Orden Dorado vistió al guerrero pero nunca lo cambió.',
-      ),
+        'Godfrey encarna la fidelidad estructural llevada al límite. Aceptó el exilio cuando Marika lo despidió. Aceptó eras de gobierno como Hoarah Loux en las tierras exteriores. Y, cuando el régimen lo llamó de regreso, regresó. Su transformación final — quitarse la armadura y combatir como cazador primal — es la imagen central del juego: la civilización es ropa, lo primal es la carne. El Orden Dorado vistió al guerrero pero nunca lo cambió.'
+      )
     ],
     confirmed: [
-      'Godfrey regresa como espectro dorado tras la quema del Erdtree',
+      'Godfrey regresa como espectro dorado tras la quema del Árbol Áureo',
       'Pelea en dos formas: rey blindado y Hoarah Loux primal',
       'Descarta a Serosh para liberar su instinto cazador',
-      'Su muerte abre el camino directo a Marika',
+      'Su muerte abre el camino directo a Marika'
     ],
     inferred: [
       'Su lealtad es estructural al rol, no personal a Marika',
       'Su retorno fue activado por la quema del árbol y la liberación de la Muerte',
-      'Conserva todo su poder primal incluso siglos después del exilio',
+      'Conserva todo su poder primal incluso siglos después del exilio'
     ],
     theories: [
       'Marika misma reactivó su gracia para que pudiera regresar',
       'Serosh le aconsejó hasta el último momento de la transformación',
-      'Su retorno es voluntario, no convocatoria forzosa',
+      'Su retorno es voluntario, no convocatoria forzosa'
     ],
     ambiguous: [
       'Si conserva conciencia plena durante el espectro o solo función ritual',
       'Si su pelea final es contienda real o ritual de transmisión cosmológica',
-      'Si Hoarah Loux post-Serosh es completamente él mismo o una versión incompleta',
+      'Si Hoarah Loux post-Serosh es completamente él mismo o una versión incompleta'
     ],
     relatedCharacters: ['godfrey', 'marika', 'serosh', 'maliketh', 'godwyn'],
     relatedFactions: ['orden-dorado'],
@@ -2591,59 +2591,59 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
 
   'bestia-elden-revelada': {
     summary:
-      'Tras Godfrey, el Mancillado golpea a Marika encadenada y libera a Radagon como guardián residual. Cuando Radagon cae, el Anillo Elden manifiesta su forma autónoma: la Bestia Elden, cosmología hecha hostilidad. Su derrota deja al Mancillado libre para elegir el destino del cosmos.',
+      'Tras Godfrey, el Tarnished golpea a Marika encadenada y libera a Radagon como guardián residual. Cuando Radagon cae, el Anillo Elden manifiesta su forma autónoma: la Bestia Elden, cosmología hecha hostilidad. Su derrota deja al Tarnished libre para elegir el destino del cosmos.',
     deepLore: [
       h(2, 'Resumen del evento'),
       p(
-        'En la cámara central del Erdtree quemado, el Mancillado encuentra a ',
+        'En la cámara central del Árbol Áureo quemado, el Tarnished encuentra a ',
         link('Marika', 'character', 'marika'),
         ' encadenada en el tronco del árbol y a ',
         link('Radagon', 'character', 'radagon'),
-        ' como guardián residual. La encadenada es ofrenda y prisión simultáneas; el guardián es su otra mitad cosmológica conservando el Anillo intacto.',
+        ' como guardián residual. La encadenada es ofrenda y prisión simultáneas; el guardián es su otra mitad cosmológica conservando el Anillo intacto.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Al golpear a Marika, libera a Radagon. La pelea contra Radagon es la última batalla "humana" del juego: dos voluntades irreconciliables operando en un cuerpo común, contra un Mancillado externo a ambas. Radagon golpea con su martillo de reparación — el mismo que usó eras para reparar el Anillo Elden — pero ahora intentando matar al aspirante en lugar de cerrar grietas.',
+        'Al golpear a Marika, libera a Radagon. La pelea contra Radagon es la última batalla "humana" del juego: dos voluntades irreconciliables operando en un cuerpo común, contra un Tarnished externo a ambas. Radagon golpea con su martillo de reparación — el mismo que usó eras para reparar el Anillo Elden — pero ahora intentando matar al aspirante en lugar de cerrar grietas.'
       ),
       p(
         'Cuando Radagon cae, el Anillo Elden manifiesta su forma autónoma: la ',
         link('Bestia Elden', 'concept', 'bestia-elden'),
         '. No es un dios — es la cosmología misma, divorciada de la voluntad humana de Marika. Es lo que el Anillo Elden ',
         em('es'),
-        ' cuando ningún cuerpo humano lo contiene. Sus alas cubren constelaciones; su cuerpo emite la luz primordial que originalmente alimentaba al Erdtree. Pelea para protegerse a sí misma, no para defender ninguna causa específica.',
+        ' cuando ningún cuerpo humano lo contiene. Sus alas cubren constelaciones; su cuerpo emite la luz primordial que originalmente alimentaba al Árbol Áureo. Pelea para protegerse a sí misma, no para defender ninguna causa específica.'
       ),
       p(
-        'La batalla con la Bestia Elden es la primera vez que el cosmos sin máscara humana se enfrenta al Mancillado. Su derrota es el momento más cosmológicamente radical del juego. Cuando cae, las Grandes Runas pueden ser ensambladas según cualquiera de los seis finales posibles. El cosmos queda técnicamente disponible para reconfiguración.',
+        'La batalla con la Bestia Elden es la primera vez que el cosmos sin máscara humana se enfrenta al Tarnished. Su derrota es el momento más cosmológicamente radical del juego. Cuando cae, las Grandes Runas pueden ser ensambladas según cualquiera de los seis finales posibles. El cosmos queda técnicamente disponible para reconfiguración.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'Sin la derrota de la Bestia Elden, ningún final del juego sería posible. Es el último filtro cosmológico antes de la elección. Marika muere durante el proceso (su cuerpo encadenado se rompe al primer golpe); Radagon muere como guardián humano final; la Bestia Elden muere como manifestación cosmológica del Anillo. Tres muertes superpuestas que dejan al cosmos vacante para una nueva era.',
+        'Sin la derrota de la Bestia Elden, ningún final del juego sería posible. Es el último filtro cosmológico antes de la elección. Marika muere durante el proceso (su cuerpo encadenado se rompe al primer golpe); Radagon muere como guardián humano final; la Bestia Elden muere como manifestación cosmológica del Anillo. Tres muertes superpuestas que dejan al cosmos vacante para una nueva era.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La revelación de la Bestia Elden es la respuesta más radical del juego a la pregunta de qué es el Anillo Elden. No es objeto, no es ley, no es contrato — es entidad activa con voluntad propia que solo se manifiesta cuando ninguna voluntad humana la contiene. La era dorada existía precisamente porque Marika domesticaba esta entidad. Sin Marika, la Bestia ataca cualquier visitante del trono. El régimen del Orden Dorado fue, durante eras, jaula cosmológica para una bestia que ningún humano había visto en su forma plena.',
-      ),
+        'La revelación de la Bestia Elden es la respuesta más radical del juego a la pregunta de qué es el Anillo Elden. No es objeto, no es ley, no es contrato — es entidad activa con voluntad propia que solo se manifiesta cuando ninguna voluntad humana la contiene. La era dorada existía precisamente porque Marika domesticaba esta entidad. Sin Marika, la Bestia ataca cualquier visitante del trono. El régimen del Orden Dorado fue, durante eras, jaula cosmológica para una bestia que ningún humano había visto en su forma plena.'
+      )
     ],
     confirmed: [
-      'El Mancillado golpea a Marika encadenada para liberar a Radagon',
+      'El Tarnished golpea a Marika encadenada para liberar a Radagon',
       'Radagon es la última batalla humana del juego',
       'La Bestia Elden manifiesta el Anillo Elden en su forma autónoma',
-      'Su derrota habilita los seis finales posibles del juego',
+      'Su derrota habilita los seis finales posibles del juego'
     ],
     inferred: [
       'La Bestia Elden no es un dios — es la cosmología misma sin máscara humana',
       'Marika domesticaba a la Bestia durante eras como vasija',
-      'Sin contención humana, la Bestia ataca al primer visitante del trono',
+      'Sin contención humana, la Bestia ataca al primer visitante del trono'
     ],
     theories: [
       'La Bestia Elden es contraparte funcional de la Voluntad Mayor',
       'Cada vasija humana anterior (Gloam-Eyed Queen, Placidusax) domesticaba alguna versión similar',
-      'Si el Mancillado pierde contra ella, el cosmos entra en estado de bestia desatada',
+      'Si el Tarnished pierde contra ella, el cosmos entra en estado de bestia desatada'
     ],
     ambiguous: [
       'Cuál es la naturaleza exacta de la Bestia — orgánica, cosmológica, ambas',
       'Si la Bestia recuerda haber sido contenida por humanos previos',
-      'Si la era post-Mancillado domestica de nuevo a la Bestia o la deja parcialmente libre',
+      'Si la era post-Mancillado domestica de nuevo a la Bestia o la deja parcialmente libre'
     ],
     relatedCharacters: ['marika', 'radagon', 'godfrey', 'maliketh'],
     relatedConcepts: ['elden-ring', 'bestia-elden', 'voluntad-mayor', 'great-rune'],

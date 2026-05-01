@@ -26,6 +26,8 @@ export default defineConfig({
           'lore-regions':         ['./src/data/lore/regionsLore.ts', './src/data/lore/regionsDeepLore.ts'],
           'lore-factions':        ['./src/data/lore/factionsLore.ts'],
           'lore-glossary':        ['./src/data/lore/glossaryLore.ts'],
+          /* Decorative SVG fallbacks (only rendered when an entity has no image) */
+          'fallback-illustrations': ['./src/components/images/FallbackIllustrations.tsx'],
         },
       },
     },

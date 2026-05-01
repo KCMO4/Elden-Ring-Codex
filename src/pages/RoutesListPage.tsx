@@ -22,7 +22,7 @@ export function RoutesListPage() {
         <SectionHeader
           title="Rutas Narrativas del Códice"
           subtitle="Lecturas guiadas a través del lore"
-          poeticIntro="No hay un solo orden para entender el Interregno. Cada ruta cose entidades dispersas en una sola voz coherente — el camino que esa voz recorrió antes de convertirse en final."
+          poeticIntro="No hay un solo orden para entender las Tierras Intermedias. Cada ruta cose entidades dispersas en una sola voz coherente — el camino que esa voz recorrió antes de convertirse en final."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">

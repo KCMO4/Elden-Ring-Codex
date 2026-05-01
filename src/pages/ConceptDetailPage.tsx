@@ -35,11 +35,11 @@ export function ConceptDetailPage() {
       theories={concept.theories}
       ambiguous={concept.ambiguous}
       relatedGroups={[
-        { label: 'Personajes vinculados', items: resolveCharacterIds(concept.relatedCharacters) },
-        { label: 'Regiones', items: resolveRegionIds(concept.relatedRegions) },
-        { label: 'Facciones', items: resolveFactionIds(concept.relatedFactions) },
-        { label: 'Conceptos relacionados', items: resolveConceptIds(concept.relatedConcepts) },
-        { label: 'Timeline', items: resolveTimelineIds(concept.relatedTimelineEvents) },
+        { label: 'Personajes vinculados', type: 'character', items: resolveCharacterIds(concept.relatedCharacters) },
+        { label: 'Regiones', type: 'region', items: resolveRegionIds(concept.relatedRegions) },
+        { label: 'Facciones', type: 'faction', items: resolveFactionIds(concept.relatedFactions) },
+        { label: 'Conceptos relacionados', type: 'concept', items: resolveConceptIds(concept.relatedConcepts) },
+        { label: 'Timeline', type: 'timeline', items: resolveTimelineIds(concept.relatedTimelineEvents) },
       ]}
       legacyContent={
         (!concept.deepLore || concept.deepLore.length === 0) && (
@@ -61,6 +61,7 @@ export function ConceptDetailPage() {
       }
       prev={prev}
       next={next}
+      bookmark={{ type: 'concept', slug: concept.slug ?? concept.id }}
     />
   )
 }

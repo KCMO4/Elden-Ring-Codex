@@ -45,11 +45,11 @@ export function CharacterDetailPage() {
       beneficiaries={character.beneficiaries}
       victims={character.victims}
       relatedGroups={[
-        { label: 'Personajes vinculados', items: resolveCharacterIds(character.relatedCharacters) },
-        { label: 'Regiones', items: resolveRegionIds(character.relatedRegions) },
-        { label: 'Facciones', items: resolveFactionIds(character.relatedFactions) },
-        { label: 'Conceptos', items: resolveConceptIds(character.relatedConcepts) },
-        { label: 'Eventos del Timeline', items: resolveTimelineIds(character.relatedTimelineEvents) },
+        { label: 'Personajes vinculados', type: 'character', items: resolveCharacterIds(character.relatedCharacters) },
+        { label: 'Regiones', type: 'region', items: resolveRegionIds(character.relatedRegions) },
+        { label: 'Facciones', type: 'faction', items: resolveFactionIds(character.relatedFactions) },
+        { label: 'Conceptos', type: 'concept', items: resolveConceptIds(character.relatedConcepts) },
+        { label: 'Eventos del Timeline', type: 'timeline', items: resolveTimelineIds(character.relatedTimelineEvents) },
       ]}
       legacyContent={
         (!character.deepLore || character.deepLore.length === 0) && (
@@ -58,6 +58,7 @@ export function CharacterDetailPage() {
       }
       prev={prev}
       next={next}
+      bookmark={{ type: 'character', slug: character.slug ?? character.id }}
     />
   )
 }

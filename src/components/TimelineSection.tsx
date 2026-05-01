@@ -1,47 +1,67 @@
-import { useState, useMemo } from 'react'
-import type { TimelineEntry, Certainty } from '../data/types'
+import { useMemo } from 'react'
+import type { TimelineEntry } from '../data/types'
 import { SectionHeader } from './SectionHeader'
 import { SectionHero } from './SectionHero'
 import { TimelineEntryCard } from './TimelineEntryCard'
 import { TimelineRibbon } from './TimelineRibbon'
-import { SearchBar } from './SearchBar'
-import { TagPill } from './TagPill'
-
-const certaintyOptions: { value: Certainty | 'all'; label: string }[] = [
-  { value: 'all', label: 'Todo' },
-  { value: 'confirmado', label: 'Confirmado' },
-  { value: 'inferencia', label: 'Inferencia Fuerte' },
-  { value: 'teoria', label: 'Teoría' },
-]
+import { FilterBar, type SortOption } from './FilterBar'
+import type { TagOption } from './TagPicker'
+import { EmptyState } from './EmptyState'
+import { ColorLegend } from './ColorLegend'
+import { useFilters } from '../lib/useFilters'
+import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
 
 interface Props {
   entries: TimelineEntry[]
   readingMode: boolean
 }
 
-export function TimelineSection({ entries, readingMode }: Props) {
-  const [search, setSearch] = useState('')
-  const [certaintyFilter, setCertaintyFilter] = useState<Certainty | 'all'>('all')
-  const [activeTag, setActiveTag] = useState<string | null>(null)
+const SORT_OPTIONS: SortOption[] = [
+  { value: 'default',    label: 'Orden cronológico' },
+  { value: 'reverse',    label: 'Inverso' },
+  { value: 'title-asc',  label: 'A → Z' },
+  { value: 'certainty',  label: 'Por certeza' },
+]
 
-  const allTags = useMemo(() => {
-    const set = new Set<string>()
-    entries.forEach((e) => e.tags.forEach((t) => set.add(t)))
-    return Array.from(set).sort()
-  }, [entries])
+const VALID_SORTS = ['default', 'reverse', 'title-asc', 'certainty'] as const
+type TimelineSort = typeof VALID_SORTS[number]
+
+export function TimelineSection({ entries, readingMode }: Props) {
+  const f = useFilters<TimelineSort>({
+    defaultSort: 'default',
+    validSorts: VALID_SORTS,
+    storageKey: 'timeline',
+  })
+
+  const tagOptions: TagOption[] = useMemo(
+    () => buildTagOptions(entries, (e) => e.tags),
+    [entries],
+  )
 
   const filtered = useMemo(() => {
-    return entries.filter((e) => {
+    const q = f.search.toLowerCase()
+    const result = entries.filter((e) => {
       const matchSearch =
-        !search ||
-        e.title.toLowerCase().includes(search.toLowerCase()) ||
-        e.lore.some((p) => p.toLowerCase().includes(search.toLowerCase())) ||
-        e.poeticIntro.toLowerCase().includes(search.toLowerCase())
-      const matchCertainty = certaintyFilter === 'all' || e.certainty === certaintyFilter
-      const matchTag = !activeTag || e.tags.includes(activeTag)
-      return matchSearch && matchCertainty && matchTag
+        !f.search ||
+        e.title.toLowerCase().includes(q) ||
+        e.lore.some((p) => p.toLowerCase().includes(q)) ||
+        e.poeticIntro.toLowerCase().includes(q)
+      const matchCertainty = f.certainty === 'all' || e.certainty === f.certainty
+      const matchTags = f.tags.length === 0 || f.tags.every((t) => e.tags.includes(t))
+      return matchSearch && matchCertainty && matchTags
     })
-  }, [entries, search, certaintyFilter, activeTag])
+
+    switch (f.sort) {
+      case 'reverse':
+        return [...result].reverse()
+      case 'title-asc':
+        return [...result].sort((a, b) => a.title.localeCompare(b.title))
+      case 'certainty':
+        return [...result].sort(compareByCertainty((e) => e.title))
+      default:
+        return result
+    }
+  }, [entries, f.search, f.certainty, f.tags, f.sort])
 
   return (
     <section id="timeline">
@@ -50,67 +70,57 @@ export function TimelineSection({ entries, readingMode }: Props) {
       <div className="codex-section pt-6">
         <SectionHeader
           title="Timeline Profundo"
-          subtitle="Del Vacío a la Fractura — Historia completa del Interregno"
+          subtitle="Del Vacío a la Fractura — Historia completa de las Tierras Intermedias"
+          readingCategory="timeline"
         />
 
         {!readingMode && <TimelineRibbon entries={entries} />}
 
         {!readingMode && (
-          <div className="mb-8 space-y-4">
-            <SearchBar value={search} onChange={setSearch} placeholder="Buscar en el timeline..." />
-
-            <div className="flex flex-wrap gap-2">
-              {certaintyOptions.map((opt) => (
-                <button
-                  key={opt.value}
-                  onClick={() => setCertaintyFilter(opt.value)}
-                  className={`px-3 py-1.5 font-heading text-xs tracking-wider uppercase rounded-sm border transition-all
-                    ${certaintyFilter === opt.value
-                      ? 'bg-codex-gold/15 border-codex-gold/40 text-codex-gold'
-                      : 'bg-codex-brown/30 border-codex-gold-dim/20 text-codex-parchment-dim hover:border-codex-gold-dim/40'
-                    }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-1.5">
-              {activeTag && (
-                <TagPill tag="× Quitar filtro" onClick={() => setActiveTag(null)} active />
-              )}
-              {allTags.slice(0, 20).map((tag) => (
-                <TagPill
-                  key={tag}
-                  tag={tag}
-                  onClick={(t) => setActiveTag(activeTag === t ? null : t)}
-                  active={activeTag === tag}
-                />
-              ))}
-            </div>
-
-            {filtered.length !== entries.length && (
-              <p className="font-heading text-xs text-codex-gold-dim tracking-wider">
-                Mostrando {filtered.length} de {entries.length} capítulos
-              </p>
-            )}
-          </div>
+          <FilterBar
+            search={f.search}
+            onSearchChange={f.setSearch}
+            searchPlaceholder="Buscar evento, era, palabra clave…"
+            certainty={f.certainty}
+            onCertaintyChange={f.setCertainty}
+            tags={tagOptions}
+            selectedTags={f.tags}
+            onTagsChange={f.setTags}
+            tagsLabel="Etiquetas"
+            tagSearchPlaceholder="Buscar etiqueta..."
+            popularTagCount={6}
+            sortOptions={SORT_OPTIONS}
+            sort={f.sort}
+            onSortChange={(v) => f.setSort(v as TimelineSort)}
+            totalCount={entries.length}
+            filteredCount={filtered.length}
+            unitLabel="capítulo"
+            unitLabelPlural="capítulos"
+          />
         )}
 
+        {!readingMode && <ColorLegend />}
+
         <div className="space-y-6">
-          {filtered.map((entry) => (
+          {filtered.map((entry, i) => (
             <TimelineEntryCard
               key={entry.id}
               entry={entry}
-              onTagClick={(tag) => setActiveTag(activeTag === tag ? null : tag)}
+              onTagClick={(tag) =>
+                f.setTags(f.tags.includes(tag) ? f.tags.filter((x) => x !== tag) : [...f.tags, tag])
+              }
               readingMode={readingMode}
+              index={i}
             />
           ))}
           {filtered.length === 0 && (
-            <div className="parchment-panel p-12 text-center">
-              <p className="font-heading text-codex-gold-dim tracking-wider">Sin resultados</p>
-              <p className="text-sm text-codex-parchment-dim mt-2">Intenta con términos diferentes</p>
-            </div>
+            <EmptyState
+              variant="filter"
+              title="Sin capítulos encontrados"
+              description="Ningún evento de la cronología coincide con los filtros. Prueba a cambiar la certeza o quitar etiquetas."
+              actionLabel="Limpiar todos los filtros"
+              onAction={f.clearAll}
+            />
           )}
         </div>
       </div>
