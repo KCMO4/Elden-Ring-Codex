@@ -42,6 +42,7 @@ const GenealogyPage       = lazy(() => import('./pages/GenealogyPage').then((m) 
 const NotFoundPage        = lazy(() => import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })))
 const TagPage             = lazy(() => import('./pages/TagPage').then((m) => ({ default: m.TagPage })))
 const CategoryReadingPage = lazy(() => import('./pages/CategoryReadingPage').then((m) => ({ default: m.CategoryReadingPage })))
+const EndingsComparePage  = lazy(() => import('./pages/EndingsComparePage').then((m) => ({ default: m.EndingsComparePage })))
 
 const pageVariants = {
   initial: { opacity: 0, y: 16, x: 0 },
@@ -116,8 +117,6 @@ function AppShell() {
   const navigate = useNavigate()
   const { direction } = useNavDirection()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [readingMode, setReadingMode] = useState(false)
-  const isHome = location.pathname === '/'
 
   const activeVariants =
     direction === 'forward'  ? pageVariantsForward  :
@@ -149,7 +148,7 @@ function AppShell() {
   }, [navigate])
 
   return (
-    <div className={`flex min-h-dvh bg-codex-black ${readingMode ? 'reading-mode' : ''}`}>
+    <div className="flex min-h-dvh bg-codex-black">
       <a href="#main-content" className="skip-to-content">Saltar al contenido</a>
       <ScrollToTop />
       <ScrollProgress />
@@ -158,15 +157,12 @@ function AppShell() {
       <SidebarNav
         mobileOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        readingMode={readingMode}
-        onToggleReading={() => setReadingMode((v) => !v)}
       />
 
       <div className="flex-1 flex flex-col min-w-0">
-        <header className={`sticky top-0 z-30 flex items-center justify-between px-4 py-3
+        <header className="sticky top-0 z-30 flex items-center justify-between px-4 py-3
           bg-codex-black/90 backdrop-blur-md border-b border-codex-gold-dim/20
-          transition-all duration-300
-          ${readingMode ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          transition-all duration-300">
           <button
             onClick={() => setMobileMenuOpen(true)}
             className="lg:hidden flex items-center gap-2 text-codex-gold-dim hover:text-codex-gold transition-colors"
@@ -198,22 +194,7 @@ function AppShell() {
           </Link>
         </header>
 
-        {readingMode && (
-          <motion.div
-            className="fixed top-4 right-4 z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            <button
-              onClick={() => setReadingMode(false)}
-              className="px-3 py-1.5 bg-codex-brown/80 border border-codex-gold-dim/30 text-codex-gold-dim text-xs font-heading tracking-wider rounded-sm hover:border-codex-gold-dim/50 hover:text-codex-parchment transition-all backdrop-blur-sm"
-            >
-              × Salir Lectura
-            </button>
-          </motion.div>
-        )}
-
-        <main id="main-content" className={`flex-1 ${readingMode && !isHome ? 'max-w-3xl mx-auto w-full px-6' : ''}`}>
+        <main id="main-content" className="flex-1">
           <Suspense fallback={<PageSkeleton variant={pageSkeletonVariant(location.pathname)} />}>
             <AnimatePresence mode="wait">
               <motion.div
@@ -231,7 +212,7 @@ function AppShell() {
                     and the "Leer más" navigation to look broken). */}
                 <Routes location={location}>
                   <Route path="/" element={<LandingPage />} />
-                  <Route path="/timeline" element={<TimelineSection entries={timelineData} readingMode={readingMode} />} />
+                  <Route path="/timeline" element={<TimelineSection entries={timelineData} />} />
                   <Route path="/timeline/:slug" element={<TimelineDetailPage />} />
                   <Route path="/personajes" element={<CharacterSection characters={charactersData} />} />
                   <Route path="/personajes/:slug" element={<CharacterDetailPage />} />
@@ -242,6 +223,7 @@ function AppShell() {
                   <Route path="/conceptos" element={<GlossarySection entries={glossaryData} />} />
                   <Route path="/conceptos/:slug" element={<ConceptDetailPage />} />
                   <Route path="/finales" element={<EndingsSection />} />
+                  <Route path="/finales/comparar" element={<EndingsComparePage />} />
                   <Route path="/finales/:slug" element={<EndingDetailPage />} />
                   <Route path="/rutas" element={<RoutesListPage />} />
                   <Route path="/rutas/:id" element={<RouteDetailPage />} />

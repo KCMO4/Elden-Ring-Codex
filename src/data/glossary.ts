@@ -173,9 +173,9 @@ const baseGlossary: GlossaryEntry[] = [
   {
     id: 'black-flame',
     term: 'Llama Negra',
-    definition: 'El fuego capaz de consumir la divinidad misma. Fue dominado por la Reina de Ojos Crepusculares y sus Pieles de Dios.',
+    definition: 'El fuego capaz de consumir la divinidad misma. Fue dominado por la Reina del Ojo Velado y sus Pieles de Dios.',
     deepDive: 'La Llama Negra es el arma más poderosa contra los dioses — no porque los hiera sino porque los consume gradualmente, reduciendo incluso lo eterno a cenizas. Su persistencia en las Tierras Intermedias mucho después de la derrota de la Reina sugiere que la voluntad de "matar a los dioses" es una tendencia irreducible del cosmos.',
-    related: ['Reina de Ojos Crepusculares', 'Pieles de Dios', 'Maliketh'],
+    related: ['Reina del Ojo Velado', 'Pieles de Dios', 'Maliketh'],
     certainty: 'confirmado',
   },
   {
@@ -468,8 +468,8 @@ const baseGlossary: GlossaryEntry[] = [
   {
     id: 'numen',
     term: 'Numen',
-    definition: 'Pueblo extranjero a las Tierras Intermedias, originario de "otro mundo". Marika, las Cuchillos Negros y la Reina de Ojos Crepusculares son Numen — su lengua y costumbres son distintas a las de las Tierras Intermedias.',
-    deepDive: 'Los Numen son un pueblo no nativo de las Tierras Intermedias. Las descripciones de armas y armaduras Numen los identifican como "originarios de otro mundo" — una expresión literal o metafórica nunca aclarada. Marika misma fue Numen antes de su deificación, lo que hace toda la cosmología del Orden Dorado un proyecto de un pueblo extranjero impuesto sobre las Tierras Intermedias. Las Cuchillos Negros son explícitamente mujeres Numen — la facción opera con coherencia étnica. La Reina de Ojos Crepusculares también lo era. Hyetta y Shabriri pueden serlo. Los Numen tienen rasgos distintivos: ojos pequeños, piel pálida, dos juegos de brazos en algunas iconografías. Su lengua es hostil y áspera al oído de las Tierras Intermedias. El detalle más perturbador del lore: el pueblo cuya hija ascendió a diosa fue olvidado por su propia diosa, y sus hijas regresaron como asesinas.',
+    definition: 'Pueblo extranjero a las Tierras Intermedias, originario de "otro mundo". Marika, las Cuchillos Negros y la Reina del Ojo Velado son Numen — su lengua y costumbres son distintas a las de las Tierras Intermedias.',
+    deepDive: 'Los Numen son un pueblo no nativo de las Tierras Intermedias. Las descripciones de armas y armaduras Numen los identifican como "originarios de otro mundo" — una expresión literal o metafórica nunca aclarada. Marika misma fue Numen antes de su deificación, lo que hace toda la cosmología del Orden Dorado un proyecto de un pueblo extranjero impuesto sobre las Tierras Intermedias. Las Cuchillos Negros son explícitamente mujeres Numen — la facción opera con coherencia étnica. La Reina del Ojo Velado también lo era. Hyetta y Shabriri pueden serlo. Los Numen tienen rasgos distintivos: ojos pequeños, piel pálida, dos juegos de brazos en algunas iconografías. Su lengua es hostil y áspera al oído de las Tierras Intermedias. El detalle más perturbador del lore: el pueblo cuya hija ascendió a diosa fue olvidado por su propia diosa, y sus hijas regresaron como asesinas.',
     related: ['Marika', 'Black Knives', 'Gloam-Eyed Queen', 'Hyetta', 'Shabriri'],
     certainty: 'confirmado',
     fallbackType: 'character',
@@ -713,7 +713,7 @@ const baseGlossary: GlossaryEntry[] = [
     id: 'maliketh-black-blade',
     term: 'Hoja Negra de Maliketh',
     definition: 'Espadón forjado por Maliketh para contener fragmento activo de la Runa de la Muerte. Es el instrumento operativo del sello: cada corte canaliza Muerte Predestinada genuina, no metáfora. Recuperado tras su derrota en Crumbling Farum Azula.',
-    deepDive: 'La Hoja Negra de Maliketh es el instrumento operativo del sello cosmológico de la Muerte Predestinada. Cuando Marika encargó a Maliketh sellar la Runa de la Muerte robada a la Reina de Ojos Crepusculares, el lobo divino la integró en su propio cuerpo y forjó esta hoja como instrumento de extracción ritual: la espada permite extraer Muerte sin liberarla del sello mayor. Es el único instrumento del juego que hace operacional la Muerte sellada — el corte literalmente reduce la salud máxima del enemigo, simulando lo que la Muerte Predestinada haría si estuviera plenamente liberada. Tras el robo de la mecha por Ranni, Maliketh quedó como custodio de un sello incompleto; su Hoja conserva la fracción residual. En la batalla final con el Tarnished, Maliketh pierde el sello y la espada queda como herencia. Quien la porta tras la derrota de Maliketh empuña efectivamente lo que el régimen dorado pasó eras protegiendo.',
+    deepDive: 'La Hoja Negra de Maliketh es el instrumento operativo del sello cosmológico de la Muerte Predestinada. Cuando Marika encargó a Maliketh sellar la Runa de la Muerte robada a la Reina del Ojo Velado, el lobo divino la integró en su propio cuerpo y forjó esta hoja como instrumento de extracción ritual: la espada permite extraer Muerte sin liberarla del sello mayor. Es el único instrumento del juego que hace operacional la Muerte sellada — el corte literalmente reduce la salud máxima del enemigo, simulando lo que la Muerte Predestinada haría si estuviera plenamente liberada. Tras el robo de la mecha por Ranni, Maliketh quedó como custodio de un sello incompleto; su Hoja conserva la fracción residual. En la batalla final con el Tarnished, Maliketh pierde el sello y la espada queda como herencia. Quien la porta tras la derrota de Maliketh empuña efectivamente lo que el régimen dorado pasó eras protegiendo.',
     related: ['Maliketh', 'Marika', 'Destined Death', 'Rune of Death', 'Gloam-Eyed Queen', 'Ranni'],
     certainty: 'confirmado',
     fallbackType: 'death',

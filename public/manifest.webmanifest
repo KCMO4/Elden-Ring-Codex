@@ -1,0 +1,22 @@
+{
+  "name": "Códice del Orden Fracturado",
+  "short_name": "Códice ER",
+  "description": "Lore profundo de Elden Ring (juego base) — wiki personal en español.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "es",
+  "dir": "ltr",
+  "background_color": "#13110d",
+  "theme_color": "#13110d",
+  "icons": [
+    {
+      "src": "/tree-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["books", "education", "entertainment"]
+}

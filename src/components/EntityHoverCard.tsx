@@ -113,7 +113,8 @@ export function EntityHoverCard({ targetType, slug, children }: Props) {
                     {preview.name}
                   </span>
                   {preview.summary && (
-                    <span className="block font-body text-xs text-codex-parchment-dim leading-snug line-clamp-3">
+                    <span className={`block font-body text-xs text-codex-parchment-dim leading-snug
+                      ${preview.type === 'concept' ? 'line-clamp-6' : 'line-clamp-3'}`}>
                       {preview.summary}
                     </span>
                   )}

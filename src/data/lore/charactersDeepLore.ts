@@ -8,8 +8,8 @@ const h = (level: 2 | 3, text: string, id?: string): RichBlock =>
   ({ type: 'heading', level, text, id })
 const em = (text: string): RichInline => ({ type: 'em', text })
 const strong = (text: string): RichInline => ({ type: 'strong', text })
-const ol = (...items: string[]): RichBlock =>
-  ({ type: 'list', ordered: true, items: items.map((s) => [s]) })
+const ol = (...items: (string | RichInline[])[]): RichBlock =>
+  ({ type: 'list', ordered: true, items: items.map((s) => Array.isArray(s) ? s : [s]) })
 
 /**
  * Ultra-detailed lore for major characters. Overrides the baseline charactersLore
@@ -26,7 +26,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Marika es uno de los seres más complejos de las Tierras Intermedias. Era una numen — descendiente de un linaje humano singularmente puro, capaz de servir como vasija de un dios externo — antes de ser elegida por la ',
+        'Marika es uno de los seres más complejos de las Tierras Intermedias. Era una ',
+        link('numen', 'concept', 'numen'),
+        ' — descendiente de un linaje humano singularmente puro, capaz de servir como vasija de un dios externo — antes de ser elegida por la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' como el cuerpo en el que residiría el ',
         link('Anillo Elden', 'concept', 'elden-ring'),
@@ -42,9 +44,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Marika ocupa simultáneamente cuatro posiciones cosmológicas. Es ',
         em('vasija'),
-        ' (cuerpo del Anillo Elden), ',
+        ' (cuerpo del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        '), ',
         em('mediadora'),
-        ' (la única instancia humana entre la Voluntad Mayor y los mortales), ',
+        ' (la única instancia humana entre la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' y los mortales), ',
         em('madre'),
         ' (engendra demidioses con dos consortes), y ',
         em('legisladora'),
@@ -52,36 +58,53 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Antes del Orden Dorado, Marika vivió como mujer numen entre las primeras tribus de las Tierras Intermedias. La memoria de aquella era — fragmentaria pero presente en sus acciones más oscuras — la perseguirá hasta el final. Cuando la ',
-        link('Reina de Ojos Crepusculares', 'character', 'gloam-eyed-queen'),
-        ' fue derrotada y su régimen colapsó, la Voluntad Mayor buscó nueva vasija. Eligió a Marika.'
+        link('Antes del Orden Dorado', 'timeline', 'antes-orden-dorado'),
+        ', Marika vivió como mujer ',
+        link('numen', 'concept', 'numen'),
+        ' entre las primeras tribus de las Tierras Intermedias. La memoria de aquella era — fragmentaria pero presente en sus acciones más oscuras — la perseguirá hasta el final. Cuando la ',
+        link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'),
+        ' fue derrotada y su régimen colapsó, la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' buscó nueva vasija. Eligió a Marika.'
       ),
       p(
         'Su primer acto como diosa fue uno de violencia cosmológica: hizo que ',
         link('Maliketh', 'character', 'maliketh'),
         ' arrancase la ',
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
-        ' del Anillo. Esta runa codificaba la verdadera muerte. Al sustraerla, los seres de las Tierras Intermedias dejaron de poder morir como antes morían: sus cuerpos podían ser destruidos pero sus almas regresaban al Árbol Áureo para ser recicladas. La inmortalidad de la era dorada nació, así, de un acto de mutilación cósmica.'
+        ' del Anillo. Esta runa codificaba la verdadera muerte. Al sustraerla, los seres de las Tierras Intermedias dejaron de poder morir como antes morían: sus cuerpos podían ser destruidos pero sus almas regresaban al ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' para ser recicladas. La inmortalidad de la era dorada nació, así, de un acto de mutilación cósmica.'
       ),
       p(
         'Tomó como Primer Señor Elden a ',
         link('Godfrey', 'character', 'godfrey'),
         ', un guerrero exterior que conquistó las tierras restantes de las Tierras Intermedias bajo su nombre. Tuvo con él al menos un hijo conocido: ',
         link('Godwyn', 'character', 'godwyn'),
-        ', el de Ojos Dorados, primogénito amado y promesa del régimen. Cuando ya no quedaron enemigos por los que pelear, Marika despojó a Godfrey de la gracia y lo exilió junto con los suyos: nacieron así los ',
+        ', el de Ojos Dorados, primogénito amado y promesa del régimen. Cuando ya no quedaron enemigos por los que pelear, Marika despojó a ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' de la ',
+        link('gracia', 'concept', 'grace'),
+        ' y lo exilió junto con los suyos: nacieron así los ',
         link('Tarnished', 'concept', 'tarnished'),
         '.'
       ),
       p(
-        'Tras Godfrey, su consorte fue ',
+        'Tras ',
+        link('Godfrey', 'character', 'godfrey'),
+        ', su consorte fue ',
         link('Radagon', 'character', 'radagon'),
-        ' — y aquí ocurre la revelación cosmológica más oscura de las Tierras Intermedias: Radagon ',
+        ' — y aquí ocurre la revelación cosmológica más oscura de las Tierras Intermedias: ',
+        link('Radagon', 'character', 'radagon'),
+        ' ',
         em('es'),
         ' Marika. Comparten cuerpo. Cuándo ocurrió la fusión y por qué, son preguntas abiertas; lo que es indudable es que el segundo matrimonio de Marika fue, en términos físicos, consigo misma. De esa unión nacieron ',
         link('Morgott', 'character', 'morgott'),
         ' y ',
         link('Mohg', 'character', 'mohg'),
-        ' como Omens (la sangre antigua de Radagon manifestándose), y posteriormente los Empyreans gemelos ',
+        ' como Omens (la sangre antigua de ',
+        link('Radagon', 'character', 'radagon'),
+        ' manifestándose), y posteriormente los Empyreans gemelos ',
         link('Malenia', 'character', 'malenia'),
         ' y ',
         link('Miquella', 'character', 'miquella'),
@@ -90,9 +113,21 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La detonación llegó con la ',
         link('Noche de los Cuchillos Negros', 'timeline', 'ranni-noche-cuchillos'),
-        '. Su hijo Godwyn fue asesinado parcialmente — su alma destruida, su cuerpo no. La conjura, dirigida por su nieta ',
+        '. Su hijo ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' fue asesinado parcialmente — su alma destruida, su cuerpo no. La conjura, dirigida por su nieta ',
         link('Ranni', 'character', 'ranni'),
-        ', usó una mecha de la Runa de la Muerte robada de Maliketh. Marika, ya sea por dolor real o por cálculo cosmológico cuya lógica solo ella conoce, alzó un martillo y rompió el Anillo Elden contra el suelo. La Voluntad Mayor la castigó encadenándola al tronco del propio Árbol Áureo.'
+        ', usó una mecha de la ',
+        link('Runa de la Muerte', 'concept', 'rune-of-death'),
+        ' robada de ',
+        link('Maliketh', 'character', 'maliketh'),
+        '. Marika, ya sea por dolor real o por cálculo cosmológico cuya lógica solo ella conoce, alzó un martillo y rompió el ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' contra el suelo. La ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' la castigó encadenándola al tronco del propio ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        '.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
@@ -100,11 +135,16 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       p(
         strong('Dolor maternal'),
-        ': la rotura del Anillo es una rabieta divina ante la herida abierta de Godwyn — el único de sus hijos que el régimen no había marginado, encerrado o maldecido.'
+        ': la rotura del Anillo es una rabieta divina ante la herida abierta de ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' — el único de sus hijos que el régimen no había marginado, encerrado o maldecido.'
       ),
       p(
         strong('Crítica filosófica al Orden'),
-        ': Marika habría comprendido durante la era que el Orden Dorado, con la Muerte sellada, era una jaula. La rotura sería una protesta deliberada contra el sistema que ella misma fundó.'
+        ': Marika habría comprendido durante la era que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ', con la Muerte sellada, era una jaula. La rotura sería una protesta deliberada contra el sistema que ella misma fundó.'
       ),
       p(
         strong('Conspiración contra la Voluntad Mayor'),
@@ -112,7 +152,14 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       p(
         strong('Plan a largo plazo del Tarnished'),
-        ': Marika habría sembrado las condiciones (gracia restituida, exilio de los Tarnished, fractura programada) para que un ser exterior al régimen — un Tarnished, desligado de las jerarquías divinas — pudiera al fin elegir el destino del cosmos. Esta lectura le da centralidad al jugador como instrumento marikiano.'
+        ': Marika habría sembrado las condiciones (',
+        link('gracia', 'concept', 'grace'),
+        ' restituida, exilio de ',
+        'los ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', fractura programada) para que un ser exterior al régimen — un ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', desligado de las jerarquías divinas — pudiera al fin elegir el destino del cosmos. Esta lectura le da centralidad al jugador como instrumento marikiano.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -137,28 +184,38 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Selección por la Voluntad Mayor.',
-        'Sello de la Muerte Predestinada en Maliketh.',
-        'Coronación de Godfrey como Primer Señor Elden.',
-        'Exilio de Godfrey y nacimiento de los Tarnished.',
-        'Fusión con/restauración de Radagon como segundo consorte.',
+        ['Selección por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), '.'],
+        ['Sello de la ', link('Muerte Predestinada', 'concept', 'destined-death'), ' en ', link('Maliketh', 'character', 'maliketh'), '.'],
+        ['Coronación de ', link('Godfrey', 'character', 'godfrey'), ' como Primer Señor Elden.'],
+        ['Exilio de ', link('Godfrey', 'character', 'godfrey'), ' y nacimiento de los ', link('Tarnished', 'concept', 'tarnished'), '.'],
+        ['Fusión con/restauración de ', link('Radagon', 'character', 'radagon'), ' como segundo consorte.'],
         'Nacimientos de los demidioses con sangre Omen y de los Empyreans gemelos.',
-        'Asesinato de Godwyn en la Noche de los Cuchillos Negros.',
-        'Rotura del Anillo Elden.',
-        'Encadenamiento en el Árbol Áureo.',
-        'Liberación final de Radagon y de la Bestia Elden cuando el Tarnished la golpea.'
+        ['Asesinato de ', link('Godwyn', 'character', 'godwyn'), ' en la Noche de los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros'), '.'],
+        ['Rotura del ', link('Anillo Elden', 'concept', 'elden-ring'), '.'],
+        ['Encadenamiento en el ', link('Árbol Áureo', 'concept', 'erdtree'), '.'],
+        ['Liberación final de ', link('Radagon', 'character', 'radagon'), ' y de la ', link('Bestia Elden', 'concept', 'bestia-elden'), ' cuando el ', link('Tarnished', 'concept', 'tarnished'), ' la golpea.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'El sello inicial de la Muerte hace posibles los problemas que después definirán a las Tierras Intermedias: la imposibilidad de matar verdaderamente a Godwyn, el surgimiento de ',
+        'El sello inicial de la Muerte hace posibles los problemas que después definirán a las Tierras Intermedias: la imposibilidad de matar verdaderamente a ',
+        link('Godwyn', 'character', 'godwyn'),
+        ', el surgimiento de ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
-        ', la inestabilidad de los sucesivos regímenes, la corrupción rampante. La rotura final del Anillo descentra todo el cosmos: Voluntad Mayor parcialmente retirada, Grandes Runas dispersas, demidioses disputándose pedazos del régimen, Tarnished readmitidos como improbables candidatos al trono.'
+        ', la inestabilidad de los sucesivos regímenes, la corrupción rampante. La rotura final del Anillo descentra todo el cosmos: ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' parcialmente retirada, Grandes Runas dispersas, demidioses disputándose pedazos del régimen, ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' readmitidos como improbables candidatos al trono.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
         'Marika encarna la pregunta del juego: ¿es posible rebelarse contra el cosmos cuando se ',
         em('es'),
-        ' el cosmos? Su acción es la de una madre, una diosa, una vasija y una mujer numen al mismo tiempo, y esas cuatro voces no se reconcilian. Su encadenamiento al árbol es uno de los símbolos más potentes del juego: la diosa convertida en exhibición, la legisladora reducida a pieza arquitectónica de su propio templo. Se puede leer como castigo, como auto-encarcelamiento ritual, o como ofrenda voluntaria a un futuro que solo el Tarnished puede ejecutar.'
+        ' el cosmos? Su acción es la de una madre, una diosa, una vasija y una mujer ',
+        link('numen', 'concept', 'numen'),
+        ' al mismo tiempo, y esas cuatro voces no se reconcilian. Su encadenamiento al árbol es uno de los símbolos más potentes del juego: la diosa convertida en exhibición, la legisladora reducida a pieza arquitectónica de su propio templo. Se puede leer como castigo, como auto-encarcelamiento ritual, o como ofrenda voluntaria a un futuro que solo el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' puede ejecutar.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -180,39 +237,39 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Marika fue numen elegida por la Voluntad Mayor como vasija humana del Anillo Elden',
-      'Selló la Muerte Predestinada dentro de Maliketh para iniciar la era dorada',
-      'Tomó a Godfrey y luego a Radagon como consortes',
-      'Engendró a Godwyn, Morgott, Mohg, Malenia y Miquella',
-      'Comparte cuerpo con Radagon (la frase de Goldmask "Radagon es Marika" es revelación textual)',
-      'Rompió el Anillo Elden por su propia mano tras el asesinato parcial de Godwyn',
-      'Fue encadenada por la Voluntad Mayor dentro del propio Árbol Áureo como castigo'
+      ['Marika fue ', link('numen', 'concept', 'numen'), ' elegida por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' como vasija humana del ', link('Anillo Elden', 'concept', 'elden-ring')],
+      ['Selló la ', link('Muerte Predestinada', 'concept', 'destined-death'), ' dentro de ', link('Maliketh', 'character', 'maliketh'), ' para iniciar la era dorada'],
+      ['Tomó a ', link('Godfrey', 'character', 'godfrey'), ' y luego a ', link('Radagon', 'character', 'radagon'), ' como consortes'],
+      ['Engendró a ', link('Godwyn', 'character', 'godwyn'), ', ', link('Morgott', 'character', 'morgott'), ', ', link('Mohg', 'character', 'mohg'), ', ', link('Malenia', 'character', 'malenia'), ' y ', link('Miquella', 'character', 'miquella')],
+      ['Comparte cuerpo con ', link('Radagon', 'character', 'radagon'), ' (la frase de ', link('Goldmask', 'character', 'goldmask'), ' "', link('Radagon', 'character', 'radagon'), ' es Marika" es revelación textual)'],
+      ['Rompió el ', link('Anillo Elden', 'concept', 'elden-ring'), ' por su propia mano tras el asesinato parcial de ', link('Godwyn', 'character', 'godwyn')],
+      ['Fue encadenada por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' dentro del propio ', link('Árbol Áureo', 'concept', 'erdtree'), ' como castigo']
     ],
     inferred: [
-      'Su elevación divina implicó la traición de su pueblo numen original',
+      ['Su elevación divina implicó la traición de su pueblo ', link('numen', 'concept', 'numen'), ' original'],
       'El sello de la Muerte fue el origen estructural de todos los problemas posteriores',
       'Su martillazo fue acto consciente, no impulso descontrolado: estuvo planeado durante mucho tiempo',
-      'La exclusión de los Omens (sus hijos con Radagon) fue una decisión política conjunta del Orden, no solo accidente cosmológico',
-      'Su pena por Godwyn era específica: él era el único hijo plenamente integrado al régimen sin maldición'
+      ['La exclusión de los ', link('Omens', 'faction', 'omens'), ' (sus hijos con ', link('Radagon', 'character', 'radagon'), ') fue una decisión política conjunta del Orden, no solo accidente cosmológico'],
+      ['Su pena por ', link('Godwyn', 'character', 'godwyn'), ' era específica: él era el único hijo plenamente integrado al régimen sin maldición']
     ],
     theories: [
-      'Marika programó al Tarnished como instrumento exterior para terminar lo que ella inició',
-      'Su rebelión apuntaba contra la Voluntad Mayor más que contra el Orden Dorado en sí',
-      'La fusión con Radagon fue impuesta por la Voluntad Mayor para neutralizar su voluntad disidente',
-      'Las cadenas en el Árbol Áureo son auto-impuestas: castigo ritual que ella misma diseñó',
-      'Su linaje numen estaba ligado al pueblo perseguido por los Pieles de Dios — la Reina de Ojos Crepusculares era contraparte cosmológica suya'
+      ['Marika programó al ', link('Tarnished', 'concept', 'tarnished'), ' como instrumento exterior para terminar lo que ella inició'],
+      ['Su rebelión apuntaba contra la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' más que contra el ', link('Orden Dorado', 'faction', 'orden-dorado'), ' en sí'],
+      ['La fusión con ', link('Radagon', 'character', 'radagon'), ' fue impuesta por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' para neutralizar su voluntad disidente'],
+      ['Las cadenas en el ', link('Árbol Áureo', 'concept', 'erdtree'), ' son auto-impuestas: castigo ritual que ella misma diseñó'],
+      ['Su linaje ', link('numen', 'concept', 'numen'), ' estaba ligado al pueblo perseguido por los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), ' — la ', link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'), ' era contraparte cosmológica suya']
     ],
     ambiguous: [
       'Si Marika sigue consciente dentro de su prisión arbórea',
-      'Cuándo exactamente ocurrió la fusión con Radagon — antes, durante o después del segundo matrimonio',
-      'Si su pena por Godwyn fue maternal pura o también un ataque ritual contra la Voluntad Mayor',
-      'Si ella misma orquestó el robo de la Runa de la Muerte por parte de Ranni',
-      'Si las palabras finales que el Tarnished escucha al golpearla son ruegos, instrucciones o ecos'
+      ['Cuándo exactamente ocurrió la fusión con ', link('Radagon', 'character', 'radagon'), ' — antes, durante o después del segundo matrimonio'],
+      ['Si su pena por ', link('Godwyn', 'character', 'godwyn'), ' fue maternal pura o también un ataque ritual contra la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor')],
+      ['Si ella misma orquestó el robo de la ', link('Runa de la Muerte', 'concept', 'rune-of-death'), ' por parte de ', link('Ranni', 'character', 'ranni')],
+      ['Si las palabras finales que el ', link('Tarnished', 'concept', 'tarnished'), ' escucha al golpearla son ruegos, instrucciones o ecos']
     ],
     beneficiaries:
-      'La Voluntad Mayor, durante toda la era dorada. El Orden Dorado, sostenido por su pacto. Sus hijos integrados (Godwyn, Godfrey en su tiempo). El Tarnished, indirectamente, que recibe gracia restaurada como consecuencia de su rotura.',
+      ['La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ', durante toda la era dorada. El ', link('Orden Dorado', 'faction', 'orden-dorado'), ', sostenido por su pacto. Sus hijos integrados (', link('Godwyn', 'character', 'godwyn'), ', ', link('Godfrey', 'character', 'godfrey'), ' en su tiempo). El ', link('Tarnished', 'concept', 'tarnished'), ', indirectamente, que recibe ', link('gracia', 'concept', 'grace'), ' restaurada como consecuencia de su rotura.'],
     victims:
-      'Su pueblo numen original, traicionado por su elevación. Godfrey, exiliado tras servir. Sus hijos Omens, encerrados bajo Leyndell. Godwyn, asesinado en su nombre y dejado a descomponerse. Los Tarnished muertos en el exilio. Y Marika misma, encadenada eternamente.',
+      ['Su pueblo ', link('numen', 'concept', 'numen'), ' original, traicionado por su elevación. ', link('Godfrey', 'character', 'godfrey'), ', exiliado tras servir. Sus hijos Omens, encerrados bajo Leyndell. ', link('Godwyn', 'character', 'godwyn'), ', asesinado en su nombre y dejado a descomponerse. Los ', link('Tarnished', 'concept', 'tarnished'), ' muertos en el exilio. Y Marika misma, encadenada eternamente.'],
     relatedCharacters: ['radagon', 'maliketh', 'godfrey', 'godwyn', 'morgott', 'mohg', 'malenia', 'miquella', 'ranni', 'melina', 'gloam-eyed-queen'],
     relatedFactions: ['orden-dorado', 'dos-dedos', 'cuchillos-negros'],
     relatedRegions: ['leyndell'],
@@ -228,7 +285,10 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Radagon es la cara que el Orden Dorado prefirió mostrar al mundo: un héroe pelirrojo, marcialmente perfecto, doctrinalmente impecable, padre de demidioses ejemplares. Bajo esa fachada se oculta la verdad más perturbadora del juego: él no es persona separada de ',
+        'Radagon es la cara que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' prefirió mostrar al mundo: un héroe pelirrojo, marcialmente perfecto, doctrinalmente impecable, padre de demidioses ejemplares. Bajo esa fachada se oculta la verdad más perturbadora del juego: él no es persona separada de ',
         link('Marika', 'character', 'marika'),
         ' sino la otra mitad del mismo cuerpo. Su existencia es la prueba de que la unidad del régimen es ficción: dos voluntades irreconciliables operando en una sola carne.'
       ),
@@ -236,17 +296,30 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Radagon ocupó tres funciones públicas durante la era dorada: ',
         em('campeón militar'),
-        ' del Orden Dorado en sus guerras de expansión, ',
+        ' del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' en sus guerras de expansión, ',
         em('rey consorte'),
-        ' del trono Carian tras casarse con Rennala, y ',
+        ' del trono Carian tras casarse con ',
+        link('Rennala', 'character', 'rennala'),
+        ', y ',
         em('Segundo Señor Elden'),
-        ' tras volver a Leyndell para casarse con Marika. Cada uno de esos roles dejó cicatrices documentadas: la guerra contra Liurnia produjo nobles humillados que aún recuerdan su humillación, el abandono de Rennala destruyó a la Reina, y su retorno a Marika fue, técnicamente, una unión consigo mismo.'
+        ' tras volver a Leyndell para casarse con ',
+        link('Marika', 'character', 'marika'),
+        '. Cada uno de esos roles dejó cicatrices documentadas: la guerra contra Liurnia produjo nobles humillados que aún recuerdan su humillación, ',
+        'el ',
+        link('abandono de Rennala', 'timeline', 'radagon-abandono'),
+        ' destruyó a la Reina, y su retorno a ',
+        link('Marika', 'character', 'marika'),
+        ' fue, técnicamente, una unión consigo mismo.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
         'Lideró la guerra contra ',
         link('Liurnia de los Lagos', 'region', 'liurnia'),
-        ' como general del Orden Dorado. Tras la conquista, se casó con la reina vencida ',
+        ' como general del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '. Tras la conquista, se casó con la reina vencida ',
         link('Rennala', 'character', 'rennala'),
         ' como pacto político. Ese matrimonio produjo a ',
         link('Ranni', 'character', 'ranni'),
@@ -256,19 +329,33 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Rykard', 'character', 'rykard'),
         '. Durante esos años Radagon estudió hechicería en ',
         link('Raya Lucaria', 'region', 'raya-lucaria'),
-        ', se hizo experto en magia gravitacional, y en algún momento (los textos no precisan cuándo) descubrió que era — siempre había sido — Marika.'
+        ', se hizo experto en ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        ', y en algún momento (los textos no precisan cuándo) descubrió que era — siempre había sido — ',
+        link('Marika', 'character', 'marika'),
+        '.'
       ),
       p(
-        'Cuando Marika exilió a Godfrey, llamó a Radagon de regreso a Leyndell. Él aceptó. Le dejó a Rennala el ',
+        'Cuando ',
+        link('Marika', 'character', 'marika'),
+        ' exilió a ',
+        link('Godfrey', 'character', 'godfrey'),
+        ', llamó a Radagon de regreso a Leyndell. Él aceptó. Le dejó a ',
+        link('Rennala', 'character', 'rennala'),
+        ' el ',
         em('Amber Egg'),
-        ' como prenda de despedida y partió. En Leyndell se casó con Marika — es decir, con su otro yo — y engendró a ',
+        ' como prenda de despedida y partió. En Leyndell se casó con ',
+        link('Marika', 'character', 'marika'),
+        ' — es decir, con su otro yo — y engendró a ',
         link('Morgott', 'character', 'morgott'),
         ' y ',
         link('Mohg', 'character', 'mohg'),
         ', dos Omens nacidos por la sangre antigua que él arrastraba sin saber del todo.'
       ),
       p(
-        'Tras la rotura del Anillo, Radagon dedicó toda su atención a un proyecto imposible: repararlo. Las descripciones del jugador hablan de su martillo golpeando incesantemente las grietas, sabiendo que cada reparación duraba horas, que la falla estructural era irrevocable. Su lucha como jefe final es la última manifestación de esa empresa: golpea con la misma arma con que repara, intentando matar al Tarnished para preservar el Anillo que ya no se puede preservar.'
+        'Tras la rotura del Anillo, Radagon dedicó toda su atención a un proyecto imposible: repararlo. Las descripciones del jugador hablan de su martillo golpeando incesantemente las grietas, sabiendo que cada reparación duraba horas, que la falla estructural era irrevocable. Su lucha como jefe final es la última manifestación de esa empresa: golpea con la misma arma con que repara, intentando matar al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' para preservar el Anillo que ya no se puede preservar.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
@@ -277,7 +364,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         ' — es que el Orden, en su forma actual, es lo único que permite el cosmos coherente. Cualquier desviación es disolución. Su devoción al sistema es tan total que ni siquiera la rebelión de su otra mitad lo desplaza de él.'
       ),
       p(
-        'Esto choca trágicamente con la posición de Marika. En el mismo cuerpo conviven el revolucionario y el reformista. Cuando Marika rompe el Anillo, Radagon comienza su tarea de Sísifo. Cuando Radagon golpea el Anillo, Marika probablemente lo siente como tortura. La fusión los condena a una guerra interna sin posibilidad de victoria.'
+        'Esto choca trágicamente con la posición de ',
+        link('Marika', 'character', 'marika'),
+        '. En el mismo cuerpo conviven el revolucionario y el reformista. Cuando ',
+        link('Marika', 'character', 'marika'),
+        ' rompe el Anillo, Radagon comienza su tarea de Sísifo. Cuando Radagon golpea el Anillo, ',
+        link('Marika', 'character', 'marika'),
+        ' probablemente lo siente como tortura. La fusión los condena a una guerra interna sin posibilidad de victoria.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -291,7 +384,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Radahn', 'character', 'radahn'),
         ', ',
         link('Rykard', 'character', 'rykard'),
-        '. Sus hijos con Marika: ',
+        '. Sus hijos con ',
+        link('Marika', 'character', 'marika'),
+        ': ',
         link('Morgott', 'character', 'morgott'),
         ', ',
         link('Mohg', 'character', 'mohg'),
@@ -306,27 +401,35 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Eventos clave', 'eventos'),
       ol(
         'Conquista de Liurnia.',
-        'Matrimonio con Rennala.',
+        ['Matrimonio con ', link('Rennala', 'character', 'rennala'), '.'],
         'Estudios en Raya Lucaria.',
         'Descubrimiento de la fusión.',
-        'Abandono de Rennala.',
-        'Segundo matrimonio con Marika.',
-        'Engendramiento de Morgott y Mohg.',
-        'Reparaciones inútiles del Anillo Elden.',
-        'Lucha final como guardián frente al Tarnished.',
-        'Liberación de la Bestia Elden tras su derrota.'
+        ['Abandono de ', link('Rennala', 'character', 'rennala'), '.'],
+        ['Segundo matrimonio con ', link('Marika', 'character', 'marika'), '.'],
+        ['Engendramiento de ', link('Morgott', 'character', 'morgott'), ' y ', link('Mohg', 'character', 'mohg'), '.'],
+        ['Reparaciones inútiles del ', link('Anillo Elden', 'concept', 'elden-ring'), '.'],
+        ['Lucha final como guardián frente al ', link('Tarnished', 'concept', 'tarnished'), '.'],
+        ['Liberación de la ', link('Bestia Elden', 'concept', 'bestia-elden'), ' tras su derrota.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
         'El proyecto reformista de Radagon tiene un efecto secundario decisivo: produce el ',
         link('Fundamentalismo del Orden Dorado', 'concept', 'golden-order'),
-        ' como teología codificada. Sus discípulos (Goldmask y Corhyn entre ellos) son los únicos teólogos del juego que tratan al Orden como problema lógico, no como dogma. Su martillo, llamado ',
+        ' como teología codificada. Sus discípulos (',
+        link('Goldmask', 'character', 'goldmask'),
+        ' y ',
+        link('Corhyn', 'character', 'corhyn'),
+        ' entre ellos) son los únicos teólogos del juego que tratan al Orden como problema lógico, no como dogma. Su martillo, llamado ',
         em('Martillo de Reparación'),
-        ', es lo único que el Tarnished puede usar para destruir cierta clase de objetos divinos.'
+        ', es lo único que el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' puede usar para destruir cierta clase de objetos divinos.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Radagon es el reformista cuyo reformismo solo es posible porque hay revolución. Las cadenas doradas que recubren su cuerpo son auto-impuestas — son el residuo material de su lucha contra Marika dentro del cuerpo común. Su pelo rojo lo conecta a un linaje pre-Orden y por tanto contradictorio con su devoción al régimen. Cada gesto suyo encarna una incoherencia: el conservador sostiene un sistema que su misma piel desafía.'
+        'Radagon es el reformista cuyo reformismo solo es posible porque hay revolución. Las cadenas doradas que recubren su cuerpo son auto-impuestas — son el residuo material de su lucha contra ',
+        link('Marika', 'character', 'marika'),
+        ' dentro del cuerpo común. Su pelo rojo lo conecta a un linaje pre-Orden y por tanto contradictorio con su devoción al régimen. Cada gesto suyo encarna una incoherencia: el conservador sostiene un sistema que su misma piel desafía.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -344,35 +447,35 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Radagon es el aspecto masculino de Marika; comparten cuerpo único',
-      'Lideró la guerra contra Liurnia y se casó con Rennala como gesto de paz',
-      'Tuvo con Rennala a Ranni, Radahn y Rykard',
-      'Abandonó a Rennala dejándole el Amber Egg como despedida',
-      'Engendró con Marika a Morgott y Mohg (Omens) y a los Empyreans gemelos Malenia y Miquella',
-      'Es el último guardián humano antes de la Bestia Elden en la batalla final'
+      ['Radagon es el aspecto masculino de ', link('Marika', 'character', 'marika'), '; comparten cuerpo único'],
+      ['Lideró la guerra contra Liurnia y se casó con ', link('Rennala', 'character', 'rennala'), ' como gesto de paz'],
+      ['Tuvo con ', link('Rennala', 'character', 'rennala'), ' a ', link('Ranni', 'character', 'ranni'), ', ', link('Radahn', 'character', 'radahn'), ' y ', link('Rykard', 'character', 'rykard')],
+      ['Abandonó a ', link('Rennala', 'character', 'rennala'), ' dejándole el Amber Egg como despedida'],
+      ['Engendró con ', link('Marika', 'character', 'marika'), ' a ', link('Morgott', 'character', 'morgott'), ' y ', link('Mohg', 'character', 'mohg'), ' (Omens) y a los Empyreans gemelos ', link('Malenia', 'character', 'malenia'), ' y ', link('Miquella', 'character', 'miquella')],
+      ['Es el último guardián humano antes de la ', link('Bestia Elden', 'concept', 'bestia-elden'), ' en la batalla final']
     ],
     inferred: [
       'Su pelo rojo señala ascendencia mestiza pre-Orden, posiblemente vinculada a un linaje de sangre antigua',
       'Su devoción al Orden no es ingenuidad sino doctrina codificada (Fundamentalismo)',
       'Sus martillazos al Anillo se hacían incluso sabiendo que no podían repararlo',
-      'Las cadenas doradas representan el conflicto interno con Marika, no decoración ritual'
+      ['Las cadenas doradas representan el conflicto interno con ', link('Marika', 'character', 'marika'), ', no decoración ritual']
     ],
     theories: [
-      'La fusión con Marika fue impuesta por la Voluntad Mayor para neutralizar la voluntad rebelde de la diosa',
+      ['La fusión con ', link('Marika', 'character', 'marika'), ' fue impuesta por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' para neutralizar la voluntad rebelde de la diosa'],
       'Radagon ignoraba la fusión hasta su segundo matrimonio: el descubrimiento fue posterior al hecho',
-      'Su línea pelirroja lo vincula a un pueblo gigante o pre-orden hostil al Árbol Áureo',
-      'Su silencio público sobre la rotura del Anillo era estrategia: salvarlo en silencio sin contradecir abiertamente a Marika'
+      ['Su línea pelirroja lo vincula a un pueblo gigante o pre-orden hostil al ', link('Árbol Áureo', 'concept', 'erdtree')],
+      ['Su silencio público sobre la rotura del Anillo era estrategia: salvarlo en silencio sin contradecir abiertamente a ', link('Marika', 'character', 'marika')]
     ],
     ambiguous: [
-      'Cuándo se enteró de que era Marika — antes, durante o después del segundo matrimonio',
-      'Si conocía y aceptaba la sangre Omen que pasó a Morgott y Mohg',
-      'Si su rendición durante la pelea final es por agotamiento o por una última lealtad a Marika',
+      ['Cuándo se enteró de que era ', link('Marika', 'character', 'marika'), ' — antes, durante o después del segundo matrimonio'],
+      ['Si conocía y aceptaba la sangre Omen que pasó a ', link('Morgott', 'character', 'morgott'), ' y ', link('Mohg', 'character', 'mohg')],
+      ['Si su rendición durante la pelea final es por agotamiento o por una última lealtad a ', link('Marika', 'character', 'marika')],
       'Si su filosofía Fundamentalista era convicción propia o una fachada para mantener el régimen'
     ],
     beneficiaries:
-      'El Orden Dorado, sostenido por su trabajo incansable. La Voluntad Mayor, que conserva un guardián residual incluso tras la rotura. Goldmask y los Fundamentalistas, que heredan su filosofía codificada.',
+      ['El ', link('Orden Dorado', 'faction', 'orden-dorado'), ', sostenido por su trabajo incansable. La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ', que conserva un guardián residual incluso tras la rotura. ', link('Goldmask', 'character', 'goldmask'), ' y los Fundamentalistas, que heredan su filosofía codificada.'],
     victims:
-      'Rennala, abandonada en duelo permanente. Sus hijos con ella, criados bajo la sombra del padre ausente. Sus hijos Omens, encarcelados por el régimen que él defendió. El propio Radagon, prisionero de un cuerpo compartido con su propia rival.',
+      [link('Rennala', 'character', 'rennala'), ', abandonada en duelo permanente. Sus hijos con ella, criados bajo la sombra del padre ausente. Sus hijos Omens, encarcelados por el régimen que él defendió. El propio Radagon, prisionero de un cuerpo compartido con su propia rival.'],
     relatedCharacters: ['marika', 'rennala', 'ranni', 'radahn', 'rykard', 'morgott', 'mohg', 'malenia', 'miquella', 'goldmask', 'corhyn'],
     relatedFactions: ['orden-dorado', 'caria', 'raya-lucaria'],
     relatedRegions: ['liurnia', 'raya-lucaria', 'leyndell'],
@@ -388,19 +491,31 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Godfrey es el arquetipo del rey guerrero. Su biografía, antes de servir a Marika, es una guerra absoluta contra los pueblos primigenios de las Tierras Intermedias. Como Hoarah Loux, jefe nómada de las tierras exteriores, dominaba ya el caos primal — su frente lleva al ',
+        'Godfrey es el arquetipo del rey guerrero. Su biografía, antes de servir a ',
+        link('Marika', 'character', 'marika'),
+        ', es una guerra absoluta contra los pueblos primigenios de las Tierras Intermedias. Como Hoarah Loux, jefe nómada de las tierras exteriores, dominaba ya el caos primal — su frente lleva al ',
         em('Espíritu Tormenta'),
-        ' Serosh, una bestia leonina que él encadenó como talismán cuando lo sometió. Bajo Marika se convirtió en Señor Elden y la espada del Orden Dorado. Cuando dejó de hacer falta, fue desechado.'
+        ' ',
+        link('Serosh', 'character', 'serosh'),
+        ', una bestia leonina que él encadenó como talismán cuando lo sometió. Bajo ',
+        link('Marika', 'character', 'marika'),
+        ' se convirtió en Señor Elden y la espada del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '. Cuando dejó de hacer falta, fue desechado.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
         'Godfrey cumplió tres funciones en orden histórico: ',
         em('conquistador'),
-        ' (sometió pueblos para Marika, incluyendo gigantes y dragones residuales), ',
+        ' (sometió pueblos para ',
+        link('Marika', 'character', 'marika'),
+        ', incluyendo gigantes y dragones residuales), ',
         em('legitimador'),
         ' (su matrimonio con la diosa estableció el linaje real de las Tierras Intermedias), y ',
         em('ancestro'),
-        ' (sus seguidores exiliados se convirtieron en Tarnished, los actuales protagonistas cosmológicos).'
+        ' (sus seguidores exiliados se convirtieron en ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', los actuales protagonistas cosmológicos).'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
@@ -408,56 +523,105 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Gigantes del Fuego', 'faction', 'orden-dorado'),
         ' en las ',
         link('Mountaintops', 'region', 'mountaintops'),
-        ', el sometimiento de los Hombres Tormenta del lejano norte (de cuya tradición proviene su don del rayo Stormhawk), y la unificación de las regiones humanas bajo un único trono dorado. Atacó incluso a los antiguos dragones residuales tras la guerra de ',
+        ', el sometimiento de los Hombres Tormenta del lejano norte (de cuya tradición proviene su don del rayo ',
+        link('Stormhawk', 'character', 'stormhawk-deenh'),
+        '), y la unificación de las regiones humanas bajo un único trono dorado. Atacó incluso a los antiguos dragones residuales tras la guerra de ',
         link('Godwyn', 'character', 'godwyn'),
         ' contra Fortissax: ningún linaje pre-Orden quedó sin doblegar.'
       ),
       p(
-        'Tuvo con Marika al menos a Godwyn como hijo conocido. Otros vínculos sanguíneos pueden inferirse: ',
+        'Tuvo con ',
+        link('Marika', 'character', 'marika'),
+        ' al menos a ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' como hijo conocido. Otros vínculos sanguíneos pueden inferirse: ',
         link('Nepheli Loux', 'character', 'nepheli-loux'),
-        ' y posiblemente otros Tarnished llevan rastros de su sangre. Cuando Marika ya no necesitó conquistador — porque ya no quedaba qué conquistar — le retiró la gracia. La descripción del jugador habla de una sola lágrima rodando por su rostro al saberse desechado: no por humillación, sino por pérdida de propósito. Tomó a sus hombres y partió a las tierras exteriores, donde retomó su nombre primal Hoarah Loux y reinó como jefe nómada durante incontables años.'
+        ' y posiblemente otros ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' llevan rastros de su sangre. Cuando ',
+        link('Marika', 'character', 'marika'),
+        ' ya no necesitó conquistador — porque ya no quedaba qué conquistar — le retiró la ',
+        link('gracia', 'concept', 'grace'),
+        '. La descripción del jugador habla de una sola lágrima rodando por su rostro al saberse desechado: no por humillación, sino por pérdida de propósito. Tomó a sus hombres y partió a las tierras exteriores, donde retomó su nombre primal Hoarah Loux y reinó como jefe nómada durante incontables años.'
       ),
       p(
-        'Su retorno fue inesperado. Tras la fractura, los Tarnished — sus descendientes exiliados — recobraron la gracia. La Voluntad Mayor, o algo más sutil, lo invocó como espectro dorado. Apareció ante el Tarnished en el último tramo del camino al trono, en Leyndell. Su batalla tiene dos formas: primero como rey blindado (la armadura de Señor Elden), luego como Hoarah Loux desnudo, peleando con sus manos como un cazador primal. La transformación es ritual: el rey civilizado quita la máscara y deja al guerrero ancestral terminar la pelea.'
+        'Su retorno fue inesperado. Tras ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ', ',
+        'los ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' — sus descendientes exiliados — recobraron la ',
+        link('gracia', 'concept', 'grace'),
+        '. La ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ', o algo más sutil, lo invocó como espectro dorado. Apareció ante el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' en el último tramo del camino al trono, en Leyndell. Su batalla tiene dos formas: primero como rey blindado (la armadura de Señor Elden), luego como Hoarah Loux desnudo, peleando con sus manos como un cazador primal. La transformación es ritual: el rey civilizado quita la máscara y deja al guerrero ancestral terminar la pelea.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
         'Godfrey es el caso paradigmático de fidelidad como prisión. Su ',
         em('lágrima'),
-        ' al perder la gracia es elocuente: no protestó. Aceptó. Su retorno final no es por venganza ni por restauración personal: es porque ',
+        ' al perder la ',
+        link('gracia', 'concept', 'grace'),
+        ' es elocuente: no protestó. Aceptó. Su retorno final no es por venganza ni por restauración personal: es porque ',
         em('un rey que es llamado regresa'),
         '. Esta lealtad estructural, no emocional, es lo que lo distingue de todos los demás demidioses post-fractura. Ninguno de ellos respondería al llamado del Orden con tanta limpieza.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
-        'Marika fue su esposa y diosa. Serosh es la bestia que él dominó y portó. Godwyn fue su hijo conocido. ',
+        link('Marika', 'character', 'marika'),
+        ' fue su esposa y diosa. ',
+        link('Serosh', 'character', 'serosh'),
+        ' es la bestia que él dominó y portó. ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' fue su hijo conocido. ',
         link('Morgott', 'character', 'morgott'),
         ' y ',
         link('Mohg', 'character', 'mohg'),
-        ' son hijos de su esposa con su sucesor (técnicamente con Marika+Radagon). Su descendencia exiliada produjo al Tarnished y, posiblemente, a ',
+        ' son hijos de su esposa con su sucesor (técnicamente con ',
+        link('Marika', 'character', 'marika'),
+        '+',
+        link('Radagon', 'character', 'radagon'),
+        '). Su descendencia exiliada produjo al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' y, posiblemente, a ',
         link('Nepheli Loux', 'character', 'nepheli-loux'),
         '.'
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Sometimiento del Espíritu Tormenta Serosh.',
-        'Conquista de los Gigantes del Fuego.',
+        ['Sometimiento del Espíritu Tormenta ', link('Serosh', 'character', 'serosh'), '.'],
+        ['Conquista de los ', link('Gigantes del Fuego', 'faction', 'fire-giants'), '.'],
         'Coronación como Primer Señor Elden.',
-        'Engendramiento de Godwyn.',
+        ['Engendramiento de ', link('Godwyn', 'character', 'godwyn'), '.'],
         'Guerra contra los pueblos primigenios.',
-        'Pérdida de la gracia y exilio.',
+        ['Pérdida de la ', link('gracia', 'concept', 'grace'), ' y exilio.'],
         'Reinado como Hoarah Loux en las tierras exteriores.',
-        'Llamado de regreso tras la fractura.',
+        ['Llamado de regreso tras la ', link('fractura', 'timeline', 'la-fractura'), '.'],
         'Aparición como espectro guardián.',
-        'Lucha final ante el Tarnished.'
+        ['Lucha final ante el ', link('Tarnished', 'concept', 'tarnished'), '.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'La existencia de Godfrey fundamenta varias condiciones del juego. Los Tarnished existen porque él fue exiliado. La gracia que el Tarnished siente al regresar es continuación de la que Godfrey perdió. Su Stormhawk, su martillo, sus golpes-tierra, todo está diseminado por las Tierras Intermedias como herencia marcial. Y su retorno final es la prueba que ninguno de sus hijos demidiós tuvo que dar: que un Señor Elden, cuando es desplazado, sabe regresar como guardián.'
+        'La existencia de Godfrey fundamenta varias condiciones del juego. ',
+        'Los ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' existen porque él fue exiliado. La ',
+        link('gracia', 'concept', 'grace'),
+        ' que el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' siente al regresar es continuación de la que Godfrey perdió. Su ',
+        link('Stormhawk', 'character', 'stormhawk-deenh'),
+        ', su martillo, sus golpes-tierra, todo está diseminado por las Tierras Intermedias como herencia marcial. Y su retorno final es la prueba que ninguno de sus hijos demidiós tuvo que dar: que un Señor Elden, cuando es desplazado, sabe regresar como guardián.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Godfrey representa la fuerza primal puesta al servicio del orden, y luego desechada por su propio orden. Su transformación final — quitarse la armadura y combatir como Hoarah Loux — es la imagen central: bajo cada rey civilizado vive un cazador desnudo. El Orden Dorado no domesticó al guerrero; solo lo vistió. Cuando llega el momento, el cazador regresa con todo su poder original.'
+        'Godfrey representa la fuerza primal puesta al servicio del orden, y luego desechada por su propio orden. Su transformación final — quitarse la armadura y combatir como Hoarah Loux — es la imagen central: bajo cada rey civilizado vive un cazador desnudo. ',
+        'El ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' no domesticó al guerrero; solo lo vistió. Cuando llega el momento, el cazador regresa con todo su poder original.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -477,36 +641,36 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Godfrey fue el Primer Señor Elden y consorte original de Marika',
-      'Sometió al Espíritu Tormenta Serosh y lo encadenó en su frente',
-      'Conquistó a los Gigantes del Fuego en las Mountaintops',
-      'Fue exiliado cuando perdió la gracia, junto a sus seguidores que serían los Tarnished',
+      ['Godfrey fue el Primer Señor Elden y consorte original de ', link('Marika', 'character', 'marika')],
+      ['Sometió al Espíritu Tormenta ', link('Serosh', 'character', 'serosh'), ' y lo encadenó en su frente'],
+      ['Conquistó a los ', link('Gigantes del Fuego', 'faction', 'fire-giants'), ' en las Mountaintops'],
+      ['Fue exiliado cuando perdió la ', link('gracia', 'concept', 'grace'), ', junto a sus seguidores que serían los ', link('Tarnished', 'concept', 'tarnished')],
       'Reinó como Hoarah Loux en las tierras exteriores',
       'Regresó como espectro dorado para guardar el trono Elden',
       'Tuvo dos formas en combate: rey blindado y Hoarah Loux primal'
     ],
     inferred: [
-      'Su lágrima al perder la gracia fue por pérdida de propósito, no de privilegio',
-      'Es ancestro biológico de muchos Tarnished, posiblemente incluyendo a Nepheli',
-      'Su lealtad estructural lo hace el único demidiós dispuesto a regresar como guardián tras la fractura',
+      ['Su lágrima al perder la ', link('gracia', 'concept', 'grace'), ' fue por pérdida de propósito, no de privilegio'],
+      ['Es ancestro biológico de muchos ', link('Tarnished', 'concept', 'tarnished'), ', posiblemente incluyendo a ', link('Nepheli', 'character', 'nepheli-loux')],
+      ['Su lealtad estructural lo hace el único demidiós dispuesto a regresar como guardián tras la ', link('fractura', 'timeline', 'la-fractura')],
       'Conserva todo su poder primal incluso siglos después del exilio'
     ],
     theories: [
-      'Su exilio fue parte de un plan a largo plazo de Marika para preparar candidatos exteriores al trono',
-      'Serosh sigue ofreciendo consejo desde su frente: la bestia es interlocutor cuando el rey está dudoso',
+      ['Su exilio fue parte de un plan a largo plazo de ', link('Marika', 'character', 'marika'), ' para preparar candidatos exteriores al trono'],
+      [link('Serosh', 'character', 'serosh'), ' sigue ofreciendo consejo desde su frente: la bestia es interlocutor cuando el rey está dudoso'],
       'Sus tierras exteriores eran continentes que el Orden no quiso anexar — espacios deliberadamente dejados vírgenes',
       'Su título "Hoarah Loux" lo conecta a una raza de gigantes nómadas pre-Orden'
     ],
     ambiguous: [
-      'Si su retorno fue voluntad propia, llamado de la Voluntad Mayor o consecuencia automática del despertar de la gracia Tarnished',
-      'Cuántos hijos engendró antes del exilio, y cuántos descendientes Tarnished en circulación llevan su sangre',
-      'Si conocía la fusión Marika/Radagon o vivió como esposo ignorante',
-      'Si su pelea final con el Tarnished es contienda real o ritual de transmisión'
+      ['Si su retorno fue voluntad propia, llamado de la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' o consecuencia automática del despertar de la ', link('gracia', 'concept', 'grace'), ' ', link('Tarnished', 'concept', 'tarnished')],
+      ['Cuántos hijos engendró antes del exilio, y cuántos descendientes ', link('Tarnished', 'concept', 'tarnished'), ' en circulación llevan su sangre'],
+      ['Si conocía la fusión ', link('Marika', 'character', 'marika'), '/', link('Radagon', 'character', 'radagon'), ' o vivió como esposo ignorante'],
+      ['Si su pelea final con el ', link('Tarnished', 'concept', 'tarnished'), ' es contienda real o ritual de transmisión']
     ],
     beneficiaries:
-      'Marika obtuvo conquistador y luego guardián. El Orden Dorado se expandió hasta sus límites bajo su mano. Los Tarnished, paradójicamente, fueron creados por su exilio — sin Godfrey no existiría el Tarnished.',
+      [link('Marika', 'character', 'marika'), ' obtuvo conquistador y luego guardián. El ', link('Orden Dorado', 'faction', 'orden-dorado'), ' se expandió hasta sus límites bajo su mano. Los ', link('Tarnished', 'concept', 'tarnished'), ', paradójicamente, fueron creados por su exilio — sin Godfrey no existiría el ', link('Tarnished', 'concept', 'tarnished'), '.'],
     victims:
-      'Los pueblos conquistados (gigantes, dragones residuales, Hombres Tormenta). Los Tarnished arrojados al exilio con él. Sus hijos criados a la sombra del padre ausente. El propio Godfrey, instrumento al que se le quitó la mano cuando dejó de cortar.',
+      ['Los pueblos conquistados (gigantes, dragones residuales, Hombres Tormenta). Los ', link('Tarnished', 'concept', 'tarnished'), ' arrojados al exilio con él. Sus hijos criados a la sombra del padre ausente. El propio Godfrey, instrumento al que se le quitó la mano cuando dejó de cortar.'],
     relatedCharacters: ['marika', 'godwyn', 'morgott', 'mohg', 'nepheli-loux'],
     relatedFactions: ['orden-dorado'],
     relatedRegions: ['leyndell', 'stormveil', 'mountaintops'],
@@ -521,13 +685,20 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Godwyn es la víctima cuya tragedia desencadenó el final del Orden Dorado. Era el hijo perfecto: dorado, amado, leal, integrador. Su pacto con el dragón ',
+        'Godwyn es la víctima cuya tragedia desencadenó el final del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '. Era el hijo perfecto: dorado, amado, leal, integrador. Su pacto con el dragón ',
         link('Fortissax', 'character', 'fortissax'),
-        ' fue el primer caso de coexistencia entre el Orden Dorado y los Antiguos Dragones — un puente cosmológico tendido por su voluntad de armonía. Esa misma voluntad lo convirtió en blanco prioritario cuando la conjura buscó víctimas que dolieran lo suficiente como para hacer estallar el régimen.'
+        ' fue el primer caso de coexistencia entre ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' y los Antiguos Dragones — un puente cosmológico tendido por su voluntad de armonía. Esa misma voluntad lo convirtió en blanco prioritario cuando la conjura buscó víctimas que dolieran lo suficiente como para hacer estallar el régimen.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
-        'Como demidiós primogénito, Godwyn era el sucesor natural al Anillo Elden. Sus dones diplomáticos lo posicionaron como integrador: convirtió a un antiguo dragón en aliado, mediaba en conflictos entre facciones de la corte dorada, y representaba la promesa de que el Orden podía expandirse sin guerra. Su asesinato no fue solo eliminar a un demidiós — fue eliminar el único modelo viable de continuidad pacífica.'
+        'Como demidiós primogénito, Godwyn era el sucesor natural al ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        '. Sus dones diplomáticos lo posicionaron como integrador: convirtió a un antiguo dragón en aliado, mediaba en conflictos entre facciones de la corte dorada, y representaba la promesa de que el Orden podía expandirse sin guerra. Su asesinato no fue solo eliminar a un demidiós — fue eliminar el único modelo viable de continuidad pacífica.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
@@ -544,10 +715,22 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
         ' del cuerpo de ',
         link('Maliketh', 'character', 'maliketh'),
-        '. Estas hojas eran las únicas armas capaces de matar a un Empyrean o demidiós. La operación tenía dos objetivos: matar el cuerpo Empyrean de Ranni (para liberarla del contrato divino) y matar a Godwyn (para detonar la pena de Marika). Pero como la Muerte Predestinada estaba sellada, el asesinato fue parcial: solo mató el alma de Godwyn, no su cuerpo.'
+        '. Estas hojas eran las únicas armas capaces de matar a un ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' o demidiós. La operación tenía dos objetivos: matar el cuerpo ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' de ',
+        link('Ranni', 'character', 'ranni'),
+        ' (para liberarla del contrato divino) y matar a Godwyn (para detonar la pena de ',
+        link('Marika', 'character', 'marika'),
+        '). Pero como la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        ' estaba sellada, el asesinato fue parcial: solo mató el alma de Godwyn, no su cuerpo.'
       ),
       p(
-        'Su cadáver sin alma se hundió en las raíces del Árbol Áureo y se convirtió en el primer caso de ',
+        'Su cadáver sin alma se hundió en las raíces del ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' y se convirtió en el primer caso de ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
         '. Sus tejidos fusionados con serpientes draconicídas (entre ellas el cuerpo onírico de Fortissax) crecen perpetuamente bajo ',
         link('Deeproot Depths', 'region', 'deeproot-depths'),
@@ -557,11 +740,21 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Godwyn no tiene motivaciones propias post-asesinato — su alma ya no existe. Pero antes del crimen, su filosofía era la de la integración pacífica: hacer que el Orden Dorado abrazara incluso a sus enemigos cosmológicos antiguos en lugar de exterminarlos. Su pacto con Fortissax es la prueba textual.'
+        'Godwyn no tiene motivaciones propias post-asesinato — su alma ya no existe. Pero antes del crimen, su filosofía era la de la integración pacífica: hacer que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' abrazara incluso a sus enemigos cosmológicos antiguos en lugar de exterminarlos. Su pacto con Fortissax es la prueba textual.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
-        'Marika es su madre, Godfrey es su padre. Fortissax es su aliado eterno. Sus hermanos directos incluyen a Morgott y Mohg. ',
+        link('Marika', 'character', 'marika'),
+        ' es su madre, ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' es su padre. Fortissax es su aliado eterno. Sus hermanos directos incluyen a ',
+        link('Morgott', 'character', 'morgott'),
+        ' y ',
+        link('Mohg', 'character', 'mohg'),
+        '. ',
         link('Fia', 'character', 'fia'),
         ' es la doncella post-mortem que dedica su quest entera a sanarle la herida cosmológica. ',
         link('D', 'character', 'd'),
@@ -572,24 +765,36 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Eventos clave', 'eventos'),
       ol(
         'Pacto con Fortissax.',
-        'Establecimiento del Culto del Antiguo Dragón.',
-        'Asesinato durante la Noche de los Cuchillos Negros.',
-        'Caída del cuerpo a las raíces del Árbol Áureo.',
-        'Surgimiento de la Deathroot y de Aquellos que Viven en la Muerte.',
+        ['Establecimiento del ', link('Culto del Antiguo Dragón', 'faction', 'ancient-dragon-cult'), '.'],
+        ['Asesinato durante la Noche de los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros'), '.'],
+        ['Caída del cuerpo a las raíces del ', link('Árbol Áureo', 'concept', 'erdtree'), '.'],
+        ['Surgimiento de la Deathroot y de ', link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'), '.'],
         'Aparición onírica de Fortissax atrapado en su pesadilla.',
         'Quest de Fia para conseguir la Runa Mendaz que cierre su herida.'
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'La muerte parcial de Godwyn es el evento central que rompe el Orden Dorado. Detona la pena de Marika que rompe el Anillo. Genera la sustancia (Deathroot) que infecta las Tierras Intermedias enteras. Crea el fenómeno (los Que Viven en la Muerte) que se vuelve cosmológicamente irresoluble bajo el régimen actual. Atrapa a Fortissax en pesadilla eterna. Ofrece a ',
+        'La muerte parcial de Godwyn es el evento central que rompe ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        '. Detona la pena de ',
+        link('Marika', 'character', 'marika'),
+        ' que rompe el Anillo. Genera la sustancia (Deathroot) que infecta las Tierras Intermedias enteras. Crea el fenómeno (los Que Viven en la Muerte) que se vuelve cosmológicamente irresoluble bajo el régimen actual. Atrapa a Fortissax en pesadilla eterna. Ofrece a ',
         link('Fia', 'character', 'fia'),
-        ' la posibilidad de reformar el Anillo Elden con la Runa Mendaz que devuelve la Muerte Predestinada — la ',
+        ' la posibilidad de reformar el ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' con la Runa Mendaz que devuelve la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        ' — la ',
         link('Era del Crepúsculo', 'ending', 'duskborn'),
         ' es el final que cierra su herida.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Godwyn es la prueba ontológica de que el Orden Dorado es estructuralmente incompleto. Su existencia no debería ser posible: un ser cuya alma murió pero cuyo cuerpo crece eternamente. Es la grieta cosmológica hecha carne. Su forma actual — un cadáver descomunal entrelazado con dragones — es el monumento subterráneo del juego: lo que el régimen no puede mirar de frente.'
+        'Godwyn es la prueba ontológica de que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' es estructuralmente incompleto. Su existencia no debería ser posible: un ser cuya alma murió pero cuyo cuerpo crece eternamente. Es la grieta cosmológica hecha carne. Su forma actual — un cadáver descomunal entrelazado con dragones — es el monumento subterráneo del juego: lo que el régimen no puede mirar de frente.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -609,36 +814,36 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Godwyn fue el primogénito de Marika y Godfrey',
+      ['Godwyn fue el primogénito de ', link('Marika', 'character', 'marika'), ' y ', link('Godfrey', 'character', 'godfrey')],
       'Domesticó al antiguo dragón Fortissax mediante un pacto sagrado',
-      'Fundó el Culto del Antiguo Dragón',
-      'Fue asesinado durante la Noche de los Cuchillos Negros',
+      ['Fundó el ', link('Culto del Antiguo Dragón', 'faction', 'ancient-dragon-cult')],
+      ['Fue asesinado durante la Noche de los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros')],
       'Su muerte fue parcial: alma destruida, cuerpo eterno',
       'Su cadáver bajo Deeproot Depths genera Deathroot',
-      'Es el origen primero de Aquellos que Viven en la Muerte'
+      ['Es el origen primero de ', link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death')]
     ],
     inferred: [
-      'Su asesinato fue el evento detonante de la pena de Marika que rompió el Anillo',
-      'La sangre escarlata Negra que apunaló su alma fue forjada con un fragmento robado de la Runa de la Muerte',
+      ['Su asesinato fue el evento detonante de la pena de ', link('Marika', 'character', 'marika'), ' que rompió el Anillo'],
+      ['La sangre escarlata Negra que apunaló su alma fue forjada con un fragmento robado de la ', link('Runa de la Muerte', 'concept', 'rune-of-death')],
       'Su pacto con Fortissax era anomalía teológica que el Orden tolerada por su prestigio',
       'Su cuerpo conserva alguna forma de presencia onírica que arrastra a Fortissax a pesadillas'
     ],
     theories: [
-      'Godwyn habría sido el sucesor pacífico ideal al Anillo Elden si su régimen hubiera sobrevivido',
-      'Su pacto con dragones era el primer paso hacia un Orden Dorado expandido que aceptara a los pueblos pre-Orden',
+      ['Godwyn habría sido el sucesor pacífico ideal al ', link('Anillo Elden', 'concept', 'elden-ring'), ' si su régimen hubiera sobrevivido'],
+      ['Su pacto con dragones era el primer paso hacia un ', link('Orden Dorado', 'concept', 'golden-order'), ' expandido que aceptara a los pueblos pre-Orden'],
       'La Deathroot no es simplemente descomposición — es voluntad residual de Godwyn intentando alcanzar el cosmos a través de los cadáveres reanimados',
-      'Su asesinato fue daño colateral, no objetivo principal: Ranni quería matar su propio cuerpo Empyrean y aprovechó la coordinación'
+      ['Su asesinato fue daño colateral, no objetivo principal: ', link('Ranni', 'character', 'ranni'), ' quería matar su propio cuerpo ', link('Empyrean', 'concept', 'empyrean'), ' y aprovechó la coordinación']
     ],
     ambiguous: [
       'Si Godwyn conserva alguna forma residual de conciencia bajo Deeproot Depths',
       'Si su pacto con Fortissax sobrevive en el cadáver eterno o se rompió con la muerte del alma',
-      'Si la Era del Crepúsculo realmente le devuelve la muerte verdadera o solo cierra superficialmente la herida',
-      'Si el Tarnished le devuelve dignidad al cerrar su herida o si solo lo deja por fin morir'
+      ['Si la ', link('Era del Crepúsculo', 'ending', 'duskborn'), ' realmente le devuelve la muerte verdadera o solo cierra superficialmente la herida'],
+      ['Si el ', link('Tarnished', 'concept', 'tarnished'), ' le devuelve dignidad al cerrar su herida o si solo lo deja por fin morir']
     ],
     beneficiaries:
-      'Ranni, cuya conjura tuvo éxito en su objetivo principal (matar su propio cuerpo Empyrean) gracias al asesinato de Godwyn como cobertura. Aquellos que Viven en la Muerte, que existen por su precedente. Fia, cuya quest obtiene su sentido de su sufrimiento.',
+      [link('Ranni', 'character', 'ranni'), ', cuya conjura tuvo éxito en su objetivo principal (matar su propio cuerpo ', link('Empyrean', 'concept', 'empyrean'), ') gracias al asesinato de Godwyn como cobertura. ', link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'), ', que existen por su precedente. Fia, cuya quest obtiene su sentido de su sufrimiento.'],
     victims:
-      'Marika, en cuya pena rompió el cosmos. Fortissax, atrapado eternamente luchando en su pesadilla. Todo las Tierras Intermedias, que arrastra desde entonces la herida abierta de su descomposición. El propio Godwyn, condenado a una existencia parcial sin descanso.',
+      [link('Marika', 'character', 'marika'), ', en cuya pena rompió el cosmos. Fortissax, atrapado eternamente luchando en su pesadilla. Todo las Tierras Intermedias, que arrastra desde entonces la herida abierta de su descomposición. El propio Godwyn, condenado a una existencia parcial sin descanso.'],
     relatedCharacters: ['marika', 'godfrey', 'fortissax', 'ranni', 'maliketh', 'fia', 'd', 'rogier'],
     relatedFactions: ['orden-dorado', 'cuchillos-negros', 'those-who-live-in-death', 'dragones-antiguos'],
     relatedRegions: ['deeproot-depths', 'leyndell', 'stormveil'],
@@ -654,30 +859,70 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Morgott es el caso extremo de fidelidad del oprimido. Nació Omen — categoría que el Orden Dorado considera maldita y encarcela bajo el subsuelo de su propia capital. Pasó su juventud en mazmorras. Cuando llegó la fractura y todos los demidioses se rebelaron contra el régimen que los había privilegiado, Morgott — el demidiós más maltratado por el sistema — fue el único que se dedicó a defenderlo. Esa devoción excede toda lógica de privilegio o resentimiento; es un acto teológico tan radical que redefine lo que significa ser leal.'
+        'Morgott es el caso extremo de fidelidad del oprimido. Nació Omen — categoría que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' considera maldita y encarcela bajo el subsuelo de su propia capital. Pasó su juventud en mazmorras. Cuando llegó ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ' y todos los demidioses se rebelaron contra el régimen que los había privilegiado, Morgott — el demidiós más maltratado por el sistema — fue el único que se dedicó a defenderlo. Esa devoción excede toda lógica de privilegio o resentimiento; es un acto teológico tan radical que redefine lo que significa ser leal.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
-        'Tras la fractura, Morgott asume tres funciones simultáneas. Es el ',
+        'Tras ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ', Morgott asume tres funciones simultáneas. Es el ',
         em('Rey'),
-        ' de facto de Leyndell (su hermano-gemelo Mohg renunció al trono para construir su propia dinastía sangrienta; los demás demidioses están demasiado lejos o muertos). Es el ',
+        ' de facto de Leyndell (su hermano-gemelo ',
+        link('Mohg', 'character', 'mohg'),
+        ' renunció al trono para construir su propia dinastía sangrienta; los demás demidioses están demasiado lejos o muertos). Es el ',
         em('centinela'),
-        ' del Anillo Elden bajo el alias de Margit, presentándose en momentos clave del viaje del Tarnished. Y es el ',
+        ' del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' bajo el alias de ',
+        link('Margit', 'character', 'margit'),
+        ', presentándose en momentos clave del viaje del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '. Y es el ',
         em('último guardián teológico'),
-        ' del Orden Dorado: cuando Morgott muera, el régimen perderá su última defensa antes del trono mismo.'
+        ' del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ': cuando Morgott muera, el régimen perderá su última defensa antes del trono mismo.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Morgott y su gemelo Mohg nacieron Omens — con cuernos, escamas, deformidades del Crisol primigenio — como manifestación de la sangre antigua que ',
+        'Morgott y su gemelo ',
+        link('Mohg', 'character', 'mohg'),
+        ' nacieron Omens — con cuernos, escamas, deformidades del ',
+        link('Crisol primigenio', 'concept', 'crucible'),
+        ' — como manifestación de la sangre antigua que ',
         link('Radagon', 'character', 'radagon'),
-        ' arrastraba sin proclamar. La ley del Orden Dorado clasifica a los Omens como aberraciones; aún cuando son hijos del trono, deben ser encarcelados o sometidos a ',
+        ' arrastraba sin proclamar. La ley del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' clasifica a ',
+        'los ',
+        link('Omens', 'faction', 'omens'),
+        ' como aberraciones; aún cuando son hijos del trono, deben ser encarcelados o sometidos a ',
         link('omenkillers', 'faction', 'omens'),
-        '. Marika permitió — o consintió — que sus propios hijos Omens fueran encerrados en las alcantarillas de ',
+        '. ',
+        link('Marika', 'character', 'marika'),
+        ' permitió — o consintió — que sus propios hijos Omens fueran encerrados en las alcantarillas de ',
         link('Leyndell', 'region', 'leyndell'),
         ' durante su juventud.'
       ),
       p(
-        'En algún momento Morgott escapó del encierro. Su gemelo escogió rebelarse contra el régimen; Morgott escogió servirlo. Asumió el alias de Margit el Presagio Caído como identidad de campo, recorriendo las Tierras Intermedias para frenar a los aspirantes Tarnished. Como Margit aparece tres veces ante el Tarnished: en Stormhill (como portero del castillo Stormveil), en el camino al Roundtable Hold (como guardián fantasmal), y antes de Leyndell. Su fraseología ("¿Tarnished? Bienaventurado por el odio amargo...") revela que conoce los nombres de los aspirantes y los considera blasfemos por la mera ambición de retomar el trono que él, hijo legítimo, no puede ocupar limpiamente.'
+        'En algún momento Morgott escapó del encierro. Su gemelo escogió rebelarse contra el régimen; Morgott escogió servirlo. Asumió el alias de ',
+        link('Margit', 'character', 'margit'),
+        ' el Presagio Caído como identidad de campo, recorriendo las Tierras Intermedias para frenar a los aspirantes ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '. Como ',
+        link('Margit', 'character', 'margit'),
+        ' aparece tres veces ante el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ': en Stormhill (como portero del castillo Stormveil), en el camino al Roundtable Hold (como guardián fantasmal), y antes de Leyndell. Su fraseología ("¿',
+        link('Tarnished', 'concept', 'tarnished'),
+        '? Bienaventurado por el odio amargo...") revela que conoce los nombres de los aspirantes y los considera blasfemos por la mera ambición de retomar el trono que él, hijo legítimo, no puede ocupar limpiamente.'
       ),
       p(
         'Como Rey Omen en Leyndell, Morgott carga con la "',
@@ -686,7 +931,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Morgott no defiende al Orden Dorado por ignorancia. Sabe perfectamente que el régimen lo ha despreciado. Su devoción es elección teológica deliberada: el Orden, aunque imperfecto, es preferible al caos cosmológico que se desataría sin él. Su lealtad es la del oprimido que comprende que la opresión es estructural, no personal — y que decide defender la estructura porque la alternativa es peor. Es una posición filosófica genuinamente compleja: el conservadurismo del marginalizado.'
+        'Morgott no defiende al ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' por ignorancia. Sabe perfectamente que el régimen lo ha despreciado. Su devoción es elección teológica deliberada: el Orden, aunque imperfecto, es preferible al caos cosmológico que se desataría sin él. Su lealtad es la del oprimido que comprende que la opresión es estructural, no personal — y que decide defender la estructura porque la alternativa es peor. Es una posición filosófica genuinamente compleja: el conservadurismo del marginalizado.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -698,26 +945,38 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Radagon', 'character', 'radagon'),
         '. Su súbdita era ',
         link('Lansseax', 'character', 'fortissax'),
-        ' (dragón). Sus súbditos siguen siendo los soldados leales del Orden Dorado.'
+        ' (dragón). Sus súbditos siguen siendo los soldados leales del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '.'
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
         'Nacimiento como Omen.',
         'Encarcelamiento bajo Leyndell.',
         'Escape.',
-        'Asunción del alias Margit.',
+        ['Asunción del alias ', link('Margit', 'character', 'margit'), '.'],
         'Defensa de Stormhill.',
         'Aparición en Roundtable Hold.',
-        'Coronación tácita como Rey Omen tras la fractura.',
-        'Defensa final de Leyndell ante el Tarnished.'
+        ['Coronación tácita como Rey Omen tras la ', link('fractura', 'timeline', 'la-fractura'), '.'],
+        ['Defensa final de Leyndell ante el ', link('Tarnished', 'concept', 'tarnished'), '.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'La existencia de Morgott prueba dos cosas estructuralmente importantes: 1) que el régimen del Orden Dorado depende de la lealtad de aquellos a quienes margina, y 2) que un Omen puede ser rey si el régimen lo necesita lo suficiente. Su muerte abre el camino al trono para el Tarnished. Su lanza, su espada, sus enseñanzas, todo queda como herencia material en las catacumbas reales. El Tarnished obtiene su Gran Runa — paradójicamente la única que el régimen jamás reconoció oficialmente.'
+        'La existencia de Morgott prueba dos cosas estructuralmente importantes: 1) que el régimen del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' depende de la lealtad de aquellos a quienes margina, y 2) que un Omen puede ser rey si el régimen lo necesita lo suficiente. Su muerte abre el camino al trono para el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '. Su lanza, su espada, sus enseñanzas, todo queda como herencia material en las catacumbas reales. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' obtiene su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' — paradójicamente la única que el régimen jamás reconoció oficialmente.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Morgott es la encarnación de la pregunta: ¿se puede ser leal a un sistema que te aborrece? Su existencia desafía toda teoría de "los oprimidos siempre se rebelan". Su tragedia es la del que entiende perfectamente la injusticia que sufre y decide, contra toda lógica emocional, sostener el sistema que la perpetúa. Sus palabras finales — pide al Tarnished seguir el camino justo — son las de un mártir que muere por una causa que nunca le perteneció.'
+        'Morgott es la encarnación de la pregunta: ¿se puede ser leal a un sistema que te aborrece? Su existencia desafía toda teoría de "los oprimidos siempre se rebelan". Su tragedia es la del que entiende perfectamente la injusticia que sufre y decide, contra toda lógica emocional, sostener el sistema que la perpetúa. Sus palabras finales — pide al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' seguir el camino justo — son las de un mártir que muere por una causa que nunca le perteneció.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -735,35 +994,35 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Morgott es hijo Omen de Marika y Radagon, gemelo de Mohg',
+      ['Morgott es hijo Omen de ', link('Marika', 'character', 'marika'), ' y ', link('Radagon', 'character', 'radagon'), ', gemelo de ', link('Mohg', 'character', 'mohg')],
       'Fue encarcelado bajo Leyndell durante su juventud',
-      'Se disfraza como Margit el Presagio Caído',
-      'Defiende el Anillo Elden contra los Tarnished aspirantes',
-      'Reina como Rey Omen tras la fractura',
-      'Sufre la maldición Omen como dolor crónico'
+      ['Se disfraza como ', link('Margit', 'character', 'margit'), ' el Presagio Caído'],
+      ['Defiende el ', link('Anillo Elden', 'concept', 'elden-ring'), ' contra los ', link('Tarnished', 'concept', 'tarnished'), ' aspirantes'],
+      ['Reina como Rey Omen tras la ', link('fractura', 'timeline', 'la-fractura')],
+      ['Sufre la ', link('maldición Omen', 'concept', 'omen-curse'), ' como dolor crónico']
     ],
     inferred: [
       'Su devoción al Orden es deliberada, no producto de ignorancia',
-      'La gracia que lo mantiene es prestada y dolorosa',
-      'Es el único demidiós dispuesto a defender el régimen tras la fractura',
+      ['La ', link('gracia', 'concept', 'grace'), ' que lo mantiene es prestada y dolorosa'],
+      ['Es el único demidiós dispuesto a defender el régimen tras la ', link('fractura', 'timeline', 'la-fractura')],
       'Su corona dorada se superpone a una corona Omen subyacente'
     ],
     theories: [
-      'Marika consintió o exigió su encarcelamiento como parte del pacto del Orden con la Voluntad Mayor',
-      'Su gemelo Mohg es la mitad rebelde y él la mitad leal del mismo sujeto cosmológico dividido',
+      [link('Marika', 'character', 'marika'), ' consintió o exigió su encarcelamiento como parte del pacto del Orden con la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor')],
+      ['Su gemelo ', link('Mohg', 'character', 'mohg'), ' es la mitad rebelde y él la mitad leal del mismo sujeto cosmológico dividido'],
       'Su lanza fragmentaria es ella misma símbolo: arma de defensa hecha pedazos, como su régimen',
-      'Sus apariciones como Margit son advertencias deliberadas que dan al Tarnished oportunidad de retirarse'
+      ['Sus apariciones como ', link('Margit', 'character', 'margit'), ' son advertencias deliberadas que dan al ', link('Tarnished', 'concept', 'tarnished'), ' oportunidad de retirarse']
     ],
     ambiguous: [
       'Cuándo y cómo escapó de las alcantarillas',
-      'Si Marika alguna vez intentó liberarlo o lo abandonó conscientemente',
+      ['Si ', link('Marika', 'character', 'marika'), ' alguna vez intentó liberarlo o lo abandonó conscientemente'],
       'Si su devoción al régimen es fanatismo, deber o forma encubierta de venganza interna',
-      'Si sus palabras finales al Tarnished son maldición o bendición'
+      ['Si sus palabras finales al ', link('Tarnished', 'concept', 'tarnished'), ' son maldición o bendición']
     ],
     beneficiaries:
-      'El Orden Dorado obtuvo su defensor más improbable y eficaz. La Voluntad Mayor obtuvo, gracias a él, una excusa para seguir delegando su gobierno tras la fractura.',
+      ['El ', link('Orden Dorado', 'faction', 'orden-dorado'), ' obtuvo su defensor más improbable y eficaz. La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' obtuvo, gracias a él, una excusa para seguir delegando su gobierno tras la ', link('fractura', 'timeline', 'la-fractura'), '.'],
     victims:
-      'Mohg, abandonado por la decisión opuesta. Los Tarnished que cayeron tratando de pasar Stormhill y Leyndell. El propio Morgott, que muere defendiendo lo que lo encarceló.',
+      [link('Mohg', 'character', 'mohg'), ', abandonado por la decisión opuesta. Los ', link('Tarnished', 'concept', 'tarnished'), ' que cayeron tratando de pasar Stormhill y Leyndell. El propio Morgott, que muere defendiendo lo que lo encarceló.'],
     relatedCharacters: ['marika', 'radagon', 'mohg', 'godfrey', 'godwyn'],
     relatedFactions: ['orden-dorado', 'omens'],
     relatedRegions: ['leyndell', 'stormveil'],
@@ -778,7 +1037,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Mohg eligió el camino opuesto a su gemelo. Donde Morgott eligió servir al régimen que los había encarcelado, Mohg eligió fundar uno nuevo bajo otro dios. Su contrato con la ',
+        'Mohg eligió el camino opuesto a su gemelo. Donde ',
+        link('Morgott', 'character', 'morgott'),
+        ' eligió servir al régimen que los había encarcelado, Mohg eligió fundar uno nuevo bajo otro dios. Su contrato con la ',
         link('Madre Informe', 'concept', 'formless-mother'),
         ' transformó su cuerpo (alas, cuernos coronados, dominio del fuego de sangre) y le otorgó propósito cosmológico. Su proyecto: criar a un dios consorte secuestrado y, como Señor Elden de una era sangrienta, refundar el cosmos bajo su propia liturgia.'
       ),
@@ -790,34 +1051,64 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         em('dinasta'),
         ' (fundador de la Dinastía Mohgwyn como régimen alternativo), y ',
         em('secuestrador'),
-        ' (raptó a Miquella para usarlo como cogobernante divino). Su existencia desafía la pretensión del Orden Dorado a ser único cosmos viable: si Mohg hubiera completado su proyecto, una era de sangre habría reemplazado a la era dorada.'
+        ' (raptó a ',
+        link('Miquella', 'character', 'miquella'),
+        ' para usarlo como cogobernante divino). Su existencia desafía la pretensión del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' a ser único cosmos viable: si Mohg hubiera completado su proyecto, una era de sangre habría reemplazado a la era dorada.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Igual que su gemelo, Mohg pasó su juventud encerrado bajo Leyndell. Allí — quizás en las profundidades de las alcantarillas, donde la influencia del Orden Dorado se debilita — entró en contacto con la Madre Informe. Los textos no precisan cómo: posiblemente la encontró tras siglos de oraciones malignas, posiblemente ella lo encontró a él. El pacto fue claro: ella le entregaría poder transformador (el ',
+        'Igual que su gemelo, Mohg pasó su juventud encerrado bajo Leyndell. Allí — quizás en las profundidades de las alcantarillas, donde la influencia del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' se debilita — entró en contacto con la Madre Informe. Los textos no precisan cómo: posiblemente la encontró tras siglos de oraciones malignas, posiblemente ella lo encontró a él. El pacto fue claro: ella le entregaría poder transformador (el ',
         link('Bloodflame', 'concept', 'bloodflame'),
         ') a cambio de devoción y de cuerpos sacrificados.'
       ),
       p(
         'Tras escapar, Mohg construyó la ',
         link('Dinastía Mohgwyn', 'region', 'mohgwyn'),
-        ' bajo tierra, lejos del Árbol Áureo. Allí trajo Albinaurics traficados por sus seguidores Bloody Fingers para convertirlos en alimento ritual. La sangre de los Albinaurics alimenta el lago carmesí del palacio; el lago alimenta a la Madre Informe; la Madre Informe alimenta a Mohg.'
+        ' bajo tierra, lejos del ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        '. Allí trajo Albinaurics traficados por sus seguidores Bloody Fingers para convertirlos en alimento ritual. La sangre de los Albinaurics alimenta el lago carmesí del palacio; el lago alimenta a la Madre Informe; la Madre Informe alimenta a Mohg.'
       ),
       p(
         'Su proyecto culminante fue el secuestro de ',
         link('Miquella', 'character', 'miquella'),
         '. Mohg necesitaba un consorte ',
         link('Empyrean', 'concept', 'empyrean'),
-        ' para que su régimen pudiera ungirse como auténtica era cosmológica. Eligió a Miquella, que dormía en su capullo dorado en el ',
+        ' para que su régimen pudiera ungirse como auténtica era cosmológica. Eligió a ',
+        link('Miquella', 'character', 'miquella'),
+        ', que dormía en su capullo dorado en el ',
         link('Haligtree', 'region', 'haligtree'),
-        '. Lo raptó durante el sueño y lo trasladó a Mohgwyn. Allí inició el ritual de incubación sangrienta: el cuerpo dormido del Empyrean sería bañado, sangrado, transformado, hasta despertar como dios de Mohg.'
+        '. Lo raptó durante el sueño y lo trasladó a Mohgwyn. Allí inició el ritual de incubación sangrienta: el cuerpo dormido del ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' sería bañado, sangrado, transformado, hasta despertar como dios de Mohg.'
       ),
       p(
-        'El plan fracasó por dos razones simultáneas. Primero, el capullo dorado del Oro sin Aleación protegía a Miquella incluso del rito sangriento — Miquella nunca despertó dentro de Mohgwyn. Segundo, el Tarnished eventualmente derrotó a Mohg antes de la consumación. La dinastía sangrienta queda detenida en su acto de gestación: un altar a un dios que nunca despertó.'
+        'El plan fracasó por dos razones simultáneas. Primero, el capullo dorado del ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        ' protegía a ',
+        link('Miquella', 'character', 'miquella'),
+        ' incluso del rito sangriento — ',
+        link('Miquella', 'character', 'miquella'),
+        ' nunca despertó dentro de Mohgwyn. Segundo, el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' eventualmente derrotó a Mohg antes de la consumación. La dinastía sangrienta queda detenida en su acto de gestación: un altar a un dios que nunca despertó.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Mohg no es nihilista. Cree genuinamente en su régimen alternativo. Su rebelión es estructuralmente idéntica a la de Marika: secuestrar a una figura sagrada y forzarla en el rol de consorte para fundar una era. Donde Marika usó a Godfrey, Mohg usaría a Miquella. Su tragedia es no comprender que está reproduciendo el crimen original del Orden Dorado, no superándolo. Su revolución es solo otro régimen.'
+        'Mohg no es nihilista. Cree genuinamente en su régimen alternativo. Su rebelión es estructuralmente idéntica a la de ',
+        link('Marika', 'character', 'marika'),
+        ': secuestrar a una figura sagrada y forzarla en el rol de consorte para fundar una era. Donde ',
+        link('Marika', 'character', 'marika'),
+        ' usó a ',
+        link('Godfrey', 'character', 'godfrey'),
+        ', Mohg usaría a ',
+        link('Miquella', 'character', 'miquella'),
+        '. Su tragedia es no comprender que está reproduciendo el crimen original del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ', no superándolo. Su revolución es solo otro régimen.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -845,17 +1136,21 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         'Escape.',
         'Construcción de la Dinastía Mohgwyn.',
         'Reclutamiento de Bloody Fingers.',
-        'Secuestro de Miquella.',
+        ['Secuestro de ', link('Miquella', 'character', 'miquella'), '.'],
         'Inicio del ritual de incubación.',
-        'Derrota ante el Tarnished.'
+        ['Derrota ante el ', link('Tarnished', 'concept', 'tarnished'), '.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'Su muerte deja a Miquella todavía dormido en el lago de sangre, capullo intacto pero corrompido por el contacto. Los Bloody Fingers pierden su líder. La Madre Informe pierde a su profeta principal pero no su presencia. La región de Mohgwyn queda como testimonio congelado del proyecto fallido: un altar de gestación interrumpida.'
+        'Su muerte deja a ',
+        link('Miquella', 'character', 'miquella'),
+        ' todavía dormido en el lago de sangre, capullo intacto pero corrompido por el contacto. Los Bloody Fingers pierden su líder. La Madre Informe pierde a su profeta principal pero no su presencia. La región de Mohgwyn queda como testimonio congelado del proyecto fallido: un altar de gestación interrumpida.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Mohg encarna la pregunta de si toda revolución cosmológica está condenada a reproducir la estructura que combate. Sus alas, sus cuernos coronados, su corte sangrienta, todo imita la iconografía del Orden Dorado pero invertida en color. Su régimen alternativo no es estructuralmente alternativo: es el mismo régimen con otra deidad y otro consorte. Su fracaso es paradigmático: el oprimido que se libera reproduciendo la opresión.'
+        'Mohg encarna la pregunta de si toda revolución cosmológica está condenada a reproducir la estructura que combate. Sus alas, sus cuernos coronados, su corte sangrienta, todo imita la iconografía del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' pero invertida en color. Su régimen alternativo no es estructuralmente alternativo: es el mismo régimen con otra deidad y otro consorte. Su fracaso es paradigmático: el oprimido que se libera reproduciendo la opresión.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -873,35 +1168,35 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Mohg es gemelo Omen de Morgott, hijo de Marika y Radagon',
+      ['Mohg es gemelo Omen de ', link('Morgott', 'character', 'morgott'), ', hijo de ', link('Marika', 'character', 'marika'), ' y ', link('Radagon', 'character', 'radagon')],
       'Hizo pacto con la Madre Informe, dios exterior de la sangre',
       'Construyó la Dinastía Mohgwyn como reino subterráneo',
-      'Secuestró a Miquella durante su sueño en el Haligtree',
+      ['Secuestró a ', link('Miquella', 'character', 'miquella'), ' durante su sueño en el ', link('Haligtree', 'concept', 'haligtree')],
       'Domina el Bloodflame como su magia personal',
       'Sus seguidores son los Bloody Fingers, encabezados por Varré'
     ],
     inferred: [
       'Su rebelión es respuesta directa al trauma del encarcelamiento juvenil',
       'La Madre Informe lo ha usado tanto como él la ha usado a ella',
-      'Miquella nunca colaboró voluntariamente; el rito fue puro secuestro',
-      'Su régimen reproduce estructuralmente el crimen original del Orden Dorado'
+      [link('Miquella', 'character', 'miquella'), ' nunca colaboró voluntariamente; el rito fue puro secuestro'],
+      ['Su régimen reproduce estructuralmente el crimen original del ', link('Orden Dorado', 'concept', 'golden-order')]
     ],
     theories: [
       'La Madre Informe es parásita: Mohg cree mandarla pero ella lo dirige a él',
-      'Su capullo de Mohgwyn es ataúd disfrazado de cuna: Miquella habría muerto antes de despertar',
-      'Su proyecto era inviable cosmológicamente — la Voluntad Mayor nunca habría permitido un consorte sin contrato',
-      'Su sangre podría haber sido alternativa real al Árbol Áureo solo si Miquella aceptaba el rol; al no hacerlo, Mohg quedó como falsa rebelión'
+      ['Su capullo de Mohgwyn es ataúd disfrazado de cuna: ', link('Miquella', 'character', 'miquella'), ' habría muerto antes de despertar'],
+      ['Su proyecto era inviable cosmológicamente — la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' nunca habría permitido un consorte sin contrato'],
+      ['Su sangre podría haber sido alternativa real al ', link('Árbol Áureo', 'concept', 'erdtree'), ' solo si ', link('Miquella', 'character', 'miquella'), ' aceptaba el rol; al no hacerlo, Mohg quedó como falsa rebelión']
     ],
     ambiguous: [
       'Cuándo y cómo escapó de las alcantarillas',
-      'Cuánta autoconciencia tenía Miquella durante el secuestro',
+      ['Cuánta autoconciencia tenía ', link('Miquella', 'character', 'miquella'), ' durante el secuestro'],
       'Si la Madre Informe hablaba directamente con él o solo a través de impulsos sangrientos',
-      'Si Mohg sabía que Miquella nunca despertaría dentro del capullo'
+      ['Si Mohg sabía que ', link('Miquella', 'character', 'miquella'), ' nunca despertaría dentro del capullo']
     ],
     beneficiaries:
       'La Madre Informe ganó adoración masiva. Los Bloody Fingers obtuvieron culto y poder de invasión. Varré obtuvo identidad mística.',
     victims:
-      'Miquella, secuestrado en su sueño. Los Albinaurics traficados a Mohgwyn como ofrenda. Morgott, abandonado por la decisión opuesta. Y el propio proyecto sangriento, que muere antes de nacer.',
+      [link('Miquella', 'character', 'miquella'), ', secuestrado en su sueño. Los Albinaurics traficados a Mohgwyn como ofrenda. ', link('Morgott', 'character', 'morgott'), ', abandonado por la decisión opuesta. Y el propio proyecto sangriento, que muere antes de nacer.'],
     relatedCharacters: ['morgott', 'miquella', 'marika', 'radagon', 'malenia', 'varre'],
     relatedFactions: ['omens', 'bloody-fingers'],
     relatedRegions: ['mohgwyn', 'leyndell', 'haligtree'],
@@ -916,7 +1211,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Ranni es la única figura de las Tierras Intermedias que ha pensado el problema cosmológico hasta el final. Vio en su designación como Empyrean no un privilegio sino una jaula: heredar el cuerpo de la Voluntad Mayor implicaba servirla por la eternidad. Su respuesta fue construir, durante siglos, las herramientas necesarias para auto-asesinarse cosmológicamente. Lo logró. Ahora prepara la Era de las Estrellas: un cosmos donde ningún dios cercano dicte la ley.'
+        'Ranni es la única figura de las Tierras Intermedias que ha pensado el problema cosmológico hasta el final. Vio en su designación como ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' no un privilegio sino una jaula: heredar el cuerpo de la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' implicaba servirla por la eternidad. Su respuesta fue construir, durante siglos, las herramientas necesarias para auto-asesinarse cosmológicamente. Lo logró. Ahora prepara la ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        ': un cosmos donde ningún dios cercano dicte la ley.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
@@ -924,9 +1225,18 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         em('hija de Rennala'),
         ' es heredera del trono Carian y portadora de la magia lunar de su madre. Como ',
         em('Empyrean'),
-        ' designada por los Dos Dedos, fue candidata a suceder a Marika como vasija del Anillo Elden. Como ',
+        ' designada por ',
+        'los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ', fue candidata a suceder a ',
+        link('Marika', 'character', 'marika'),
+        ' como vasija del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        '. Como ',
         em('rebelde cosmológica'),
-        ', es la conspiradora más sofisticada de las Tierras Intermedias: la única que comprendió que la Voluntad Mayor es el problema, no la solución.'
+        ', es la conspiradora más sofisticada de las Tierras Intermedias: la única que comprendió que la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' es el problema, no la solución.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
@@ -936,14 +1246,32 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Radagon', 'character', 'radagon'),
         ' en ',
         link('Raya Lucaria', 'region', 'raya-lucaria'),
-        '. La crianza fue de aristocrática hechicera Carian: aprendió la magia de la Luna Llena de su madre y, eventualmente, la magia de la Luna Oscura como variante propia. Cuando los Dos Dedos la designaron Empyrean, le asignaron como Bestia Sombra a ',
+        '. La crianza fue de aristocrática hechicera Carian: aprendió la magia de la ',
+        link('Luna Llena', 'concept', 'full-moon'),
+        ' de su madre y, eventualmente, la magia de ',
+        'la ',
+        link('Luna Oscura', 'concept', 'dark-moon'),
+        ' como variante propia. Cuando ',
+        'los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' la designaron ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ', le asignaron como ',
+        link('Bestia Sombra', 'concept', 'shadow-bound-beast'),
+        ' a ',
         link('Blaidd', 'character', 'blaidd'),
         ', un medio-lobo creado específicamente para ella por ',
         link('Maliketh', 'character', 'maliketh'),
         '.'
       ),
       p(
-        'Aceptar la designación habría implicado servir eternamente a la Voluntad Mayor. Ranni rechazó esta servidumbre. Reunió aliados — Blaidd como bestia sombra forzada, ',
+        'Aceptar la designación habría implicado servir eternamente a la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        '. Ranni rechazó esta servidumbre. Reunió aliados — ',
+        link('Blaidd', 'character', 'blaidd'),
+        ' como ',
+        link('bestia sombra', 'concept', 'shadow-bound-beast'),
+        ' forzada, ',
         link('Iji', 'character', 'iji'),
         ' como gigante herrero leal, ',
         link('Seluvis', 'character', 'seluvis'),
@@ -953,32 +1281,60 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Maliketh', 'character', 'maliketh'),
         '. Con esa mecha forjó las hojas de los ',
         link('Cuchillos Negros', 'faction', 'cuchillos-negros'),
-        ', únicas armas capaces de matar a un Empyrean.'
+        ', únicas armas capaces de matar a un ',
+        link('Empyrean', 'concept', 'empyrean'),
+        '.'
       ),
       p(
         'La ',
         link('Noche de los Cuchillos Negros', 'timeline', 'ranni-noche-cuchillos'),
-        ' ejecutó dos asesinatos simultáneos: el de su propio cuerpo Empyrean (objetivo principal) y el de ',
+        ' ejecutó dos asesinatos simultáneos: el de su propio cuerpo ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' (objetivo principal) y el de ',
         link('Godwyn', 'character', 'godwyn'),
-        ' (objetivo secundario o cobertura). Ambos fueron parciales por el sello de la Muerte: Godwyn quedó con cuerpo sin alma, Ranni transferió su mente a una muñeca articulada que ya tenía preparada como cuerpo de respuesta.'
+        ' (objetivo secundario o cobertura). Ambos fueron parciales por el sello de la Muerte: ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' quedó con cuerpo sin alma, Ranni transferió su mente a una muñeca articulada que ya tenía preparada como cuerpo de respuesta.'
       ),
       p(
         'Tras esto, Ranni descendió a las ',
         link('Three Sisters', 'region', 'liurnia'),
-        ' como bruja muñeca. Los Dos Dedos enviaron asesinos contra sus aliados; Iji murió en una emboscada. Ranni continuó. Su quest, si el Tarnished la sigue, requiere recuperar la ',
+        ' como bruja muñeca. ',
+        'Los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' enviaron asesinos contra sus aliados; Iji murió en una emboscada. Ranni continuó. Su quest, si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' la sigue, requiere recuperar la ',
         link('Hoja Mata-Dedos', 'concept', 'destined-death'),
-        ' (objeto enterrado en Nokron capaz de cortar a los Dos Dedos), reunir el ',
+        ' (objeto enterrado en Nokron capaz de cortar a ',
+        'los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        '), reunir el ',
         link('Espadón de la Luna Oscura', 'concept', 'dark-moon'),
-        ' (que se convertirá en su cetro cosmológico), y enfrentar la consumación final del plan: la Era de las Estrellas.'
+        ' (que se convertirá en su cetro cosmológico), y enfrentar la consumación final del plan: la ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        '.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Ranni razona cosmológicamente. Su análisis de las Tierras Intermedias: la Voluntad Mayor y los demás dioses exteriores son parásitos cuya cercanía siempre produce sufrimiento. La única solución estructuralmente válida es ',
+        'Ranni razona cosmológicamente. Su análisis de las Tierras Intermedias: la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' y los demás ',
+        link('dioses exteriores', 'concept', 'dioses-exteriores'),
+        ' son parásitos cuya cercanía siempre produce sufrimiento. La única solución estructuralmente válida es ',
         em('alejar'),
-        ' al cosmos de la influencia divina cercana. Su Era de las Estrellas no destruye a los dioses — los pone a distancia tan grande que dejan de poder dictar la ley humana. Es libertad por geografía cósmica.'
+        ' al cosmos de la influencia divina cercana. Su ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        ' no destruye a los dioses — los pone a distancia tan grande que dejan de poder dictar la ley humana. Es libertad por geografía cósmica.'
       ),
       p(
-        'Su frialdad emocional aparente es estrategia, no patología. Comprende que los aliados deben ser herramientas porque cualquier vínculo emocional fuerte introduce vulnerabilidades explotables por la Voluntad Mayor. Cuando finalmente acepta al Tarnished como consorte (en la Era de las Estrellas), es la primera vez que se permite vínculo sin estrategia detrás.'
+        'Su frialdad emocional aparente es estrategia, no patología. Comprende que los aliados deben ser herramientas porque cualquier vínculo emocional fuerte introduce vulnerabilidades explotables por la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        '. Cuando finalmente acepta al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' como consorte (en la ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        '), es la primera vez que se permite vínculo sin estrategia detrás.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -998,26 +1354,42 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Iji', 'character', 'iji'),
         ' (lealtad consciente del sacrificio), ',
         link('Seluvis', 'character', 'seluvis'),
-        ' (instrumento que intentó traicionarla). Su consorte final: el Tarnished.'
+        ' (instrumento que intentó traicionarla). Su consorte final: el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '.'
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Nacimiento como Empyrean.',
-        'Estudio de la Luna Llena bajo Rennala.',
-        'Designación por los Dos Dedos.',
-        'Asignación de Blaidd como Bestia Sombra.',
-        'Robo de la mecha de la Runa de la Muerte.',
-        'Forjado de los Cuchillos Negros.',
-        'Noche de los Cuchillos Negros.',
+        ['Nacimiento como ', link('Empyrean', 'concept', 'empyrean'), '.'],
+        ['Estudio de la ', link('Luna Llena', 'concept', 'full-moon'), ' bajo ', link('Rennala', 'character', 'rennala'), '.'],
+        ['Designación por los ', link('Dos Dedos', 'faction', 'dos-dedos'), '.'],
+        ['Asignación de ', link('Blaidd', 'character', 'blaidd'), ' como ', link('Bestia Sombra', 'concept', 'shadow-bound-beast'), '.'],
+        ['Robo de la mecha de la ', link('Runa de la Muerte', 'concept', 'rune-of-death'), '.'],
+        ['Forjado de los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros'), '.'],
+        ['Noche de los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros'), '.'],
         'Transferencia a la muñeca articulada.',
         'Descenso a las Three Sisters.',
-        'Recuperación de la Hoja Mata-Dedos.',
-        'Obtención del Espadón de la Luna Oscura.',
-        'Era de las Estrellas.'
+        ['Recuperación de la ', link('Hoja Mata-Dedos', 'concept', 'fingerslayer-blade'), '.'],
+        ['Obtención del ', link('Espadón de la Luna Oscura', 'concept', 'dark-moon-greatsword'), '.'],
+        [link('Era de las Estrellas', 'concept', 'age-of-stars'), '.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'Su Noche detonó la rotura del Anillo Elden por parte de Marika (al matar parcialmente a Godwyn). Su existencia como muñeca creó precedente cosmológico (un Empyrean fuera de su cuerpo original). Su Era de las Estrellas, si el Tarnished la elige, instaura un cosmos sin Voluntad Mayor activa. Su rebelión es la única de las Tierras Intermedias que tuvo éxito estructural.'
+        'Su Noche detonó la rotura del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' por parte de ',
+        link('Marika', 'character', 'marika'),
+        ' (al matar parcialmente a ',
+        link('Godwyn', 'character', 'godwyn'),
+        '). Su existencia como muñeca creó precedente cosmológico (un ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' fuera de su cuerpo original). Su ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        ', si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' la elige, instaura un cosmos sin ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' activa. Su rebelión es la única de las Tierras Intermedias que tuvo éxito estructural.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
@@ -1043,35 +1415,35 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Ranni es hija Empyrean de Rennala y Radagon',
-      'Robó una mecha de la Runa de la Muerte para forjar los Cuchillos Negros',
-      'Mató su propio cuerpo Empyrean en la Noche de los Cuchillos Negros',
+      ['Ranni es hija ', link('Empyrean', 'concept', 'empyrean'), ' de ', link('Rennala', 'character', 'rennala'), ' y ', link('Radagon', 'character', 'radagon')],
+      ['Robó una mecha de la ', link('Runa de la Muerte', 'concept', 'rune-of-death'), ' para forjar los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros')],
+      ['Mató su propio cuerpo ', link('Empyrean', 'concept', 'empyrean'), ' en la Noche de los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros')],
       'Habita una muñeca articulada como cuerpo de reserva',
-      'Sus aliados son Blaidd, Iji y Seluvis',
-      'Su quest culmina en la Era de las Estrellas'
+      ['Sus aliados son ', link('Blaidd', 'character', 'blaidd'), ', Iji y ', link('Seluvis', 'character', 'seluvis')],
+      ['Su quest culmina en la ', link('Era de las Estrellas', 'concept', 'age-of-stars')]
     ],
     inferred: [
       'Su plan estuvo en preparación durante siglos antes de ejecución',
-      'La muerte de Godwyn fue daño colateral o cobertura, no objetivo principal',
+      ['La muerte de ', link('Godwyn', 'character', 'godwyn'), ' fue daño colateral o cobertura, no objetivo principal'],
       'Su frialdad es estrategia para evitar manipulación divina',
       'Su muñeca había sido preparada antes de la Noche como cuerpo de respaldo'
     ],
     theories: [
-      'Ranni heredó algún rasgo cosmológico de los Nox: su Era de las Estrellas continúa el sueño de aquellas civilizaciones',
-      'La Voluntad Mayor sospechó su rebelión pero no pudo intervenir antes del corte',
-      'Marika la habría favorecido secretamente — la rotura del Anillo es coordinable con la Noche',
-      'Su afecto por el Tarnished no es estrategia: es la única emoción no calculada de toda su vida'
+      ['Ranni heredó algún rasgo cosmológico de los ', link('Nox', 'faction', 'nox'), ': su ', link('Era de las Estrellas', 'concept', 'age-of-stars'), ' continúa el sueño de aquellas civilizaciones'],
+      ['La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' sospechó su rebelión pero no pudo intervenir antes del corte'],
+      [link('Marika', 'character', 'marika'), ' la habría favorecido secretamente — la rotura del Anillo es coordinable con la Noche'],
+      ['Su afecto por el ', link('Tarnished', 'concept', 'tarnished'), ' no es estrategia: es la única emoción no calculada de toda su vida']
     ],
     ambiguous: [
-      'Si su Era de las Estrellas elimina a la Voluntad Mayor o solo la aleja',
-      'Si los Dos Dedos sospechaban su rebelión antes de la Noche',
-      'Cuánto sabe ella de la fusión Marika/Radagon',
-      'Si conserva sentimientos por Blaidd o lo ve solo como herramienta'
+      ['Si su ', link('Era de las Estrellas', 'concept', 'age-of-stars'), ' elimina a la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' o solo la aleja'],
+      ['Si los ', link('Dos Dedos', 'faction', 'dos-dedos'), ' sospechaban su rebelión antes de la Noche'],
+      ['Cuánto sabe ella de la fusión ', link('Marika', 'character', 'marika'), '/', link('Radagon', 'character', 'radagon')],
+      ['Si conserva sentimientos por ', link('Blaidd', 'character', 'blaidd'), ' o lo ve solo como herramienta']
     ],
     beneficiaries:
-      'Ranni misma, libre del contrato Empyrean. El Tarnished, parte como consorte hacia las estrellas. Los pueblos del cosmos, liberados de la Voluntad Mayor activa. Posiblemente los Nox, cuya promesa estelar al fin se cumple.',
+      ['Ranni misma, libre del contrato ', link('Empyrean', 'concept', 'empyrean'), '. El ', link('Tarnished', 'concept', 'tarnished'), ', parte como consorte hacia las estrellas. Los pueblos del cosmos, liberados de la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' activa. Posiblemente los ', link('Nox', 'faction', 'nox'), ', cuya promesa estelar al fin se cumple.'],
     victims:
-      'Godwyn, asesinado parcialmente. Blaidd, dispuesto a la locura por su lealtad. Iji, sacrificado por sus enemigos. Seluvis, traicionado por la Bruja a la que servía. La Voluntad Mayor, expulsada de su gobierno cercano.',
+      [link('Godwyn', 'character', 'godwyn'), ', asesinado parcialmente. ', link('Blaidd', 'character', 'blaidd'), ', dispuesto a la locura por su lealtad. Iji, sacrificado por sus enemigos. ', link('Seluvis', 'character', 'seluvis'), ', traicionado por la Bruja a la que servía. La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ', expulsada de su gobierno cercano.'],
     relatedCharacters: ['rennala', 'radagon', 'godwyn', 'maliketh', 'blaidd', 'iji', 'seluvis', 'marika'],
     relatedFactions: ['caria', 'cuchillos-negros', 'raya-lucaria', 'nox'],
     relatedRegions: ['raya-lucaria', 'liurnia', 'nokron', 'nokstella'],
@@ -1095,24 +1467,37 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Malenia es ',
         em('Espada'),
-        ' del proyecto curativo de Miquella, ',
+        ' del proyecto curativo de ',
+        link('Miquella', 'character', 'miquella'),
+        ', ',
         em('Empyrean'),
         ' designada (aunque su maldición la hizo candidata improbable) y ',
         em('manifestación humana'),
-        ' del dios de la podredumbre. Estos tres roles son inseparables: su capacidad marcial es lo que protegía el Haligtree, su naturaleza Empyrean es lo que la convirtió en posible heredera del Anillo, y su infección es lo que constantemente amenazaba su propia existencia.'
+        ' del dios de la podredumbre. Estos tres roles son inseparables: su capacidad marcial es lo que protegía ',
+        'el ',
+        link('Haligtree', 'concept', 'haligtree'),
+        ', su naturaleza ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' es lo que la convirtió en posible heredera del Anillo, y su infección es lo que constantemente amenazaba su propia existencia.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Nació junto a su gemelo Miquella en circunstancias que las Tierras Intermedias no entienden del todo: ambos son hijos de ',
+        'Nació junto a su gemelo ',
+        link('Miquella', 'character', 'miquella'),
+        ' en circunstancias que las Tierras Intermedias no entienden del todo: ambos son hijos de ',
         link('Marika', 'character', 'marika'),
         ' y ',
         link('Radagon', 'character', 'radagon'),
-        ' en su forma fusionada, pero las maldiciones que cargan son simétricas y desproporcionadas para sus hermanos no-Empyreans. Miquella no puede crecer; Malenia no puede dejar de descomponerse. La hipótesis más sostenible es que sus maldiciones son la huella de ',
+        ' en su forma fusionada, pero las maldiciones que cargan son simétricas y desproporcionadas para sus hermanos no-Empyreans. ',
+        link('Miquella', 'character', 'miquella'),
+        ' no puede crecer; Malenia no puede dejar de descomponerse. La hipótesis más sostenible es que sus maldiciones son la huella de ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
         ' que se aferraron a sus almas en el momento del nacimiento.'
       ),
       p(
-        'Como Espada de Miquella, Malenia entrenó al lado de los ',
+        'Como Espada de ',
+        link('Miquella', 'character', 'miquella'),
+        ', Malenia entrenó al lado de los ',
         link('Cleanrot Knights', 'faction', 'cleanrot-knights'),
         ', caballeros que voluntariamente aceptaron la infección de la podredumbre como prueba de lealtad. Su técnica de combate — la Danza Floreciente, la Hoja de Aeonia, los pasos del Lirio del Valle — es la marcialidad más refinada del juego.'
       ),
@@ -1123,20 +1508,32 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Caelid', 'region', 'caelid'),
         ' (la ',
         link('Batalla de Aeonia', 'timeline', 'demidioses-fractura'),
-        ') es legendario: dos guerreros perfectos midiéndose en lo único que les importaba. Cuando vio que no podía vencer marcialmente a Radahn, Malenia desplegó su ',
+        ') es legendario: dos guerreros perfectos midiéndose en lo único que les importaba. Cuando vio que no podía vencer marcialmente a ',
+        link('Radahn', 'character', 'radahn'),
+        ', Malenia desplegó su ',
         em('Scarlet Aeonia'),
-        ' — la primera Floración real de la podredumbre. Caelid entero quedó cubierto de podredumbre escarlata. Radahn quedó arruinado: aún vivo, pero corrompido en una bestia honorable y demente. Malenia ganó técnicamente la batalla y la perdió ontológicamente: su cuerpo quedó tan deteriorado por la Floración que perdió piernas, ojo, capacidad caminar.'
+        ' — la primera Floración real de la podredumbre. ',
+        link('Caelid', 'region', 'caelid'),
+        ' entero quedó cubierto de ',
+        link('podredumbre escarlata', 'concept', 'scarlet-rot'),
+        '. ',
+        link('Radahn', 'character', 'radahn'),
+        ' quedó arruinado: aún vivo, pero corrompido en una bestia honorable y demente. Malenia ganó técnicamente la batalla y la perdió ontológicamente: su cuerpo quedó tan deteriorado por la Floración que perdió piernas, ojo, capacidad caminar.'
       ),
       p(
         'Volvió al ',
         link('Haligtree', 'region', 'haligtree'),
         ' a recuperarse junto al capullo dorado de su gemelo. Allí esperó. Mientras esperaba, ',
         link('Mohg', 'character', 'mohg'),
-        ' se introdujo y secuestró a Miquella. Cuando despertó al rapto, ya era demasiado tarde. Quedó atrapada esperando un retorno que nunca llegaría — un capullo vacío como única compañía.'
+        ' se introdujo y secuestró a ',
+        link('Miquella', 'character', 'miquella'),
+        '. Cuando despertó al rapto, ya era demasiado tarde. Quedó atrapada esperando un retorno que nunca llegaría — un capullo vacío como única compañía.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Las motivaciones de Malenia son brutalmente simples y dolorosas. Ama a su hermano. Quiere protegerlo. Eso es todo. Su honor marcial, su devoción a la causa de Miquella, su disposición a usar la Floración a pesar del precio: todo se alinea bajo ese único motivo. Es la tragedia del cuidador absoluto: cuando lo cuidado se pierde, no queda razón para continuar — pero el cuerpo y el honor siguen funcionando por inercia.'
+        'Las motivaciones de Malenia son brutalmente simples y dolorosas. Ama a su hermano. Quiere protegerlo. Eso es todo. Su honor marcial, su devoción a la causa de ',
+        link('Miquella', 'character', 'miquella'),
+        ', su disposición a usar la Floración a pesar del precio: todo se alinea bajo ese único motivo. Es la tragedia del cuidador absoluto: cuando lo cuidado se pierde, no queda razón para continuar — pero el cuerpo y el honor siguen funcionando por inercia.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -1156,26 +1553,40 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Nacimiento Empyrean infectado.',
+        ['Nacimiento ', link('Empyrean', 'concept', 'empyrean'), ' infectado.'],
         'Entrenamiento como Espada.',
         'Liderazgo de los Cleanrot Knights.',
-        'Construcción del Haligtree con Miquella.',
-        'Marcha a Caelid.',
+        ['Construcción del ', link('Haligtree', 'region', 'haligtree'), ' con ', link('Miquella', 'character', 'miquella'), '.'],
+        ['Marcha a ', link('Caelid', 'region', 'caelid'), '.'],
         'Batalla de Aeonia.',
         'Scarlet Aeonia y devastación.',
         'Pérdida física parcial.',
-        'Retorno al Haligtree.',
-        'Sueño junto al capullo de Miquella.',
-        'Secuestro de Miquella por Mohg.',
+        ['Retorno al ', link('Haligtree', 'region', 'haligtree'), '.'],
+        ['Sueño junto al capullo de ', link('Miquella', 'character', 'miquella'), '.'],
+        ['Secuestro de ', link('Miquella', 'character', 'miquella'), ' por ', link('Mohg', 'character', 'mohg'), '.'],
         'Espera eterna en Elphael.'
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'Su duelo con Radahn arruinó a Caelid (yermo escarlata permanente), corrompió a Radahn (necesidad del Festival), generó las hijas escarlatas (incluyendo la única humana, Millicent), y debilitó al propio Haligtree para el secuestro posterior. Su existencia es prueba de que la maldición divina puede coexistir con honor marcial absoluto — pero el honor no detiene la maldición.'
+        'Su duelo con ',
+        link('Radahn', 'character', 'radahn'),
+        ' arruinó a ',
+        link('Caelid', 'region', 'caelid'),
+        ' (yermo escarlata permanente), corrompió a ',
+        link('Radahn', 'character', 'radahn'),
+        ' (necesidad del Festival), generó las hijas escarlatas (incluyendo la única humana, ',
+        link('Millicent', 'character', 'millicent'),
+        '), y debilitó al propio ',
+        link('Haligtree', 'region', 'haligtree'),
+        ' para el secuestro posterior. Su existencia es prueba de que la maldición divina puede coexistir con honor marcial absoluto — pero el honor no detiene la maldición.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Malenia es la imagen del cuerpo como prisión cosmológica. Es la guerrera más honorable y simultáneamente la mártir involuntaria del dios de la podredumbre. Sus prótesis doradas, fabricadas por Miquella con Oro sin Aleación, son los únicos componentes de su cuerpo que ',
+        'Malenia es la imagen del cuerpo como prisión cosmológica. Es la guerrera más honorable y simultáneamente la mártir involuntaria del dios de la podredumbre. Sus prótesis doradas, fabricadas por ',
+        link('Miquella', 'character', 'miquella'),
+        ' con ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        ', son los únicos componentes de su cuerpo que ',
         em('no'),
         ' están infectados — un recordatorio constante de que su gemelo dedicó su vida a curarla y casi lo logró. Su grito durante la Floración no es agresivo: es el grito de un cuerpo desbordado por una voluntad ajena.'
       ),
@@ -1195,35 +1606,35 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Malenia es Empyrean, gemela de Miquella, hija de Marika y Radagon',
-      'Nació infectada por la Podredumbre Escarlata',
-      'Lidera a los Cleanrot Knights al servicio del Haligtree',
-      'Sus prótesis fueron fabricadas por Miquella con Oro sin Aleación',
-      'Su Scarlet Aeonia arrasó Caelid durante el duelo con Radahn',
-      'Su título es Espada de Miquella · Hoja de Podredumbre'
+      ['Malenia es ', link('Empyrean', 'concept', 'empyrean'), ', gemela de ', link('Miquella', 'character', 'miquella'), ', hija de ', link('Marika', 'character', 'marika'), ' y ', link('Radagon', 'character', 'radagon')],
+      ['Nació infectada por la ', link('Podredumbre Escarlata', 'concept', 'scarlet-rot')],
+      ['Lidera a los Cleanrot Knights al servicio del ', link('Haligtree', 'region', 'haligtree')],
+      ['Sus prótesis fueron fabricadas por ', link('Miquella', 'character', 'miquella'), ' con ', link('Oro sin Aleación', 'concept', 'unalloyed-gold')],
+      ['Su Scarlet Aeonia arrasó ', link('Caelid', 'region', 'caelid'), ' durante el duelo con ', link('Radahn', 'character', 'radahn')],
+      ['Su título es Espada de ', link('Miquella', 'character', 'miquella'), ' · Hoja de Podredumbre']
     ],
     inferred: [
       'La podredumbre es manifestación de un dios exterior pegado a su alma desde el nacimiento',
       'Su honor marcial es genuino — la Floración fue acto de desesperación, no estrategia',
-      'Su lealtad a Miquella es el único vínculo emocional que la sostiene',
+      ['Su lealtad a ', link('Miquella', 'character', 'miquella'), ' es el único vínculo emocional que la sostiene'],
       'Su nombre "Malenia" en el rito de invocación significa "la que florece"'
     ],
     theories: [
-      'El dios de la podredumbre intenta usarla como vasija para suceder al Árbol Áureo',
-      'Sus tres Floraciones Escarlatas (1ra: contra Radahn; 2da: durante el duelo Tarnished; 3ra: latente) son los tres estados de gestación de una Diosa de la Podredumbre',
-      'Su "victoria" sobre Radahn fue intencionalmente liberadora: ambos preferían eso a morir como bestias',
-      'Si despertara como Diosa de la Podredumbre, podría reemplazar al Árbol Áureo con un árbol carmesí'
+      ['El dios de la podredumbre intenta usarla como vasija para suceder al ', link('Árbol Áureo', 'concept', 'erdtree')],
+      ['Sus tres Floraciones Escarlatas (1ra: contra ', link('Radahn', 'character', 'radahn'), '; 2da: durante el duelo ', link('Tarnished', 'concept', 'tarnished'), '; 3ra: latente) son los tres estados de gestación de una Diosa de la Podredumbre'],
+      ['Su "victoria" sobre ', link('Radahn', 'character', 'radahn'), ' fue intencionalmente liberadora: ambos preferían eso a morir como bestias'],
+      ['Si despertara como Diosa de la Podredumbre, podría reemplazar al ', link('Árbol Áureo', 'concept', 'erdtree'), ' con un árbol carmesí']
     ],
     ambiguous: [
-      'Si la podredumbre es maldición externa o coste estructural de su naturaleza Empyrean',
-      'Si conserva esperanza de que Miquella regrese',
+      ['Si la podredumbre es maldición externa o coste estructural de su naturaleza ', link('Empyrean', 'concept', 'empyrean')],
+      ['Si conserva esperanza de que ', link('Miquella', 'character', 'miquella'), ' regrese'],
       'Si su tercera Floración (durante el duelo final) es voluntaria o reflejo del cuerpo',
-      'Si Mohg planificó el secuestro aprovechando que ella estaba debilitada por Caelid'
+      ['Si ', link('Mohg', 'character', 'mohg'), ' planificó el secuestro aprovechando que ella estaba debilitada por ', link('Caelid', 'region', 'caelid')]
     ],
     beneficiaries:
-      'Miquella, defendido durante años por su espada. La Podredumbre como dios exterior, alimentada por sus victorias. Los Cleanrot Knights, que encontraron causa.',
+      [link('Miquella', 'character', 'miquella'), ', defendido durante años por su espada. La Podredumbre como dios exterior, alimentada por sus victorias. Los Cleanrot Knights, que encontraron causa.'],
     victims:
-      'Caelid arrasada. Radahn arruinado. Los Cleanrot Knights condenados a la podredumbre. Miquella, desprotegido durante su sueño curativo. Y Malenia misma, prisionera del cuerpo que el cosmos le dio.',
+      [link('Caelid', 'region', 'caelid'), ' arrasada. ', link('Radahn', 'character', 'radahn'), ' arruinado. Los Cleanrot Knights condenados a la podredumbre. ', link('Miquella', 'character', 'miquella'), ', desprotegido durante su sueño curativo. Y Malenia misma, prisionera del cuerpo que el cosmos le dio.'],
     relatedCharacters: ['miquella', 'marika', 'radagon', 'radahn', 'mohg', 'millicent', 'gowry'],
     relatedFactions: ['cleanrot-knights', 'kindred-of-rot' ],
     relatedRegions: ['haligtree', 'consecrated-snowfield', 'caelid'],
@@ -1244,38 +1655,68 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
         ' es el único acto teológico ',
         em('benéfico'),
-        ' de toda la era. Su tragedia es que ningún proyecto pacífico sobrevive en este cosmos sin protección armada — y la protección armada (Malenia) eventualmente fallaba. Cuando se durmió esperando un cosmos mejor, Mohg lo secuestró.'
+        ' de toda la era. Su tragedia es que ningún proyecto pacífico sobrevive en este cosmos sin protección armada — y la protección armada (',
+        link('Malenia', 'character', 'malenia'),
+        ') eventualmente fallaba. Cuando se durmió esperando un cosmos mejor, ',
+        link('Mohg', 'character', 'mohg'),
+        ' lo secuestró.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
         'Miquella es ',
         em('teólogo curativo'),
-        ' (desarrolló el Oro sin Aleación contra los dioses exteriores), ',
+        ' (desarrolló el ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        ' contra los ',
+        link('dioses exteriores', 'concept', 'dioses-exteriores'),
+        '), ',
         em('refugiador'),
-        ' (acogió en el Haligtree a Albinaurics, Misbegotten y otros excluidos), ',
+        ' (acogió en ',
+        'el ',
+        link('Haligtree', 'concept', 'haligtree'),
+        ' a Albinaurics, Misbegotten y otros excluidos), ',
         em('alquimista'),
-        ' (fabricó las prótesis de Malenia y las agujas curativas), y ',
+        ' (fabricó las prótesis de ',
+        link('Malenia', 'character', 'malenia'),
+        ' y las agujas curativas), y ',
         em('soñador'),
         ' (durmió en su capullo esperando despertar a un cosmos transformado).'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Nació junto a Malenia con la maldición simétrica del eterno-niño: su cuerpo no podía madurar. Esta limitación lo obligó a desarrollar su mente en lugar de cuerpo. Convertido en uno de los seres más sabios de las Tierras Intermedias, comprendió pronto la verdad estructural del régimen: el Orden Dorado era estructuralmente injusto porque excluía a quienes no encajaban en su geometría dorada (Omens, Misbegotten, Albinaurics).'
+        'Nació junto a ',
+        link('Malenia', 'character', 'malenia'),
+        ' con la maldición simétrica del eterno-niño: su cuerpo no podía madurar. Esta limitación lo obligó a desarrollar su mente en lugar de cuerpo. Convertido en uno de los seres más sabios de las Tierras Intermedias, comprendió pronto la verdad estructural del régimen: ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' era estructuralmente injusto porque excluía a quienes no encajaban en su geometría dorada (Omens, Misbegotten, Albinaurics).'
       ),
       p(
         'Construyó el ',
         link('Haligtree', 'region', 'haligtree'),
-        ' en las tierras nevadas más allá de las Mountaintops. No es solo árbol-refugio físico: es propuesta cosmológica alternativa al Árbol Áureo, alimentada por la luz del Oro sin Aleación que el propio Miquella desarrolló como respuesta a los ',
+        ' en las tierras nevadas más allá de las Mountaintops. No es solo árbol-refugio físico: es propuesta cosmológica alternativa al ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ', alimentada por la luz del ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        ' que el propio Miquella desarrolló como respuesta a los ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
-        '. Las agujas de Oro sin Aleación pueden expulsar a un dios exterior del cuerpo de su huésped — son el único arma puramente curativa del juego.'
+        '. Las agujas de ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        ' pueden expulsar a un dios exterior del cuerpo de su huésped — son el único arma puramente curativa del juego.'
       ),
       p(
-        'Trabajó incansablemente en curar a su gemela Malenia. Le fabricó las prótesis doradas tras la Batalla de Aeonia. Le entregó la primera Aguja de Oro sin Aleación. La curación parcial fue lo más que pudo lograr; la podredumbre era estructural, no podía erradicarla del todo. Comprendió eventualmente que necesitaba más poder — necesitaba ser ',
+        'Trabajó incansablemente en curar a su gemela ',
+        link('Malenia', 'character', 'malenia'),
+        '. Le fabricó las prótesis doradas tras la Batalla de Aeonia. Le entregó la primera Aguja de ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        '. La curación parcial fue lo más que pudo lograr; la podredumbre era estructural, no podía erradicarla del todo. Comprendió eventualmente que necesitaba más poder — necesitaba ser ',
         em('Empyrean adulto'),
         ' — para terminar su trabajo.'
       ),
       p(
-        'Como su cuerpo no podía crecer en el cosmos actual, decidió dormir. Tejió un capullo dorado de Oro sin Aleación y se introdujo en él, esperando despertar como dios completo cuando el cosmos cambiase. Durante este sueño, ',
+        'Como su cuerpo no podía crecer en el cosmos actual, decidió dormir. Tejió un capullo dorado de ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        ' y se introdujo en él, esperando despertar como dios completo cuando el cosmos cambiase. Durante este sueño, ',
         link('Mohg', 'character', 'mohg'),
         ' lo secuestró.'
       ),
@@ -1283,7 +1724,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Miquella es el único figura del juego cuya motivación primaria es la compasión verdadera. No quiere conquistar, no quiere reformar, no quiere destruir — quiere ',
         em('aliviar'),
-        '. Esta motivación tan pura lo vuelve frágil: no entiende del todo la depredación cosmológica que opera en las Tierras Intermedias. Su sueño curativo es prueba de buena fe pura — y de ingenuidad estratégica que Malenia debería haber compensado.'
+        '. Esta motivación tan pura lo vuelve frágil: no entiende del todo la depredación cosmológica que opera en las Tierras Intermedias. Su sueño curativo es prueba de buena fe pura — y de ingenuidad estratégica que ',
+        link('Malenia', 'character', 'malenia'),
+        ' debería haber compensado.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -1303,12 +1746,12 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Nacimiento Empyrean maldito.',
-        'Desarrollo del Oro sin Aleación.',
-        'Construcción del Haligtree.',
+        ['Nacimiento ', link('Empyrean', 'concept', 'empyrean'), ' maldito.'],
+        ['Desarrollo del ', link('Oro sin Aleación', 'concept', 'unalloyed-gold'), '.'],
+        ['Construcción del ', link('Haligtree', 'region', 'haligtree'), '.'],
         'Recepción de los excluidos.',
-        'Fabricación de las prótesis de Malenia.',
-        'Curación parcial de la podredumbre escarlata.',
+        ['Fabricación de las prótesis de ', link('Malenia', 'character', 'malenia'), '.'],
+        ['Curación parcial de la ', link('podredumbre escarlata', 'concept', 'scarlet-rot'), '.'],
         'Decisión de dormir en el capullo.',
         'Secuestro durante el sueño.',
         'Translado a Mohgwyn.',
@@ -1316,11 +1759,20 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'El proyecto de Miquella, aunque incompleto, dejó herencia material. El Haligtree existe. El Oro sin Aleación está disponible. Las Agujas curativas existen y pueden ser usadas por terceros. Sus refugiados — supervivientes de los Albinaurics, Misbegotten — sobrevivieron como pudieron tras el secuestro. La promesa cosmológica de un cosmos sin dioses parásitos quedó suspendida en el capullo dorado, esperando despertar.'
+        'El proyecto de Miquella, aunque incompleto, dejó herencia material. ',
+        'El ',
+        link('Haligtree', 'concept', 'haligtree'),
+        ' existe. El ',
+        link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
+        ' está disponible. Las Agujas curativas existen y pueden ser usadas por terceros. Sus refugiados — supervivientes de los Albinaurics, Misbegotten — sobrevivieron como pudieron tras el secuestro. La promesa cosmológica de un cosmos sin dioses parásitos quedó suspendida en el capullo dorado, esperando despertar.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Miquella es la posibilidad inverificada de que el cosmos pueda ser curado en lugar de reformulado. Su capullo dorado es el símbolo perfecto: un proyecto pendiente, dormido, frágil, vulnerable. La fragilidad es su esencia: ningún proyecto compasivo puede protegerse a sí mismo en un cosmos depredador. Necesita protectores. Cuando los protectores fallan (Malenia debilitada por Caelid), el proyecto colapsa.'
+        'Miquella es la posibilidad inverificada de que el cosmos pueda ser curado en lugar de reformulado. Su capullo dorado es el símbolo perfecto: un proyecto pendiente, dormido, frágil, vulnerable. La fragilidad es su esencia: ningún proyecto compasivo puede protegerse a sí mismo en un cosmos depredador. Necesita protectores. Cuando los protectores fallan (',
+        link('Malenia', 'character', 'malenia'),
+        ' debilitada por ',
+        link('Caelid', 'region', 'caelid'),
+        '), el proyecto colapsa.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -1338,25 +1790,25 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Miquella es Empyrean, gemelo de Malenia, hijo de Marika y Radagon',
+      ['Miquella es ', link('Empyrean', 'concept', 'empyrean'), ', gemelo de ', link('Malenia', 'character', 'malenia'), ', hijo de ', link('Marika', 'character', 'marika'), ' y ', link('Radagon', 'character', 'radagon')],
       'Maldecido a no poder crecer físicamente',
-      'Creó el Haligtree como refugio',
-      'Desarrolló el Oro sin Aleación contra los dioses exteriores',
-      'Fabricó las prótesis y agujas curativas de Malenia',
-      'Durmió en un capullo dorado de Oro sin Aleación',
-      'Fue secuestrado por Mohg durante el sueño'
+      ['Creó el ', link('Haligtree', 'concept', 'haligtree'), ' como refugio'],
+      ['Desarrolló el ', link('Oro sin Aleación', 'concept', 'unalloyed-gold'), ' contra los ', link('dioses exteriores', 'concept', 'dioses-exteriores')],
+      ['Fabricó las prótesis y agujas curativas de ', link('Malenia', 'character', 'malenia')],
+      ['Durmió en un capullo dorado de ', link('Oro sin Aleación', 'concept', 'unalloyed-gold')],
+      ['Fue secuestrado por ', link('Mohg', 'character', 'mohg'), ' durante el sueño']
     ],
     inferred: [
       'Su proyecto era el más radical de las Tierras Intermedias: cosmos sin dioses parásitos',
-      'Iba a despertar como dios completo, fuera del control de la Voluntad Mayor',
-      'Su sueño fue posible porque confiaba en Malenia como su escudo',
+      ['Iba a despertar como dios completo, fuera del control de la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor')],
+      ['Su sueño fue posible porque confiaba en ', link('Malenia', 'character', 'malenia'), ' como su escudo'],
       'El capullo dorado lo protege incluso del rito sangriento de Mohgwyn'
     ],
     theories: [
-      'El sueño en el capullo era preparación deliberada para abandonar el rol Empyrean impuesto',
-      'Su Oro sin Aleación amenazaba a la Voluntad Mayor tanto como a los dioses exteriores',
-      'Su despertar habría producido una era cosmológica enteramente sin dioses cercanos — una versión cálida de la Era de las Estrellas',
-      'Marika sabía del proyecto y lo aprobaba secretamente'
+      ['El sueño en el capullo era preparación deliberada para abandonar el rol ', link('Empyrean', 'concept', 'empyrean'), ' impuesto'],
+      ['Su ', link('Oro sin Aleación', 'concept', 'unalloyed-gold'), ' amenazaba a la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' tanto como a los ', link('dioses exteriores', 'concept', 'dioses-exteriores')],
+      ['Su despertar habría producido una era cosmológica enteramente sin dioses cercanos — una versión cálida de la ', link('Era de las Estrellas', 'concept', 'age-of-stars')],
+      [link('Marika', 'character', 'marika'), ' sabía del proyecto y lo aprobaba secretamente']
     ],
     ambiguous: [
       'Si Miquella conserva alguna conciencia durante el secuestro',
@@ -1365,9 +1817,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Si su proyecto era completable cosmológicamente o solo aspiracional'
     ],
     beneficiaries:
-      'Albinaurics y Misbegotten, refugiados bajo el Haligtree. Cualquiera infectado por dios exterior, candidato a sus agujas curativas. Malenia, parcialmente curada gracias a su trabajo.',
+      ['Albinaurics y Misbegotten, refugiados bajo el ', link('Haligtree', 'concept', 'haligtree'), '. Cualquiera infectado por dios exterior, candidato a sus agujas curativas. ', link('Malenia', 'character', 'malenia'), ', parcialmente curada gracias a su trabajo.'],
     victims:
-      'Su gemela Malenia, dejada incompleta y vigilando un capullo vacío. Los habitantes del Haligtree, eventualmente arrasados tras el secuestro. Y el propio Miquella, dormido sin saber que su proyecto pende de una posibilidad cada vez más improbable.',
+      ['Su gemela ', link('Malenia', 'character', 'malenia'), ', dejada incompleta y vigilando un capullo vacío. Los habitantes del ', link('Haligtree', 'region', 'haligtree'), ', eventualmente arrasados tras el secuestro. Y el propio Miquella, dormido sin saber que su proyecto pende de una posibilidad cada vez más improbable.'],
     relatedCharacters: ['malenia', 'marika', 'radagon', 'mohg', 'millicent'],
     relatedFactions: ['cleanrot-knights', 'albinauricos', 'misbegotten'],
     relatedRegions: ['haligtree', 'consecrated-snowfield', 'mohgwyn'],
@@ -1382,9 +1834,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Maliketh es la fidelidad llevada al extremo del autosacrificio. Antes de la era dorada existía como guerrero Hombre-Bestia primigenio, capaz de blandir la ',
+        'Maliketh es la fidelidad llevada al extremo del autosacrificio. Antes de la era dorada existía como guerrero ',
+        link('Hombre-Bestia', 'faction', 'hombres-bestia'),
+        ' primigenio, capaz de blandir la ',
         link('Llama Negra', 'concept', 'black-flame'),
-        ' y derrotar a Empyreans. Tras servir a Marika como ',
+        ' y derrotar a Empyreans. Tras servir a ',
+        link('Marika', 'character', 'marika'),
+        ' como ',
         link('Bestia ligada en sombra', 'concept', 'shadow-bound-beast'),
         ', aceptó cargar dentro de su cuerpo la ',
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
@@ -1394,56 +1850,109 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Maliketh tiene cuatro roles cosmológicos. Como ',
         em('Bestia Sombra'),
-        ' es guardián personal de Marika. Como ',
+        ' es guardián personal de ',
+        link('Marika', 'character', 'marika'),
+        '. Como ',
         em('verdugo'),
-        ' fue quien derrotó a la Reina de Ojos Crepusculares y selló su llama. Como ',
+        ' fue quien derrotó a ',
+        'la ',
+        link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'),
+        ' y selló su llama. Como ',
         em('contenedor'),
-        ' alberga la Runa de la Muerte. Como ',
+        ' alberga la ',
+        link('Runa de la Muerte', 'concept', 'rune-of-death'),
+        '. Como ',
         em('Gurranq'),
-        ' (su alias en una vertiente de su existencia post-fractura) atiende rituales sagrados de la deathroot en el Bestial Sanctum, intentando inútilmente comer la corrupción que él mismo dejó escapar al ser robado por Ranni.'
+        ' (su alias en una vertiente de su existencia post-fractura) atiende rituales sagrados de la deathroot en el Bestial Sanctum, intentando inútilmente comer la corrupción que él mismo dejó escapar al ser robado por ',
+        link('Ranni', 'character', 'ranni'),
+        '.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Su prehistoria como Hombre-Bestia es relevante: era un guerrero capaz, conocedor de la ',
+        'Su prehistoria como ',
+        link('Hombre-Bestia', 'faction', 'hombres-bestia'),
+        ' es relevante: era un guerrero capaz, conocedor de la ',
         link('Llama Negra', 'concept', 'black-flame'),
-        ' que en su tiempo era usada para asesinar dioses. Cuando la Voluntad Mayor eligió a Marika como nueva vasija del Anillo, Maliketh fue ligado a ella como Bestia Sombra. Su primer gran acto bajo este rol: derrotar a la ',
-        link('Reina de Ojos Crepusculares', 'character', 'gloam-eyed-queen'),
-        ' que regía la era anterior. Su Black Blade — la espada que blande — está forjada en parte con la propia llama negra, una ironía simbólica de quien usa el arma de los herejes contra ellos mismos.'
+        ' que en su tiempo era usada para asesinar dioses. Cuando la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' eligió a ',
+        link('Marika', 'character', 'marika'),
+        ' como nueva vasija del Anillo, Maliketh fue ligado a ella como ',
+        link('Bestia Sombra', 'concept', 'shadow-bound-beast'),
+        '. Su primer gran acto bajo este rol: derrotar a la ',
+        link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'),
+        ' que regía la era anterior. Su ',
+        link('Hoja Negra', 'concept', 'maliketh-black-blade'),
+        ' — la espada que blande — está forjada en parte con la propia ',
+        link('llama negra', 'concept', 'black-flame'),
+        ', una ironía simbólica de quien usa el arma de los herejes contra ellos mismos.'
       ),
       p(
-        'Tras la victoria, Marika necesitó sellar la Muerte Predestinada para iniciar la era dorada. La solución fue brutal: cosérsela al alma de Maliketh. La Runa de la Muerte vive desde entonces dentro de su cuerpo. Esto lo convierte en prisión viva — y en blanco. Sus heridas, cada vez que es golpeado en combate, filtran muerte parcial al cosmos.'
+        'Tras la victoria, ',
+        link('Marika', 'character', 'marika'),
+        ' necesitó sellar la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        ' para iniciar la era dorada. La solución fue brutal: cosérsela al alma de Maliketh. La ',
+        link('Runa de la Muerte', 'concept', 'rune-of-death'),
+        ' vive desde entonces dentro de su cuerpo. Esto lo convierte en prisión viva — y en blanco. Sus heridas, cada vez que es golpeado en combate, filtran muerte parcial al cosmos.'
       ),
       p(
-        'El robo de Ranni — antes de la Noche de los Cuchillos Negros — abrió en su cuerpo una herida cosmológica permanente. La mecha robada se convirtió en las hojas Cuchillo Negro. Maliketh, traicionado por su contrapuerta Empyrean ligada en sombra, retiró su servicio activo del Orden Dorado y se exilió a ',
+        'El robo de ',
+        link('Ranni', 'character', 'ranni'),
+        ' — antes de la Noche de los ',
+        link('Cuchillos Negros', 'faction', 'cuchillos-negros'),
+        ' — abrió en su cuerpo una herida cosmológica permanente. La mecha robada se convirtió en las hojas ',
+        link('Cuchillo Negro', 'faction', 'cuchillos-negros'),
+        '. Maliketh, traicionado por su contrapuerta ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' ligada en sombra, retiró su servicio activo del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' y se exilió a ',
         link('Farum Azula', 'region', 'farum-azula'),
         ', la ciudadela atemporal donde podía esconder la herida.'
       ),
       p(
-        'Bajo el alias de Gurranq, oficia rituales en el Bestial Sanctum: come deathroot ofrecida por peregrinos, intentando absorber de vuelta lo que se le escapó. La quest de Gurranq es el aspecto más vulnerable de Maliketh: un Hombre-Bestia descomunal pidiendo ofrendas, hambriento de su propio fracaso.'
+        'Bajo el alias de Gurranq, oficia rituales en el Bestial Sanctum: come deathroot ofrecida por peregrinos, intentando absorber de vuelta lo que se le escapó. La quest de Gurranq es el aspecto más vulnerable de Maliketh: un ',
+        link('Hombre-Bestia', 'faction', 'hombres-bestia'),
+        ' descomunal pidiendo ofrendas, hambriento de su propio fracaso.'
       ),
       p(
-        'Cuando el Tarnished lo enfrenta en Farum Azula, Maliketh se transforma en su forma final: la ',
+        'Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo enfrenta en ',
+        link('Farum Azula', 'region', 'farum-azula'),
+        ', Maliketh se transforma en su forma final: la ',
         em('Bestia de la Muerte Negra'),
-        '. Es desesperación, no orgullo. Sabe que perder libera la Muerte que ha contenido durante eras. Acepta perder. Su muerte es el evento que cierra la herida de Godwyn y permite la ',
+        '. Es desesperación, no orgullo. Sabe que perder libera la Muerte que ha contenido durante eras. Acepta perder. Su muerte es el evento que cierra la herida de ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' y permite la ',
         link('Era del Crepúsculo', 'ending', 'duskborn'),
         '.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Maliketh nunca se cuestiona. Su existencia es servicio absoluto — primero a Marika, luego a la causa de contener la Muerte. Su tortura es estructural, no auto-impuesta: él no eligió cargar la Runa, le fue cosida. Pero cumple sin queja. Su lealtad excede toda elección emocional.'
+        'Maliketh nunca se cuestiona. Su existencia es servicio absoluto — primero a ',
+        link('Marika', 'character', 'marika'),
+        ', luego a la causa de contener la Muerte. Su tortura es estructural, no auto-impuesta: él no eligió cargar la Runa, le fue cosida. Pero cumple sin queja. Su lealtad excede toda elección emocional.'
       ),
       p(
         'Su único momento de respuesta personal aparece como Gurranq, hambriento de deathroot. Es lo más cercano a "deseo" que mostrará: comer la corrupción para deshacer su propio fracaso. Es servicio incluso en la angustia.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
-        'Su Empyrean ligada en sombra es ',
+        'Su ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' ligada en sombra es ',
         link('Marika', 'character', 'marika'),
         '. Su víctima primaria fue ',
-        link('Gloam-Eyed Queen', 'character', 'gloam-eyed-queen'),
+        link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'),
         '. Su traicionera es ',
         link('Ranni', 'character', 'ranni'),
-        '. Su criatura derivada (creada para servir a Ranni como Bestia Sombra) es ',
+        '. Su criatura derivada (creada para servir a ',
+        link('Ranni', 'character', 'ranni'),
+        ' como ',
+        link('Bestia Sombra', 'concept', 'shadow-bound-beast'),
+        ') es ',
         link('Blaidd', 'character', 'blaidd'),
         '. Sus peregrinos suplicantes en Bestial Sanctum son seguidores de ',
         link('Aquellos que Viven en la Muerte', 'faction', 'those-who-live-in-death'),
@@ -1451,28 +1960,41 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Vinculación a Marika como Bestia Sombra.',
-        'Derrota de la Gloam-Eyed Queen.',
-        'Sello de la Muerte Predestinada en su cuerpo.',
-        'Robo de la mecha por Ranni.',
-        'Exilio a Farum Azula.',
+        ['Vinculación a ', link('Marika', 'character', 'marika'), ' como ', link('Bestia Sombra', 'concept', 'shadow-bound-beast'), '.'],
+        ['Derrota de la ', link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'), '.'],
+        ['Sello de la ', link('Muerte Predestinada', 'concept', 'destined-death'), ' en su cuerpo.'],
+        ['Robo de la mecha por ', link('Ranni', 'character', 'ranni'), '.'],
+        ['Exilio a ', link('Farum Azula', 'region', 'farum-azula'), '.'],
         'Asunción del alias Gurranq.',
         'Apertura del Bestial Sanctum.',
         'Devoración de deathroot ofrecida.',
-        'Lucha final contra el Tarnished.',
+        ['Lucha final contra el ', link('Tarnished', 'concept', 'tarnished'), '.'],
         'Liberación de la Muerte al cosmos.'
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'Su servicio sostuvo el Orden Dorado durante eras. Su robo permitió la Noche de los Cuchillos Negros. Su muerte libera la Muerte Predestinada. La Era del Crepúsculo es el final que su sacrificio finalmente permite. Sin Maliketh, el régimen no habría existido; sin su muerte, no podría terminar limpiamente.'
+        'Su servicio sostuvo ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' durante eras. Su robo permitió la Noche de los ',
+        link('Cuchillos Negros', 'faction', 'cuchillos-negros'),
+        '. Su muerte libera la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        '. La ',
+        link('Era del Crepúsculo', 'ending', 'duskborn'),
+        ' es el final que su sacrificio finalmente permite. Sin Maliketh, el régimen no habría existido; sin su muerte, no podría terminar limpiamente.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Maliketh es la prisión viva. Su existencia interroga la pregunta: ¿es ético construir un sistema cuya estructura requiere que un ser cargue eternamente con el sufrimiento por todos los demás? La respuesta del juego es ambigua: el sistema funcionó, pero a costa de Maliketh. Su liberación final es uno de los actos más misericordiosos del Tarnished, aunque parezca violencia.'
+        'Maliketh es la prisión viva. Su existencia interroga la pregunta: ¿es ético construir un sistema cuya estructura requiere que un ser cargue eternamente con el sufrimiento por todos los demás? La respuesta del juego es ambigua: el sistema funcionó, pero a costa de Maliketh. Su liberación final es uno de los actos más misericordiosos del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', aunque parezca violencia.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
-        'Su Empyrean es ',
+        'Su ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' es ',
         link('Marika', 'character', 'marika'),
         '. Su carga es la ',
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
@@ -1488,36 +2010,36 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Maliketh es Hombre-Bestia, hermano-sombra de Marika',
-      'Lleva la Runa de la Muerte cosida en su cuerpo',
-      'Derrotó a la Gloam-Eyed Queen para iniciar la era dorada',
-      'Su Black Blade está forjada en parte con Llama Negra',
-      'Una mecha de la Runa fue robada por Ranni para fabricar los Cuchillos Negros',
+      ['Maliketh es ', link('Hombre-Bestia', 'faction', 'hombres-bestia'), ', hermano-sombra de ', link('Marika', 'character', 'marika')],
+      ['Lleva la ', link('Runa de la Muerte', 'concept', 'rune-of-death'), ' cosida en su cuerpo'],
+      ['Derrotó a la ', link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'), ' para iniciar la era dorada'],
+      ['Su ', link('Hoja Negra', 'concept', 'maliketh-black-blade'), ' está forjada en parte con ', link('Llama Negra', 'concept', 'black-flame')],
+      ['Una mecha de la Runa fue robada por ', link('Ranni', 'character', 'ranni'), ' para fabricar los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros')],
       'Como Gurranq atiende el Bestial Sanctum y come deathroot ofrecida',
-      'Su derrota libera la Muerte Predestinada al cosmos'
+      ['Su derrota libera la ', link('Muerte Predestinada', 'concept', 'destined-death'), ' al cosmos']
     ],
     inferred: [
       'Su servicio es indistinguible de su tortura cosmológica',
       'Su transformación en Bestia de la Muerte Negra es desesperación, no orgullo',
       'Su rol como Gurranq es intento parcial de deshacer su propio fracaso',
-      'Conoció el robo de Ranni mucho después del hecho — su exilio a Farum Azula es respuesta'
+      ['Conoció el robo de ', link('Ranni', 'character', 'ranni'), ' mucho después del hecho — su exilio a ', link('Farum Azula', 'region', 'farum-azula'), ' es respuesta']
     ],
     theories: [
-      'Su raza Hombre-Bestia es residuo del Crisol primigenio: hermanos genéticos de Blaidd y los Beastmen de Farum Azula',
-      'La Llama Negra que usa procede de su rivalidad con la Gloam-Eyed Queen — al matarla, absorbió parte de su poder',
-      'Su exilio a Farum Azula no es solo escondite: la atemporalidad de la ciudadela retrasa la fuga de muerte de su cuerpo',
+      ['Su raza ', link('Hombre-Bestia', 'faction', 'hombres-bestia'), ' es residuo del ', link('Crisol primigenio', 'concept', 'crucible'), ': hermanos genéticos de ', link('Blaidd', 'character', 'blaidd'), ' y los Beastmen de ', link('Farum Azula', 'region', 'farum-azula')],
+      ['La ', link('Llama Negra', 'concept', 'black-flame'), ' que usa procede de su rivalidad con la ', link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'), ' — al matarla, absorbió parte de su poder'],
+      ['Su exilio a ', link('Farum Azula', 'region', 'farum-azula'), ' no es solo escondite: la atemporalidad de la ciudadela retrasa la fuga de muerte de su cuerpo'],
       'Su decisión de aceptar la derrota en su pelea final es voluntaria — sabe que el cosmos necesita la Muerte de regreso'
     ],
     ambiguous: [
       'Si Maliketh experimenta algo parecido a la libertad o solo al deber',
-      'Si conoció el robo de Ranni en su momento o solo al final',
-      'Cuál es la relación exacta entre su raza y los Hombres-Bestia primordiales del Crisol',
-      'Si su lealtad a Marika sobrevive a la fractura del Anillo'
+      ['Si conoció el robo de ', link('Ranni', 'character', 'ranni'), ' en su momento o solo al final'],
+      ['Cuál es la relación exacta entre su raza y los ', link('Hombres-Bestia', 'faction', 'hombres-bestia'), ' primordiales del ', link('Crisol', 'concept', 'crucible')],
+      ['Si su lealtad a ', link('Marika', 'character', 'marika'), ' sobrevive a la ', link('fractura', 'timeline', 'la-fractura'), ' del Anillo']
     ],
     beneficiaries:
-      'Marika, durante toda la era dorada. El Orden Dorado, sostenido por su sacrificio. La Voluntad Mayor. Los Tarnished que pueden ahora elegir el destino del cosmos por su muerte voluntaria.',
+      [link('Marika', 'character', 'marika'), ', durante toda la era dorada. El ', link('Orden Dorado', 'faction', 'orden-dorado'), ', sostenido por su sacrificio. La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), '. Los ', link('Tarnished', 'concept', 'tarnished'), ' que pueden ahora elegir el destino del cosmos por su muerte voluntaria.'],
     victims:
-      'Maliketh mismo, prisión viva. Godwyn, asesinado con un fragmento de su carga. Aquellos que Viven en la Muerte, hijos de la fuga parcial. La Gloam-Eyed Queen, derrotada.',
+      ['Maliketh mismo, prisión viva. ', link('Godwyn', 'character', 'godwyn'), ', asesinado con un fragmento de su carga. ', link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'), ', hijos de la fuga parcial. La ', link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'), ', derrotada.'],
     relatedCharacters: ['marika', 'godwyn', 'ranni', 'gloam-eyed-queen', 'blaidd'],
     relatedFactions: ['hombres-bestia', 'cuchillos-negros'],
     relatedRegions: ['farum-azula'],
@@ -1537,18 +2059,27 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Melina aparece en el viaje del ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' sin proclamar su nombre completo, sin tumba, sin patria visible. Se ofrece como doncella sustituta tras la pérdida de la doncella original del Tarnished, y a cambio convierte las runas obtenidas en niveles. Su pacto, sin embargo, oculta una segunda cláusula: cuando el árbol rechace al aspirante en su entrada, ella misma será la llama que lo prenda.'
+        ' sin proclamar su nombre completo, sin tumba, sin patria visible. Se ofrece como doncella sustituta tras la pérdida de la doncella original del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', y a cambio convierte las runas obtenidas en niveles. Su pacto, sin embargo, oculta una segunda cláusula: cuando el árbol rechace al aspirante en su entrada, ella misma será la llama que lo prenda.'
       ),
       p(
         'Su misterio es deliberado. Cada texto que la menciona la describe en términos de incompletitud: ojo cerrado, "una madre que no existe", propósito "incompleto" o "encomendado" pero nunca explicado del todo. Es el personaje más explícitamente ambiguo del juego base.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
-        'Melina cumple cuatro funciones simultáneas durante el viaje del Tarnished. Como ',
+        'Melina cumple cuatro funciones simultáneas durante ',
+        'el ',
+        link('viaje del Tarnished', 'timeline', 'viaje-mancillado'),
+        '. Como ',
         em('doncella sustituta'),
         ' suple el rol cosmológico de la doncella perdida en el preámbulo del juego, permitiendo el intercambio de runas por niveles. Como ',
         em('guía'),
-        ' acompaña al Tarnished a la Mesa Redonda y comparte fragmentos de saber. Como ',
+        ' acompaña al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' a la ',
+        link('Mesa Redonda', 'concept', 'roundtable-hold'),
+        ' y comparte fragmentos de saber. Como ',
         em('intérprete del Árbol Áureo'),
         ' percibe cuando el árbol acepta o rechaza al aspirante. Y, finalmente, como ',
         em('llama'),
@@ -1563,27 +2094,64 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         ' como progenitora implícita. La frase clave de Melina cuando se aproxima a su sacrificio menciona explícitamente "el destino de los dioses" como si fuera el suyo propio.'
       ),
       p(
-        'Durante el viaje colabora con varios momentos clave. Provee a Torrent — la cabra-corcel espectral — al Tarnished, regalo que parece extender el alcance de la gracia hasta más allá de las restricciones del Árbol Áureo. Encuentra al Tarnished en cada Sitio de Gracia importante, normalmente cuando el viaje toma un giro cosmológico. Tras la conquista de las primeras Grandes Runas le advierte que el árbol no permitirá la entrada hasta que sea consumido por una llama capaz de quemarlo.'
+        'Durante el viaje colabora con varios momentos clave. Provee a Torrent — la cabra-corcel espectral — al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', regalo que parece extender el alcance de la ',
+        link('gracia', 'concept', 'grace'),
+        ' hasta más allá de las restricciones del ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        '. Encuentra al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' en cada Sitio de ',
+        link('Gracia', 'concept', 'grace'),
+        ' importante, normalmente cuando el viaje toma un giro cosmológico. Tras la conquista de las primeras Grandes Runas le advierte que el árbol no permitirá la entrada hasta que sea consumido por una llama capaz de quemarlo.'
       ),
       p(
         'En las ',
         link('Mountaintops de los Gigantes', 'region', 'mountaintops'),
-        ', Melina se inmola en la pira ritual de la Llama Quemadora — la llama hostil al Árbol Áureo custodiada por el último Gigante del Fuego, restos del culto al Fell God que el Orden casi exterminó. Su sacrificio prende el árbol entero, abriendo el camino al trono. Si el Tarnished llega a este punto sin haber abrazado la ',
+        ', Melina se inmola en la pira ritual de la Llama Quemadora — la llama hostil al ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' custodiada por ',
+        'el ',
+        link('último Gigante del Fuego', 'character', 'fire-giant'),
+        ', restos del culto al Fell God que el Orden casi exterminó. Su sacrificio prende el árbol entero, abriendo el camino al trono. Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' llega a este punto sin haber abrazado la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
-        ', Melina es la portadora ritual de la llama. Si el Tarnished ya pactó con los Tres Dedos, Melina rompe el pacto y desaparece del viaje — y el árbol se quema solo, devorado por el fuego nihilista.'
+        ', Melina es la portadora ritual de la llama. Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' ya pactó con ',
+        'los ',
+        link('Tres Dedos', 'faction', 'tres-dedos'),
+        ', Melina rompe el pacto y desaparece del viaje — y el árbol se quema solo, devorado por el fuego nihilista.'
       ),
       p(
-        'En el final de la Llama Frenética, una voz femenina jura desde la oscuridad volver con un cuchillo a buscar al Señor del Fin. Esa voz se atribuye a Melina, sobreviviente, ahora antagonista vengativa. El juego base no muestra ese encuentro — sólo lo promete.'
+        'En el final de la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        ', una voz femenina jura desde la oscuridad volver con un cuchillo a buscar al Señor del Fin. Esa voz se atribuye a Melina, sobreviviente, ahora antagonista vengativa. El juego base no muestra ese encuentro — sólo lo promete.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Las motivaciones explícitas de Melina son dos. La primera, dada por su madre: cumplir el rol que se le encomendó. La segunda, propia: acompañar al Tarnished hasta el final y darle "el regalo de la sangre, las lágrimas y la muerte". Esta última frase — pronunciada antes de su inmolación — sugiere que ella entiende su función como un don, no como una imposición.'
+        'Las motivaciones explícitas de Melina son dos. La primera, dada por su madre: cumplir el rol que se le encomendó. La segunda, propia: acompañar al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' hasta el final y darle "el regalo de la sangre, las lágrimas y la muerte". Esta última frase — pronunciada antes de su inmolación — sugiere que ella entiende su función como un don, no como una imposición.'
       ),
       p(
-        'Su afecto por el Tarnished parece genuino. No lo manipula con promesas; no lo guía hacia un final particular; no lo presiona. Le entrega Torrent sin condiciones. Comparte sus dudas sobre el Árbol Áureo con honestidad. Cuando el Tarnished acepta la Llama Frenética, su única reacción es marcharse: no maldice ni amenaza durante el juego, sólo lamenta el camino tomado.'
+        'Su afecto por el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' parece genuino. No lo manipula con promesas; no lo guía hacia un final particular; no lo presiona. Le entrega Torrent sin condiciones. Comparte sus dudas sobre ',
+        'el ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' con honestidad. Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' acepta la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        ', su única reacción es marcharse: no maldice ni amenaza durante el juego, sólo lamenta el camino tomado.'
       ),
       p(
-        'La hipótesis más sostenida: Melina existe explícitamente para acompañar a un agente externo (el Tarnished) hasta la posición desde la cual ese agente pueda elegir el destino del cosmos. Su madre — quienquiera que sea — la diseñó como instrumento generoso. Su único acto autónomo es elegir cómo arder.'
+        'La hipótesis más sostenida: Melina existe explícitamente para acompañar a un agente externo (el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ') hasta la posición desde la cual ese agente pueda elegir el destino del cosmos. Su madre — quienquiera que sea — la diseñó como instrumento generoso. Su único acto autónomo es elegir cómo arder.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -1591,11 +2159,19 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         '. Su compañero y heredero del rol de Señor Elden es el ',
         link('Tarnished', 'concept', 'tarnished'),
-        '. Sus antagonistas teológicos son los Tres Dedos y, por extensión, ',
+        '. Sus antagonistas teológicos son ',
+        'los ',
+        link('Tres Dedos', 'faction', 'tres-dedos'),
+        ' y, por extensión, ',
         link('Hyetta', 'character', 'hyetta'),
         ' (víctima frenética) y ',
         link('Shabriri', 'character', 'shabriri'),
-        ' (proselitista). Sus aliados involuntarios son los Dos Dedos en la Mesa Redonda, ',
+        ' (proselitista). Sus aliados involuntarios son ',
+        'los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' en la ',
+        link('Mesa Redonda', 'concept', 'roundtable-hold'),
+        ', ',
         link('Enia', 'character', 'enia'),
         ' como Doncella de Dedos y los Pastores como ',
         link('Brother Corhyn', 'character', 'corhyn'),
@@ -1603,22 +2179,37 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Encuentro inicial en el Sitio de Gracia inaugural.',
+        ['Encuentro inicial en el Sitio de ', link('Gracia', 'concept', 'grace'), ' inaugural.'],
         'Donación de Torrent.',
-        'Llegada conjunta a la Mesa Redonda.',
-        'Advertencia sobre el rechazo del Árbol Áureo.',
+        ['Llegada conjunta a la ', link('Mesa Redonda', 'concept', 'roundtable-hold'), '.'],
+        ['Advertencia sobre el rechazo del ', link('Árbol Áureo', 'concept', 'erdtree'), '.'],
         'Subida a las Mountaintops.',
         'Inmolación ritual en la pira de la Llama Quemadora.',
-        'Quema del Árbol Áureo.',
-        '(Ruta Llama Frenética) Abandono del Tarnished y juramento de venganza desde la oscuridad.'
+        ['Quema del ', link('Árbol Áureo', 'concept', 'erdtree'), '.'],
+        ['(Ruta ', link('Llama Frenética', 'concept', 'frenzied-flame'), ') Abandono del ', link('Tarnished', 'concept', 'tarnished'), ' y juramento de venganza desde la oscuridad.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'Sin Melina, el Tarnished no podría llegar al trono Elden. Su sacrificio es la condición material de cinco de los seis finales: sólo la Llama Frenética prescinde de su rol como antorcha — y a un precio simétrico, su pérdida y su retorno como némesis. Su existencia documenta también la posibilidad de hijos cosmológicos no-listados oficialmente: si Marika engendró a Melina sin que el Orden Dorado la registrase, otras emanaciones similares pueden existir y haber sido borradas de la historia oficial.'
+        'Sin Melina, el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' no podría llegar al trono Elden. Su sacrificio es la condición material de cinco de los seis finales: sólo la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        ' prescinde de su rol como antorcha — y a un precio simétrico, su pérdida y su retorno como némesis. Su existencia documenta también la posibilidad de hijos cosmológicos no-listados oficialmente: si ',
+        link('Marika', 'character', 'marika'),
+        ' engendró a Melina sin que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' la registrase, otras emanaciones similares pueden existir y haber sido borradas de la historia oficial.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Melina es la generosidad cosmológica encarnada en cuerpo de doncella. Su ojo cerrado simboliza incompletitud aceptada: hay una mitad de su ser que falta y ella ha dejado de buscarla. Su sacrificio voluntario no es un castigo divino — es la última coherencia disponible para un ser hecho con un solo propósito. Cuando el Tarnished abraza la Llama Frenética, Melina no falla en sí misma; lo que falla es la posibilidad de que su don tenga sentido. De ahí que su "venganza" prometida desde la oscuridad sea menos amenaza y más duelo: ya no puede aceptar el camino del Tarnished, pero tampoco puede dejar de existir hasta que el daño se sane.'
+        'Melina es la generosidad cosmológica encarnada en cuerpo de doncella. Su ojo cerrado simboliza incompletitud aceptada: hay una mitad de su ser que falta y ella ha dejado de buscarla. Su sacrificio voluntario no es un castigo divino — es la última coherencia disponible para un ser hecho con un solo propósito. Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' abraza la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        ', Melina no falla en sí misma; lo que falla es la posibilidad de que su don tenga sentido. De ahí que su "venganza" prometida desde la oscuridad sea menos amenaza y más duelo: ya no puede aceptar el camino del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', pero tampoco puede dejar de existir hasta que el daño se sane.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -1626,7 +2217,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' como madre implícita, del ',
         link('Árbol Áureo', 'concept', 'erdtree'),
-        ' como objeto de su sacrificio, y del Tarnished como su confidente final. Su antítesis es la ',
+        ' como objeto de su sacrificio, y del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' como su confidente final. Su antítesis es la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
         '. Su escenario final son las ',
         link('Mountaintops', 'region', 'mountaintops'),
@@ -1636,37 +2229,37 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Melina aparece sin pasado registrado y se ofrece como doncella sustituta del Tarnished',
-      'Permite la conversión de runas en niveles dentro de los Sitios de Gracia',
-      'Dona Torrent al Tarnished',
-      'Su sacrificio en las Mountaintops prende el Árbol Áureo con la Llama Quemadora',
-      'Si el Tarnished abraza la Llama Frenética, Melina lo abandona',
+      ['Melina aparece sin pasado registrado y se ofrece como doncella sustituta del ', link('Tarnished', 'concept', 'tarnished')],
+      ['Permite la conversión de runas en niveles dentro de los ', link('Sitios de Gracia', 'concept', 'sites-of-grace')],
+      ['Dona Torrent al ', link('Tarnished', 'concept', 'tarnished')],
+      ['Su sacrificio en las Mountaintops prende el ', link('Árbol Áureo', 'concept', 'erdtree'), ' con la Llama Quemadora'],
+      ['Si el ', link('Tarnished', 'concept', 'tarnished'), ' abraza la ', link('Llama Frenética', 'concept', 'frenzied-flame'), ', Melina lo abandona'],
       'Su discurso final menciona explícitamente "el destino de los dioses" como propio'
     ],
     inferred: [
-      'Su madre es Marika — su despertar junto al Árbol Áureo y su capacidad de prenderlo lo sostienen',
+      ['Su madre es ', link('Marika', 'character', 'marika'), ' — su despertar junto al ', link('Árbol Áureo', 'concept', 'erdtree'), ' y su capacidad de prenderlo lo sostienen'],
       'Es una hija no nacida o emanación incompleta, no una hija oficial registrada',
       'Su ojo cerrado es expresión de su incompletitud cosmológica, no afección física',
-      'Su afecto por el Tarnished es genuino y no estratégico',
+      ['Su afecto por el ', link('Tarnished', 'concept', 'tarnished'), ' es genuino y no estratégico'],
       'Su rol fue diseñado específicamente para acompañar a un agente exterior al cosmos hasta el trono'
     ],
     theories: [
-      'Melina es la "Doncella Quemada" original del lore antiguo del Árbol Áureo, reencarnada para esta era',
-      'Es la voz femenina que jura volver con un cuchillo en el final de la Llama Frenética: superviviente, no muerta',
-      'Su nombre no se enuncia porque es alias — su identidad real es secreto guardado por Marika misma',
-      'Su relación con Marika es similar a la de Maliketh: ligada en sombra como acompañante cosmológica'
+      ['Melina es la "Doncella Quemada" original del lore antiguo del ', link('Árbol Áureo', 'concept', 'erdtree'), ', reencarnada para esta era'],
+      ['Es la voz femenina que jura volver con un cuchillo en el final de la ', link('Llama Frenética', 'concept', 'frenzied-flame'), ': superviviente, no muerta'],
+      ['Su nombre no se enuncia porque es alias — su identidad real es secreto guardado por ', link('Marika', 'character', 'marika'), ' misma'],
+      ['Su relación con ', link('Marika', 'character', 'marika'), ' es similar a la de ', link('Maliketh', 'character', 'maliketh'), ': ligada en sombra como acompañante cosmológica']
     ],
     ambiguous: [
       'Si Melina conserva conciencia tras inmolarse en la pira',
       'Si la "venganza" prometida en el final frenético es amenaza real o duelo cosmológico',
       'Si su sacrificio es destino impuesto o elección plenamente libre',
       'Si su ojo cerrado oculta algo específico (otra alma, otra visión) o sólo simboliza ausencia',
-      'Si Marika la conoce y la ha "enviado" al Tarnished, o si Melina actúa por iniciativa propia bajo instrucciones antiguas'
+      ['Si ', link('Marika', 'character', 'marika'), ' la conoce y la ha "enviado" al ', link('Tarnished', 'concept', 'tarnished'), ', o si Melina actúa por iniciativa propia bajo instrucciones antiguas']
     ],
     beneficiaries:
-      'El Tarnished, sostenido por su acompañamiento. La Voluntad Mayor, gracias a su sacrificio en la quema del árbol. Cualquier final del juego que no sea la Llama Frenética: todos dependen materialmente de su pira.',
+      ['El ', link('Tarnished', 'concept', 'tarnished'), ', sostenido por su acompañamiento. La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ', gracias a su sacrificio en la quema del árbol. Cualquier final del juego que no sea la ', link('Llama Frenética', 'concept', 'frenzied-flame'), ': todos dependen materialmente de su pira.'],
     victims:
-      'Melina misma, autoinmolada por un encargo que ella no eligió completamente. El cosmos del final de la Llama Frenética, donde su venganza se prepara desde la oscuridad. La memoria oficial del Orden Dorado, que jamás la registró.',
+      ['Melina misma, autoinmolada por un encargo que ella no eligió completamente. El cosmos del final de la ', link('Llama Frenética', 'concept', 'frenzied-flame'), ', donde su venganza se prepara desde la oscuridad. La memoria oficial del ', link('Orden Dorado', 'concept', 'golden-order'), ', que jamás la registró.'],
     relatedCharacters: ['marika', 'godfrey', 'hyetta', 'shabriri', 'enia', 'corhyn'],
     relatedFactions: ['orden-dorado', 'fire-giants', 'tres-dedos'],
     relatedRegions: ['leyndell', 'mountaintops'],
@@ -1680,11 +2273,19 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     slug: 'gloam-eyed-queen',
     subtitle: 'Reina Empyrean de la era previa · Custodia de la Llama Negra · Madre olvidada de los Pieles de Dios',
     summary:
-      'La Reina de Ojos Crepusculares fue Empyrean en una era cosmológica anterior al Orden Dorado, cuando la verdadera muerte aún funcionaba en las Tierras Intermedias y la Llama Negra podía consumir incluso a los dioses. Maliketh la derrotó y selló la Muerte Predestinada. Su régimen fue tachado del registro oficial; sus apóstoles, los Pieles de Dios, sobrevivieron en sectas perseguidas que aún recuerdan su nombre.',
+      'La Reina del Ojo Velado fue Empyrean en una era cosmológica anterior al Orden Dorado, cuando la verdadera muerte aún funcionaba en las Tierras Intermedias y la Llama Negra podía consumir incluso a los dioses. Maliketh la derrotó y selló la Muerte Predestinada. Su régimen fue tachado del registro oficial; sus apóstoles, los Pieles de Dios, sobrevivieron en sectas perseguidas que aún recuerdan su nombre.',
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'La Reina es el rastro humano de la era inmediatamente anterior al Orden Dorado. Empyrean ungida por una voluntad cósmica anterior a la Voluntad Mayor — o por la propia Voluntad Mayor, en una iteración previa de su política — gobernó un cosmos donde la ',
+        'La Reina es el rastro humano de la era inmediatamente anterior al ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '. ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' ungida por una voluntad cósmica anterior a la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' — o por la propia ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ', en una iteración previa de su política — gobernó un cosmos donde la ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
         ' aún corría libre y los dioses podían ser asesinados. Su arma teológica era la ',
         link('Llama Negra', 'concept', 'black-flame'),
@@ -1696,35 +2297,87 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Su rol fue triple. Como ',
         em('Empyrean'),
-        ' constituía la vasija humana del régimen anterior, equivalente cosmológica a lo que Marika es hoy. Como ',
+        ' constituía la vasija humana del régimen anterior, equivalente cosmológica a lo que ',
+        link('Marika', 'character', 'marika'),
+        ' es hoy. Como ',
         em('legisladora'),
         ' instituyó leyes en torno a la muerte real — su orden incluía rituales funerarios elaborados, ',
         link('Ghostflame', 'concept', 'ghostflame'),
         ' como llama de cremación, jerarquías sacerdotales hoy fragmentarias. Como ',
         em('contraparte teológica'),
-        ' de cualquier futuro régimen, instaló la Llama Negra como herramienta capaz de matar dioses, lo cual la convertiría eventualmente en amenaza absoluta para Marika.'
+        ' de cualquier futuro régimen, instaló la ',
+        link('Llama Negra', 'concept', 'black-flame'),
+        ' como herramienta capaz de matar dioses, lo cual la convertiría eventualmente en amenaza absoluta para ',
+        link('Marika', 'character', 'marika'),
+        '.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'No se sabe cuándo ascendió al trono Empyrean ni quién la designó. Las inferencias razonables: la Voluntad Mayor (o un dios externo equivalente) la eligió como vasija humana en algún momento posterior a la era de los Antiguos Dragones de ',
+        'No se sabe cuándo ascendió al trono ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' ni quién la designó. Las inferencias razonables: la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' (o un dios externo equivalente) la eligió como vasija humana en algún momento posterior a la era de los Antiguos Dragones de ',
         link('Placidusax', 'character', 'placidusax'),
-        '. Su régimen pudo ser una transición intermedia, no la primera era humana; las cosmologías de las Tierras Intermedias sugieren capas múltiples de civilización antes del Orden Dorado.'
+        '. Su régimen pudo ser una transición intermedia, no la primera era humana; las cosmologías de las Tierras Intermedias sugieren capas múltiples de civilización ',
+        link('antes del Orden Dorado', 'timeline', 'antes-orden-dorado'),
+        '.'
       ),
       p(
-        'Durante su tiempo, la Muerte Predestinada operaba como ley natural: los seres morían cuando les correspondía, sus almas eran procesadas mediante rituales de Ghostflame y Deathbird, y la cosmología no requería sello alguno. La existencia misma de los rituales antiguos de muerte que el juego presenta como anticuados (catacumbas, Ghostflame, Deathbirds gigantes) es la huella material de su orden.'
+        'Durante su tiempo, la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        ' operaba como ley natural: los seres morían cuando les correspondía, sus almas eran procesadas mediante rituales de Ghostflame y Deathbird, y la cosmología no requería sello alguno. La existencia misma de los rituales antiguos de muerte que el juego presenta como anticuados (catacumbas, Ghostflame, Deathbirds gigantes) es la huella material de su orden.'
       ),
       p(
         'Cuando ',
         link('Marika', 'character', 'marika'),
-        ' fue elevada como nueva vasija — sea por la misma Voluntad Mayor en una jugada de sucesión, sea por una entidad rival — la Reina se convirtió en obstáculo. Para iniciar la era dorada, Marika necesitaba sellar la Muerte Predestinada; pero la Reina y sus Pieles de Dios eran sus custodios visibles. La solución fue marcial: ',
+        ' fue elevada como nueva vasija — sea por la misma ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' en una jugada de sucesión, sea por una entidad rival — la Reina se convirtió en obstáculo. Para iniciar la era dorada, ',
+        link('Marika', 'character', 'marika'),
+        ' necesitaba sellar la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        '; pero la Reina y sus ',
+        link('Pieles de Dios', 'faction', 'pieles-de-dios'),
+        ' eran sus custodios visibles. La solución fue marcial: ',
         link('Maliketh', 'character', 'maliketh'),
-        ', Bestia Sombra recién ligada a Marika, fue enviado a derrotarla.'
+        ', ',
+        link('Bestia Sombra', 'concept', 'shadow-bound-beast'),
+        ' recién ligada a ',
+        link('Marika', 'character', 'marika'),
+        ', fue enviado a derrotarla.'
       ),
       p(
-        'Maliketh la venció. La Reina cayó. La Llama Negra, su arma, paradójicamente sobrevivió en parte porque Maliketh mismo la incorporó a su propia Hoja Negra — el arma de Maliketh contiene fragmentos de la llama herética que él mismo había derrotado. Tras la victoria, Marika selló la Muerte Predestinada cosiéndola al alma de Maliketh, y el régimen del Orden Dorado quedó instalado.'
+        link('Maliketh', 'character', 'maliketh'),
+        ' la venció. La Reina cayó. La ',
+        link('Llama Negra', 'concept', 'black-flame'),
+        ', su arma, paradójicamente sobrevivió en parte porque ',
+        link('Maliketh', 'character', 'maliketh'),
+        ' mismo la incorporó a su propia ',
+        link('Hoja Negra', 'concept', 'maliketh-black-blade'),
+        ' — el arma de ',
+        link('Maliketh', 'character', 'maliketh'),
+        ' contiene fragmentos de la llama herética que él mismo había derrotado. Tras la victoria, ',
+        link('Marika', 'character', 'marika'),
+        ' selló la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        ' cosiéndola al alma de ',
+        link('Maliketh', 'character', 'maliketh'),
+        ', y el régimen del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' quedó instalado.'
       ),
       p(
-        'Los Pieles de Dios sobrevivieron como secta perseguida. Sus apóstoles continúan practicando la Llama Negra siglos después. Cada uno conserva — en sus oraciones, en sus rituales, en los textos de sus armas — el nombre de la Reina como recordatorio de un orden anterior. Ni Marika ni los Dos Dedos lograron jamás exterminarlos del todo.'
+        'Los ',
+        link('Pieles de Dios', 'faction', 'pieles-de-dios'),
+        ' sobrevivieron como secta perseguida. Sus apóstoles continúan practicando la ',
+        link('Llama Negra', 'concept', 'black-flame'),
+        ' siglos después. Cada uno conserva — en sus oraciones, en sus rituales, en los textos de sus armas — el nombre de la Reina como recordatorio de un orden anterior. Ni ',
+        link('Marika', 'character', 'marika'),
+        ' ni ',
+        'los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' lograron jamás exterminarlos del todo.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
@@ -1732,12 +2385,18 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         strong('preservación del orden'),
         ' (defendía un cosmos funcional con muerte real); ',
         strong('rebeldía teológica'),
-        ' (la Llama Negra era amenaza activa contra las ambiciones de la Voluntad Mayor); o ',
+        ' (la ',
+        link('Llama Negra', 'concept', 'black-flame'),
+        ' era amenaza activa contra las ambiciones de la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        '); o ',
         strong('inercia divina'),
         ' (era simplemente la vasija de su tiempo, sin política propia más allá de su rol asignado).'
       ),
       p(
-        'Lo que sí es claro es que la dotación de la Llama Negra a sus apóstoles fue acto deliberado, no accidente. Distribuir un arma capaz de matar dioses es una declaración política, no un don casual. La pregunta abierta es contra qué dios estaba prevista esa llama originalmente.'
+        'Lo que sí es claro es que la dotación de la ',
+        link('Llama Negra', 'concept', 'black-flame'),
+        ' a sus apóstoles fue acto deliberado, no accidente. Distribuir un arma capaz de matar dioses es una declaración política, no un don casual. La pregunta abierta es contra qué dios estaba prevista esa llama originalmente.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -1747,27 +2406,43 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Maliketh', 'character', 'maliketh'),
         '. Sus apóstoles supervivientes son los ',
         link('Pieles de Dios', 'faction', 'pieles-de-dios'),
-        '. Su contraparte cosmológica latente — porque comparten el rol de Empyrean — es ',
+        '. Su contraparte cosmológica latente — porque comparten el rol de ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' — es ',
         link('Ranni', 'character', 'ranni'),
         ', cuyo rechazo del régimen actual ecoa el destino que la Reina sufrió.'
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Ascensión como Empyrean del régimen previo.',
-        'Distribución de la Llama Negra a los Pieles de Dios.',
+        ['Ascensión como ', link('Empyrean', 'concept', 'empyrean'), ' del régimen previo.'],
+        ['Distribución de la ', link('Llama Negra', 'concept', 'black-flame'), ' a los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), '.'],
         'Establecimiento de los rituales antiguos de muerte (Ghostflame, Deathbirds).',
-        'Conflicto con Marika ascendente.',
-        'Derrota a manos de Maliketh.',
-        'Sello posterior de la Muerte Predestinada.',
-        'Persecución de los Pieles de Dios por el nuevo régimen.'
+        ['Conflicto con ', link('Marika', 'character', 'marika'), ' ascendente.'],
+        ['Derrota a manos de ', link('Maliketh', 'character', 'maliketh'), '.'],
+        ['Sello posterior de la ', link('Muerte Predestinada', 'concept', 'destined-death'), '.'],
+        ['Persecución de los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), ' por el nuevo régimen.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'Su derrota habilitó el Orden Dorado entero. La Llama Negra absorbida por Maliketh se convirtió en parte de la Hoja Negra: paradoja simbólica de que el arma de la herejía vencida es ahora arma del verdugo. Los Pieles de Dios persisten como recordatorio: ningún orden cosmológico exterminó nunca a sus predecesores del todo. Su mera supervivencia es prueba de que el actual régimen es contingente, no eterno.'
+        'Su derrota habilitó ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' entero. La ',
+        link('Llama Negra', 'concept', 'black-flame'),
+        ' absorbida por ',
+        link('Maliketh', 'character', 'maliketh'),
+        ' se convirtió en parte de la ',
+        link('Hoja Negra', 'concept', 'maliketh-black-blade'),
+        ': paradoja simbólica de que el arma de la herejía vencida es ahora arma del verdugo. ',
+        'Los ',
+        link('Pieles de Dios', 'faction', 'pieles-de-dios'),
+        ' persisten como recordatorio: ningún orden cosmológico exterminó nunca a sus predecesores del todo. Su mera supervivencia es prueba de que el actual régimen es contingente, no eterno.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'La Reina representa la temporalidad de los regímenes cosmológicos. Cada era se considera definitiva mientras dura; cada caída demuestra que no lo era. Su nombre — "Ojos Crepusculares" — es contraparte deliberada de los "Ojos Dorados" de la era posterior (la frase asociada a Godwyn). Donde el oro es alba y consumación, el crepúsculo es transición e incertidumbre. La Reina encarna esa segunda categoría: gobernó en el filo entre épocas y fue devorada por la siguiente.'
+        'La Reina representa la temporalidad de los regímenes cosmológicos. Cada era se considera definitiva mientras dura; cada caída demuestra que no lo era. Su nombre — "Ojos Crepusculares" — es contraparte deliberada de los "Ojos Dorados" de la era posterior (la frase asociada a ',
+        link('Godwyn', 'character', 'godwyn'),
+        '). Donde el oro es alba y consumación, el crepúsculo es transición e incertidumbre. La Reina encarna esa segunda categoría: gobernó en el filo entre épocas y fue devorada por la siguiente.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -1785,37 +2460,37 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Fue Empyrean en una era previa al Orden Dorado',
-      'Otorgó la Llama Negra a los Pieles de Dios',
-      'Fue derrotada por Maliketh antes del sello de la Muerte Predestinada',
-      'Los Pieles de Dios sobreviven como secta perseguida que conserva su nombre y sus rituales',
-      'La Hoja Negra de Maliketh integra fragmentos de la Llama Negra que ella legó'
+      ['Fue ', link('Empyrean', 'concept', 'empyrean'), ' en una era previa al ', link('Orden Dorado', 'concept', 'golden-order')],
+      ['Otorgó la ', link('Llama Negra', 'concept', 'black-flame'), ' a los ', link('Pieles de Dios', 'faction', 'pieles-de-dios')],
+      ['Fue derrotada por ', link('Maliketh', 'character', 'maliketh'), ' antes del sello de la ', link('Muerte Predestinada', 'concept', 'destined-death')],
+      ['Los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), ' sobreviven como secta perseguida que conserva su nombre y sus rituales'],
+      ['La ', link('Hoja Negra de Maliketh', 'concept', 'maliketh-black-blade'), ' integra fragmentos de la ', link('Llama Negra', 'concept', 'black-flame'), ' que ella legó']
     ],
     inferred: [
       'Su régimen tenía leyes funerarias funcionales basadas en Ghostflame y Deathbirds',
-      'La Muerte Predestinada operaba libremente bajo su orden',
-      'Su derrota fue precondición técnica del Orden Dorado',
-      'Su distribución de la Llama Negra fue acto político, no don accidental',
-      'Los Pieles de Dios actuales conservan rituales clandestinos en su nombre'
+      ['La ', link('Muerte Predestinada', 'concept', 'destined-death'), ' operaba libremente bajo su orden'],
+      ['Su derrota fue precondición técnica del ', link('Orden Dorado', 'concept', 'golden-order')],
+      ['Su distribución de la ', link('Llama Negra', 'concept', 'black-flame'), ' fue acto político, no don accidental'],
+      ['Los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), ' actuales conservan rituales clandestinos en su nombre']
     ],
     theories: [
-      'La Reina fue Empyrean de la propia Voluntad Mayor — Marika la sustituyó como nueva vasija dentro del mismo contrato',
-      'Su Llama Negra estaba dirigida originalmente contra los dioses externos rivales, no contra el Orden por venir',
+      ['La Reina fue ', link('Empyrean', 'concept', 'empyrean'), ' de la propia ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' — ', link('Marika', 'character', 'marika'), ' la sustituyó como nueva vasija dentro del mismo contrato'],
+      ['Su ', link('Llama Negra', 'concept', 'black-flame'), ' estaba dirigida originalmente contra los dioses externos rivales, no contra el Orden por venir'],
       'Su nombre "crepuscular" indica que reinó entre dos eras: era ya de transición cuando cayó',
       'Su muerte no fue completa — fragmentos de su voluntad sobreviven en cada apóstol Piel de Dios activo',
       'Los Deathbirds que rondan las Tierras Intermedias actuales son reliquias rituales de su clero, no enemigos olvidados'
     ],
     ambiguous: [
-      'Su nombre verdadero, su forma física exacta, su origen pre-Empyrean',
-      'Si la Llama Negra precede a ella o fue creación específica de su régimen',
+      ['Su nombre verdadero, su forma física exacta, su origen pre-', link('Empyrean', 'concept', 'empyrean')],
+      ['Si la ', link('Llama Negra', 'concept', 'black-flame'), ' precede a ella o fue creación específica de su régimen'],
       'Si fue derrotada en una sola batalla o en una guerra prolongada',
-      'Si Marika dirigió personalmente la operación o sólo aprobó el resultado',
-      'Si la persecución continua de los Pieles de Dios indica que sigue siendo amenaza activa'
+      ['Si ', link('Marika', 'character', 'marika'), ' dirigió personalmente la operación o sólo aprobó el resultado'],
+      ['Si la persecución continua de los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), ' indica que sigue siendo amenaza activa']
     ],
     beneficiaries:
-      'Marika, que pudo instalarse como nueva vasija tras su caída. La Voluntad Mayor, sea como agente activo o pasivo del cambio. Maliketh, que absorbió parte de su llama para forjar la Hoja Negra.',
+      [link('Marika', 'character', 'marika'), ', que pudo instalarse como nueva vasija tras su caída. La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ', sea como agente activo o pasivo del cambio. ', link('Maliketh', 'character', 'maliketh'), ', que absorbió parte de su llama para forjar la ', link('Hoja Negra', 'concept', 'maliketh-black-blade'), '.'],
     victims:
-      'Los Pieles de Dios, perseguidos pero supervivientes. La memoria oficial de la era previa, borrada de los registros del Árbol Áureo. La cosmología funcional de la muerte real, sustituida por la inmortalidad forzada del Orden Dorado.',
+      ['Los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), ', perseguidos pero supervivientes. La memoria oficial de la era previa, borrada de los registros del ', link('Árbol Áureo', 'concept', 'erdtree'), '. La cosmología funcional de la muerte real, sustituida por la inmortalidad forzada del ', link('Orden Dorado', 'concept', 'golden-order'), '.'],
     relatedCharacters: ['maliketh', 'marika', 'placidusax'],
     relatedFactions: ['pieles-de-dios'],
     relatedRegions: ['farum-azula'],
@@ -1856,23 +2531,69 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Su origen exacto en Liurnia no se documenta, pero su prestigio se anuncia desde el principio: era la mayor hechicera viva de las Tierras Intermedias, dominadora de la Magia de la Luna Llena, custodia del Gran Amber Egg cuya función ritual sigue siendo objeto de inferencia. Su título de "Reina de la Luna Llena" no es metáfora literaria: la luna llena de la familia Caria era su signo cosmológico personal, distinto de la luna oscura que su hija Ranni eventualmente forjaría como inversión.'
+        'Su origen exacto en Liurnia no se documenta, pero su prestigio se anuncia desde el principio: era la mayor hechicera viva de las Tierras Intermedias, dominadora de la Magia de la ',
+        link('Luna Llena', 'concept', 'full-moon'),
+        ', custodia del Gran Amber Egg cuya función ritual sigue siendo objeto de inferencia. Su título de "Reina de la ',
+        link('Luna Llena', 'concept', 'full-moon'),
+        '" no es metáfora literaria: la ',
+        link('luna llena', 'concept', 'full-moon'),
+        ' de la familia Caria era su signo cosmológico personal, distinto de ',
+        'la ',
+        link('luna oscura', 'concept', 'dark-moon'),
+        ' que su hija ',
+        link('Ranni', 'character', 'ranni'),
+        ' eventualmente forjaría como inversión.'
       ),
       p(
         'El matrimonio con ',
         link('Radagon', 'character', 'radagon'),
-        ' tras la guerra contra Liurnia fue contrato político: paz a cambio de unión. Pero ambos parecen haberse amado de modo genuino. Sus tres hijos crecieron en la Academia y en el palacio Caria. Ranni — Empyrean designada — heredó la sofisticación intelectual; Radahn la fuerza marcial y la fidelidad al ideal del rey guerrero (sobre todo a Godfrey, su modelo simbólico); Rykard la autoridad institucional que después se convertiría en blasfemia.'
-      ),
-      p(
-        'Cuando Marika llamó a Radagon de regreso a Leyndell — porque Godfrey había sido exiliado y la Voluntad Mayor exigía consorte — Radagon partió. Le dejó como prenda de despedida un Amber Egg, símbolo de los nacimientos divinos. La interpretación más oscura: Radagon ya sabía o sospechaba que volver a Marika implicaba reabsorberse en su otra mitad. El egg era todo lo que quedaba para Rennala.'
-      ),
-      p(
-        'Tras la partida, un académico llamado Lazuli Conspector regresó del más allá con la maldición del Renacimiento. Por compasión o por crueldad, se la entregó a Rennala. Desde entonces Rennala usa esa maldición para "renacer" su propio Amber Egg en bucle infinito, abrazándolo como si fuera un bebé que nunca llega. La función accidental que esto le da — los Tarnished pueden usar a Rennala para reorganizar atributos, "renaciendo" como versiones rediseñadas de sí mismos — es la huella benévola residual de la diosa que fue.'
-      ),
-      p(
-        'En la batalla con el Tarnished, Rennala despliega primero una ilusión protectora: invoca demidioses fantasmales para defender el ritual de renacimiento. Esa ilusión es proyección de su hija ',
+        ' tras la guerra contra Liurnia fue contrato político: paz a cambio de unión. Pero ambos parecen haberse amado de modo genuino. Sus tres hijos crecieron en la Academia y en el palacio Caria. ',
         link('Ranni', 'character', 'ranni'),
-        ', que vela a su madre desde la distancia. Cuando la ilusión cae, Rennala combate sin propósito real — su poder sigue siendo enorme, pero su voluntad ha dejado de ser suya. La derrota le permite al Tarnished reorganizar atributos. Rennala sobrevive físicamente, pero atrapada para siempre en el bucle de su huevo.'
+        ' — ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' designada — heredó la sofisticación intelectual; ',
+        link('Radahn', 'character', 'radahn'),
+        ' la fuerza marcial y la fidelidad al ideal del rey guerrero (sobre todo a ',
+        link('Godfrey', 'character', 'godfrey'),
+        ', su modelo simbólico); ',
+        link('Rykard', 'character', 'rykard'),
+        ' la autoridad institucional que después se convertiría en blasfemia.'
+      ),
+      p(
+        'Cuando ',
+        link('Marika', 'character', 'marika'),
+        ' llamó a ',
+        link('Radagon', 'character', 'radagon'),
+        ' de regreso a Leyndell — porque ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' había sido exiliado y la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' exigía consorte — ',
+        link('Radagon', 'character', 'radagon'),
+        ' partió. Le dejó como prenda de despedida un Amber Egg, símbolo de los nacimientos divinos. La interpretación más oscura: ',
+        link('Radagon', 'character', 'radagon'),
+        ' ya sabía o sospechaba que volver a ',
+        link('Marika', 'character', 'marika'),
+        ' implicaba reabsorberse en su otra mitad. El egg era todo lo que quedaba para Rennala.'
+      ),
+      p(
+        'Tras la partida, un académico llamado Lazuli Conspector regresó del más allá con la maldición del ',
+        link('Renacimiento', 'concept', 'rebirth'),
+        '. Por compasión o por crueldad, se la entregó a Rennala. Desde entonces Rennala usa esa maldición para "renacer" su propio Amber Egg en bucle infinito, abrazándolo como si fuera un bebé que nunca llega. La función accidental que esto le da — ',
+        'los ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' pueden usar a Rennala para reorganizar atributos, "renaciendo" como versiones rediseñadas de sí mismos — es la huella benévola residual de la diosa que fue.'
+      ),
+      p(
+        'En la batalla con el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', Rennala despliega primero una ilusión protectora: invoca demidioses fantasmales para defender el ritual de ',
+        link('renacimiento', 'concept', 'rebirth'),
+        '. Esa ilusión es proyección de su hija ',
+        link('Ranni', 'character', 'ranni'),
+        ', que vela a su madre desde la distancia. Cuando la ilusión cae, Rennala combate sin propósito real — su poder sigue siendo enorme, pero su voluntad ha dejado de ser suya. La derrota le permite al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' reorganizar atributos. Rennala sobrevive físicamente, pero atrapada para siempre en el bucle de su huevo.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
@@ -1889,7 +2610,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         ' (la cuida desde la distancia), ',
         link('Radahn', 'character', 'radahn'),
-        ' (idolatraba a Godfrey), ',
+        ' (idolatraba a ',
+        link('Godfrey', 'character', 'godfrey'),
+        '), ',
         link('Rykard', 'character', 'rykard'),
         ' (rebelde institucional). Su contraparte cosmológica: ',
         link('Marika', 'character', 'marika'),
@@ -1900,23 +2623,55 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Eventos clave', 'eventos'),
       ol(
         'Ascenso como Reina-Maestra de Raya Lucaria.',
-        'Guerra contra Radagon.',
+        ['Guerra contra ', link('Radagon', 'character', 'radagon'), '.'],
         'Matrimonio post-guerra.',
-        'Nacimiento de Ranni, Radahn, Rykard.',
-        'Designación de Ranni como Empyrean.',
-        'Llamada de Radagon a Leyndell.',
+        ['Nacimiento de ', link('Ranni', 'character', 'ranni'), ', ', link('Radahn', 'character', 'radahn'), ', ', link('Rykard', 'character', 'rykard'), '.'],
+        ['Designación de ', link('Ranni', 'character', 'ranni'), ' como ', link('Empyrean', 'concept', 'empyrean'), '.'],
+        ['Llamada de ', link('Radagon', 'character', 'radagon'), ' a Leyndell.'],
         'Despedida y entrega del Amber Egg.',
-        'Aceptación de la maldición del Renacimiento de Lazuli Conspector.',
+        ['Aceptación de la maldición del ', link('Renacimiento', 'concept', 'rebirth'), ' de Lazuli Conspector.'],
         'Caída en el bucle eterno.',
-        'Combate con el Tarnished bajo la ilusión protectora de Ranni.'
+        ['Combate con el ', link('Tarnished', 'concept', 'tarnished'), ' bajo la ilusión protectora de ', link('Ranni', 'character', 'ranni'), '.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'La caída de Rennala dejó a Liurnia sin gobierno efectivo. La Academia pasó a manos de fenómenos arcanos sin gobernanza humana. Sus hijos crecieron sin madre funcional: Ranni canalizó la pena en rebelión cosmológica, Radahn en fidelidad obsesiva al ideal paterno (Godfrey, no Radagon), Rykard en blasfemia institucional. Cada respuesta es legible como reacción al colapso materno. Y, paradójicamente, la maldición del Renacimiento que la encerró en el bucle es lo que ahora permite a los Tarnished rediseñar sus propios atributos: la mayor tragedia personal de las Tierras Intermedias se convirtió en la herramienta más útil para los aspirantes al trono.'
+        'La caída de Rennala dejó a Liurnia sin gobierno efectivo. La Academia pasó a manos de fenómenos arcanos sin gobernanza humana. Sus hijos crecieron sin madre funcional: ',
+        link('Ranni', 'character', 'ranni'),
+        ' canalizó la pena en rebelión cosmológica, ',
+        link('Radahn', 'character', 'radahn'),
+        ' en fidelidad obsesiva al ideal paterno (',
+        link('Godfrey', 'character', 'godfrey'),
+        ', no ',
+        link('Radagon', 'character', 'radagon'),
+        '), ',
+        link('Rykard', 'character', 'rykard'),
+        ' en blasfemia institucional. Cada respuesta es legible como reacción al colapso materno. Y, paradójicamente, la maldición del ',
+        link('Renacimiento', 'concept', 'rebirth'),
+        ' que la encerró en el bucle es lo que ahora permite a ',
+        'los ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' rediseñar sus propios atributos: la mayor tragedia personal de las Tierras Intermedias se convirtió en la herramienta más útil para los aspirantes al trono.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Rennala es la imagen más nítida del costo personal de la cosmología institucional. Marika exigió a Radagon, Radagon obedeció, Rennala quedó destruida. El Orden Dorado funciona porque otros pagan el precio. Su Amber Egg simboliza nacimiento eterno sin parto: la imposibilidad del cierre, el duelo sin etapa final. Su tragedia se opone simétricamente a la de Marika: una madre rompió el cosmos por la pena de un hijo perdido (Marika por Godwyn); otra madre fue rota por el cosmos al perder un esposo (Rennala por Radagon). Las dos historias son la misma estructura desde dos ángulos opuestos.'
+        'Rennala es la imagen más nítida del costo personal de la cosmología institucional. ',
+        link('Marika', 'character', 'marika'),
+        ' exigió a ',
+        link('Radagon', 'character', 'radagon'),
+        ', ',
+        link('Radagon', 'character', 'radagon'),
+        ' obedeció, Rennala quedó destruida. ',
+        'El ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' funciona porque otros pagan el precio. Su Amber Egg simboliza nacimiento eterno sin parto: la imposibilidad del cierre, el duelo sin etapa final. Su tragedia se opone simétricamente a la de ',
+        link('Marika', 'character', 'marika'),
+        ': una madre rompió el cosmos por la pena de un hijo perdido (',
+        link('Marika', 'character', 'marika'),
+        ' por ',
+        link('Godwyn', 'character', 'godwyn'),
+        '); otra madre fue rota por el cosmos al perder un esposo (Rennala por ',
+        link('Radagon', 'character', 'radagon'),
+        '). Las dos historias son la misma estructura desde dos ángulos opuestos.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -1930,40 +2685,42 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Luna Llena', 'concept', 'full-moon'),
         ' como su signo cosmológico. De la ',
         link('Luna Oscura', 'concept', 'dark-moon'),
-        ' de Ranni como inversión filial directa.'
+        ' de ',
+        link('Ranni', 'character', 'ranni'),
+        ' como inversión filial directa.'
       )
     ],
     confirmed: [
       'Rennala fue Gran Maestra de Raya Lucaria y reina del clan Caria',
-      'Tuvo tres hijos con Radagon: Ranni, Radahn y Rykard',
-      'Radagon le dejó el Amber Egg como prenda de despedida',
-      'Aceptó la maldición del Renacimiento entregada por Lazuli Conspector',
-      'Permite a los Tarnished reorganizar atributos mediante el ritual del renacimiento',
-      'Ranni protege a su madre desde la distancia con una ilusión durante el combate'
+      ['Tuvo tres hijos con ', link('Radagon', 'character', 'radagon'), ': ', link('Ranni', 'character', 'ranni'), ', ', link('Radahn', 'character', 'radahn'), ' y ', link('Rykard', 'character', 'rykard')],
+      [link('Radagon', 'character', 'radagon'), ' le dejó el Amber Egg como prenda de despedida'],
+      ['Aceptó la maldición del ', link('Renacimiento', 'concept', 'rebirth'), ' entregada por Lazuli Conspector'],
+      ['Permite a los ', link('Tarnished', 'concept', 'tarnished'), ' reorganizar atributos mediante el ritual del ', link('renacimiento', 'concept', 'rebirth')],
+      [link('Ranni', 'character', 'ranni'), ' protege a su madre desde la distancia con una ilusión durante el combate']
     ],
     inferred: [
       'Su regresión es escudo psicológico activo, no demencia involuntaria',
-      'Aún ama a Radagon a pesar de saber (o intuir) que él se fusionó con Marika',
+      ['Aún ama a ', link('Radagon', 'character', 'radagon'), ' a pesar de saber (o intuir) que él se fusionó con ', link('Marika', 'character', 'marika')],
       'Sus hijos arrastran cicatrices de su parálisis: cada uno respondió de modo distinto al colapso',
-      'La luna llena de Caria es contraparte cosmológica directa de la luna oscura de Ranni',
+      ['La ', link('luna llena', 'concept', 'full-moon'), ' de Caria es contraparte cosmológica directa de la ', link('luna oscura', 'concept', 'dark-moon'), ' de ', link('Ranni', 'character', 'ranni')],
       'Lazuli Conspector le entregó la maldición por compasión, no por malicia'
     ],
     theories: [
       'Rennala conserva conciencia plena durante el bucle pero rechaza activamente salir',
       'El Amber Egg contiene un poder cosmológico real que ella ha decidido no usar como represalia',
-      'Si saliera del bucle, podría disputar la sucesión Empyrean junto a Ranni',
-      'La maldición del Renacimiento es modificación deliberada de la magia Caria — no fue accidente que llegara precisamente a sus manos',
-      'Su luna llena fue la primera magia académica de Liurnia; las demás líneas (Glintstone, Cuckoo, Carian) son derivaciones de su trabajo original'
+      ['Si saliera del bucle, podría disputar la sucesión ', link('Empyrean', 'concept', 'empyrean'), ' junto a ', link('Ranni', 'character', 'ranni')],
+      ['La maldición del ', link('Renacimiento', 'concept', 'rebirth'), ' es modificación deliberada de la magia Caria — no fue accidente que llegara precisamente a sus manos'],
+      ['Su ', link('luna llena', 'concept', 'full-moon'), ' fue la primera magia académica de Liurnia; las demás líneas (', link('Glintstone', 'concept', 'glintstone'), ', Cuckoo, Carian) son derivaciones de su trabajo original']
     ],
     ambiguous: [
       'Si conserva conciencia plena durante el bucle del Amber Egg',
-      'Si conoció el destino Empyrean de su hija Ranni y lo aprobó o lo rechazó',
-      'Si la ilusión protectora de Ranni durante el combate la consultó o se impuso sin su consentimiento',
-      'Si su título de Reina de la Luna Llena la liga a algún dios externo lunar específico',
+      ['Si conoció el destino ', link('Empyrean', 'concept', 'empyrean'), ' de su hija ', link('Ranni', 'character', 'ranni'), ' y lo aprobó o lo rechazó'],
+      ['Si la ilusión protectora de ', link('Ranni', 'character', 'ranni'), ' durante el combate la consultó o se impuso sin su consentimiento'],
+      ['Si su título de Reina de la ', link('Luna Llena', 'concept', 'full-moon'), ' la liga a algún dios externo lunar específico'],
       'Cuál es exactamente el contenido del Amber Egg — embrión real, símbolo, vehículo cosmológico latente'
     ],
     beneficiaries:
-      'Los Tarnished, que pueden reorganizar atributos a través de su ritual residual. Ranni, que aprovecha la incapacitación de su madre como cobertura emocional para sus propias operaciones. La Academia, que sin gobernanza humana se ha convertido en organismo arcano semiautónomo.',
+      ['Los ', link('Tarnished', 'concept', 'tarnished'), ', que pueden reorganizar atributos a través de su ritual residual. ', link('Ranni', 'character', 'ranni'), ', que aprovecha la incapacitación de su madre como cobertura emocional para sus propias operaciones. La Academia, que sin gobernanza humana se ha convertido en organismo arcano semiautónomo.'],
     victims:
       'Sus tres hijos, criados en la sombra de un duelo permanente. Ella misma, atrapada en el momento del abandono. Liurnia entera, sin gobierno efectivo. Y los académicos que aún la veneraban como Gran Maestra y han perdido referencia ritual.',
     relatedCharacters: ['radagon', 'ranni', 'radahn', 'rykard', 'marika', 'sellen'],
@@ -1982,7 +2739,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Radahn es la figura más trágicamente grande de las Tierras Intermedias post-fractura. Fue invicto durante toda su carrera militar, dominaba magia gravitacional aprendida de Sellen, e idolatraba a Godfrey hasta el punto de cabalgar sobre un caballo decididamente demasiado pequeño para su masa — Leonard, su corcel — porque Godfrey había cabalgado de forma similar en su tiempo. Esa fidelidad simbólica define todo su carácter: el guerrero perfecto que escogió el ridículo cosmológico antes que abandonar el modelo del rey guerrero ancestral.'
+        'Radahn es la figura más trágicamente grande de las Tierras Intermedias post-fractura. Fue invicto durante toda su carrera militar, dominaba ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        ' aprendida de Sellen, e idolatraba a ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' hasta el punto de cabalgar sobre un caballo decididamente demasiado pequeño para su masa — Leonard, su corcel — porque ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' había cabalgado de forma similar en su tiempo. Esa fidelidad simbólica define todo su carácter: el guerrero perfecto que escogió el ridículo cosmológico antes que abandonar el modelo del rey guerrero ancestral.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
@@ -2006,45 +2769,93 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         em('víctima'),
         ' del duelo con ',
         link('Malenia', 'character', 'malenia'),
-        ' se convirtió en la primera baja honorífica de la Podredumbre Escarlata.'
+        ' se convirtió en la primera baja honorífica de la ',
+        link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
+        '.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
         'Su infancia transcurrió en ',
         link('Raya Lucaria', 'region', 'raya-lucaria'),
-        ' bajo tutela académica. Aprendió magia gravitacional de Sorceress ',
+        ' bajo tutela académica. Aprendió ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        ' de ',
+        link('Sorceress', 'character', 'sellen'),
+        ' ',
         link('Sellen', 'character', 'sellen'),
-        ' antes de que ella fuera excomulgada. Esa magia se convertiría en su técnica distintiva: tirar del campo gravitacional para detener proyectiles, sostener su propia armadura colosal, y — el acto cosmológico más conocido — bloquear el movimiento de las estrellas en el cielo de Caelid.'
+        ' antes de que ella fuera excomulgada. Esa magia se convertiría en su técnica distintiva: tirar del campo gravitacional para detener proyectiles, sostener su propia armadura colosal, y — el acto cosmológico más conocido — bloquear el movimiento de las estrellas en el cielo de ',
+        link('Caelid', 'region', 'caelid'),
+        '.'
       ),
       p(
-        'El bloqueo estelar fue acto deliberado contra su hermana Ranni. Las estrellas que Radahn detuvo eran exactamente las que la designación Empyrean de Ranni necesitaba para acelerar su destino. Los textos del juego no aclaran si Radahn supo desde el principio el efecto cosmológico que generaba o si simplemente bloqueó las estrellas como gesto de afecto a su hermana, evitando que la astronomía la arrastrase hacia un fin que él consideraba peligroso. La interpretación más sostenible: Radahn quería a Ranni y, sabiendo que el destino estelar la encadenaría al rol Empyrean, decidió posponerlo cosmológicamente. Su acto fue protección, aunque ella eventualmente lo rechazara.'
+        'El bloqueo estelar fue acto deliberado contra su hermana ',
+        link('Ranni', 'character', 'ranni'),
+        '. Las estrellas que Radahn detuvo eran exactamente las que la designación ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' de ',
+        link('Ranni', 'character', 'ranni'),
+        ' necesitaba para acelerar su destino. Los textos del juego no aclaran si Radahn supo desde el principio el efecto cosmológico que generaba o si simplemente bloqueó las estrellas como gesto de afecto a su hermana, evitando que la astronomía la arrastrase hacia un fin que él consideraba peligroso. La interpretación más sostenible: Radahn quería a ',
+        link('Ranni', 'character', 'ranni'),
+        ' y, sabiendo que el destino estelar la encadenaría al rol ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ', decidió posponerlo cosmológicamente. Su acto fue protección, aunque ella eventualmente lo rechazara.'
       ),
       p(
-        'Tras la fractura del Anillo Elden, Radahn lideró la Guerra del Shattering como uno de los demidioses más poderosos. Su rivalidad favorita era con su hermana adoptiva ',
+        'Tras ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ' del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ', Radahn lideró ',
+        'la ',
+        link('Guerra del Shattering', 'timeline', 'shattering-war'),
+        ' como uno de los demidioses más poderosos. Su rivalidad favorita era con su hermana adoptiva ',
         link('Malenia', 'character', 'malenia'),
-        ', Espada de Miquella, otra guerrera invicta de estilo radicalmente distinto: ella prefería el combate cuerpo a cuerpo, él el campo abierto con magia gravitacional. La ',
+        ', Espada de ',
+        link('Miquella', 'character', 'miquella'),
+        ', otra guerrera invicta de estilo radicalmente distinto: ella prefería el combate cuerpo a cuerpo, él el campo abierto con ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        '. La ',
         link('Batalla de Aeonia', 'timeline', 'batalla-aeonia'),
-        ' los enfrentó. Cuando Malenia comprendió que no podría vencerlo marcialmente, desató su Floración Escarlata — la primera real. ',
+        ' los enfrentó. Cuando ',
+        link('Malenia', 'character', 'malenia'),
+        ' comprendió que no podría vencerlo marcialmente, desató su Floración Escarlata — la primera real. ',
         link('Caelid', 'region', 'caelid'),
         ' entero quedó cubierto de ',
         link('podredumbre', 'concept', 'scarlet-rot'),
-        '. Radahn fue infectado de modo terminal pero su honor le impidió rendirse a la corrupción. La podredumbre devoró su mente sin matar su cuerpo: quedó como bestia honorable, montado eternamente sobre Leonard, vagando por la costa carmesí de Caelid blandiendo espadas gigantes contra cualquiera que pasase.'
+        '. Radahn fue infectado de modo terminal pero su honor le impidió rendirse a la corrupción. La podredumbre devoró su mente sin matar su cuerpo: quedó como bestia honorable, montado eternamente sobre Leonard, vagando por la costa carmesí de ',
+        link('Caelid', 'region', 'caelid'),
+        ' blandiendo espadas gigantes contra cualquiera que pasase.'
       ),
       p(
         'Sus seguidores Redmanes, encabezados por ',
         link('Jerren', 'character', 'jerren'),
         ', diseñaron el ',
         link('Festival', 'timeline', 'festival-radahn'),
-        ' como solución ritual. Invitar a guerreros legendarios a derrotarlo permite tres cosas simultáneamente: 1) liberarlo de su cuerpo arruinado, 2) devolverle la dignidad de morir en combate y no por envenenamiento crónico, 3) restaurar el flujo de las estrellas que él había bloqueado — lo cual paradójicamente cumple el destino que él intentó proteger a Ranni de cumplir.'
+        ' como solución ritual. Invitar a guerreros legendarios a derrotarlo permite tres cosas simultáneamente: 1) liberarlo de su cuerpo arruinado, 2) devolverle la dignidad de morir en combate y no por envenenamiento crónico, 3) restaurar el flujo de las estrellas que él había bloqueado — lo cual paradójicamente cumple el destino que él intentó proteger a ',
+        link('Ranni', 'character', 'ranni'),
+        ' de cumplir.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
         'Las motivaciones de Radahn son claras y trágicas. Quería ser ',
         em('como Godfrey'),
-        ': rey guerrero ideal, fidelidad marcial absoluta, modelo eterno del Señor Elden. Idolatraba el modelo paterno-ancestral, no a su padre biológico Radagon (cuya fusión con Marika probablemente le repugnaba en silencio). Su Leonard, demasiado pequeño para su masa, es tributo deliberado: Godfrey había cabalgado pequeño, Radahn cabalga pequeño aún a costa del ridículo.'
+        ': rey guerrero ideal, fidelidad marcial absoluta, modelo eterno del Señor Elden. Idolatraba el modelo paterno-ancestral, no a su padre biológico ',
+        link('Radagon', 'character', 'radagon'),
+        ' (cuya fusión con ',
+        link('Marika', 'character', 'marika'),
+        ' probablemente le repugnaba en silencio). Su Leonard, demasiado pequeño para su masa, es tributo deliberado: ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' había cabalgado pequeño, Radahn cabalga pequeño aún a costa del ridículo.'
       ),
       p(
-        'Su segunda motivación: proteger a Ranni. Detener las estrellas era, leído así, gesto fraterno tardío. Bloquear el cielo era posponer el destino que la atrapaba. Que Ranni después rechazara esa protección — eligiendo asesinar su propio cuerpo Empyrean — no invalida el motivo de Radahn: él hizo lo que pensó que era amor.'
+        'Su segunda motivación: proteger a ',
+        link('Ranni', 'character', 'ranni'),
+        '. Detener las estrellas era, leído así, gesto fraterno tardío. Bloquear el cielo era posponer el destino que la atrapaba. Que ',
+        link('Ranni', 'character', 'ranni'),
+        ' después rechazara esa protección — eligiendo asesinar su propio cuerpo ',
+        link('Empyrean', 'concept', 'empyrean'),
+        ' — no invalida el motivo de Radahn: él hizo lo que pensó que era amor.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -2058,7 +2869,10 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Rennala', 'character', 'rennala'),
         '. Su padre/madre fusionado: ',
         link('Radagon', 'character', 'radagon'),
-        '. Sus seguidores: los Redmanes, encabezados por ',
+        '. Sus seguidores: ',
+        'los ',
+        link('Redmanes', 'faction', 'redmanes'),
+        ', encabezados por ',
         link('Jerren', 'character', 'jerren'),
         '. Su maestra arcana: ',
         link('Sellen', 'character', 'sellen'),
@@ -2066,26 +2880,40 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Aprendizaje de magia gravitacional con Sellen.',
-        'Ascenso como General de los Redmanes.',
+        ['Aprendizaje de ', link('magia gravitacional', 'concept', 'gravity-magic'), ' con Sellen.'],
+        ['Ascenso como General de los ', link('Redmanes', 'faction', 'redmanes'), '.'],
         'Bloqueo cosmológico de las estrellas.',
         'Guerra del Shattering.',
-        'Rivalidad sostenida con Malenia.',
+        ['Rivalidad sostenida con ', link('Malenia', 'character', 'malenia'), '.'],
         'Batalla de Aeonia.',
-        'Floración Escarlata sobre Caelid.',
+        ['Floración Escarlata sobre ', link('Caelid', 'region', 'caelid'), '.'],
         'Corrupción de su mente.',
         'Estado de bestia honorable demente.',
-        'Diseño del Festival por Jerren y los Redmanes.',
-        'Derrota ritual ante el Tarnished.',
-        'Liberación final de las estrellas, lo que reactiva el destino de Ranni.'
+        ['Diseño del Festival por ', link('Jerren', 'character', 'jerren'), ' y los ', link('Redmanes', 'faction', 'redmanes'), '.'],
+        ['Derrota ritual ante el ', link('Tarnished', 'concept', 'tarnished'), '.'],
+        ['Liberación final de las estrellas, lo que reactiva el destino de ', link('Ranni', 'character', 'ranni'), '.']
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'La carrera de Radahn definió el equilibrio cosmológico post-fractura. Mientras él bloqueó las estrellas, Ranni no pudo consolidar la Era de las Estrellas. Cuando cae, las estrellas se mueven — y la quest de Ranni se vuelve completable. Radahn es, así, el guardián involuntario del régimen actual: protegiendo a su hermana, mantuvo intacta la cosmología dorada. Su Gran Runa pasa al Tarnished tras el Festival. Caelid permanece arrasado: la podredumbre desatada por la Floración no se revierte con la muerte de Radahn — solo se calma.'
+        'La carrera de Radahn definió el equilibrio cosmológico post-fractura. Mientras él bloqueó las estrellas, ',
+        link('Ranni', 'character', 'ranni'),
+        ' no pudo consolidar la ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        '. Cuando cae, las estrellas se mueven — y la quest de ',
+        link('Ranni', 'character', 'ranni'),
+        ' se vuelve completable. Radahn es, así, el guardián involuntario del régimen actual: protegiendo a su hermana, mantuvo intacta la cosmología dorada. Su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' pasa al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' tras el Festival. ',
+        link('Caelid', 'region', 'caelid'),
+        ' permanece arrasado: la podredumbre desatada por la Floración no se revierte con la muerte de Radahn — solo se calma.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Radahn encarna la fuerza honorable arruinada por una guerra que él no entendió del todo. Su cuerpo masivo cabalgando un caballo demasiado pequeño es la imagen más reveladora de las Tierras Intermedias: la fidelidad al ideal antiguo, sostenida hasta el ridículo cósmico, sin abandonar nunca la postura. Su silencio durante la batalla con el Tarnished — Radahn ya no habla, sólo embiste con honor mecánico — es la prueba de que la podredumbre devoró su mente sin tocar su disciplina marcial. Es la marcialidad sin sujeto: un cuerpo que sigue ejecutando códigos cuando el ejecutor ya se ha ido.'
+        'Radahn encarna la fuerza honorable arruinada por una guerra que él no entendió del todo. Su cuerpo masivo cabalgando un caballo demasiado pequeño es la imagen más reveladora de las Tierras Intermedias: la fidelidad al ideal antiguo, sostenida hasta el ridículo cósmico, sin abandonar nunca la postura. Su silencio durante la batalla con el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' — Radahn ya no habla, sólo embiste con honor mecánico — es la prueba de que la podredumbre devoró su mente sin tocar su disciplina marcial. Es la marcialidad sin sujeto: un cuerpo que sigue ejecutando códigos cuando el ejecutor ya se ha ido.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -2105,38 +2933,38 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Radahn es hijo de Radagon y Rennala',
-      'Aprendió magia gravitacional de Sorceress Sellen',
-      'Bloqueó las estrellas con su gravedad para impedir el destino de Ranni',
-      'Su corcel Leonard es deliberadamente pequeño en imitación de Godfrey',
-      'Lideraba a los Redmanes desde Caelid',
+      ['Radahn es hijo de ', link('Radagon', 'character', 'radagon'), ' y ', link('Rennala', 'character', 'rennala')],
+      ['Aprendió ', link('magia gravitacional', 'concept', 'gravity-magic'), ' de ', link('Sorceress Sellen', 'character', 'sellen')],
+      ['Bloqueó las estrellas con su gravedad para impedir el destino de ', link('Ranni', 'character', 'ranni')],
+      ['Su corcel Leonard es deliberadamente pequeño en imitación de ', link('Godfrey', 'character', 'godfrey')],
+      ['Lideraba a los ', link('Redmanes', 'faction', 'redmanes'), ' desde ', link('Caelid', 'region', 'caelid')],
       'Fue corrompido por Scarlet Rot durante la Batalla de Aeonia',
-      'El Festival es el ritual de eutanasia honorífica diseñado por Jerren',
+      ['El Festival es el ritual de eutanasia honorífica diseñado por ', link('Jerren', 'character', 'jerren')],
       'Su muerte libera las estrellas que él bloqueaba'
     ],
     inferred: [
-      'Su rivalidad con Malenia era de mutuo respeto, no odio',
-      'El bloqueo de las estrellas fue gesto de protección a Ranni, no rivalidad',
+      ['Su rivalidad con ', link('Malenia', 'character', 'malenia'), ' era de mutuo respeto, no odio'],
+      ['El bloqueo de las estrellas fue gesto de protección a ', link('Ranni', 'character', 'ranni'), ', no rivalidad'],
       'Su honor le impide rendirse a la corrupción, prolongando su sufrimiento',
-      'Idolatraba a Godfrey por encima de su padre biológico Radagon',
+      ['Idolatraba a ', link('Godfrey', 'character', 'godfrey'), ' por encima de su padre biológico ', link('Radagon', 'character', 'radagon')],
       'Conserva la disciplina marcial incluso cuando ha perdido la mente'
     ],
     theories: [
-      'Radahn supo durante la batalla que Malenia liberaría la podredumbre y aceptó el riesgo',
-      'Su Gran Runa contiene encaje específico para magia gravitacional — manipularla puede afectar las estrellas literalmente',
-      'Su devoción a Godfrey era forma encubierta de rebelión contra Radagon: idolatraba al padre que el régimen había desechado',
-      'La Floración Escarlata sobre Caelid era inevitable cosmológicamente — Malenia no decidió, ejecutó'
+      ['Radahn supo durante la batalla que ', link('Malenia', 'character', 'malenia'), ' liberaría la podredumbre y aceptó el riesgo'],
+      ['Su ', link('Gran Runa', 'concept', 'great-rune'), ' contiene encaje específico para ', link('magia gravitacional', 'concept', 'gravity-magic'), ' — manipularla puede afectar las estrellas literalmente'],
+      ['Su devoción a ', link('Godfrey', 'character', 'godfrey'), ' era forma encubierta de rebelión contra ', link('Radagon', 'character', 'radagon'), ': idolatraba al padre que el régimen había desechado'],
+      ['La Floración Escarlata sobre ', link('Caelid', 'region', 'caelid'), ' era inevitable cosmológicamente — ', link('Malenia', 'character', 'malenia'), ' no decidió, ejecutó']
     ],
     ambiguous: [
-      'Si Radahn supo durante la batalla que Malenia liberaría la podredumbre',
+      ['Si Radahn supo durante la batalla que ', link('Malenia', 'character', 'malenia'), ' liberaría la podredumbre'],
       'Cuánta consciencia conserva durante el Festival',
       'Si la liberación de las estrellas tras su muerte fue casualidad o liberación deliberada',
-      'Si su admiración por Godfrey llegó al punto de saber que Godfrey regresaría como espectro'
+      ['Si su admiración por ', link('Godfrey', 'character', 'godfrey'), ' llegó al punto de saber que ', link('Godfrey', 'character', 'godfrey'), ' regresaría como espectro']
     ],
     beneficiaries:
-      'Ranni: con la muerte de Radahn, las estrellas vuelven a moverse, abriendo el camino a la Era de las Estrellas. El Tarnished: obtiene una Gran Runa. Los Redmanes: cumplen su deber ritual de devolver dignidad a su general.',
+      [link('Ranni', 'character', 'ranni'), ': con la muerte de Radahn, las estrellas vuelven a moverse, abriendo el camino a la ', link('Era de las Estrellas', 'concept', 'age-of-stars'), '. El ', link('Tarnished', 'concept', 'tarnished'), ': obtiene una ', link('Gran Runa', 'concept', 'great-rune'), '. Los ', link('Redmanes', 'faction', 'redmanes'), ': cumplen su deber ritual de devolver dignidad a su general.'],
     victims:
-      'Caelid entero, convertido en yermo. Sus Redmanes, condenados a guerrear sobre tierra muerta. Malenia, mutilada por la Floración que ella misma desató. Su propia honra, sometida a la indignidad del cuerpo arruinado. Y Radahn mismo, atrapado en el residuo marcial sin sujeto.',
+      [link('Caelid', 'region', 'caelid'), ' entero, convertido en yermo. Sus Redmanes, condenados a guerrear sobre tierra muerta. ', link('Malenia', 'character', 'malenia'), ', mutilada por la Floración que ella misma desató. Su propia honra, sometida a la indignidad del cuerpo arruinado. Y Radahn mismo, atrapado en el residuo marcial sin sujeto.'],
     relatedCharacters: ['rennala', 'radagon', 'ranni', 'rykard', 'malenia', 'sellen', 'jerren', 'alexander', 'godfrey'],
     relatedFactions: ['redmanes', 'raya-lucaria'],
     relatedRegions: ['caelid', 'redmane-castle', 'sellia'],
@@ -2154,13 +2982,34 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Rykard es la versión inversa de su hermana Ranni. Ambos rechazaron el Orden Dorado tras la fractura, pero donde Ranni lo desinstaló cosmológicamente — alejando los dioses — Rykard lo combatió desde dentro pactando con un dios anterior. Su solución a la opresión cosmológica del Orden Dorado fue invocar una blasfemia más antigua aún: la serpiente-dios ',
+        'Rykard es la versión inversa de su hermana ',
+        link('Ranni', 'character', 'ranni'),
+        '. Ambos rechazaron ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' tras ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ', pero donde ',
+        link('Ranni', 'character', 'ranni'),
+        ' lo desinstaló cosmológicamente — alejando los dioses — Rykard lo combatió desde dentro pactando con un dios anterior. Su solución a la opresión cosmológica del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' fue invocar una blasfemia más antigua aún: la serpiente-dios ',
         em('Eiglay'),
-        ', entidad pre-Orden, hostil al Árbol Áureo, capaz de devorar dioses.'
+        ', entidad pre-Orden, hostil al ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ', capaz de devorar dioses.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
-        'Su rol original fue institucional. Era noble respetado del Orden Dorado, posiblemente inquisidor — los textos de su Gran Runa hablan de su autoridad sobre la disidencia interna, sugiriendo función equivalente a praetor. Tras la fractura, su corte alternativa en el ',
+        'Su rol original fue institucional. Era noble respetado del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ', posiblemente inquisidor — los textos de su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' hablan de su autoridad sobre la disidencia interna, sugiriendo función equivalente a praetor. Tras ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ', su corte alternativa en el ',
         link('Volcano Manor', 'region', 'volcano-manor'),
         ' funciona como centro político de los nobles desafectos del régimen oficial: aristócratas que perdieron poder con el colapso, hechiceros excomulgados, soldados deshonrados. Su misionera oficial es Lady ',
         link('Tanith', 'character', 'tanith'),
@@ -2175,38 +3024,66 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         ' como contrapeso institucional a Leyndell. Sus primeras décadas como demidiós fueron las de un reformista respetable. Mantenía relaciones diplomáticas con la Academia, con la familia Caria, con los nobles de Altus. Aún era hijo legítimo del régimen.'
       ),
       p(
-        'Tras la fractura, su decepción se convirtió en filosofía activa. La rotura del Anillo Elden por parte de Marika fue, para Rykard, prueba de que el Orden Dorado se contradecía a sí mismo. Si la propia diosa había roto su propio orden, entonces el orden no era sagrado — era simplemente una imposición. Su lectura era válida; su solución, catastrófica.'
+        'Tras ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ', su decepción se convirtió en filosofía activa. La rotura del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' por parte de ',
+        link('Marika', 'character', 'marika'),
+        ' fue, para Rykard, prueba de que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' se contradecía a sí mismo. Si la propia diosa había roto su propio orden, entonces el orden no era sagrado — era simplemente una imposición. Su lectura era válida; su solución, catastrófica.'
       ),
       p(
-        'Bajo el Volcano Manor habitaba una entidad muy anterior al Orden Dorado: ',
+        'Bajo el Volcano Manor habitaba una entidad muy anterior al ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ': ',
         em('Eiglay'),
         ', la Serpiente-Dios devoradora. Su origen es opaco. Las inferencias razonables: era una manifestación física del ',
         link('Crisol primigenio', 'concept', 'crucible'),
         ' que sobrevivió a la purga del Orden, o una entidad ',
         link('Antigua Dragón', 'faction', 'dragones-antiguos'),
-        ' degenerada en serpiente-dragón, o una entidad cosmológica autónoma de origen desconocido. Lo que es indudable: era hostil al Árbol Áureo y capaz de digerir dioses.'
+        ' degenerada en serpiente-dragón, o una entidad cosmológica autónoma de origen desconocido. Lo que es indudable: era hostil al ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' y capaz de digerir dioses.'
       ),
       p(
-        'Rykard descendió al santuario subterráneo del Volcano Manor y permitió que la serpiente lo devorara. La fusión que resultó es físicamente monstruosa: cabeza humana en cuello de hombre saliendo del cuerpo descomunal de la serpiente, todo bañado en magma y carne fundida. Conservó memoria, voluntad y autoridad — pero su cuerpo es ahora indistinguible del de Eiglay. La frontera entre el demidiós y el dios devorador se ha disuelto.'
+        'Rykard descendió al santuario subterráneo del Volcano Manor y permitió que la serpiente lo devorara. La fusión que resultó es físicamente monstruosa: cabeza humana en cuello de hombre saliendo del cuerpo descomunal de la serpiente, todo bañado en ',
+        link('magma', 'character', 'magma-wyrm-makar'),
+        ' y carne fundida. Conservó memoria, voluntad y autoridad — pero su cuerpo es ahora indistinguible del de Eiglay. La frontera entre el demidiós y el dios devorador se ha disuelto.'
       ),
       p(
         'Desde esa fusión, opera una secta llamada los ',
         em('Recusantes'),
-        ': nobles desafectos invitados al Volcano Manor para servir cazas rituales contra el Orden Dorado. Las cartas que ',
+        ': nobles desafectos invitados al Volcano Manor para servir cazas rituales contra ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        '. Las cartas que ',
         link('Tanith', 'character', 'tanith'),
         ' envía son misiones de asesinato disfrazadas de rituales aristocráticos. Cada blanco eliminado alimenta al régimen sangriento alternativo. Su tridente característico — el "Devoraadios" — promete justicia cósmica y entrega solamente digestión.'
       ),
       p(
-        'Cuando el Tarnished lo enfrenta, Rykard sigue hablando, sigue prometiendo justicia, sigue ofreciendo "comer al dios" mediante el tridente. Tras su derrota, ',
+        'Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo enfrenta, Rykard sigue hablando, sigue prometiendo justicia, sigue ofreciendo "comer al dios" mediante el tridente. Tras su derrota, ',
         link('Tanith', 'character', 'tanith'),
         ' devora su cadáver en un acto de comunión que es simultáneamente devoción canibalesca y preservación: si Rykard ahora vive dentro de ella, ella se ha convertido en su nueva sede.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Las motivaciones de Rykard son filosóficamente articuladas. Cree genuinamente que el Orden Dorado no es sagrado sino impuesto, y que cualquier régimen alternativo, por sangriento que sea, es preferible a continuar bajo la mentira del oro. Su tridente "Devoraadios" no es metáfora: literalmente busca devorar a los dioses para recuperar los espacios cosmológicos que ellos ocupan. Es revolución teológica con dientes.'
+        'Las motivaciones de Rykard son filosóficamente articuladas. Cree genuinamente que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' no es sagrado sino impuesto, y que cualquier régimen alternativo, por sangriento que sea, es preferible a continuar bajo la mentira del oro. Su tridente "Devoraadios" no es metáfora: literalmente busca devorar a los dioses para recuperar los espacios cosmológicos que ellos ocupan. Es revolución teológica con dientes.'
       ),
       p(
-        'El problema con Rykard es estructural, no filosófico. Para combatir la opresión cosmológica del Orden Dorado, se entregó a una entidad pre-Orden que opera con la misma lógica: imponer una ley absoluta a través de un consorte humano. Eiglay y Marika usan el mismo método: instalar voluntad divina en cuerpo humano para legislar sobre el cosmos. Rykard repite el crimen original que pretendía superar.'
+        'El problema con Rykard es estructural, no filosófico. Para combatir la opresión cosmológica del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ', se entregó a una entidad pre-Orden que opera con la misma lógica: imponer una ley absoluta a través de un consorte humano. Eiglay y ',
+        link('Marika', 'character', 'marika'),
+        ' usan el mismo método: instalar voluntad divina en cuerpo humano para legislar sobre el cosmos. Rykard repite el crimen original que pretendía superar.'
       ),
       h(2, 'Relaciones importantes', 'relaciones'),
       p(
@@ -2230,22 +3107,31 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Carrera institucional como noble del Orden Dorado.',
+        ['Carrera institucional como noble del ', link('Orden Dorado', 'concept', 'golden-order'), '.'],
         'Primer matrimonio con Tanith.',
         'Construcción del Volcano Manor como corte alternativa.',
-        'Fractura del Anillo Elden por Marika.',
+        ['Fractura del ', link('Anillo Elden', 'concept', 'elden-ring'), ' por ', link('Marika', 'character', 'marika'), '.'],
         'Decepción filosófica.',
         'Descubrimiento de Eiglay bajo el manor.',
         'Devoración voluntaria.',
         'Fusión con la serpiente-dios.',
         'Establecimiento de la secta de los Recusantes.',
-        'Cazas rituales contra el Orden Dorado.',
-        'Lucha final contra el Tarnished.',
+        ['Cazas rituales contra el ', link('Orden Dorado', 'faction', 'orden-dorado'), '.'],
+        ['Lucha final contra el ', link('Tarnished', 'concept', 'tarnished'), '.'],
         'Devoración de su cadáver por Tanith.'
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'La existencia del régimen sangriento de Rykard documenta dos cosas estructurales. Primero: el Orden Dorado no es cosmología única sino dominante — entidades pre-Orden sobreviven en sus márgenes y pueden ser invocadas. Segundo: la rebelión cosmológica no garantiza superación. Rykard quiso destruir el régimen y construyó otro idéntico bajo otra deidad. Tras su muerte, los Recusantes se dispersan; Bernahl cae en un ciclo de blasfemia errante; Tanith preserva el cadáver dentro de sí. Su Gran Runa pasa al Tarnished, que ahora carga con el residuo cosmológico del proyecto fallido.'
+        'La existencia del régimen sangriento de Rykard documenta dos cosas estructurales. Primero: ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' no es cosmología única sino dominante — entidades pre-Orden sobreviven en sus márgenes y pueden ser invocadas. Segundo: la rebelión cosmológica no garantiza superación. Rykard quiso destruir el régimen y construyó otro idéntico bajo otra deidad. Tras su muerte, los Recusantes se dispersan; ',
+        link('Bernahl', 'character', 'bernahl'),
+        ' cae en un ciclo de blasfemia errante; Tanith preserva el cadáver dentro de sí. Su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' pasa al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', que ahora carga con el residuo cosmológico del proyecto fallido.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
@@ -2269,7 +3155,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Rykard es hijo de Rennala y Radagon',
+      ['Rykard es hijo de ', link('Rennala', 'character', 'rennala'), ' y ', link('Radagon', 'character', 'radagon')],
       'Habitaba el Volcano Manor como centro político alternativo',
       'Permitió que la serpiente-dios Eiglay lo devorara',
       'Su cuerpo actual es fusión de hombre y serpiente colosal',
@@ -2278,8 +3164,8 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Sus seguidores son los Recusantes, encabezados por Tanith y Rya'
     ],
     inferred: [
-      'Su blasfemia es respuesta filosófica a la decepción del Orden Dorado',
-      'Eiglay es entidad pre-Orden, posiblemente vinculada al Crisol o a un dragón degenerado',
+      ['Su blasfemia es respuesta filosófica a la decepción del ', link('Orden Dorado', 'concept', 'golden-order')],
+      ['Eiglay es entidad pre-Orden, posiblemente vinculada al ', link('Crisol', 'concept', 'crucible'), ' o a un dragón degenerado'],
       'Su transformación lo convierte en lo opuesto pero estructuralmente equivalente del Orden',
       'Rya es su reclutadora oficial y conserva forma serpentina secreta'
     ],
@@ -2298,7 +3184,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Si Eiglay sigue activa tras la muerte de Rykard, esperando un nuevo huésped'
     ],
     beneficiaries:
-      'Eiglay obtuvo huésped y corte. Tanith obtuvo dios al que adorar literalmente con la boca. Los Recusantes obtuvieron causa institucional. Patches obtuvo otro régimen al que vender lealtades dudosas.',
+      ['Eiglay obtuvo huésped y corte. Tanith obtuvo dios al que adorar literalmente con la boca. Los Recusantes obtuvieron causa institucional. ', link('Patches', 'character', 'patches'), ' obtuvo otro régimen al que vender lealtades dudosas.'],
     victims:
       'Los nobles seducidos por la causa que terminan asesinados o devorados. Los blancos rituales de las cazas Recusantes. El propio proyecto del Volcano Manor, congelado en su momento más blasfemo. Rykard mismo, que ya no es solo Rykard.',
     relatedCharacters: ['rennala', 'radagon', 'ranni', 'radahn', 'tanith', 'rya', 'patches', 'bernahl'],
@@ -2317,52 +3203,102 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Godrick encarna la decadencia aristocrática del Orden Dorado llevada al absurdo cosmológico. Es lo que el régimen produce cuando los grandes demidioses caen y los puestos los ocupan herederos laterales sin mérito propio. Su Gran Runa es ofensiva: heredada por sangre debilitada generacionalmente. Para conservarla — para que los Dos Dedos lo sigan reconociendo como portador legítimo — recurre a la única tecnología que sus ancestros le dejaron: el injerto. Cose partes de otros cuerpos a sí mismo y a sus salas, fingiendo que la acumulación de carne ajena equivale a poder propio.'
+        'Godrick encarna la decadencia aristocrática del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' llevada al absurdo cosmológico. Es lo que el régimen produce cuando los grandes demidioses caen y los puestos los ocupan herederos laterales sin mérito propio. Su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' es ofensiva: heredada por sangre debilitada generacionalmente. Para conservarla — para que ',
+        'los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' lo sigan reconociendo como portador legítimo — recurre a la única tecnología que sus ancestros le dejaron: el injerto. Cose partes de otros cuerpos a sí mismo y a sus salas, fingiendo que la acumulación de carne ajena equivale a poder propio.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
         'Su rol post-fractura es triple. Como ',
         em('demidiós portador'),
-        ' de una Gran Runa es teológicamente legítimo aunque sea el más débil de su categoría. Como ',
+        ' de una ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' es teológicamente legítimo aunque sea el más débil de su categoría. Como ',
         em('señor de Stormveil'),
-        ' gobierna el castillo fronterizo del Orden Dorado en Limgrave — sede ancestral originalmente de ',
+        ' gobierna el castillo fronterizo del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' en ',
+        link('Limgrave', 'region', 'limgrave'),
+        ' — sede ancestral originalmente de ',
         link('Godfrey', 'character', 'godfrey'),
         '. Como ',
         em('primer obstáculo'),
-        ' del Tarnished, marca el umbral inicial de la cadena cosmológica de demidioses por derrotar; su Gran Runa es la primera que el aspirante obtiene.'
+        ' del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', marca el umbral inicial de la cadena cosmológica de demidioses por derrotar; su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' es la primera que el aspirante obtiene.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Su árbol genealógico exacto no se documenta con precisión. Es bisnieto de Godfrey por línea lateral, no descendiente directo de los hijos primarios del Primer Señor (',
+        'Su árbol genealógico exacto no se documenta con precisión. Es bisnieto de ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' por línea lateral, no descendiente directo de los hijos primarios del Primer Señor (',
         link('Godwyn', 'character', 'godwyn'),
-        ', etc.). Tres o cuatro generaciones lo separan del modelo ancestral, y cada generación diluyó la sangre Empyrean. Por eso su poder, aún siendo demidiós, está estructuralmente disminuido.'
+        ', etc.). Tres o cuatro generaciones lo separan del modelo ancestral, y cada generación diluyó la sangre ',
+        link('Empyrean', 'concept', 'empyrean'),
+        '. Por eso su poder, aún siendo demidiós, está estructuralmente disminuido.'
       ),
       p(
-        'Tras la fractura del Anillo Elden, Godrick reclamó el castillo ancestral de Godfrey: ',
+        'Tras ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ' del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ', Godrick reclamó el castillo ancestral de ',
+        link('Godfrey', 'character', 'godfrey'),
+        ': ',
         link('Stormveil', 'region', 'stormveil'),
-        ' en Limgrave. Su tenencia era nominalmente legítima — era el único pariente vivo lo bastante prominente — pero su autoridad real fue marginal desde el principio. Los demás demidioses (Radahn, Mohg, Morgott, Malenia) lo veían como insignificante; sus súbditos lo despreciaban en silencio; sus enemigos lo subestimaban con razón.'
+        ' en ',
+        link('Limgrave', 'region', 'limgrave'),
+        '. Su tenencia era nominalmente legítima — era el único pariente vivo lo bastante prominente — pero su autoridad real fue marginal desde el principio. Los demás demidioses (',
+        link('Radahn', 'character', 'radahn'),
+        ', ',
+        link('Mohg', 'character', 'mohg'),
+        ', ',
+        link('Morgott', 'character', 'morgott'),
+        ', ',
+        link('Malenia', 'character', 'malenia'),
+        ') lo veían como insignificante; sus súbditos lo despreciaban en silencio; sus enemigos lo subestimaban con razón.'
       ),
       p(
-        'Su solución fue el injerto. Aprendido posiblemente de tradiciones marginales del Orden Dorado relacionadas con los Crucible Knights y la magia primigenia del Crisol, el injerto consiste en coser partes de cuerpos ajenos al propio. Godrick lo practicó con obsesión: brazos múltiples emergiendo de su torso, piernas adicionales, cabezas fusionadas, miembros bestiales. Su corona dorada — diseñada para parecer la corona ancestral — descansa sobre un cráneo recompuesto. Su lanza sostiene una cabeza de dragón fusionada como decoración funcional.'
+        'Su solución fue el injerto. Aprendido posiblemente de tradiciones marginales del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' relacionadas con los Crucible Knights y la magia primigenia del ',
+        link('Crisol', 'concept', 'crucible'),
+        ', el injerto consiste en coser partes de cuerpos ajenos al propio. Godrick lo practicó con obsesión: brazos múltiples emergiendo de su torso, piernas adicionales, cabezas fusionadas, miembros bestiales. Su corona dorada — diseñada para parecer la corona ancestral — descansa sobre un cráneo recompuesto. Su lanza sostiene una cabeza de dragón fusionada como decoración funcional.'
       ),
       p(
         'La obsesión específica con dragones tiene raíz simbólica. ',
         link('Godwyn', 'character', 'godwyn'),
         ', el primogénito amado, había forjado pacto con el dragón ',
         link('Fortissax', 'character', 'fortissax'),
-        '. Godrick injertando una cabeza de dragón en su propia lanza es imitación patética de aquel pacto: donde Godwyn obtuvo amistad cosmológica con un Antiguo Dragón mediante pacto sagrado, Godrick obtiene un colgante decorativo mediante carnicería ritual. La diferencia es exactamente la distancia entre el linaje vivo y el linaje muerto.'
+        '. Godrick injertando una cabeza de dragón en su propia lanza es imitación patética de aquel pacto: donde ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' obtuvo amistad cosmológica con un Antiguo Dragón mediante pacto sagrado, Godrick obtiene un colgante decorativo mediante carnicería ritual. La diferencia es exactamente la distancia entre el linaje vivo y el linaje muerto.'
       ),
       p(
         'Sus salas en Stormveil están decoradas con cuerpos injertados de soldados caídos: brazos múltiples saliendo de los muros, manos humanas como ornamentos, miembros extra cosidos a estatuas. La estética del injerto es su firma arquitectónica. Es el lenguaje material de un demidiós que solo puede mantener apariencia de poder mediante acumulación ostentosa de partes ajenas.'
       ),
       p(
-        'Cuando el Tarnished lo derrota, Godrick suplica ante la Runa Dorada — pidiendo a un linaje que ya no responde — y muere injertando, en su última agonía, el brazo del propio Tarnished. La acción es perfecta como cierre: incluso muriendo, Godrick injerta. Es lo único que sabe hacer.'
+        'Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo derrota, Godrick suplica ante la Runa Dorada — pidiendo a un linaje que ya no responde — y muere injertando, en su última agonía, el brazo del propio ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '. La acción es perfecta como cierre: incluso muriendo, Godrick injerta. Es lo único que sabe hacer.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
         'Sus motivaciones son patéticas y completamente reconocibles. Quiere ',
         em('parecer'),
-        ' un Señor Elden ancestral cuando sabe que no tiene materia para serlo. Su devoción al linaje no es ideológica — es desesperada. Si el linaje pierde valor cosmológico, él pierde el único recurso que justifica su existencia. De ahí su obsesión arquitectónica con marcas familiares dorádas, con rituales del Orden, con la lanza-dragón que imita el pacto de Godwyn.'
+        ' un Señor Elden ancestral cuando sabe que no tiene materia para serlo. Su devoción al linaje no es ideológica — es desesperada. Si el linaje pierde valor cosmológico, él pierde el único recurso que justifica su existencia. De ahí su obsesión arquitectónica con marcas familiares dorádas, con rituales del Orden, con la lanza-dragón que imita el pacto de ',
+        link('Godwyn', 'character', 'godwyn'),
+        '.'
       ),
       p(
         'Su tragedia es saber, internamente, que es insuficiente. El injerto es síntoma de inseguridad estructural: si necesita carne ajena para sostener su forma, es porque su forma propia no basta. Cada brazo extra es admisión silenciosa de que un brazo solo nunca fue suficiente.'
@@ -2375,30 +3311,68 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godwyn', 'character', 'godwyn'),
         ' (el demidiós perfecto que él jamás puede emular). Su heredera natural — si la legitimidad funcionara por mérito — es ',
         link('Nepheli Loux', 'character', 'nepheli-loux'),
-        ', posible descendiente más directa de Godfrey. Sus súbditos en Stormveil son guardias mercenarios sin más vínculo que el sueldo. Su portero traidor es ',
+        ', posible descendiente más directa de ',
+        link('Godfrey', 'character', 'godfrey'),
+        '. Sus súbditos en Stormveil son guardias mercenarios sin más vínculo que el sueldo. Su portero traidor es ',
         link('Gostoc', 'character', 'gostoc'),
-        ' (Gatekeeper Gostoc), que saquea cadáveres en sus muros.'
+        ' (',
+        link('Gatekeeper Gostoc', 'character', 'gostoc'),
+        '), que saquea cadáveres en sus muros.'
       ),
       h(2, 'Eventos clave', 'eventos'),
       ol(
-        'Nacimiento como descendiente lateral de Godfrey.',
-        'Acceso a la Gran Runa por sangre débil.',
-        'Reclamo de Stormveil tras la fractura.',
+        ['Nacimiento como descendiente lateral de ', link('Godfrey', 'character', 'godfrey'), '.'],
+        ['Acceso a la ', link('Gran Runa', 'concept', 'great-rune'), ' por sangre débil.'],
+        ['Reclamo de Stormveil tras la ', link('fractura', 'timeline', 'la-fractura'), '.'],
         'Inicio de las prácticas de injerto.',
         'Construcción de la estética del injerto en su castillo.',
-        'Obsesión específica con dragones e imitación del pacto de Godwyn.',
-        'Margit (Morgott disfrazado) montando guardia en su umbral.',
-        'Encuentro inicial con el Tarnished.',
+        ['Obsesión específica con dragones e imitación del pacto de ', link('Godwyn', 'character', 'godwyn'), '.'],
+        [link('Margit', 'character', 'margit'), ' (', link('Morgott', 'character', 'morgott'), ' disfrazado) montando guardia en su umbral.'],
+        ['Encuentro inicial con el ', link('Tarnished', 'concept', 'tarnished'), '.'],
         'Combate y derrota.',
         'Última agonía intentando injertar al propio aspirante.'
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'La caída de Godrick es la primera victoria simbólica del Tarnished: derrota al demidiós más débil, obtiene su Gran Runa, accede al circuito legítimo de la sucesión Elden. Pero también es lección estructural: si el régimen del Orden Dorado se sostiene con figuras como Godrick, el régimen ya está muerto. Su muerte no traumatiza a las Tierras Intermedias — al contrario, sus súbditos se dispersan con alivio. El castillo Stormveil queda libre para ser reclamado por una heredera más legítima como Nepheli, si el Tarnished lo coreografía así. La Gran Runa de Godrick, la más débil del juego, es paradójicamente la más fácil de obtener — coherente con su portador.'
+        'La caída de Godrick es la primera victoria simbólica del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ': derrota al demidiós más débil, obtiene su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ', accede al circuito legítimo de la sucesión Elden. Pero también es lección estructural: si el régimen del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' se sostiene con figuras como Godrick, el régimen ya está muerto. Su muerte no traumatiza a las Tierras Intermedias — al contrario, sus súbditos se dispersan con alivio. El castillo Stormveil queda libre para ser reclamado por una heredera más legítima como ',
+        link('Nepheli', 'character', 'nepheli-loux'),
+        ', si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo coreografía así. La ',
+        link('Gran Runa de Godrick', 'concept', 'godricks-great-rune'),
+        ', la más débil del juego, es paradójicamente la más fácil de obtener — coherente con su portador.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Godrick es la decadencia aristocrática del Orden Dorado llevada al absurdo cosmológico. Cada brazo injertado es metonimia perfecta del régimen entero: un sistema que solo puede sostener apariencia de poder acumulando partes ajenas. La diferencia entre Godrick y los demás demidioses no es de magnitud sino de esencia: Marika fundó, Godwyn integró, Ranni rebeló, Mohg apostató, Morgott defendió, Radahn protegió, Malenia sostuvo, Rykard blasfemó. Godrick solo cosió. Es el único demidiós cuyo verbo característico es transitivo y patético: él no hace, él pega. Su muerte injertando al Tarnished mismo cierra el bucle perfectamente: hasta el último gesto del demidiós más débil del Linaje Dorado es un injerto.'
+        'Godrick es la decadencia aristocrática del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' llevada al absurdo cosmológico. Cada brazo injertado es metonimia perfecta del régimen entero: un sistema que solo puede sostener apariencia de poder acumulando partes ajenas. La diferencia entre Godrick y los demás demidioses no es de magnitud sino de esencia: ',
+        link('Marika', 'character', 'marika'),
+        ' fundó, ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' integró, ',
+        link('Ranni', 'character', 'ranni'),
+        ' rebeló, ',
+        link('Mohg', 'character', 'mohg'),
+        ' apostató, ',
+        link('Morgott', 'character', 'morgott'),
+        ' defendió, ',
+        link('Radahn', 'character', 'radahn'),
+        ' protegió, ',
+        link('Malenia', 'character', 'malenia'),
+        ' sostuvo, ',
+        link('Rykard', 'character', 'rykard'),
+        ' blasfemó. Godrick solo cosió. Es el único demidiós cuyo verbo característico es transitivo y patético: él no hace, él pega. Su muerte injertando al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' mismo cierra el bucle perfectamente: hasta el último gesto del demidiós más débil del ',
+        link('Linaje Dorado', 'faction', 'golden-lineage'),
+        ' es un injerto.'
       ),
       h(2, 'Conexiones internas', 'conexiones'),
       p(
@@ -2418,38 +3392,38 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Godrick es bisnieto descendiente lateral de Godfrey',
-      'Mantiene su Gran Runa mediante injertos rituales de partes de cuerpos ajenos',
-      'Reina en Stormveil, el castillo ancestral de Godfrey',
-      'Es el demidiós más débil del Linaje Dorado vivo',
-      'Su última agonía intenta injertar el brazo del propio Tarnished',
-      'Margit (Morgott) hace guardia frente a Stormveil — incluso el régimen central considera necesario protegerlo'
+      ['Godrick es bisnieto descendiente lateral de ', link('Godfrey', 'character', 'godfrey')],
+      ['Mantiene su ', link('Gran Runa', 'concept', 'great-rune'), ' mediante injertos rituales de partes de cuerpos ajenos'],
+      ['Reina en Stormveil, el castillo ancestral de ', link('Godfrey', 'character', 'godfrey')],
+      ['Es el demidiós más débil del ', link('Linaje Dorado', 'faction', 'golden-lineage'), ' vivo'],
+      ['Su última agonía intenta injertar el brazo del propio ', link('Tarnished', 'concept', 'tarnished')],
+      [link('Margit', 'character', 'margit'), ' (', link('Morgott', 'character', 'morgott'), ') hace guardia frente a Stormveil — incluso el régimen central considera necesario protegerlo']
     ],
     inferred: [
-      'Su debilidad nominal lo hace primer demidiós abordable para el Tarnished',
+      ['Su debilidad nominal lo hace primer demidiós abordable para el ', link('Tarnished', 'concept', 'tarnished')],
       'Sus injertos son tanto técnica como compensación psicológica',
-      'Su obsesión con dragones es imitación patética del pacto de Godwyn con Fortissax',
-      'Nepheli Loux, posible heredera de Godfrey, podría legítimamente desplazarlo',
+      ['Su obsesión con dragones es imitación patética del pacto de ', link('Godwyn', 'character', 'godwyn'), ' con Fortissax'],
+      [link('Nepheli Loux', 'character', 'nepheli-loux'), ', posible heredera de ', link('Godfrey', 'character', 'godfrey'), ', podría legítimamente desplazarlo'],
       'Sabe internamente que es insuficiente — el injerto es síntoma, no técnica neutra'
     ],
     theories: [
-      'El conocimiento del injerto procede de tradiciones marginales del Crisol que el Orden no purgó del todo',
-      'Su línea Empyrean fue diluida deliberadamente por el régimen para asegurar herederos manejables',
+      ['El conocimiento del injerto procede de tradiciones marginales del ', link('Crisol', 'concept', 'crucible'), ' que el Orden no purgó del todo'],
+      ['Su línea ', link('Empyrean', 'concept', 'empyrean'), ' fue diluida deliberadamente por el régimen para asegurar herederos manejables'],
       'Sus súbditos en Stormveil le sirven por miedo, no por lealtad',
-      'Si Nepheli ascendiera al trono de Stormveil, restauraría parcialmente el linaje Godfrey verdadero',
-      'Su Gran Runa es genuinamente débil — los Dos Dedos lo aceptan sólo porque cualquier portador es mejor que ninguno'
+      ['Si ', link('Nepheli', 'character', 'nepheli-loux'), ' ascendiera al trono de Stormveil, restauraría parcialmente el linaje ', link('Godfrey', 'character', 'godfrey'), ' verdadero'],
+      ['Su ', link('Gran Runa', 'concept', 'great-rune'), ' es genuinamente débil — los ', link('Dos Dedos', 'faction', 'dos-dedos'), ' lo aceptan sólo porque cualquier portador es mejor que ninguno']
     ],
     ambiguous: [
-      'Si su linaje incluye descendencia directa de Godfrey o solo lateral',
+      ['Si su linaje incluye descendencia directa de ', link('Godfrey', 'character', 'godfrey'), ' o solo lateral'],
       'Cuántos siglos lleva injertándose',
-      'Si conoció a Margit/Morgott como pariente real o sólo como guardián anónimo',
+      ['Si conoció a ', link('Margit', 'character', 'margit'), '/', link('Morgott', 'character', 'morgott'), ' como pariente real o sólo como guardián anónimo'],
       'Si su obsesión con dragones procede de saber privilegiado o de imitación accidental',
       'Si tenía conciencia plena de su propia inferioridad o vivía en autoengaño'
     ],
     beneficiaries:
-      'El régimen del Orden Dorado obtuvo guardián marginal en Limgrave. Margit/Morgott obtuvo justificación para vigilar sus accesos. Los soldados que cobraron por servir a Stormveil. Posiblemente Nepheli, si su quest la lleva al trono ancestral.',
+      ['El régimen del ', link('Orden Dorado', 'concept', 'golden-order'), ' obtuvo guardián marginal en ', link('Limgrave', 'region', 'limgrave'), '. ', link('Margit', 'character', 'margit'), '/', link('Morgott', 'character', 'morgott'), ' obtuvo justificación para vigilar sus accesos. Los soldados que cobraron por servir a Stormveil. Posiblemente ', link('Nepheli', 'character', 'nepheli-loux'), ', si su quest la lleva al trono ancestral.'],
     victims:
-      'Los soldados a quienes injertó partes corporales en sus rituales. Sus súbditos, condenados a obedecer a un señor sin mérito. Los visitantes desafortunados de Stormveil, transformados en decoración arquitectónica. El propio linaje Godfrey, cuya última manifestación pública es esta caricatura.',
+      ['Los soldados a quienes injertó partes corporales en sus rituales. Sus súbditos, condenados a obedecer a un señor sin mérito. Los visitantes desafortunados de Stormveil, transformados en decoración arquitectónica. El propio linaje ', link('Godfrey', 'character', 'godfrey'), ', cuya última manifestación pública es esta caricatura.'],
     relatedCharacters: ['godfrey', 'godwyn', 'morgott', 'nepheli-loux', 'kenneth-haight', 'roderika', 'gostoc'],
     relatedFactions: ['orden-dorado', 'golden-lineage'],
     relatedRegions: ['stormveil', 'limgrave'],
@@ -2465,7 +3439,11 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Varré aparece en la Iglesia de Elleh, en Limgrave, ofreciendo bienvenida calurosa al Tarnished recién llegado. Su máscara blanca es elegante; su lenguaje es protocolario; su intención es secuestrar al aspirante para el culto de ',
+        'Varré aparece en la Iglesia de Elleh, en ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', ofreciendo bienvenida calurosa al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' recién llegado. Su máscara blanca es elegante; su lenguaje es protocolario; su intención es secuestrar al aspirante para el culto de ',
         link('Mohg', 'character', 'mohg'),
         '.'
       ),
@@ -2473,7 +3451,15 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Como misionero principal de los ',
         link('Bloody Fingers', 'faction', 'bloody-fingers'),
-        ', Varré opera en superficie mientras Mohg construye la Dinastía Mohgwyn bajo tierra. Su quest específica: convencer al Tarnished de manchar Doncellas Tarnished con su propia sangre, paso ritual que abre acceso directo a ',
+        ', Varré opera en superficie mientras ',
+        link('Mohg', 'character', 'mohg'),
+        ' construye la Dinastía Mohgwyn bajo tierra. Su quest específica: convencer al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' de manchar ',
+        link('Doncellas', 'character', 'twin-maiden-husks'),
+        ' ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' con su propia sangre, paso ritual que abre acceso directo a ',
         link('Mohgwyn', 'region', 'mohgwyn'),
         '. Cada paso es disfrazado como cortesía protocolaria — la coerción nunca es explícita, solo implícita en el tono "amable".'
       ),
@@ -2483,25 +3469,25 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Varré es misionero de Mohg desde la Iglesia de Elleh',
-      'Su quest dirige al Tarnished hacia Mohgwyn',
-      'Entrega Doncellas Tarnished que el Tarnished debe manchar con su propia sangre',
+      ['Varré es misionero de ', link('Mohg', 'character', 'mohg'), ' desde la Iglesia de Elleh'],
+      ['Su quest dirige al ', link('Tarnished', 'concept', 'tarnished'), ' hacia Mohgwyn'],
+      ['Entrega ', link('Doncellas', 'character', 'twin-maiden-husks'), ' ', link('Tarnished', 'concept', 'tarnished'), ' que el ', link('Tarnished', 'concept', 'tarnished'), ' debe manchar con su propia sangre'],
       'Es derrotable como invasor en cualquier momento de su quest'
     ],
     inferred: [
       'La amabilidad inicial es estrategia deliberada, no rasgo de personalidad',
       'Su rol como primer NPC es diseño narrativo de FromSoftware',
-      'Conoce el plan completo de Mohg con Miquella'
+      ['Conoce el plan completo de ', link('Mohg', 'character', 'mohg'), ' con ', link('Miquella', 'character', 'miquella')]
     ],
     theories: [
-      'Varré es Tarnished original que se convirtió tras presenciar la inutilidad del régimen',
+      ['Varré es ', link('Tarnished', 'concept', 'tarnished'), ' original que se convirtió tras presenciar la inutilidad del régimen'],
       'Su máscara blanca oculta deformidades Omen',
-      'Es el reclutador más exitoso del culto — otros aspirantes Tarnished pueden haber caído antes'
+      ['Es el reclutador más exitoso del culto — otros aspirantes ', link('Tarnished', 'concept', 'tarnished'), ' pueden haber caído antes']
     ],
     ambiguous: [
-      'Cuándo se convirtió al culto de Mohg',
-      'Si conoció a Mohg personalmente o solo a través de los Bloody Fingers',
-      'Cuántos Tarnished ha reclutado antes del actual'
+      ['Cuándo se convirtió al culto de ', link('Mohg', 'character', 'mohg')],
+      ['Si conoció a ', link('Mohg', 'character', 'mohg'), ' personalmente o solo a través de los Bloody Fingers'],
+      ['Cuántos ', link('Tarnished', 'concept', 'tarnished'), ' ha reclutado antes del actual']
     ],
     relatedCharacters: ['mohg', 'miquella'],
     relatedFactions: ['bloody-fingers', 'omens'],
@@ -2516,7 +3502,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Shabriri fue, en su origen, calumniador en una era previa al Orden Dorado. Su crimen específico nunca se enuncia, pero su castigo sí: le arrancaron los ojos. Esa mutilación lo convirtió, paradójicamente, en visionario: el calumniador ciego ve la verdad que los videntes esconden.'
+        'Shabriri fue, en su origen, calumniador en una era previa al ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '. Su crimen específico nunca se enuncia, pero su castigo sí: le arrancaron los ojos. Esa mutilación lo convirtió, paradójicamente, en visionario: el calumniador ciego ve la verdad que los videntes esconden.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -2527,9 +3515,15 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Su posesión más reciente fue ',
         link('Yura', 'character', 'yura'),
-        ', el cazador samurái de Land of Reeds. Tras debilitar a Yura en una emboscada, Shabriri tomó el cuerpo. ',
+        ', el cazador samurái de Land of Reeds. Tras debilitar a ',
+        link('Yura', 'character', 'yura'),
+        ' en una emboscada, Shabriri tomó el cuerpo. ',
         link('Eleonora', 'character', 'eleonora'),
-        ' siguió fielmente al Yura poseído sin distinguir al amante del impostor. La marca de Shabriri otorgada al Tarnished abre la ruta directa a la ',
+        ' siguió fielmente al ',
+        link('Yura', 'character', 'yura'),
+        ' poseído sin distinguir al amante del impostor. La marca de Shabriri otorgada al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' abre la ruta directa a la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
         '.'
       ),
@@ -2541,17 +3535,17 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     confirmed: [
       'Shabriri fue calumniador en una era previa, condenado a perder los ojos',
       'Es espíritu sin cuerpo propio que posee huéspedes sucesivos',
-      'Poseyó a Yura tras debilitarlo en emboscada',
-      'Su marca abre la ruta a la Llama Frenética'
+      ['Poseyó a ', link('Yura', 'character', 'yura'), ' tras debilitarlo en emboscada'],
+      ['Su marca abre la ruta a la ', link('Llama Frenética', 'concept', 'frenzied-flame')]
     ],
     inferred: [
-      'Es proselitista activo desde antes del Orden Dorado',
+      ['Es proselitista activo desde ', link('antes del Orden Dorado', 'timeline', 'antes-orden-dorado')],
       'Cada víctima es propagador del siguiente ciclo',
-      'Su existencia depende de la presencia de los Tres Dedos como reserva cosmológica'
+      ['Su existencia depende de la presencia de los ', link('Tres Dedos', 'faction', 'tres-dedos'), ' como reserva cosmológica']
     ],
     theories: [
-      'Shabriri fue creado deliberadamente por los Tres Dedos como agente itinerante',
-      'Hyetta es su próximo huésped tras Yura',
+      ['Shabriri fue creado deliberadamente por los ', link('Tres Dedos', 'faction', 'tres-dedos'), ' como agente itinerante'],
+      [link('Hyetta', 'character', 'hyetta'), ' es su próximo huésped tras ', link('Yura', 'character', 'yura')],
       'Su nombre es solo una de muchas identidades que ha asumido'
     ],
     ambiguous: [
@@ -2573,36 +3567,48 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Yura llegó a las Tierras Intermedias desde Land of Reeds con propósito específico: cazar a los ',
         link('Bloody Fingers', 'faction', 'bloody-fingers'),
-        ', invasores Tarnished al servicio de ',
+        ', invasores ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' al servicio de ',
         link('Mohg', 'character', 'mohg'),
         '. Su técnica espadachín — Iaijutsu refinado — es de las más elegantes del juego. Su katana cae sin ruido y deja heridas profundas.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Ayuda al Tarnished en múltiples invasiones a lo largo de Limgrave y Liurnia. Su lealtad es pragmática: cazadores se respaldan mutuamente. Cuando Yura es debilitado en una emboscada en Altus, el espíritu de ',
+        'Ayuda al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' en múltiples invasiones a lo largo de ',
+        link('Limgrave', 'region', 'limgrave'),
+        ' y Liurnia. Su lealtad es pragmática: cazadores se respaldan mutuamente. Cuando Yura es debilitado en una emboscada en Altus, el espíritu de ',
         link('Shabriri', 'character', 'shabriri'),
         ' aprovecha la herida abierta para poseer su cuerpo.'
       ),
       p(
-        'El Yura poseído es indistinguible visualmente del original — misma armadura, misma katana, mismo tono. Pero su técnica se desvía hacia la Llama Frenética. ',
+        'El Yura poseído es indistinguible visualmente del original — misma armadura, misma katana, mismo tono. Pero su técnica se desvía hacia la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        '. ',
         link('Eleonora', 'character', 'eleonora'),
-        ' lo sigue creyendo que es su amante; el Tarnished debe enfrentar a ambos para liberar el cuerpo de Yura. La caza se ha cerrado en círculo: el cazador se vuelve presa de su propia carrera.'
+        ' lo sigue creyendo que es su amante; el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' debe enfrentar a ambos para liberar el cuerpo de Yura. La caza se ha cerrado en círculo: el cazador se vuelve presa de su propia carrera.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Yura es la prueba de que la dedicación absoluta no protege contra la corrupción. Su honor estricto fue preludio del cuerpo perfecto para Shabriri: alguien tan disciplinado que su huésped puede operar con eficacia inmediata. Su tragedia es el cazador que se vuelve exactamente lo que cazaba — y muere a manos del aliado que él mismo había entrenado.'
+        'Yura es la prueba de que la dedicación absoluta no protege contra la corrupción. Su honor estricto fue preludio del cuerpo perfecto para ',
+        link('Shabriri', 'character', 'shabriri'),
+        ': alguien tan disciplinado que su huésped puede operar con eficacia inmediata. Su tragedia es el cazador que se vuelve exactamente lo que cazaba — y muere a manos del aliado que él mismo había entrenado.'
       )
     ],
     confirmed: [
       'Yura es samurái de Land of Reeds dedicado a cazar Bloody Fingers',
-      'Ayuda al Tarnished en múltiples invasiones',
-      'Es debilitado en emboscada y poseído por Shabriri',
+      ['Ayuda al ', link('Tarnished', 'concept', 'tarnished'), ' en múltiples invasiones'],
+      ['Es debilitado en emboscada y poseído por ', link('Shabriri', 'character', 'shabriri')],
       'Su cuerpo poseído debe ser destruido para liberarlo'
     ],
     inferred: [
       'Su tradición espadachín es uno de los pocos linajes marciales no-Orden documentados',
-      'Su lealtad al Tarnished es pragmática, no estructural',
-      'Eleonora no distingue al Yura original del poseído'
+      ['Su lealtad al ', link('Tarnished', 'concept', 'tarnished'), ' es pragmática, no estructural'],
+      [link('Eleonora', 'character', 'eleonora'), ' no distingue al Yura original del poseído']
     ],
     theories: [
       'Conoció al Blind Swordsman histórico antes de su llegada a las Tierras Intermedias',
@@ -2611,7 +3617,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       'Cuándo exactamente fue debilitado',
-      'Si Eleonora conocía la posesión y la aceptó por amor',
+      ['Si ', link('Eleonora', 'character', 'eleonora'), ' conocía la posesión y la aceptó por amor'],
       'Si su katana retiene memoria del verdadero Yura'
     ],
     relatedCharacters: ['shabriri', 'eleonora' ],
@@ -2626,41 +3632,57 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Resumen esencial'),
       p(
         link('Eleonora', 'character', 'eleonora'),
-        ' aparece en Altus Plateau como invasora elegante. Su lanza violeta es regalo de Yura — símbolo de su pacto romántico antes de la posesión. Su técnica de combate combina movimientos fluidos con magia carmesí.'
+        ' aparece en Altus Plateau como invasora elegante. Su lanza violeta es regalo de ',
+        link('Yura', 'character', 'yura'),
+        ' — símbolo de su pacto romántico antes de la posesión. Su técnica de combate combina movimientos fluidos con magia carmesí.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Su rol original como cazadora del Foreign Hunt era complementario al de Yura: él cazaba Bloody Fingers, ella cazaba a otros invasores en general. Eran pareja funcional y romántica. Cuando ',
+        'Su rol original como cazadora del Foreign Hunt era complementario al de ',
+        link('Yura', 'character', 'yura'),
+        ': él cazaba Bloody Fingers, ella cazaba a otros invasores en general. Eran pareja funcional y romántica. Cuando ',
         link('Shabriri', 'character', 'shabriri'),
-        ' poseyó a Yura, Eleonora no detectó el cambio — el cuerpo era el mismo, la voz era similar, los gestos básicos coincidían. Su amor sirvió como camuflaje.'
+        ' poseyó a ',
+        link('Yura', 'character', 'yura'),
+        ', Eleonora no detectó el cambio — el cuerpo era el mismo, la voz era similar, los gestos básicos coincidían. Su amor sirvió como camuflaje.'
       ),
       p(
-        'Sigue al Yura poseído como consorte fiel. Caza junto a él aunque ahora la presa cambia: ya no son Bloody Fingers, son Tarnished aspirantes a la Llama Frenética. La transformación es gradual: cada caza la aleja más de su propia identidad.'
+        'Sigue al ',
+        link('Yura', 'character', 'yura'),
+        ' poseído como consorte fiel. Caza junto a él aunque ahora la presa cambia: ya no son Bloody Fingers, son ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' aspirantes a la ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        '. La transformación es gradual: cada caza la aleja más de su propia identidad.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Eleonora encarna el amor convertido en cómplice. Su devoción a Yura era genuina; su incapacidad de distinguir al amante del impostor es trágica precisamente porque demuestra cuánto lo amaba. Quien ama no examina; quien examina no ama del todo. El Tarnished al matarla cumple el último acto piadoso: liberar a una mujer enamorada de un cuerpo que ya no contiene al amado.'
+        'Eleonora encarna el amor convertido en cómplice. Su devoción a ',
+        link('Yura', 'character', 'yura'),
+        ' era genuina; su incapacidad de distinguir al amante del impostor es trágica precisamente porque demuestra cuánto lo amaba. Quien ama no examina; quien examina no ama del todo. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' al matarla cumple el último acto piadoso: liberar a una mujer enamorada de un cuerpo que ya no contiene al amado.'
       )
     ],
     confirmed: [
       'Eleonora aparece como invasora en Altus Plateau',
-      'Su lanza violeta fue regalo de Yura',
-      'Sigue al Yura poseído sin distinguir la posesión',
-      'Su muerte ofrece la lanza al Tarnished'
+      ['Su lanza violeta fue regalo de ', link('Yura', 'character', 'yura')],
+      ['Sigue al ', link('Yura', 'character', 'yura'), ' poseído sin distinguir la posesión'],
+      ['Su muerte ofrece la lanza al ', link('Tarnished', 'concept', 'tarnished')]
     ],
     inferred: [
-      'Su amor por Yura era genuino, no estratégico',
+      ['Su amor por ', link('Yura', 'character', 'yura'), ' era genuino, no estratégico'],
       'No detectó la posesión por exceso de devoción, no por incompetencia',
       'Su transformación posterior es gradual, no inmediata'
     ],
     theories: [
       'Sospechó la posesión en algún momento pero rechazó la sospecha',
-      'Su lanza retiene magia del verdadero Yura',
-      'Habría podido sobrevivir si hubiera abandonado a Yura — pero su amor lo impidió'
+      ['Su lanza retiene magia del verdadero ', link('Yura', 'character', 'yura')],
+      ['Habría podido sobrevivir si hubiera abandonado a ', link('Yura', 'character', 'yura'), ' — pero su amor lo impidió']
     ],
     ambiguous: [
-      'Cuánto sabía exactamente del riesgo de Shabriri',
-      'Si murió pensando que Yura era Yura',
+      ['Cuánto sabía exactamente del riesgo de ', link('Shabriri', 'character', 'shabriri')],
+      ['Si murió pensando que ', link('Yura', 'character', 'yura'), ' era ', link('Yura', 'character', 'yura')],
       'Si su lanza violeta tiene función cosmológica más allá de lo simbólico'
     ],
     relatedCharacters: ['yura', 'shabriri'],
@@ -2676,7 +3698,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Bernahl encabeza a los ',
         link('Caballeros Desterrados', 'faction', 'banished-knights'),
-        ' tras siglos de exilio del Orden Dorado oficial. Su filosofía original es honor marcial autónomo: defender lo justo aunque el régimen oficial no lo apruebe. Es una posición ideológicamente coherente y respetable.'
+        ' tras siglos de exilio del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' oficial. Su filosofía original es honor marcial autónomo: defender lo justo aunque el régimen oficial no lo apruebe. Es una posición ideológicamente coherente y respetable.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -2692,18 +3716,26 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         ' lo recibe como recluta valioso.'
       ),
       p(
-        'Su última aparición es como invasor en Crumbling Farum Azula. Para entonces ya no parece recordar quién fue. Es Bernahl pero no es Bernahl: la blasfemia lo ha consumido. Su muerte allí es liberación piadosa, similar a la que Yura recibe del Tarnished.'
+        'Su última aparición es como invasor en Crumbling ',
+        link('Farum Azula', 'region', 'farum-azula'),
+        '. Para entonces ya no parece recordar quién fue. Es Bernahl pero no es Bernahl: la blasfemia lo ha consumido. Su muerte allí es liberación piadosa, similar a la que ',
+        link('Yura', 'character', 'yura'),
+        ' recibe del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Bernahl encarna la caída del caballero. Pasó de mentor a apóstata sin solución de continuidad. Cada vez que el Tarnished lo encuentra está peor — la última vez ya no sabe quién es. Es la prueba de que el honor marcial fuera del régimen oficial no se sostiene cosmológicamente sin estructura institucional protectora. La marcialidad pura es vulnerable a cualquier blasfemia que ofrezca pertenencia.'
+        'Bernahl encarna la caída del caballero. Pasó de mentor a apóstata sin solución de continuidad. Cada vez que el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo encuentra está peor — la última vez ya no sabe quién es. Es la prueba de que el honor marcial fuera del régimen oficial no se sostiene cosmológicamente sin estructura institucional protectora. La marcialidad pura es vulnerable a cualquier blasfemia que ofrezca pertenencia.'
       )
     ],
     confirmed: [
-      'Bernahl lidera los Caballeros Desterrados',
+      ['Bernahl lidera los ', link('Caballeros Desterrados', 'faction', 'banished-knights')],
       'Vende invocaciones espirituales en el Warmaster\'s Shack',
       'Reaparece como Recusante en el Volcano Manor',
-      'Aparición final como invasor en Farum Azula'
+      ['Aparición final como invasor en ', link('Farum Azula', 'region', 'farum-azula')]
     ],
     inferred: [
       'Su caída es gradual, no súbita',
@@ -2733,11 +3765,17 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Patches existe en muchos mundos de FromSoftware. En las Tierras Intermedias aparece como bandido en Limgrave, con la trampa estándar: emboscada, derrota, mendiga perdón, intenta venderte cosas como si nada hubiera pasado. La rutina es deliberada — Patches ha tendido la misma trampa durante eras y siempre funciona la misma disculpa.'
+        'Patches existe en muchos mundos de FromSoftware. En las Tierras Intermedias aparece como bandido en ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', con la trampa estándar: emboscada, derrota, mendiga perdón, intenta venderte cosas como si nada hubiera pasado. La rutina es deliberada — Patches ha tendido la misma trampa durante eras y siempre funciona la misma disculpa.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Tras la primera derrota, Patches se convierte en mercader itinerante con ofertas dudosas. Reaparece en múltiples regiones de las Tierras Intermedias: Limgrave, Mt Gelmir (al servicio de ',
+        'Tras la primera derrota, Patches se convierte en ',
+        link('mercader', 'character', 'merchant-kale'),
+        ' itinerante con ofertas dudosas. Reaparece en múltiples regiones de las Tierras Intermedias: ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', Mt Gelmir (al servicio de ',
         link('Tanith', 'character', 'tanith'),
         '), y ocasionalmente en otros lugares. Su oficio es vender lo que sea a quien sea por lo que sea.'
       ),
@@ -2755,8 +3793,8 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Patches aparece en Limgrave como bandido con trampa estándar',
-      'Tras la derrota se vuelve mercader itinerante',
+      ['Patches aparece en ', link('Limgrave', 'region', 'limgrave'), ' como bandido con trampa estándar'],
+      ['Tras la derrota se vuelve ', link('mercader', 'character', 'merchant-kale'), ' itinerante'],
       'Sirve a Tanith en el Volcano Manor con lealtad pragmática',
       'Puede asesinar a Boggart en algunas variantes'
     ],
@@ -2794,7 +3832,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'Su matrimonio con Rykard precede a la fusión con Eiglay. Era noble respetable del Orden Dorado antes de seguir a su esposo en su descenso institucional. Su lealtad es total: aceptó la transformación monstruosa de Rykard, aceptó la blasfemia institucional, aceptó la canalización de su corte como núcleo de los Recusantes.'
+        'Su matrimonio con ',
+        link('Rykard', 'character', 'rykard'),
+        ' precede a la fusión con Eiglay. Era noble respetable del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' antes de seguir a su esposo en su descenso institucional. Su lealtad es total: aceptó la transformación monstruosa de ',
+        link('Rykard', 'character', 'rykard'),
+        ', aceptó la blasfemia institucional, aceptó la canalización de su corte como núcleo de los Recusantes.'
       ),
       p(
         'Reclutó a ',
@@ -2803,12 +3847,23 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Bernahl', 'character', 'bernahl'),
         ', ',
         link('Diallos', 'character', 'diallos'),
-        ' (que llega buscando a su sirvienta Lanya), ',
+        ' (que llega buscando a su sirvienta ',
+        link('Lanya', 'character', 'lanya'),
+        '), ',
         link('Patches', 'character', 'patches'),
-        ' (con su pragmatismo habitual). Cada huésped es invitado a unirse a las cazas rituales contra el Orden Dorado.'
+        ' (con su pragmatismo habitual). Cada huésped es invitado a unirse a las cazas rituales contra ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        '.'
       ),
       p(
-        'Tras la derrota de Rykard por el Tarnished, Tanith devora el cadáver de su esposo. La devoración es ritual — preserva la voluntad de Rykard dentro de su propio cuerpo. Es simultáneamente devoción canibalesca y comunión teológica. Su matrimonio se completa en gastronomía.'
+        'Tras la derrota de ',
+        link('Rykard', 'character', 'rykard'),
+        ' por el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', Tanith devora el cadáver de su esposo. La devoración es ritual — preserva la voluntad de ',
+        link('Rykard', 'character', 'rykard'),
+        ' dentro de su propio cuerpo. Es simultáneamente devoción canibalesca y comunión teológica. Su matrimonio se completa en gastronomía.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -2819,22 +3874,22 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Tanith es anfitriona oficial del Volcano Manor',
       'Coordina las misiones de asesinato disfrazadas de protocolo',
       'Recluta nobles desafectos como Recusantes',
-      'Devora el cadáver de Rykard tras su derrota'
+      ['Devora el cadáver de ', link('Rykard', 'character', 'rykard'), ' tras su derrota']
     ],
     inferred: [
-      'Su matrimonio con Rykard precede a la fusión con Eiglay',
+      ['Su matrimonio con ', link('Rykard', 'character', 'rykard'), ' precede a la fusión con Eiglay'],
       'Su lealtad es total, no estratégica',
       'La cortesía aristocrática es contenedor funcional del horror, no contradicción'
     ],
     theories: [
-      'Conserva ambición propia más allá de servir a Rykard',
+      ['Conserva ambición propia más allá de servir a ', link('Rykard', 'character', 'rykard')],
       'La devoración del cadáver fue ritual planificado durante eras',
       'Si Eiglay sobrevive, podría buscar nuevo huésped a través de ella'
     ],
     ambiguous: [
       'Cuánto sabe sobre la naturaleza real de Eiglay',
       'Cuándo exactamente comenzó a oficiar como anfitriona',
-      'Si conserva algún vínculo emocional con Rykard como persona o solo como dios'
+      ['Si conserva algún vínculo emocional con ', link('Rykard', 'character', 'rykard'), ' como persona o solo como dios']
     ],
     relatedCharacters: ['rykard', 'rya', 'patches', 'bernahl', 'diallos'],
     relatedFactions: ['volcano-manor'],
@@ -2852,22 +3907,32 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Rya', 'character', 'rya'),
         ' opera como reclutadora aristocrática del ',
         link('Volcano Manor', 'region', 'volcano-manor'),
-        '. Aparece primero en Liurnia pidiendo al Tarnished recuperar un collar robado — su collar de serpiente, prueba ritual de su identidad real.'
+        '. Aparece primero en Liurnia pidiendo al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' recuperar un collar robado — su collar de serpiente, prueba ritual de su identidad real.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Su rostro humano es máscara cosmológica. Bajo él vive una serpiente del linaje pre-Orden Dorado — posiblemente vinculada al ',
+        'Su rostro humano es máscara cosmológica. Bajo él vive una serpiente del linaje pre-',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' — posiblemente vinculada al ',
         link('Eiglay', 'concept', 'serpent-god-eiglay'),
-        ' que devoró a Rykard. Su nombre verdadero es Zorayas; "Rya" es alias funcional para operar en la sociedad humana.'
+        ' que devoró a ',
+        link('Rykard', 'character', 'rykard'),
+        '. Su nombre verdadero es Zorayas; "Rya" es alias funcional para operar en la sociedad humana.'
       ),
       p(
         'Cuando ',
         link('Tanith', 'character', 'tanith'),
-        ' cae tras la derrota de Rykard, Rya revela su forma serpentina como Zorayas. La transformación no es magia — es solo dejar de mentir. Su cuerpo siempre fue serpentino; el rostro humano era el disfraz.'
+        ' cae tras la derrota de ',
+        link('Rykard', 'character', 'rykard'),
+        ', Rya revela su forma serpentina como Zorayas. La transformación no es magia — es solo dejar de mentir. Su cuerpo siempre fue serpentino; el rostro humano era el disfraz.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Rya/Zorayas encarna la identidad como disfraz cosmológico. Lo que llamamos "Rya" es lo que el cosmos del Orden Dorado permite ver de Zorayas. Su transformación final es solo dejar de mentir. Bajo el vestido, escamas. Bajo las escamas, hambre.'
+        'Rya/Zorayas encarna la identidad como disfraz cosmológico. Lo que llamamos "Rya" es lo que el cosmos del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' permite ver de Zorayas. Su transformación final es solo dejar de mentir. Bajo el vestido, escamas. Bajo las escamas, hambre.'
       )
     ],
     confirmed: [
@@ -2878,7 +3943,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     inferred: [
       'Su línea genética se vincula a Eiglay o entidad serpiente similar',
-      'La sociedad humana del Orden Dorado no aceptaría su forma real',
+      ['La sociedad humana del ', link('Orden Dorado', 'concept', 'golden-order'), ' no aceptaría su forma real'],
       'Su disfraz humano requiere mantenimiento ritual constante'
     ],
     theories: [
@@ -2888,7 +3953,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       'Cuánto del conocimiento ritual de Tanith comparte',
-      'Si su lealtad a Rykard es genuina o solo conveniencia',
+      ['Si su lealtad a ', link('Rykard', 'character', 'rykard'), ' es genuina o solo conveniencia'],
       'Si existieron otros como ella en otras eras'
     ],
     relatedCharacters: ['rykard', 'tanith'],
@@ -2910,7 +3975,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'Aparece en costas dispersas de las Tierras Intermedias: Limgrave, Liurnia, otros puntos costeros. Su oficio nunca cambia: pescar, vender, conversar amablemente con quien pase. La persecución del pueblo nómada que ',
+        'Aparece en costas dispersas de las Tierras Intermedias: ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', Liurnia, otros puntos costeros. Su oficio nunca cambia: pescar, vender, conversar amablemente con quien pase. La persecución del pueblo nómada que ',
         link('Kale', 'character', 'merchant-kale'),
         ' representa visiblemente, Boggart la ha convertido en disfraz literal.'
       ),
@@ -2927,11 +3994,11 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Boggart es miembro del pueblo nómada que se disfrazó dentro de una jarra',
       'Vende cebos de pescado y técnicas',
       'Aparece en costas dispersas de las Tierras Intermedias',
-      'Patches puede asesinarlo en algunas variantes'
+      [link('Patches', 'character', 'patches'), ' puede asesinarlo en algunas variantes']
     ],
     inferred: [
       'Su disfraz fue respuesta directa a la persecución del pueblo nómada',
-      'Su tradición pesquera precede al Orden Dorado',
+      ['Su tradición pesquera precede al ', link('Orden Dorado', 'concept', 'golden-order')],
       'Otros nómadas pueden haber adoptado disfraces similares'
     ],
     theories: [
@@ -2957,7 +4024,11 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Nepheli es Tarnished de Limgrave, hija adoptiva de ',
+        'Nepheli es ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' de ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', hija adoptiva de ',
         link('Kenneth Haight', 'character', 'kenneth-haight'),
         '. Su biología la conecta a ',
         link('Godfrey', 'character', 'godfrey'),
@@ -2965,40 +4036,56 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'Llegó a las Tierras Intermedias con Kenneth como padre adoptivo. Su crianza fue marcial pero sin pretensión real. Aprendió a pelear como noble menor de Limgrave, no como heredera de un linaje cosmológico. La verdad sobre su origen le es ocultada deliberadamente — Kenneth la protegía de las consecuencias políticas que el conocimiento traería.'
+        'Llegó a las Tierras Intermedias con ',
+        link('Kenneth', 'character', 'kenneth-haight'),
+        ' como padre adoptivo. Su crianza fue marcial pero sin pretensión real. Aprendió a pelear como noble menor de ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', no como heredera de un linaje cosmológico. La verdad sobre su origen le es ocultada deliberadamente — ',
+        link('Kenneth', 'character', 'kenneth-haight'),
+        ' la protegía de las consecuencias políticas que el conocimiento traería.'
       ),
       p(
-        'Cuando el Tarnished derrota a ',
+        'Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' derrota a ',
         link('Godrick', 'character', 'godrick'),
         ', ',
         link('Stormveil', 'region', 'stormveil'),
-        ' queda sin gobernante. Nepheli puede ser instalada como nueva Señora — recuperando el castillo ancestral de su bisabuelo perdido. Su instalación es restauración del linaje legítimo: Godrick, descendiente lateral diluido, es desplazado por Nepheli, descendencia directa.'
+        ' queda sin gobernante. Nepheli puede ser instalada como nueva Señora — recuperando el castillo ancestral de su bisabuelo perdido. Su instalación es restauración del linaje legítimo: ',
+        link('Godrick', 'character', 'godrick'),
+        ', descendiente lateral diluido, es desplazado por Nepheli, descendencia directa.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Nepheli encarna la heredera ignorante. Lleva en la sangre el peso del Orden Dorado y vive sin saberlo. Es Tarnished por sangre y por crianza, dos veces — y la doble condición la hace inmune a la pretensión que arruinó a Godrick.'
+        'Nepheli encarna la heredera ignorante. Lleva en la sangre el peso del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' y vive sin saberlo. Es ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' por sangre y por crianza, dos veces — y la doble condición la hace inmune a la pretensión que arruinó a ',
+        link('Godrick', 'character', 'godrick'),
+        '.'
       )
     ],
     confirmed: [
-      'Nepheli es Tarnished criada por Kenneth Haight',
-      'Es descendiente directa de Godfrey',
+      ['Nepheli es ', link('Tarnished', 'concept', 'tarnished'), ' criada por ', link('Kenneth Haight', 'character', 'kenneth-haight')],
+      ['Es descendiente directa de ', link('Godfrey', 'character', 'godfrey')],
       'Puede ser instalada como Señora de Stormveil',
       'Recibe el Talismán de los Susurros si se sigue su quest hasta el final'
     ],
     inferred: [
-      'Kenneth ocultó su origen deliberadamente',
-      'Su sangre la posicionaría como heredera más legítima que Godrick',
+      [link('Kenneth', 'character', 'kenneth-haight'), ' ocultó su origen deliberadamente'],
+      ['Su sangre la posicionaría como heredera más legítima que ', link('Godrick', 'character', 'godrick')],
       'Su crianza fuera del régimen central la protegió de las complicaciones de la sucesión'
     ],
     theories: [
-      'Kenneth conoce el linaje completo y la protege específicamente',
-      'Otros descendientes laterales de Godfrey existen en otras regiones',
-      'Su instalación en Stormveil podría revertir parcialmente el deterioro del Linaje Dorado'
+      [link('Kenneth', 'character', 'kenneth-haight'), ' conoce el linaje completo y la protege específicamente'],
+      ['Otros descendientes laterales de ', link('Godfrey', 'character', 'godfrey'), ' existen en otras regiones'],
+      ['Su instalación en Stormveil podría revertir parcialmente el deterioro del ', link('Linaje Dorado', 'faction', 'golden-lineage')]
     ],
     ambiguous: [
       'Si Nepheli sospecha algo sobre su origen real',
-      'Cuánto sabe Gideon sobre su linaje',
-      'Si su sangre Empyrean es activa o latente'
+      ['Cuánto sabe ', link('Gideon', 'character', 'gideon'), ' sobre su linaje'],
+      ['Si su sangre ', link('Empyrean', 'concept', 'empyrean'), ' es activa o latente']
     ],
     relatedCharacters: ['godfrey', 'kenneth-haight', 'gideon', 'godrick', 'roderika'],
     relatedFactions: ['orden-dorado', 'golden-lineage'],
@@ -3014,7 +4101,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Sellen fue alumna prodigio de ',
         link('Raya Lucaria', 'region', 'raya-lucaria'),
-        ' antes de su excomunión. Practicaba magia gravitacional avanzada y estudiaba la ',
+        ' antes de su excomunión. Practicaba ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        ' avanzada y estudiaba la ',
         link('Corriente Primigenia', 'concept', 'primeval-current'),
         ' junto a sus maestros ',
         link('Azur', 'character', 'azur'),
@@ -3024,7 +4113,11 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'La Academia la excomulgó cuando su investigación excedió los límites permitidos. Se refugió en Waypoint Ruins en Limgrave, donde sigue ofreciendo enseñanza de hechicería al Tarnished. Su quest dirige a recuperar a los Master Sorcerers excomulgados (',
+        'La Academia la excomulgó cuando su investigación excedió los límites permitidos. Se refugió en Waypoint Ruins en ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', donde sigue ofreciendo enseñanza de hechicería al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '. Su quest dirige a recuperar a los Master Sorcerers excomulgados (',
         link('Azur', 'character', 'azur'),
         ', ',
         link('Lusat', 'character', 'lusat'),
@@ -3033,12 +4126,20 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Entrenó a ',
         link('Radahn', 'character', 'radahn'),
-        ' en su juventud — la magia gravitacional que Radahn usó para bloquear las estrellas procede de ella. Su relación con ',
+        ' en su juventud — la ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        ' que ',
+        link('Radahn', 'character', 'radahn'),
+        ' usó para bloquear las estrellas procede de ella. Su relación con ',
         link('Jerren', 'character', 'jerren'),
         ', maestro de armas del Festival, es histórica y posiblemente romántica.'
       ),
       p(
-        'Su quest final culmina con su transformación parcial en cuerpo cósmico. Ya no puede caminar — su cuerpo suspendido entre piedras es geometría celestial activa. Si el Tarnished lo permite, será asesinada por Jerren al final del Festival como acto piadoso.'
+        'Su quest final culmina con su transformación parcial en cuerpo cósmico. Ya no puede caminar — su cuerpo suspendido entre piedras es geometría celestial activa. Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo permite, será asesinada por ',
+        link('Jerren', 'character', 'jerren'),
+        ' al final del Festival como acto piadoso.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3047,20 +4148,20 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     confirmed: [
       'Sellen fue alumna excomulgada de Raya Lucaria',
-      'Estudió la Corriente Primigenia con Azur y Lusat',
-      'Entrenó a Radahn en magia gravitacional',
-      'Tuvo relación histórica con Jerren',
+      ['Estudió la ', link('Corriente Primigenia', 'concept', 'primeval-current'), ' con ', link('Azur', 'character', 'azur'), ' y ', link('Lusat', 'character', 'lusat')],
+      ['Entrenó a ', link('Radahn', 'character', 'radahn'), ' en ', link('magia gravitacional', 'concept', 'gravity-magic')],
+      ['Tuvo relación histórica con ', link('Jerren', 'character', 'jerren')],
       'Su transformación final la suspende parcialmente como cuerpo cósmico'
     ],
     inferred: [
       'Su excomunión fue prevención — la Academia temía lo que ya sabía',
       'Sus maestros sufrieron el mismo destino cósmico antes que ella',
-      'Su asesinato por Jerren es acto piadoso, no traición'
+      ['Su asesinato por ', link('Jerren', 'character', 'jerren'), ' es acto piadoso, no traición']
     ],
     theories: [
-      'Sellen, Azur y Lusat formaron triángulo cósmico que sigue completándose',
+      ['Sellen, ', link('Azur', 'character', 'azur'), ' y ', link('Lusat', 'character', 'lusat'), ' formaron triángulo cósmico que sigue completándose'],
       'Si los tres se reunieran cosmológicamente, podrían constituir un Lord Elden alternativo',
-      'Conoció al Festival de Radahn antes que Jerren — coordinó implícitamente con él'
+      ['Conoció al Festival de ', link('Radahn', 'character', 'radahn'), ' antes que ', link('Jerren', 'character', 'jerren'), ' — coordinó implícitamente con él']
     ],
     ambiguous: [
       'Cuánto tiempo lleva en transformación',
@@ -3090,13 +4191,25 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Tuvo relación histórica con ',
         link('Sellen', 'character', 'sellen'),
-        ' antes de la excomunión de ella. Su separación fue producto de los caminos divergentes: Jerren al servicio marcial de Radahn en Caelid, Sellen al exilio académico tras la Academia.'
+        ' antes de la excomunión de ella. Su separación fue producto de los caminos divergentes: Jerren al servicio marcial de ',
+        link('Radahn', 'character', 'radahn'),
+        ' en ',
+        link('Caelid', 'region', 'caelid'),
+        ', Sellen al exilio académico tras la Academia.'
       ),
       p(
-        'Cuando organiza el Festival, su decisión es múltiple: 1) honra ritualmente a Radahn devolviéndole la dignidad de morir como guerrero, 2) coordina implícitamente con la quest cosmológica de Ranni (la muerte de Radahn libera las estrellas), 3) acepta la posibilidad de tener que ejecutar a Sellen al final de su transformación.'
+        'Cuando organiza el Festival, su decisión es múltiple: 1) honra ritualmente a ',
+        link('Radahn', 'character', 'radahn'),
+        ' devolviéndole la dignidad de morir como guerrero, 2) coordina implícitamente con la quest cosmológica de ',
+        link('Ranni', 'character', 'ranni'),
+        ' (la muerte de ',
+        link('Radahn', 'character', 'radahn'),
+        ' libera las estrellas), 3) acepta la posibilidad de tener que ejecutar a Sellen al final de su transformación.'
       ),
       p(
-        'Si el Tarnished completa la quest de Sellen permitiéndole excederse cosmológicamente, Jerren es quien la ejecuta — su honor le obliga a impedir que ella se vuelva amenaza activa al cosmos. Su acero llora antes de cortar, pero corta igual.'
+        'Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' completa la quest de Sellen permitiéndole excederse cosmológicamente, Jerren es quien la ejecuta — su honor le obliga a impedir que ella se vuelva amenaza activa al cosmos. Su acero llora antes de cortar, pero corta igual.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3104,13 +4217,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Jerren es Maestro de Armas de los Redmanes',
-      'Oficia el Festival de Radahn',
+      ['Jerren es Maestro de Armas de los ', link('Redmanes', 'faction', 'redmanes')],
+      ['Oficia el ', link('Festival de Radahn', 'timeline', 'radahn-festival')],
       'Tuvo relación histórica con Sellen',
       'Puede ejecutar a Sellen al final de su quest si el jugador lo pide'
     ],
     inferred: [
-      'Coordinó implícitamente con la quest de Ranni a través del Festival',
+      ['Coordinó implícitamente con la quest de ', link('Ranni', 'character', 'ranni'), ' a través del Festival'],
       'Su honor le impide hacer excepciones por afecto personal',
       'Conocía el riesgo de la transformación de Sellen antes de que ocurriera'
     ],
@@ -3121,8 +4234,8 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       'Si conserva amor por Sellen tras la separación',
-      'Si conoce el efecto cosmológico exacto de matar a Radahn',
-      'Si los Redmanes apoyan plenamente sus decisiones rituales'
+      ['Si conoce el efecto cosmológico exacto de matar a ', link('Radahn', 'character', 'radahn')],
+      ['Si los ', link('Redmanes', 'faction', 'redmanes'), ' apoyan plenamente sus decisiones rituales']
     ],
     relatedCharacters: ['radahn', 'sellen', 'alexander', 'patches'],
     relatedFactions: ['redmanes'],
@@ -3141,18 +4254,34 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Enia', 'character', 'enia'),
         ' es la ',
         link('Lectora de Dedos', 'faction', 'finger-readers'),
-        ' principal de la Mesa Redonda. Recibe al Tarnished, lo unge formalmente como aspirante al trono Elden, y media entre los pronunciamientos de los ',
+        ' principal de la ',
+        link('Mesa Redonda', 'concept', 'roundtable-hold'),
+        '. Recibe al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', lo unge formalmente como aspirante al trono Elden, y media entre los pronunciamientos de los ',
         link('Dos Dedos', 'faction', 'dos-dedos'),
         ' y los aspirantes humanos.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Su función es traducción ritual. Los Dos Dedos no piensan — traducen voluntad de la ',
+        'Su función es traducción ritual. ',
+        'Los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' no piensan — traducen voluntad de la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        ' a través de gestos físicos. Esos gestos requieren a su vez ser traducidos a palabras humanas. Enia es el último eslabón de la cadena: Voluntad Mayor → Dos Dedos → Lectora → Tarnished.'
+        ' a través de gestos físicos. Esos gestos requieren a su vez ser traducidos a palabras humanas. Enia es el último eslabón de la cadena: ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' → ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' → Lectora → ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '.'
       ),
       p(
-        'La cadena, sin embargo, está rota. Los Dos Dedos están deteriorándose físicamente. Sus pronunciamientos son cada vez más vagos. Algunos están podridos visiblemente. Enia continúa sus rituales aunque sospecha que ya nadie escucha del otro lado. Cambia las Grandes Runas restauradas por bendiciones rúnicas. Atiende a los Dedos cuando estos comienzan a deteriorarse.'
+        'La cadena, sin embargo, está rota. ',
+        'Los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        ' están deteriorándose físicamente. Sus pronunciamientos son cada vez más vagos. Algunos están podridos visiblemente. Enia continúa sus rituales aunque sospecha que ya nadie escucha del otro lado. Cambia las Grandes Runas restauradas por bendiciones rúnicas. Atiende a los Dedos cuando estos comienzan a deteriorarse.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3160,25 +4289,25 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Enia es Lectora de Dedos en la Mesa Redonda',
-      'Bautiza al Tarnished como aspirante al trono Elden',
+      ['Enia es Lectora de Dedos en la ', link('Mesa Redonda', 'concept', 'roundtable-hold')],
+      ['Bautiza al ', link('Tarnished', 'concept', 'tarnished'), ' como aspirante al trono Elden'],
       'Cambia Grandes Runas por bendiciones rúnicas',
-      'Atiende a los Dos Dedos durante su deterioro'
+      ['Atiende a los ', link('Dos Dedos', 'faction', 'dos-dedos'), ' durante su deterioro']
     ],
     inferred: [
-      'Sospecha que la Voluntad Mayor se ha retirado parcialmente',
+      ['Sospecha que la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' se ha retirado parcialmente'],
       'Sigue los rituales por deber estructural, no por convicción ingenua',
       'Otras Lectoras existen pero ella es la principal de Roundtable Hold'
     ],
     theories: [
-      'Conoce el secreto Radagon-es-Marika antes que Goldmask',
+      ['Conoce el secreto ', link('Radagon', 'character', 'radagon'), '-es-', link('Marika', 'character', 'marika'), ' antes que ', link('Goldmask', 'character', 'goldmask')],
       'Sus visiones le mostraron eras pasadas y futuras',
       'Su ceguera es elección ritual, no defecto físico'
     ],
     ambiguous: [
       'Cuánto tiempo lleva oficiando',
       'Si sus interpretaciones son fieles o ya creativas',
-      'Si los Dos Dedos podridos siguen comunicando algo o solo gimen'
+      ['Si los ', link('Dos Dedos', 'faction', 'dos-dedos'), ' podridos siguen comunicando algo o solo gimen']
     ],
     relatedCharacters: ['marika', 'gideon', 'goldmask', 'corhyn'],
     relatedFactions: ['dos-dedos', 'finger-readers', 'orden-dorado'],
@@ -3201,12 +4330,24 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'Aparece primero en Limgrave atascado en un pozo — el Tarnished lo libera empujándolo. Su ruta lo lleva al Festival de Radahn en Caelid, donde lucha como guerrero invitado por ',
+        'Aparece primero en ',
+        link('Limgrave', 'region', 'limgrave'),
+        ' atascado en un pozo — el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo libera empujándolo. Su ruta lo lleva al Festival de ',
+        link('Radahn', 'character', 'radahn'),
+        ' en ',
+        link('Caelid', 'region', 'caelid'),
+        ', donde lucha como guerrero invitado por ',
         link('Jerren', 'character', 'jerren'),
         '. Su honor marcial es genuino aunque su cuerpo lo contradice constantemente.'
       ),
       p(
-        'Tras el Festival, sigue su carrera marcial visitando otras regiones. Se enfrenta a un Magma Wyrm en Mt Gelmir y pierde. Reaparece en el Bestial Sanctum buscando combate digno. Su muerte final ocurre durante un combate ritual con el Tarnished — su cuerpo se rompe en pedazos cerámicos y su alma se libera.'
+        'Tras el Festival, sigue su carrera marcial visitando otras regiones. Se enfrenta a un ',
+        link('Magma', 'character', 'magma-wyrm-makar'),
+        ' Wyrm en Mt Gelmir y pierde. Reaparece en el Bestial Sanctum buscando combate digno. Su muerte final ocurre durante un combate ritual con el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' — su cuerpo se rompe en pedazos cerámicos y su alma se libera.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3215,19 +4356,19 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     confirmed: [
       'Alexander es Living Jar con vocación marcial',
-      'Su quest lo lleva del pozo de Limgrave al Festival de Radahn',
-      'Es derrotado por Magma Wyrm en Mt Gelmir',
-      'Su muerte final es combate ritual con el Tarnished'
+      ['Su quest lo lleva del pozo de ', link('Limgrave', 'region', 'limgrave'), ' al Festival de ', link('Radahn', 'character', 'radahn')],
+      ['Es derrotado por ', link('Magma', 'character', 'magma-wyrm-makar'), ' Wyrm en Mt Gelmir'],
+      ['Su muerte final es combate ritual con el ', link('Tarnished', 'concept', 'tarnished')]
     ],
     inferred: [
       'Su alma humana original procede del pueblo de Jarburg',
       'Su honor marcial es genuino, no parodia',
-      'Conoce a Diallos, Jar-Bairn y otros del pueblo errante'
+      ['Conoce a ', link('Diallos', 'character', 'diallos'), ', ', link('Jar-Bairn', 'character', 'jar-bairn'), ' y otros del pueblo errante']
     ],
     theories: [
       'Su jarra contiene fragmentos de un guerrero antiguo cuya alma se preservó',
       'Su muerte libera un espíritu legendario',
-      'Si Jar-Bairn lo emula, completaría su linaje espiritual'
+      ['Si ', link('Jar-Bairn', 'character', 'jar-bairn'), ' lo emula, completaría su linaje espiritual']
     ],
     ambiguous: [
       'Quién o qué fue antes de ser Living Jar',
@@ -3247,11 +4388,19 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Resumen esencial'),
       p(
         link('Diallos', 'character', 'diallos'),
-        ' es noble de Casa Hoslow que llegó a las Tierras Intermedias buscando a Lanya, su sirvienta personal. Su filosofía de vida fue siempre pacifista: la espada existe para no ser usada, el noble debe gobernar por palabra, no por hierro.'
+        ' es noble de Casa Hoslow que llegó a las Tierras Intermedias buscando a ',
+        link('Lanya', 'character', 'lanya'),
+        ', su sirvienta personal. Su filosofía de vida fue siempre pacifista: la espada existe para no ser usada, el noble debe gobernar por palabra, no por hierro.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Aparece en la Mesa Redonda en estado de melancolía profunda. Su búsqueda de Lanya nunca termina — ella ya está muerta, asesinada por los conflictos de las Tierras Intermedias post-fractura. El Tarnished puede dirigirlo a ',
+        'Aparece en la ',
+        link('Mesa Redonda', 'concept', 'roundtable-hold'),
+        ' en estado de melancolía profunda. Su búsqueda de ',
+        link('Lanya', 'character', 'lanya'),
+        ' nunca termina — ella ya está muerta, asesinada por los conflictos de las Tierras Intermedias post-fractura. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' puede dirigirlo a ',
         link('Tanith', 'character', 'tanith'),
         ' en el Volcano Manor (donde fracasa por su pacifismo) o a Jarburg, aldea de ',
         link('Living Jars', 'faction', 'living-jars'),
@@ -3260,7 +4409,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'En Jarburg encuentra una comunidad pacífica que respeta su filosofía. Conoce a ',
         link('Jar-Bairn', 'character', 'jar-bairn'),
-        ' y otros del pueblo. Cuando un atacante invade la aldea para masacrar a sus habitantes, Diallos finalmente levanta la espada por primera vez. Defiende la puerta. Mata al atacante. Muere por las heridas. Jar-Bairn sobrevive.'
+        ' y otros del pueblo. Cuando un atacante invade la aldea para masacrar a sus habitantes, Diallos finalmente levanta la espada por primera vez. Defiende la puerta. Mata al atacante. Muere por las heridas. ',
+        link('Jar-Bairn', 'character', 'jar-bairn'),
+        ' sobrevive.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3269,10 +4420,10 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     confirmed: [
       'Diallos es noble de Casa Hoslow',
-      'Busca a Lanya, su sirvienta perdida',
-      'Lanya ya está muerta cuando él llega',
+      ['Busca a ', link('Lanya', 'character', 'lanya'), ', su sirvienta perdida'],
+      [link('Lanya', 'character', 'lanya'), ' ya está muerta cuando él llega'],
       'Defiende Jarburg de un atacante y muere por ello',
-      'Jar-Bairn sobrevive gracias a su sacrificio'
+      [link('Jar-Bairn', 'character', 'jar-bairn'), ' sobrevive gracias a su sacrificio']
     ],
     inferred: [
       'Su pacifismo era convicción profunda, no ingenuidad',
@@ -3281,11 +4432,11 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     theories: [
       'Conocía la posibilidad de su muerte al aceptar defender Jarburg',
-      'Lanya era más que sirvienta — posible amante secreta',
+      [link('Lanya', 'character', 'lanya'), ' era más que sirvienta — posible amante secreta'],
       'La Casa Hoslow envió otros Hoslows que también fracasaron'
     ],
     ambiguous: [
-      'Cuándo exactamente murió Lanya',
+      ['Cuándo exactamente murió ', link('Lanya', 'character', 'lanya')],
       'Si Diallos sospechaba la muerte antes de confirmarla',
       'Si la Casa Hoslow original sigue existiendo'
     ],
@@ -3301,50 +4452,62 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Resumen esencial'),
       p(
         link('Latenna', 'character', 'latenna'),
-        ' pertenecía a la aldea albinaúrica de Caelid antes de su masacre por Redmanes corrompidos. Sobrevivió escondida con su hermana ',
+        ' pertenecía a la aldea albinaúrica de ',
+        link('Caelid', 'region', 'caelid'),
+        ' antes de su masacre por Redmanes corrompidos. Sobrevivió escondida con su hermana ',
         link('Lobelia', 'character', 'latenna'),
         ' y un lobo guardián.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'Su hermana Lobelia murió durante la huida. Latenna sigue cargándola simbólicamente — su misión es llegar al ',
+        'Su hermana ',
+        link('Lobelia', 'character', 'lobelia'),
+        ' murió durante la huida. Latenna sigue cargándola simbólicamente — su misión es llegar al ',
         link('Haligtree', 'region', 'haligtree'),
         ' con los restos de la hermana, cumpliendo así el éxodo Albinauric que ',
         link('Miquella', 'character', 'miquella'),
-        ' había prometido. Sigue al Tarnished como invocación espiritual.'
+        ' había prometido. Sigue al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' como invocación espiritual.'
       ),
       p(
         'La quest culmina en el ',
         link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
-        ' donde Latenna espera ser llevada al Haligtree. El acceso real requiere completar el ritual en ',
+        ' donde Latenna espera ser llevada al ',
+        link('Haligtree', 'region', 'haligtree'),
+        '. El acceso real requiere completar el ritual en ',
         link('Ordina', 'region', 'ordina'),
-        '. Si el Tarnished la lleva al borde del bosque sagrado, ella muere allí — hasta donde puede llegar como espíritu.'
+        '. Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' la lleva al borde del bosque sagrado, ella muere allí — hasta donde puede llegar como espíritu.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Latenna encarna la peregrinación como duelo. Camina con la hermana muerta hasta un árbol que probablemente ya no las acoge. Su lobo es el guía. Lobelia es la carga. El árbol es el destino — o la promesa de que existió uno. Su tragedia es que llega al borde, no al centro.'
+        'Latenna encarna la peregrinación como duelo. Camina con la hermana muerta hasta un árbol que probablemente ya no las acoge. Su lobo es el guía. ',
+        link('Lobelia', 'character', 'lobelia'),
+        ' es la carga. El árbol es el destino — o la promesa de que existió uno. Su tragedia es que llega al borde, no al centro.'
       )
     ],
     confirmed: [
-      'Latenna es Albinaúrica superviviente de Caelid',
-      'Su hermana Lobelia murió durante la huida',
-      'Sigue al Tarnished como invocación espiritual',
-      'Espera ser llevada al Haligtree'
+      ['Latenna es Albinaúrica superviviente de ', link('Caelid', 'region', 'caelid')],
+      ['Su hermana ', link('Lobelia', 'character', 'lobelia'), ' murió durante la huida'],
+      ['Sigue al ', link('Tarnished', 'concept', 'tarnished'), ' como invocación espiritual'],
+      ['Espera ser llevada al ', link('Haligtree', 'region', 'haligtree')]
     ],
     inferred: [
       'La masacre de su aldea fue por Redmanes corrompidos por la Podredumbre',
-      'Cumple peregrinación ritual del éxodo Albinauric prometido por Miquella',
+      ['Cumple peregrinación ritual del éxodo Albinauric prometido por ', link('Miquella', 'character', 'miquella')],
       'Su lobo guardián es ancestral del pueblo Albinauric'
     ],
     theories: [
-      'Lobelia conserva alguna forma de presencia residual mientras Latenna la carga',
+      [link('Lobelia', 'character', 'lobelia'), ' conserva alguna forma de presencia residual mientras Latenna la carga'],
       'Si Latenna llegara realmente a Elphael, completaría un rito interrumpido',
       'Otros Albinaurics supervivientes esperan en otras regiones'
     ],
     ambiguous: [
       'Cuándo exactamente ocurrió la masacre',
-      'Si Lobelia conserva alguna forma post-mortem',
-      'Si Latenna sabe que Miquella ya no está en el Haligtree'
+      ['Si ', link('Lobelia', 'character', 'lobelia'), ' conserva alguna forma post-mortem'],
+      ['Si Latenna sabe que ', link('Miquella', 'character', 'miquella'), ' ya no está en el ', link('Haligtree', 'concept', 'haligtree')]
     ],
     relatedCharacters: ['miquella', 'malenia', 'albus'],
     relatedFactions: ['albinauricos' ],
@@ -3359,7 +4522,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Resumen esencial'),
       p(
         link('Hyetta', 'character', 'hyetta'),
-        ' aparece como doncella ciega vagando por las Tierras Intermedias. Pide al Tarnished encontrar Granos Brillantes (Shabriri Grapes) para saciar su sed. Lo que ella no sabe — y lo que el Tarnished descubre tarde — es que las "uvas" son ojos humanos extraídos.'
+        ' aparece como doncella ciega vagando por las Tierras Intermedias. Pide al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' encontrar Granos Brillantes (',
+        link('Shabriri', 'character', 'shabriri'),
+        ' Grapes) para saciar su sed. Lo que ella no sabe — y lo que el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' descubre tarde — es que las "uvas" son ojos humanos extraídos.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -3368,7 +4537,16 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         '. Cuanto más ve, más se aleja de la inocencia. Su transformación es gradual y voluntaria: cada Grano que pide es escalón hacia el horror cosmológico.'
       ),
       p(
-        'Cuando finalmente ve plenamente, ya es doncella del Señor de la Llama Frenética. Guía al Tarnished a la cripta sellada bajo Leyndell donde residen los Tres Dedos. Si el Tarnished acepta el pacto, ella se convierte en su doncella post-frenesí — ',
+        'Cuando finalmente ve plenamente, ya es doncella del ',
+        link('Señor de la Llama Frenética', 'ending', 'frenzied-flame'),
+        '. Guía al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' a la cripta sellada bajo Leyndell donde residen ',
+        'los ',
+        link('Tres Dedos', 'faction', 'tres-dedos'),
+        '. Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' acepta el pacto, ella se convierte en su doncella post-frenesí — ',
         link('Melina', 'character', 'melina'),
         ' lo abandona, Hyetta lo recibe. Su iluminación termina en posesión cosmológica.'
       ),
@@ -3381,16 +4559,16 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Hyetta vaga ciega por las Tierras Intermedias pidiendo Granos Brillantes',
       'Los Granos son ojos humanos extraídos',
       'Cada Grano consumido le devuelve gradualmente la visión',
-      'Su iluminación final la convierte en doncella de la Llama Frenética'
+      ['Su iluminación final la convierte en doncella de la ', link('Llama Frenética', 'concept', 'frenzied-flame')]
     ],
     inferred: [
-      'Es contraparte estructural de Melina — doncella oficial del final frenético',
+      ['Es contraparte estructural de ', link('Melina', 'character', 'melina'), ' — doncella oficial del final frenético'],
       'Su transformación es gradual pero voluntaria',
       'Su ceguera original podría haber sido protección cosmológica'
     ],
     theories: [
-      'Es próximo huésped de Shabriri tras Yura',
-      'Conoce el plan de los Tres Dedos antes que el Tarnished',
+      ['Es próximo huésped de ', link('Shabriri', 'character', 'shabriri'), ' tras ', link('Yura', 'character', 'yura')],
+      ['Conoce el plan de los ', link('Tres Dedos', 'faction', 'tres-dedos'), ' antes que el ', link('Tarnished', 'concept', 'tarnished')],
       'Su nombre original no es Hyetta sino algo borrado por la transformación'
     ],
     ambiguous: [
@@ -3413,45 +4591,63 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Kenneth aparece en una colina de Limgrave pidiendo al Tarnished liberar el Fuerte Haight de los enemigos que lo ocupan. Su lenguaje aristocrático — "Soy Kenneth Haight, undécimo del Fuerte Haight" — es residuo de protocolos cosmológicos que ya nadie sigue. Su séptimo de séptimo de séptimo del linaje original; el último vivo de su familia inmediata.'
+        'Kenneth aparece en una colina de ',
+        link('Limgrave', 'region', 'limgrave'),
+        ' pidiendo al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' liberar el Fuerte Haight de los enemigos que lo ocupan. Su lenguaje aristocrático — "Soy Kenneth Haight, undécimo del Fuerte Haight" — es residuo de protocolos cosmológicos que ya nadie sigue. Su séptimo de séptimo de séptimo del linaje original; el último vivo de su familia inmediata.'
       ),
       h(2, 'El padre adoptivo'),
       p(
         link('Nepheli Loux', 'character', 'nepheli-loux'),
         ' fue criada por Kenneth como hija propia. La verdad sobre su linaje real — descendiente directa de ',
         link('Godfrey', 'character', 'godfrey'),
-        ' — Kenneth la oculta deliberadamente. Las razones nunca se enuncian, pero las inferencias son razonables: protegerla de los riesgos políticos del linaje, o quizás porque el propio Kenneth no se atreve a entregar a Nepheli al peso del Linaje Dorado real.'
+        ' — Kenneth la oculta deliberadamente. Las razones nunca se enuncian, pero las inferencias son razonables: protegerla de los riesgos políticos del linaje, o quizás porque el propio Kenneth no se atreve a entregar a ',
+        link('Nepheli', 'character', 'nepheli-loux'),
+        ' al peso del ',
+        link('Linaje Dorado', 'faction', 'golden-lineage'),
+        ' real.'
       ),
       h(2, 'El destino paralelo'),
       p(
-        'Si el Tarnished completa la quest de Nepheli y la corona como Señora de ',
+        'Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' completa la quest de ',
+        link('Nepheli', 'character', 'nepheli-loux'),
+        ' y la corona como Señora de ',
         link('Stormveil', 'region', 'stormveil'),
         ', Kenneth migra al castillo y se autoproclama "Lord de Stormveil" — heredero por adopción del trono que su hija realmente debería gobernar por sangre. La maniobra es cómica y trágica: el padre adoptivo aprovecha la ascensión de la hija para inflar su propio rango.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Kenneth encarna la nobleza como costumbre. Recuerda lo que el Orden Dorado significaba antes de la fractura, pero ese recuerdo ya es más útil al disfraz que a la realidad. Su título sigue intacto, su autoridad ha ido por el camino que va de la batalla a la anécdota. Es prueba viva de que las jerarquías sobreviven a su contenido.'
+        'Kenneth encarna la nobleza como costumbre. Recuerda lo que ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' significaba antes de ',
+        'la ',
+        link('fractura', 'timeline', 'la-fractura'),
+        ', pero ese recuerdo ya es más útil al disfraz que a la realidad. Su título sigue intacto, su autoridad ha ido por el camino que va de la batalla a la anécdota. Es prueba viva de que las jerarquías sobreviven a su contenido.'
       )
     ],
     confirmed: [
-      'Kenneth es lord nominal del Fuerte Haight en Limgrave',
-      'Padre adoptivo de Nepheli Loux',
-      'Pide al Tarnished liberar el fuerte de enemigos',
-      'Si Nepheli es coronada en Stormveil, Kenneth migra como "Lord"'
+      ['Kenneth es lord nominal del Fuerte Haight en ', link('Limgrave', 'region', 'limgrave')],
+      ['Padre adoptivo de ', link('Nepheli Loux', 'character', 'nepheli-loux')],
+      ['Pide al ', link('Tarnished', 'concept', 'tarnished'), ' liberar el fuerte de enemigos'],
+      ['Si ', link('Nepheli', 'character', 'nepheli-loux'), ' es coronada en Stormveil, Kenneth migra como "Lord"']
     ],
     inferred: [
-      'Conoce el linaje real de Nepheli pero lo oculta deliberadamente',
+      ['Conoce el linaje real de ', link('Nepheli', 'character', 'nepheli-loux'), ' pero lo oculta deliberadamente'],
       'Su pretensión nobiliaria post-fractura es residuo, no autoridad real',
       'Su séptimo undécimo del Fuerte Haight indica decadencia generacional larga'
     ],
     theories: [
-      'Recibió a Nepheli de mensajeros del Orden Dorado oficial encubiertos',
-      'Su propio linaje incluye sangre lateral del Linaje Dorado',
-      'Sospecha que Nepheli es heredera más legítima que Godrick y la mantiene oculta por seguridad'
+      ['Recibió a ', link('Nepheli', 'character', 'nepheli-loux'), ' de mensajeros del ', link('Orden Dorado', 'concept', 'golden-order'), ' oficial encubiertos'],
+      ['Su propio linaje incluye sangre lateral del ', link('Linaje Dorado', 'faction', 'golden-lineage')],
+      ['Sospecha que ', link('Nepheli', 'character', 'nepheli-loux'), ' es heredera más legítima que ', link('Godrick', 'character', 'godrick'), ' y la mantiene oculta por seguridad']
     ],
     ambiguous: [
-      'Quién entregó originalmente a Nepheli a su cuidado',
-      'Si Nepheli sospecha algo sobre su origen real',
+      ['Quién entregó originalmente a ', link('Nepheli', 'character', 'nepheli-loux'), ' a su cuidado'],
+      ['Si ', link('Nepheli', 'character', 'nepheli-loux'), ' sospecha algo sobre su origen real'],
       'Si Kenneth siente afecto genuino o pragmatismo aristocrático'
     ],
     relatedCharacters: ['nepheli-loux', 'godfrey', 'godrick', 'gideon'],
@@ -3466,11 +4662,17 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'El Tarnished encuentra a Roderika al pie de Stormhill, en estado de shock catatónico. Es la única superviviente de un grupo Tarnished masacrado en el camino. Sus compañeros muertos no pueden ser sepultados — la violencia fue tan reciente que sus almas todavía vagan. Roderika lleva consigo el dolor sin cuerpo de varios.'
+        'El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' encuentra a Roderika al pie de Stormhill, en estado de shock catatónico. Es la única superviviente de un grupo ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' masacrado en el camino. Sus compañeros muertos no pueden ser sepultados — la violencia fue tan reciente que sus almas todavía vagan. Roderika lleva consigo el dolor sin cuerpo de varios.'
       ),
       h(2, 'La aprendiz'),
       p(
-        'El Tarnished la dirige a la ',
+        'El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' la dirige a la ',
         link('Mesa Redonda', 'region', 'leyndell'),
         ' donde puede encontrar refugio. Allí descubre su afinidad con el arte de las cenizas espirituales: conjurar a los muertos como aliados invocables. ',
         link('Hewg', 'character', 'hewg'),
@@ -3478,11 +4680,17 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'El oficio del duelo'),
       p(
-        'Roderika se convierte en la maestra de cenizas espirituales del juego. Mejora las invocaciones del Tarnished convirtiendo cenizas básicas en versiones potenciadas. Cada espíritu mejorado es un duelo trabajado — una transmutación del dolor original en herramienta funcional. Sus fantasmas pelean por ella ahora; cuando lo hacen, sonríe — porque al menos siguen existiendo.'
+        'Roderika se convierte en la maestra de cenizas espirituales del juego. Mejora las invocaciones del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' convirtiendo cenizas básicas en versiones potenciadas. Cada espíritu mejorado es un duelo trabajado — una transmutación del dolor original en herramienta funcional. Sus fantasmas pelean por ella ahora; cuando lo hacen, sonríe — porque al menos siguen existiendo.'
       ),
       h(2, 'La relación con Hewg'),
       p(
-        'Su relación con Hewg evoluciona del respeto profesional al afecto silencioso. Roderika nota la maldición del herrero — la imposibilidad de morir — y le da, sin saberlo, lo que él más necesita: alguien que crea en su capacidad de hacer algo nuevo. Su cariño implícito es una forma de devolverle a Hewg parte de la humanidad que la diosa le había arrancado.'
+        'Su relación con ',
+        link('Hewg', 'character', 'hewg'),
+        ' evoluciona del respeto profesional al afecto silencioso. Roderika nota la maldición del herrero — la imposibilidad de morir — y le da, sin saberlo, lo que él más necesita: alguien que crea en su capacidad de hacer algo nuevo. Su cariño implícito es una forma de devolverle a ',
+        link('Hewg', 'character', 'hewg'),
+        ' parte de la humanidad que la diosa le había arrancado.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3490,25 +4698,25 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Roderika sobrevive a la masacre de su grupo Tarnished en Stormhill',
-      'Es dirigida a la Mesa Redonda por el Tarnished',
-      'Aprende el arte de las cenizas espirituales con Hewg',
-      'Mejora las invocaciones espirituales del Tarnished'
+      ['Roderika sobrevive a la masacre de su grupo ', link('Tarnished', 'concept', 'tarnished'), ' en Stormhill'],
+      ['Es dirigida a la ', link('Mesa Redonda', 'concept', 'roundtable-hold'), ' por el ', link('Tarnished', 'concept', 'tarnished')],
+      ['Aprende el arte de las cenizas espirituales con ', link('Hewg', 'character', 'hewg')],
+      ['Mejora las invocaciones espirituales del ', link('Tarnished', 'concept', 'tarnished')]
     ],
     inferred: [
       'Su afinidad espiritual procede del trauma de la masacre',
-      'Su relación con Hewg evoluciona a afecto silencioso',
+      ['Su relación con ', link('Hewg', 'character', 'hewg'), ' evoluciona a afecto silencioso'],
       'Cada invocación que potencia es un proceso de duelo'
     ],
     theories: [
       'Sus compañeros caídos conservan algún tipo de presencia residual a través de ella',
-      'Si Hewg eventualmente acepta la maldición de la diosa, Roderika sería la única capaz de liberarlo',
-      'Su don es heredado de una línea familiar de Doncellas Espirituales pre-Orden'
+      ['Si ', link('Hewg', 'character', 'hewg'), ' eventualmente acepta la maldición de la diosa, Roderika sería la única capaz de liberarlo'],
+      ['Su don es heredado de una línea familiar de ', link('Doncellas', 'character', 'twin-maiden-husks'), ' Espirituales pre-Orden']
     ],
     ambiguous: [
       'Cuántos compañeros tenía exactamente antes de la masacre',
       'Quién o qué los masacró',
-      'Si conoce el pasado real de Hewg como titán'
+      ['Si conoce el pasado real de ', link('Hewg', 'character', 'hewg'), ' como titán']
     ],
     relatedCharacters: ['hewg', 'nepheli-loux', 'godrick'],
     relatedFactions: ['orden-dorado'],
@@ -3522,17 +4730,26 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Hewg es titán antiguo de raza casi extinta — posiblemente vinculado a los Gigantes del Fuego o a alguna línea pre-Orden similar. Una diosa cuya identidad nunca se enuncia (probable: Marika misma, o una entidad relacionada) lo maldijo a la inmortalidad forzada. Su cuerpo no envejece, no se enferma, no puede ser herido fatalmente por causas comunes. Solo armas específicas — las que él mismo ayuda a forjar — podrían cortar la maldición.'
+        'Hewg es titán antiguo de raza casi extinta — posiblemente vinculado a los ',
+        link('Gigantes del Fuego', 'faction', 'fire-giants'),
+        ' o a alguna línea pre-Orden similar. Una diosa cuya identidad nunca se enuncia (probable: ',
+        link('Marika', 'character', 'marika'),
+        ' misma, o una entidad relacionada) lo maldijo a la inmortalidad forzada. Su cuerpo no envejece, no se enferma, no puede ser herido fatalmente por causas comunes. Solo armas específicas — las que él mismo ayuda a forjar — podrían cortar la maldición.'
       ),
       h(2, 'El maestro herrero'),
       p(
         'Encadenado a su taller en la ',
         link('Mesa Redonda', 'region', 'leyndell'),
-        ', Hewg sirve como herrero principal de los Tarnished. Forja todo: armas mejoradas, escudos, talismanes potenciados. Su técnica es ancestral — combina conocimientos pre-Orden con tradiciones doradas oficiales. Cada arma que sale de su martillo es objeto cosmológicamente refinado.'
+        ', Hewg sirve como herrero principal de ',
+        'los ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '. Forja todo: armas mejoradas, escudos, talismanes potenciados. Su técnica es ancestral — combina conocimientos pre-Orden con tradiciones doradas oficiales. Cada arma que sale de su martillo es objeto cosmológicamente refinado.'
       ),
       h(2, 'El deseo de morir'),
       p(
-        'Confiesa al Tarnished, en un momento específico de su quest, que desea ser eliminado por uno de los aspirantes. Su lenguaje es deliberado: no busca suicidarse — busca ser asesinado por las armas que él mismo forjó. La paradoja es ritual: el herrero pide que su trabajo lo libere de su trabajo. La maldición lo mantiene; las armas que la maldición permite forjar son, en teoría, lo único que podría romperla.'
+        'Confiesa al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', en un momento específico de su quest, que desea ser eliminado por uno de los aspirantes. Su lenguaje es deliberado: no busca suicidarse — busca ser asesinado por las armas que él mismo forjó. La paradoja es ritual: el herrero pide que su trabajo lo libere de su trabajo. La maldición lo mantiene; las armas que la maldición permite forjar son, en teoría, lo único que podría romperla.'
       ),
       h(2, 'La luz de Roderika'),
       p(
@@ -3541,25 +4758,31 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Hewg encarna la inmortalidad como castigo. Es la inversa de Marika: ella construyó el régimen sobre la inmortalidad ritualizada del Árbol Áureo; Hewg fue condenado individualmente al mismo principio. Su tragedia es inversa también — Marika rogó implícitamente para no haber sellado la Muerte; Hewg ruega explícitamente que alguien lo mate. Ninguno es escuchado por el cosmos.'
+        'Hewg encarna la inmortalidad como castigo. Es la inversa de ',
+        link('Marika', 'character', 'marika'),
+        ': ella construyó el régimen sobre la inmortalidad ritualizada del ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        '; Hewg fue condenado individualmente al mismo principio. Su tragedia es inversa también — ',
+        link('Marika', 'character', 'marika'),
+        ' rogó implícitamente para no haber sellado la Muerte; Hewg ruega explícitamente que alguien lo mate. Ninguno es escuchado por el cosmos.'
       )
     ],
     confirmed: [
       'Hewg es titán encadenado por maldición divina',
-      'Sirve como maestro herrero en la Mesa Redonda',
+      ['Sirve como maestro herrero en la ', link('Mesa Redonda', 'concept', 'roundtable-hold')],
       'No puede morir por causas comunes',
-      'Confiesa al Tarnished que desea ser eliminado',
-      'Su relación con Roderika evoluciona a afecto silencioso'
+      ['Confiesa al ', link('Tarnished', 'concept', 'tarnished'), ' que desea ser eliminado'],
+      ['Su relación con ', link('Roderika', 'character', 'roderika'), ' evoluciona a afecto silencioso']
     ],
     inferred: [
       'Es contemporáneo de eras pre-Orden o muy tempranas del régimen',
-      'La diosa que lo maldijo es probablemente Marika o entidad relacionada',
+      ['La diosa que lo maldijo es probablemente ', link('Marika', 'character', 'marika'), ' o entidad relacionada'],
       'Solo armas que él mismo forja podrían cortar la maldición'
     ],
     theories: [
-      'Hewg fue uno de los Gigantes del Fuego encadenado tras la guerra',
+      ['Hewg fue uno de los ', link('Gigantes del Fuego', 'faction', 'fire-giants'), ' encadenado tras la guerra'],
       'Su maldición fue castigo por intentar forjar un arma capaz de matar dioses',
-      'Si Roderika alcanza nivel suficiente, podría ser quien lo libere'
+      ['Si ', link('Roderika', 'character', 'roderika'), ' alcanza nivel suficiente, podría ser quien lo libere']
     ],
     ambiguous: [
       'Identidad exacta de la diosa que lo maldijo',
@@ -3580,38 +4803,59 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Boc pertenece a la raza de los ',
         link('Misbegotten', 'faction', 'misbegotten'),
-        ' — humanos malformados clasificados como aberraciones por el Orden Dorado. Pero su carácter es excepcional dentro de su categoría: donde otros Misbegotten responden con violencia a la opresión, Boc respondió con dulzura. Aprendió costura. Cose para quien sea.'
+        ' — humanos malformados clasificados como aberraciones por ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        '. Pero su carácter es excepcional dentro de su categoría: donde otros Misbegotten responden con violencia a la opresión, Boc respondió con dulzura. Aprendió costura. Cose para quien sea.'
       ),
       h(2, 'La madre que lo abandonó'),
       p(
-        'La historia personal de Boc es el dolor estructural de su raza llevado al caso individual. Su madre — humana — lo abandonó al verlo nacer Misbegotten. Boc creció solo, aprendiendo costura por necesidad y por afición. Su confesión al Tarnished es directa: "Mi madre… ella me dijo que yo era hermoso. Pero solo una vez". Esa única vez le sostiene la identidad entera.'
+        'La historia personal de Boc es el dolor estructural de su raza llevado al caso individual. Su madre — humana — lo abandonó al verlo nacer Misbegotten. Boc creció solo, aprendiendo costura por necesidad y por afición. Su confesión al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' es directa: "Mi madre… ella me dijo que yo era hermoso. Pero solo una vez". Esa única vez le sostiene la identidad entera.'
       ),
       h(2, 'El sastre del Tarnished'),
       p(
-        'Cuando el Tarnished lo encuentra en Liurnia, Boc está siendo atacado por sus propios iguales — Misbegotten enloquecidos por la rabia. El Tarnished lo rescata. Desde ese momento, Boc se convierte en sastre personal del Tarnished: arregla la armadura, repara los rasgones, mejora la apariencia ritual del aspirante.'
+        'Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo encuentra en Liurnia, Boc está siendo atacado por sus propios iguales — Misbegotten enloquecidos por la rabia. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lo rescata. Desde ese momento, Boc se convierte en sastre personal del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ': arregla la armadura, repara los rasgones, mejora la apariencia ritual del aspirante.'
       ),
       h(2, 'La transformación opcional'),
       p(
-        'Si el Tarnished completa la quest de ',
+        'Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' completa la quest de ',
         link('Rennala', 'character', 'rennala'),
-        ' y obtiene una invocación específica del rito del Renacimiento, puede ofrecérsela a Boc. La invocación lo transforma temporalmente en humano. Pero Boc rechaza la transformación cuando el Tarnished le ofrece la opción real: prefiere ser quien es sabiendo que alguien lo aceptó como tal. La aceptación pesa más que la transformación.'
+        ' y obtiene una invocación específica del rito del ',
+        link('Renacimiento', 'concept', 'rebirth'),
+        ', puede ofrecérsela a Boc. La invocación lo transforma temporalmente en humano. Pero Boc rechaza la transformación cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' le ofrece la opción real: prefiere ser quien es sabiendo que alguien lo aceptó como tal. La aceptación pesa más que la transformación.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Boc encarna la belleza como ofrecimiento. No quiere conquistar nada — solo que alguien lo mire sin asco. Su tragedia y su gracia es saber que el cariño existe, aunque no para él (excepto del Tarnished). Cada hilo que cose es una pregunta: ¿soy suficiente? Y cada armadura reparada es una respuesta provisional: para alguien, sí.'
+        'Boc encarna la belleza como ofrecimiento. No quiere conquistar nada — solo que alguien lo mire sin asco. Su tragedia y su ',
+        link('gracia', 'concept', 'grace'),
+        ' es saber que el cariño existe, aunque no para él (excepto del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '). Cada hilo que cose es una pregunta: ¿soy suficiente? Y cada armadura reparada es una respuesta provisional: para alguien, sí.'
       )
     ],
     confirmed: [
       'Boc es Misbegotten sastre de Liurnia',
       'Su madre lo abandonó al verlo nacer',
-      'Es atacado por otros Misbegotten enloquecidos cuando el Tarnished lo encuentra',
-      'Cose y mejora la armadura del Tarnished',
-      'Puede ser transformado en humano usando una invocación de Rennala'
+      ['Es atacado por otros Misbegotten enloquecidos cuando el ', link('Tarnished', 'concept', 'tarnished'), ' lo encuentra'],
+      ['Cose y mejora la armadura del ', link('Tarnished', 'concept', 'tarnished')],
+      ['Puede ser transformado en humano usando una invocación de ', link('Rennala', 'character', 'rennala')]
     ],
     inferred: [
       'Su carácter dulce es excepcional dentro de su raza',
       'Su única afirmación maternal sostiene su identidad entera',
-      'Rechaza la transformación si el Tarnished lo acepta como es'
+      ['Rechaza la transformación si el ', link('Tarnished', 'concept', 'tarnished'), ' lo acepta como es']
     ],
     theories: [
       'Boc fue criado en secreto por algún Misbegotten anciano antes de quedar solo',
@@ -3655,24 +4899,28 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Tras el ataque, Jar-Bairn carga con el peso de ser superviviente. Su quest culmina con su decisión de viajar al ',
         link('Castillo Redmane', 'region', 'redmane-castle'),
-        ' para emular a Alexander — convertirse en Olla Guerrera. La transformación es ritual: un joven que aspira a ser héroe carga el legado de un noble que murió defendiéndolo. Su viaje es continuidad cosmológica del pueblo nómada-cerámico.'
+        ' para emular a ',
+        link('Alexander', 'character', 'alexander'),
+        ' — convertirse en Olla Guerrera. La transformación es ritual: un joven que aspira a ser héroe carga el legado de un noble que murió defendiéndolo. Su viaje es continuidad cosmológica del pueblo nómada-cerámico.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Jar-Bairn encarna la inocencia preservada por sangre adulta. Vive porque Diallos eligió morir. Es niño porque otros eligieron no serlo más. Su aspiración a ser Olla Guerrera es ambición legítima — pero también es, implícitamente, agradecimiento al sacrificio del que lo salvó. Cada paso futuro es deuda devuelta.'
+        'Jar-Bairn encarna la inocencia preservada por sangre adulta. Vive porque ',
+        link('Diallos', 'character', 'diallos'),
+        ' eligió morir. Es niño porque otros eligieron no serlo más. Su aspiración a ser Olla Guerrera es ambición legítima — pero también es, implícitamente, agradecimiento al sacrificio del que lo salvó. Cada paso futuro es deuda devuelta.'
       )
     ],
     confirmed: [
       'Jar-Bairn es el joven Living Jar de Jarburg',
       'Iris es su tutora',
-      'Aspira a ser Olla Guerrera como Alexander',
-      'Diallos muere defendiéndolo de un atacante',
+      ['Aspira a ser Olla Guerrera como ', link('Alexander', 'character', 'alexander')],
+      [link('Diallos', 'character', 'diallos'), ' muere defendiéndolo de un atacante'],
       'Sobrevive al ataque y planea viajar al Redmane Castle'
     ],
     inferred: [
       'Su pueblo eligió la paz deliberadamente',
       'El atacante específico procedía del Volcano Manor o de los Bloody Fingers',
-      'Su transformación final lo conectaría con el legado completo de Alexander'
+      ['Su transformación final lo conectaría con el legado completo de ', link('Alexander', 'character', 'alexander')]
     ],
     theories: [
       'Iris fue alguna vez humana antes de convertirse en Living Jar',
@@ -3697,7 +4945,12 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Albus pertenece a la raza de los ',
         link('Albinaurics', 'faction', 'albinauricos'),
-        ' — humanos artificiales creados en eras antiguas, frágiles, perseguidos por el Orden Dorado. Su pueblo fue casi exterminado durante el éxodo al Haligtree, y los pocos supervivientes viven escondidos. Albus es uno de ellos.'
+        ' — humanos artificiales creados en eras antiguas, frágiles, perseguidos por ',
+        'el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        '. Su pueblo fue casi exterminado durante el éxodo al ',
+        link('Haligtree', 'region', 'haligtree'),
+        ', y los pocos supervivientes viven escondidos. Albus es uno de ellos.'
       ),
       h(2, 'La jarra rota'),
       p(
@@ -3709,18 +4962,22 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Albus guarda la mitad del Mapa Secreto necesario para entrar al ',
         link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
-        '. La otra mitad la guarda Latenna. La división es deliberada — si un atacante encontrara a uno de los dos, no obtendría el mapa completo. Es protección distribuida ante una persecución que continúa post-mortem.'
+        '. La otra mitad la guarda ',
+        link('Latenna', 'character', 'latenna'),
+        '. La división es deliberada — si un atacante encontrara a uno de los dos, no obtendría el mapa completo. Es protección distribuida ante una persecución que continúa post-mortem.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Albus encarna la memoria como camuflaje. Sobrevive porque dejó de aparentar ser él mismo. Una jarra rota que recuerda más que cualquier biblioteca: contiene rituales del pueblo Albinauric, conocimiento del éxodo, geografía secreta del refugio prometido por Miquella. Su silencio aparente es archivo viviente.'
+        'Albus encarna la memoria como camuflaje. Sobrevive porque dejó de aparentar ser él mismo. Una jarra rota que recuerda más que cualquier biblioteca: contiene rituales del pueblo Albinauric, conocimiento del éxodo, geografía secreta del refugio prometido por ',
+        link('Miquella', 'character', 'miquella'),
+        '. Su silencio aparente es archivo viviente.'
       )
     ],
     confirmed: [
       'Albus es Albinaúrico superviviente',
       'Vive disfrazado dentro de una jarra rota en Liurnia',
       'Custodia la mitad del Mapa Secreto del Snowfield',
-      'Latenna guarda la otra mitad',
+      [link('Latenna', 'character', 'latenna'), ' guarda la otra mitad'],
       'Solo se revela cuando un visitante lo identifica correctamente'
     ],
     inferred: [
@@ -3729,14 +4986,14 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Otros Albinaurics supervivientes operan en disfraz similar en otras regiones'
     ],
     theories: [
-      'Albus fue uno de los pocos que llegó al borde del Haligtree antes de retroceder',
+      ['Albus fue uno de los pocos que llegó al borde del ', link('Haligtree', 'region', 'haligtree'), ' antes de retroceder'],
       'Su memoria contiene la ubicación de otros sobrevivientes ocultos',
-      'Si Miquella despertara, Albus podría guiar a los supervivientes restantes a Elphael'
+      ['Si ', link('Miquella', 'character', 'miquella'), ' despertara, Albus podría guiar a los supervivientes restantes a Elphael']
     ],
     ambiguous: [
       'Cuántos siglos lleva escondido en la jarra',
-      'Si conoció personalmente a Miquella o solo a través de leyendas Albinauric',
-      'Si Latenna conoce la ubicación específica de Albus o solo el procedimiento de identificación'
+      ['Si conoció personalmente a ', link('Miquella', 'character', 'miquella'), ' o solo a través de leyendas Albinauric'],
+      ['Si ', link('Latenna', 'character', 'latenna'), ' conoce la ubicación específica de Albus o solo el procedimiento de identificación']
     ],
     relatedCharacters: ['latenna', 'miquella'],
     relatedFactions: ['albinauricos' ],
@@ -3766,7 +5023,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'La quest de la llave'),
       p(
-        'Pide al Tarnished encontrar la Llave Académica que abre los pasajes restringidos de la Academia. Si el Tarnished se la trae, Thops sale corriendo de su cabaña hacia la entrada. Lo siguiente que el Tarnished encuentra, regresando, es su cuerpo: muerto en la entrada de la Academia, posiblemente por trampas mágicas activadas, posiblemente por un hechicero superior que lo identificó como intruso.'
+        'Pide al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' encontrar la Llave Académica que abre los pasajes restringidos de la Academia. Si el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' se la trae, Thops sale corriendo de su cabaña hacia la entrada. Lo siguiente que el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' encuentra, regresando, es su cuerpo: muerto en la entrada de la Academia, posiblemente por trampas mágicas activadas, posiblemente por un hechicero superior que lo identificó como intruso.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3776,7 +5039,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     confirmed: [
       'Thops fue alumno expulsado de Raya Lucaria por pobreza',
       'Vive en una cabaña a las afueras de la Academia',
-      'Pide al Tarnished encontrar la Llave Académica',
+      ['Pide al ', link('Tarnished', 'concept', 'tarnished'), ' encontrar la Llave Académica'],
       'Si recibe la llave, muere intentando entrar a la Academia'
     ],
     inferred: [
@@ -3808,7 +5071,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Irina pertenece a la familia Volmer de ',
         link('Castillo Morne', 'region', 'castle-morne'),
-        '. Es hija de Edgar, lord nominal del castillo. Su ceguera es congénita pero no la incapacita socialmente: la familia Volmer la protegió y la educó como noble plena. Cuando los ',
+        '. Es hija de ',
+        link('Edgar', 'character', 'edgar'),
+        ', lord nominal del castillo. Su ceguera es congénita pero no la incapacita socialmente: la familia Volmer la protegió y la educó como noble plena. Cuando los ',
         link('Misbegotten', 'faction', 'misbegotten'),
         ' se rebelaron y tomaron el castillo, Irina escapó con uno de los pocos sirvientes leales que le quedaban.'
       ),
@@ -3816,22 +5081,38 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Llegó ciega a la costa rocosa de la ',
         link('Península Llorosa', 'region', 'peninsula-llorosa'),
-        ', sola tras la muerte de su sirviente. El Tarnished la encuentra exhausta, sosteniendo una carta sellada para su padre. La carta es testimonio: explica la situación, pide ayuda, expresa amor filial. Irina no puede entregarla ella misma — está demasiado débil para regresar al castillo. Pide al Tarnished.'
+        ', sola tras la muerte de su sirviente. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' la encuentra exhausta, sosteniendo una carta sellada para su padre. La carta es testimonio: explica la situación, pide ayuda, expresa amor filial. Irina no puede entregarla ella misma — está demasiado débil para regresar al castillo. Pide al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '.'
       ),
       h(2, 'La muerte invisible'),
       p(
-        'El Tarnished lleva la carta a Edgar. Edgar, al leerla, decide partir a vengar a Irina — sabe instintivamente que su hija está muriendo o ya muerta. Cuando el Tarnished regresa a la costa, encuentra el cuerpo de Irina sin vida, todavía mirando al horizonte donde nunca verá nada. La timing es trágico: Edgar parte cuando Irina ya está muriendo, ambos sin saberlo.'
+        'El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lleva la carta a ',
+        link('Edgar', 'character', 'edgar'),
+        '. ',
+        link('Edgar', 'character', 'edgar'),
+        ', al leerla, decide partir a vengar a Irina — sabe instintivamente que su hija está muriendo o ya muerta. Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' regresa a la costa, encuentra el cuerpo de Irina sin vida, todavía mirando al horizonte donde nunca verá nada. La timing es trágico: ',
+        link('Edgar', 'character', 'edgar'),
+        ' parte cuando Irina ya está muriendo, ambos sin saberlo.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Irina encarna la carta como último gesto. Escribe palabras que llegarán cuando ella ya no esté para recibir respuesta. No puede ver a quién le escribe; pero confía en que la lluvia llevará el papel. Su muerte es invisible doblemente — no la ve el padre que parte a vengarla, no la ve ella misma porque era ciega de nacimiento. Solo el Tarnished, mensajero involuntario, es testigo.'
+        'Irina encarna la carta como último gesto. Escribe palabras que llegarán cuando ella ya no esté para recibir respuesta. No puede ver a quién le escribe; pero confía en que la lluvia llevará el papel. Su muerte es invisible doblemente — no la ve el padre que parte a vengarla, no la ve ella misma porque era ciega de nacimiento. Solo el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ', mensajero involuntario, es testigo.'
       )
     ],
     confirmed: [
-      'Irina es hija ciega del Lord Edgar',
+      ['Irina es hija ciega del Lord ', link('Edgar', 'character', 'edgar')],
       'Escapó de Castle Morne durante la rebelión Misbegotten',
-      'Pide al Tarnished entregar una carta a su padre',
-      'Muere antes de que Edgar reciba la carta'
+      ['Pide al ', link('Tarnished', 'concept', 'tarnished'), ' entregar una carta a su padre'],
+      ['Muere antes de que ', link('Edgar', 'character', 'edgar'), ' reciba la carta']
     ],
     inferred: [
       'Su ceguera es congénita',
@@ -3841,7 +5122,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     theories: [
       'La carta contiene información específica sobre la rebelión que solo Irina presenció',
       'Su muerte está relacionada con la persecución continua contra los nobles Volmer',
-      'Si Edgar hubiera regresado a tiempo, ambos habrían sobrevivido juntos'
+      ['Si ', link('Edgar', 'character', 'edgar'), ' hubiera regresado a tiempo, ambos habrían sobrevivido juntos']
     ],
     ambiguous: [
       'Quién la atacó en el camino o si murió por causas naturales',
@@ -3869,15 +5150,29 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'La carta y la partida'),
       p(
-        'Cuando el Tarnished le entrega la carta de Irina, Edgar lee de inmediato. Sabe que la carta procede de la costa — sabe que Irina escapó pero quedó vulnerable. Su reacción es rápida y absoluta: parte del castillo. La defensa que había sostenido durante meses se abandona en horas. Su misión cambia de protector institucional a vengador personal.'
+        'Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' le entrega la carta de ',
+        link('Irina', 'character', 'irina'),
+        ', Edgar lee de inmediato. Sabe que la carta procede de la costa — sabe que ',
+        link('Irina', 'character', 'irina'),
+        ' escapó pero quedó vulnerable. Su reacción es rápida y absoluta: parte del castillo. La defensa que había sostenido durante meses se abandona en horas. Su misión cambia de protector institucional a vengador personal.'
       ),
       h(2, 'La transformación post-Irina'),
       p(
-        'Cuando reaparece, Edgar ya está roto. Irina ya está muerta. Las heridas que él trataba de evitar ya ocurrieron. Su mente se rompió con la confirmación. Sigue avanzando — pero el avance ya no tiene dirección coherente. Su martillo cae sobre quien se cruce: Misbegotten dispersos, soldados Volcano Manor, viajeros aleatorios. La venganza se ha vuelto ciega porque ya no recuerda contra quién dirigirla.'
+        'Cuando reaparece, Edgar ya está roto. ',
+        link('Irina', 'character', 'irina'),
+        ' ya está muerta. Las heridas que él trataba de evitar ya ocurrieron. Su mente se rompió con la confirmación. Sigue avanzando — pero el avance ya no tiene dirección coherente. Su martillo cae sobre quien se cruce: Misbegotten dispersos, soldados Volcano Manor, viajeros aleatorios. La venganza se ha vuelto ciega porque ya no recuerda contra quién dirigirla.'
       ),
       h(2, 'El Caballero Maldito'),
       p(
-        'En Liurnia, transformado en Caballero Maldito de Misericordia (Knight of the Misbegotten reclassified post-traumatically), Edgar es invasor errante. El Tarnished puede enfrentarlo ahí. Su muerte es liberación piadosa, similar a la de Bernahl en Farum Azula: matar al hombre roto antes de que rompa a más inocentes. Su martillo cae al final por última vez sobre nadie — y por fin descansa.'
+        'En Liurnia, transformado en Caballero Maldito de Misericordia (Knight of the Misbegotten reclassified post-traumatically), Edgar es invasor errante. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' puede enfrentarlo ahí. Su muerte es liberación piadosa, similar a la de ',
+        link('Bernahl', 'character', 'bernahl'),
+        ' en ',
+        link('Farum Azula', 'region', 'farum-azula'),
+        ': matar al hombre roto antes de que rompa a más inocentes. Su martillo cae al final por última vez sobre nadie — y por fin descansa.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -3886,25 +5181,25 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     ],
     confirmed: [
       'Edgar es lord superviviente de Castle Morne',
-      'Recibe la carta de Irina y abandona el castillo',
+      ['Recibe la carta de ', link('Irina', 'character', 'irina'), ' y abandona el castillo'],
       'Reaparece en Liurnia transformado en Caballero Maldito de Misericordia',
       'Mata Misbegotten y otros viajeros como invasor',
-      'Su muerte por el Tarnished es liberación piadosa'
+      ['Su muerte por el ', link('Tarnished', 'concept', 'tarnished'), ' es liberación piadosa']
     ],
     inferred: [
-      'Sabe instintivamente al leer la carta que Irina ya está muriendo',
+      ['Sabe instintivamente al leer la carta que ', link('Irina', 'character', 'irina'), ' ya está muriendo'],
       'Su transformación es psicológica primero, marcial después',
-      'Su mente se rompió con la confirmación de la muerte de Irina'
+      ['Su mente se rompió con la confirmación de la muerte de ', link('Irina', 'character', 'irina')]
     ],
     theories: [
-      'Edgar pudo haber salvado a Irina si hubiera partido antes — la culpa lo persigue',
+      ['Edgar pudo haber salvado a ', link('Irina', 'character', 'irina'), ' si hubiera partido antes — la culpa lo persigue'],
       'Su transformación fue acelerada por contacto con podredumbre o frenética en el camino',
-      'Su martillo retiene memoria residual de Irina, lo que lo hace especialmente letal'
+      ['Su martillo retiene memoria residual de ', link('Irina', 'character', 'irina'), ', lo que lo hace especialmente letal']
     ],
     ambiguous: [
       'Si conserva alguna consciencia residual durante el estado de Caballero Maldito',
       'Cuánto tiempo medió entre la partida y su transformación visible',
-      'Si encontró el cuerpo de Irina antes de su deterioro mental'
+      ['Si encontró el cuerpo de ', link('Irina', 'character', 'irina'), ' antes de su deterioro mental']
     ],
     relatedCharacters: ['irina'],
     relatedFactions: ['misbegotten'],

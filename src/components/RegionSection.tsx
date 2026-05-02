@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import type { Region } from '../data/types'
 import { SectionHeader } from './SectionHeader'
 import { SectionHero } from './SectionHero'
@@ -30,7 +30,6 @@ export function RegionSection({ regions }: Props) {
     validSorts: VALID_SORTS,
     storageKey: 'regions',
   })
-  const [selected, setSelected] = useState<string | null>(null)
 
   const tagOptions: TagOption[] = useMemo(
     () => buildTagOptions(regions, (r) => r.tags),
@@ -62,9 +61,6 @@ export function RegionSection({ regions }: Props) {
         return result
     }
   }, [regions, f.search, f.certainty, f.tags, f.sort])
-
-  const toggleTag = (t: string) =>
-    f.setTags(f.tags.includes(t) ? f.tags.filter((x) => x !== t) : [...f.tags, t])
 
   return (
     <section id="regiones">
@@ -105,9 +101,6 @@ export function RegionSection({ regions }: Props) {
             <RegionCard
               key={region.id}
               region={region}
-              selected={selected === region.id}
-              onSelect={() => setSelected(selected === region.id ? null : region.id)}
-              onTagClick={toggleTag}
               index={i}
             />
           ))}

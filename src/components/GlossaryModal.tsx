@@ -6,6 +6,7 @@ import type { GlossaryEntry } from '../data/types'
 import { CertaintyBadge } from './CertaintyBadge'
 import { CodexImage } from './images/CodexImage'
 import { glossaryFallbacks } from '../lib/fallbackMap'
+import { EnrichedText } from './RichLoreText'
 import { pathFor } from '../data/lookups'
 
 interface Props {
@@ -94,7 +95,7 @@ export function GlossarySection({ entries, onTermClick }: Props) {
                   <CertaintyBadge certainty={entry.certainty} />
                 </div>
                 <p className="text-xs text-codex-parchment-dim leading-relaxed line-clamp-3">
-                  {entry.definition}
+                  <EnrichedText text={entry.definition} selfId={entry.id} />
                 </p>
               </div>
             </motion.button>
@@ -164,7 +165,7 @@ export function GlossarySection({ entries, onTermClick }: Props) {
                 </button>
 
                 <p className="font-body text-base text-codex-parchment leading-loose">
-                  {selected.definition}
+                  <EnrichedText text={selected.definition} selfId={selected.id} />
                 </p>
 
                 <div className="bg-codex-green/15 border border-codex-gold-dim/20 p-4 rounded-sm">
@@ -172,7 +173,7 @@ export function GlossarySection({ entries, onTermClick }: Props) {
                     Análisis Profundo
                   </p>
                   <p className="font-body text-sm text-codex-parchment-dim leading-loose">
-                    {selected.deepDive}
+                    <EnrichedText text={selected.deepDive} selfId={selected.id} />
                   </p>
                 </div>
 

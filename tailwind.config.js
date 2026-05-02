@@ -7,20 +7,22 @@ export default {
   theme: {
     extend: {
       colors: {
+        /* Tokens are CSS variables resolved at runtime — see src/index.css
+           for `:root` (dark default) and `[data-theme="light"]` overrides. */
         codex: {
-          black: '#13110d',
-          brown: '#261b15',
-          green: '#15211c',
-          gold: '#d4ad62',
-          'gold-dim': '#b08e58',
-          'gold-bright': '#f2deb0',
-          parchment: '#ede0c5',
-          'parchment-dim': '#d4c8b0',
-          ink: '#352a20',
-          crimson: '#bf4848',
-          rot: '#a04270',
-          ghost: '#5a72b5',
-          flame: '#c97352',
+          black:           'rgb(var(--codex-black) / <alpha-value>)',
+          brown:           'rgb(var(--codex-brown) / <alpha-value>)',
+          green:           'rgb(var(--codex-green) / <alpha-value>)',
+          gold:            'rgb(var(--codex-gold) / <alpha-value>)',
+          'gold-dim':      'rgb(var(--codex-gold-dim) / <alpha-value>)',
+          'gold-bright':   'rgb(var(--codex-gold-bright) / <alpha-value>)',
+          parchment:       'rgb(var(--codex-parchment) / <alpha-value>)',
+          'parchment-dim': 'rgb(var(--codex-parchment-dim) / <alpha-value>)',
+          ink:             'rgb(var(--codex-ink) / <alpha-value>)',
+          crimson:         'rgb(var(--codex-crimson) / <alpha-value>)',
+          rot:             'rgb(var(--codex-rot) / <alpha-value>)',
+          ghost:           'rgb(var(--codex-ghost) / <alpha-value>)',
+          flame:           'rgb(var(--codex-flame) / <alpha-value>)',
         }
       },
       fontFamily: {

@@ -1,17 +1,22 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
-import { ChevronLeft, ChevronRight, ChevronRight as Chev, Clock, List, X } from 'lucide-react'
-import type { Certainty, EntityType, FallbackType, RichBlock } from '../../data/types'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ChevronLeft, ChevronRight, ChevronRight as Chev, Clock } from 'lucide-react'
+import type { BucketItem, Certainty, EntityType, FallbackType, RichBlock } from '../../data/types'
 import { CodexImage, type ImageVariant } from '../images/CodexImage'
 import { CertaintyBadge } from '../CertaintyBadge'
 import { EraBadge } from '../EraBadge'
-import { MentionedGlossary } from '../MentionedGlossary'
 import { TagPill } from '../TagPill'
-import { RichLoreText, extractHeadings } from '../RichLoreText'
+import { RichLoreText, extractHeadings, InlineProse } from '../RichLoreText'
+import { RelatedReadings } from '../RelatedReadings'
+import { NoteEditor } from '../NoteEditor'
 import { RuneOrnament } from '../illustrations/RuneSeparator'
 import { BookmarkButton } from '../BookmarkButton'
 import { ShareButton } from '../ShareButton'
+import { ExportButton } from '../ExportButton'
+import { QuoteShareBubble } from '../QuoteShareBubble'
+import { MobileToC } from './MobileToC'
+import { TableOfContents } from './TableOfContents'
 import { BackToTop } from '../BackToTop'
 import { EntityGraph } from './EntityGraph'
 import { usePageMeta } from '../../lib/pageMeta'
@@ -25,6 +30,27 @@ import type { ImageCategory } from '../../lib/imageSources'
 export interface Breadcrumb {
   label: string
   to?: string
+}
+
+/**
+ * Returns true when the hero subtitle visibly duplicates the summary that
+ * follows. Many entries derive `subtitle` from a fallback like `what` /
+ * `belief` / `historical` whose first sentence is also the opening of the
+ * `summary`. Showing both produces two italic blocks saying nearly the
+ * same thing.
+ *
+ * Heuristic: normalize both to lowercase + strip diacritics, then check
+ * whether the longer field starts with the shorter one (or whether the
+ * subtitle is contained within the summary).
+ */
+function isSubtitleRedundant(subtitle?: string, summary?: string | undefined): boolean {
+  if (!subtitle || !summary) return false
+  const norm = (s: string) =>
+    s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim()
+  const a = norm(subtitle)
+  const b = norm(summary)
+  if (a.length < 4) return false
+  return b.startsWith(a) || b.includes(a)
 }
 
 export interface RelatedItem {
@@ -60,17 +86,23 @@ interface DetailLayoutProps {
   metaCard?: ReactNode
   /** Main rich-text lore */
   deepLore?: RichBlock[]
-  confirmed?: string[]
-  inferred?: string[]
-  theories?: string[]
-  ambiguous?: string[]
-  beneficiaries?: string
-  victims?: string
+  confirmed?: BucketItem[]
+  inferred?: BucketItem[]
+  theories?: BucketItem[]
+  ambiguous?: BucketItem[]
+  beneficiaries?: import('../../data/types').ProseField
+  victims?: import('../../data/types').ProseField
   relatedGroups?: RelatedGroup[]
   prev?: PrevNextItem | null
   next?: PrevNextItem | null
-  /** Optional extra content rendered above deepLore (legacy fields) */
+  /** Optional extra content rendered above deepLore (legacy fields).
+      Used for entries that do NOT have deepLore — replaces it with a long-form
+      narrative built from the structural fields (tragedy/theme/etc.). */
   legacyContent?: ReactNode
+  /** Structural fact panels (tragedy / theme / events / bosses / belief
+      / whyMatters / etc.) shown ALWAYS — compact format that complements
+      the deepLore narrative or stands alone when there is no deepLore. */
+  structuralFacts?: ReactNode
   /** If provided, shows the Bookmark toggle in the hero. */
   bookmark?: { type: EntityType; slug: string }
 }
@@ -87,6 +119,7 @@ export function DetailLayout({
   heroVariant = 'banner',
   metaCard,
   deepLore = [],
+  structuralFacts,
   confirmed,
   inferred,
   theories,
@@ -290,7 +323,7 @@ export function DetailLayout({
                     style={{ textShadow: '0 4px 24px rgba(0,0,0,0.85)' }}>
                   {title}
                 </h1>
-                {subtitle && (
+                {subtitle && !isSubtitleRedundant(subtitle, summary) && (
                   <p className="font-subheading italic text-lg md:text-xl text-codex-parchment-dim mt-2"
                      style={{ textShadow: '0 2px 12px rgba(0,0,0,0.85)' }}>
                     {subtitle}
@@ -310,6 +343,23 @@ export function DetailLayout({
                 </span>
                 {bookmark && <BookmarkButton type={bookmark.type} slug={bookmark.slug} />}
                 <ShareButton />
+                {bookmark && (
+                  <ExportButton
+                    title={title}
+                    type={bookmark.type}
+                    slug={bookmark.slug}
+                    subtitle={subtitle}
+                    summary={summary}
+                    tags={tags}
+                    deepLore={deepLore}
+                    confirmed={confirmed}
+                    inferred={inferred}
+                    theories={theories}
+                    ambiguous={ambiguous}
+                    beneficiaries={beneficiaries}
+                    victims={victims}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -326,7 +376,8 @@ export function DetailLayout({
           </div>
         )}
 
-        {/* Summary */}
+        {/* Summary — rendered as italic blockquote with gold side bar.
+            Visually a cita: links inside would clutter the opening voice. */}
         {summary && (
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -343,11 +394,20 @@ export function DetailLayout({
 
         {/* Two-column layout: main + sticky sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10">
-          {/* Main column */}
-          <div className="min-w-0 max-w-3xl">
+          {/* Main column. `data-quote-source` lets <QuoteShareBubble>
+              recognise selections originating here as quotable. */}
+          <div className="min-w-0 max-w-3xl" data-quote-source="true">
             {legacyContent}
 
             {deepLore.length > 0 && <RichLoreText blocks={deepLore} />}
+
+            {/* Structural facts — compact panels with the entry's
+                key fields (tragedy/theme/events/bosses/belief/etc.).
+                Always rendered; complements the deepLore or stands
+                alone for entries without long-form content. */}
+            {structuralFacts && (
+              <div className="mt-12">{structuralFacts}</div>
+            )}
 
             {/* Knowledge buckets */}
             {(confirmed?.length || inferred?.length || theories?.length || ambiguous?.length || beneficiaries || victims) && (
@@ -357,16 +417,16 @@ export function DetailLayout({
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {confirmed && confirmed.length > 0 && (
-                    <KnowledgeBox label="Hechos confirmados" tone="gold" items={confirmed} />
+                    <KnowledgeBox label="Hechos confirmados" tone="gold" items={confirmed} selfId={bookmark?.slug} />
                   )}
                   {inferred && inferred.length > 0 && (
-                    <KnowledgeBox label="Inferencias fuertes" tone="parchment" items={inferred} />
+                    <KnowledgeBox label="Inferencias fuertes" tone="parchment" items={inferred} selfId={bookmark?.slug} />
                   )}
                   {theories && theories.length > 0 && (
-                    <KnowledgeBox label="Teorías razonables" tone="moon" items={theories} />
+                    <KnowledgeBox label="Teorías razonables" tone="moon" items={theories} selfId={bookmark?.slug} />
                   )}
                   {ambiguous && ambiguous.length > 0 && (
-                    <KnowledgeBox label="Ambigüedades abiertas" tone="rot" items={ambiguous} />
+                    <KnowledgeBox label="Ambigüedades abiertas" tone="rot" items={ambiguous} selfId={bookmark?.slug} />
                   )}
                 </div>
 
@@ -377,7 +437,7 @@ export function DetailLayout({
                         <p className="font-heading text-xs text-codex-gold-dim tracking-wider uppercase mb-2">
                           Quién se benefició
                         </p>
-                        <p className="font-body text-sm text-codex-parchment-dim leading-relaxed">{beneficiaries}</p>
+                        <p className="font-body text-sm text-codex-parchment-dim leading-relaxed"><InlineProse node={beneficiaries} selfId={bookmark?.slug} /></p>
                       </div>
                     )}
                     {victims && (
@@ -385,13 +445,17 @@ export function DetailLayout({
                         <p className="font-heading text-xs text-codex-rot/80 tracking-wider uppercase mb-2">
                           Quién sufrió
                         </p>
-                        <p className="font-body text-sm text-codex-parchment-dim leading-relaxed">{victims}</p>
+                        <p className="font-body text-sm text-codex-parchment-dim leading-relaxed"><InlineProse node={victims} selfId={bookmark?.slug} /></p>
                       </div>
                     )}
                   </div>
                 )}
               </section>
             )}
+
+            {/* Related readings — surfaces shared-tag and cross-referenced
+                entries the reader might enjoy after this one. */}
+            {bookmark && <RelatedReadings type={bookmark.type} slug={bookmark.slug} />}
 
             {/* Prev / Next */}
             {(prev || next) && (
@@ -444,26 +508,26 @@ export function DetailLayout({
             )}
           </div>
 
-          {/* Sticky sidebar — meta + ToC + glossary + graph + related */}
+          {/* Sticky sidebar — three focused modules:
+              · metaCard: structural info specific to the entity type
+              · TableOfContents: scrollspy navigation through the article
+              · EntityGraph: visual map of related entities (with hover preview)
+              MentionedGlossary was removed because every link in the prose
+              already shows the same hover-card preview.
+              The textual RelatedList× N (Personajes/Regiones/etc.) was
+              removed because EntityGraph covers the same data visually with
+              click navigation. */}
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             {metaCard && (
               <div className="parchment-panel p-4 space-y-3">{metaCard}</div>
             )}
 
-            {/* Mini-glossary of entities mentioned in THIS article */}
-            {deepLore.length > 0 && (
-              <MentionedGlossary
-                blocks={deepLore}
-                excludeIds={bookmark ? [bookmark.slug] : []}
-              />
-            )}
+            {bookmark && <NoteEditor type={bookmark.type} slug={bookmark.slug} />}
 
-            {/* Table of contents */}
             {headings.length > 0 && (
               <TableOfContents headings={headings} />
             )}
 
-            {/* Mini relationship graph */}
             {relatedGroups.some((g) => g.type && g.items.length > 0) && (
               <EntityGraph
                 centerLabel={title}
@@ -472,19 +536,13 @@ export function DetailLayout({
                   .map((g) => ({ type: g.type!, items: g.items }))}
               />
             )}
-
-            {/* Related */}
-            {relatedGroups.map((g) =>
-              g.items.length > 0 ? (
-                <RelatedList key={g.label} group={g} />
-              ) : null
-            )}
           </aside>
         </div>
       </div>
 
       {headings.length > 0 && <MobileToC headings={headings} />}
       <BackToTop />
+      <QuoteShareBubble />
     </article>
   )
 }
@@ -519,114 +577,6 @@ function PrevNextThumbnail({ src, alt, side }: { src: string; alt: string; side:
 /* Mobile-only floating ToC button + bottom-sheet drawer.
    The desktop sidebar TableOfContents disappears below `lg`; this brings
    the same in-page navigation back as a thumb-friendly drawer. */
-function MobileToC({ headings }: { headings: { id: string; text: string; level: 2 | 3 }[] }) {
-  const [open, setOpen] = useState(false)
-  /* Lift the trigger button on routes that pin a floating bar at the bottom
-     (currently only TimelineDetailPage with its ChronoFloatingBar). */
-  const hasFloatingBar = typeof window !== 'undefined'
-    && /^\/timeline\/[^/]+$/.test(window.location.pathname)
-
-  /* Close on Escape and lock background scroll while the sheet is open. */
-  useEffect(() => {
-    if (!open) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
-    document.addEventListener('keydown', onKey)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prevOverflow
-    }
-  }, [open])
-
-  const handleSelect = (id: string) => {
-    setOpen(false)
-    /* Wait one frame so the body-scroll-lock has been released before we
-       scroll to the target element — otherwise the smooth scroll is no-op. */
-    requestAnimationFrame(() => {
-      const el = document.getElementById(id)
-      el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    })
-  }
-
-  return (
-    <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Abrir índice"
-        className={`lg:hidden fixed left-6 z-40
-                   w-11 h-11 flex items-center justify-center rounded-full
-                   bg-codex-brown/85 border border-codex-gold-dim/40 backdrop-blur-md
-                   text-codex-gold-dim hover:text-codex-gold-bright hover:border-codex-gold/60
-                   hover:shadow-[0_0_18px_rgba(197,160,89,0.3)] transition-all duration-200
-                   ${hasFloatingBar ? 'bottom-20' : 'bottom-6'}`}
-      >
-        <List size={18} />
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              key="backdrop"
-              className="lg:hidden fixed inset-0 z-50 bg-codex-black/75 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setOpen(false)}
-            />
-            {/* Drawer — slides up from the bottom */}
-            <motion.aside
-              key="drawer"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Índice de la página"
-              className="lg:hidden fixed left-0 right-0 bottom-0 z-50 max-h-[70vh]
-                         bg-codex-black border-t border-codex-gold-dim/40 rounded-t-md
-                         flex flex-col overflow-hidden"
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ type: 'spring', damping: 28, stiffness: 240 }}
-            >
-              <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-codex-gold-dim/20">
-                <p className="font-heading text-xs text-codex-gold-dim tracking-widest uppercase">
-                  En esta página
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  aria-label="Cerrar índice"
-                  className="text-codex-parchment-dim hover:text-codex-parchment transition-colors"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-              <ul className="overflow-y-auto py-2 px-2">
-                {headings.map((h) => (
-                  <li key={h.id}>
-                    <button
-                      type="button"
-                      onClick={() => handleSelect(h.id)}
-                      className={`w-full text-left px-3 py-2 rounded-sm text-sm leading-snug
-                                  hover:bg-codex-brown/40 hover:text-codex-parchment transition-colors
-                                  ${h.level === 3 ? 'pl-8 text-codex-parchment-dim' : 'text-codex-parchment'}`}
-                    >
-                      {h.text}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
-    </>
-  )
-}
-
 function Breadcrumbs({ crumbs }: { crumbs: Breadcrumb[] }) {
   return (
     <nav className="flex flex-wrap items-center gap-1.5 text-xs font-heading tracking-wider uppercase
@@ -649,11 +599,12 @@ function Breadcrumbs({ crumbs }: { crumbs: Breadcrumb[] }) {
 }
 
 function KnowledgeBox({
-  label, tone, items,
+  label, tone, items, selfId,
 }: {
   label: string
   tone: 'gold' | 'parchment' | 'rot' | 'moon'
-  items: string[]
+  items: BucketItem[]
+  selfId?: string
 }) {
   const toneClasses = {
     gold:      'border-codex-gold/30 text-codex-gold',
@@ -669,7 +620,7 @@ function KnowledgeBox({
         {items.map((t, i) => (
           <li key={i} className="font-body text-sm text-codex-parchment-dim leading-relaxed flex gap-2">
             <span className="text-codex-gold-dim mt-0.5 shrink-0 text-[10px]">◆</span>
-            {t}
+            <span><InlineProse node={t} selfId={selfId} /></span>
           </li>
         ))}
       </ul>
@@ -677,77 +628,6 @@ function KnowledgeBox({
   )
 }
 
-function TableOfContents({
-  headings,
-}: {
-  headings: { id: string; text: string; level: 2 | 3 }[]
-}) {
-  const [active, setActive] = useState<string | null>(headings[0]?.id ?? null)
+/* TableOfContents and MobileToC live in their own files now —
+   `./TableOfContents.tsx` and `./MobileToC.tsx`. */
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id)
-        })
-      },
-      { rootMargin: '-30% 0px -60% 0px' }
-    )
-    headings.forEach((h) => {
-      const el = document.getElementById(h.id)
-      if (el) observer.observe(el)
-    })
-    return () => observer.disconnect()
-  }, [headings])
-
-  return (
-    <div className="parchment-panel p-4">
-      <p className="font-heading text-xs text-codex-gold-dim tracking-wider uppercase mb-3">
-        En esta página
-      </p>
-      <ul className="space-y-1.5 text-sm">
-        {headings.map((h) => (
-          <li key={h.id} className={h.level === 3 ? 'pl-3' : ''}>
-            <a
-              href={`#${h.id}`}
-              className={`block py-0.5 transition-colors leading-snug
-                ${active === h.id
-                  ? 'text-codex-gold-bright'
-                  : 'text-codex-parchment-dim hover:text-codex-parchment'
-                }`}
-            >
-              {h.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-function RelatedList({ group }: { group: RelatedGroup }) {
-  return (
-    <div className="parchment-panel p-4">
-      <p className="font-heading text-xs text-codex-gold-dim tracking-wider uppercase mb-3">
-        {group.label}
-      </p>
-      <ul className="space-y-1.5">
-        {group.items.map((it) => (
-          <li key={it.to}>
-            <Link
-              to={it.to}
-              className="block py-1 group"
-            >
-              <span className="font-subheading text-sm text-codex-parchment group-hover:text-codex-gold-bright transition-colors">
-                {it.label}
-              </span>
-              {it.sublabel && (
-                <span className="block text-xs text-codex-parchment-dim/60 mt-0.5">{it.sublabel}</span>
-              )}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}

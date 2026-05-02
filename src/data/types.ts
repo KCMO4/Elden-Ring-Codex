@@ -68,6 +68,13 @@ export type RichBlock = RichParagraph | RichHeading | RichQuote | RichList
 /* Shared "deep page" mixin                                    */
 /* ──────────────────────────────────────────────────────────── */
 
+/** A bucket-list entry: either a plain string or an array of RichInline nodes
+   (so individual facts can contain link() calls to other entities). */
+export type BucketItem = string | RichInline[]
+
+/** A field that can be either plain prose or RichInline (with cross-links). */
+export type ProseField = string | RichInline[]
+
 export interface DeepEntity {
   /** Page slug (defaults to id when omitted) */
   slug?: string
@@ -77,15 +84,16 @@ export interface DeepEntity {
   summary?: string
   /** The full ultra-detailed lore — array of RichBlocks */
   deepLore?: RichBlock[]
-  /** Bullet lists of canonical knowledge buckets */
-  confirmed?: string[]
-  inferred?: string[]
+  /** Bullet lists of canonical knowledge buckets — items can be plain
+      strings or RichInline arrays for embedded cross-links. */
+  confirmed?: BucketItem[]
+  inferred?: BucketItem[]
   /** Theories — plausible interpretations not directly stated by the game */
-  theories?: string[]
-  ambiguous?: string[]
+  theories?: BucketItem[]
+  ambiguous?: BucketItem[]
   /** Who benefited / who suffered from this entity's existence/actions */
-  beneficiaries?: string
-  victims?: string
+  beneficiaries?: ProseField
+  victims?: ProseField
   /** Cross-linked entity IDs */
   relatedCharacters?: string[]
   relatedRegions?: string[]

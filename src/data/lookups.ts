@@ -210,9 +210,11 @@ export function getEntityPreview(type: EntityType, slug: string): EntityPreview 
     case 'concept': {
       const g = findConcept(slug)
       if (!g) return null
+      /* Concepts get a longer preview so the hover-card works as an inline
+         glossary — the reader can grasp a term without leaving their place. */
       return {
         type, id: g.id, name: g.term,
-        summary: truncate(g.definition, 120),
+        summary: truncate(g.definition, 220),
         tags: g.related, imageCategory: 'concepts', imageId: g.id,
       }
     }

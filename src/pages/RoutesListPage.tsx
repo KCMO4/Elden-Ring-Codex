@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { SectionHeader } from '../components/SectionHeader'
 import { SectionHero } from '../components/SectionHero'
 import { narrativeRoutes } from '../data/narrativeRoutes'
+import { EnrichedText } from '../components/RichLoreText'
 
 const accentClasses: Record<string, { border: string; text: string; bg: string }> = {
   gold:     { border: 'border-codex-gold/40',    text: 'text-codex-gold',         bg: 'bg-codex-gold/5' },
@@ -57,7 +58,7 @@ export function RoutesListPage() {
                   </div>
 
                   <p className="font-body text-sm text-codex-parchment leading-relaxed mb-4 line-clamp-3">
-                    {route.description}
+                    <EnrichedText text={route.description} />
                   </p>
 
                   <p className="font-subheading italic text-sm text-codex-parchment-dim/70 leading-relaxed border-l-2 border-codex-gold-dim/30 pl-3">

@@ -72,9 +72,6 @@ export function CharacterSection({ characters }: Props) {
     }
   }, [characters, f.search, f.certainty, f.secondaryTags, f.tags, f.sort])
 
-  const toggleTag = (t: string) =>
-    f.setTags(f.tags.includes(t) ? f.tags.filter((x) => x !== t) : [...f.tags, t])
-
   return (
     <section id="personajes">
       <SectionHero fallbackType="golden-order" />
@@ -123,7 +120,7 @@ export function CharacterSection({ characters }: Props) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
           {filtered.map((char, i) => (
-            <CharacterCard key={char.id} character={char} onTagClick={toggleTag} index={i} />
+            <CharacterCard key={char.id} character={char} index={i} />
           ))}
         </div>
         {filtered.length === 0 && (

@@ -21,19 +21,27 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Castle Morne se alza sobre acantilados castigados por la lluvia perpetua de la ',
         link('Península Llorosa', 'region', 'peninsula-llorosa'),
-        '. Era sede de la Casa Volmer, dinastía noble menor del Orden Dorado dedicada al gobierno de la región más meridional de las Tierras Intermedias. Sus paredes hoy están manchadas de sangre Misbegotten y aristocrática por igual.'
+        '. Era sede de la Casa Volmer, dinastía noble menor del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' dedicada al gobierno de la región más meridional de las Tierras Intermedias. Sus paredes hoy están manchadas de sangre Misbegotten y aristocrática por igual.'
       ),
       h(2, 'Historia detallada'),
       p(
         'La Casa Volmer gobernaba bajo la lógica habitual del régimen: usar a los ',
         link('Misbegotten', 'faction', 'misbegotten'),
-        ' como esclavos guerreros, gladiadores y mano de obra. Generaciones de explotación acumularon resentimiento sin canal de expresión legítimo. La revuelta llegó cuando llegó: súbita, total, sangrienta. Los Misbegotten tomaron el castillo, mataron al gobernador, esclavizaron lo que pudieron y se establecieron como nuevos amos.'
+        ' como esclavos guerreros, gladiadores y mano de obra. Generaciones de explotación acumularon resentimiento sin canal de expresión legítimo. La revuelta llegó cuando llegó: súbita, total, sangrienta. Los ',
+        link('Misbegotten', 'faction', 'misbegotten'),
+        ' tomaron el castillo, mataron al gobernador, esclavizaron lo que pudieron y se establecieron como nuevos amos.'
       ),
       p(
         link('Edgar', 'character', 'edgar'),
         ', lord superviviente, defendió un sector residual del castillo hasta el final. Su hija ',
         link('Irina', 'character', 'irina'),
-        ' escapó ciega a la costa con una carta para él. Cuando el Tarnished lleva la carta, Edgar parte a vengarla — sin saber al principio que ya está muerta.'
+        ' escapó ciega a la costa con una carta para él. Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' lleva la carta, ',
+        link('Edgar', 'character', 'edgar'),
+        ' parte a vengarla — sin saber al principio que ya está muerta.'
       ),
       h(2, 'Estado actual'),
       p(
@@ -41,33 +49,43 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'La revuelta no liberó a los Misbegotten — solo los reposicionó. Siguen siendo malformados, siguen siendo perseguidos en otras regiones, siguen sin reconocimiento institucional. Tomar Castle Morne fue victoria táctica que no resolvió nada estructural. Edgar, en su locura post-Irina, los masacra en venganza ciega; ellos, en su rabia post-libertad, lo masacran a él. Es ciclo sin salida.'
+        'La revuelta no liberó a los ',
+        link('Misbegotten', 'faction', 'misbegotten'),
+        ' — solo los reposicionó. Siguen siendo malformados, siguen siendo perseguidos en otras regiones, siguen sin reconocimiento institucional. Tomar Castle Morne fue victoria táctica que no resolvió nada estructural. ',
+        link('Edgar', 'character', 'edgar'),
+        ', en su locura post-',
+        link('Irina', 'character', 'irina'),
+        ', los masacra en venganza ciega; ellos, en su rabia post-libertad, lo masacran a él. Es ciclo sin salida.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Castle Morne es la primera revuelta visible al Tarnished. Establece tema central del juego: la opresión del Orden Dorado genera respuestas, pero las respuestas reproducen el mismo patrón de poder. Los esclavos liberados se convierten en amos esclavizadores. La libertad sin estructura nueva es solo intercambio de roles.'
+        'Castle Morne es la primera revuelta visible al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '. Establece tema central del juego: la opresión del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' genera respuestas, pero las respuestas reproducen el mismo patrón de poder. Los esclavos liberados se convierten en amos esclavizadores. La libertad sin estructura nueva es solo intercambio de roles.'
       )
     ],
     confirmed: [
-      'La Casa Volmer gobernaba la Península Llorosa desde Castle Morne',
-      'Los Misbegotten se rebelaron y tomaron el castillo',
-      'Edgar es el último lord superviviente',
-      'Irina, su hija, escapó ciega con una carta'
+      ['La Casa Volmer gobernaba la ', link('Península Llorosa', 'region', 'peninsula-llorosa'), ' desde Castle Morne'],
+      ['Los ', link('Misbegotten', 'faction', 'misbegotten'), ' se rebelaron y tomaron el castillo'],
+      [link('Edgar', 'character', 'edgar'), ' es el último lord superviviente'],
+      [link('Irina', 'character', 'irina'), ', su hija, escapó ciega con una carta']
     ],
     inferred: [
       'La revuelta fue acumulación de generaciones de explotación, no acto súbito',
-      'Edgar enloquece tras la muerte de Irina y masacra Misbegotten en otras regiones',
+      [link('Edgar', 'character', 'edgar'), ' enloquece tras la muerte de ', link('Irina', 'character', 'irina'), ' y masacra Misbegotten en otras regiones'],
       'La caída marca la pérdida de control del régimen en la base'
     ],
     theories: [
-      'La revuelta de Castle Morne pudo ser inspirada o coordinada con otras revueltas Misbegotten',
-      'Nepheli Loux podría tener parentesco lejano con la Casa Volmer',
+      ['La ', link('revuelta de Castle Morne', 'timeline', 'castle-morne-rebellion'), ' pudo ser inspirada o coordinada con otras revueltas Misbegotten'],
+      [link('Nepheli Loux', 'character', 'nepheli-loux'), ' podría tener parentesco lejano con la Casa Volmer'],
       'La armería Volmer contenía armas pre-Orden capaces de matar Misbegotten — su uso por los rebeldes sería ironía'
     ],
     ambiguous: [
       'Cuándo exactamente ocurrió la revuelta',
       'Cuántos Misbegotten participaron y cuántos sobrevivieron',
-      'Si Edgar conocía la naturaleza Crisol-derivada de los Misbegotten antes de la revuelta'
+      ['Si ', link('Edgar', 'character', 'edgar'), ' conocía la naturaleza ', link('Crisol', 'concept', 'crucible'), '-derivada de los ', link('Misbegotten', 'faction', 'misbegotten'), ' antes de la revuelta']
     ],
     relatedCharacters: ['edgar', 'irina', 'hyetta'],
     relatedFactions: ['misbegotten', 'orden-dorado'],
@@ -94,11 +112,15 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'La familia Caria desarrolló su tradición mágica aquí: encantamientos protectores, espadas hechizadas con magia lunar, sigilos rituales en la arquitectura. Tras la guerra contra Radagon y el matrimonio mestizo, Caria Manor fue marginalmente desplazado por Raya Lucaria como sede principal — pero los rituales de la dinastía propia se siguen oficiando aquí.'
+        'La familia Caria desarrolló su tradición mágica aquí: encantamientos protectores, espadas hechizadas con magia lunar, sigilos rituales en la arquitectura. Tras la guerra contra ',
+        link('Radagon', 'character', 'radagon'),
+        ' y el matrimonio mestizo, Caria Manor fue marginalmente desplazado por Raya Lucaria como sede principal — pero los rituales de la dinastía propia se siguen oficiando aquí.'
       ),
       p(
         link('Pidia', 'character', 'pidia'),
-        ', sirviente Carian de antigua data, sigue cuidando los jardines superiores aunque sus señores ya no le respondan claramente. Su lealtad estructural ecoa la de Iji a Ranni: sirvientes que continúan cuando ya nadie ordena.'
+        ', sirviente Carian de antigua data, sigue cuidando los jardines superiores aunque sus señores ya no le respondan claramente. Su lealtad estructural ecoa la de Iji a ',
+        link('Ranni', 'character', 'ranni'),
+        ': sirvientes que continúan cuando ya nadie ordena.'
       ),
       h(2, 'Estado actual'),
       p(
@@ -112,30 +134,34 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Caria Manor es prueba arqueológica de que la dinastía Caria es culturalmente distinta del Orden Dorado. Sus rituales, su magia, su arquitectura, todo predata o sobrevive en paralelo al régimen dorado. Aquí ',
+        'Caria Manor es prueba arqueológica de que la dinastía Caria es culturalmente distinta del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '. Sus rituales, su magia, su arquitectura, todo predata o sobrevive en paralelo al régimen dorado. Aquí ',
         link('Ranni', 'character', 'ranni'),
-        ' aprendió los rudimentos de su rebelión cosmológica. La continuidad cultural Carian es la matriz desde donde se incuba la Era de las Estrellas.'
+        ' aprendió los rudimentos de su rebelión cosmológica. La continuidad cultural Carian es la matriz desde donde se incuba la ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        '.'
       )
     ],
     confirmed: [
       'Caria Manor es sede ancestral del clan Caria en Liurnia',
       'Las Manos Vivientes son ex-protectores corrompidos',
       'Loretta es Caballero Real Carian que sigue patrullando',
-      'Pidia sirve como sirviente leal en los jardines superiores'
+      [link('Pidia', 'character', 'pidia'), ' sirve como sirviente leal en los jardines superiores']
     ],
     inferred: [
       'La tradición mágica Caria se desarrolló aquí antes de Raya Lucaria',
-      'Ranni aprendió rudimentos de su rebelión en este lugar',
-      'La cultura Carian es distinta del Orden Dorado y predata su matrimonio mestizo'
+      [link('Ranni', 'character', 'ranni'), ' aprendió rudimentos de su rebelión en este lugar'],
+      ['La cultura Carian es distinta del ', link('Orden Dorado', 'concept', 'golden-order'), ' y predata su matrimonio mestizo']
     ],
     theories: [
       'Las Manos Vivientes son guardianes que perdieron capacidad de identificar a sus protegidos',
-      'La biblioteca de Caria Manor contiene secretos cosmológicos que ni Rennala documentó',
+      ['La biblioteca de Caria Manor contiene secretos cosmológicos que ni ', link('Rennala', 'character', 'rennala'), ' documentó'],
       'Algunos de los hechizos protectores siguen activos y protegen acceso a Three Sisters'
     ],
     ambiguous: [
       'Cuántas generaciones Carian habitaron aquí antes del traslado a Raya Lucaria',
-      'Si Pidia conoce el plan de Ranni o solo cumple deber',
+      ['Si ', link('Pidia', 'character', 'pidia'), ' conoce el plan de ', link('Ranni', 'character', 'ranni'), ' o solo cumple deber'],
       'Si Loretta sigue siendo la misma persona que en Elphael (el otro Loretta) o son dos personas distintas'
     ],
     relatedCharacters: ['rennala', 'ranni', 'royal-knight-loretta', 'pidia', 'seluvis'],
@@ -153,7 +179,13 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Tres torres se alzan al fondo de Caria Manor, accesibles solo por pasajes secretos. Cada una alberga (o albergó) a un miembro del círculo de ',
         link('Ranni', 'character', 'ranni'),
-        ': la Torre de Ranni la Bruja, la Torre de Seluvis (alquimista de muñecos), y la Torre de Renna (alias humano de Ranni antes de su transformación, ahora abandonada).'
+        ': la Torre de ',
+        link('Ranni la Bruja', 'character', 'ranni'),
+        ', la Torre de ',
+        link('Seluvis', 'character', 'seluvis'),
+        ' (alquimista de muñecos), y la Torre de Renna (alias humano de ',
+        link('Ranni', 'character', 'ranni'),
+        ' antes de su transformación, ahora abandonada).'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -170,45 +202,74 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         ' — desde la distancia de su porcelana.'
       ),
       p(
-        'Seluvis opera su laboratorio de muñecas en su propia torre: colección espeluznante de figuras de mujeres notables de las Tierras Intermedias transformadas en marionetas. Su intento más siniestro es agregar a la propia Ranni a la colección — traición silenciada que termina con su muerte misteriosa, probablemente envenenado por Iji.'
+        link('Seluvis', 'character', 'seluvis'),
+        ' opera su laboratorio de muñecas en su propia torre: colección espeluznante de figuras de mujeres notables de las Tierras Intermedias transformadas en marionetas. Su intento más siniestro es agregar a la propia ',
+        link('Ranni', 'character', 'ranni'),
+        ' a la colección — traición silenciada que termina con su muerte misteriosa, probablemente envenenado por Iji.'
       ),
       p(
-        'La Torre de Renna es reliquia: contenía a Ranni en su forma humana antes del corte. El Tarnished encuentra aquí a Ranni-Renna en su primer encuentro, todavía manteniendo el alias humano. Su ofrenda inicial — el anillo Spirit Calling Bell — es lo que permite al Tarnished invocar espíritus durante todo el juego.'
+        'La Torre de Renna es reliquia: contenía a ',
+        link('Ranni', 'character', 'ranni'),
+        ' en su forma humana antes del corte. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' encuentra aquí a ',
+        link('Ranni', 'character', 'ranni'),
+        '-Renna en su primer encuentro, todavía manteniendo el alias humano. Su ofrenda inicial — el anillo Spirit Calling Bell — es lo que permite al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' invocar espíritus durante todo el juego.'
       ),
       h(2, 'Estado actual'),
       p(
-        'Las torres están infestadas por Royal Revenants (criaturas amalgamadas) y por Royal Carian Knights residuales. El acceso requiere atravesar Caria Manor entero. Adula, dragón glintstone aliada de Ranni, custodia los puentes.'
+        'Las torres están infestadas por Royal Revenants (criaturas amalgamadas) y por Royal Carian Knights residuales. El acceso requiere atravesar Caria Manor entero. Adula, dragón ',
+        link('glintstone', 'concept', 'glintstone'),
+        ' aliada de ',
+        link('Ranni', 'character', 'ranni'),
+        ', custodia los puentes.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Tres hermanas, tres soledades. Cada torre alberga una respuesta distinta a la pérdida: Ranni planifica desde porcelana, Seluvis manipula figuras inanimadas, Renna ya no existe como persona separada. La rebelión cosmológica más sofisticada del juego se incuba en un cluster de aislamientos individuales.'
+        'Tres hermanas, tres soledades. Cada torre alberga una respuesta distinta a la pérdida: ',
+        link('Ranni', 'character', 'ranni'),
+        ' planifica desde porcelana, ',
+        link('Seluvis', 'character', 'seluvis'),
+        ' manipula figuras inanimadas, Renna ya no existe como persona separada. La rebelión cosmológica más sofisticada del juego se incuba en un cluster de aislamientos individuales.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Las Tres Hermanas son el laboratorio físico de la Era de las Estrellas. Sin estas torres, sin la coordinación discreta entre Ranni, Iji, Blaidd y Seluvis, sin el primer encuentro con el Tarnished en la Torre de Renna, ningún final estelar sería posible. Es el espacio donde la rebelión cosmológica deja de ser idea y se vuelve operación.'
+        'Las Tres Hermanas son el laboratorio físico de la ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        '. Sin estas torres, sin la coordinación discreta entre ',
+        link('Ranni', 'character', 'ranni'),
+        ', Iji, ',
+        link('Blaidd', 'character', 'blaidd'),
+        ' y ',
+        link('Seluvis', 'character', 'seluvis'),
+        ', sin el primer encuentro con el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' en la Torre de Renna, ningún final estelar sería posible. Es el espacio donde la rebelión cosmológica deja de ser idea y se vuelve operación.'
       )
     ],
     confirmed: [
-      'Tres torres pertenecen a Ranni, Seluvis y Renna respectivamente',
-      'Ranni opera su quest desde la torre central',
-      'Seluvis colecciona muñecas-figuras en su propia torre',
-      'La Torre de Renna es donde Ranni encuentra al Tarnished por primera vez',
+      ['Tres torres pertenecen a ', link('Ranni', 'character', 'ranni'), ', ', link('Seluvis', 'character', 'seluvis'), ' y Renna respectivamente'],
+      [link('Ranni', 'character', 'ranni'), ' opera su quest desde la torre central'],
+      [link('Seluvis', 'character', 'seluvis'), ' colecciona muñecas-figuras en su propia torre'],
+      ['La Torre de Renna es donde ', link('Ranni', 'character', 'ranni'), ' encuentra al ', link('Tarnished', 'concept', 'tarnished'), ' por primera vez'],
       'Adula custodia el acceso'
     ],
     inferred: [
       'Las torres fueron diseñadas como espacios secretos del clan Caria',
-      'Iji eliminó a Seluvis cuando intentó traicionar a Ranni',
-      'Renna es alias humano de Ranni antes de la muñeca, no una persona separada'
+      ['Iji eliminó a ', link('Seluvis', 'character', 'seluvis'), ' cuando intentó traicionar a ', link('Ranni', 'character', 'ranni')],
+      ['Renna es alias humano de ', link('Ranni', 'character', 'ranni'), ' antes de la muñeca, no una persona separada']
     ],
     theories: [
       'Las torres están conectadas por hechizos de teletransporte que solo los iniciados pueden usar',
-      'La Torre de Renna conserva fragmentos del cuerpo Empyrean original de Ranni',
-      'El laboratorio de Seluvis tenía planes para convertir al propio Tarnished en muñeca'
+      ['La Torre de Renna conserva fragmentos del cuerpo ', link('Empyrean', 'concept', 'empyrean'), ' original de ', link('Ranni', 'character', 'ranni')],
+      ['El laboratorio de ', link('Seluvis', 'character', 'seluvis'), ' tenía planes para convertir al propio ', link('Tarnished', 'concept', 'tarnished'), ' en muñeca']
     ],
     ambiguous: [
-      'Cuándo exactamente Ranni se transfirió a la muñeca',
+      ['Cuándo exactamente ', link('Ranni', 'character', 'ranni'), ' se transfirió a la muñeca'],
       'Si Renna fue persona real anterior o solo construcción narrativa',
-      'Cuánta autoridad real ejerce Ranni sobre Iji y Blaidd'
+      ['Cuánta autoridad real ejerce ', link('Ranni', 'character', 'ranni'), ' sobre Iji y ', link('Blaidd', 'character', 'blaidd')]
     ],
     relatedCharacters: ['ranni', 'blaidd', 'iji', 'seluvis', 'pidia'],
     relatedFactions: ['caria'],
@@ -226,7 +287,13 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Siofra es uno de los dos grandes ríos subterráneos de las Tierras Intermedias (el otro es ',
         link('Ainsel', 'region', 'ainsel-river'),
-        '). Su cielo es falso: estrellas pintadas o constelaciones residuales de una era cosmológica anterior. El río corre bajo Caelid y Limgrave, conectando ruinas dispersas que formaron una civilización paralela al Orden Dorado.'
+        '). Su cielo es falso: estrellas pintadas o constelaciones residuales de una era cosmológica anterior. El río corre bajo ',
+        link('Caelid', 'region', 'caelid'),
+        ' y ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', conectando ruinas dispersas que formaron una civilización paralela al ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -234,44 +301,64 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Seguidores Ancestrales', 'faction', 'ancestral-followers'),
         ' habitan estas riberas. Su iconografía — cornamentas, cuernos, cuerpos parcialmente cervidos — sugiere vínculo directo con el ',
         link('Crisol primigenio', 'concept', 'crucible'),
-        '. Sus rituales se centran en la Mesa Ancestral, lugar donde se procesan las almas que el Árbol Áureo no acoge: humanos demasiado primitivos, criaturas mestizas con animales, formas de vida que el Orden clasificó como impuras.'
+        '. Sus rituales se centran en la Mesa Ancestral, lugar donde se procesan las almas que el ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' no acoge: humanos demasiado primitivos, criaturas mestizas con animales, formas de vida que el Orden clasificó como impuras.'
       ),
       p(
-        'El Espíritu Ancestral Real (Regal Ancestor Spirit) es la deidad-figura central del culto. Su Remembrance es premio al Tarnished que lo derrote. Pero el espíritu no es enemigo natural: es resultado material de un ritual cosmológico que el Orden Dorado interrumpió siglos atrás. Combatirlo es destruir un proceso ritual a medias.'
+        'El ',
+        link('Espíritu Ancestral Real', 'character', 'regal-ancestor-spirit'),
+        ' (Regal Ancestor Spirit) es la deidad-figura central del culto. Su Remembrance es premio al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' que lo derrote. Pero el espíritu no es enemigo natural: es resultado material de un ritual cosmológico que el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' interrumpió siglos atrás. Combatirlo es destruir un proceso ritual a medias.'
       ),
       h(2, 'Estado actual'),
       p(
-        'El río fluye en silencio. Los Seguidores Ancestrales mantienen rituales con cantidad reducida. Las ruinas de la civilización paralela están intactas pero deshabitadas. Hay un pozo ascendente — el Pozo de Siofra — que conecta con la superficie de Caelid.'
+        'El río fluye en silencio. Los ',
+        link('Seguidores Ancestrales', 'faction', 'ancestral-followers'),
+        ' mantienen rituales con cantidad reducida. Las ruinas de la civilización paralela están intactas pero deshabitadas. Hay un pozo ascendente — el Pozo de Siofra — que conecta con la superficie de ',
+        link('Caelid', 'region', 'caelid'),
+        '.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Bajo Siofra existió una civilización completa que el Orden Dorado borró del registro. Sus rituales procesaban a los muertos que el Árbol Áureo rechazaba. El sello de la Muerte Predestinada interrumpió esos rituales: las almas inferiores que antes encontraban descanso en la Mesa Ancestral hoy vagan sin proceso. Siofra es museo de un cosmos enterrado.'
+        'Bajo Siofra existió una civilización completa que el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' borró del registro. Sus rituales procesaban a los muertos que el ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' rechazaba. El sello de la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        ' interrumpió esos rituales: las almas inferiores que antes encontraban descanso en la Mesa Ancestral hoy vagan sin proceso. Siofra es museo de un cosmos enterrado.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El cielo estrellado falso de Siofra es la imagen perfecta del lugar: una bóveda celeste que ya no es real pero que todavía recuerda haber sido. Los Seguidores Ancestrales pintan estrellas porque las estrellas reales ya no los miran. Es liturgia residual sosteniéndose por inercia ritual.'
+        'El cielo estrellado falso de Siofra es la imagen perfecta del lugar: una bóveda celeste que ya no es real pero que todavía recuerda haber sido. Los ',
+        link('Seguidores Ancestrales', 'faction', 'ancestral-followers'),
+        ' pintan estrellas porque las estrellas reales ya no los miran. Es liturgia residual sosteniéndose por inercia ritual.'
       )
     ],
     confirmed: [
       'Siofra es río subterráneo con cielo estrellado falso',
-      'Los Seguidores Ancestrales habitan sus riberas',
-      'La Mesa Ancestral procesaba almas que el Árbol Áureo no acoge',
+      ['Los ', link('Seguidores Ancestrales', 'faction', 'ancestral-followers'), ' habitan sus riberas'],
+      ['La Mesa Ancestral procesaba almas que el ', link('Árbol Áureo', 'concept', 'erdtree'), ' no acoge'],
       'El Regal Ancestor Spirit es boss con Remembrance'
     ],
     inferred: [
-      'Su civilización es paralela al Orden Dorado, no anterior ni posterior',
+      ['Su civilización es paralela al ', link('Orden Dorado', 'concept', 'golden-order'), ', no anterior ni posterior'],
       'El sello de la Muerte interrumpió sus rituales originales',
-      'Los Seguidores Ancestrales conservan vínculo con el Crisol primigenio'
+      ['Los ', link('Seguidores Ancestrales', 'faction', 'ancestral-followers'), ' conservan vínculo con el ', link('Crisol primigenio', 'concept', 'crucible')]
     ],
     theories: [
-      'El cielo estrellado falso es residuo de cuando los Nox aún operaban con autoridad',
+      ['El cielo estrellado falso es residuo de cuando los ', link('Nox', 'faction', 'nox'), ' aún operaban con autoridad'],
       'Combatir al Regal Ancestor Spirit cierra definitivamente la posibilidad ritual del lugar',
-      'Algunos Seguidores Ancestrales son humanos exiliados que adoptaron el culto'
+      ['Algunos ', link('Seguidores Ancestrales', 'faction', 'ancestral-followers'), ' son humanos exiliados que adoptaron el culto']
     ],
     ambiguous: [
       'Cuánto tiempo lleva la civilización subterránea en su estado actual',
-      'Si los Seguidores Ancestrales son humanos transformados o especie distinta',
-      'Si Siofra y Ainsel se conectaron originalmente y fueron divididos por la fractura'
+      ['Si los ', link('Seguidores Ancestrales', 'faction', 'ancestral-followers'), ' son humanos transformados o especie distinta'],
+      ['Si Siofra y Ainsel se conectaron originalmente y fueron divididos por la ', link('fractura', 'timeline', 'la-fractura')]
     ],
     relatedCharacters: ['placidusax', 'maliketh'],
     relatedFactions: ['ancestral-followers', 'hombres-bestia'],
@@ -290,16 +377,27 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Siofra', 'region', 'siofra-river'),
         ', su cosmología es astronómica más que ancestral: refleja estrellas reales, comunica con cuerpos celestes, alberga ruinas Nox. Es el corredor subterráneo a ',
         link('Nokstella', 'region', 'nokstella'),
-        ', ciudad de la Luna Oscura.'
+        ', ciudad de la ',
+        link('Luna Oscura', 'concept', 'dark-moon'),
+        '.'
       ),
       h(2, 'Historia detallada'),
       p(
         'Los ',
         link('Nox', 'faction', 'nox'),
-        ', condenados por intentar forjar su propio dios, fueron enterrados aquí cuando Astel cayó del cielo y los aplastó. La entidad estelar quedó residente: hoy patrulla las ruinas como guardián cósmico de su propio crimen. Su Remembrance es premio al Tarnished.'
+        ', condenados por intentar forjar su propio dios, fueron enterrados aquí cuando Astel cayó del cielo y los aplastó. La entidad estelar quedó residente: hoy patrulla las ruinas como guardián cósmico de su propio crimen. Su Remembrance es premio al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '.'
       ),
       p(
-        'Ranni descendió aquí durante su quest. Su forma muñeca habita un nicho oculto en el río. Aquí obtiene la Hoja Mata-Dedos, arma capaz de cortar a los Dos Dedos. La quest de la Era de las Estrellas culmina derrotando a Astel y reuniendo los componentes de la espada lunar oscura.'
+        link('Ranni', 'character', 'ranni'),
+        ' descendió aquí durante su quest. Su forma muñeca habita un nicho oculto en el río. Aquí obtiene la ',
+        link('Hoja Mata-Dedos', 'concept', 'fingerslayer-blade'),
+        ', arma capaz de cortar a los ',
+        link('Dos Dedos', 'faction', 'dos-dedos'),
+        '. La quest de la ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        ' culmina derrotando a Astel y reuniendo los componentes de la espada lunar oscura.'
       ),
       h(2, 'Estado actual'),
       p(
@@ -309,33 +407,43 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Los Nox perdieron todo. Su dios prototípico nunca llegó a existir; su civilización fue aplastada por una estrella enviada como castigo; ahora esperan en silencio una era que creen que llegará pero que la cosmología actual jamás permitirá. La Era de las Estrellas que Ranni promete es la única reivindicación posible — y aún así depende de un Tarnished externo cumpliendo el viaje hasta el final.'
+        'Los ',
+        link('Nox', 'faction', 'nox'),
+        ' perdieron todo. Su dios prototípico nunca llegó a existir; su civilización fue aplastada por una estrella enviada como castigo; ahora esperan en silencio una era que creen que llegará pero que la cosmología actual jamás permitirá. La ',
+        link('Era de las Estrellas', 'concept', 'age-of-stars'),
+        ' que ',
+        link('Ranni', 'character', 'ranni'),
+        ' promete es la única reivindicación posible — y aún así depende de un ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' externo cumpliendo el viaje hasta el final.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Ainsel es el monumento subterráneo a la rebelión cosmológica fallida. Donde Siofra preserva un cosmos paralelo enterrado, Ainsel preserva la memoria de una rebelión castigada. Astel no es enemigo arbitrario: es el verdugo cósmico patrullando eternamente la escena del crimen. Combatirlo es liberar a los Nox de su última cárcel.'
+        'Ainsel es el monumento subterráneo a la rebelión cosmológica fallida. Donde Siofra preserva un cosmos paralelo enterrado, Ainsel preserva la memoria de una rebelión castigada. Astel no es enemigo arbitrario: es el verdugo cósmico patrullando eternamente la escena del crimen. Combatirlo es liberar a los ',
+        link('Nox', 'faction', 'nox'),
+        ' de su última cárcel.'
       )
     ],
     confirmed: [
       'Ainsel desciende a Nokstella',
-      'Astel, Naturalborn of the Void, habita las ruinas',
+      [link('Astel, Naturalborn of the Void', 'character', 'astel'), ', habita las ruinas'],
       'Los Claymen patrullan las riberas',
-      'Ranni habita un nicho oculto durante su quest',
-      'La Hoja Mata-Dedos se obtiene en este corredor'
+      [link('Ranni', 'character', 'ranni'), ' habita un nicho oculto durante su quest'],
+      ['La ', link('Hoja Mata-Dedos', 'concept', 'fingerslayer-blade'), ' se obtiene en este corredor']
     ],
     inferred: [
-      'Astel fue enviado como castigo cósmico contra los Nox',
-      'Las ruinas Nox son monumentos a una rebelión cosmológica anterior a Ranni',
-      'La quest de la Era de las Estrellas culmina derrotando aquí a Astel'
+      ['Astel fue enviado como castigo cósmico contra los ', link('Nox', 'faction', 'nox')],
+      ['Las ruinas Nox son monumentos a una rebelión cosmológica anterior a ', link('Ranni', 'character', 'ranni')],
+      ['La quest de la ', link('Era de las Estrellas', 'concept', 'age-of-stars'), ' culmina derrotando aquí a Astel']
     ],
     theories: [
-      'Astel sigue siendo guardián activo bajo órdenes de la Voluntad Mayor o un dios externo',
+      ['Astel sigue siendo guardián activo bajo órdenes de la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' o un dios externo'],
       'Más Astels podrían existir en otras regiones esperando despertarse',
-      'Ranni heredó el sueño Nox de manera deliberada, no accidental'
+      [link('Ranni', 'character', 'ranni'), ' heredó el sueño Nox de manera deliberada, no accidental']
     ],
     ambiguous: [
       'Cuánto tiempo lleva Astel patrullando',
-      'Si los Nox supervivientes saben que Ranni heredará su rebelión',
+      ['Si los ', link('Nox', 'faction', 'nox'), ' supervivientes saben que ', link('Ranni', 'character', 'ranni'), ' heredará su rebelión'],
       'Si los Claymen son Nox transformados o especie distinta'
     ],
     relatedCharacters: ['ranni'],
@@ -354,7 +462,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Sellia se alza sobre la meseta central de ',
         link('Caelid', 'region', 'caelid'),
-        '. Antes de la devastación era ciudad respetable: academia menor especializada en magia gravitacional y de las estrellas, satélite intelectual de ',
+        '. Antes de la devastación era ciudad respetable: academia menor especializada en ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        ' y de las estrellas, satélite intelectual de ',
         link('Raya Lucaria', 'region', 'raya-lucaria'),
         '. Hoy es museo carmesí de su propio colapso.'
       ),
@@ -365,22 +475,34 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Azur', 'character', 'azur'),
         ' y ',
         link('Lusat', 'character', 'lusat'),
-        '. Los tres investigaron la Corriente Primigenia y las estrellas primordiales, sobrepasando los límites permitidos por la Academia. ',
+        '. Los tres investigaron la ',
+        link('Corriente Primigenia', 'concept', 'primeval-current'),
+        ' y las estrellas primordiales, sobrepasando los límites permitidos por la Academia. ',
         link('Radahn', 'character', 'radahn'),
         ' aprendió su técnica gravitacional con Sellen aquí. Su capacidad posterior de bloquear las estrellas es directa heredera de esa enseñanza.'
       ),
       p(
         'Tras la ',
         link('Batalla de Aeonia', 'timeline', 'batalla-aeonia'),
-        ', la Podredumbre Escarlata cubrió Caelid. Los académicos fueron transformados: hechiceros podridos, investigadores carmesíes, maestros mutados. La ciudad sigue brillando con maldiciones residuales de hechizos en proceso. Visitar Sellia es entrar a un experimento académico interrumpido.'
+        ', la ',
+        link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
+        ' cubrió ',
+        link('Caelid', 'region', 'caelid'),
+        '. Los académicos fueron transformados: hechiceros podridos, investigadores carmesíes, maestros mutados. La ciudad sigue brillando con maldiciones residuales de hechizos en proceso. Visitar Sellia es entrar a un experimento académico interrumpido.'
       ),
       h(2, 'Estado actual'),
       p(
-        'Tres campanas custodian el centro de Sellia: solo encendiéndolas todas se abre el acceso al núcleo. Magma Wyrm habita afueras. Hechiceros mutados patrullan el resto. La Torre Sellia donde Sellen residía sigue activa pero con su cuerpo transformándose lentamente en cuerpo cósmico.'
+        'Tres campanas custodian el centro de Sellia: solo encendiéndolas todas se abre el acceso al núcleo. ',
+        link('Magma', 'character', 'magma-wyrm-makar'),
+        ' Wyrm habita afueras. Hechiceros mutados patrullan el resto. La Torre Sellia donde Sellen residía sigue activa pero con su cuerpo transformándose lentamente en cuerpo cósmico.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Sellen, Azur y Lusat compartieron el mismo destino: el conocimiento sobrepasó la carne. Los tres están parcialmente convertidos en cuerpos celestes, suspendidos entre la academia y las estrellas. Su iluminación final es geometría celestial que ya no pueden dejar de habitar.'
+        'Sellen, ',
+        link('Azur', 'character', 'azur'),
+        ' y ',
+        link('Lusat', 'character', 'lusat'),
+        ' compartieron el mismo destino: el conocimiento sobrepasó la carne. Los tres están parcialmente convertidos en cuerpos celestes, suspendidos entre la academia y las estrellas. Su iluminación final es geometría celestial que ya no pueden dejar de habitar.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -388,25 +510,25 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Sellia es centro académico de magia gravitacional en Caelid',
+      ['Sellia es centro académico de ', link('magia gravitacional', 'concept', 'gravity-magic'), ' en ', link('Caelid', 'region', 'caelid')],
       'Sellen estableció su laboratorio aquí tras la excomunión',
-      'Radahn aprendió su técnica gravitacional con Sellen',
+      [link('Radahn', 'character', 'radahn'), ' aprendió su técnica gravitacional con Sellen'],
       'La ciudad fue cubierta por la Podredumbre tras Aeonia'
     ],
     inferred: [
-      'Azur y Lusat también investigaron aquí antes de su transformación cósmica',
+      [link('Azur', 'character', 'azur'), ' y ', link('Lusat', 'character', 'lusat'), ' también investigaron aquí antes de su transformación cósmica'],
       'Sellen está parcialmente convertida en cuerpo celestial',
       'La transformación de los académicos no es solo podredumbre: es también iluminación cósmica'
     ],
     theories: [
       'Las maldiciones residuales que iluminan las calles son hechizos a medio terminar de los académicos transformados',
-      'Sellen, Azur y Lusat formaron un triángulo cósmico que se sigue completando',
+      ['Sellen, ', link('Azur', 'character', 'azur'), ' y ', link('Lusat', 'character', 'lusat'), ' formaron un triángulo cósmico que se sigue completando'],
       'Si los tres se reunieran cosmológicamente, podrían constituir un Lord Elden alternativo'
     ],
     ambiguous: [
       'Si los hechiceros mutados conservan consciencia residual',
       'Cuánto tiempo lleva Sellen en su torre',
-      'Si la magia gravitacional puede curarse o solo transformarse más'
+      ['Si la ', link('magia gravitacional', 'concept', 'gravity-magic'), ' puede curarse o solo transformarse más']
     ],
     relatedCharacters: ['sellen', 'azur', 'lusat', 'radahn', 'rennala'],
     relatedFactions: ['raya-lucaria'],
@@ -421,7 +543,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen del lugar'),
       p(
-        'Redmane se alza al sur de Caelid, frente a la costa carmesí. Era fortaleza militar de los ',
+        'Redmane se alza al sur de ',
+        link('Caelid', 'region', 'caelid'),
+        ', frente a la costa carmesí. Era fortaleza militar de los ',
         link('Redmanes', 'faction', 'redmanes'),
         ' bajo ',
         link('Radahn', 'character', 'radahn'),
@@ -431,52 +555,80 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'Pre-corrupción, Redmane funcionaba como cuartel general de la cabalgata Redmane: caballeros rojos entrenados en magia gravitacional residual, fidelidad militar absoluta a Radahn, ideología basada en la admiración a Godfrey como modelo. La cabalgata participó en la Batalla de Aeonia. La mayoría murió o fue corrompida.'
+        'Pre-corrupción, Redmane funcionaba como cuartel general de la cabalgata Redmane: caballeros rojos entrenados en ',
+        link('magia gravitacional', 'concept', 'gravity-magic'),
+        ' residual, fidelidad militar absoluta a ',
+        link('Radahn', 'character', 'radahn'),
+        ', ideología basada en la admiración a ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' como modelo. La cabalgata participó en la Batalla de Aeonia. La mayoría murió o fue corrompida.'
       ),
       p(
-        'Post-Aeonia, Jerren — antiguo maestro de armas y posiblemente amante histórico de Sellen — diseñó el ',
+        'Post-Aeonia, ',
+        link('Jerren', 'character', 'jerren'),
+        ' — antiguo maestro de armas y posiblemente amante histórico de Sellen — diseñó el ',
         link('Festival', 'timeline', 'festival-radahn'),
-        '. Invitar a guerreros legendarios a derrotar a Radahn permite tres cosas simultáneamente: liberarlo del cuerpo arruinado, devolverle la dignidad de morir en combate, restaurar el flujo de las estrellas que él bloqueaba. La fortaleza se convirtió en arena ritual.'
+        '. Invitar a guerreros legendarios a derrotar a ',
+        link('Radahn', 'character', 'radahn'),
+        ' permite tres cosas simultáneamente: liberarlo del cuerpo arruinado, devolverle la dignidad de morir en combate, restaurar el flujo de las estrellas que él bloqueaba. La fortaleza se convirtió en arena ritual.'
       ),
       h(2, 'Estado actual'),
       p(
-        'El Festival está activado cuando el Tarnished llega a Caelid. Combatientes invitados — ',
+        'El Festival está activado cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' llega a ',
+        link('Caelid', 'region', 'caelid'),
+        '. Combatientes invitados — ',
         link('Alexander', 'character', 'alexander'),
         ', ',
         link('Patches', 'character', 'patches'),
         ', ',
         link('Bernahl', 'character', 'bernahl'),
-        ' — están presentes o de camino. Jerren oficia. Los Redmanes supervivientes participan como guardia honorífica.'
+        ' — están presentes o de camino. ',
+        link('Jerren', 'character', 'jerren'),
+        ' oficia. Los ',
+        link('Redmanes', 'faction', 'redmanes'),
+        ' supervivientes participan como guardia honorífica.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Los Redmanes saben que el Festival es eutanasia. Cada combatiente invitado es ofrecido a su general arruinado. La fidelidad marcial llevada al extremo: amar a tu líder al punto de organizar su asesinato porque permitirle vivir como bestia sería peor traición. La cabalgata se prepara para enterrar simbólicamente al rey que ya no es rey.'
+        'Los ',
+        link('Redmanes', 'faction', 'redmanes'),
+        ' saben que el Festival es eutanasia. Cada combatiente invitado es ofrecido a su general arruinado. La fidelidad marcial llevada al extremo: amar a tu líder al punto de organizar su asesinato porque permitirle vivir como bestia sería peor traición. La cabalgata se prepara para enterrar simbólicamente al rey que ya no es rey.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Redmane Castle es la imagen del honor militar llevado a su consecuencia ética más extrema. La fortaleza no defiende ya — preside una ceremonia. Los Redmanes son los únicos seguidores de las Tierras Intermedias que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de Morgott a Marika: aquellos sirven hasta la muerte propia, los Redmanes sirven matando al servido.'
+        'Redmane Castle es la imagen del honor militar llevado a su consecuencia ética más extrema. La fortaleza no defiende ya — preside una ceremonia. Los ',
+        link('Redmanes', 'faction', 'redmanes'),
+        ' son los únicos seguidores de las Tierras Intermedias que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de ',
+        link('Morgott', 'character', 'morgott'),
+        ' a ',
+        link('Marika', 'character', 'marika'),
+        ': aquellos sirven hasta la muerte propia, los ',
+        link('Redmanes', 'faction', 'redmanes'),
+        ' sirven matando al servido.'
       )
     ],
     confirmed: [
-      'Redmane Castle es fortaleza ritual de los Redmanes',
-      'Jerren oficia el Festival',
-      'Alexander, Patches, Bernahl participan como combatientes invitados',
-      'La derrota de Radahn libera las estrellas que él bloqueaba'
+      ['Redmane Castle es fortaleza ritual de los ', link('Redmanes', 'faction', 'redmanes')],
+      [link('Jerren', 'character', 'jerren'), ' oficia el Festival'],
+      [link('Alexander', 'character', 'alexander'), ', ', link('Patches', 'character', 'patches'), ', ', link('Bernahl', 'character', 'bernahl'), ' participan como combatientes invitados'],
+      ['La derrota de ', link('Radahn', 'character', 'radahn'), ' libera las estrellas que él bloqueaba']
     ],
     inferred: [
-      'Jerren tuvo relación previa con Sellen, posiblemente romántica',
-      'Los Redmanes saben que el Festival es eutanasia',
-      'La fidelidad marcial Redmane se opone éticamente a la lealtad de Morgott'
+      [link('Jerren', 'character', 'jerren'), ' tuvo relación previa con Sellen, posiblemente romántica'],
+      ['Los ', link('Redmanes', 'faction', 'redmanes'), ' saben que el Festival es eutanasia'],
+      ['La fidelidad marcial Redmane se opone éticamente a la lealtad de ', link('Morgott', 'character', 'morgott')]
     ],
     theories: [
-      'El Festival fue diseñado por Jerren con conocimiento previo del efecto cosmológico (liberar las estrellas)',
+      ['El Festival fue diseñado por ', link('Jerren', 'character', 'jerren'), ' con conocimiento previo del efecto cosmológico (liberar las estrellas)'],
       'Algunos Redmanes esperan que la liberación les devuelva memoria de su líder no-corrupto',
-      'Sellen visitó secretamente Redmane antes del Festival para coordinar con Jerren'
+      ['Sellen visitó secretamente Redmane antes del Festival para coordinar con ', link('Jerren', 'character', 'jerren')]
     ],
     ambiguous: [
-      'Cuánto tiempo lleva el Festival activo antes de la llegada del Tarnished',
-      'Si todos los Redmanes apoyan el Festival o algunos disienten',
-      'Si Jerren conoce la conexión cosmológica entre la muerte de Radahn y la quest de Ranni'
+      ['Cuánto tiempo lleva el Festival activo antes de la llegada del ', link('Tarnished', 'concept', 'tarnished')],
+      ['Si todos los ', link('Redmanes', 'faction', 'redmanes'), ' apoyan el Festival o algunos disienten'],
+      ['Si ', link('Jerren', 'character', 'jerren'), ' conoce la conexión cosmológica entre la muerte de ', link('Radahn', 'character', 'radahn'), ' y la quest de ', link('Ranni', 'character', 'ranni')]
     ],
     relatedCharacters: ['radahn', 'jerren', 'sellen', 'alexander', 'patches', 'bernahl'],
     relatedFactions: ['redmanes', 'banished-knights'],
@@ -494,7 +646,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Bajo ',
         link('Leyndell', 'region', 'leyndell'),
-        ', accesible solo por canales secretos, se extienden las alcantarillas-prisión del régimen. Su función oficial: encerrar Omens, criaturas malformadas y seres clasificados como aberraciones. Su función no-oficial: ocultar las contradicciones del Orden Dorado bajo el suelo dorado de su propia capital.'
+        ', accesible solo por canales secretos, se extienden las alcantarillas-prisión del régimen. Su función oficial: encerrar Omens, criaturas malformadas y seres clasificados como aberraciones. Su función no-oficial: ocultar las contradicciones del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' bajo el suelo dorado de su propia capital.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -503,19 +657,27 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Mohg', 'character', 'mohg'),
         ' fueron encarcelados aquí durante toda su juventud. Los ',
         link('Verdugos Omen', 'faction', 'omenkillers'),
-        ' oficiaban rituales sobre los presos: serrucharles cuernos, supresión de su naturaleza maldita, "neutralización" de su sangre Crisol. La cárcel funcionaba como instrumento de mantenimiento de la categoría: si el régimen clasifica a alguien como aberración, el subsuelo lo procesa.'
+        ' oficiaban rituales sobre los presos: serrucharles cuernos, supresión de su naturaleza maldita, "neutralización" de su sangre ',
+        link('Crisol', 'concept', 'crucible'),
+        '. La cárcel funcionaba como instrumento de mantenimiento de la categoría: si el régimen clasifica a alguien como aberración, el subsuelo lo procesa.'
       ),
       p(
         'Los ',
         link('Tres Dedos', 'faction', 'tres-dedos'),
-        ' están sellados en el nivel más bajo del subsuelo, tras tres puertas con tres llaves. Su presencia es paradoja teológica: el régimen del Orden Dorado, custodio de la Voluntad Mayor, alberga literalmente bajo su capital a la encarnación física del dios externo opuesto. La ',
+        ' están sellados en el nivel más bajo del subsuelo, tras tres puertas con tres llaves. Su presencia es paradoja teológica: el régimen del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ', custodio de la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ', alberga literalmente bajo su capital a la encarnación física del dios externo opuesto. La ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
         ' espera bajo el oro.'
       ),
       p(
         'El ',
         link('Dung Eater', 'character', 'dung-eater'),
-        ' cumple su condena en celda separada. Su Sello Mendaz, si se entrega al Anillo Elden, instaurará la ',
+        ' cumple su condena en celda separada. Su Sello Mendaz, si se entrega al ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ', instaurará la ',
         link('Bendición de la Desesperación', 'ending', 'despair'),
         '. La cárcel del régimen contiene, literalmente, la herramienta para condenar al cosmos entero.'
       ),
@@ -523,38 +685,48 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'El subsuelo está parcialmente derruido. Omens libres patrullan algunas secciones. Los Verdugos siguen activos pero reducidos. ',
         link('Mohg', 'character', 'mohg'),
-        ' tiene una manifestación menor aquí (Mohg the Omen) anterior a su pacto con la Madre Informe. El Dung Eater puede ser asesinado o liberado por el Tarnished.'
+        ' tiene una manifestación menor aquí (',
+        link('Mohg', 'character', 'mohg'),
+        ' the Omen) anterior a su pacto con la Madre Informe. El ',
+        link('Dung Eater', 'character', 'dung-eater'),
+        ' puede ser asesinado o liberado por el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        '.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Bajo la capital más bella de las Tierras Intermedias crece la cárcel más bestial. Cada gota de gracia dorada que cae sobre Leyndell tiene su contrapartida en el subsuelo: cada noble que rece en el templo dorado pisa, sin saberlo, sobre Omens encarcelados que llevan su misma sangre. La hipocresía no es excepción ni anomalía — es estructura.'
+        'Bajo la capital más bella de las Tierras Intermedias crece la cárcel más bestial. Cada gota de ',
+        link('gracia', 'concept', 'grace'),
+        ' dorada que cae sobre Leyndell tiene su contrapartida en el subsuelo: cada noble que rece en el templo dorado pisa, sin saberlo, sobre Omens encarcelados que llevan su misma sangre. La hipocresía no es excepción ni anomalía — es estructura.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El Shunning-Grounds es la imagen más exacta del Orden Dorado completo. Lo que la liturgia oficial no puede integrar — Omens, dios exterior nihilista, blasfemos extremos — el subsuelo lo guarda. Cada cosmología tiene su mazmorra escondida. Esta es particularmente honesta sobre lo que considera aberración.'
+        'El Shunning-Grounds es la imagen más exacta del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' completo. Lo que la liturgia oficial no puede integrar — Omens, dios exterior nihilista, blasfemos extremos — el subsuelo lo guarda. Cada cosmología tiene su mazmorra escondida. Esta es particularmente honesta sobre lo que considera aberración.'
       )
     ],
     confirmed: [
       'El Shunning-Grounds es cárcel oficial del Orden bajo Leyndell',
-      'Morgott y Mohg fueron encarcelados aquí en su juventud',
-      'Los Verdugos Omen oficiaban rituales sobre los presos',
-      'Los Tres Dedos están sellados en el nivel más bajo',
-      'El Dung Eater cumple condena en celda separada'
+      [link('Morgott', 'character', 'morgott'), ' y ', link('Mohg', 'character', 'mohg'), ' fueron encarcelados aquí en su juventud'],
+      ['Los ', link('Verdugos Omen', 'faction', 'omenkillers'), ' oficiaban rituales sobre los presos'],
+      ['Los ', link('Tres Dedos', 'faction', 'tres-dedos'), ' están sellados en el nivel más bajo'],
+      ['El ', link('Dung Eater', 'character', 'dung-eater'), ' cumple condena en celda separada']
     ],
     inferred: [
       'La cárcel mantiene activamente la categoría de "aberración" del régimen',
-      'Marika consintió o no pudo evitar el encarcelamiento de sus propios hijos',
-      'La presencia simultánea de Tres Dedos y régimen dorado es paradoja deliberada'
+      [link('Marika', 'character', 'marika'), ' consintió o no pudo evitar el encarcelamiento de sus propios hijos'],
+      ['La presencia simultánea de ', link('Tres Dedos', 'faction', 'tres-dedos'), ' y régimen dorado es paradoja deliberada']
     ],
     theories: [
-      'Marika misma pudo haber descendido en secreto a visitar a sus hijos encarcelados',
-      'El sello que contiene a los Tres Dedos se ha debilitado progresivamente',
-      'Los Verdugos Omen son ellos mismos Omens convertidos al servicio del régimen'
+      [link('Marika', 'character', 'marika'), ' misma pudo haber descendido en secreto a visitar a sus hijos encarcelados'],
+      ['El sello que contiene a los ', link('Tres Dedos', 'faction', 'tres-dedos'), ' se ha debilitado progresivamente'],
+      ['Los ', link('Verdugos Omen', 'faction', 'omenkillers'), ' son ellos mismos Omens convertidos al servicio del régimen']
     ],
     ambiguous: [
       'Cuántos siglos lleva la cárcel en su forma actual',
-      'Si todos los Omens son encarcelados aquí o solo los más prominentes',
-      'Si el Dung Eater fue capturado por sus crímenes o por su naturaleza Omen subyacente'
+      ['Si todos los ', link('Omens', 'faction', 'omens'), ' son encarcelados aquí o solo los más prominentes'],
+      ['Si el ', link('Dung Eater', 'character', 'dung-eater'), ' fue capturado por sus crímenes o por su naturaleza Omen subyacente']
     ],
     relatedCharacters: ['morgott', 'mohg', 'marika', 'dung-eater'],
     relatedFactions: ['omens', 'omenkillers', 'tres-dedos', 'orden-dorado'],
@@ -585,7 +757,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Bernahl', 'character', 'bernahl'),
         ', ',
         link('Diallos', 'character', 'diallos'),
-        ' (que llega buscando a su sirvienta perdida), antiguos caballeros desterrados — y los pone al servicio de cazas rituales. Las cartas de invitación que envía son misiones de asesinato disfrazadas de protocolo cortés.'
+        ' (que llega buscando a su sirvienta perdida), antiguos ',
+        link('caballeros desterrados', 'faction', 'banished-knights'),
+        ' — y los pone al servicio de cazas rituales. Las cartas de invitación que envía son misiones de asesinato disfrazadas de protocolo cortés.'
       ),
       p(
         link('Rya', 'character', 'rya'),
@@ -601,11 +775,21 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Estado actual'),
       p(
-        'El manor opera con plena funcionalidad ceremonial cuando el Tarnished llega. Tanith puede invitarlo a unirse a los Recusantes — ofreciéndole misiones de asesinato a cambio de armas y servicio bajo Rykard. Si las misiones se completan, el Tarnished avanza hacia el santuario inferior donde Rykard fundido con Eiglay aguarda como boss final. Tras su derrota, Tanith devora el cadáver.'
+        'El manor opera con plena funcionalidad ceremonial cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' llega. Tanith puede invitarlo a unirse a los Recusantes — ofreciéndole misiones de asesinato a cambio de armas y servicio bajo ',
+        link('Rykard', 'character', 'rykard'),
+        '. Si las misiones se completan, el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' avanza hacia el santuario inferior donde ',
+        link('Rykard', 'character', 'rykard'),
+        ' fundido con Eiglay aguarda como boss final. Tras su derrota, Tanith devora el cadáver.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'La cortesía de Tanith es perfecta hasta el final. Sirve té, ofrece protocolo, recibe huéspedes con dignidad — y todo el tiempo está alimentando rituales de sangre bajo su salón. La etiqueta aristocrática se vuelve forma perfeccionada del horror: lo que en otras facciones es violencia explícita, aquí es violencia con servicio de mesa. Su devoración final del cadáver de Rykard es el único momento en que rompe el protocolo, y lo rompe solo en privado.'
+        'La cortesía de Tanith es perfecta hasta el final. Sirve té, ofrece protocolo, recibe huéspedes con dignidad — y todo el tiempo está alimentando rituales de sangre bajo su salón. La etiqueta aristocrática se vuelve forma perfeccionada del horror: lo que en otras facciones es violencia explícita, aquí es violencia con servicio de mesa. Su devoración final del cadáver de ',
+        link('Rykard', 'character', 'rykard'),
+        ' es el único momento en que rompe el protocolo, y lo rompe solo en privado.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -613,26 +797,26 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Volcano Manor es corte aristocrática alternativa bajo Rykard',
+      ['Volcano Manor es corte aristocrática alternativa bajo ', link('Rykard', 'character', 'rykard')],
       'Tanith es anfitriona; Rya/Zorayas es reclutadora',
       'Las cartas de invitación son misiones de asesinato disfrazadas',
       'Eiglay habita el santuario subterráneo',
-      'Tanith devora el cadáver de Rykard tras la batalla'
+      ['Tanith devora el cadáver de ', link('Rykard', 'character', 'rykard'), ' tras la batalla']
     ],
     inferred: [
-      'Los Recusantes son ex-leales del Orden Dorado convertidos por desafección filosófica',
+      ['Los Recusantes son ex-leales del ', link('Orden Dorado', 'concept', 'golden-order'), ' convertidos por desafección filosófica'],
       'Tanith conoce la naturaleza monstruosa del proyecto pero la acepta',
       'La cortesía aristocrática es contenedor funcional del horror, no contradicción'
     ],
     theories: [
-      'Eiglay es manifestación residual del Crisol primigenio o un Antiguo Dragón degenerado',
+      ['Eiglay es manifestación residual del ', link('Crisol primigenio', 'concept', 'crucible'), ' o un Antiguo Dragón degenerado'],
       'Rya/Zorayas es la última hija pura de la línea serpiente que precede al Orden',
-      'Tanith fue elegida deliberadamente por Rykard porque su fidelidad excedería la devoración'
+      ['Tanith fue elegida deliberadamente por ', link('Rykard', 'character', 'rykard'), ' porque su fidelidad excedería la devoración']
     ],
     ambiguous: [
       'Si todos los Recusantes saben sobre Eiglay o solo los iniciados',
       'Cuánto tiempo medió entre la primera invitación a un noble y la consolidación actual',
-      'Si Tanith conserva ambición propia o opera puramente como vehículo de Rykard'
+      ['Si Tanith conserva ambición propia o opera puramente como vehículo de ', link('Rykard', 'character', 'rykard')]
     ],
     relatedCharacters: ['rykard', 'tanith', 'rya', 'patches', 'bernahl', 'diallos'],
     relatedFactions: ['volcano-manor', 'banished-knights', 'man-serpents', 'abductor-virgins', 'fire-monks'],
@@ -649,51 +833,77 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Ordina se alza congelada en medio del ',
         link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
-        '. Su arquitectura es ceremonial: catedrales cubiertas de nieve, plazas amplias, estatuas litúrgicas. Era ciudad-altar dedicada a los rituales del Árbol Áureo — pero en algún momento sus liturgias fueron suspendidas, posiblemente cuando los Albinaurics emprendieron éxodo hacia el ',
+        '. Su arquitectura es ceremonial: catedrales cubiertas de nieve, plazas amplias, estatuas litúrgicas. Era ciudad-altar dedicada a los rituales del ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' — pero en algún momento sus liturgias fueron suspendidas, posiblemente cuando los Albinaurics emprendieron éxodo hacia el ',
         link('Haligtree', 'region', 'haligtree'),
         '.'
       ),
       h(2, 'Historia detallada'),
       p(
-        'La función original de Ordina parece haber sido bisagra: ceremonia oficial del Orden Dorado en una región fronteriza donde el régimen comenzaba a perder coherencia. Cuando ',
+        'La función original de Ordina parece haber sido bisagra: ceremonia oficial del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' en una región fronteriza donde el régimen comenzaba a perder coherencia. Cuando ',
         link('Miquella', 'character', 'miquella'),
-        ' construyó el Haligtree y los ',
+        ' construyó el ',
+        link('Haligtree', 'concept', 'haligtree'),
+        ' y los ',
         link('Albinaurics', 'faction', 'albinauricos'),
         ' iniciaron su peregrinación, Ordina quedó suspendida — sus rituales descontinuados, sus sacerdotes ausentes.'
       ),
       p(
-        'Hoy es portal al Haligtree. Encender las cuatro estatuas litúrgicas alrededor del centro de la ciudad abre un Evergaol que transporta al Tarnished hacia el árbol prohibido. Los ',
+        'Hoy es portal al ',
+        link('Haligtree', 'region', 'haligtree'),
+        '. Encender las cuatro estatuas litúrgicas alrededor del centro de la ciudad abre un Evergaol que transporta al ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' hacia el árbol prohibido. Los ',
         link('Black Knife Assassins', 'faction', 'cuchillos-negros'),
         ' acechan durante la operación: matan al peregrino antes de que complete el rito.'
       ),
       h(2, 'Estado actual'),
       p(
-        'Ordina está congelada literalmente y figurativamente. La nieve cubre todo. Algunos restos de Albinaurics yacen en sus calles — peregrinos que nunca llegaron al Haligtree. Las catedrales están vacías. Solo las cuatro estatuas conservan función activa.'
+        'Ordina está congelada literalmente y figurativamente. La nieve cubre todo. Algunos restos de Albinaurics yacen en sus calles — peregrinos que nunca llegaron al ',
+        link('Haligtree', 'region', 'haligtree'),
+        '. Las catedrales están vacías. Solo las cuatro estatuas conservan función activa.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'La presencia de Black Knife Assassins en Ordina sugiere que la facción de los Cuchillos Negros — herederos de la operación que mató a Godwyn — sigue activa. Que estén custodiando específicamente el portal al Haligtree es siniestro: ¿están tratando de impedir que alguien llegue a Miquella secuestrado? ¿O custodian algo en la propia Ordina que el régimen no quiere ver alcanzado?'
+        'La presencia de Black Knife Assassins en Ordina sugiere que la facción de los ',
+        link('Cuchillos Negros', 'faction', 'cuchillos-negros'),
+        ' — herederos de la operación que mató a ',
+        link('Godwyn', 'character', 'godwyn'),
+        ' — sigue activa. Que estén custodiando específicamente el portal al ',
+        link('Haligtree', 'region', 'haligtree'),
+        ' es siniestro: ¿están tratando de impedir que alguien llegue a ',
+        link('Miquella', 'character', 'miquella'),
+        ' secuestrado? ¿O custodian algo en la propia Ordina que el régimen no quiere ver alcanzado?'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Ordina es el último filtro antes del Haligtree. Su silencio liturgical es la imagen del régimen del Orden Dorado en su frontera: rituales que ya no se oficían, sacerdotes que ya no llegan, ciudades que conservan la forma de la fe sin su contenido. La ciudad espera congelada el momento en que su rito sea completado por un agente externo — el Tarnished — para liberar finalmente el portal.'
+        'Ordina es el último filtro antes del ',
+        link('Haligtree', 'region', 'haligtree'),
+        '. Su silencio liturgical es la imagen del régimen del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' en su frontera: rituales que ya no se oficían, sacerdotes que ya no llegan, ciudades que conservan la forma de la fe sin su contenido. La ciudad espera congelada el momento en que su rito sea completado por un agente externo — el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' — para liberar finalmente el portal.'
       )
     ],
     confirmed: [
       'Ordina es ciudad ceremonial congelada en el Snowfield Consagrado',
-      'Cuatro estatuas litúrgicas abren el portal Evergaol al Haligtree',
+      ['Cuatro estatuas litúrgicas abren el portal Evergaol al ', link('Haligtree', 'region', 'haligtree')],
       'Los Black Knife Assassins atacan durante la operación',
       'Restos Albinauricos yacen en las calles'
     ],
     inferred: [
       'Sus rituales fueron suspendidos cuando los Albinaurics iniciaron el éxodo',
       'Era bisagra ceremonial entre el régimen central y la frontera',
-      'Los Black Knife Assassins custodian deliberadamente el acceso a Miquella'
+      ['Los Black Knife Assassins custodian deliberadamente el acceso a ', link('Miquella', 'character', 'miquella')]
     ],
     theories: [
-      'Los Black Knife Assassins fueron enviados por Mohg para impedir intervención externa en Mohgwyn',
-      'Ordina conserva textos litúrgicos que documentan el sello original de la Muerte Predestinada',
-      'Los Albinaurics caídos en el camino fueron asesinados deliberadamente por los Cuchillos Negros'
+      ['Los Black Knife Assassins fueron enviados por ', link('Mohg', 'character', 'mohg'), ' para impedir intervención externa en Mohgwyn'],
+      ['Ordina conserva textos litúrgicos que documentan el sello original de la ', link('Muerte Predestinada', 'concept', 'destined-death')],
+      ['Los Albinaurics caídos en el camino fueron asesinados deliberadamente por los ', link('Cuchillos Negros', 'faction', 'cuchillos-negros')]
     ],
     ambiguous: [
       'Cuándo exactamente Ordina dejó de funcionar como centro ceremonial',
@@ -715,7 +925,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Elphael se construyó bajo las raíces del ',
         link('Haligtree', 'region', 'haligtree'),
-        ' como ciudad-utopía para refugiados. Su arquitectura combina elementos del Orden Dorado con innovaciones arquitectónicas propias: arcos curvos, torres gemelas, jardines bajo luz dorada artificial generada por el ',
+        ' como ciudad-utopía para refugiados. Su arquitectura combina elementos del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' con innovaciones arquitectónicas propias: arcos curvos, torres gemelas, jardines bajo luz dorada artificial generada por el ',
         link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
         '.'
       ),
@@ -730,49 +942,67 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Cleanrot Knights', 'faction', 'cleanrot-knights'),
         ' al servicio de ',
         link('Malenia', 'character', 'malenia'),
-        ' constituían la guardia militar. La utopía funcionaba mientras Malenia podía protegerla.'
+        ' constituían la guardia militar. La utopía funcionaba mientras ',
+        link('Malenia', 'character', 'malenia'),
+        ' podía protegerla.'
       ),
       p(
         'Tras la ',
         link('Batalla de Aeonia', 'timeline', 'batalla-aeonia'),
-        ', Malenia regresó mutilada con la podredumbre infectando su cuerpo. La Podredumbre comenzó a filtrarse por el árbol mismo. Los Albinaurics se vieron afectados: muchos enloquecieron y se transformaron en seres carmesíes hostiles. Los Cleanrot Knights, ya infectados voluntariamente, perdieron control progresivo.'
+        ', ',
+        link('Malenia', 'character', 'malenia'),
+        ' regresó mutilada con la podredumbre infectando su cuerpo. La Podredumbre comenzó a filtrarse por el árbol mismo. Los Albinaurics se vieron afectados: muchos enloquecieron y se transformaron en seres carmesíes hostiles. Los Cleanrot Knights, ya infectados voluntariamente, perdieron control progresivo.'
       ),
       h(2, 'Estado actual'),
       p(
         'Elphael es ahora ciudad arruinada por la podredumbre. Albinaurics carmesíes patrullan calles antes pacíficas. Los Cleanrot Knights pelean en estado avanzado de corrupción. ',
         link('Loretta', 'character', 'royal-knight-loretta'),
-        ', Caballero del Haligtree, custodia el acceso central — su lealtad final a Miquella la lleva a defender un trono vacío. Malenia espera en el corazón de la ciudad junto al capullo dorado de Miquella, ya secuestrado.'
+        ', Caballero del ',
+        link('Haligtree', 'region', 'haligtree'),
+        ', custodia el acceso central — su lealtad final a ',
+        link('Miquella', 'character', 'miquella'),
+        ' la lleva a defender un trono vacío. ',
+        link('Malenia', 'character', 'malenia'),
+        ' espera en el corazón de la ciudad junto al capullo dorado de ',
+        link('Miquella', 'character', 'miquella'),
+        ', ya secuestrado.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'La utopía falló no por enemigo externo sino por su propia protectora. Cada Floración Escarlata residual de Malenia infecta lentamente al árbol que ella misma debería defender. Los Albinaurics carmesíes son ex-refugiados consumidos por la podredumbre que su santuario no pudo detener. Es la prueba más honesta de las Tierras Intermedias de que ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.'
+        'La utopía falló no por enemigo externo sino por su propia protectora. Cada Floración Escarlata residual de ',
+        link('Malenia', 'character', 'malenia'),
+        ' infecta lentamente al árbol que ella misma debería defender. Los Albinaurics carmesíes son ex-refugiados consumidos por la podredumbre que su santuario no pudo detener. Es la prueba más honesta de las Tierras Intermedias de que ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Elphael es el monumento del juego al fracaso del único proyecto positivo. Miquella quiso curar al cosmos; lo intentó genuinamente; trabajó durante eras; construyó arquitectura física para sostenerlo; entrenó a su gemela como espada protectora. Falló. La razón no fue maldad: fue la lógica estructural de las Tierras Intermedias. Ningún cosmos depredador permite proyectos curativos a largo plazo. El fracaso del Haligtree es la respuesta más oscura del juego a la pregunta de si el régimen actual es reformable.'
+        'Elphael es el monumento del juego al fracaso del único proyecto positivo. ',
+        link('Miquella', 'character', 'miquella'),
+        ' quiso curar al cosmos; lo intentó genuinamente; trabajó durante eras; construyó arquitectura física para sostenerlo; entrenó a su gemela como espada protectora. Falló. La razón no fue maldad: fue la lógica estructural de las Tierras Intermedias. Ningún cosmos depredador permite proyectos curativos a largo plazo. El fracaso del ',
+        link('Haligtree', 'region', 'haligtree'),
+        ' es la respuesta más oscura del juego a la pregunta de si el régimen actual es reformable.'
       )
     ],
     confirmed: [
-      'Elphael fue construida bajo las raíces del Haligtree por Miquella',
+      ['Elphael fue construida bajo las raíces del ', link('Haligtree', 'region', 'haligtree'), ' por ', link('Miquella', 'character', 'miquella')],
       'Albinaurics y Misbegotten convivían como iguales',
       'Cleanrot Knights eran la guardia militar',
-      'La Podredumbre llegó tras Aeonia y la mutilación de Malenia',
+      ['La Podredumbre llegó tras Aeonia y la mutilación de ', link('Malenia', 'character', 'malenia')],
       'Loretta custodia el acceso central',
-      'Malenia espera en el corazón junto al capullo vacío de Miquella'
+      [link('Malenia', 'character', 'malenia'), ' espera en el corazón junto al capullo vacío de ', link('Miquella', 'character', 'miquella')]
     ],
     inferred: [
-      'La utopía dependía estructuralmente de la protección de Malenia',
+      ['La utopía dependía estructuralmente de la protección de ', link('Malenia', 'character', 'malenia')],
       'La Podredumbre sigue avanzando lentamente',
       'Los Albinaurics carmesíes son ex-refugiados consumidos'
     ],
     theories: [
-      'Si Miquella despertara, podría revertir parcialmente la podredumbre',
+      ['Si ', link('Miquella', 'character', 'miquella'), ' despertara, podría revertir parcialmente la podredumbre'],
       'Algunos Cleanrot Knights conservan consciencia residual y aceptarían la muerte',
-      'El capullo de Oro sin Aleación todavía protege a Miquella incluso secuestrado'
+      ['El capullo de ', link('Oro sin Aleación', 'concept', 'unalloyed-gold'), ' todavía protege a ', link('Miquella', 'character', 'miquella'), ' incluso secuestrado']
     ],
     ambiguous: [
-      'Cuándo exactamente la Podredumbre llegó al Haligtree',
-      'Si Malenia conserva ambivalencia sobre su propia infección',
+      ['Cuándo exactamente la Podredumbre llegó al ', link('Haligtree', 'region', 'haligtree')],
+      ['Si ', link('Malenia', 'character', 'malenia'), ' conserva ambivalencia sobre su propia infección'],
       'Si la utopía podría restaurarse bajo otra cosmología'
     ],
     relatedCharacters: ['miquella', 'malenia', 'royal-knight-loretta', 'millicent'],
@@ -792,17 +1022,25 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Caelid', 'region', 'caelid'),
         ', protegida parcialmente por su altura del avance de la Podredumbre. Es refugio de los descendientes residuales de los ',
         link('Antiguos Dragones', 'faction', 'dragones-antiguos'),
-        ' que sobrevivieron a la guerra del Orden Dorado.'
+        ' que sobrevivieron a la guerra del ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        '.'
       ),
       h(2, 'Historia detallada'),
       p(
         link('Greyoll', 'character', 'greyoll'),
-        ', dragona anciana, yace inmóvil en el centro de la meseta. Sus crías la protegen: cuatro dragones menores patrullan los alrededores. La inmovilidad de Greyoll no es muerte — es algo más antiguo, anterior al sello de la Muerte Predestinada, que el régimen actual no puede procesar.'
+        ', dragona anciana, yace inmóvil en el centro de la meseta. Sus crías la protegen: cuatro dragones menores patrullan los alrededores. La inmovilidad de ',
+        link('Greyoll', 'character', 'greyoll'),
+        ' no es muerte — es algo más antiguo, anterior al sello de la ',
+        link('Muerte Predestinada', 'concept', 'destined-death'),
+        ', que el régimen actual no puede procesar.'
       ),
       p(
         'El Bestial Sanctum, santuario donde ',
         link('Maliketh', 'character', 'maliketh'),
-        ' opera como Gurranq, está en el extremo norte. Aquí come Deathroot ofrecida por peregrinos. Los Beastmen de Farum Azula patrullan los pasajes que conectan con la ciudadela atemporal del dragonlord.'
+        ' opera como Gurranq, está en el extremo norte. Aquí come Deathroot ofrecida por peregrinos. Los Beastmen de ',
+        link('Farum Azula', 'region', 'farum-azula'),
+        ' patrullan los pasajes que conectan con la ciudadela atemporal del dragonlord.'
       ),
       p(
         'La ',
@@ -811,37 +1049,48 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Estado actual'),
       p(
-        'Dragonbarrow conserva integridad relativa frente al resto de Caelid. Los dragones siguen activos. El Bestial Sanctum funciona ritualmente. La presencia de la Comunión Dracónica documenta supervivencia cultural significativa.'
+        'Dragonbarrow conserva integridad relativa frente al resto de ',
+        link('Caelid', 'region', 'caelid'),
+        '. Los dragones siguen activos. El Bestial Sanctum funciona ritualmente. La presencia de la ',
+        link('Comunión Dracónica', 'faction', 'dragon-communion'),
+        ' documenta supervivencia cultural significativa.'
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Greyoll inmóvil rodeada de sus crías es la imagen del régimen dragónico que no termina de morir. La dragona anciana podría haber sido testigo de la era de Placidusax. Sus crías son la última generación que conserva memoria genética del cosmos pre-Orden. Cuando ellas mueran, el régimen dragónico residual habrá terminado realmente.'
+        link('Greyoll', 'character', 'greyoll'),
+        ' inmóvil rodeada de sus crías es la imagen del régimen dragónico que no termina de morir. La dragona anciana podría haber sido testigo de la era de Placidusax. Sus crías son la última generación que conserva memoria genética del cosmos pre-Orden. Cuando ellas mueran, el régimen dragónico residual habrá terminado realmente.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Dragonbarrow es la cápsula del tiempo de las Tierras Intermedias. Aquí sobreviven prácticas, criaturas y rituales que el Orden Dorado intentó borrar pero no pudo. Combatir a sus dragones es destruir reliquias; alimentar la Comunión Dracónica es perpetuar una herejía tolerada. Cada decisión del Tarnished en este lugar es decisión sobre qué memoria conserva y qué memoria suprime.'
+        'Dragonbarrow es la cápsula del tiempo de las Tierras Intermedias. Aquí sobreviven prácticas, criaturas y rituales que el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' intentó borrar pero no pudo. Combatir a sus dragones es destruir reliquias; alimentar la ',
+        link('Comunión Dracónica', 'faction', 'dragon-communion'),
+        ' es perpetuar una herejía tolerada. Cada decisión del ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' en este lugar es decisión sobre qué memoria conserva y qué memoria suprime.'
       )
     ],
     confirmed: [
-      'Dragonbarrow es la meseta superior de Caelid',
-      'Greyoll yace inmóvil rodeada de sus crías',
-      'El Bestial Sanctum de Gurranq/Maliketh está en el extremo norte',
-      'La Comunión Dracónica opera con presencia visible'
+      ['Dragonbarrow es la meseta superior de ', link('Caelid', 'region', 'caelid')],
+      [link('Greyoll', 'character', 'greyoll'), ' yace inmóvil rodeada de sus crías'],
+      ['El Bestial Sanctum de Gurranq/', link('Maliketh', 'character', 'maliketh'), ' está en el extremo norte'],
+      ['La ', link('Comunión Dracónica', 'faction', 'dragon-communion'), ' opera con presencia visible']
     ],
     inferred: [
       'La altura protege parcialmente del avance de la Podredumbre',
-      'Greyoll podría ser contemporánea de Placidusax',
+      [link('Greyoll', 'character', 'greyoll'), ' podría ser contemporánea de Placidusax'],
       'Las crías son la última generación que conserva memoria genética del cosmos pre-Orden'
     ],
     theories: [
-      'Greyoll no está muerta — está en estado dragónico cosmológico que el sello de la Muerte no puede procesar',
-      'Maliketh eligió Dragonbarrow para Gurranq porque la presencia dragónica camufla la fuga de Deathroot',
-      'Los Beastmen de Farum Azula provienen genéticamente de los Antiguos Dragones'
+      [link('Greyoll', 'character', 'greyoll'), ' no está muerta — está en estado dragónico cosmológico que el sello de la Muerte no puede procesar'],
+      [link('Maliketh', 'character', 'maliketh'), ' eligió Dragonbarrow para Gurranq porque la presencia dragónica camufla la fuga de Deathroot'],
+      ['Los Beastmen de ', link('Farum Azula', 'region', 'farum-azula'), ' provienen genéticamente de los Antiguos Dragones']
     ],
     ambiguous: [
-      'Cuántos siglos lleva Greyoll inmóvil',
+      ['Cuántos siglos lleva ', link('Greyoll', 'character', 'greyoll'), ' inmóvil'],
       'Si las crías son hijos directos o descendientes lejanos',
-      'Si la Comunión Dracónica es legítima continuación del culto antiguo o degeneración tolerada'
+      ['Si la ', link('Comunión Dracónica', 'faction', 'dragon-communion'), ' es legítima continuación del culto antiguo o degeneración tolerada']
     ],
     relatedCharacters: ['placidusax', 'fortissax', 'maliketh', 'greyoll'],
     relatedFactions: ['dragones-antiguos', 'dragon-communion', 'hombres-bestia'],

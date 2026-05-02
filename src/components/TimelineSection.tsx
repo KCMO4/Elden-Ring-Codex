@@ -13,7 +13,6 @@ import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
 
 interface Props {
   entries: TimelineEntry[]
-  readingMode: boolean
 }
 
 const SORT_OPTIONS: SortOption[] = [
@@ -26,7 +25,7 @@ const SORT_OPTIONS: SortOption[] = [
 const VALID_SORTS = ['default', 'reverse', 'title-asc', 'certainty'] as const
 type TimelineSort = typeof VALID_SORTS[number]
 
-export function TimelineSection({ entries, readingMode }: Props) {
+export function TimelineSection({ entries }: Props) {
   const f = useFilters<TimelineSort>({
     defaultSort: 'default',
     validSorts: VALID_SORTS,
@@ -74,42 +73,36 @@ export function TimelineSection({ entries, readingMode }: Props) {
           readingCategory="timeline"
         />
 
-        {!readingMode && <TimelineRibbon entries={entries} />}
+        <TimelineRibbon entries={entries} />
 
-        {!readingMode && (
-          <FilterBar
-            search={f.search}
-            onSearchChange={f.setSearch}
-            searchPlaceholder="Buscar evento, era, palabra clave…"
-            certainty={f.certainty}
-            onCertaintyChange={f.setCertainty}
-            tags={tagOptions}
-            selectedTags={f.tags}
-            onTagsChange={f.setTags}
-            tagsLabel="Etiquetas"
-            tagSearchPlaceholder="Buscar etiqueta..."
-            popularTagCount={6}
-            sortOptions={SORT_OPTIONS}
-            sort={f.sort}
-            onSortChange={(v) => f.setSort(v as TimelineSort)}
-            totalCount={entries.length}
-            filteredCount={filtered.length}
-            unitLabel="capítulo"
-            unitLabelPlural="capítulos"
-          />
-        )}
+        <FilterBar
+          search={f.search}
+          onSearchChange={f.setSearch}
+          searchPlaceholder="Buscar evento, era, palabra clave…"
+          certainty={f.certainty}
+          onCertaintyChange={f.setCertainty}
+          tags={tagOptions}
+          selectedTags={f.tags}
+          onTagsChange={f.setTags}
+          tagsLabel="Etiquetas"
+          tagSearchPlaceholder="Buscar etiqueta..."
+          popularTagCount={6}
+          sortOptions={SORT_OPTIONS}
+          sort={f.sort}
+          onSortChange={(v) => f.setSort(v as TimelineSort)}
+          totalCount={entries.length}
+          filteredCount={filtered.length}
+          unitLabel="capítulo"
+          unitLabelPlural="capítulos"
+        />
 
-        {!readingMode && <ColorLegend />}
+        <ColorLegend />
 
         <div className="space-y-6">
           {filtered.map((entry, i) => (
             <TimelineEntryCard
               key={entry.id}
               entry={entry}
-              onTagClick={(tag) =>
-                f.setTags(f.tags.includes(tag) ? f.tags.filter((x) => x !== tag) : [...f.tags, tag])
-              }
-              readingMode={readingMode}
               index={i}
             />
           ))}

@@ -253,12 +253,12 @@ const baseCharacters: Character[] = [
     faction: 'Orden Dorado / Bestia',
     tragedy: 'Fue lealtad hecha carne — y la lealtad total a algo imperfecto siempre termina en tragedia.',
     events: [
-      'Derrotó a la Reina de Ojos Crepusculares y a los Pieles de Dios',
+      'Derrotó a la Reina del Ojo Velado y a los Pieles de Dios',
       'Recibió la Muerte Predestinada sellada dentro de su propio ser',
       'Adoptó la identidad de Gurranq, el Bestia del Olvido, para gestionar la Raíz de la Muerte',
       'Fue derrotado por el Tarnished, liberando la Muerte Predestinada',
     ],
-    related: ['Marika', 'Reina de Ojos Crepusculares', 'Ranni', 'Tarnished'],
+    related: ['Marika', 'Reina del Ojo Velado', 'Ranni', 'Tarnished'],
     region: 'Farum Azula / Colinas Septentrionales',
     theme: 'El guardián que se convierte en la jaula. Maliketh no eligió cargar con la Muerte — se la impusieron. Su destrucción libera algo necesario para el mundo, pero él no puede saberlo.',
     poeticDesc: 'Negro como la ausencia de todo. Rápido como el pensamiento final. En sus costillas duerme la muerte que el mundo olvidó que necesitaba.',
@@ -572,7 +572,7 @@ const baseCharacters: Character[] = [
   },
   {
     id: 'gloam-eyed-queen',
-    name: 'La Reina de Ojos Crepusculares',
+    name: 'La Reina del Ojo Velado',
     role: 'Maestra de la Llama Negra, líder de los Pieles de Dios, primera amenaza al Orden Dorado',
     faction: 'Pieles de Dios / Anti-Orden',
     tragedy: 'Fue borrada tan completamente que casi no queda rastro de ella — solo la leyenda y el fuego que la sobrevivió.',
@@ -587,7 +587,7 @@ const baseCharacters: Character[] = [
     theme: 'El hereje que pierde pero cuya llama persiste. La Llama Negra sobrevivió a quien la dominó — y los Pieles de Dios siguen existiendo como eco de su voluntad.',
     poeticDesc: 'Solo queda la llama. Y quienes llevan su nombre la mantienen viva en rituales secretos.',
     certainty: 'inferencia',
-    tags: ['Reina de Ojos Crepusculares', 'Llama Negra', 'Pieles de Dios', 'Maliketh'],
+    tags: ['Reina del Ojo Velado', 'Llama Negra', 'Pieles de Dios', 'Maliketh'],
   },
   /* ───────── Personajes Tarnished / NPCs principales ───────── */
   {

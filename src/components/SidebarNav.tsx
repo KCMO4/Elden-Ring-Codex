@@ -4,10 +4,11 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { X, BookOpen, Clock, Users, Shield, Map, BookMarked, Scroll, Compass, Bookmark, GitBranch, Shuffle } from 'lucide-react'
 import { RuneOrnament } from './illustrations/RuneSeparator'
 import { randomEntryPath } from '../data/lookups'
+import { ThemeToggle } from './ThemeToggle'
 
 const navItems: { to: string; label: string; icon: React.ReactNode; sub?: string; end?: boolean }[] = [
   { to: '/', label: 'Portada', icon: <BookOpen size={14} />, sub: 'Códice del Orden Fracturado', end: true },
-  { to: '/timeline', label: 'Timeline Profundo', icon: <Clock size={14} />, sub: '16 capítulos' },
+  { to: '/timeline', label: 'Timeline Profundo', icon: <Clock size={14} />, sub: '70 capítulos' },
   { to: '/personajes', label: 'Enciclopedia', icon: <Users size={14} />, sub: 'Personajes' },
   { to: '/facciones', label: 'Facciones', icon: <Shield size={14} />, sub: 'Facciones y Enemigos' },
   { to: '/regiones', label: 'Regiones', icon: <Map size={14} />, sub: 'Geografía del Lore' },
@@ -21,11 +22,9 @@ const navItems: { to: string; label: string; icon: React.ReactNode; sub?: string
 interface Props {
   mobileOpen: boolean
   onClose: () => void
-  readingMode: boolean
-  onToggleReading: () => void
 }
 
-export function SidebarNav({ mobileOpen, onClose, readingMode, onToggleReading }: Props) {
+export function SidebarNav({ mobileOpen, onClose }: Props) {
   const navigate = useNavigate()
 
   /* Body scroll lock while mobile menu is open — prevents background from
@@ -100,17 +99,9 @@ export function SidebarNav({ mobileOpen, onClose, readingMode, onToggleReading }
           <Shuffle size={12} />
           Entrada aleatoria
         </button>
-        <button
-          type="button"
-          onClick={onToggleReading}
-          className={`w-full px-3 py-2 rounded-sm font-heading text-xs tracking-wider uppercase transition-all
-            ${readingMode
-              ? 'bg-codex-gold/15 border border-codex-gold/40 text-codex-gold'
-              : 'bg-codex-brown/40 border border-codex-gold-dim/20 text-codex-parchment-dim hover:border-codex-gold-dim/40 hover:text-codex-parchment'
-            }`}
-        >
-          {readingMode ? 'Modo Lectura · Activo' : 'Modo Lectura'}
-        </button>
+        <div className="flex justify-center pt-1">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   )

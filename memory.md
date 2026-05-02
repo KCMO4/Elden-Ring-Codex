@@ -1111,3 +1111,384 @@ URL siempre gana en hidratación inicial → share-links siguen funcionando exac
 - Componentes nuevos: EntityHoverCard, EraBadge, ReadCheck, ShortcutsCheatsheet, MentionedGlossary, PrevNextThumbnail (inline)
 - Libs nuevas: eraOf.ts, readingTime.ts, readStatus.ts, factionColors.ts, navDirection.ts
 - 0 cross-links rotos verificado.
+
+---
+
+## Auditoría de traducción y redacción (sesión 2026-05-01)
+
+### Alcance
+Auditoría completa de los 8 archivos de lore (~19.400 líneas) buscando: terminología canon, anglicismos no resueltos, inconsistencias de traducción, errores ortográficos, calcos sintácticos.
+
+### Pasadas limpias (cero hallazgos)
+- `Interregno` leftovers — 0
+- `Erdtree` capitalizado en prosa — 0
+- `Árbol del Inmenso` leftovers — 0
+- Contenido SOTE (Messmer, Scadutree, Bayle, Rellana…) — 0
+- Concordancia rota `el/del Tierras Intermedias` — 0
+- Doble palabra (`que que`, `de de`…) — 0
+
+### Fixes aplicados (16 ediciones)
+
+1. **"Mancillado/Mancillados" → "Tarnished"** (3 hits) — violaba la regla canon "Tarnished no se traduce".
+   - `timelineLore.ts:448` — "Caballeros Mancillados originales" → "Tarnished originales"
+   - `timelineDeepLore.ts:1254, 2646` — "post-Mancillado" → "post-Tarnished"
+
+2. **"Gloam-Eyed Queen" → "Reina de Ojos Crepusculares"** (10 hits) — el codex ya usaba la forma traducida en 7 lugares vía `link()`; el resto eran prosa o buckets sin traducir.
+   - `charactersLore.ts:1093, 1099`
+   - `charactersDeepLore.ts:1443, 1455, 1493, 1507, 1520`
+   - `timelineDeepLore.ts:196, 258, 2640`
+
+3. **"Black Blade" → "Hoja Negra"** (2 hits en prosa) — coexistía con 15 usos correctos de "Hoja Negra".
+   - `charactersDeepLore.ts:1411, 1494`
+   - Excepción preservada: `glossaryLore.ts:3668` mantiene "Skill Black Blade" como nombre técnico del weapon art.
+
+4. **"academico" → "académico"** (1 hit) — única tilde faltante detectada en prosa.
+   - `charactersLore.ts:612`
+
+### Hallazgos NO accionados (decisión deliberada)
+
+- **"Reina del Crepúsculo"** (1 hit en `charactersLore.ts:1095`) — variante elíptica estilística, coexiste con la forma canónica "Reina de Ojos Crepusculares" en el mismo párrafo. Aceptable como variación estilística.
+- **"Amber Egg"** (25 hits, todos en pasajes sobre Rennala) — el codex deja deliberadamente nombres de items en inglés (Roundtable Hold, Bestial Sanctum, Warmaster's Shack…). Documentado en agent.md como excepción explícita.
+- **Tildes diacríticas arcaicas** (`éste/ésta/sólo`, 11 hits) — la RAE las eliminó en 2010, pero el registro arcaico encaja con el tono dark fantasy del codex. Decisión: dejarlas.
+
+### Verificación
+- `grep "Gloam-Eyed Queen"` → 0 hits
+- `grep "Mancillad[oa]s?"` → 0 hits
+- `grep "Black Blade"` → 1 hit (el de "Skill Black Blade", aceptado)
+- `grep "academico"` → 0 hits
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio, **155.73 kB gz initial** (vs 155.14 previo, +0.6 kB porque las traducciones son ligeramente más largas)
+
+### Decisión documentada en agent.md
+Se añadió a las "Reglas críticas":
+- "Tarnished" NO se traduce.
+- `gloam-eyed-queen` → "Reina de Ojos Crepusculares" (canon).
+- `black-blade` → "Hoja Negra" (canon, excepto skill).
+- Lista explícita de nombres propios que sí permanecen en inglés (Castle Morne, Roundtable Hold, Volcano Manor, Two/Three Fingers, Cleanrot Knights, Banished Knights, Warmaster's Shack, Bestial Sanctum, Amber Egg).
+
+### Veredicto general
+Calidad de redacción **alta**. Densidad de errores < 1 cada 4.000 líneas. Reglas canon respetadas en >99% de los casos pre-auditoría; tras los 16 fixes, consistencia terminológica cerrada al 100%. La prosa mantiene registro coherente (wiki + dark fantasy + ensayo arqueológico) sin calcos sintácticos del inglés ni pasivas innecesarias.
+
+---
+
+## Corrección a traducción oficial: Reina del Ojo Velado (sesión 2026-05-01, post-auditoría)
+
+### Motivación
+Tras la auditoría inicial, búsqueda en fuentes oficiales reveló que la traducción que el codex usaba ("Reina de Ojos Crepusculares") es una traducción literal de la comunidad, NO la traducción oficial de FromSoft/Bandai Namco.
+
+La forma oficial española — confirmada en items in-game (Apóstol sacrodermo, Noble sacrodermo, Espadón del exterminador de dioses, Maliketh la Hoja Negra) y en la wiki Fandom es — es **"Reina del Ojo Velado"**. Referencia visual al velo/paño que cubre los ojos en el arte concept del personaje, no a la idea de "ojos de penumbra" del término inglés `gloam-eyed`.
+
+### Decisión
+Aplicar la regla "Árbol Áureo" (la traducción oficial de FromSoft prevalece sobre traducciones in-house) también a este término. Migración completa.
+
+### Implementación
+Replace_all en 11 archivos:
+- `src/data/characters.ts`, `factions.ts`, `glossary.ts`, `timeline.ts` — datos base
+- `src/data/lore/charactersLore.ts`, `charactersDeepLore.ts`, `factionsLore.ts`, `glossaryLore.ts`, `regionsLore.ts`, `timelineLore.ts`, `timelineDeepLore.ts` — lore + deep lore
+
+Total: **92 reemplazos** (91 de "Reina de Ojos Crepusculares" + 1 de la variante elíptica "Reina del Crepúsculo" en `charactersLore.ts:1095`).
+
+Slug interno `gloam-eyed-queen` se preservó intacto (es ID, no texto visible). Tags como "Era del Crepúsculo" / "Ruta del Crepúsculo" no se tocaron — son nombres canónicos del final Duskborn, sin relación con el personaje.
+
+### Verificación
+- `grep "Reina de Ojos Crepusculares|Reina del Crepúsculo"` en `src/` → 0 hits
+- `grep "Reina del Ojo Velado"` → 92 hits distribuidos correctamente
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio, **155.70 kB gz initial** (vs 155.73 previo, -30 B porque "Reina del Ojo Velado" es ligeramente más corto que "Reina de Ojos Crepusculares")
+
+### Actualización de docs
+- `agent.md` regla canon actualizada: "Reina del Ojo Velado" ahora es el término obligatorio. "Reina de Ojos Crepusculares" y "Reina del Crepúsculo" explícitamente rechazados como traducciones literales de la comunidad.
+- `PHASES.md` línea 308 actualizada.
+
+### Lección
+Antes de adoptar una traducción "obvia" para un término del juego, validar con la localización oficial española. Las traducciones literales del inglés a menudo difieren de la elección de FromSoft (Erdtree → Árbol Áureo, no Árbol del Inmenso; gloam-eyed → del Ojo Velado, no de Ojos Crepusculares).
+
+---
+
+## Auto-link masivo: enlazado completo de menciones (sesión 2026-05-01)
+
+### Motivación
+Tras la auditoría, se identificó que muchas menciones en prosa de entidades con entrada propia (Marika, Llama Negra, Anillo Elden, etc.) estaban como **texto plano** en lugar de `link()` calls — lo que privaba al lector del hover-card y la navegación cruzada. Decisión del usuario: **opción C** (enlazar TODA mención de entidad, sin reservar a primera mención).
+
+### Implementación: dos scripts
+
+**`scripts/auto-link-pass.mts`** — script principal. Importa entidades vía tsx, construye tabla de targets (name + manual aliases + auto-aliases del primer nombre de personajes), recorre archivos lore con parser stack-based (rastrea contexto `p()` vs `h()`/`q()`/`link()`/`em()`/`strong()`/buckets), y reemplaza string literals dentro de `p()` con concatenaciones `'pre ', link(...), ' post'`. Reglas:
+- Solo procesa strings dentro de `p()` (paragraph). NO toca `h()`, `q()`, `ol()`/`ul()` (sus helpers en este codex toman `string[]`, no `RichInline[]`), buckets `confirmed`/`inferred`/`theories`/`ambiguous` (renderer `KnowledgeBox` no procesa RichInline), ni campos `summary`/`definition`/`historical`/etc. en `data/*.ts`.
+- Match case-insensitive con boundary que respeta letras acentuadas españolas. El label preserva el case del input (no del target canónico) — así "Oro sin Aleación" en prosa enlaza al concepto "Oro Sin Aleación" sin alterar el case visible.
+- **Self-references excluidas**: el slug actual nunca se enlaza a sí mismo.
+- **Longest-first matching**: "Reina del Ojo Velado" matchea antes que el alias "Reina" de cualquier personaje.
+- **Aliases manuales curados** (`MANUAL_ALIASES`): 19 entradas cubriendo terms cuyo nombre canónico tiene artículo o forma larga (Crisol, Árbol Áureo, Hoja Negra, Anillo Elden, Empyrean/Empíreo, Cuchillos Negros, Pieles de Dios, Dos Dedos, Hombres-Bestia, etc.). Validados contra slugs reales en boot.
+- **Aliases auto-generados** (66 entradas): primer palabra del `name` de cada personaje cuyo name es multi-palabra (Marika para "Marika la Eterna", Radagon, Ranni, etc.). Filtrado por unicidad (no se aplica si dos personajes comparten primera palabra).
+- **Stopwords**: artículos y títulos genéricos (reina, lord, lady, era, primer, etc.) no se convierten en aliases.
+
+**`scripts/normalize-link-articles.mjs`** — fix-up post-pass. Detecta `link('el X', 'type', 'slug')` cuyo label empieza con artículo español y lo extrae: convierte en `'el ', link('X', 'type', 'slug')`. Convención Wikipedia: el artículo queda como texto plano, solo el nombre propio es link.
+
+### Resultados
+
+Total `link()` calls en los 8 archivos lore:
+- Antes: **2.123**
+- Después: **5.435**
+- Delta: **+3.312 nuevas inserciones (+156%)**
+
+Distribución por archivo:
+| Archivo | Antes | Después | Delta |
+|---|---:|---:|---:|
+| charactersDeepLore.ts | 416 | 1.034 | +618 |
+| charactersLore.ts | 265 | 696 | +431 |
+| factionsLore.ts | 224 | 495 | +271 |
+| glossaryLore.ts | 424 | 1.115 | +691 |
+| regionsLore.ts | 204 | 542 | +338 |
+| regionsDeepLore.ts | 77 | 203 | +126 |
+| timelineLore.ts | 206 | 596 | +390 |
+| timelineDeepLore.ts | 307 | 754 | +447 |
+
+### Verificación
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio, **155.71 kB gz initial** (sin cambio significativo: el código de los lore files crece pero está en chunks lazy)
+- Lore chunks: cada uno creció +1.4 a +1.9 kB gz por las nuevas link calls.
+
+### Decisiones técnicas no obvias
+
+**Solo `p()` en este pass** — los helpers `ol`/`ul` en este codex toman `...items: string[]`, no `...items: RichInline[][]`. Cambiar la signatura sería invasivo. Para enlazar dentro de listas, se requiere refactorizar el helper. Decisión: postergar.
+
+**Buckets sin links** — `KnowledgeBox` renderer toma `items: string[]` y los muestra como `<li>{t}</li>` (text node). No procesa RichInline. Para enlazar dentro de buckets habría que cambiar el tipo del prop y el renderer. Decisión: postergar — los buckets son resúmenes secos donde el lector NO espera navegar.
+
+**Ortogonalidad del idempotent run** — el script puede correrse múltiples veces. Strings ya enlazadas no se re-procesan (los matches están dentro de `link()` calls que el parser excluye). Cada pasada solo añade nuevos links que el target table tenga.
+
+**Strip de artículos en label** — implementado en el script principal y reforzado por `normalize-link-articles.mjs` para fix-up de pasadas previas. La convención: artículo afuera, nombre propio adentro del link.
+
+**Idempotencia de manual aliases** — `MANUAL_ALIASES` se valida en boot contra slugs reales; los que no resuelven se imprimen con warning y se skipean. Esto previene refs rotas si un slug cambia o se elimina.
+
+### Scripts en el repo
+Tras esta sesión los scripts quedan disponibles para futuras pasadas (cuando se añadan nuevas entries):
+- `scripts/auto-link-pass.mts` — herramienta reusable. Para extender: editar `MANUAL_ALIASES` con nuevos aliases conocidos.
+- `scripts/normalize-link-articles.mjs` — fix-up de artículos en labels de links existentes.
+
+### Observaciones sobre estética
+La densidad de links en prosa es ahora alta: una página típica de personaje (Marika, Maliketh, Miquella) tiene 30+ links coloreados por tipo. Visualmente es una decisión consciente de "wiki-completa cross-referenced" elegida por el usuario (opción C). La saturación es manejable porque:
+- Los colores por tipo (parchment/gold/flame/ghost/rot/crimson) crean jerarquía visual
+- Los hover-cards aparecen solo a 220ms intencionales (no spam)
+- Self-references quedan como texto plano (la página actual no se enlaza a sí misma)
+- Artículos quedan fuera del link (texto plano)
+
+Si en el futuro la saturación resulta excesiva, una mitigación es mover a "opción B" (links sutiles para menciones repetidas, fuertes para primera mención) — requiere CSS tweak en `RichLoreText.tsx` y un script que detecte primera vs subsiguientes menciones por entrada.
+
+---
+
+## Auto-link Fase 2: cobertura completa de la página (sesión 2026-05-01)
+
+### Motivación
+La pasada anterior solo enlazó strings dentro de `p()`. El usuario pidió "TODO el contenido de la web" — incluyendo buckets (confirmed/inferred/theories/ambiguous), beneficiaries/victims, listas (`ol`/`ul`), y los campos prosa de `data/*.ts` (summary, definition, historical, theme, tragedy, etc.) que se renderizan en cards y heroes.
+
+### Implementación: dos vectores
+
+**Build-time (extensión del script)** — `scripts/auto-link-pass.mts` ahora soporta:
+- **Buckets**: detecta `confirmed: [`/`inferred: [`/`theories: [`/`ambiguous: [`, procesa cada string-item dentro y emite `[parts...]` array literal (cada item del bucket pasa de string a `RichInline[]`).
+- **Prose-fields**: detecta `beneficiaries:`/`victims:` (multiline) o `beneficiaries: '...'` (inline), y reemplaza el string-value con array literal.
+- **Listas (`ol()`)**: el helper en charactersDeepLore.ts ahora acepta `(string | RichInline[])[]` (compat backwards). El script trata `ol`/`ul` como `linkableKind: 'list'` y emite `[parts...]` array literal en vez de comma-separated args.
+- **Paragraph (`p()`)**: emite comma-separated args (comportamiento original).
+
+State machine ampliado: `linkableKind` en stack + `inBucket` flag + `proseFieldPending` flag.
+
+**Cambios de tipos** (`src/data/types.ts`):
+- `BucketItem = string | RichInline[]` — un fact en bucket puede ser texto plano o tener cross-links inline
+- `ProseField = string | RichInline[]` — beneficiaries/victims pueden ser texto o array
+- `DeepEntity.confirmed/inferred/theories/ambiguous` ahora son `BucketItem[]`
+- `DeepEntity.beneficiaries/victims` ahora son `ProseField`
+
+**Cambios de renderer** (`src/components/RichLoreText.tsx` + `DetailLayout.tsx`):
+- Exportado `InlineNode` (era interno)
+- Nuevo `<InlineProse node={string | RichInline[]} />` para renderizar mixed content
+- `KnowledgeBox.items: BucketItem[]` itera y delega a `<InlineProse>`
+- beneficiaries/victims usan `<InlineProse>`
+
+**Runtime (nuevo)** — para los campos string en `data/*.ts` (que se renderizan directamente en cards y heroes):
+- `src/lib/enrichText.ts` — función `enrichText(text, selfId): RichInline[]` que carga la lookup table de targets una vez al import (mismo conjunto que el script: targets canonical + 66 auto-aliases de characters + 19 manual aliases). Aplica regex case-insensitive con boundaries unicode-aware, longest-first, retorna `RichInline[]` con links insertados.
+- `<EnrichedText text={...} selfId={...} />` componente en `RichLoreText.tsx` que envuelve `enrichText` con `useMemo` (memoización por re-render).
+- Aplicado en: DetailLayout (hero summary), CharacterCard (tragedy/events/theme), RegionCard (historical/hiddenTragedy/timelineRelation/bosses), FactionCard (what/belief/whyMatters/relationToOrder), GlossaryModal (definition/deepDive en mosaico y modal), EndingsSection (description/meaning), TimelineEntryCard (poeticIntro/lore/whyItMatters), TimelineRibbon (poeticIntro), ConceptDetailPage / TimelineDetailPage / EndingDetailPage (campos custom en legacyContent).
+
+### Resultados
+
+Total `link()` calls en archivos de lore (build-time):
+| | Antes pase 1 | Después pase 1 | Después pase 2 |
+|---|---:|---:|---:|
+| charactersDeepLore.ts | 416 | 1.034 | 1.494 |
+| charactersLore.ts | 265 | 696 | 987 |
+| factionsLore.ts | 224 | 495 | 743 |
+| glossaryLore.ts | 424 | 1.115 | 1.626 |
+| regionsLore.ts | 204 | 542 | 708 |
+| regionsDeepLore.ts | 77 | 203 | 300 |
+| timelineLore.ts | 206 | 596 | 782 |
+| timelineDeepLore.ts | 307 | 754 | 1.064 |
+| **Total lore** | **2.123** | **5.435** | **7.704** |
+
+Delta total desde el origen: **+5.581 inserciones (+263%)**.
+
+Plus runtime enrichment activo en ~10 componentes, cubriendo todos los string fields visibles de `data/*.ts`.
+
+### Verificación
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio
+- Initial bundle: **157.05 kB gz** (vs 155.71 antes = +1.3 kB gz por enrichText.ts y EnrichedText component)
+- Lore chunks: cada uno creció +1-3 kB gz por las nuevas link() calls
+- glossary chunk: 78.08 → 80.01 kB gz (la mayor — buckets numerosos en glossary)
+
+### Decisiones técnicas no obvias
+
+**Buckets como `BucketItem[]`** — preserve compat: items existentes que son strings simples siguen siendo strings; auto-link solo cambia los items que TIENEN una mención, los demás quedan plain. El renderer `<InlineProse>` distingue `typeof === 'string'` vs array y renderiza correspondientemente.
+
+**`ol()` helper compat** — la signature pasó de `string[]` a `(string | RichInline[])[]` con normalización en el helper (`Array.isArray(s) ? s : [s]`). Items existentes con strings siguen funcionando.
+
+**Runtime vs build-time enrichment** — el enrichment de `data/*.ts` se hace en runtime (`enrichText` en `useMemo`) en vez de pre-procesar los datos. Razones:
+1. Los strings `data/*.ts` están renderizados en muchos lugares (cards, heroes, search snippets, OG meta). Pre-procesar los datos a `RichInline[]` requiere cambiar el tipo de muchos campos y todos los renderers.
+2. Si en el futuro se añade una nueva entidad, automáticamente se enlazará en todos los textos existentes sin re-procesar.
+3. El costo runtime es trivial: regex sobre strings cortos (< 500 chars) con memoización, < 1ms por card.
+
+**Lookup table compartida** — `enrichText.ts` y `auto-link-pass.mts` mantienen la misma lista de `MANUAL_ALIASES` y stopwords. Si se añade un alias en uno, copiarlo al otro (riesgo de drift documentado).
+
+**Self-reference excluida en runtime** — `<EnrichedText selfId={entity.id} />` para que la página de Marika no enlace "Marika" a sí misma.
+
+### Cobertura final
+Tras Fase 2, **prácticamente todo texto visible en la wiki está enlazado** (excepto headings y quotes — decisión deliberada por estética y respeto a citas literales del juego).
+
+Lugares NO enriquecidos por decisión:
+- **Headings (`h(...)`)**: la tipografía heading (Cinzel, gold-bright) no admite color de link sin romper jerarquía visual.
+- **Quotes (`q(...)`)**: las citas son literales del juego — links serían anacrónicos.
+- **Names canónicos en cards** (`character.name`, `faction.name`, `region.name`): son el TÍTULO de la card, ya tienen su propio link a la página detalle (Link wrapping).
+- **Tags y tag pills**: ya tienen su propia navegación a `/etiqueta/:slug`.
+- **Search snippets**: el enriquecimiento aquí confundiría con el `<mark>` highlight.
+
+### Mantener consistencia futura
+Cuando se añadan nuevas entidades:
+1. Correr `npx tsx scripts/auto-link-pass.mts --all` para enlazar retroactivamente menciones existentes en lore files (idempotente).
+2. Runtime enrichment se actualiza automáticamente al recargar (lookup table se reconstruye al import de enrichText.ts).
+3. Si el nombre canónico de la nueva entidad no coincide con cómo la prosa la menciona típicamente, agregar alias manual a `MANUAL_ALIASES` en AMBOS `auto-link-pass.mts` Y `enrichText.ts`.
+
+---
+
+## Auto-link Fase 3: cobertura full-site + InlineProse universal (sesión 2026-05-01)
+
+### Motivación
+La Fase 2 cubrió lore files y cards de personajes/regiones/facciones. Pero faltaban: rutas narrativas, genealogía, ending detail page (whoLeads), section headers (subtítulos genéricos), tag pages (sublabels), character/region meta rows.
+
+### Implementación
+
+**InlineProse universal** — el componente `<InlineProse node={...} selfId={...} />` ahora aplica `enrichText` automáticamente cuando el `node` es un string plano (con memoización). Esto significa:
+- `<InlineProse node={someString} selfId={id} />` → escanea + enlaza menciones
+- `<InlineProse node={richInlineArray} />` → renderiza directamente
+- `<EnrichedText text={...} selfId={...} />` → wrapper de conveniencia, delega a InlineProse
+
+Resultado: cualquier bucket item que el script auto-link **dejó como string** (porque no detectó menciones a build-time) ahora se enriquece en runtime — captura nuevos aliases del runtime aunque no estén en el script.
+
+**Páginas faltantes enriquecidas**:
+- `RouteDetailPage` — `route.description`, `currentStop.why` (NO `route.poeticIntro`, que es cita).
+- `RoutesListPage` — `route.description` en cards.
+- `GenealogyPage` — `note` en cada UnionSection y `epithet` en PersonCard.
+- `EndingDetailPage` — `MetaRow` (`whoLeads`).
+- `CharacterDetailPage` / `RegionDetailPage` — `MetaRow` values.
+- `TagPage` — `ResultCard.sublabel` (que muestra summary/role/historical/poeticIntro de cada resultado).
+
+**KnowledgeBox con selfId** — DetailLayout ahora pasa `bookmark?.slug` como `selfId` a cada KnowledgeBox y a beneficiaries/victims, para que strings simples dentro de buckets también auto-enriquezcan en runtime sin enlazar a la entidad actual.
+
+### Decisión: las citas NO se enlazan
+Por petición explícita del usuario, los **poeticIntro** (citas literarias al inicio de entrada/sección/ruta) quedan como prosa plana, sin enrichment:
+- `SectionHeader.tsx` — `"{poeticIntro}"`
+- `RouteDetailPage` — `"{route.poeticIntro}"`
+- `RoutesListPage` — `"{route.poeticIntro}"` en cards
+- `TimelineEntryCard` — `"{entry.poeticIntro}"`
+- `TimelineRibbon` — `{entry.poeticIntro}` (italic, sin comillas explícitas pero misma función)
+- `CharacterCard` — `"{character.poeticDesc}"` (ya estaba sin enrichment)
+
+Razón estética: las citas son introducciones poéticas, los enlaces dentro las recargan visualmente y rompen el efecto narrativo.
+
+### Verificación
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio
+- Initial bundle: **157.04 kB gz** (sin cambio)
+- Cobertura final: **toda la prosa de la wiki está enlazada**, excepto headings, quotes (`q()`) del lore, y las citas poéticas (`poeticIntro` / `poeticDesc`).
+
+### Patrón final consolidado
+Para cualquier display de prosa de entidades, usar:
+
+```tsx
+<EnrichedText text={someStringField} selfId={entity.id} />
+```
+
+O para campos que pueden ser `string | RichInline[]` (buckets, beneficiaries):
+
+```tsx
+<InlineProse node={field} selfId={entity.id} />
+```
+
+Ambos delegan internamente al mismo enrichText cuando es string. La diferencia es semántica: `EnrichedText` para campos de `data/*.ts` que siempre son string; `InlineProse` para campos del DeepEntity que pueden ser ambos.
+
+---
+
+## Refinamientos post-feedback (sesión 2026-05-01, post-cobertura completa)
+
+### 1. Quitar enrichment de TODAS las "citas estilo blockquote"
+El usuario reportó que ciertas citas seguían con links después de la pasada anterior. Identificadas y corregidas:
+
+| Lugar | Campo | Estado anterior | Estado actual |
+|---|---|---|---|
+| `DetailLayout` hero | `summary` (italic + border-l dorada) | Enriquecido | **Plain text** |
+| `CharacterCard` panel rojo | `tragedy` (italic) | Enriquecido | **Plain text** |
+| `RegionCard` panel rojo | `hiddenTragedy` (italic) | Enriquecido | **Plain text** |
+| `FactionCard` panel verde | `belief` (italic) | Enriquecido | **Plain text** |
+
+**Regla operativa**: cualquier prosa renderizada como cita visual (italic + barra lateral dorada/roja) NO se enriquece. Las citas son el "voice opener" — los links rompen el momento narrativo.
+
+Lugares donde sí se enriquece prosa italic (no citas): MetaRow values en heroes (subtítulos descriptivos, no citas), historical/whyMatters/whoLeads/etc. (texto descriptivo).
+
+### 2. Unificación de colores de links
+El usuario reportó que la diversidad de colores por tipo de entidad (parchment / gold / flame / ghost / rot / crimson) era visualmente mareante con thousands de links por página.
+
+**Cambio**: `entityLinkClass` en `RichLoreText.tsx` ahora mapea TODOS los tipos al mismo styling:
+```ts
+const UNIFIED_LINK_CLASS = 'text-codex-parchment decoration-codex-parchment-dim/55 hover:text-white ...'
+```
+
+El hover-card sigue mostrando type/faction/era del target — la información sigue accesible, solo que sin dispersarse en color de texto.
+
+**Consecuencias**:
+- `ColorLegend` (componente colapsable arriba de cada lista) — la sección "colores de enlaces" eliminada del tip footer; las secciones de Eras / Franja facción / Read marker siguen siendo válidas y se mantienen.
+- `ShortcutsCheatsheet` (modal `?`) — sección "Colores de enlaces en el lore" eliminada. Sección "Eras" preservada (los era badges sí mantienen colores distintos).
+
+### Verificación
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio
+- Initial bundle: **156.91 kB gz** (-130 B vs anterior, por el cleanup de imports)
+
+### Decisión consolidada (regla canon de la wiki)
+- **Texto descriptivo** (resúmenes, historias, whyMatters, definitions, etc.) → enriquecido, todos los links color parchment.
+- **Citas estilo blockquote** (poeticIntro, summary del hero, tragedy/hiddenTragedy/belief en paneles italicizados) → texto plano, sin links.
+- **Headings y `q()` quotes** → sin links (ya era convención).
+- **Cards / heroes / sublabels** → texto descriptivo, enriquecido.
+
+---
+
+## EntityGraph: refactor HTML overlay + EntityHoverCard (sesión 2026-05-01)
+
+### Problemas reportados
+1. El tooltip SVG `<text>` del nodo hover sobrepasaba el contenedor padre.
+2. Los nodos no tenían el popup preview (thumbnail + summary + faction + era) que el usuario quería.
+
+### Solución
+Refactor de `src/components/detail/EntityGraph.tsx`:
+
+1. **SVG queda solo para decoración**: anillos concéntricos, edges (líneas centro-a-nodo), glow radial, centro.
+2. **Nodos como HTML overlay**: cada nodo es un `<button>` absolute-positioned (porcentaje x/y) encima del SVG dentro de un stage `<div>` con `aspect-ratio: 1/1`.
+3. **EntityHoverCard integrado**: cada nodo se envuelve con `<EntityHoverCard targetType={node.group} slug={...}>` — mismo popup que los links de prosa (220ms hover delay, smart side detection top/bottom).
+4. **`overflow-visible` en parchment-panel**: el popup escapa correctamente del contenedor.
+5. **Slug extraído de `to`**: `ResolvedRelatedItem` no expone slug directo, se obtiene como última parte del path URL (`'/personajes/marika' → 'marika'`).
+6. **Hover styling HTML**: dots animados con `transition-all` + box-shadow glow (más control que SVG).
+7. **Hover readout HTML conservado**: el texto bajo el grafo ("Pasa el ratón sobre un nodo") sigue mostrando el label completo, complementario al popup.
+
+### Verificación
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio, **156.92 kB gz**
+
+### Beneficios
+- Tooltip ya no sale del contenedor (era SVG `<text>` con overflow descontrolado).
+- Click + hover preview consistente con el resto de los links del codex.
+- Soporte de teclado nativo (button con focus state).

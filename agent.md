@@ -9,6 +9,11 @@ Wiki SPA React de lore para Elden Ring **juego base** (sin Shadow of the Erdtree
 - **Solo juego base.** Cero contenido del DLC. Tratar el codex como si Shadow of the Erdtree no existiera.
 - **Terminología "Tierras Intermedias"**, no "Interregno". El término "Lands Between" se traduce como **Tierras Intermedias** (plural femenino) en todo el codex. Cualquier nuevo lore debe respetar el género/número (las Tierras Intermedias son, están, fueron, etc.).
 - **Terminología "Árbol Áureo"**, no "Erdtree" ni "Árbol del Inmenso". Es la traducción oficial española de FromSoft. Capitalizado en texto visible. Los IDs/slugs lowercase (`erdtree`, `minor-erdtrees`) se preservan tal cual — son identificadores internos, no texto visible.
+- **"Tarnished" NO se traduce.** Nunca usar "Mancillado/Mancillados" (traducción imprecisa rechazada). Mantener "Tarnished" en singular y plural.
+- **Términos canon traducidos** que deben mantenerse uniformes en prosa visible (no dejar la forma inglesa):
+  - `gloam-eyed-queen` → **Reina del Ojo Velado** (traducción oficial española de FromSoft, según localización in-game y wiki Fandom es). NO usar "Reina de Ojos Crepusculares" ni "Reina del Crepúsculo" (traducciones literales de la comunidad rechazadas).
+  - `black-blade` (item de Maliketh) → **Hoja Negra** (excepción: "Skill Black Blade" como nombre técnico del weapon art puede preservarse en glossary)
+  - Nombres propios de lugares/órdenes que el codex sí deja en inglés deliberadamente: `Castle Morne`, `Roundtable Hold`, `Volcano Manor`, `Two Fingers`, `Three Fingers`, `Cleanrot Knights`, `Banished Knights`, `Warmaster's Shack`, `Bestial Sanctum`, `Amber Egg` (ítem de Rennala). No traducirlos.
 - **No hotlinking de imágenes.** Cero URLs externas committeadas. Las imágenes se resuelven en este orden:
   1. `public/image-sources.local.json` (override remoto/local — **gitignored**, NUNCA committear)
   2. `public/art/{categoria}/{id}.{jpg|png|webp}` (archivo local, todos ≥1080p)
@@ -327,12 +332,116 @@ npm run preview  # servir build
 node scripts/audit-assets.mjs                  # verifica resoluciones de /art
 npx tsx scripts/audit-cross-links.mts          # 0 broken refs garantizado
 npx tsx scripts/audit-orphan-mentions.mts      # menciones de proper-nouns sin entrada
+npx tsx scripts/auto-link-pass.mts --all       # auto-enlaza menciones unlinked en lore
+node scripts/normalize-link-articles.mjs <files...>  # extrae artículos de labels de link
 node scripts/check-coverage.mjs                # estadísticas de cobertura
 node scripts/upscale-batch.mjs                 # Real-ESRGAN 4x (requiere tools/)
 python scripts/compress-upscaled.py            # JPEG q90 tras upscaling
 python scripts/verify-upscaled.py              # confirma ≥1080px
 python scripts/visual-grids.py                 # thumbs grid para QA visual
 ```
+
+### Cookbook — recetas comunes
+
+#### Verificación pre-commit (siempre)
+```bash
+npx tsx scripts/audit-cross-links.mts          # → debe imprimir "✅ All cross-links resolve. Zero broken references."
+npm run build                                   # → debe pasar limpio, bundle initial < 160 kB gz
+```
+
+#### Añadir una entrada nueva (personaje, facción, región, concepto)
+1. Añadir entrada base en `src/data/{characters|factions|regions|glossary|timeline}.ts` con campos requeridos por el tipo (`id`, `name`/`term`/`title`, `tags`, `certainty`, etc.).
+2. (Opcional pero recomendado) Añadir `summary` (~150-300 chars) y `subtitle` (~80 chars). Si falta `summary`, los detail pages caen al fallback `role + tragedy` para Character, `historical + hiddenTragedy` para Region, `what + belief` para Faction.
+3. Añadir lore en `src/data/lore/{characters|factions|regions|glossary|timeline}Lore.ts` con `deepLore: RichBlock[]` + buckets `confirmed`/`inferred`/`theories`/`ambiguous` + `relatedX` cross-links.
+4. Si la entrada es nueva persona en la genealogía dinástica, añadirla a `src/pages/GenealogyPage.tsx` en `PEOPLE` y la sección apropiada.
+5. Correr la verificación pre-commit + auto-link:
+   ```bash
+   npx tsx scripts/auto-link-pass.mts --all     # enlaza retroactivamente las menciones a la nueva entrada
+   npx tsx scripts/audit-cross-links.mts        # cero refs rotas
+   npm run build                                 # bundle limpio
+   ```
+
+#### Añadir un alias canónico al runtime + build-time
+Cuando una entidad tiene un nombre canónico distinto a cómo la prosa la menciona ("Reina Eterna" en prosa pero `name: 'Marika la Eterna'` en data) — agregar a **AMBOS**:
+- `scripts/auto-link-pass.mts` → `MANUAL_ALIASES`
+- `src/lib/enrichText.ts` → `MANUAL_ALIASES`
+
+Mantener sincronizados manualmente. Ambos validan que el slug exista al boot.
+
+#### Pipeline de imagen para una entidad nueva
+```bash
+# 1. Bajar la mejor imagen disponible (Fandom + Cloudflare bypass)
+node scripts/fandom-fetch.mjs <input.json>     # toma lista de targets
+
+# 2. Si la imagen sale como WebP con extensión .jpg (bug histórico),
+#    convertir a JPEG real con Pillow:
+python -c "from PIL import Image; im = Image.open('public/art/<cat>/<id>.jpg'); im.convert('RGB').save('public/art/<cat>/<id>.jpg', 'JPEG', quality=90, optimize=True, progressive=True)"
+
+# 3. Si la imagen es < 1080p, upscale 4x con Real-ESRGAN:
+tools/realesrgan-ncnn-vulkan.exe -i public/art/<cat>/<id>.jpg -o tools/<id>-up.png -n realesrgan-x4plus-anime
+
+# 4. Recomprimir el upscale a JPEG q90 con max edge 2400:
+python -c "from PIL import Image; im = Image.open('tools/<id>-up.png'); im.thumbnail((2400, 2400), Image.LANCZOS); im.convert('RGB').save('public/art/<cat>/<id>.jpg', 'JPEG', quality=90, optimize=True, progressive=True)"
+rm -f tools/<id>-up.png
+
+# 5. Verificar
+node scripts/audit-assets.mjs                   # confirma resolución y formato
+```
+
+⚠️ **NUNCA correr** `python scripts/convert-to-webp.py` — históricamente rompió 375 imágenes guardando WebP con extensión `.jpg`. Mantener todo en `.jpg` real.
+
+#### Renames terminológicos masivos
+Hay scripts ad-hoc para renames en lore (ya aplicados, conservados como referencia histórica):
+- `scripts/rename-erdtree.mjs` — Erdtree → Árbol Áureo (preserva slugs lowercase)
+- `scripts/rename-interregno.mjs` — Interregno → Tierras Intermedias
+- `scripts/fix-tierras-grammar.mjs` — concordancia fem/plur tras rename
+
+Patrón para nuevo rename: regex case-sensitive sobre archivos lore, dejar slugs lowercase intactos, fix de concordancia post-rename, verificar con grep que cero hits del término viejo.
+
+#### Auto-link retroactivo tras editar lore manualmente
+Si añades menciones de entidades existentes en prosa nueva, corre:
+```bash
+npx tsx scripts/auto-link-pass.mts <archivo>    # enlaza el archivo individual
+node scripts/normalize-link-articles.mjs <archivo>  # extrae artículos del label
+```
+El script es idempotente — correrlo varias veces no rompe nada, solo añade nuevos links que no existían.
+
+#### Detectar problemas latentes
+```bash
+npx tsx scripts/audit-orphan-mentions.mts       # nombres propios mencionados N+ veces sin entrada
+                                                 # output: reports/orphan-mentions.json
+                                                 # útil para decidir prioridades de expansion
+```
+
+#### Limpiar artefactos antes de commit
+```bash
+git status --short                              # debe NO incluir image-sources.local.json,
+                                                 # tools/, .trash-art/, reports/
+git check-ignore -v public/image-sources.local.json   # debe coincidir con .gitignore
+```
+
+### Auto-link de menciones (post sesión 2026-05-01)
+**Política**: TODA mención de una entidad en prosa visible se convierte en `link()`. La saturación visual se mitiga con colores por tipo, hover-card a 220ms, y artículos fuera del link.
+
+**Cobertura**:
+- **Build-time** (`scripts/auto-link-pass.mts`): paragraphs (`p()`), buckets (`confirmed`/`inferred`/`theories`/`ambiguous`), prose-fields (`beneficiaries`/`victims`), listas (`ol()`/`ul()`).
+- **Runtime** (`src/lib/enrichText.ts` + `<EnrichedText>` en `RichLoreText.tsx`): los string fields de `data/*.ts` (`summary`, `definition`, `deepDive`, `historical`, `theme`, `tragedy`, `hiddenTragedy`, `timelineRelation`, `bosses`, `belief`, `what`, `whyMatters`, `relationToOrder`, `poeticIntro`, `lore`, `whyItMatters`, `meaning`, `consequence`).
+- **NO procesados**: headings (`h()`) y quotes (`q()`) — decisión deliberada por estética y respeto a citas literales del juego.
+
+**Cuándo correr `scripts/auto-link-pass.mts --all`**: tras añadir nuevas entradas (characters, factions, regions, concepts, timeline, endings) — el script enlazará retroactivamente todas las menciones existentes a la nueva entrada. Es idempotente; correrlo múltiples veces no rompe nada.
+
+**Si el nombre canónico no coincide con la prosa típica**: editar `MANUAL_ALIASES` en AMBOS:
+- `scripts/auto-link-pass.mts` (build-time)
+- `src/lib/enrichText.ts` (runtime)
+
+Mantener ambos sincronizados manualmente. Cada uno valida que el slug exista al boot e imprime warning si no.
+
+### Tipos de campo prosa con cross-links (`src/data/types.ts`)
+- `BucketItem = string | RichInline[]` — items de buckets
+- `ProseField = string | RichInline[]` — beneficiaries/victims
+- `RichInline[]` — children de paragraphs y items de listas
+
+El renderer `<InlineProse node={string | RichInline[]} />` (export de `RichLoreText.tsx`) maneja ambos tipos transparentemente.
 
 ## Antes de cualquier commit
 1. `npm run build` debe pasar limpio

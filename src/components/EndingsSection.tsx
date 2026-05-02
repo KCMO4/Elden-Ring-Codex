@@ -5,6 +5,7 @@ import { SectionHero } from './SectionHero'
 import { CodexImage } from './images/CodexImage'
 import { endingsData } from '../data/endings'
 import { pathFor } from '../data/lookups'
+import { EnrichedText } from './RichLoreText'
 
 export function EndingsSection() {
   return (
@@ -18,6 +19,19 @@ export function EndingsSection() {
           poeticIntro="No hay final correcto. Solo diferentes respuestas a la misma pregunta: si tuvieras el poder de definir una era, ¿qué elegirías?"
           readingCategory="finales"
         />
+
+        {/* Quick CTA to side-by-side comparison */}
+        <div className="flex justify-center mb-8">
+          <Link
+            to="/finales/comparar"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-sm
+                       bg-codex-brown/40 border border-codex-gold-dim/30
+                       font-heading text-xs tracking-wider uppercase text-codex-gold-dim
+                       hover:border-codex-gold-dim/60 hover:text-codex-gold-bright transition-all"
+          >
+            Comparar lado a lado →
+          </Link>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {endingsData.map((ending, i) => (
@@ -73,7 +87,7 @@ export function EndingsSection() {
                     {ending.name}
                   </h3>
                   <p className="text-sm text-codex-parchment-dim leading-relaxed mb-3 line-clamp-3">
-                    {ending.description}
+                    <EnrichedText text={ending.description} selfId={ending.id} />
                   </p>
 
                   <div
@@ -84,7 +98,7 @@ export function EndingsSection() {
                     }}
                   >
                     <p className="font-subheading italic text-sm text-codex-parchment-dim/80 leading-relaxed line-clamp-2">
-                      {ending.meaning}
+                      <EnrichedText text={ending.meaning} selfId={ending.id} />
                     </p>
                   </div>
 

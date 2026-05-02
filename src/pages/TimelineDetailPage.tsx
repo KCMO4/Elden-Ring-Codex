@@ -7,6 +7,7 @@ import {
   resolveCharacterIds, resolveRegionIds, resolveFactionIds, resolveConceptIds, resolveTimelineIds,
 } from '../data/lookups'
 import { timelineData } from '../data/timeline'
+import { EnrichedText } from '../components/RichLoreText'
 
 export function TimelineDetailPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -58,13 +59,13 @@ export function TimelineDetailPage() {
           (!entry.deepLore || entry.deepLore.length === 0) && (
             <div className="space-y-6 mb-10">
               {entry.lore.map((p, i) => (
-                <p key={i} className="font-body text-base text-codex-parchment leading-loose">{p}</p>
+                <p key={i} className="font-body text-base text-codex-parchment leading-loose"><EnrichedText text={p} selfId={entry.id} /></p>
               ))}
               <section>
                 <h2 className="font-heading text-2xl text-codex-gold-bright tracking-wide mb-3 pb-2 border-b border-codex-gold-dim/30">
                   Por qué importa
                 </h2>
-                <p className="font-body text-base text-codex-parchment leading-loose">{entry.whyItMatters}</p>
+                <p className="font-body text-base text-codex-parchment leading-loose"><EnrichedText text={entry.whyItMatters} selfId={entry.id} /></p>
               </section>
             </div>
           )

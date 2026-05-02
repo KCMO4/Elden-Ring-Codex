@@ -5,6 +5,7 @@ import {
   findEntriesByTag, tagLabelFromSlug, getAllTags, tagPath,
 } from '../lib/tagAggregator'
 import { pathFor } from '../data/lookups'
+import { EnrichedText } from '../components/RichLoreText'
 import { SectionHero } from '../components/SectionHero'
 import { CertaintyBadge } from '../components/CertaintyBadge'
 import { RuneSeparator } from '../components/illustrations/RuneSeparator'
@@ -181,7 +182,7 @@ function ResultCard({
           </div>
           {sublabel && (
             <p className="font-body text-sm text-codex-parchment-dim mt-1 leading-snug line-clamp-2">
-              {sublabel}
+              <EnrichedText text={sublabel} />
             </p>
           )}
         </div>

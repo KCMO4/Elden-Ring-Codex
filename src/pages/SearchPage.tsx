@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Users, Map, Shield, BookMarked, Clock, Scroll } from 'lucide-react'
+import Fuse from 'fuse.js'
 import { SectionHeader } from '../components/SectionHeader'
 import { SectionHero } from '../components/SectionHero'
 import { SearchBar } from '../components/SearchBar'
@@ -9,6 +10,7 @@ import { charactersData, factionsData, regionsData, glossaryData, timelineData }
 import { endingsData } from '../data/endings'
 import { pathFor } from '../data/lookups'
 import { flattenLore, extractSnippet } from '../lib/deepText'
+import { parseSearchQuery } from '../lib/searchQuery'
 
 type GroupKey = 'characters' | 'regions' | 'factions' | 'concepts' | 'timeline' | 'endings'
 
@@ -22,6 +24,15 @@ const GROUP_META: Record<GroupKey, { label: string; icon: React.ReactNode }> = {
 }
 
 const GROUP_ORDER: GroupKey[] = ['characters', 'regions', 'factions', 'concepts', 'timeline', 'endings']
+
+const GROUP_TO_TYPE: Record<GroupKey, 'character' | 'region' | 'faction' | 'concept' | 'timeline' | 'ending'> = {
+  characters: 'character',
+  regions:    'region',
+  factions:   'faction',
+  concepts:   'concept',
+  timeline:   'timeline',
+  endings:    'ending',
+}
 
 interface Result {
   to: string
@@ -80,7 +91,9 @@ export function SearchPage() {
 
   useEffect(() => { document.title = 'Búsqueda · Códice' }, [])
 
-  const q = query.trim().toLowerCase()
+  /* Parse the query into free text + facet filters (tag:X cert:Y type:Z). */
+  const parsed = useMemo(() => parseSearchQuery(query), [query])
+  const q = parsed.text.trim().toLowerCase()
 
   /* Build search index once (memoized): each entity gets shallow text + flattened deep lore. */
   const index = useMemo(() => ({
@@ -110,39 +123,86 @@ export function SearchPage() {
     })),
   }), [])
 
+  /* Fuse instances per group — provides typo tolerance over name fields.
+     Threshold 0.32 ≈ tolerates 1-2 char typos in short names ("malena" → Malenia). */
+  const fuses = useMemo(() => ({
+    characters: new Fuse(index.characters, { keys: ['shallow'], threshold: 0.32, distance: 60, ignoreLocation: true }),
+    regions:    new Fuse(index.regions,    { keys: ['shallow'], threshold: 0.32, distance: 60, ignoreLocation: true }),
+    factions:   new Fuse(index.factions,   { keys: ['shallow'], threshold: 0.32, distance: 60, ignoreLocation: true }),
+    concepts:   new Fuse(index.concepts,   { keys: ['shallow'], threshold: 0.32, distance: 60, ignoreLocation: true }),
+    timeline:   new Fuse(index.timeline,   { keys: ['shallow'], threshold: 0.32, distance: 60, ignoreLocation: true }),
+    endings:    new Fuse(index.endings,    { keys: ['shallow'], threshold: 0.32, distance: 60, ignoreLocation: true }),
+  }), [index])
+
   const allGroups = useMemo(() => {
-    if (q.length < 2) return [] as { key: GroupKey; results: Result[] }[]
+    /* Allow facet-only queries (no free text) — list every entity that
+       matches the filters. Otherwise require ≥2 chars of text. */
+    const hasFacet = !!(parsed.tag || parsed.certainty || parsed.type)
+    if (q.length < 2 && !hasFacet) return [] as { key: GroupKey; results: Result[] }[]
+
+    const passFacets = (e: any): boolean => {
+      if (parsed.certainty && e.certainty !== parsed.certainty) return false
+      if (parsed.tag) {
+        const tags = (e.tags ?? []) as string[]
+        const hit = tags.some((t) => t.toLowerCase().includes(parsed.tag!))
+        if (!hit) return false
+      }
+      return true
+    }
 
     const matchOne = <T extends { e: any; shallow: string; deep: string }>(
       items: T[],
+      fuse: Fuse<T>,
       pathFn: (e: any) => string,
       labelFn: (e: any) => string,
       subFn: (e: any) => string | undefined,
     ): Result[] => {
+      const seen = new Set<string>()
       const out: Result[] = []
-      for (const it of items) {
-        const inShallow = it.shallow.includes(q)
-        if (inShallow) {
-          out.push({ to: pathFn(it.e), label: labelFn(it.e), sublabel: subFn(it.e) })
-          continue
+
+      const push = (it: T, snippet?: string) => {
+        if (!passFacets(it.e)) return
+        const to = pathFn(it.e)
+        if (seen.has(to)) return
+        seen.add(to)
+        out.push({ to, label: labelFn(it.e), sublabel: subFn(it.e), snippet })
+      }
+
+      if (q.length >= 2) {
+        /* 1. Substring exact (fast, prioritized) */
+        for (const it of items) if (it.shallow.includes(q)) push(it)
+        /* 2. Fuzzy match on shallow (typo tolerance) */
+        for (const r of fuse.search(q)) push(r.item)
+        /* 3. Substring on deep lore (with snippet) */
+        for (const it of items) {
+          if (it.deep && it.deep.includes(q)) {
+            const snip = extractSnippet(it.deep, q, 160) ?? ''
+            push(it, snip)
+          }
         }
-        if (it.deep && it.deep.includes(q)) {
-          const snip = extractSnippet(it.deep, q, 160) ?? ''
-          out.push({ to: pathFn(it.e), label: labelFn(it.e), sublabel: subFn(it.e), snippet: snip })
-        }
+      } else {
+        /* Facet-only mode: every item that passes filters */
+        for (const it of items) push(it)
       }
       return out
     }
 
-    return [
-      { key: 'characters' as const, results: matchOne(index.characters, pathFor.character, (e) => e.name, (e) => e.role) },
-      { key: 'regions'    as const, results: matchOne(index.regions, pathFor.region, (e) => e.name, (e) => e.mainFaction) },
-      { key: 'factions'   as const, results: matchOne(index.factions, pathFor.faction, (e) => e.name, (e) => e.what.slice(0, 80) + '…') },
-      { key: 'concepts'   as const, results: matchOne(index.concepts, pathFor.concept, (e) => e.term, (e) => e.definition.slice(0, 80) + '…') },
-      { key: 'timeline'   as const, results: matchOne(index.timeline, pathFor.timeline, (e) => e.title, (e) => e.chapter) },
-      { key: 'endings'    as const, results: matchOne(index.endings, pathFor.ending, (e) => e.name, (e) => e.whoLeads) },
-    ].filter((g) => g.results.length > 0)
-  }, [q, index])
+    const groups = [
+      { key: 'characters' as const, results: matchOne(index.characters, fuses.characters, pathFor.character, (e) => e.name, (e) => e.role) },
+      { key: 'regions'    as const, results: matchOne(index.regions,    fuses.regions,    pathFor.region,    (e) => e.name, (e) => e.mainFaction) },
+      { key: 'factions'   as const, results: matchOne(index.factions,   fuses.factions,   pathFor.faction,   (e) => e.name, (e) => e.what.slice(0, 80) + '…') },
+      { key: 'concepts'   as const, results: matchOne(index.concepts,   fuses.concepts,   pathFor.concept,   (e) => e.term, (e) => e.definition.slice(0, 80) + '…') },
+      { key: 'timeline'   as const, results: matchOne(index.timeline,   fuses.timeline,   pathFor.timeline,  (e) => e.title, (e) => e.chapter) },
+      { key: 'endings'    as const, results: matchOne(index.endings,    fuses.endings,    pathFor.ending,    (e) => e.name, (e) => e.whoLeads) },
+    ]
+
+    /* If a `type:` facet is set, restrict to that group */
+    const filtered = parsed.type
+      ? groups.filter((g) => GROUP_TO_TYPE[g.key] === parsed.type)
+      : groups
+
+    return filtered.filter((g) => g.results.length > 0)
+  }, [q, parsed, index, fuses])
 
   /* Counts per group (full set) and visible groups (filtered by activeGroup). */
   const counts: Record<GroupKey, number> = {

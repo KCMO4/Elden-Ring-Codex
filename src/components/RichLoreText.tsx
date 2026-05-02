@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { EntityHoverCard } from './EntityHoverCard'
@@ -5,6 +6,7 @@ import type { EntityType, RichBlock, RichInline } from '../data/types'
 import {
   findCharacter, findRegion, findFaction, findConcept, findTimelineEntry, findEnding,
 } from '../data/lookups'
+import { enrichText } from '../lib/enrichText'
 
 const entityRouteMap: Record<EntityType, string> = {
   character: '/personajes',
@@ -15,16 +17,21 @@ const entityRouteMap: Record<EntityType, string> = {
   timeline:  '/timeline',
 }
 
-/* Color tokens per entity type — gives the reader an instant visual cue
-   for what kind of thing each link points to (person / place / event / etc.)
-   so the lore feels less of a wall of equally-weighted gold links. */
+/* Unified link styling — all entity types share the same parchment color.
+   Earlier the codex used per-type colors (character/faction/region/etc.)
+   but with thousands of cross-links per page the rainbow effect became
+   visually noisy. Single tone keeps prose readable; the hover-card still
+   shows the type/faction/era of the target. */
+const UNIFIED_LINK_CLASS =
+  'text-codex-parchment decoration-codex-parchment-dim/55 hover:text-white hover:decoration-codex-parchment hover:[text-shadow:0_0_8px_rgba(237,224,197,0.45)]'
+
 export const entityLinkClass: Record<EntityType, string> = {
-  character: 'text-codex-parchment decoration-codex-parchment-dim/55 hover:text-white hover:decoration-codex-parchment hover:[text-shadow:0_0_8px_rgba(237,224,197,0.45)]',
-  faction:   'text-codex-gold      decoration-codex-gold-dim/55      hover:text-codex-gold-bright hover:decoration-codex-gold hover:[text-shadow:0_0_8px_rgba(242,222,176,0.45)]',
-  region:    'text-codex-flame     decoration-codex-flame/45         hover:text-orange-200       hover:decoration-codex-flame hover:[text-shadow:0_0_8px_rgba(201,115,82,0.45)]',
-  concept:   'text-codex-ghost     decoration-codex-ghost/45         hover:text-blue-200         hover:decoration-codex-ghost hover:[text-shadow:0_0_8px_rgba(90,114,181,0.45)]',
-  timeline:  'text-codex-rot       decoration-codex-rot/45           hover:text-pink-200         hover:decoration-codex-rot   hover:[text-shadow:0_0_8px_rgba(160,66,112,0.45)]',
-  ending:    'text-codex-crimson   decoration-codex-crimson/45       hover:text-red-200          hover:decoration-codex-crimson hover:[text-shadow:0_0_8px_rgba(191,72,72,0.45)]',
+  character: UNIFIED_LINK_CLASS,
+  faction:   UNIFIED_LINK_CLASS,
+  region:    UNIFIED_LINK_CLASS,
+  concept:   UNIFIED_LINK_CLASS,
+  timeline:  UNIFIED_LINK_CLASS,
+  ending:    UNIFIED_LINK_CLASS,
 }
 
 export const entityTypeLabel: Record<EntityType, string> = {
@@ -56,7 +63,7 @@ interface InlineProps {
   node: RichInline
 }
 
-function InlineNode({ node }: InlineProps) {
+export function InlineNode({ node }: InlineProps) {
   if (typeof node === 'string') return <>{node}</>
   if (node.type === 'em') return <em className="italic text-codex-parchment">{node.text}</em>
   if (node.type === 'strong') return <strong className="text-codex-gold-bright font-semibold">{node.text}</strong>
@@ -222,6 +229,32 @@ export function RichLoreText({ blocks }: { blocks: RichBlock[] }) {
       ))}
     </div>
   )
+}
+
+/** Render either a plain string or a RichInline[] (e.g. bucket items, beneficiaries,
+   victims) — supports inline cross-link nodes alongside text.
+   When `node` is a plain string AND `selfId` is provided, the string is
+   auto-enriched at render time: entity mentions become inline links. This
+   gives consistent cross-link behavior across paragraphs, buckets, prose
+   fields, and `data/*.ts` strings rendered directly. */
+export function InlineProse({ node, selfId }: { node: string | RichInline[]; selfId?: string }) {
+  const nodes = useMemo(() => {
+    if (typeof node === 'string') return enrichText(node, selfId)
+    return node
+  }, [node, selfId])
+  return (
+    <>
+      {nodes.map((child, i) => (
+        <InlineNode key={i} node={child} />
+      ))}
+    </>
+  )
+}
+
+/** Convenience wrapper around InlineProse for the common case where the
+   caller has a plain string field from data/*.ts and wants it enriched. */
+export function EnrichedText({ text, selfId }: { text: string; selfId?: string }) {
+  return <InlineProse node={text} selfId={selfId} />
 }
 
 /** Extract H2/H3 headings for the table of contents, with deduplicated ids. */

@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { entityLinkClass, entityTypeLabel } from './RichLoreText'
-import type { EntityType } from '../data/types'
 
 /* Shortcut cheatsheet modal — opens when the user presses `?`. Lists all
    keyboard navigation, search, and content-color conventions in one place
@@ -131,20 +129,6 @@ export function ShortcutsCheatsheet() {
                   </ul>
                 </div>
               ))}
-
-              {/* Color legend */}
-              <div className="mb-2 pt-3 border-t border-codex-gold-dim/20">
-                <p className="font-heading text-[10px] text-codex-gold-dim tracking-widest uppercase mb-2">
-                  Colores de enlaces en el lore
-                </p>
-                <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-1.5">
-                  {(Object.keys(entityTypeLabel) as EntityType[]).map((t) => (
-                    <li key={t} className="flex items-center gap-2 text-xs">
-                      <span className={`underline underline-offset-2 ${entityLinkClass[t]}`}>{entityTypeLabel[t]}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
 
               {/* Era legend */}
               <div className="mt-4 pt-3 border-t border-codex-gold-dim/20">

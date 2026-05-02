@@ -85,7 +85,7 @@ export function ColorLegend() {
 
               {/* Tip */}
               <p className="text-[11px] text-codex-parchment-dim/70 italic pt-1 border-t border-codex-gold-dim/15">
-                Pulsa <kbd className="font-mono text-[10px] bg-codex-brown/60 border border-codex-gold-dim/40 rounded px-1">?</kbd> para ver la leyenda completa, atajos de teclado y colores de los enlaces dentro del lore.
+                Pulsa <kbd className="font-mono text-[10px] bg-codex-brown/60 border border-codex-gold-dim/40 rounded px-1">?</kbd> para ver la leyenda completa y atajos de teclado.
               </p>
             </div>
           </motion.div>

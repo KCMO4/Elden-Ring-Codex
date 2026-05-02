@@ -305,7 +305,7 @@ Más buckets idénticos a Phases 2/3/4: `confirmed` (5-7), `inferred` (3-4), `th
 
 **Bloque 1 — Eras antiguas (3)**
 - `antes-orden-dorado` — la era pre-Orden con Crisol y dragones
-- `era-antigua` — el régimen de la Reina de Ojos Crepusculares
+- `era-antigua` — el régimen de la Reina del Ojo Velado
 - `muerte-predestinada` — el sello fundacional de Marika
 
 **Bloque 2 — Fundación del Orden Dorado (4)**

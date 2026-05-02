@@ -1,4 +1,4 @@
-import type { DeepEntity, RichBlock, RichInline } from '../data/types'
+import type { BucketItem, DeepEntity, ProseField, RichBlock, RichInline } from '../data/types'
 
 function flattenInline(items: RichInline[]): string {
   return items
@@ -24,18 +24,26 @@ function flattenBlock(b: RichBlock): string {
   }
 }
 
+function flattenBucket(items: BucketItem[]): string {
+  return items.map((it) => (typeof it === 'string' ? it : flattenInline(it))).join(' ')
+}
+
+function flattenProse(p: ProseField): string {
+  return typeof p === 'string' ? p : flattenInline(p)
+}
+
 /** Flatten a DeepEntity's lore arrays into one searchable string. */
 export function flattenLore(e: DeepEntity): string {
   const parts: string[] = []
   if (e.summary) parts.push(e.summary)
   if (e.subtitle) parts.push(e.subtitle)
   if (e.deepLore) parts.push(e.deepLore.map(flattenBlock).join(' '))
-  if (e.confirmed) parts.push(e.confirmed.join(' '))
-  if (e.inferred) parts.push(e.inferred.join(' '))
-  if (e.theories) parts.push(e.theories.join(' '))
-  if (e.ambiguous) parts.push(e.ambiguous.join(' '))
-  if (e.beneficiaries) parts.push(e.beneficiaries)
-  if (e.victims) parts.push(e.victims)
+  if (e.confirmed) parts.push(flattenBucket(e.confirmed))
+  if (e.inferred) parts.push(flattenBucket(e.inferred))
+  if (e.theories) parts.push(flattenBucket(e.theories))
+  if (e.ambiguous) parts.push(flattenBucket(e.ambiguous))
+  if (e.beneficiaries) parts.push(flattenProse(e.beneficiaries))
+  if (e.victims) parts.push(flattenProse(e.victims))
   return parts.join(' ').toLowerCase()
 }
 

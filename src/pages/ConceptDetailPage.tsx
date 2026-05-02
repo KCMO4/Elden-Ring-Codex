@@ -6,6 +6,7 @@ import {
 } from '../data/lookups'
 import { glossaryData } from '../data/glossary'
 import { glossaryFallbacks } from '../lib/fallbackMap'
+import { EnrichedText } from '../components/RichLoreText'
 
 export function ConceptDetailPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -48,13 +49,13 @@ export function ConceptDetailPage() {
               <h2 className="font-heading text-2xl text-codex-gold-bright tracking-wide mb-3 pb-2 border-b border-codex-gold-dim/30">
                 Definición
               </h2>
-              <p className="font-body text-base text-codex-parchment leading-loose">{concept.definition}</p>
+              <p className="font-body text-base text-codex-parchment leading-loose"><EnrichedText text={concept.definition} selfId={concept.id} /></p>
             </section>
             <section>
               <h2 className="font-heading text-2xl text-codex-gold-bright tracking-wide mb-3 pb-2 border-b border-codex-gold-dim/30">
                 Análisis profundo
               </h2>
-              <p className="font-body text-base text-codex-parchment leading-loose">{concept.deepDive}</p>
+              <p className="font-body text-base text-codex-parchment leading-loose"><EnrichedText text={concept.deepDive} selfId={concept.id} /></p>
             </section>
           </div>
         )

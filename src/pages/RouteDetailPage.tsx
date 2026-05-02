@@ -9,6 +9,7 @@ import {
   charactersData, regionsData, factionsData, glossaryData, timelineData,
 } from '../data'
 import { endingsData } from '../data/endings'
+import { EnrichedText } from '../components/RichLoreText'
 
 const accentClasses: Record<string, { border: string; text: string; bg: string; glow: string }> = {
   gold:     { border: 'border-codex-gold/40',  text: 'text-codex-gold',     bg: 'bg-codex-gold/5',  glow: 'rgba(197,160,89,0.2)' },
@@ -85,7 +86,7 @@ function RouteContent({ route }: { route: NarrativeRoute }) {
             {route.subtitle}
           </p>
           <p className="font-body text-base text-codex-parchment leading-relaxed mb-4">
-            {route.description}
+            <EnrichedText text={route.description} />
           </p>
           <p className="font-subheading italic text-base text-codex-parchment-dim/80 leading-relaxed border-l-2 border-codex-gold-dim/40 pl-4">
             "{route.poeticIntro}"
@@ -133,7 +134,7 @@ function RouteContent({ route }: { route: NarrativeRoute }) {
               </h2>
 
               <div className="font-body text-base text-codex-parchment leading-loose mb-6 italic">
-                {currentStop.why}
+                <EnrichedText text={currentStop.why} selfId={currentStop.slug} />
               </div>
 
               <Link
