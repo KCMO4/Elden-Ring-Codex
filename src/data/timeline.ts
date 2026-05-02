@@ -590,6 +590,23 @@ const baseTimeline: TimelineEntry[] = [
     tags: ['Placidusax', 'Era pre-Orden', 'Dragones', 'Farum Azula'],
   },
   {
+    id: 'llegada-bestia-elden',
+    chapterNumber: 'I·E',
+    chapter: 'Era pre-Orden',
+    title: 'La caída de la Bestia Elden y la siembra del Árbol Áureo',
+    poeticIntro: 'El cosmos abrió un hueco en el cielo. Una estrella cayó portando una ley. Donde aterrizó, brotó un árbol.',
+    lore: [
+      'Tras la abdicación cosmológica del régimen dragónico de Placidusax, la Voluntad Mayor decidió intervenir directamente en las Tierras Intermedias enviando a su instrumento más poderoso: la Bestia Elden, una criatura cósmica con forma de cometa que descendió del firmamento como una estrella fugaz.',
+      'En el cuerpo de la Bestia Elden, o entrelazado con su sustancia, viajaba el Elden Ring — la ley metafísica que definiría la muerte, el nacimiento, la fuerza y el destino del nuevo cosmos. La descripción del incantation Elden Stars lo enuncia de forma cifrada: "la forma original del Elden Ring, antes de ser reclamado por el Árbol Áureo".',
+      'Al impactar contra las Tierras Intermedias, la Bestia Elden depositó el Anillo en el suelo. De ese punto de aterrizaje brotó el Árbol Áureo — no como vegetación natural sino como manifestación arquitectónica del Anillo: raíces y ramas que son la geometría sagrada de la ley misma extendiéndose por el continente.',
+      'El Árbol "reclamó" al Anillo. Es decir: la ley quedó incrustada en la madera del árbol como su núcleo, y el árbol pasó a operar como interfaz visible entre los mortales y la cosmología abstracta de la Voluntad Mayor. Por eso cada Site of Grace, cada peregrinaje, cada acto de fe del Orden Dorado se orienta hacia el Árbol — no hacia el Anillo, que es invisible dentro de él.',
+      'La Bestia Elden, agotada o transmutada por el acto de depositar el Anillo, quedó dormida dentro del propio Árbol. No reaparecerá hasta el final del juego, cuando el Tarnished derrote a Radagon y la Bestia emerja como guardián autónomo del cosmos que ella misma sembró.',
+    ],
+    whyItMatters: 'Este es el evento fundacional del cosmos actual de las Tierras Intermedias. Toda la cosmología del Orden Dorado — Marika como vasija, los Empyreans como candidatas, la Gracia como infraestructura, las Grandes Runas como herencia — depende de este acto cósmico singular. La caída de la Bestia Elden cierra la era de Placidusax y abre la era de Marika; el Árbol Áureo no es eterno, sino consecuencia de un evento concreto y por tanto reversible. Que el Tarnished pueda quemarlo en el endgame es la simetría narrativa exacta: lo que cayó del cielo puede arder en la tierra.',
+    certainty: 'inferencia',
+    tags: ['Bestia Elden', 'Voluntad Mayor', 'Elden Ring', 'Árbol Áureo', 'Era pre-Orden', 'Cosmogonía'],
+  },
+  {
     id: 'silver-tears-creation',
     chapterNumber: 'II·B',
     chapter: 'Era de los Antiguos',
