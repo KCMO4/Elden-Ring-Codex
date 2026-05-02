@@ -10,9 +10,15 @@ interface SectionHeaderProps {
   poeticIntro?: string
   /** If provided, renders a "Lectura completa" link to /lectura/<readingCategory>. */
   readingCategory?: 'personajes' | 'facciones' | 'regiones' | 'conceptos' | 'timeline' | 'finales'
+  /** When true, the title renders as an `<h1>` instead of `<h2>`. Use this on
+      the top-level header of a list/section page so each route has exactly one
+      `<h1>` for accessibility. Detail pages already have their own `<h1>` in
+      DetailLayout, so they should leave this as default `false`. */
+  asPageHeading?: boolean
 }
 
-export function SectionHeader({ chapter, title, subtitle, poeticIntro, readingCategory }: SectionHeaderProps) {
+export function SectionHeader({ chapter, title, subtitle, poeticIntro, readingCategory, asPageHeading = false }: SectionHeaderProps) {
+  const Heading = asPageHeading ? 'h1' : 'h2'
   return (
     <motion.div
       className="text-center mb-12"
@@ -26,9 +32,9 @@ export function SectionHeader({ chapter, title, subtitle, poeticIntro, readingCa
           Capítulo {chapter}
         </p>
       )}
-      <h2 className="font-heading text-3xl md:text-4xl text-codex-gold-bright text-glow mb-3">
+      <Heading className="font-heading text-3xl md:text-4xl text-codex-gold-bright text-glow mb-3">
         {title}
-      </h2>
+      </Heading>
       {subtitle && (
         <p className="font-subheading text-lg text-codex-parchment-dim italic">{subtitle}</p>
       )}

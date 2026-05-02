@@ -9,6 +9,7 @@ import { EmptyState } from './EmptyState'
 import { ColorLegend } from './ColorLegend'
 import { useFilters } from '../lib/useFilters'
 import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
+import { useEntityFilter } from '../lib/expansion'
 
 interface Props {
   factions: Faction[]
@@ -36,9 +37,11 @@ export function FactionSection({ factions }: Props) {
     [factions],
   )
 
+  const { visible: byExpansion } = useEntityFilter()
+
   const filtered = useMemo(() => {
     const q = f.search.toLowerCase()
-    const result = factions.filter((fa) => {
+    const result = byExpansion(factions).filter((fa) => {
       const matchSearch =
         !f.search ||
         fa.name.toLowerCase().includes(q) ||
@@ -60,7 +63,7 @@ export function FactionSection({ factions }: Props) {
       default:
         return result
     }
-  }, [factions, f.search, f.certainty, f.tags, f.sort])
+  }, [factions, byExpansion, f.search, f.certainty, f.tags, f.sort])
 
   return (
     <section id="facciones">
@@ -68,6 +71,7 @@ export function FactionSection({ factions }: Props) {
 
       <div className="codex-section pt-6">
         <SectionHeader
+          asPageHeading
           title="Facciones y Lore Enemigo"
           subtitle="Los grupos que definen las Tierras Intermedias en su fractura"
           readingCategory="facciones"

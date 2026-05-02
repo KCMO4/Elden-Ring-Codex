@@ -67,14 +67,3 @@ export function useReadingHistory() {
   return { items, clear }
 }
 
-/**
- * Per-type counts for landing-page progress meters
- * ("12 de 53 capítulos leídos").
- */
-export function progressByType(items: HistoryItem[]): Record<EntityType, number> {
-  const acc: Record<EntityType, number> = {
-    character: 0, region: 0, faction: 0, concept: 0, ending: 0, timeline: 0,
-  }
-  for (const i of items) acc[i.type] = (acc[i.type] ?? 0) + 1
-  return acc
-}

@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
+import { usePageMeta } from '../lib/pageMeta'
 
 export function NotFoundPage() {
+  usePageMeta({
+    title: 'Página no encontrada',
+    description: 'Las grandes runas que la sostenían se han fracturado.',
+  })
+
   return (
     <section className="codex-section py-24 text-center">
       <p className="font-heading text-xs text-codex-gold-dim tracking-widest uppercase mb-4">404 · Carta del Códice perdida</p>

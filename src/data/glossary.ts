@@ -803,6 +803,44 @@ const baseGlossary: GlossaryEntry[] = [
     certainty: 'confirmado',
     fallbackType: 'golden-order',
   },
+
+  /* ═══════ Phase 15 — Conceptos macro detectados al crear Tierras Intermedias ═══════ */
+  {
+    id: 'flame-of-ruin',
+    term: 'La Llama de Ruina',
+    definition: 'Fuerza cosmológica primigenia portada por los Gigantes del Fuego en las Cumbres del norte. Antagonista directa del Árbol Áureo: es llama capaz de quemar el árbol mismo, por lo que su extinción fue una de las guerras fundacionales del Orden Dorado. Hoy queda solo el último Gigante encadenado a la cumbre, custodiando las brasas residuales.',
+    deepDive: 'La Llama de Ruina precede al Orden Dorado y representa una cosmología rival: una era donde el fuego era no consumo sino estructura — los Gigantes del Fuego no eran "salvajes" del paisaje, eran una civilización con su propia liturgia ígnea que operaba en paralelo a las primeras eras del Crisol. Su capacidad de quemar el Árbol Áureo era amenaza existencial al régimen: mientras la llama existiera viva, ningún orden áureo podía consolidarse sin el riesgo permanente de incineración total. La guerra contra los Gigantes del Fuego fue librada por Godfrey y Maliketh — Godfrey aportó la fuerza marcial, Maliketh aportó la legitimidad cosmológica de la sombra para apagar liturgias rivales. La derrota no fue genocidio total: el régimen optó por encadenar al último Gigante a la cumbre como custodio forzado de las brasas, condenado a vigilar eternamente lo que su pueblo defendía. Es decisión cosmológica deliberada — extinguir la llama del todo habría liberado el potencial de re-ignición; mantenerla atenuada bajo guardián cautivo permitía controlarla. Cuando el Tarnished sube a las Cumbres, libera esta llama final para quemar el Árbol Áureo — el régimen áureo no puede ser deshecho sin invocar la única fuerza cosmológica que el régimen mismo eligió no eliminar. La Llama de Ruina es entonces el dispositivo simétrico del Árbol: lo que el régimen suprimió pero conservó es lo que finalmente puede destruirlo.',
+    related: ['Fire Giants', 'Maliketh', 'Godfrey', 'Árbol Áureo', 'Mountaintops'],
+    certainty: 'confirmado',
+    fallbackType: 'flame',
+  },
+  {
+    id: 'elden-lord',
+    term: 'Señor Elden',
+    definition: 'Título cosmológico del consorte ritual de la divinidad portadora del Anillo Elden. No es rey en sentido político ordinario — es vasija humana del orden cósmico, contraparte masculina del Empíreo que sostiene el Anillo. Han habido tres en eras conocidas: Placidusax (era de los Antiguos Dragones), Godfrey (Edad Dorada), y potencialmente el Tarnished que el jugador encarna.',
+    deepDive: 'El Señor Elden no es heredable por linaje sino consagrado por proceso ritual: la divinidad portadora del Anillo elige consorte, ese consorte recibe Gracia plena del Anillo y se vuelve marido cosmológico. La función primaria es ejecutar el lado activo-violento del orden — librar las guerras fundacionales que la divinidad-portadora no puede librar directamente sin comprometer su rol cosmológico. Placidusax fue Señor Elden de la era anterior bajo un dios distinto a la Voluntad Mayor; cuando ese dios se retiró, Placidusax quedó suspendido fuera del tiempo en Crumbling Farum Azula como vestigio cosmológico. Godfrey fue elegido por Marika tras la llegada de la Voluntad Mayor; lideró las guerras contra los Gigantes, los Storm Hawks, los Antiguos Dragones supervivientes. Su exilio (cuando la Gracia lo abandonó) fue evento cosmológico, no simple decisión política — el régimen necesitaba reforma y Godfrey ya no encajaba. Tras su exilio no hubo Señor Elden coronado durante la Edad Dorada tardía: Radagon ocupó parcialmente el rol como segundo aspecto de Marika, pero nunca con el título completo. La Fractura ocurre con el trono vacante. El Tarnished que regresa es el primer candidato cosmológico al título en eras — y los seis finales del juego son seis configuraciones distintas de qué tipo de Señor Elden es. El título es entonces dispositivo narrativo: la pregunta del juego no es "¿quién gobierna?" sino "¿qué tipo de orden cosmológico se consolida con este consorte?".',
+    related: ['Godfrey', 'Placidusax', 'Marika', 'Tarnished', 'Anillo Elden', 'Gracia'],
+    certainty: 'confirmado',
+    fallbackType: 'golden-order',
+  },
+  {
+    id: 'golden-order-fundamentalism',
+    term: 'Fundamentalismo del Orden Dorado',
+    definition: 'Doctrina teológica reformada de Radagon que codificó el Orden Dorado como sistema cerrado de leyes puras: pureza de categorías ontológicas, supresión total del Crisol, encarcelamiento de los Omen, repudio de toda mezcla pre-Orden. Es la versión doctrinaria endurecida que reemplazó la Edad Dorada inicial más sincrética.',
+    deepDive: 'El Fundamentalismo no fue siempre el régimen — fue reforma activa de Radagon como segundo aspecto de Marika. La Edad Dorada inicial (bajo Marika + Godfrey) toleraba residuos del Crisol: los Caballeros del Crisol seguían operando con magia híbrida, los Omen no eran sistemáticamente perseguidos, los rituales pre-Orden persistían en aldeas. Radagon (académico, marido de Rennala antes de transformarse, devoto teológico) consolidó la reforma: declaró todo lo del Crisol impuro, encarceló a los Omen como maldiciones encarnadas, suprimió rituales sincréticos. La doctrina añadía la Ley de Regresión (todo debe volver a su forma original/dorada) y la Ley de Causalidad (todo efecto requiere causa visible y ortodoxa). Goldmask es discípulo de esta corriente que la lleva a su conclusión lógica: si la doctrina puede ser perfeccionada, debe serlo — la Era de la Perfección final propone reparar la Fractura mediante refinamiento doctrinario, no mediante restauración política. El Fundamentalismo es entonces dispositivo paradójico: era reforma reformista, pero al consolidarse cerró toda posibilidad de reforma posterior. Cuando Marika rompe el Anillo, parte de lo que rompe es esta doctrina — es reconocimiento implícito de que el Fundamentalismo había hecho el régimen demasiado rígido para auto-corregirse. Los proyectos disidentes (Ranni, Goldmask, Reina del Ojo Velado, Frenzied Flame) se definen explícitamente contra distintos aspectos del Fundamentalismo, no contra el Orden Dorado original más laxo.',
+    related: ['Radagon', 'Goldmask', 'Crisol', 'Omen-Curse', 'Law of Regression', 'Law of Causality'],
+    certainty: 'inferencia',
+    fallbackType: 'golden-order',
+  },
+  {
+    id: 'demidios',
+    term: 'Demidiós',
+    definition: 'Categoría cosmológica de los hijos de Marika nacidos con sangre divina parcial. Son seres con poder mayor que cualquier humano pero menor que la divinidad plena de su madre. Cada uno hereda fragmento del Anillo Elden tras la Fractura — la Gran Runa que define su autoridad cosmológica residual.',
+    deepDive: 'Los Demidioses no son simplemente "semi-dioses" en sentido mitológico genérico. Son categoría específica del régimen áureo: hijos de Empíreo (Marika) gestados con consortes humanos o quasi-humanos (Godfrey humano, Radagon Empíreo aspecto interno). Su sangre divina se diluye con cada generación — los hijos directos de Marika (Godwyn, Morgott, Mohg, Miquella, Malenia, Messmer si SOTE se considera) son Demidioses plenos; sus hijos a su vez (Godrick, descendientes laterales) son Demidioses diluidos cuyo poder cosmológico requiere sostenimiento artificial (injertos en el caso de Godrick). Tras la Fractura, cada Demidiós retiene fragmento del Anillo Elden como Gran Runa — es herencia cosmológica forzada, no elección. Las Grandes Runas son simultáneamente fuente de poder y prisión: el portador no puede deshacerse de ellas sin perder identidad cosmológica, pero tampoco puede usar el poder pleno sin reactivar el Anillo entero. Por eso los Demidioses guerrean entre sí en la Guerra de la Fractura — la única manera de consolidar poder es absorber Grandes Runas ajenas, pero ningún Demidiós tiene legitimidad para hacerlo. La Fractura es entonces guerra civil cosmológica entre vasijas-fragmento que no pueden ni unirse ni separarse limpiamente. El Tarnished que regresa los derrota uno a uno como agente externo al ciclo — solo alguien sin Gran Runa propia puede absorber las ajenas sin contradicción ontológica. Los Demidioses son la prueba viva de que el régimen áureo, al apostar por sucesión por descendencia divina, condenó la siguiente generación a la inestabilidad estructural.',
+    related: ['Marika', 'Godwyn', 'Morgott', 'Mohg', 'Miquella', 'Malenia', 'Radahn', 'Rykard', 'Godrick', 'Gran Runa'],
+    certainty: 'confirmado',
+    fallbackType: 'golden-order',
+  },
 ]
 
 export const glossaryData: GlossaryEntry[] = baseGlossary.map((g) => ({

@@ -67,7 +67,8 @@ export function QuoteShareBubble() {
     try {
       await navigator.clipboard.writeText(formatted)
       setCopied(true)
-      window.setTimeout(() => setCopied(false), 1400)
+      if (hideTimer.current) window.clearTimeout(hideTimer.current)
+      hideTimer.current = window.setTimeout(() => setCopied(false), 1400)
     } catch {/* clipboard denied — silent */}
   }
 

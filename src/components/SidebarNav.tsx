@@ -1,14 +1,17 @@
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { X, BookOpen, Clock, Users, Shield, Map, BookMarked, Scroll, Compass, Bookmark, GitBranch, Shuffle } from 'lucide-react'
+import { X, BookOpen, Clock, Users, Shield, Map, BookMarked, Scroll, Compass, Bookmark, GitBranch, Shuffle, Keyboard } from 'lucide-react'
 import { RuneOrnament } from './illustrations/RuneSeparator'
 import { randomEntryPath } from '../data/lookups'
 import { ThemeToggle } from './ThemeToggle'
+import { ExpansionToggle } from './ExpansionToggle'
+import { acquireScrollLock } from '../lib/scrollLock'
+import { timelineData } from '../data/timeline'
 
 const navItems: { to: string; label: string; icon: React.ReactNode; sub?: string; end?: boolean }[] = [
   { to: '/', label: 'Portada', icon: <BookOpen size={14} />, sub: 'Códice del Orden Fracturado', end: true },
-  { to: '/timeline', label: 'Timeline Profundo', icon: <Clock size={14} />, sub: '70 capítulos' },
+  { to: '/timeline', label: 'Timeline Profundo', icon: <Clock size={14} />, sub: `${timelineData.length} capítulos` },
   { to: '/personajes', label: 'Enciclopedia', icon: <Users size={14} />, sub: 'Personajes' },
   { to: '/facciones', label: 'Facciones', icon: <Shield size={14} />, sub: 'Facciones y Enemigos' },
   { to: '/regiones', label: 'Regiones', icon: <Map size={14} />, sub: 'Geografía del Lore' },
@@ -28,13 +31,12 @@ export function SidebarNav({ mobileOpen, onClose }: Props) {
   const navigate = useNavigate()
 
   /* Body scroll lock while mobile menu is open — prevents background from
-     scrolling on touch and avoids janky overscroll on iOS Safari. */
+     scrolling on touch and avoids janky overscroll on iOS Safari. Uses the
+     shared counted lock so that opening another modal (cheatsheet, etc.)
+     doesn't restore the body to scrollable on close. */
   useEffect(() => {
-    if (mobileOpen) {
-      const prev = document.body.style.overflow
-      document.body.style.overflow = 'hidden'
-      return () => { document.body.style.overflow = prev }
-    }
+    if (!mobileOpen) return
+    return acquireScrollLock()
   }, [mobileOpen])
 
   const handleRandom = () => {
@@ -99,8 +101,27 @@ export function SidebarNav({ mobileOpen, onClose }: Props) {
           <Shuffle size={12} />
           Entrada aleatoria
         </button>
-        <div className="flex justify-center pt-1">
+        <button
+          type="button"
+          /* Synthesize a `?` keypress so ShortcutsCheatsheet's global handler
+             opens it. Avoids coupling the sidebar to the cheatsheet component. */
+          onClick={() => {
+            onClose()
+            window.dispatchEvent(new KeyboardEvent('keydown', { key: '?' }))
+          }}
+          aria-label="Mostrar atajos de teclado (?)"
+          title="Atajos de teclado (?)"
+          className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-sm font-heading text-xs tracking-wider uppercase
+                     bg-codex-brown/40 border border-codex-gold-dim/20 text-codex-parchment-dim
+                     hover:border-codex-gold-dim/50 hover:text-codex-gold transition-all"
+        >
+          <Keyboard size={12} />
+          Atajos
+          <kbd className="ml-1 px-1.5 py-0.5 rounded bg-codex-black/40 border border-codex-gold-dim/30 text-[10px]">?</kbd>
+        </button>
+        <div className="flex flex-col items-center gap-2 pt-1">
           <ThemeToggle />
+          <ExpansionToggle />
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import {
 } from '../lib/tagAggregator'
 import { pathFor } from '../data/lookups'
 import { EnrichedText } from '../components/RichLoreText'
+import { useEntityFilter } from '../lib/expansion'
 import { SectionHero } from '../components/SectionHero'
 import { CertaintyBadge } from '../components/CertaintyBadge'
 import { RuneSeparator } from '../components/illustrations/RuneSeparator'
@@ -15,9 +16,23 @@ import type { Certainty } from '../data/types'
 export function TagPage() {
   const { slug } = useParams<{ slug: string }>()
   if (!slug) return <Navigate to="/" replace />
+  return <TagPageBody slug={slug} />
+}
 
+function TagPageBody({ slug }: { slug: string }) {
   const label = tagLabelFromSlug(slug)
-  const matches = findEntriesByTag(slug)
+  const rawMatches = findEntriesByTag(slug)
+  const { visible: byExpansion } = useEntityFilter()
+  /* Apply the expansion filter to each category's results so SOTE entries
+     don't surface in base-only browsing. */
+  const matches = {
+    characters: byExpansion(rawMatches.characters),
+    factions:   byExpansion(rawMatches.factions),
+    regions:    byExpansion(rawMatches.regions),
+    timeline:   byExpansion(rawMatches.timeline),
+    total: 0,
+  }
+  matches.total = matches.characters.length + matches.factions.length + matches.regions.length + matches.timeline.length
   const hasMatches = matches.total > 0
 
   usePageMeta({

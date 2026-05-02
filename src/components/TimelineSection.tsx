@@ -10,6 +10,7 @@ import { EmptyState } from './EmptyState'
 import { ColorLegend } from './ColorLegend'
 import { useFilters } from '../lib/useFilters'
 import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
+import { useEntityFilter } from '../lib/expansion'
 
 interface Props {
   entries: TimelineEntry[]
@@ -37,9 +38,11 @@ export function TimelineSection({ entries }: Props) {
     [entries],
   )
 
+  const { visible: byExpansion } = useEntityFilter()
+
   const filtered = useMemo(() => {
     const q = f.search.toLowerCase()
-    const result = entries.filter((e) => {
+    const result = byExpansion(entries).filter((e) => {
       const matchSearch =
         !f.search ||
         e.title.toLowerCase().includes(q) ||
@@ -60,7 +63,7 @@ export function TimelineSection({ entries }: Props) {
       default:
         return result
     }
-  }, [entries, f.search, f.certainty, f.tags, f.sort])
+  }, [entries, byExpansion, f.search, f.certainty, f.tags, f.sort])
 
   return (
     <section id="timeline">
@@ -68,12 +71,13 @@ export function TimelineSection({ entries }: Props) {
 
       <div className="codex-section pt-6">
         <SectionHeader
+          asPageHeading
           title="Timeline Profundo"
           subtitle="Del Vacío a la Fractura — Historia completa de las Tierras Intermedias"
           readingCategory="timeline"
         />
 
-        <TimelineRibbon entries={entries} />
+        <TimelineRibbon entries={byExpansion(entries)} />
 
         <FilterBar
           search={f.search}

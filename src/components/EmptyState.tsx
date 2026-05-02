@@ -48,7 +48,7 @@ export function EmptyState({
           <RuneOrnament className="w-12 h-12 opacity-40" />
         )}
       </div>
-      <p className="font-heading text-base text-codex-gold-dim tracking-widest uppercase mb-2">
+      <p className="font-subheading text-lg text-codex-parchment italic mb-2">
         {title}
       </p>
       {description && (

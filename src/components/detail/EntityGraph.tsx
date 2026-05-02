@@ -4,6 +4,8 @@ import type { ResolvedRelatedItem } from '../../data/lookups'
 import { EntityHoverCard } from '../EntityHoverCard'
 import type { EntityType } from '../../data/types'
 import { useTheme } from '../../lib/theme'
+import { useExpansion } from '../../lib/expansion'
+import { getEntityPreview } from '../../data/lookups'
 
 type GroupKind = 'character' | 'region' | 'faction' | 'concept' | 'timeline' | 'ending'
 
@@ -77,22 +79,28 @@ export function EntityGraph({ centerLabel, groups, size = 280 }: Props) {
   const navigate = useNavigate()
   const [hovered, setHovered] = useState<number | null>(null)
   const { resolved } = useTheme()
+  const { hideSote } = useExpansion()
   const GROUP_COLOR = resolved === 'light' ? GROUP_COLOR_LIGHT : GROUP_COLOR_DARK
   const DECO = resolved === 'light' ? DECO_LIGHT : DECO_DARK
 
   const filtered = groups.filter((g) => g.items.length > 0)
-  const total = filtered.reduce((acc, g) => acc + g.items.length, 0)
-  if (total === 0) return null
-
   const MAX_NODES = 18
   let allNodes: GraphNode[] = []
   for (const g of filtered) {
     for (const item of g.items) {
       const slug = slugFromTo(item.to)
       if (!slug) continue
+      /* Skip SOTE-only related entries when the reader is in base mode */
+      if (hideSote) {
+        const preview = getEntityPreview(g.type as EntityType, slug)
+        if (preview?.expansion === 'sote') continue
+      }
       allNodes.push({ label: item.label, to: item.to, group: g.type, slug })
     }
   }
+  /* Total reflects post-filter count so "N de M" honors hideSote (fix #7) */
+  const total = allNodes.length
+  if (total === 0) return null
   const truncated = allNodes.length > MAX_NODES
   if (truncated) allNodes = allNodes.slice(0, MAX_NODES)
 

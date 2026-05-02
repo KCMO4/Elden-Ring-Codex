@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Download, Check } from 'lucide-react'
 import { exportEntityToMarkdown, downloadMarkdown, type ExportInput } from '../lib/markdownExport'
 
@@ -14,13 +14,19 @@ interface Props extends ExportInput {
  */
 export function ExportButton({ className = '', ...input }: Props) {
   const [done, setDone] = useState(false)
+  const resetTimer = useRef<number | null>(null)
+
+  useEffect(() => () => {
+    if (resetTimer.current) window.clearTimeout(resetTimer.current)
+  }, [])
 
   const onClick = () => {
     const md = exportEntityToMarkdown(input)
     const safeSlug = (input.slug ?? input.title).toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-|-$/g, '')
     downloadMarkdown(`${safeSlug}.md`, md)
     setDone(true)
-    window.setTimeout(() => setDone(false), 1500)
+    if (resetTimer.current) window.clearTimeout(resetTimer.current)
+    resetTimer.current = window.setTimeout(() => setDone(false), 1500)
   }
 
   return (

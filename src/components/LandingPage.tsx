@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
-  Clock, Search, BookOpen, ArrowRight,
+  Clock, Search, BookOpen, ArrowRight, Compass,
   Users, Shield, Map as MapIcon, BookMarked, Scroll, Flag,
   type LucideIcon,
 } from 'lucide-react'
@@ -12,6 +12,10 @@ import { FeaturedEntry } from './FeaturedEntry'
 import { useReadingHistory, type HistoryItem } from '../lib/readingHistory'
 import { entityTypePath } from '../data/lookups'
 import type { EntityType } from '../data/types'
+import { charactersData } from '../data/characters'
+import { factionsData } from '../data/factions'
+import { regionsData } from '../data/regions'
+import { timelineData } from '../data/timeline'
 
 /* The legacy `onNavigate?` prop existed during the pre-Router era and was
    kept by App.tsx via a string transform. With proper Link support here it
@@ -23,12 +27,12 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-20">
-      {/* Background atmospheric effects */}
+      {/* Background atmospheric effects — themed via CSS vars so light mode adapts */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, #c5a059 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgb(var(--codex-gold)) 0%, transparent 70%)' }} />
         <div className="absolute bottom-0 left-1/4 w-[400px] h-[300px] opacity-5"
-          style={{ background: 'radial-gradient(circle, #6b2d4a 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgb(var(--codex-rot)) 0%, transparent 70%)' }} />
 
         {/* Parchment texture lines */}
         {Array.from({ length: 12 }).map((_, i) => (
@@ -37,7 +41,7 @@ export function LandingPage() {
             className="absolute left-0 right-0 h-px opacity-5"
             style={{
               top: `${(i + 1) * 8}%`,
-              background: 'linear-gradient(to right, transparent, #c5a059, transparent)',
+              background: 'linear-gradient(to right, transparent, rgb(var(--codex-gold)), transparent)',
             }}
           />
         ))}
@@ -80,7 +84,7 @@ export function LandingPage() {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <p className="font-heading text-xs text-codex-gold-dim tracking-[0.4em] uppercase mb-4">
-            Lore Profundo · Juego Base
+            Lore Profundo del Orden Fracturado
           </p>
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-codex-gold-bright leading-tight mb-4"
             style={{ textShadow: '0 0 30px rgba(197,160,89,0.3)' }}>
@@ -122,9 +126,9 @@ export function LandingPage() {
             primary
           />
           <CtaLink
-            icon={<Clock size={16} />}
-            label="Ver Timeline"
-            to="/timeline"
+            icon={<Compass size={16} />}
+            label="Rutas Narrativas"
+            to="/rutas"
           />
           <CtaLink
             icon={<Search size={16} />}
@@ -162,10 +166,10 @@ export function LandingPage() {
           transition={{ delay: 1.7 }}
         >
           {[
-            { num: '70+', label: 'Capítulos' },
-            { num: '190+', label: 'Personajes' },
-            { num: '32', label: 'Facciones' },
-            { num: '30+', label: 'Regiones' },
+            { num: String(timelineData.length), label: 'Capítulos' },
+            { num: String(charactersData.length), label: 'Personajes' },
+            { num: String(factionsData.length), label: 'Facciones' },
+            { num: String(regionsData.length), label: 'Regiones' },
           ].map(({ num, label }) => (
             <div key={label} className="parchment-panel p-4 text-center">
               <p className="font-heading text-2xl text-codex-gold mb-1" style={{ textShadow: '0 0 10px rgba(197,160,89,0.4)' }}>

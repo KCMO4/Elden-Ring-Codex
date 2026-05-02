@@ -51,7 +51,7 @@ const categoryMeta: Record<ReadingCategory, {
         subtitle: c.role,
         summary: c.tragedy,
         certainty: c.certainty,
-        deepLore: (c as any).deepLore as RichBlock[] | undefined,
+        deepLore: c.deepLore,
         href: pathFor.character(c),
         imageCategory: 'characters',
         fallback: characterFallbacks[c.id] ?? 'character',
@@ -69,7 +69,7 @@ const categoryMeta: Record<ReadingCategory, {
         subtitle: f.what,
         summary: f.belief,
         certainty: f.certainty,
-        deepLore: (f as any).deepLore as RichBlock[] | undefined,
+        deepLore: f.deepLore,
         href: pathFor.faction(f),
         imageCategory: 'factions',
         fallback: factionFallbacks[f.id] ?? 'faction',
@@ -87,7 +87,7 @@ const categoryMeta: Record<ReadingCategory, {
         subtitle: r.mainFaction,
         summary: r.historical,
         certainty: r.certainty,
-        deepLore: (r as any).deepLore as RichBlock[] | undefined,
+        deepLore: r.deepLore,
         href: pathFor.region(r),
         imageCategory: 'regions',
         fallback: regionFallbacks[r.id] ?? 'region',
@@ -104,7 +104,7 @@ const categoryMeta: Record<ReadingCategory, {
         title: g.term,
         summary: g.definition,
         certainty: g.certainty,
-        deepLore: (g as any).deepLore as RichBlock[] | undefined,
+        deepLore: g.deepLore,
         href: pathFor.concept(g),
         imageCategory: 'concepts',
         fallback: glossaryFallbacks[g.id] ?? 'concept',
@@ -122,7 +122,7 @@ const categoryMeta: Record<ReadingCategory, {
         subtitle: t.chapterNumber,
         summary: t.poeticIntro,
         certainty: t.certainty,
-        deepLore: (t as any).deepLore as RichBlock[] | undefined,
+        deepLore: t.deepLore,
         href: pathFor.timeline(t),
         imageCategory: 'timelineEvents',
         fallback: 'concept',
@@ -151,7 +151,10 @@ export function CategoryReadingPage() {
   const { category } = useParams<{ category: string }>()
   const meta = category && (category in categoryMeta) ? categoryMeta[category as ReadingCategory] : null
   if (!meta) return <Navigate to="/" replace />
+  return <CategoryReadingBody meta={meta} category={category!} />
+}
 
+function CategoryReadingBody({ meta, category }: { meta: typeof categoryMeta[ReadingCategory]; category: string }) {
   usePageMeta({
     title: `${meta.label} · Lectura completa`,
     description: meta.intro,
@@ -218,7 +221,7 @@ export function CategoryReadingPage() {
               {/* Title row */}
               <div className="flex items-baseline gap-3 flex-wrap mb-2">
                 <span className="font-heading text-xs tracking-widest uppercase text-codex-gold-dim/80">
-                  {String(i + 1).padStart(2, '0')} · {meta.label.split(' ')[0]}
+                  {String(i + 1).padStart(2, '0')} · {category.charAt(0).toUpperCase() + category.slice(1)}
                 </span>
                 {item.certainty && <CertaintyBadge certainty={item.certainty} />}
               </div>

@@ -109,8 +109,19 @@ export function EntityHoverCard({ targetType, slug, children }: Props) {
                       <span className="text-codex-parchment-dim normal-case font-body tracking-normal"> · {preview.faction}</span>
                     )}
                   </span>
-                  <span className="block font-heading text-sm text-codex-gold-bright leading-tight mb-1">
-                    {preview.name}
+                  <span className="flex items-baseline gap-2 mb-1">
+                    <span className="block font-heading text-sm text-codex-gold-bright leading-tight">
+                      {preview.name}
+                    </span>
+                    {preview.expansion === 'sote' && (
+                      <span
+                        className="font-heading text-[8px] tracking-widest uppercase px-1 py-0.5 rounded-sm
+                                   bg-codex-rot/15 border border-codex-rot/40 text-codex-rot/95"
+                        title="Esta entrada incluye contenido del DLC Shadow of the Erdtree"
+                      >
+                        SOTE
+                      </span>
+                    )}
                   </span>
                   {preview.summary && (
                     <span className={`block font-body text-xs text-codex-parchment-dim leading-snug

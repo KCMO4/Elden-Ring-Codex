@@ -1492,3 +1492,444 @@ Refactor de `src/components/detail/EntityGraph.tsx`:
 - Tooltip ya no sale del contenedor (era SVG `<text>` con overflow descontrolado).
 - Click + hover preview consistente con el resto de los links del codex.
 - Soporte de teclado nativo (button con focus state).
+
+---
+
+## Major UX overhaul (sesión 2026-05-02)
+
+Auditoría integral solicitada por el usuario derivó en una sesión grande con ~18 tareas. Resumen consolidado en commit `681a7a2` ("Major UX overhaul: light mode, PWA, full cross-linking", +15.761/-5.369 líneas, 72 archivos).
+
+### W1 — Quick wins
+
+- **`MentionedGlossary` eliminado**: archivo + import borrado. Su función la cubren los hover-cards de cada link.
+- **ToC scroll-spy con barra activa**: el `<TableOfContents>` ahora muestra una barra dorada lateral (2px + glow) marcando la sección actual. Vertical guide rail para las inactivas.
+- **Búsqueda con typo-tolerance**: `Fuse.js` (9 kB) integrado con threshold 0.32. Search ahora hace 3 pases: substring exact → fuzzy match → substring deep lore. Tolera `"malena" → Malenia`, `"radhan" → Radahn`.
+- **Búsqueda con facetas**: nuevo `src/lib/searchQuery.ts` que parsea `tag:rot cert:teoria type:character` en query libre. Facets soportadas: `tag:`, `cert:`/`certainty:`, `type:`. Aliases en español: `personaje`, `región`, `concepto`, etc.
+- **Lecturas relacionadas** (`<RelatedReadings>`): panel post-artículo con scoring de tags compartidos (×3) + cross-references curados (×2) + referencias mutuas (×1). Top 5 sugerencias.
+- **Notas personales** (`<NoteEditor>`): textarea por entrada en sidebar, persiste a `localStorage[codex-notes-v1]`. Hook `useNote(type, slug)` reactivo con sync entre tabs.
+
+### W2 — Light mode + features mid
+
+- **Light mode** (sesión más invasiva del W2): toda la paleta `codex-*` migrada a CSS vars en `src/index.css`. Tokens: `--codex-black, --codex-brown, --codex-gold, ...` definidos en `:root` (dark default) y `[data-theme="light"]` (paleta cream-on-ink). `tailwind.config.js` ahora usa `rgb(var(--codex-X) / <alpha-value>)`. Toggle 3-state (dark/light/system) en `src/components/ThemeToggle.tsx`, persiste en `localStorage[codex-theme-v1]`. `initTheme()` se llama en `main.tsx` antes del render. Respeta `prefers-color-scheme` cuando theme === 'system'. Transición body 300ms.
+- **Comparador de finales** (`/finales/comparar`): tabla 6 finales × 4 ejes (whoLeads/description/consequence/meaning), header sticky a la izquierda, snap-scroll horizontal en móvil, axis-focus dimming. Lazy-loaded chunk.
+- **Exportador a Markdown** (`<ExportButton>` en hero): genera `.md` con frontmatter YAML + `# Title` + body con cross-links resueltos a paths relativos. Implementado en `src/lib/markdownExport.ts`. `downloadMarkdown(filename, content)` usa Blob + `URL.createObjectURL`. Útil para Obsidian/Logseq imports.
+- **Quote-share floating bubble** (`<QuoteShareBubble>`): listener global de `selectionchange`. Si la selección cae dentro de `[data-quote-source="true"]` (DetailLayout main column) y tiene > 6 chars, muestra burbuja flotante "Copiar cita" que copia al clipboard formateado como blockquote Markdown con back-link. Position calculada con `getBoundingClientRect`.
+- **Glosario inline expandido**: para conceptos, `getEntityPreview` truncate sube de 120 → 220 chars. EntityHoverCard hace `line-clamp-6` solo cuando `preview.type === 'concept'`.
+
+### W3 — Refactor + infra
+
+- **Refactor `EntityCard` genérica**: `<EntityCard>` reemplaza `CharacterCard`/`FactionCard`/`RegionCard` (eran 85% idénticos tras la simplificación previa). Los 3 antiguos quedan como wrappers thin (~25 líneas cada uno) que delegan a `EntityCard`. Props: `to`, `imageVariant`, `imageCategory`, `imageId`, `eyebrow?`, `body`, `poetic?`, `cta`, `index`. Spacing standarizado en uno solo (mb-2/mb-3, gap-1.5, p-4). Click en cualquier zona → Link al detail.
+- **PWA**: `public/manifest.webmanifest` (name, icons, theme_color codex-black/parchment según theme) + `public/sw.js` con strategy:
+  - App shell HTML/JS/CSS → stale-while-revalidate
+  - `/art/...` → cache-first
+  - Navigation requests → network-first con fallback `/`
+  - Cross-origin (Google Fonts, image-sources.local.json) → bypass
+  - Cache name versioned (`codex-v1`); bump en cada release.
+  Registro condicional en `main.tsx` — skipped en localhost para no chocar con Vite HMR. `<link rel="manifest">` + `apple-touch-icon` + theme-color media queries en `index.html`.
+- **EntityGraph parametrizado para themes**: dos paletas (`GROUP_COLOR_DARK` vs `_LIGHT`) seleccionadas por `useTheme().resolved`. Decoración (rings, ticks, center halo) usa `DECO` constants también theme-aware. Mantiene compass-style con 24 ticks y center starburst.
+- **Compartir excerpt de selección**: ya descrito en W2 (QuoteShareBubble).
+- **DetailLayout split**: `MobileToC` y `TableOfContents` extraídos a archivos propios en `src/components/detail/`. DetailLayout pasa de 800 → ~580 líneas. Imports limpiados (AnimatePresence, List, X removidos).
+
+### Genealogía expandida (sesión 2026-05-02)
+
+`src/pages/GenealogyPage.tsx` re-escrita completa de 11 personas / 3 secciones a **47 personas / 14 secciones**:
+
+**Secciones**:
+1. **0. Antes del Orden** — Reina del Ojo Velado, Placidusax, Storm-Hawk King
+2. **∞. Marika ⊗ Radagon** — sección destacada con `⊗` (misma alma)
+3. **I-III. Las 3 uniones** (sangre) — los 11 herederos directos
+4. **IV. Lazos cosmológicos** — Maliketh (sombra), Blaidd, Serosh, Melina
+5. **V. Casa Caria** — Rennala + corte (Iji, Seluvis, Pidia)
+6. **VI. Linaje Empyrean** — los 4 candidatos cosmológicos
+7. **VII. Sucesión del trono** — Placidusax → Godfrey → trono vacante con card "El Tarnished"
+8. **VIII. Linaje de la podredumbre** — Malenia → Millicent ↔ Gowry
+9. **IX. Los fundamentalistas** — Radagon → Goldmask → Corhyn
+10. **X. La cuestión de los muertos** — Fia × D ≈ Hermano de D
+11. **XI. La Mesa Redonda** — Gideon, Miriel, Roderika, Diallos
+12. **XII. Volcano Manor** — Rykard, Tanith, Bernahl, Patches
+13. **XIII. Vínculos regionales** — Castle Morne (Edgar/Irina), Limgrave (Kenneth/Nepheli), Jarburg (Alexander/Jar-Bairn), Periferia (Boc/Latenna/Albus/Hyetta/Vyke)
+
+**Tipos de Status** (6): alive / fallen / cursed / missing / unknown / historical
+**Tipos de Relation** (12): blood / bond-soul / bond-shadow / bond-mount / bond-court / ambiguous / historical / mentor / family / twin / rival / agent
+
+**UI**:
+- Cada PersonCard con thumbnail (CodexImage square 48×48)
+- EntityHoverCard wrapper para cards con entrada real (popup preview al hover)
+- Era badge compact por persona
+- Relation badge tonal (parchment, gold, ghost, etc.) según relation kind
+- Gran Runa indicator para shardbearers (`◈ <name>`)
+- Status filter chips toggleable + botón "Todos"
+- Cards no-elegibles para hover-card se renderizan sin Link (Storm-Hawk King por ejemplo es concept-kind, sí tiene preview)
+- Marika ⊗ Radagon resaltado: símbolo distinto (`⊗` vs `∞`), borde dorado emphasized, label "= misma alma"
+
+### 4 NPCs con deep lore añadidos
+
+`src/data/lore/charactersLore.ts` ganó entradas completas (summary + deepLore + 4 buckets + cross-links) para:
+- **Yura** — el cazador devorado por su propia caza · Posesión por Shabriri
+- **Shabriri** — espíritu calumniador · heraldo de los Tres Dedos · método de posesión
+- **Eleonora** — Lanza Violeta · el amor que se vuelve cómplice
+- **Lanya** — la muerte invisible que define la quest de Diallos · duelo sin cierre
+
+Tras añadir, auto-link aplicado: +60 nuevos enlaces en charactersLore.ts conectando los 4 con el resto del codex.
+
+### Cleanup colateral
+- **Modo lectura eliminado**: state, toggle en sidebar, overlay flotante "× Salir Lectura", lógica condicional en TimelineSection/TimelineEntryCard. Era poco usado y duplicaba función con `/lectura/:category`.
+- **RelatedLists del sidebar eliminadas**: las listas verbales por tipo (Personajes/Regiones/Facciones/Conceptos/Timeline) se quitaron — el `EntityGraph` cubre la misma información visualmente con popup + click.
+- **MentionedGlossary del sidebar eliminado**: cada link en deep lore ya tiene hover-card preview.
+- **Cards expandibles eliminadas**: el state `open` y los paneles internos (tragedy/events/theme en CharacterCard, what/belief/whyMatters en FactionCard, historical/bosses/hiddenTragedy en RegionCard) se eliminaron. Esa información se movió a `structuralFacts` que **siempre** se renderiza en la página detalle (antes solo aparecía si NO había deepLore). Cards quedan como `<Link>` puro al detail con info compacta.
+- **Subtitle redundante oculto automáticamente**: `isSubtitleRedundant(subtitle, summary)` detecta cuando el summary contiene el subtitle (normalizado sin tildes/case) y oculta el subtitle del hero. Soluciona casos como Orden Dorado donde subtitle = `faction.what` y summary también deriva de what.
+- **Franjas laterales en cards eliminadas**: `border-l-[3px]` con color tonal por facción + label en color tonal eliminados. Cards más limpias, eras + read marker conservados.
+- **Color de links unificado**: los 6 tipos de entidad ahora comparten styling parchment (antes tenían 6 colores distintos). Resolvió mareo visual con thousands de links por página. ColorLegend y ShortcutsCheatsheet adaptados.
+- **Citas (`poeticIntro`) sin links**: SectionHeader, RouteDetailPage, RoutesListPage, TimelineEntryCard, TimelineRibbon, hero summary del DetailLayout, tragedy/hiddenTragedy/belief italic en cards. Decisión estética del usuario: las citas son aperturas narrativas, los links recargan el momento poético.
+
+### Hero summary fallback enriquecido
+
+Para entradas sin `summary` explícito (131 entries), los detail pages ahora generan summary uniforme:
+- **CharacterDetailPage** → `buildCharacterSummary(c)`: combina `role + tragedy`
+- **RegionDetailPage** → `buildRegionSummary(r)`: primeras 2 oraciones de `historical + hiddenTragedy`
+- **FactionDetailPage** → `buildFactionSummary(f)`: combina `what + belief`
+- **ConceptDetailPage** → ya usa `definition`
+
+Resultado: hero uniforme en todas las entradas, sin tener que generar 131 summaries a mano.
+
+### `agent.md` cookbook expandido
+
+Nuevas recetas concretas:
+- Verificación pre-commit
+- Añadir entrada nueva (5 pasos)
+- Añadir alias canónico (sincronizar runtime + build-time)
+- Pipeline de imagen: fandom-fetch → JPEG fix → upscale → compress (con warning sobre `convert-to-webp.py`)
+- Renames terminológicos masivos
+- Auto-link retroactivo
+- Detectar problemas latentes (orphan mentions)
+- Limpiar artefactos pre-commit
+
+### Imagen de Boc actualizada
+
+Cambiada a `ER_NPC_Closeup_Boc.png` del wiki Fandom (forma Misbegotten original, no la Reborn humana). Pipeline: WebP → JPEG → Real-ESRGAN 4x → JPEG q92 max edge 2400 → 2000×2000, 299 KB. La imagen anterior queda en `.trash-art/characters/boc.jpg` por si se necesita revertir.
+
+### Bundle final (post sesión 2026-05-02)
+
+```
+index                           154 kB gz   (initial — bajó 1 kB net pese a todas las features
+                                              gracias al cleanup masivo)
+lore-glossary                    80 kB gz
+lore-characters-deep             71 kB gz
+lore-characters                  57 kB gz
+lore-regions                     54 kB gz
+vendor-react                     51 kB gz
+lore-timeline-deep               47 kB gz
+vendor-motion                    43 kB gz
+lore-factions                    42 kB gz
+lore-timeline                    28 kB gz
+fallback-illustrations           11 kB gz   (lazy)
+DetailLayout                     ~6 kB gz   (shared)
+EndingsComparePage               2 kB gz    (lazy, nuevo)
+GenealogyPage                    chunk lazy (más rico, no afecta initial)
++ chunks lazy nuevos para SearchPage (incluye Fuse.js), ThemeToggle, etc.
+```
+
+### Decisiones técnicas no obvias de esta sesión
+
+**InlineProse universal con auto-enrich** — `<InlineProse node={string | RichInline[]} selfId={...} />` ahora aplica `enrichText` automáticamente cuando node es string (con useMemo). Significa que cualquier bucket item que el script auto-link dejó como string se enriquece en runtime. Captura nuevos aliases del runtime aunque no estén en el script.
+
+**Service worker en localhost skipeado** — `if ('serviceWorker' in navigator && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1')` evita cache headaches con Vite HMR.
+
+**`isSubtitleRedundant` con normalización Unicode** — `s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')` quita tildes para comparar; si summary contiene subtitle al inicio o como substring, se oculta subtitle automáticamente.
+
+**Theme tokens via CSS vars con `rgb(var(--X) / <alpha-value>)`** — sintaxis Tailwind CSS-vars que permite mantener `bg-codex-gold/30` con opacidad funcionando. Los componentes existentes no requieren cambios.
+
+**EntityGraph con z-index dinámico** — el nodo hovered sale a `zIndex: 50`, los demás `10`. Resuelve el caso de popup tapado por nodos vecinos.
+
+**Saltados deliberadamente**:
+- ❌ Timeline visual horizontal — implementado pero eliminado por el usuario
+- ❌ Ruta builder dinámico — saltado (las 6 rutas curadas son superiores en calidad narrativa)
+- ❌ OG image dinámica — requiere serverless, imposible en SPA estática
+- ❌ Split FallbackIllustrations — refactor cosmético sin impacto user (chunk lazy 10kB)
+
+### Verificación final
+- `audit-cross-links.mts` → 0 broken refs
+- `npm run build` → limpio
+- Initial bundle: **154 kB gz** (sin cambio significativo pese a todas las features)
+- Push a `origin/main`: commit `681a7a2`
+
+## Arquitectura SOTE: marca a nivel bloque + entidad (sesión 2026-05-02, post-overhaul)
+
+### Motivación
+El usuario pidió poder añadir contenido del DLC Shadow of the Erdtree sin generar entradas paralelas ni un apartado "DLC" al final de cada entrada. La razón explícita: cuando el DLC revela el origen de Marika o reescribe la motivación de Mogh, leerlo "abajo en una caja aparte" rompe la narrativa coherente. Decisión: el SOTE se **intercala** dentro de las secciones que afecta y se etiqueta con un marcador `expansion: 'sote'`.
+
+Tras la primera implementación (Opción A, solo a nivel bloque) el usuario pidió **Opción B**: que el filtro también oculte **entidades enteras** (ej. un NPC exclusivo del DLC) — no solo bloques dentro de entradas.
+
+### Decisión de diseño
+Tres niveles de granularidad para el marcador `expansion`:
+1. **Bloque** (`RichBlock`) — paragraph / heading / quote / list pueden tener `expansion?: Expansion`. Aplica cuando el DLC añade un párrafo dentro de una sección existente.
+2. **Item de bucket** (`BucketItem`) — wrapper `{ expansion?: Expansion; content: string | RichInline[] }` que envuelve un dato puntual dentro de `confirmed`/`inferred`/`theories`/`ambiguous`.
+3. **Entidad entera** (`DeepEntity` mixin) — campo `expansion?: Expansion` en el objeto raíz. Cuando se filtra Base, la entrada desaparece de listados, búsqueda, tag pages, grafos, related readings.
+
+El default es `'base'`. No marcar nada en juego base es lo correcto — solo se marca lo que sea SOTE.
+
+### Implementación
+
+**Tipos** (`src/data/types.ts`):
+```ts
+export type Expansion = 'base' | 'sote'
+
+export interface RichParagraph { type: 'paragraph'; children: RichInline[]; expansion?: Expansion }
+export interface RichHeading   { type: 'heading'; level: 2|3; text: string; id?: string; expansion?: Expansion }
+export interface RichQuote     { type: 'quote'; text: string; attribution?: string; expansion?: Expansion }
+export interface RichList      { type: 'list'; ordered?: boolean; items: RichInline[][]; expansion?: Expansion }
+
+export type BucketItem =
+  | string
+  | RichInline[]
+  | { expansion?: Expansion; content: string | RichInline[] }
+
+export interface DeepEntity {
+  // ...campos previos
+  expansion?: Expansion  // ← añadido para filtrado a nivel entidad (Opción B)
+}
+```
+
+**Hooks** (`src/lib/expansion.ts`):
+- `useExpansion()` — devuelve `{ filter: 'all'|'base', setFilter, hideSote: boolean }`. Estado en `localStorage[codex-expansion-v1]` con event `codex-expansion-change` para sync.
+- `useEntityFilter()` — wrapper genérico:
+  ```ts
+  visible:     <T extends { expansion?: Expansion }>(items: T[]) => T[]
+  isVisible:   (entity: { expansion?: Expansion }) => boolean
+  hiddenCount: <T extends { expansion?: Expansion }>(items: T[]) => number
+  ```
+- `isVisible(expansion, filter)` — helper puro para uso fuera de React.
+
+**Toggle UI** (`src/components/ExpansionToggle.tsx`) — segmented control 2-state (Todo / Base) en sidebar. Default 'all'. Persistente.
+
+**Puntos de integración del filtro**:
+| Componente | Cambio |
+|---|---|
+| `RichLoreText` | `blocks.filter((b) => b.expansion !== 'sote')` cuando hideSote; muestra contador "N bloques ocultos" |
+| `DetailLayout` (KnowledgeBox) | Filtra items wrapper `{expansion, content}`; unwrappea `content` para render |
+| 6 secciones-listado (`Character/Faction/Region/Glossary/Timeline/Endings Section`) | `byExpansion(items)` antes del resto de filtros |
+| `SearchPage` | `byExpansion()` aplicado a los 6 datasets antes de indexar Fuse |
+| `TagPage` | Filtra cada categoría tras `findEntriesByTag` |
+| `RelatedReadings` | Resuelve cada candidato con `getEntityPreview` y descarta SOTE-only |
+| `EntityGraph` | Skipea nodos relacionados cuyo preview es SOTE-only |
+| `EntityHoverCard` | Mantiene la card (el link sigue siendo navegable), pero añade badge "SOTE" si `preview.expansion === 'sote'` |
+| `getEntityPreview` | Propaga `expansion` desde el entity al `EntityPreview` |
+
+### Decisiones técnicas no obvias
+
+**`expansion?` en `DeepEntity` (no en cada interfaz hija)** — añadirlo al mixin común propaga a Character / Faction / Region / GlossaryEntry / TimelineEntry / Ending sin duplicación. Con la propiedad opcional satisfaciendo el constraint `<T extends { expansion?: Expansion }>`, el genérico `byExpansion()` infiere correctamente sin casting.
+
+**Hover-card NO se filtra**: si el reader pasa el cursor sobre un link a entidad SOTE en modo Base, la card aparece igual con badge "SOTE". Razón: el link en prosa sigue ahí (es lectura inline, no listado). Ocultar la card crearía la sensación de "link muerto" sin explicación. Mejor mostrar la card explícitamente etiquetada como DLC.
+
+**Cross-links base → SOTE no rompen el audit**: el script `audit-cross-links.mts` valida que el slug exista, no que la entidad sea visible bajo el filtro actual. El filtro es runtime, los cross-links son data — son dimensiones ortogonales.
+
+**Bug encontrado y arreglado**: la primera versión de `byExpansion()` con `<T extends { expansion?: Expansion }>` fallaba con `Type 'Character' has no properties in common with type '{ expansion?: Expansion | undefined }'` porque `Character` no declaraba el campo. El fix fue añadir `expansion?: Expansion` a `DeepEntity`, no inflar la firma del genérico ni hacer casting en cada call site.
+
+**Quote blocks ahora pueden tener `expansion`** — antes los quote blocks no se enriquecían ni se procesaban. Para SOTE se decidió permitirles también el marcador (citas in-game añadidas por el DLC). El renderer de quotes en `RichLoreText` ya respeta el filtro porque el filtrado ocurre en el array de blocks padre antes de iterar.
+
+**No se filtran imágenes ni heroes** — un personaje SOTE-only (entidad entera marcada) sigue mostrando hero/imagen si el reader entra directamente por URL. La filosofía es: el filtro afecta listados/discoverability, no el acceso directo. Quien quiera ocultar SOTE para evitar spoilers no debería navegar manualmente a `/personajes/<dlc-npc-slug>`; el filtro asegura que esos slugs no aparecen en listados ni en búsquedas, pero respeta la URL directa.
+
+### Verificación
+- `npx tsc --noEmit` → 0 errores tras añadir `expansion?` a `DeepEntity`
+- `npm run build` → limpio, bundle initial sin cambio significativo
+- `npx tsx scripts/audit-cross-links.mts` → 0 broken refs
+- Toggle manual Todo / Base en `/personajes/marika` con bloques SOTE de ejemplo: muestra contador "X bloques ocultos" y re-renderiza sin parpadeos
+- `localStorage` persistente entre reloads via `codex-expansion-v1`
+
+### Patrón de uso futuro (cuando se añada lore real de SOTE)
+1. Para info que **expande** una entrada base (mayoría de casos: Marika, Mogh, Miquella, Messmer) — añadir bloques `p({ expansion: 'sote' }, ...)` o headings `h(2, '...', undefined, { expansion: 'sote' })` intercalados donde temáticamente pertenezcan.
+2. Para items específicos en buckets — envolver con `{ expansion: 'sote', content: '...' }`.
+3. Para entradas **nuevas DLC-only** (NPCs, regiones, conceptos del Realm of Shadow) — añadir `expansion: 'sote'` en el objeto raíz de la entidad. La entrada se ocultará automáticamente de listados/search/grafos en modo Base.
+4. Tras añadir contenido, correr `auto-link-pass.mts --all` para que las menciones SOTE se enlacen retroactivamente. El script no distingue base/sote — los links se generan igualmente y el filtro los oculta en runtime.
+
+### Saltado deliberadamente
+- ❌ **`BookmarksPage` no filtra por SOTE**: si el reader marcó un favorito en modo Todo y luego activa Base, sigue viéndolo en /favoritos. Razón: los bookmarks son intencionales del usuario; ocultarlos podría confundirlo ("¿perdí mi marcador?").
+- ❌ **No hay filtro tri-estado (`base | sote | all`)**: solo `all` (default) y `base`. El caso "solo SOTE" no tiene utilidad práctica — ningún reader querría leer SOTE sin contexto base.
+- ❌ **No hay marcador a nivel `RichInline`** (ej. un solo link dentro de un párrafo marcado SOTE): demasiada granularidad, complica el render. Si un link es SOTE-only, mover el bloque entero a `expansion: 'sote'`.
+
+## Entrada macro: Las Tierras Intermedias (sesión 2026-05-02, post-arquitectura SOTE)
+
+### Motivación
+La entrada macro del continente faltaba pese a 568 menciones a "Tierras Intermedias" repartidas en los 8 archivos de lore. La hover-card y el sistema de cross-links no podía ofrecer contexto al lector que pasaba el cursor sobre el término más mencionado del codex. El usuario detectó la carencia y pidió entrada exhaustiva con info del juego base + teorías comunidad aceptadas.
+
+### Decisión de diseño
+1. **Entrada en `regionsLore.ts` (no `regionsDeepLore.ts`)** — `regionsDeepLore.ts` está reservado para sub-regiones promovidas en Phase 8 (castle-morne, sellia, ordina, elphael, dragonbarrow). Las regiones macro viven en `regionsLore.ts` junto con limgrave / liurnia / caelid / leyndell / haligtree / mohgwyn / nokron / nokstella.
+2. **Estructura de 6 secciones**, distinta de la plantilla estándar de subregión (5 secciones: Resumen / Historia / Estado actual / Tragedia oculta / Significado). Esta entrada requería estructura propia porque es macro-cosmológica, no histórico-territorial. Las 6 secciones:
+   - **Naturaleza cosmológica: por qué se llaman "Intermedias"** — explicación de la liminalidad triple (vida/muerte, dioses externos, eras superpuestas)
+   - **Geografía: las regiones que componen el continente** — 6 sub-bloques organizados por zona (sur, centro-oeste, este podrido, centro-norte, norte glacial, subterráneo, anexo cosmológico Farum Azula)
+   - **Historia detallada: las eras cosmológicas superpuestas** — 5 sub-secciones h(3) (pre-Erdtree / llegada Voluntad Mayor / Edad Dorada / Cuchillos Negros / Fractura / Guerra y estado actual)
+   - **El Árbol Áureo como eje cosmológico y prisión** — desarrollo de la teoría aceptada por la comunidad
+   - **Significado simbólico** — pregunta estructural del juego ("régimen que no puede morir y por tanto no puede renovarse")
+3. **Cross-link exhaustivo desde la entrada hacia 17 personajes, 12 facciones, 16 regiones, 15 conceptos, 5 timeline events** — la macro region debe ser hub gravitacional del codex.
+4. **Auto-link retroactivo** corrido tras añadir la entrada: 360 inserciones distribuidas en los 8 archivos de lore. Las 568 menciones existentes ahora navegan a `/regiones/tierras-intermedias`.
+
+### Posicionamiento en el array `baseRegions`
+La entrada va **primera** (antes de Limgrave). Razón: orden semántico — el continente macro precede a sus regiones componentes. El listado `/regiones` la mostrará al inicio, lo que tiene sentido editorial (lectura top-down: continente → regiones → subregiones).
+
+### Decisiones técnicas no obvias
+**Slugs concept→faction**: varios términos que parecían concepts (`omen`, `two-fingers`, `three-fingers`) son en realidad facciones en el codex (`omens`, `dos-dedos`, `tres-dedos`). El audit lo detectó. Lección: antes de cross-linkear un término muy mencionado, verificar el slug exacto en `glossary.ts | factions.ts | characters.ts`. Para términos cosmológicos limítrofes, el sistema favorece `faction` cuando hay agentes activos (Omen son individuos, Two Fingers operan), `concept` cuando es noción abstracta.
+
+**Términos sin entry → `em()` en lugar de `link()`**: `Llama de Ruina`, `Señor Elden`, `Fundamentalismo del Orden Dorado`, `Demidioses`, `finales` y `Tierras de los Cañaverales` no tienen entries dedicadas. Decisión: usar `em()` italic en vez de forzar links a entries inexistentes o crear stubs vacíos. Cada uno de estos podría merecer su propio entry futuro — quedan documentados aquí como gaps detectados.
+
+**`Bestia Elden` como concept, no character**: `bestia-elden` vive en `glossary.ts` (concept), no `characters.ts`. Razón: la Bestia Elden es la forma física del Anillo Elden, una manifestación cosmológica más que un personaje psicológico. Existe `bestia-elden-concept` también en glossary — duplicado histórico que el codex tolera.
+
+**`gloam-eyed-queen` es character**: pese a ser figura cosmológica, el codex la trata como character en `characters.ts`. La decisión venía de antes de esta sesión.
+
+**Entrada `'tierras-intermedias'` con guiones (no `'tierras_intermedias'` ni `'lands-between'`)**: el slug refleja el nombre canon traducido del codex. Decisión consistente con la regla de terminología — cuando se traduce, el slug también se traduce (a diferencia de `roundtable-hold` que el codex deja en inglés).
+
+**Buckets con `RichInline[] | string`**: los buckets confirmed/inferred/theories/ambiguous mezclan strings planos y arrays con links. Cuando un item es solo prosa sin cross-links, va como string. Cuando lleva cross-links, va como array. No envolver en `{expansion, content}` salvo necesidad de marca SOTE (no aplica aquí, esta entrada es 100 % base).
+
+### Verificación
+- `npx tsc --noEmit` → limpio
+- `audit-cross-links.mts` → 0 broken refs (tras corregir 47 slugs en pasada inicial)
+- `auto-link-pass.mts --all` → 360 link insertions retroactivas, idempotente
+- `npm run build` → bundle initial 155 kB gz (+1 kB por entrada masiva), `lore-regions` 220 kB → 60 kB gz
+- 335 cross-links totales hacia `tierras-intermedias` distribuidos en `src/data/`
+
+### Gaps detectados al crear la entrada (cerrados en batch siguiente)
+Términos que aparecieron como `em()` en la entrada por falta de entry dedicada:
+- **Llama de Ruina** (Flame of Ruin) — fuerza cosmológica de los Gigantes, antagonista del Orden
+- **Señor Elden** (Elden Lord) — título cosmológico (Godfrey, Radagon, Tarnished elegible)
+- **Fundamentalismo del Orden Dorado** — doctrina específica de Radagon
+- **Demidioses** — categoría cosmológica de los hijos de Marika
+- **Tierras de los Cañaverales** (Land of Reeds) — región periférica fuera del continente
+
+Todos cerrados en batch posterior (ver sección siguiente). El gap restante `finales` como concept se mantiene como `em()` deliberado — la categoría meta ya tiene su ruta `/finales` y no necesita glossary entry duplicado.
+
+## 5 conceptos macro: gap-fill pre-DLC (sesión 2026-05-02)
+
+### Motivación
+Antes de empezar contenido SOTE, cerrar los 5 gaps detectados al crear Tierras Intermedias. Razón estratégica: dos de ellos (`flame-of-ruin`, `lands-of-reeds`) son particularmente expandidos por el DLC (Furnace Golems / Fire Knights de Messmer / samuráis Hornsent en Land of Shadow), por lo que tener entries base sólidas hace que las menciones SOTE se intercalen limpiamente en lugar de crear entries en mitad del trabajo DLC.
+
+### Entradas añadidas
+1. **`flame-of-ruin`** (concept, glossary) — Llama de Ruina. Fuerza cosmológica de los Gigantes del Fuego; cosmología rival pre-Orden; última brasa custodiada por gigante encadenado en Mountaintops; dispositivo simétrico del Árbol Áureo (lo único que el régimen conservó pero no eliminó es lo único que finalmente puede destruirlo).
+2. **`elden-lord`** (concept, glossary) — Señor Elden. Título cosmológico del consorte ritual de la divinidad portadora del Anillo Elden. Tres en eras conocidas (Placidusax, Godfrey, Tarnished candidato). Los seis finales del juego son seis configuraciones distintas.
+3. **`golden-order-fundamentalism`** (concept, glossary) — Doctrina reformada de Radagon que endureció el Orden Dorado en sistema cerrado de leyes puras. Introduce Law of Regression + Law of Causality. Goldmask es discípulo que la lleva a su conclusión lógica (Era de la Perfección).
+4. **`demidios`** (concept, glossary) — Categoría cosmológica de los hijos de Marika con sangre divina parcial. Cada uno hereda Gran Runa tras la Fractura. La Guerra de la Fractura es guerra civil cosmológica entre vasijas-fragmento que no pueden ni unirse ni separarse limpiamente.
+5. **`lands-of-reeds`** (region) — Las Tierras de los Cañaverales. Región periférica al este, samuráis (Okina). Cosmología paralela no vinculada al Anillo Elden. Documenta que el continente principal no es el cosmos entero.
+
+### Posicionamiento
+Las 4 entries de glossary se insertaron al final de `glossary.ts` bajo bloque `/* ═══════ Phase 15 — Conceptos macro detectados al crear Tierras Intermedias ═══════ */`. La entry de region se insertó antes de `fort-haight` para mantener orden cronológico/geográfico (no es subregión peripheral, es región externa).
+
+### Reemplazo de em() por link()
+9 ocurrencias de `em()` en la entrada `tierras-intermedias` reemplazadas por `link()` apuntando a las nuevas entries. Mantenido `em('finales')` como único `em()` deliberado restante.
+
+### Auto-link retroactivo
+125 inserciones distribuidas en 8 archivos de lore. Las menciones existentes de "Llama de Ruina", "Señor Elden", "Demidioses", "Fundamentalismo", "Tierras de los Cañaverales" en otras entradas ahora navegan a las nuevas entries.
+
+### Decisiones técnicas no obvias
+
+**`elden-lord` como concept, no character** — pese a que tres seres han ocupado el rol (Placidusax, Godfrey, potencialmente Tarnished), el título mismo es categoría cosmológica abstracta. Hacerlo character forzaría elegir un titular canónico, lo cual contradice la naturaleza dispositiva del título.
+
+**`demidios` en singular** — el slug usa singular (no `demidioses`) por consistencia con el patrón del resto del glossary (`tarnished`, `empyrean`, `omen-curse` todos en forma básica). El término `term` sí está en singular en la entry. La prosa puede usar plural porque el auto-link maneja ambas formas.
+
+**`lands-of-reeds` con guiones** — slug en inglés (no `tierras-de-los-cañaverales`). Razón: es topónimo de región externa al continente principal del codex; el codex ya deja en inglés otras regiones periféricas (`Castle Morne`, `Roundtable Hold`). Excepción al patrón "traducimos slugs cuando traducimos prosa".
+
+**`flame-of-ruin` con `fallbackType: 'flame'`** — el sistema tiene un fallback dedicado para Llama Frenética / temas ígneos. Reutilizado para distinguir visualmente esta entrada de cosmologías áureas o de muerte.
+
+**4 entries en glossary, 1 en regions** — decidido por naturaleza ontológica, no por importancia: Land of Reeds es lugar geográfico (region), los otros 4 son nociones cosmológicas (concept). El sistema soporta cross-links entre tipos sin fricción.
+
+### Verificación
+- `npx tsc --noEmit` → limpio
+- `audit-cross-links.mts` → 0 broken refs
+- `auto-link-pass.mts --all` → 125 link insertions retroactivas
+- `npm run build` → bundle initial 158 kB gz (+3 kB por las 5 entries macro), `lore-glossary` 308 kB → 80 kB gz
+- Total entradas: **381** (107 personajes + 68 facciones + **36 regiones** + **94 conceptos** + 70 eventos + 6 finales)
+
+### Estado pre-DLC
+Con esto cerrado, el codex está listo para empezar Phase 15: contenido SOTE. La arquitectura está probada (filtro a nivel block + entity + bucket item), las macro entries del juego base están todas presentes, los gaps conceptuales están cerrados, y el siguiente trabajo puede focalizarse exclusivamente en intercalar lore DLC sin tener que construir infrastructure colateral.
+
+## Auditoría de código + auditoría visual pre-DLC (sesión 2026-05-02, post-macro-entries)
+
+### Motivación
+Antes de empezar Phase 15 (contenido SOTE), barrer deuda técnica latente. Dos auditorías separadas: una técnica (bugs, redundancias, código muerto) y una visual/UX (light mode, mobile, a11y, content gaps).
+
+### Auditoría #1 — Código (24 fixes aplicados)
+
+**Bugs reales (5)**:
+- 3 violaciones de Rules-of-Hooks (early return ANTES de hooks): `EntityGraph.tsx`, `CategoryReadingPage.tsx`, `TagPage.tsx`. Patrón de fix: split en outer-router-gate + inner-content-component.
+- Timer leaks sin cleanup: `QuoteShareBubble.tsx` (asignación a ref faltante), `ExportButton.tsx` (sin useEffect cleanup).
+- `TimelineRibbon.tsx:184` Tailwind JIT no detectaba clases generadas dinámicamente con `${styles.bg.replace(...)}` — el border ni siquiera se aplicaba en producción.
+
+**Bugs latentes (5)**:
+- `TimelineRibbon` no respetaba el filtro SOTE (recibía `entries` en vez de `byExpansion(entries)`).
+- `useEntityFilter()` retornaba objeto nuevo cada render → rebuild de Fuse index en SearchPage cada render. Fix: `useMemo([hideSote])`.
+- `ShortcutsCheatsheet` sin focus trap (Tab escapaba). Fix: espejo del patrón de `GlossaryModal`.
+- Conflicto de scroll-lock entre `SidebarNav` y `ShortcutsCheatsheet` (cada uno guardaba/restauraba `body.style.overflow` independientemente). Fix: nuevo `src/lib/scrollLock.ts` con counted lock compartido.
+- Stale "Solo juego base" copy en footer y tagline contradiciendo arquitectura SOTE.
+
+**Cleanup (8)**:
+- Borrado completo: `src/lib/factionColors.ts` (171 líneas, sin imports), `docs/coverage-report.md`, `public/art/factions/zamor-heroes.jpg` (orphan).
+- Dead exports eliminados: `progressByType` (readingHistory), `unmarkRead`+`isRead` (readStatus), `getAllNotes` (notes), `useEntityImageMeta` (imageSources), `isVisible` non-hook (expansion).
+- Stale doc refs a `coveragePlan.ts` (archivo eliminado anteriormente) en agent.md, README.md.
+- "Modo Lectura global" en README.md:347 (feature removida hace sesiones).
+
+### Auditoría #2 — Visual / UX / contenido (36 fixes aplicados)
+
+**Imágenes (3)**:
+- 10 imágenes faltantes para macro concepts añadidos en sesiones previas (tierras-intermedias, lands-of-reeds, elden-lord, demidios, flame-of-ruin, storm-hawk-king, law-of-causality, blind-swordsman, golden-order-fundamentalism, stormhawk-deenh). Decisión: añadir entradas explícitas en `regionFallbacks` y `glossaryFallbacks` con SVG fallback temáticamente apropiado (golden-order/flame/cosmic/war/character) en vez de fetchear (las macro concepts son abstractas, no tienen art canónico de FromSoft). 3 imágenes de baja resolución documentadas para sesión dedicada de imágenes.
+
+**Light mode hardcoded colors (8)**:
+- Migración masiva de hex literales (`#c5a059`, `#0a0a08`) y palette Tailwind (`amber-300`, `blue-300`, `purple-300`) a CSS vars `rgb(var(--codex-X))` y palette `codex-*`. Archivos tocados: `index.css` (skip-to-content, focus-visible), `ScrollProgress.tsx`, `LandingPage.tsx` (radial gradients), `EndingsSection.tsx` (text-shadow theme-aware), `RoutesListPage.tsx` + `RouteDetailPage.tsx` (accentClasses), `TimelineRibbon.tsx` (eraStyles), `DetailLayout.tsx` (KnowledgeBox tone='moon').
+- Mapping de colores de rutas narrativas: `gold|order|dusk|frenzied|stars|despair` ahora apuntan a `codex-gold|gold-dim|ghost|flame|rot|crimson` respectivamente.
+- Mapping de eras del timeline: `pre-orden→codex-rot`, `orden-dorado→codex-gold`, `pre-fractura→codex-flame`, `fractura→codex-crimson`, `Tarnished→codex-ghost`.
+
+**Funcional / contenido (4)**:
+- `NotFoundPage` ahora tiene `usePageMeta` (antes el title quedaba con la página anterior).
+- `SectionHeader` con prop nueva `asPageHeading` que renderiza `<h1>` en vez de `<h2>`. Aplicado en las 6 list pages (CharacterSection, FactionSection, RegionSection, GlossarySection, TimelineSection, EndingsSection).
+- Botón visible "Atajos" en sidebar con kbd `?` que sintetiza `KeyboardEvent` (`new KeyboardEvent('keydown', { key: '?' })`) para abrir el cheatsheet — evita acoplar SidebarNav a ShortcutsCheatsheet.
+- LandingPage hero CTAs: segunda CTA "Ver Timeline" → "Rutas Narrativas" (`Compass` icon, ruta `/rutas`). Antes ambas apuntaban a `/timeline`.
+
+**Visual / mobile / a11y (13)**:
+- `SectionHero` tamaño aumentado: `h-44 md:h-56` → `h-56 md:h-72` (mejor cadencia visual con DetailLayout `aspect-[16/6]`).
+- `SectionHero` gradient bottom theme-aware (`var(--codex-black)`).
+- `TimelineEntryCard` añadido `whileHover y:-3` + multi-layer shadow (paridad con EntityCard).
+- `GenealogyPage` PersonCard: `min-w-[180px]` → `min-w-0 sm:min-w-[180px]` para evitar overflow horizontal en iPhone narrow.
+- `TimelineRibbon` controls: `flex-row` → `flex-col sm:flex-row` para no wrappear awkward.
+- `CertaintyBadge`: añadido `aria-label` + `<span class="sr-only">` con tooltip; color `text-amber-300` migrado a `text-codex-flame`.
+- `EraBadge size="compact"`: añadido `<span class="sr-only">` para que screen readers anuncien la era.
+
+**Polish (8)**:
+- `CategoryReadingPage:224` bug fix: `meta.label.split(' ')[0]` daba "Enciclopedia" para personajes; cambiado a `category.charAt(0).toUpperCase() + slice(1)` que da "Personajes".
+- `SidebarNav`: "70 capítulos" hardcoded → `${timelineData.length} capítulos`.
+- `RouteDetailPage:92`: removidas comillas dobles dentro del blockquote (doble frame).
+- `SearchPage`: añadido botón "Borrar búsqueda" cuando 0 resultados.
+- `EmptyState`: title `font-heading uppercase` (estilo header) → `font-subheading italic` (mensaje).
+- `ColorLegend:82`: `&gt;70 %` → `&gt;70%` (sin espacio).
+- `DetailLayout:340`: Clock badge `size={9}` → `size={11}` con `text-[10px]` para legibilidad.
+- `ScrollProgress` ahora se oculta en rutas de detalle (`useLocation()` + check de prefijo) para evitar solape con la barra per-article de DetailLayout.
+
+### Decisiones técnicas no obvias
+
+**Counted scroll lock** (`src/lib/scrollLock.ts`) — múltiples modales/drawers pueden lock body scroll independientemente sin pelearse por `body.style.overflow`. El lock solo se libera cuando el último acquirer llama su release function. Patrón previo: cada componente guardaba/restauraba `prevOverflow` por su cuenta — si dos consumidores lockaban simultáneamente, uno restauraba el `''` que el otro había guardado, dejando el body con scroll cuando debería estar bloqueado (o viceversa). El nuevo helper expone `acquireScrollLock(): () => void` que retorna release function — uso ergonómico desde `useEffect` cleanup.
+
+**Hook order: gate component pattern** — para componentes que early-return basado en URL params (CategoryReadingPage, TagPage), el patrón consistente del proyecto es: outer component recibe `useParams`, valida, retorna `<Navigate>` o `<InnerComponent params={...} />`. El inner component recibe params como props y todos los hooks se llaman incondicionalmente. Esto preserva Rules-of-Hooks sin perder la conveniencia del early return.
+
+**`?` synthetic keypress** — para añadir un botón visible que abra el cheatsheet sin acoplar SidebarNav a ShortcutsCheatsheet, el botón sintetiza `new KeyboardEvent('keydown', { key: '?' })`. El listener global de ShortcutsCheatsheet ya escucha la tecla `?`; sintetizarla es API-de-dispatch correcta, no hack. Previene que el cheatsheet tenga que exponer un imperative handle.
+
+**Theme-aware vía CSS vars `rgb(var(--codex-X) / <alpha>)`** — el patrón existente del proyecto para colores que deben adaptarse a light mode. Cualquier hex literal como `#c5a059` o `rgba(212,173,98,0.5)` es deuda técnica: fija el color a la variante dark. Migración a `rgb(var(--codex-gold))` o `rgb(var(--codex-gold) / 0.5)` resuelve. Inline glow effects con literal RGB son tolerables porque son efectos atmosféricos, no tokens semánticos — pero la regla por defecto es: si un color tiene significado semántico (border, text, bg), usar var.
+
+**Tailwind palette vs codex palette** — los colores Tailwind directos (`amber-300`, `blue-300`, `purple-300`) son dark-tuned por design system de Tailwind. En light mode (cream background) se desvanecen. La paleta `codex-*` definida con CSS vars sí adapta. Regla: para cualquier color UI que necesite distinción (era, accent, status), usar `codex-{gold|gold-dim|ghost|flame|rot|crimson|parchment}` — son los 7 tonos canónicos del proyecto.
+
+**Tailwind JIT y nombres de clase dinámicos** — Tailwind solo detecta clases que aparecen literalmente en el código fuente. `${styles.bg.replace('bg-', 'border-l border-')}` produce nombres reales pero el JIT no los ve, así que el CSS de esas clases nunca se genera. El border resultante no se aplica en producción aunque el className sea correcto en runtime. Solución: hardcodear todas las clases posibles en un map estático, o usar clases base + inline style para color dinámico.
+
+### Promoción de 5 macro concepts a deep-tier
+Los 5 macro concepts añadidos en la sesión anterior (`flame-of-ruin`, `elden-lord`, `golden-order-fundamentalism`, `demidios`, `lands-of-reeds`) tenían solo `term`+`definition`+`deepDive` (prosa básica). Sus páginas de detalle eran thinner que las vecinas. Esta sesión los promovió a deep-tier completo: cada uno tiene ahora `deepLore: RichBlock[]` con 5-6 secciones h2/h3, los 4 buckets `confirmed`/`inferred`/`theories`/`ambiguous`, y `relatedX` cross-links. Total: ~60 link insertions retroactivas tras `auto-link-pass.mts --all`.
+
+### Verificación
+- `npx tsc --noEmit` → limpio
+- `audit-cross-links.mts` → 0 broken refs
+- `auto-link-pass.mts --all` → 63 link insertions retroactivas
+- `npm run build` → limpio (initial 159 kB gz, +1 kB por deep-tier de 5 entries)
+- Dev server boot: `curl http://localhost:5173/conceptos/elden-lord` → 200 OK (mismo para flame-of-ruin, lands-of-reeds)
+- MANUAL_ALIASES sync: `diff scripts/auto-link-pass.mts vs src/lib/enrichText.ts` → solo diferencia comentario (no funcional)
+
+### Smoke test pendiente para el usuario
+El dev server boota y los nuevos endpoints retornan 200. Pero la verificación visual necesita inspección humana:
+- Light mode (toggle en sidebar): ScrollProgress visible, LandingPage hero readable, Routes accent colors readable, TimelineRibbon era dots con buen contraste, KnowledgeBox-moon legible
+- Mobile (DevTools responsive ≤375px): Genealogy cards no overflow, TimelineRibbon controls stack, h1 swap no rompe layouts
+- `?` shortcut: botón nuevo en sidebar abre cheatsheet, Tab cycla dentro del modal sin escapar
+- Detail pages: SectionHero más alto no rompe layouts, hero parallax sigue funcionando
+
+### Estado final pre-DLC
+Codex con 381 entradas + arquitectura SOTE + 0 broken refs + 0 deuda técnica conocida + light mode totalmente theme-aware. Listo para empezar Phase 15 — el siguiente trabajo es exclusivamente contenido DLC.

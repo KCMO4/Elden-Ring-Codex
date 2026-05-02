@@ -15,6 +15,13 @@ export type EntityType =
   | 'ending'
   | 'timeline'
 
+/** Marca la procedencia narrativa de una entrada o bloque. Default es 'base'
+   (juego base). Bloques marcados 'sote' pueden ser ocultados por el lector
+   vía toggle global. La marcación es a nivel de bloque/item, no de entidad
+   completa — Marika sigue teniendo una sola página, pero ciertas secciones
+   suyas pueden ser SOTE-only. */
+export type Expansion = 'base' | 'sote'
+
 export interface Tag {
   label: string
   category: 'personaje' | 'faccion' | 'region' | 'dios' | 'batalla' | 'concepto'
@@ -41,6 +48,7 @@ export type RichInline = string | RichLink | RichEmphasis
 export interface RichParagraph {
   type: 'paragraph'
   children: RichInline[]
+  expansion?: Expansion
 }
 
 export interface RichHeading {
@@ -48,18 +56,21 @@ export interface RichHeading {
   level: 2 | 3
   text: string
   id?: string
+  expansion?: Expansion
 }
 
 export interface RichQuote {
   type: 'quote'
   text: string
   attribution?: string
+  expansion?: Expansion
 }
 
 export interface RichList {
   type: 'list'
   ordered?: boolean
   items: RichInline[][]
+  expansion?: Expansion
 }
 
 export type RichBlock = RichParagraph | RichHeading | RichQuote | RichList
@@ -68,9 +79,13 @@ export type RichBlock = RichParagraph | RichHeading | RichQuote | RichList
 /* Shared "deep page" mixin                                    */
 /* ──────────────────────────────────────────────────────────── */
 
-/** A bucket-list entry: either a plain string or an array of RichInline nodes
-   (so individual facts can contain link() calls to other entities). */
-export type BucketItem = string | RichInline[]
+/** A bucket-list entry: either a plain string, an array of RichInline nodes
+   (so individual facts can contain link() calls), or a marked wrapper that
+   tags the item as belonging to a specific expansion (base / sote). */
+export type BucketItem =
+  | string
+  | RichInline[]
+  | { expansion?: Expansion; content: string | RichInline[] }
 
 /** A field that can be either plain prose or RichInline (with cross-links). */
 export type ProseField = string | RichInline[]
@@ -82,6 +97,10 @@ export interface DeepEntity {
   subtitle?: string
   /** ~1-2 sentence summary used on cards and SEO description */
   summary?: string
+  /** Marca la entrada como base (default) o expansión SOTE. Cuando el lector
+     activa el filtro 'base', las entidades marcadas 'sote' se ocultan de
+     listados, búsqueda y grafos relacionados. */
+  expansion?: Expansion
   /** The full ultra-detailed lore — array of RichBlocks */
   deepLore?: RichBlock[]
   /** Bullet lists of canonical knowledge buckets — items can be plain

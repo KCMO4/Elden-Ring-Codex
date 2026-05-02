@@ -25,7 +25,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'En una era cuya datación exacta se ha perdido, ',
         link('Placidusax', 'character', 'placidusax'),
-        ' fue Señor Elden de un régimen anterior al ',
+        ' fue ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' de un régimen anterior al ',
         link('Orden Dorado', 'concept', 'golden-order'),
         '. Su capital era ',
         link('Farum Azula', 'region', 'farum-azula'),
@@ -39,7 +41,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Crisol primigenio', 'concept', 'crucible'),
         ' como cosmología dominante en algunos relatos, o lo coexistía como capa paralela. Placidusax operaba con la autoridad de su dios externo: legislaba, regulaba, sostenía la coherencia cósmica. Cuando ese dios desapareció — sin batalla, sin testigo, sin sucesor inmediato — el régimen dragónico perdió eje. ',
         link('Farum Azula', 'region', 'farum-azula'),
-        ' quedó suspendida en su tormenta atemporal; los Antiguos Dragones se dispersaron por las Tierras Intermedias (',
+        ' quedó suspendida en su tormenta atemporal; los Antiguos Dragones se dispersaron por las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' (',
         link('Fortissax', 'character', 'fortissax'),
         ', ',
         link('Lansseax', 'character', 'lansseax'),
@@ -139,7 +143,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Nox', 'faction', 'nox'),
         ' bajo tierra. Pero las Lágrimas sobrevivieron en las ruinas. El ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' puede usarlas como espíritus invocables. Cada uso es eco residual del proyecto blasfemo más sofisticado de las Tierras Intermedias.'
+        ' puede usarlas como espíritus invocables. Cada uso es eco residual del proyecto blasfemo más sofisticado de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -214,7 +220,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Pieles de Dios', 'faction', 'pieles-de-dios'),
         ' fue acto político deliberado. Los apóstoles operaban como tribunal de la propia divinidad: si un dios excedía sus límites, la ',
         link('Llama Negra', 'concept', 'black-flame'),
-        ' podía corregirlo. Es el único momento documentado de las Tierras Intermedias donde una cosmología incluyó explícitamente mecanismos para asesinar a sus propios dioses.'
+        ' podía corregirlo. Es el único momento documentado de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' donde una cosmología incluyó explícitamente mecanismos para asesinar a sus propios dioses.'
       ),
       p(
         'La ',
@@ -298,7 +306,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'La derrota es uno de los pocos eventos cosmológicos de las Tierras Intermedias que se sostiene en evidencia material directa: la ',
+        'La derrota es uno de los pocos eventos cosmológicos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que se sostiene en evidencia material directa: la ',
         link('Hoja Negra de Maliketh', 'concept', 'maliketh-black-blade'),
         ' integra fragmentos de la propia ',
         link('Llama Negra', 'concept', 'black-flame'),
@@ -391,7 +401,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Anillo Elden', 'concept', 'elden-ring'),
         ' y cosida al alma de ',
         link('Maliketh', 'character', 'maliketh'),
-        '. Desde ese momento, los seres de las Tierras Intermedias dejaron de poder morir verdaderamente: sus cuerpos podían ser destruidos, pero sus almas regresaban al ',
+        '. Desde ese momento, los seres de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' dejaron de poder morir verdaderamente: sus cuerpos podían ser destruidos, pero sus almas regresaban al ',
         link('Árbol Áureo', 'concept', 'erdtree'),
         ' para ser recicladas.'
       ),
@@ -400,7 +412,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Árbol Áureo', 'concept', 'erdtree'),
         ' creció hasta convertirse en estructura cosmológica central. Su ',
         link('gracia', 'concept', 'grace'),
-        ' se distribuyó por las Tierras Intermedias como signo del régimen. La autoridad de ',
+        ' se distribuyó por las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como signo del régimen. La autoridad de ',
         link('Marika', 'character', 'marika'),
         ' quedó ungida por la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
@@ -670,7 +684,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Anillo Elden', 'concept', 'elden-ring'),
         '. La ',
         link('fractura', 'timeline', 'la-fractura'),
-        ' entera de las Tierras Intermedias empieza aquí.'
+        ' entera de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' empieza aquí.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -678,7 +694,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         ' es la rebelión cosmológica más radical del juego: rechazar la divinidad ofrecida ',
         em('matándose a sí misma'),
-        ' para evitar aceptarla. Ningún otro personaje de las Tierras Intermedias se atreve a este nivel de operación. La porcelana fría de su muñeca actual es el símbolo perfecto: ya no es de carne, ya no es susceptible al ciclo del ',
+        ' para evitar aceptarla. Ningún otro personaje de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' se atreve a este nivel de operación. La porcelana fría de su muñeca actual es el símbolo perfecto: ya no es de carne, ya no es susceptible al ciclo del ',
         link('Árbol Áureo', 'concept', 'erdtree'),
         '. Su libertad fue conquistada por amputación literal.'
       )
@@ -731,7 +749,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'El proceso fue inédito. Ningún demidiós había muerto parcialmente antes — la inmortalidad ritual del ',
+        'El proceso fue inédito. Ningún ',
+        link('demidiós', 'concept', 'demidios'),
+        ' había muerto parcialmente antes — la inmortalidad ritual del ',
         link('Árbol Áureo', 'concept', 'erdtree'),
         ' procesaba a los muertos completos, no a almas-cuerpo desincronizados. El cadáver de ',
         link('Godwyn', 'character', 'godwyn'),
@@ -739,7 +759,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Árbol Áureo', 'concept', 'erdtree'),
         '. Su descomposición eterna generó ',
         link('Deathroot', 'concept', 'deathroot'),
-        ', sustancia necrótica que se filtra por las raíces del árbol y emerge en cada cripta de las Tierras Intermedias animando cadáveres.'
+        ', sustancia necrótica que se filtra por las raíces del árbol y emerge en cada cripta de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' animando cadáveres.'
       ),
       p(
         'El cuerpo está fusionado con serpientes draconicídas, incluyendo el cuerpo onírico de ',
@@ -756,7 +778,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La existencia del Príncipe de la Muerte es prueba de que el sello de ',
         link('Marika', 'character', 'marika'),
-        ' fue estructuralmente fallido. La inmortalidad ritual no funciona cuando el alma muere antes del cuerpo. Cada cadáver reanimado de las Tierras Intermedias, cada criatura de los ',
+        ' fue estructuralmente fallido. La inmortalidad ritual no funciona cuando el alma muere antes del cuerpo. Cada cadáver reanimado de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', cada criatura de los ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
         ', cada filtración de Deathroot — todo es eco de este caso original. La ',
         link('Era del Crepúsculo', 'ending', 'duskborn'),
@@ -778,11 +802,11 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ['El cuerpo sin alma de ', link('Godwyn', 'character', 'godwyn'), ' se hundió en las raíces del ', link('Árbol Áureo', 'concept', 'erdtree'), ' tras la Noche'],
       'Su descomposición eterna genera Deathroot',
       ['Es el primer caso de ', link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death')],
-      'Fortissax está atrapado en la pesadilla del demidiós muerto'
+      ['Fortissax está atrapado en la pesadilla del ', link('demidiós', 'concept', 'demidios'), ' muerto']
     ],
     inferred: [
       ['El sello de la ', link('Muerte Predestinada', 'concept', 'destined-death'), ' hizo posible esta transformación monstruosa'],
-      'La Deathroot que infecta las Tierras Intermedias enteras emana de su cadáver',
+      ['La Deathroot que infecta las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' enteras emana de su cadáver'],
       'Conserva alguna forma de presencia onírica que afecta a Fortissax'
     ],
     theories: [
@@ -895,9 +919,13 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Cuando ',
         link('Marika', 'character', 'marika'),
-        ' rompió el Anillo, sus Grandes Runas se dispersaron entre sus hijos demidiós. Cada uno reclamó la suya y se lanzó a la guerra contra los demás. La ',
+        ' rompió el Anillo, sus Grandes Runas se dispersaron entre sus hijos ',
+        link('demidiós', 'concept', 'demidios'),
+        '. Cada uno reclamó la suya y se lanzó a la guerra contra los demás. La ',
         link('Guerra del Shattering', 'timeline', 'shattering-war'),
-        ' duró un período de duración no exacta pero suficiente para arruinar las Tierras Intermedias enteras.'
+        ' duró un período de duración no exacta pero suficiente para arruinar las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' enteras.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -946,31 +974,39 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'El estado de las Tierras Intermedias cuando llega el ',
+        'El estado de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' cuando llega el ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' es producto directo de esta guerra. Cada región arrasada, cada demidiós encerrado en su pequeño reino fallido, cada ',
+        ' es producto directo de esta guerra. Cada región arrasada, cada ',
+        link('demidiós', 'concept', 'demidios'),
+        ' encerrado en su pequeño reino fallido, cada ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' candidato improbable al trono — todo es consecuencia de que ningún demidiós pudo consolidar un régimen alternativo. La ausencia de vencedor es lo que abre el espacio para que un agente externo, como el ',
+        ' candidato improbable al trono — todo es consecuencia de que ningún ',
+        link('demidiós', 'concept', 'demidios'),
+        ' pudo consolidar un régimen alternativo. La ausencia de vencedor es lo que abre el espacio para que un agente externo, como el ',
         link('Tarnished', 'concept', 'tarnished'),
         ', pueda decidir el destino del cosmos.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La Guerra del Shattering encarna la imposibilidad estructural del régimen post-fractura. Cada demidiós cargó con un fragmento del Anillo y descubrió que el fragmento no le bastaba. Necesitaban a los demás — pero la enemistad mutua los hacía incompatibles. El régimen del ',
+        'La Guerra del Shattering encarna la imposibilidad estructural del régimen post-fractura. Cada ',
+        link('demidiós', 'concept', 'demidios'),
+        ' cargó con un fragmento del Anillo y descubrió que el fragmento no le bastaba. Necesitaban a los demás — pero la enemistad mutua los hacía incompatibles. El régimen del ',
         link('Orden Dorado', 'concept', 'golden-order'),
         ' se demostró indisoluble: solo unido funcionaba; dividido, no producía nada coherente.'
       )
     ],
     confirmed: [
       ['Los demidioses reclamaron Grandes Runas tras la ', link('fractura', 'timeline', 'la-fractura')],
-      'Ningún demidiós venció a los demás',
+      ['Ningún ', link('demidiós', 'concept', 'demidios'), ' venció a los demás'],
       ['La Batalla de Aeonia arruinó a ', link('Radahn', 'character', 'radahn'), ' y a ', link('Malenia', 'character', 'malenia'), ' simultáneamente'],
-      'El estado actual de las Tierras Intermedias son producto directo de esta guerra'
+      ['El estado actual de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' son producto directo de esta guerra']
     ],
     inferred: [
-      'La guerra duró siglos según el ritmo cosmológico de las Tierras Intermedias',
+      ['La guerra duró siglos según el ritmo cosmológico de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       ['La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' permitió que se desarrollase para producir un candidato externo (el ', link('Tarnished', 'concept', 'tarnished'), ')'],
-      'Cada demidiós comprendió individualmente que no podría vencer pero ninguno admitió la rendición'
+      ['Cada ', link('demidiós', 'concept', 'demidios'), ' comprendió individualmente que no podría vencer pero ninguno admitió la rendición']
     ],
     theories: [
       [link('Marika', 'character', 'marika'), ' orquestó la dispersión deliberadamente para producir el escenario actual'],
@@ -1047,7 +1083,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godwyn', 'character', 'godwyn'),
         ') o disperso (los demidioses Caria). Solo quedaba la línea menor de ',
         link('Godrick', 'character', 'godrick'),
-        '. La técnica del injerto es lo único que mantiene la apariencia. Sin ella, no habría demidiós Golden Lineage activo.'
+        '. La técnica del injerto es lo único que mantiene la apariencia. Sin ella, no habría ',
+        link('demidiós', 'concept', 'demidios'),
+        ' Golden Lineage activo.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -1118,7 +1156,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Mesa Redonda', 'concept', 'roundtable-hold'),
         ' (guardián fantasmal), y antes de Leyndell. Cada aparición es advertencia ritual: "',
         link('Tarnished', 'concept', 'tarnished'),
-        ', retírate". Su fraseología sugiere que conoce los nombres de los aspirantes y los considera blasfemos por la mera ambición de retomar el trono. La paradoja es total: el demidiós que el régimen desprecia es el guardián más eficaz de ese mismo régimen.'
+        ', retírate". Su fraseología sugiere que conoce los nombres de los aspirantes y los considera blasfemos por la mera ambición de retomar el trono. La paradoja es total: el ',
+        link('demidiós', 'concept', 'demidios'),
+        ' que el régimen desprecia es el guardián más eficaz de ese mismo régimen.'
       ),
       p(
         'Como Rey Omen, ',
@@ -1194,7 +1234,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Madre Informe', 'concept', 'formless-mother'),
         ', uno de los ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
-        ' de las Tierras Intermedias. El pacto le otorgó la ',
+        ' de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. El pacto le otorgó la ',
         link('Bloodflame', 'concept', 'bloodflame'),
         ' como magia personal y la autoridad teológica para construir un régimen alternativo.'
       ),
@@ -1315,7 +1357,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Rykard', 'character', 'rykard'),
         ' descendió al santuario y consintió la devoración. La fusión que resultó es físicamente monstruosa: cabeza humana en cuello de hombre saliendo del cuerpo descomunal de la serpiente, todo bañado en ',
         link('magma', 'character', 'magma-wyrm-makar'),
-        '. Conservó memoria, voluntad y autoridad — pero la frontera entre el demidiós y el dios devorador se ha disuelto.'
+        '. Conservó memoria, voluntad y autoridad — pero la frontera entre el ',
+        link('demidiós', 'concept', 'demidios'),
+        ' y el dios devorador se ha disuelto.'
       ),
       p(
         'Desde el ',
@@ -1415,7 +1459,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La devastación de ',
         link('Caelid', 'region', 'caelid'),
-        ' es la primera prueba pública de las Tierras Intermedias post-fractura de que un dios externo puede ocupar geografía a escala regional. Antes de Aeonia, los dioses externos operaban a través de cuerpos humanos individuales (',
+        ' es la primera prueba pública de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura de que un dios externo puede ocupar geografía a escala regional. Antes de Aeonia, los dioses externos operaban a través de cuerpos humanos individuales (',
         link('Marika', 'character', 'marika'),
         ', ',
         link('Mohg', 'character', 'mohg'),
@@ -1484,12 +1530,16 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         ' de regreso. Su contenido es ambiguo en tono: invita pero no perdona, llama pero no explica. La frase clave: "',
         link('Tarnished', 'concept', 'tarnished'),
-        ' de hueso, vagad por las tierras de las Tierras Intermedias". Es invocación, no rehabilitación.'
+        ' de hueso, vagad por las tierras de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '". Es invocación, no rehabilitación.'
       ),
       p(
         'Los ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' llegaron de las "tierras exteriores" — regiones más allá de las Tierras Intermedias donde habían reconstruido vidas durante el exilio. Sus ideologías eran heterogéneas: algunos buscaban restauración pura, otros venganza, otros conocimiento. ',
+        ' llegaron de las "tierras exteriores" — regiones más allá de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' donde habían reconstruido vidas durante el exilio. Sus ideologías eran heterogéneas: algunos buscaban restauración pura, otros venganza, otros conocimiento. ',
         link('Gideon Ofnir', 'character', 'gideon'),
         ', ',
         link('Goldmask', 'character', 'goldmask'),
@@ -1548,7 +1598,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     confirmed: [
       ['La ', link('gracia', 'concept', 'grace'), ' regresó a los ', link('Tarnished', 'concept', 'tarnished'), ' tras la ', link('fractura', 'timeline', 'la-fractura')],
       [link('Marika', 'character', 'marika'), ' dejó un discurso registrado convocándolos'],
-      'Llegaron de las "tierras exteriores" más allá de las Tierras Intermedias',
+      ['Llegaron de las "tierras exteriores" más allá de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Sus ideologías eran heterogéneas — Roundtable Hold permite coexistencia'
     ],
     inferred: [
@@ -1876,7 +1926,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Durante la era de la ',
         link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'),
-        ' y posiblemente antes, las Tierras Intermedias operaba con una cosmología funeraria autónoma: los muertos eran procesados a través de rituales específicos que devolvían sus almas al ciclo cosmológico sin pasar por el árbol oficial.'
+        ' y posiblemente antes, las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' operaba con una cosmología funeraria autónoma: los muertos eran procesados a través de rituales específicos que devolvían sus almas al ciclo cosmológico sin pasar por el árbol oficial.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -1951,7 +2003,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Los ',
         link('Nox', 'faction', 'nox'),
-        ' fueron una raza nocturna de las Tierras Intermedias que desarrolló una sofisticación cosmológica que el ',
+        ' fueron una raza nocturna de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que desarrolló una sofisticación cosmológica que el ',
         link('Orden Dorado', 'faction', 'orden-dorado'),
         ' nunca igualó. Construyeron ',
         link('Nokron', 'region', 'nokron'),
@@ -2132,7 +2186,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         '. ',
         link('Godfrey', 'character', 'godfrey'),
-        ' fue su Primer Señor Elden y consorte original; juntos engendraron a ',
+        ' fue su Primer ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' y consorte original; juntos engendraron a ',
         link('Godwyn', 'character', 'godwyn'),
         ' como primogénito amado.'
       ),
@@ -2249,9 +2305,13 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'El pacto fue concreto: ',
         link('Godwyn', 'character', 'godwyn'),
-        ' aprendería el rayo dragónico, Fortissax obtendría protección cosmológica como aliado del régimen dorado, y ambos cooperarían en la defensa de las Tierras Intermedias. La unión ritual generó el ',
+        ' aprendería el rayo dragónico, Fortissax obtendría protección cosmológica como aliado del régimen dorado, y ambos cooperarían en la defensa de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. La unión ritual generó el ',
         link('Culto del Antiguo Dragón', 'faction', 'ancient-dragon-cult'),
-        ' como secta sincrética. Sus rezos celebraban la unión — no la dominación — de demidiós y dragón. Su iconografía mezclaba relámpagos cervidos con escamas doradas.'
+        ' como secta sincrética. Sus rezos celebraban la unión — no la dominación — de ',
+        link('demidiós', 'concept', 'demidios'),
+        ' y dragón. Su iconografía mezclaba relámpagos cervidos con escamas doradas.'
       ),
       p(
         'Otras facciones del régimen consideraron este pacto debilidad. La purga oficial contra los dragones nunca se completó por la presencia de ',
@@ -2282,7 +2342,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Significado simbólico'),
       p(
         link('Godwyn', 'character', 'godwyn'),
-        ' y Fortissax representan la promesa cosmológica perdida de las Tierras Intermedias. Toda la historia post-fractura — la ',
+        ' y Fortissax representan la promesa cosmológica perdida de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Toda la historia post-fractura — la ',
         link('Guerra del Shattering', 'timeline', 'shattering-war'),
         ', los demidioses irreconciliables, la imposibilidad de un régimen alternativo coherente — se incuba en el momento exacto en que esta única reforma positiva fue eliminada. La pesadilla compartida bajo Deeproot Depths es el monumento subterráneo a lo que pudo haber sido.'
       )
@@ -2328,7 +2390,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' — ',
         link('Rennala', 'character', 'rennala'),
-        ' colapsó funcionalmente. No por debilidad: era la mayor hechicera viva de las Tierras Intermedias. Por dolor específico: el esposo amado se llevaba consigo el último vínculo cosmológico que la sostenía como persona.'
+        ' colapsó funcionalmente. No por debilidad: era la mayor hechicera viva de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Por dolor específico: el esposo amado se llevaba consigo el último vínculo cosmológico que la sostenía como persona.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -2349,7 +2413,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         ' pueden usar a ',
         link('Rennala', 'character', 'rennala'),
-        ' para reorganizar sus propios atributos. Ella canta sobre el cuerpo del aspirante y "lo renace" como una versión rediseñada de sí mismo. La mayor tragedia personal de las Tierras Intermedias se convirtió en la herramienta más útil para los aspirantes al trono.'
+        ' para reorganizar sus propios atributos. Ella canta sobre el cuerpo del aspirante y "lo renace" como una versión rediseñada de sí mismo. La mayor tragedia personal de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' se convirtió en la herramienta más útil para los aspirantes al trono.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -2432,7 +2498,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Resumen del evento'),
       p(
         link('Miquella', 'character', 'miquella'),
-        ' comprendió temprano que el cosmos de las Tierras Intermedias estaba estructuralmente contaminado por dioses externos parásitos. Su gemela ',
+        ' comprendió temprano que el cosmos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' estaba estructuralmente contaminado por dioses externos parásitos. Su gemela ',
         link('Malenia', 'character', 'malenia'),
         ' era prueba viviente: nacida con la ',
         link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
@@ -2468,7 +2536,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
         ' costó la vida a la mayoría — cuerpos de peregrinos congelados aún yacen en las nieves. Los que llegaron a ',
         link('Elphael', 'region', 'elphael'),
-        ' construyeron la primera ciudad utópica documentada de las Tierras Intermedias: una urbe donde nadie era rechazado por su forma.'
+        ' construyeron la primera ciudad utópica documentada de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': una urbe donde nadie era rechazado por su forma.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -2486,7 +2556,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'El proyecto del ',
         link('Haligtree', 'region', 'haligtree'),
-        ' encarna la única filosofía positiva de las Tierras Intermedias: no destruir el sistema, no reformarlo, sino curarlo de los dioses parásitos. Su fracaso es la respuesta más oscura del juego a la pregunta de si el régimen actual es reformable. Ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.'
+        ' encarna la única filosofía positiva de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': no destruir el sistema, no reformarlo, sino curarlo de los dioses parásitos. Su fracaso es la respuesta más oscura del juego a la pregunta de si el régimen actual es reformable. Ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.'
       )
     ],
     confirmed: [
@@ -2497,7 +2569,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ['La Podredumbre infectó el árbol tras la mutilación de ', link('Malenia', 'character', 'malenia')]
     ],
     inferred: [
-      'El proyecto era el más radical positivo de las Tierras Intermedias',
+      ['El proyecto era el más radical positivo de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'El éxodo a través del Snowfield costó muchas vidas',
       ['La utopía dependía estructuralmente de la protección de ', link('Malenia', 'character', 'malenia')]
     ],
@@ -2634,7 +2706,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ', Hoarah Loux se convirtió en ',
         link('Godfrey', 'character', 'godfrey'),
-        ' y conquistó las Tierras Intermedias enteras. Su campaña incluyó: la guerra contra los ',
+        ' y conquistó las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' enteras. Su campaña incluyó: la guerra contra los ',
         link('Gigantes del Fuego', 'faction', 'fire-giants'),
         ' en las Mountaintops; el sometimiento de los Hombres Tormenta del lejano norte; ataques contra los Antiguos Dragones residuales que sobrevivían a la era de Placidusax; el sometimiento de pueblos del ',
         link('Crisol', 'concept', 'crucible'),
@@ -2653,7 +2727,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La conquista de ',
         link('Godfrey', 'character', 'godfrey'),
-        ' definió la geografía política de las Tierras Intermedias actuales. Cada región del juego es escenario directo o indirecto de sus campañas. Su retorno final como espectro dorado ante el ',
+        ' definió la geografía política de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' actuales. Cada región del juego es escenario directo o indirecto de sus campañas. Su retorno final como espectro dorado ante el ',
         link('Tarnished', 'concept', 'tarnished'),
         ' completa el ciclo: el primer rey regresa a defender el trono que ya no le pertenece, y descarta a ',
         link('Serosh', 'character', 'serosh'),
@@ -2730,7 +2806,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Elphael', 'region', 'elphael'),
         ' a través del Snowfield, las Mountaintops, el Altus Plateau, hasta llegar a la frontera de ',
         link('Caelid', 'region', 'caelid'),
-        '. La marcha es una de las operaciones militares más documentadas de las Tierras Intermedias post-fractura.'
+        '. La marcha es una de las operaciones militares más documentadas de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura.'
       ),
       p(
         'Sus motivaciones eran múltiples y honestas: 1) restaurar el flujo cosmológico bloqueado, 2) probar su honor marcial contra el rival más respetado, 3) servir indirectamente al proyecto de ',
@@ -2759,7 +2837,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La marcha encarna la disonancia trágica de las Tierras Intermedias post-fractura: amor familiar que produce bloqueo cosmológico, honor marcial que requiere combate fratricida, fidelidad a un hermano dormido (',
+        'La marcha encarna la disonancia trágica de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura: amor familiar que produce bloqueo cosmológico, honor marcial que requiere combate fratricida, fidelidad a un hermano dormido (',
         link('Miquella', 'character', 'miquella'),
         ') que demanda matar al admirado adversario (',
         link('Radahn', 'character', 'radahn'),
@@ -2776,7 +2856,7 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
     inferred: [
       [link('Miquella', 'character', 'miquella'), ' estaba dormido durante la marcha — la decisión fue de ', link('Malenia', 'character', 'malenia'), ' sola'],
       [link('Caelid', 'region', 'caelid'), ' ya estaba en proceso de degeneración pre-Aeonia'],
-      'Ningún demidiós central apoyaba o se oponía abiertamente a la marcha'
+      ['Ningún ', link('demidiós', 'concept', 'demidios'), ' central apoyaba o se oponía abiertamente a la marcha']
     ],
     theories: [
       ['Sellen, antigua maestra de ', link('Radahn', 'character', 'radahn'), ', anticipó la confrontación pero no intervino'],
@@ -2812,7 +2892,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Malenia', 'character', 'malenia'),
         ' desde el ',
         link('Haligtree', 'concept', 'haligtree'),
-        '. Era el duelo cosmológico más esperado de las Tierras Intermedias: dos demidioses invictos cuyas técnicas eran radicalmente distintas (combate cuerpo a cuerpo vs gravedad de campo abierto) midiéndose mutuamente sin reservas.'
+        '. Era el duelo cosmológico más esperado de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': dos demidioses invictos cuyas técnicas eran radicalmente distintas (combate cuerpo a cuerpo vs gravedad de campo abierto) midiéndose mutuamente sin reservas.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -2846,7 +2928,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Causas y consecuencias'),
       p(
-        'La Batalla de Aeonia es uno de los eventos más consecuentes de las Tierras Intermedias post-fractura. Arruinó ',
+        'La Batalla de Aeonia es uno de los eventos más consecuentes de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura. Arruinó ',
         link('Caelid', 'region', 'caelid'),
         ' permanentemente. Generó las hijas escarlatas (incluyendo a la única humana, ',
         link('Millicent', 'character', 'millicent'),
@@ -2868,7 +2952,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La Batalla encarna la imposibilidad ética de las Tierras Intermedias post-fractura. Dos guerreros honorables se enfrentaron sin animosidad personal y produjeron una catástrofe regional. La devoción de ',
+        'La Batalla encarna la imposibilidad ética de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura. Dos guerreros honorables se enfrentaron sin animosidad personal y produjeron una catástrofe regional. La devoción de ',
         link('Malenia', 'character', 'malenia'),
         ' a ',
         link('Miquella', 'character', 'miquella'),
@@ -2920,19 +3006,25 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
         ' en la Batalla de Aeonia, los ',
         link('Redmanes', 'faction', 'redmanes'),
-        ' supervivientes diseñaron una solución ritual sin precedentes en las Tierras Intermedias: invitar a guerreros legendarios a derrotar a su general arruinado, devolviéndole la dignidad de morir en combate y no por envenenamiento crónico.'
+        ' supervivientes diseñaron una solución ritual sin precedentes en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': invitar a guerreros legendarios a derrotar a su general arruinado, devolviéndole la dignidad de morir en combate y no por envenenamiento crónico.'
       ),
       h(2, 'Historia detallada'),
       p(
         link('Jerren', 'character', 'jerren'),
         ', maestro de armas y posiblemente amante histórico de ',
         link('Sellen', 'character', 'sellen'),
-        ', oficia el Festival. Es la única figura de las Tierras Intermedias con autoridad ritual para coordinar lo que es, técnicamente, una operación de eutanasia honorífica colectiva. La sede es ',
+        ', oficia el Festival. Es la única figura de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' con autoridad ritual para coordinar lo que es, técnicamente, una operación de eutanasia honorífica colectiva. La sede es ',
         link('Castillo Redmane', 'region', 'redmane-castle'),
         '.'
       ),
       p(
-        'Los combatientes invitados llegaron de todas las Tierras Intermedias: ',
+        'Los combatientes invitados llegaron de todas las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': ',
         link('Alexander', 'character', 'alexander'),
         ' (la Olla Guerrera), ',
         link('Patches', 'character', 'patches'),
@@ -2969,9 +3061,13 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El Festival es uno de los pocos rituales benéficos de las Tierras Intermedias post-fractura. No es exterminio, no es purga, no es venganza — es reconocimiento. Los ',
+        'El Festival es uno de los pocos rituales benéficos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura. No es exterminio, no es purga, no es venganza — es reconocimiento. Los ',
         link('Redmanes', 'faction', 'redmanes'),
-        ' son los únicos seguidores de las Tierras Intermedias que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de ',
+        ' son los únicos seguidores de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de ',
         link('Morgott', 'character', 'morgott'),
         ' a ',
         link('Marika', 'character', 'marika'),
@@ -3085,11 +3181,15 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Malenia', 'character', 'malenia'),
         ' espera en Elphael un retorno que nunca llegará — capullo vacío como única compañía. La utopía del ',
         link('Haligtree', 'region', 'haligtree'),
-        ' se infectó por la Podredumbre residual y los Albinaurics enloquecieron. La única filosofía positiva de las Tierras Intermedias se cancela técnicamente.'
+        ' se infectó por la Podredumbre residual y los Albinaurics enloquecieron. La única filosofía positiva de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' se cancela técnicamente.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El secuestro encarna la lógica depredadora de las Tierras Intermedias: ningún proyecto curativo sobrevive sin protección armada, y la protección armada eventualmente se contamina. ',
+        'El secuestro encarna la lógica depredadora de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': ningún proyecto curativo sobrevive sin protección armada, y la protección armada eventualmente se contamina. ',
         link('Mohg', 'character', 'mohg'),
         ' no destruyó el ',
         link('Haligtree', 'concept', 'haligtree'),
@@ -3166,7 +3266,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Melina', 'character', 'melina'),
         ' ardió como antorcha portadora; el ',
         link('Árbol Áureo', 'concept', 'erdtree'),
-        ' entero se incendió en respuesta. La era dorada ardió simultáneamente: cada raíz del árbol, cada altar dedicado, cada estructura ritual del régimen. La quema duró días según el ritmo cosmológico de las Tierras Intermedias. Cuando terminó, el camino al trono Elden estaba abierto — pero todo el régimen había sido reducido a cenizas doradas.'
+        ' entero se incendió en respuesta. La era dorada ardió simultáneamente: cada raíz del árbol, cada altar dedicado, cada estructura ritual del régimen. La quema duró días según el ritmo cosmológico de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Cuando terminó, el camino al trono Elden estaba abierto — pero todo el régimen había sido reducido a cenizas doradas.'
       ),
       h(2, 'Causas y consecuencias'),
       p(
@@ -3256,7 +3358,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Cuando cae, la ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
-        ' vuelve a fluir parcialmente al cosmos. Los seres de las Tierras Intermedias pueden volver a morir verdaderamente — al menos en algunos casos. La fuga es parcial, no total: el sello completo solo se cierra si ',
+        ' vuelve a fluir parcialmente al cosmos. Los seres de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' pueden volver a morir verdaderamente — al menos en algunos casos. La fuga es parcial, no total: el sello completo solo se cierra si ',
         link('Fia', 'character', 'fia'),
         ' entrega la Runa Mendaz al ',
         link('Anillo Elden', 'concept', 'elden-ring'),
@@ -3344,7 +3448,9 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Leyndell', 'region', 'leyndell'),
         '. ',
         link('Godfrey', 'character', 'godfrey'),
-        ' aparece como espectro dorado, defendiendo el trono que ya no le pertenece. Su retorno es excepcional cosmológicamente: ningún demidiós actual está dispuesto a defender el régimen — solo el ancestro original, exiliado hace eones, aceptaría volver.'
+        ' aparece como espectro dorado, defendiendo el trono que ya no le pertenece. Su retorno es excepcional cosmológicamente: ningún ',
+        link('demidiós', 'concept', 'demidios'),
+        ' actual está dispuesto a defender el régimen — solo el ancestro original, exiliado hace eones, aceptaría volver.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -3356,10 +3462,14 @@ export const timelineDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' personalmente — ',
         link('Marika', 'character', 'marika'),
-        ' ya está rota dentro del árbol quemado. Su lealtad es estructural: a la idea del Señor Elden, al rol cosmológico, al deber del primer rey.'
+        ' ya está rota dentro del árbol quemado. Su lealtad es estructural: a la idea del ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ', al rol cosmológico, al deber del primer rey.'
       ),
       p(
-        'Pelea en dos formas. Primera: el rey blindado, con armadura completa de Señor Elden, hacha gigante, y técnica marcial refinada por eras. Su ',
+        'Pelea en dos formas. Primera: el rey blindado, con armadura completa de ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ', hacha gigante, y técnica marcial refinada por eras. Su ',
         link('Stormhawk Deenh', 'character', 'stormhawk-deenh'),
         ' todavía obedece. Su Stomp todavía sacude el suelo. Es el rey civilizado peleando como rey.'
       ),

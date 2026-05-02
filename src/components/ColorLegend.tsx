@@ -79,7 +79,7 @@ export function ColorLegend() {
                 </span>
                 <span className="text-codex-parchment-dim flex items-center gap-1.5">
                   <span className="text-codex-gold">✓</span>
-                  Entrada cuyo contenido ya recorriste (&gt;70 %)
+                  Entrada cuyo contenido ya recorriste (&gt;70%)
                 </span>
               </div>
 

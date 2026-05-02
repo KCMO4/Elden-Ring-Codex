@@ -501,7 +501,7 @@ function PersonCard({ person, visibleStatuses, emphasized }: CardProps) {
 
   const inner = (
     <div
-      className={`parchment-panel p-3 transition-all duration-300 group min-w-[180px] max-w-[230px]
+      className={`parchment-panel p-3 transition-all duration-300 group min-w-0 sm:min-w-[180px] max-w-full sm:max-w-[230px] flex-1 sm:flex-initial
         ${dimmed ? 'opacity-25 grayscale' : ''}
         ${emphasized
           ? 'border-codex-gold/55 shadow-[0_0_18px_rgba(212,173,98,0.18)]'

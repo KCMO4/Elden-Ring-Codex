@@ -20,6 +20,7 @@ export function TimelineEntryCard({ entry, index = 0 }: Props) {
       layout
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -3 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: (index % 8) * 0.05, ease: [0.22, 1, 0.36, 1], layout: { duration: 0.3 } }}
       className="relative"
@@ -28,7 +29,8 @@ export function TimelineEntryCard({ entry, index = 0 }: Props) {
       <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-codex-gold/40 via-codex-gold-dim/20 to-transparent ml-4 hidden md:block" />
 
       <div className="parchment-panel p-6 md:p-8 md:ml-10 relative transition-all duration-300
-                      hover:border-codex-gold-dim/50 hover:shadow-[0_0_20px_rgba(197,160,89,0.08)]">
+                      hover:border-codex-gold/60
+                      hover:shadow-[0_0_0_1px_rgba(197,160,89,0.25),0_8px_30px_rgba(197,160,89,0.18),0_0_60px_rgba(197,160,89,0.08)]">
         {/* Timeline dot */}
         <div className="absolute -left-6 top-8 hidden md:flex items-center justify-center">
           <div className="w-3 h-3 rounded-full bg-codex-gold-dim border border-codex-gold/50 shadow-[0_0_8px_rgba(197,160,89,0.4)]" />

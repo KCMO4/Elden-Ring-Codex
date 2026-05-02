@@ -23,7 +23,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Península Llorosa', 'region', 'peninsula-llorosa'),
         '. Era sede de la Casa Volmer, dinastía noble menor del ',
         link('Orden Dorado', 'concept', 'golden-order'),
-        ' dedicada al gobierno de la región más meridional de las Tierras Intermedias. Sus paredes hoy están manchadas de sangre Misbegotten y aristocrática por igual.'
+        ' dedicada al gobierno de la región más meridional de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Sus paredes hoy están manchadas de sangre Misbegotten y aristocrática por igual.'
       ),
       h(2, 'Historia detallada'),
       p(
@@ -203,7 +205,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       p(
         link('Seluvis', 'character', 'seluvis'),
-        ' opera su laboratorio de muñecas en su propia torre: colección espeluznante de figuras de mujeres notables de las Tierras Intermedias transformadas en marionetas. Su intento más siniestro es agregar a la propia ',
+        ' opera su laboratorio de muñecas en su propia torre: colección espeluznante de figuras de mujeres notables de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' transformadas en marionetas. Su intento más siniestro es agregar a la propia ',
         link('Ranni', 'character', 'ranni'),
         ' a la colección — traición silenciada que termina con su muerte misteriosa, probablemente envenenado por Iji.'
       ),
@@ -285,7 +289,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen del lugar'),
       p(
-        'Siofra es uno de los dos grandes ríos subterráneos de las Tierras Intermedias (el otro es ',
+        'Siofra es uno de los dos grandes ríos subterráneos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' (el otro es ',
         link('Ainsel', 'region', 'ainsel-river'),
         '). Su cielo es falso: estrellas pintadas o constelaciones residuales de una era cosmológica anterior. El río corre bajo ',
         link('Caelid', 'region', 'caelid'),
@@ -600,7 +606,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Redmane Castle es la imagen del honor militar llevado a su consecuencia ética más extrema. La fortaleza no defiende ya — preside una ceremonia. Los ',
         link('Redmanes', 'faction', 'redmanes'),
-        ' son los únicos seguidores de las Tierras Intermedias que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de ',
+        ' son los únicos seguidores de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que comprenden que servir a un líder corrompido implica organizar su muerte. Es el opuesto exacto de la lealtad de ',
         link('Morgott', 'character', 'morgott'),
         ' a ',
         link('Marika', 'character', 'marika'),
@@ -695,7 +703,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Tragedia oculta'),
       p(
-        'Bajo la capital más bella de las Tierras Intermedias crece la cárcel más bestial. Cada gota de ',
+        'Bajo la capital más bella de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' crece la cárcel más bestial. Cada gota de ',
         link('gracia', 'concept', 'grace'),
         ' dorada que cae sobre Leyndell tiene su contrapartida en el subsuelo: cada noble que rece en el templo dorado pisa, sin saberlo, sobre Omens encarcelados que llevan su misma sangre. La hipocresía no es excepción ni anomalía — es estructura.'
       ),
@@ -971,13 +981,17 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La utopía falló no por enemigo externo sino por su propia protectora. Cada Floración Escarlata residual de ',
         link('Malenia', 'character', 'malenia'),
-        ' infecta lentamente al árbol que ella misma debería defender. Los Albinaurics carmesíes son ex-refugiados consumidos por la podredumbre que su santuario no pudo detener. Es la prueba más honesta de las Tierras Intermedias de que ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.'
+        ' infecta lentamente al árbol que ella misma debería defender. Los Albinaurics carmesíes son ex-refugiados consumidos por la podredumbre que su santuario no pudo detener. Es la prueba más honesta de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' de que ningún proyecto curativo sobrevive sin protección armada — y la protección armada eventualmente se contamina.'
       ),
       h(2, 'Significado simbólico'),
       p(
         'Elphael es el monumento del juego al fracaso del único proyecto positivo. ',
         link('Miquella', 'character', 'miquella'),
-        ' quiso curar al cosmos; lo intentó genuinamente; trabajó durante eras; construyó arquitectura física para sostenerlo; entrenó a su gemela como espada protectora. Falló. La razón no fue maldad: fue la lógica estructural de las Tierras Intermedias. Ningún cosmos depredador permite proyectos curativos a largo plazo. El fracaso del ',
+        ' quiso curar al cosmos; lo intentó genuinamente; trabajó durante eras; construyó arquitectura física para sostenerlo; entrenó a su gemela como espada protectora. Falló. La razón no fue maldad: fue la lógica estructural de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Ningún cosmos depredador permite proyectos curativos a largo plazo. El fracaso del ',
         link('Haligtree', 'region', 'haligtree'),
         ' es la respuesta más oscura del juego a la pregunta de si el régimen actual es reformable.'
       )
@@ -1062,7 +1076,9 @@ export const regionsDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Dragonbarrow es la cápsula del tiempo de las Tierras Intermedias. Aquí sobreviven prácticas, criaturas y rituales que el ',
+        'Dragonbarrow es la cápsula del tiempo de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Aquí sobreviven prácticas, criaturas y rituales que el ',
         link('Orden Dorado', 'faction', 'orden-dorado'),
         ' intentó borrar pero no pudo. Combatir a sus dragones es destruir reliquias; alimentar la ',
         link('Comunión Dracónica', 'faction', 'dragon-communion'),

@@ -8,6 +8,7 @@ import { CertaintyBadge } from '../CertaintyBadge'
 import { EraBadge } from '../EraBadge'
 import { TagPill } from '../TagPill'
 import { RichLoreText, extractHeadings, InlineProse } from '../RichLoreText'
+import { useExpansion } from '../../lib/expansion'
 import { RelatedReadings } from '../RelatedReadings'
 import { NoteEditor } from '../NoteEditor'
 import { RuneOrnament } from '../illustrations/RuneSeparator'
@@ -336,9 +337,9 @@ export function DetailLayout({
                 <span
                   title="Tiempo estimado de lectura"
                   className="inline-flex items-center gap-1.5 rounded-sm border border-codex-gold-dim/35 bg-codex-black/30 px-1.5 py-0.5
-                             font-heading text-[9px] tracking-wider uppercase text-codex-gold-dim/90"
+                             font-heading text-[10px] tracking-wider uppercase text-codex-gold-dim/90"
                 >
-                  <Clock size={9} aria-hidden />
+                  <Clock size={11} aria-hidden />
                   {readingMin} min
                 </span>
                 {bookmark && <BookmarkButton type={bookmark.type} slug={bookmark.slug} />}
@@ -606,24 +607,52 @@ function KnowledgeBox({
   items: BucketItem[]
   selfId?: string
 }) {
-  const toneClasses = {
-    gold:      'border-codex-gold/30 text-codex-gold',
-    parchment: 'border-codex-gold-dim/30 text-codex-parchment',
-    rot:       'border-codex-rot/40 text-codex-rot',
-    moon:      'border-blue-400/30 text-blue-300',
+  const { hideSote } = useExpansion()
+
+  const toneBorderClass = {
+    gold:      'border-codex-gold/30',
+    parchment: 'border-codex-gold-dim/30',
+    rot:       'border-codex-rot/40',
+    moon:      'border-codex-ghost/40',
+  }[tone]
+  const toneLabelClass = {
+    gold:      'text-codex-gold',
+    parchment: 'text-codex-parchment',
+    rot:       'text-codex-rot',
+    moon:      'text-codex-ghost',
   }[tone]
 
+  /* Filter out items wrapped with `expansion: 'sote'` when the reader has
+     opted to hide DLC content. Plain string / RichInline[] items are
+     always considered base. */
+  const visible = items.filter((it) => {
+    if (typeof it === 'string' || Array.isArray(it)) return true
+    return !hideSote || it.expansion !== 'sote'
+  })
+  const hiddenCount = items.length - visible.length
+
+  if (visible.length === 0) return null
+
   return (
-    <div className={`parchment-panel p-4 border ${toneClasses}`}>
-      <p className={`font-heading text-xs tracking-wider uppercase mb-2 ${toneClasses.split(' ')[1]}`}>{label}</p>
+    <div className={`parchment-panel p-4 border ${toneBorderClass} ${toneLabelClass}`}>
+      <p className={`font-heading text-xs tracking-wider uppercase mb-2 ${toneLabelClass}`}>{label}</p>
       <ul className="space-y-1.5">
-        {items.map((t, i) => (
-          <li key={i} className="font-body text-sm text-codex-parchment-dim leading-relaxed flex gap-2">
-            <span className="text-codex-gold-dim mt-0.5 shrink-0 text-[10px]">◆</span>
-            <span><InlineProse node={t} selfId={selfId} /></span>
-          </li>
-        ))}
+        {visible.map((t, i) => {
+          /* Unwrap the marked variant to reuse InlineProse on its content. */
+          const node = (typeof t === 'string' || Array.isArray(t)) ? t : t.content
+          return (
+            <li key={i} className="font-body text-sm text-codex-parchment-dim leading-relaxed flex gap-2">
+              <span className="text-codex-gold-dim mt-0.5 shrink-0 text-[10px]">◆</span>
+              <span><InlineProse node={node} selfId={selfId} /></span>
+            </li>
+          )
+        })}
       </ul>
+      {hideSote && hiddenCount > 0 && (
+        <p className="font-body text-[10px] text-codex-parchment-dim/45 italic mt-2 pt-2 border-t border-codex-gold-dim/15">
+          + {hiddenCount} oculto{hiddenCount === 1 ? '' : 's'} (SOTE)
+        </p>
+      )}
     </div>
   )
 }

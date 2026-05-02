@@ -67,11 +67,3 @@ export function useEntityImage(
   return entry[kind] || entry.image || null
 }
 
-export function useEntityImageMeta(
-  category: ImageCategory,
-  id: string | undefined | null
-): ImageEntry | null {
-  const sources = useImageSources()
-  if (!id) return null
-  return sources[category]?.[id] ?? null
-}

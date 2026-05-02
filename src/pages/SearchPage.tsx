@@ -11,6 +11,10 @@ import { endingsData } from '../data/endings'
 import { pathFor } from '../data/lookups'
 import { flattenLore, extractSnippet } from '../lib/deepText'
 import { parseSearchQuery } from '../lib/searchQuery'
+import { useEntityFilter } from '../lib/expansion'
+import type { Certainty, Character, Region, Faction, GlossaryEntry, TimelineEntry, Ending } from '../data/types'
+
+type SearchableEntity = { certainty?: Certainty; tags?: string[] }
 
 type GroupKey = 'characters' | 'regions' | 'factions' | 'concepts' | 'timeline' | 'endings'
 
@@ -94,34 +98,37 @@ export function SearchPage() {
   /* Parse the query into free text + facet filters (tag:X cert:Y type:Z). */
   const parsed = useMemo(() => parseSearchQuery(query), [query])
   const q = parsed.text.trim().toLowerCase()
+  const { visible: byExpansion } = useEntityFilter()
 
-  /* Build search index once (memoized): each entity gets shallow text + flattened deep lore. */
+  /* Build search index once (memoized): each entity gets shallow text + flattened deep lore.
+     The base set is filtered by the expansion toggle so SOTE-only entries don't pollute
+     base-mode searches. */
   const index = useMemo(() => ({
-    characters: charactersData.map((c) => ({
+    characters: byExpansion(charactersData).map((c) => ({
       e: c, shallow: `${c.name} ${c.role} ${c.faction} ${c.region}`.toLowerCase(),
       deep: flattenLore(c),
     })),
-    regions: regionsData.map((r) => ({
+    regions: byExpansion(regionsData).map((r) => ({
       e: r, shallow: `${r.name} ${r.historical} ${r.mainFaction}`.toLowerCase(),
       deep: flattenLore(r),
     })),
-    factions: factionsData.map((f) => ({
+    factions: byExpansion(factionsData).map((f) => ({
       e: f, shallow: `${f.name} ${f.what} ${f.belief}`.toLowerCase(),
       deep: flattenLore(f),
     })),
-    concepts: glossaryData.map((g) => ({
+    concepts: byExpansion(glossaryData).map((g) => ({
       e: g, shallow: `${g.term} ${g.definition} ${g.deepDive ?? ''}`.toLowerCase(),
       deep: flattenLore(g),
     })),
-    timeline: timelineData.map((t) => ({
+    timeline: byExpansion(timelineData).map((t) => ({
       e: t, shallow: `${t.title} ${t.chapter} ${t.lore.join(' ')}`.toLowerCase(),
       deep: flattenLore(t),
     })),
-    endings: endingsData.map((en) => ({
+    endings: byExpansion(endingsData).map((en) => ({
       e: en, shallow: `${en.name} ${en.description} ${en.whoLeads}`.toLowerCase(),
       deep: '',
     })),
-  }), [])
+  }), [byExpansion])
 
   /* Fuse instances per group — provides typo tolerance over name fields.
      Threshold 0.32 ≈ tolerates 1-2 char typos in short names ("malena" → Malenia). */
@@ -140,28 +147,30 @@ export function SearchPage() {
     const hasFacet = !!(parsed.tag || parsed.certainty || parsed.type)
     if (q.length < 2 && !hasFacet) return [] as { key: GroupKey; results: Result[] }[]
 
-    const passFacets = (e: any): boolean => {
+    /* Each entity type carries `certainty` and (sometimes) `tags`; we only
+       read those two fields here, so accept anything structurally compatible. */
+    const passFacets = (e: SearchableEntity): boolean => {
       if (parsed.certainty && e.certainty !== parsed.certainty) return false
       if (parsed.tag) {
-        const tags = (e.tags ?? []) as string[]
+        const tags = e.tags ?? []
         const hit = tags.some((t) => t.toLowerCase().includes(parsed.tag!))
         if (!hit) return false
       }
       return true
     }
 
-    const matchOne = <T extends { e: any; shallow: string; deep: string }>(
+    const matchOne = <E, T extends { e: E; shallow: string; deep: string }>(
       items: T[],
       fuse: Fuse<T>,
-      pathFn: (e: any) => string,
-      labelFn: (e: any) => string,
-      subFn: (e: any) => string | undefined,
+      pathFn: (e: E) => string,
+      labelFn: (e: E) => string,
+      subFn: (e: E) => string | undefined,
     ): Result[] => {
       const seen = new Set<string>()
       const out: Result[] = []
 
       const push = (it: T, snippet?: string) => {
-        if (!passFacets(it.e)) return
+        if (!passFacets(it.e as SearchableEntity)) return
         const to = pathFn(it.e)
         if (seen.has(to)) return
         seen.add(to)
@@ -187,13 +196,15 @@ export function SearchPage() {
       return out
     }
 
+    /* Annotate each arrow's param with the actual entity type so TS infers E
+       widely (full Character vs. narrow Pick<Character, 'id'|'slug'>). */
     const groups = [
-      { key: 'characters' as const, results: matchOne(index.characters, fuses.characters, pathFor.character, (e) => e.name, (e) => e.role) },
-      { key: 'regions'    as const, results: matchOne(index.regions,    fuses.regions,    pathFor.region,    (e) => e.name, (e) => e.mainFaction) },
-      { key: 'factions'   as const, results: matchOne(index.factions,   fuses.factions,   pathFor.faction,   (e) => e.name, (e) => e.what.slice(0, 80) + '…') },
-      { key: 'concepts'   as const, results: matchOne(index.concepts,   fuses.concepts,   pathFor.concept,   (e) => e.term, (e) => e.definition.slice(0, 80) + '…') },
-      { key: 'timeline'   as const, results: matchOne(index.timeline,   fuses.timeline,   pathFor.timeline,  (e) => e.title, (e) => e.chapter) },
-      { key: 'endings'    as const, results: matchOne(index.endings,    fuses.endings,    pathFor.ending,    (e) => e.name, (e) => e.whoLeads) },
+      { key: 'characters' as const, results: matchOne<Character, typeof index.characters[number]>(index.characters, fuses.characters, (e) => pathFor.character(e), (e) => e.name, (e) => e.role) },
+      { key: 'regions'    as const, results: matchOne<Region, typeof index.regions[number]>(index.regions, fuses.regions, (e) => pathFor.region(e), (e) => e.name, (e) => e.mainFaction) },
+      { key: 'factions'   as const, results: matchOne<Faction, typeof index.factions[number]>(index.factions, fuses.factions, (e) => pathFor.faction(e), (e) => e.name, (e) => e.what.slice(0, 80) + '…') },
+      { key: 'concepts'   as const, results: matchOne<GlossaryEntry, typeof index.concepts[number]>(index.concepts, fuses.concepts, (e) => pathFor.concept(e), (e) => e.term, (e) => e.definition.slice(0, 80) + '…') },
+      { key: 'timeline'   as const, results: matchOne<TimelineEntry, typeof index.timeline[number]>(index.timeline, fuses.timeline, (e) => pathFor.timeline(e), (e) => e.title, (e) => e.chapter) },
+      { key: 'endings'    as const, results: matchOne<Ending, typeof index.endings[number]>(index.endings, fuses.endings, (e) => pathFor.ending(e), (e) => e.name, (e) => e.whoLeads) },
     ]
 
     /* If a `type:` facet is set, restrict to that group */
@@ -284,7 +295,17 @@ export function SearchPage() {
         {q.length >= 2 && total === 0 && (
           <div className="parchment-panel p-12 text-center max-w-2xl">
             <p className="font-heading text-codex-gold-dim tracking-wider">Sin resultados</p>
-            <p className="text-sm text-codex-parchment-dim mt-2">Intenta con otro término o reduce la cadena</p>
+            <p className="text-sm text-codex-parchment-dim mt-2 mb-5">Intenta con otro término o reduce la cadena</p>
+            <button
+              type="button"
+              onClick={() => setQuery('')}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm
+                         bg-codex-gold/10 border border-codex-gold/40 text-codex-gold
+                         font-heading text-xs tracking-wider uppercase
+                         hover:bg-codex-gold/20 transition-all"
+            >
+              Borrar búsqueda
+            </button>
           </div>
         )}
 

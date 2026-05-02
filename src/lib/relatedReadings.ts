@@ -64,8 +64,8 @@ export function findRelatedReadings(
   const consider = (
     candType: EntityType,
     candidate: AnyEntity,
-    pathFn: (e: any) => string,
-    labelFn: (e: any) => string,
+    pathFn: (e: AnyEntity) => string,
+    labelFn: (e: AnyEntity) => string | undefined,
   ) => {
     /* Skip self */
     if (candType === type && candidate.id === source.id) return
@@ -109,7 +109,7 @@ export function findRelatedReadings(
       type: candType,
       slug: candidate.slug ?? candidate.id,
       to: pathFn(candidate),
-      label: labelFn(candidate),
+      label: labelFn(candidate) ?? candidate.id,
       score,
       reason: reasons[0] ?? '',
     })

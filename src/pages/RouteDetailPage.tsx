@@ -11,13 +11,14 @@ import {
 import { endingsData } from '../data/endings'
 import { EnrichedText } from '../components/RichLoreText'
 
+/* Tokens mapped to codex-* CSS-var palette — see RoutesListPage for rationale. */
 const accentClasses: Record<string, { border: string; text: string; bg: string; glow: string }> = {
-  gold:     { border: 'border-codex-gold/40',  text: 'text-codex-gold',     bg: 'bg-codex-gold/5',  glow: 'rgba(197,160,89,0.2)' },
-  order:    { border: 'border-amber-500/40',   text: 'text-amber-400',      bg: 'bg-amber-500/5',   glow: 'rgba(245,158,11,0.2)' },
-  dusk:     { border: 'border-blue-500/40',    text: 'text-blue-300',       bg: 'bg-blue-500/5',    glow: 'rgba(59,130,246,0.2)' },
-  frenzied: { border: 'border-yellow-600/40',  text: 'text-yellow-400',     bg: 'bg-yellow-600/5',  glow: 'rgba(202,138,4,0.2)' },
-  stars:    { border: 'border-purple-500/40',  text: 'text-purple-300',     bg: 'bg-purple-500/5',  glow: 'rgba(168,85,247,0.2)' },
-  despair:  { border: 'border-red-700/40',     text: 'text-red-400',        bg: 'bg-red-700/5',     glow: 'rgba(185,28,28,0.2)' },
+  gold:     { border: 'border-codex-gold/40',     text: 'text-codex-gold',     bg: 'bg-codex-gold/5',     glow: 'rgb(var(--codex-gold) / 0.2)' },
+  order:    { border: 'border-codex-gold-dim/40', text: 'text-codex-gold-dim', bg: 'bg-codex-gold-dim/5', glow: 'rgb(var(--codex-gold-dim) / 0.2)' },
+  dusk:     { border: 'border-codex-ghost/40',    text: 'text-codex-ghost',    bg: 'bg-codex-ghost/5',    glow: 'rgb(var(--codex-ghost) / 0.2)' },
+  frenzied: { border: 'border-codex-flame/40',    text: 'text-codex-flame',    bg: 'bg-codex-flame/5',    glow: 'rgb(var(--codex-flame) / 0.2)' },
+  stars:    { border: 'border-codex-rot/40',      text: 'text-codex-rot',      bg: 'bg-codex-rot/5',      glow: 'rgb(var(--codex-rot) / 0.2)' },
+  despair:  { border: 'border-codex-crimson/40',  text: 'text-codex-crimson',  bg: 'bg-codex-crimson/5',  glow: 'rgb(var(--codex-crimson) / 0.2)' },
 }
 
 function resolveStopName(stop: RouteStop): string {
@@ -89,7 +90,7 @@ function RouteContent({ route }: { route: NarrativeRoute }) {
             <EnrichedText text={route.description} />
           </p>
           <p className="font-subheading italic text-base text-codex-parchment-dim/80 leading-relaxed border-l-2 border-codex-gold-dim/40 pl-4">
-            "{route.poeticIntro}"
+            {route.poeticIntro}
           </p>
         </div>
 

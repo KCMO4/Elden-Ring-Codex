@@ -2,7 +2,7 @@
 
 Lore book / wiki personal y sin fines de lucro sobre el lore del **juego base** de Elden Ring. Aplicación React de página única, en español, con estética de manuscrito oscuro y dorado envejecido.
 
-**Estado:** **375 entradas** con lore profundo, **0 referencias rotas** verificadas por script, **14 fases de mejora completadas + UX expansion + glow-up final**. Cobertura cosmológica integral del juego base: las 7 Grandes Runas individuales, todas las armas remembrance, principales cenizas espirituales, sacramentos cosmológicos (Estacas de Marika, Sites of Grace, Wondrous Physick), figuras históricas referenciadas (Storm-Hawk King), y narrativa cronológica completa pre-Orden → Era de las Estrellas. Todas las imágenes ≥1080p.
+**Estado:** **381 entradas** con lore profundo (107 personajes + 36 regiones + 68 facciones + 94 conceptos + 70 eventos + 6 finales), **0 referencias rotas** verificadas por script, **14 fases de mejora + UX expansion + glow-up + arquitectura SOTE + entrada macro Tierras Intermedias + 5 conceptos macro adicionales**. Cobertura cosmológica integral del juego base: las 7 Grandes Runas individuales, todas las armas remembrance, principales cenizas espirituales, sacramentos cosmológicos (Estacas de Marika, Sites of Grace, Wondrous Physick), figuras históricas referenciadas (Storm-Hawk King), entrada macro de **Las Tierras Intermedias** como continente con 6 secciones cosmológicas, conceptos macro `Llama de Ruina` / `Señor Elden` / `Fundamentalismo del Orden Dorado` / `Demidioses` y región periférica `Tierras de los Cañaverales`. Todas las imágenes ≥1080p. **Arquitectura para contenido SOTE (Shadow of the Erdtree)** preparada — el DLC se intercala inline en entradas existentes, con filtro global "Todo / Base" que oculta tanto bloques como entidades enteras marcadas SOTE.
 
 ---
 
@@ -10,7 +10,7 @@ Lore book / wiki personal y sin fines de lucro sobre el lore del **juego base** 
 
 > Este proyecto es un códice fan-made, personal y sin fines de lucro sobre el lore del juego base de Elden Ring. No está afiliado, patrocinado ni aprobado por FromSoftware, Bandai Namco ni ningún titular de derechos. El repositorio no incluye assets oficiales del juego ni URLs de imágenes protegidas. El usuario puede configurar imágenes locales o URLs externas mediante un archivo local ignorado por Git para uso personal en localhost. Si el proyecto se publica, distribuye o comparte públicamente, se recomienda usar únicamente imágenes propias, con licencia compatible o con permiso del autor. El uso sin fines de lucro no implica autorización automática para usar material protegido por copyright.
 
-Solo cubre contenido del juego base. **No** incluye Shadow of the Erdtree.
+Cubre el juego base al 100 %. La arquitectura está preparada para integrar contenido del DLC **Shadow of the Erdtree** (intercalado dentro de las entradas existentes, no como apartado al final), con filtro global del lector para ocultarlo si prefiere lectura base-only. Hoy el codex no contiene lore real de SOTE — solo la infraestructura para añadirlo.
 
 > **Terminología**: el codex traduce *Lands Between* como **Tierras Intermedias** (no "Interregno") y *Erdtree* como **Árbol Áureo** (la traducción oficial de FromSoft, no "Árbol del Inmenso"). Cualquier nuevo lore debe respetar género/número en "Tierras Intermedias" (plural femenino) y mantener "Árbol Áureo" capitalizado en texto visible (los slugs lowercase `erdtree`, `minor-erdtrees` son IDs internos y se preservan).
 
@@ -222,11 +222,10 @@ src/
 │   ├── timeline.ts                    # 70 capítulos / eventos sub-atómicos
 │   ├── characters.ts                  # 107 personajes (mayores + secundarios + históricos)
 │   ├── factions.ts                    # 68 facciones / razas / órdenes
-│   ├── regions.ts                     # 34 regiones (mayores + subregiones)
-│   ├── glossary.ts                    # 90 conceptos cosmológicos + reliquias + sacramentos
+│   ├── regions.ts                     # 36 regiones (mayores + subregiones + Tierras Intermedias macro + Land of Reeds)
+│   ├── glossary.ts                    # 94 conceptos cosmológicos + reliquias + sacramentos + 4 conceptos macro
 │   ├── endings.ts                     # 6 finales
 │   ├── narrativeRoutes.ts             # Rutas narrativas (Ranni, Fia, etc.)
-│   ├── coveragePlan.ts                # Plan de cobertura programable (legado, 100 % cubierto)
 │   ├── lookups.ts                     # findBySlug<T>, resolveByIds<T>, pathFor, ROUTE_PREFIX, neighbors, randomEntryPath
 │   ├── lore/
 │   │   ├── charactersLore.ts          # Deep lore de personajes (capa 1)
@@ -298,10 +297,11 @@ src/
 ## Características
 
 ### Contenido
-- **Wiki completo** con páginas dedicadas para cada entidad (375 entradas con lore profundo)
+- **Wiki completo** con páginas dedicadas para cada entidad (381 entradas con lore profundo)
 - **Enlaces internos cruzados** entre lore via `RichLoreText` (con render tolerante)
-- **Cobertura cosmológica integral**: las 7 Grandes Runas, armas remembrance, cenizas espirituales clave, sacramentos cosmológicos, figuras históricas referenciadas
+- **Cobertura cosmológica integral**: las 7 Grandes Runas, armas remembrance, cenizas espirituales clave, sacramentos cosmológicos, figuras históricas referenciadas, entrada macro **Las Tierras Intermedias** (continente entero, 6 secciones cosmológicas)
 - **0 referencias rotas** verificadas por `scripts/audit-cross-links.mts`
+- **Filtro de expansión Todo / Base** — toggle en sidebar (`localStorage[codex-expansion-v1]`) que oculta bloques o entidades enteras marcadas `expansion: 'sote'` de listados, búsqueda, grafos y related readings. Default: 'all'.
 
 ### Navegación y descubrimiento
 - **Búsqueda global** (Ctrl+K / ⌘K, o `/`) con highlight de coincidencias y filtro por tipo
@@ -344,7 +344,6 @@ src/
 - **Corner ornaments** dorados en hero y cards destacadas
 - **ToC móvil** con bottom-sheet drawer en pantallas <`lg`
 - **BackToTop** flotante con detección de scroll
-- **Modo Lectura global** (oculta UI secundaria, atajo desde sidebar)
 - **Filtros por certeza** (Confirmado / Inferencia / Teoría) con tooltip explicativo
 
 ### Accesibilidad

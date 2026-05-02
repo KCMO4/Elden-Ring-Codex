@@ -26,7 +26,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Marika es uno de los seres más complejos de las Tierras Intermedias. Era una ',
+        'Marika es uno de los seres más complejos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Era una ',
         link('numen', 'concept', 'numen'),
         ' — descendiente de un linaje humano singularmente puro, capaz de servir como vasija de un dios externo — antes de ser elegida por la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
@@ -54,32 +56,65 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         em('madre'),
         ' (engendra demidioses con dos consortes), y ',
         em('legisladora'),
-        ' (su voluntad fija las normas de la era dorada). Esta acumulación es excepcional: ningún otro ser de las Tierras Intermedias ostenta tantas capas simultáneas. La consecuencia es que cuando ella vacila, vacila el cosmos.'
+        ' (su voluntad fija las normas de la era dorada). Esta acumulación es excepcional: ningún otro ser de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' ostenta tantas capas simultáneas. La consecuencia es que cuando ella vacila, vacila el cosmos.'
       ),
+      /* Otro bloque SOTE de ejemplo, esta vez dentro de "Rol en el mundo" —
+         expande las capas cosmológicas con detalles del DLC. */
+      { type: 'paragraph', expansion: 'sote', children: [
+        '[Ejemplo SOTE — texto random] Vivamus quis arcu ut velit gravida tincidunt. ',
+        'Aquí se añadiría una quinta posición cosmológica derivada del DLC ',
+        'que reframe las cuatro anteriores. Aliquam erat volutpat, sed do eiusmod ',
+        'tempor incididunt. El párrafo aparece justo después del rol original sin ',
+        'romper su lectura: el lector con filtro "Todo" lee uno tras otro de forma ',
+        'continua; el lector con filtro "Base" salta directo al siguiente heading.',
+      ] },
       h(2, 'Historia detallada', 'historia'),
       p(
         link('Antes del Orden Dorado', 'timeline', 'antes-orden-dorado'),
         ', Marika vivió como mujer ',
         link('numen', 'concept', 'numen'),
-        ' entre las primeras tribus de las Tierras Intermedias. La memoria de aquella era — fragmentaria pero presente en sus acciones más oscuras — la perseguirá hasta el final. Cuando la ',
+        ' entre las primeras tribus de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. La memoria de aquella era — fragmentaria pero presente en sus acciones más oscuras — la perseguirá hasta el final. Cuando la ',
         link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'),
         ' fue derrotada y su régimen colapsó, la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' buscó nueva vasija. Eligió a Marika.'
       ),
+      /* Bloque SOTE de ejemplo — texto random integrado dentro de la sección
+         "Historia detallada", continúa el hilo del párrafo anterior sobre
+         su origen pre-Orden. No es lore real, solo demuestra la integración. */
+      { type: 'paragraph', expansion: 'sote', children: [
+        '[Ejemplo SOTE — texto random] Lorem ipsum sobre detalles del origen ',
+        'que el DLC expande: ',
+        link('Marika', 'character', 'marika'),
+        ' aparece descrita con más matices sobre el período previo a su ascensión. ',
+        'Praesent vehicula tempor purus, vel hendrerit lectus venenatis sit amet. ',
+        'Este párrafo se intercala en su sección lógica (origen / historia) en lugar de ',
+        'apilarse al final de la página, manteniendo la coherencia narrativa. Si el lector ',
+        'activa el filtro "Base", este párrafo desaparece y el flujo continúa al siguiente.',
+      ] },
       p(
         'Su primer acto como diosa fue uno de violencia cosmológica: hizo que ',
         link('Maliketh', 'character', 'maliketh'),
         ' arrancase la ',
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
-        ' del Anillo. Esta runa codificaba la verdadera muerte. Al sustraerla, los seres de las Tierras Intermedias dejaron de poder morir como antes morían: sus cuerpos podían ser destruidos pero sus almas regresaban al ',
+        ' del Anillo. Esta runa codificaba la verdadera muerte. Al sustraerla, los seres de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' dejaron de poder morir como antes morían: sus cuerpos podían ser destruidos pero sus almas regresaban al ',
         link('Árbol Áureo', 'concept', 'erdtree'),
         ' para ser recicladas. La inmortalidad de la era dorada nació, así, de un acto de mutilación cósmica.'
       ),
       p(
-        'Tomó como Primer Señor Elden a ',
+        'Tomó como Primer ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' a ',
         link('Godfrey', 'character', 'godfrey'),
-        ', un guerrero exterior que conquistó las tierras restantes de las Tierras Intermedias bajo su nombre. Tuvo con él al menos un hijo conocido: ',
+        ', un guerrero exterior que conquistó las tierras restantes de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' bajo su nombre. Tuvo con él al menos un hijo conocido: ',
         link('Godwyn', 'character', 'godwyn'),
         ', el de Ojos Dorados, primogénito amado y promesa del régimen. Cuando ya no quedaron enemigos por los que pelear, Marika despojó a ',
         link('Godfrey', 'character', 'godfrey'),
@@ -94,7 +129,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godfrey', 'character', 'godfrey'),
         ', su consorte fue ',
         link('Radagon', 'character', 'radagon'),
-        ' — y aquí ocurre la revelación cosmológica más oscura de las Tierras Intermedias: ',
+        ' — y aquí ocurre la revelación cosmológica más oscura de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': ',
         link('Radagon', 'character', 'radagon'),
         ' ',
         em('es'),
@@ -131,7 +168,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Las motivaciones de Marika son objeto del debate cosmológico más sostenido de las Tierras Intermedias. Existen varias lecturas, todas con base textual:'
+        'Las motivaciones de Marika son objeto del debate cosmológico más sostenido de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Existen varias lecturas, todas con base textual:'
       ),
       p(
         strong('Dolor maternal'),
@@ -197,7 +236,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Consecuencias', 'consecuencias'),
       p(
-        'El sello inicial de la Muerte hace posibles los problemas que después definirán a las Tierras Intermedias: la imposibilidad de matar verdaderamente a ',
+        'El sello inicial de la Muerte hace posibles los problemas que después definirán a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': la imposibilidad de matar verdaderamente a ',
         link('Godwyn', 'character', 'godwyn'),
         ', el surgimiento de ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
@@ -243,13 +284,18 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ['Engendró a ', link('Godwyn', 'character', 'godwyn'), ', ', link('Morgott', 'character', 'morgott'), ', ', link('Mohg', 'character', 'mohg'), ', ', link('Malenia', 'character', 'malenia'), ' y ', link('Miquella', 'character', 'miquella')],
       ['Comparte cuerpo con ', link('Radagon', 'character', 'radagon'), ' (la frase de ', link('Goldmask', 'character', 'goldmask'), ' "', link('Radagon', 'character', 'radagon'), ' es Marika" es revelación textual)'],
       ['Rompió el ', link('Anillo Elden', 'concept', 'elden-ring'), ' por su propia mano tras el asesinato parcial de ', link('Godwyn', 'character', 'godwyn')],
-      ['Fue encadenada por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' dentro del propio ', link('Árbol Áureo', 'concept', 'erdtree'), ' como castigo']
+      ['Fue encadenada por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' dentro del propio ', link('Árbol Áureo', 'concept', 'erdtree'), ' como castigo'],
+      /* Items SOTE de ejemplo — texto random de prueba */
+      { expansion: 'sote', content: '[Ejemplo SOTE] Hecho del DLC marcado: aparece solo en filtro "Todo".' },
+      { expansion: 'sote', content: ['[Ejemplo SOTE] Segundo hecho con cross-link dentro: ', link('Mohg', 'character', 'mohg'), ' aparece mencionado y mantiene su hover-card.'] },
     ],
     inferred: [
       ['Su elevación divina implicó la traición de su pueblo ', link('numen', 'concept', 'numen'), ' original'],
       'El sello de la Muerte fue el origen estructural de todos los problemas posteriores',
       'Su martillazo fue acto consciente, no impulso descontrolado: estuvo planeado durante mucho tiempo',
       ['La exclusión de los ', link('Omens', 'faction', 'omens'), ' (sus hijos con ', link('Radagon', 'character', 'radagon'), ') fue una decisión política conjunta del Orden, no solo accidente cosmológico'],
+      /* Inferencia SOTE de ejemplo */
+      { expansion: 'sote', content: '[Ejemplo SOTE] Esta inferencia solo aparece con filtro "Todo" activo.' },
       ['Su pena por ', link('Godwyn', 'character', 'godwyn'), ' era específica: él era el único hijo plenamente integrado al régimen sin maldición']
     ],
     theories: [
@@ -493,13 +539,17 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Godfrey es el arquetipo del rey guerrero. Su biografía, antes de servir a ',
         link('Marika', 'character', 'marika'),
-        ', es una guerra absoluta contra los pueblos primigenios de las Tierras Intermedias. Como Hoarah Loux, jefe nómada de las tierras exteriores, dominaba ya el caos primal — su frente lleva al ',
+        ', es una guerra absoluta contra los pueblos primigenios de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Como Hoarah Loux, jefe nómada de las tierras exteriores, dominaba ya el caos primal — su frente lleva al ',
         em('Espíritu Tormenta'),
         ' ',
         link('Serosh', 'character', 'serosh'),
         ', una bestia leonina que él encadenó como talismán cuando lo sometió. Bajo ',
         link('Marika', 'character', 'marika'),
-        ' se convirtió en Señor Elden y la espada del ',
+        ' se convirtió en ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' y la espada del ',
         link('Orden Dorado', 'concept', 'golden-order'),
         '. Cuando dejó de hacer falta, fue desechado.'
       ),
@@ -511,7 +561,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ', incluyendo gigantes y dragones residuales), ',
         em('legitimador'),
-        ' (su matrimonio con la diosa estableció el linaje real de las Tierras Intermedias), y ',
+        ' (su matrimonio con la diosa estableció el linaje real de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '), y ',
         em('ancestro'),
         ' (sus seguidores exiliados se convirtieron en ',
         link('Tarnished', 'concept', 'tarnished'),
@@ -557,7 +609,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ', o algo más sutil, lo invocó como espectro dorado. Apareció ante el ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' en el último tramo del camino al trono, en Leyndell. Su batalla tiene dos formas: primero como rey blindado (la armadura de Señor Elden), luego como Hoarah Loux desnudo, peleando con sus manos como un cazador primal. La transformación es ritual: el rey civilizado quita la máscara y deja al guerrero ancestral terminar la pelea.'
+        ' en el último tramo del camino al trono, en Leyndell. Su batalla tiene dos formas: primero como rey blindado (la armadura de ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        '), luego como Hoarah Loux desnudo, peleando con sus manos como un cazador primal. La transformación es ritual: el rey civilizado quita la máscara y deja al guerrero ancestral terminar la pelea.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
@@ -594,7 +648,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ol(
         ['Sometimiento del Espíritu Tormenta ', link('Serosh', 'character', 'serosh'), '.'],
         ['Conquista de los ', link('Gigantes del Fuego', 'faction', 'fire-giants'), '.'],
-        'Coronación como Primer Señor Elden.',
+        ['Coronación como Primer ', link('Señor Elden', 'concept', 'elden-lord'), '.'],
         ['Engendramiento de ', link('Godwyn', 'character', 'godwyn'), '.'],
         'Guerra contra los pueblos primigenios.',
         ['Pérdida de la ', link('gracia', 'concept', 'grace'), ' y exilio.'],
@@ -614,7 +668,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         ' siente al regresar es continuación de la que Godfrey perdió. Su ',
         link('Stormhawk', 'character', 'stormhawk-deenh'),
-        ', su martillo, sus golpes-tierra, todo está diseminado por las Tierras Intermedias como herencia marcial. Y su retorno final es la prueba que ninguno de sus hijos demidiós tuvo que dar: que un Señor Elden, cuando es desplazado, sabe regresar como guardián.'
+        ', su martillo, sus golpes-tierra, todo está diseminado por las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como herencia marcial. Y su retorno final es la prueba que ninguno de sus hijos ',
+        link('demidiós', 'concept', 'demidios'),
+        ' tuvo que dar: que un ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ', cuando es desplazado, sabe regresar como guardián.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
@@ -696,15 +756,21 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
-        'Como demidiós primogénito, Godwyn era el sucesor natural al ',
+        'Como ',
+        link('demidiós', 'concept', 'demidios'),
+        ' primogénito, Godwyn era el sucesor natural al ',
         link('Anillo Elden', 'concept', 'elden-ring'),
-        '. Sus dones diplomáticos lo posicionaron como integrador: convirtió a un antiguo dragón en aliado, mediaba en conflictos entre facciones de la corte dorada, y representaba la promesa de que el Orden podía expandirse sin guerra. Su asesinato no fue solo eliminar a un demidiós — fue eliminar el único modelo viable de continuidad pacífica.'
+        '. Sus dones diplomáticos lo posicionaron como integrador: convirtió a un antiguo dragón en aliado, mediaba en conflictos entre facciones de la corte dorada, y representaba la promesa de que el Orden podía expandirse sin guerra. Su asesinato no fue solo eliminar a un ',
+        link('demidiós', 'concept', 'demidios'),
+        ' — fue eliminar el único modelo viable de continuidad pacífica.'
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
         'Su episodio más conocido es la guerra contra los Antiguos Dragones, en la cual derrotó (sin matar) a Fortissax y selló con él un pacto sagrado: Fortissax sería su aliado eterno, Godwyn aprendería el rayo dragónico. Este pacto se convirtió en la base del ',
         link('Culto del Antiguo Dragón', 'faction', 'dragones-antiguos'),
-        ', secta sincrética que adoraba la unión de demidiós y dragón.'
+        ', secta sincrética que adoraba la unión de ',
+        link('demidiós', 'concept', 'demidios'),
+        ' y dragón.'
       ),
       p(
         'La ',
@@ -717,7 +783,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Maliketh', 'character', 'maliketh'),
         '. Estas hojas eran las únicas armas capaces de matar a un ',
         link('Empyrean', 'concept', 'empyrean'),
-        ' o demidiós. La operación tenía dos objetivos: matar el cuerpo ',
+        ' o ',
+        link('demidiós', 'concept', 'demidios'),
+        '. La operación tenía dos objetivos: matar el cuerpo ',
         link('Empyrean', 'concept', 'empyrean'),
         ' de ',
         link('Ranni', 'character', 'ranni'),
@@ -736,7 +804,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Deeproot Depths', 'region', 'deeproot-depths'),
         '. La descomposición eterna genera ',
         link('Deathroot', 'concept', 'deathroot'),
-        ', sustancia necrótica que recorre las raíces del árbol y reanima cadáveres en todos los rincones de las Tierras Intermedias.'
+        ', sustancia necrótica que recorre las raíces del árbol y reanima cadáveres en todos los rincones de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
@@ -779,7 +849,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Orden Dorado', 'faction', 'orden-dorado'),
         '. Detona la pena de ',
         link('Marika', 'character', 'marika'),
-        ' que rompe el Anillo. Genera la sustancia (Deathroot) que infecta las Tierras Intermedias enteras. Crea el fenómeno (los Que Viven en la Muerte) que se vuelve cosmológicamente irresoluble bajo el régimen actual. Atrapa a Fortissax en pesadilla eterna. Ofrece a ',
+        ' que rompe el Anillo. Genera la sustancia (Deathroot) que infecta las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' enteras. Crea el fenómeno (los Que Viven en la Muerte) que se vuelve cosmológicamente irresoluble bajo el régimen actual. Atrapa a Fortissax en pesadilla eterna. Ofrece a ',
         link('Fia', 'character', 'fia'),
         ' la posibilidad de reformar el ',
         link('Anillo Elden', 'concept', 'elden-ring'),
@@ -865,7 +937,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         ' considera maldita y encarcela bajo el subsuelo de su propia capital. Pasó su juventud en mazmorras. Cuando llegó ',
         'la ',
         link('fractura', 'timeline', 'la-fractura'),
-        ' y todos los demidioses se rebelaron contra el régimen que los había privilegiado, Morgott — el demidiós más maltratado por el sistema — fue el único que se dedicó a defenderlo. Esa devoción excede toda lógica de privilegio o resentimiento; es un acto teológico tan radical que redefine lo que significa ser leal.'
+        ' y todos los demidioses se rebelaron contra el régimen que los había privilegiado, Morgott — el ',
+        link('demidiós', 'concept', 'demidios'),
+        ' más maltratado por el sistema — fue el único que se dedicó a defenderlo. Esa devoción excede toda lógica de privilegio o resentimiento; es un acto teológico tan radical que redefine lo que significa ser leal.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
@@ -914,7 +988,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'En algún momento Morgott escapó del encierro. Su gemelo escogió rebelarse contra el régimen; Morgott escogió servirlo. Asumió el alias de ',
         link('Margit', 'character', 'margit'),
-        ' el Presagio Caído como identidad de campo, recorriendo las Tierras Intermedias para frenar a los aspirantes ',
+        ' el Presagio Caído como identidad de campo, recorriendo las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' para frenar a los aspirantes ',
         link('Tarnished', 'concept', 'tarnished'),
         '. Como ',
         link('Margit', 'character', 'margit'),
@@ -1041,13 +1117,17 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Morgott', 'character', 'morgott'),
         ' eligió servir al régimen que los había encarcelado, Mohg eligió fundar uno nuevo bajo otro dios. Su contrato con la ',
         link('Madre Informe', 'concept', 'formless-mother'),
-        ' transformó su cuerpo (alas, cuernos coronados, dominio del fuego de sangre) y le otorgó propósito cosmológico. Su proyecto: criar a un dios consorte secuestrado y, como Señor Elden de una era sangrienta, refundar el cosmos bajo su propia liturgia.'
+        ' transformó su cuerpo (alas, cuernos coronados, dominio del fuego de sangre) y le otorgó propósito cosmológico. Su proyecto: criar a un dios consorte secuestrado y, como ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' de una era sangrienta, refundar el cosmos bajo su propia liturgia.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
         'Mohg cumple tres funciones cosmológicas. Es ',
         em('profeta'),
-        ' (la voz de la Madre Informe en las Tierras Intermedias), ',
+        ' (la voz de la Madre Informe en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '), ',
         em('dinasta'),
         ' (fundador de la Dinastía Mohgwyn como régimen alternativo), y ',
         em('secuestrador'),
@@ -1211,7 +1291,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Ranni es la única figura de las Tierras Intermedias que ha pensado el problema cosmológico hasta el final. Vio en su designación como ',
+        'Ranni es la única figura de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que ha pensado el problema cosmológico hasta el final. Vio en su designación como ',
         link('Empyrean', 'concept', 'empyrean'),
         ' no un privilegio sino una jaula: heredar el cuerpo de la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
@@ -1234,7 +1316,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Anillo Elden', 'concept', 'elden-ring'),
         '. Como ',
         em('rebelde cosmológica'),
-        ', es la conspiradora más sofisticada de las Tierras Intermedias: la única que comprendió que la ',
+        ', es la conspiradora más sofisticada de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': la única que comprendió que la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' es el problema, no la solución.'
       ),
@@ -1317,7 +1401,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Motivaciones', 'motivaciones'),
       p(
-        'Ranni razona cosmológicamente. Su análisis de las Tierras Intermedias: la ',
+        'Ranni razona cosmológicamente. Su análisis de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' y los demás ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
@@ -1389,7 +1475,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         ' la elige, instaura un cosmos sin ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        ' activa. Su rebelión es la única de las Tierras Intermedias que tuvo éxito estructural.'
+        ' activa. Su rebelión es la única de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que tuvo éxito estructural.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
@@ -1459,7 +1547,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Malenia encarna la cumbre marcial de las Tierras Intermedias y simultáneamente su mayor víctima. Su honor le impide rendirse, pero rendirse sería piadoso. Lleva en su sangre a un dios exterior — el dios de la podredumbre — que la usa como medio. Cada Floración Escarlata es ese dios manifestándose a través de su cuerpo. Su devoción a su gemelo ',
+        'Malenia encarna la cumbre marcial de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' y simultáneamente su mayor víctima. Su honor le impide rendirse, pero rendirse sería piadoso. Lleva en su sangre a un dios exterior — el dios de la podredumbre — que la usa como medio. Cada Floración Escarlata es ese dios manifestándose a través de su cuerpo. Su devoción a su gemelo ',
         link('Miquella', 'character', 'miquella'),
         ' es lo único que la sostiene; cuando él fue secuestrado, ella perdió incluso esa razón.'
       ),
@@ -1484,7 +1574,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Nació junto a su gemelo ',
         link('Miquella', 'character', 'miquella'),
-        ' en circunstancias que las Tierras Intermedias no entienden del todo: ambos son hijos de ',
+        ' en circunstancias que las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' no entienden del todo: ambos son hijos de ',
         link('Marika', 'character', 'marika'),
         ' y ',
         link('Radagon', 'character', 'radagon'),
@@ -1649,7 +1741,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Miquella es la única mente de las Tierras Intermedias que intentó pensar el problema cosmológico ',
+        'Miquella es la única mente de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que intentó pensar el problema cosmológico ',
         em('positivamente'),
         ': no destruir el régimen, no reformarlo, sino curarlo de los dioses parásitos. Su proyecto del ',
         link('Oro sin Aleación', 'concept', 'unalloyed-gold'),
@@ -1686,7 +1780,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Nació junto a ',
         link('Malenia', 'character', 'malenia'),
-        ' con la maldición simétrica del eterno-niño: su cuerpo no podía madurar. Esta limitación lo obligó a desarrollar su mente en lugar de cuerpo. Convertido en uno de los seres más sabios de las Tierras Intermedias, comprendió pronto la verdad estructural del régimen: ',
+        ' con la maldición simétrica del eterno-niño: su cuerpo no podía madurar. Esta limitación lo obligó a desarrollar su mente en lugar de cuerpo. Convertido en uno de los seres más sabios de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', comprendió pronto la verdad estructural del régimen: ',
         'el ',
         link('Orden Dorado', 'faction', 'orden-dorado'),
         ' era estructuralmente injusto porque excluía a quienes no encajaban en su geometría dorada (Omens, Misbegotten, Albinaurics).'
@@ -1724,7 +1820,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Miquella es el único figura del juego cuya motivación primaria es la compasión verdadera. No quiere conquistar, no quiere reformar, no quiere destruir — quiere ',
         em('aliviar'),
-        '. Esta motivación tan pura lo vuelve frágil: no entiende del todo la depredación cosmológica que opera en las Tierras Intermedias. Su sueño curativo es prueba de buena fe pura — y de ingenuidad estratégica que ',
+        '. Esta motivación tan pura lo vuelve frágil: no entiende del todo la depredación cosmológica que opera en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Su sueño curativo es prueba de buena fe pura — y de ingenuidad estratégica que ',
         link('Malenia', 'character', 'malenia'),
         ' debería haber compensado.'
       ),
@@ -1799,7 +1897,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ['Fue secuestrado por ', link('Mohg', 'character', 'mohg'), ' durante el sueño']
     ],
     inferred: [
-      'Su proyecto era el más radical de las Tierras Intermedias: cosmos sin dioses parásitos',
+      ['Su proyecto era el más radical de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ': cosmos sin dioses parásitos'],
       ['Iba a despertar como dios completo, fuera del control de la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor')],
       ['Su sueño fue posible porque confiaba en ', link('Malenia', 'character', 'malenia'), ' como su escudo'],
       'El capullo dorado lo protege incluso del rito sangriento de Mohgwyn'
@@ -2157,7 +2255,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Su madre implícita es ',
         link('Marika', 'character', 'marika'),
-        '. Su compañero y heredero del rol de Señor Elden es el ',
+        '. Su compañero y heredero del rol de ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' es el ',
         link('Tarnished', 'concept', 'tarnished'),
         '. Sus antagonistas teológicos son ',
         'los ',
@@ -2319,7 +2419,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' (o un dios externo equivalente) la eligió como vasija humana en algún momento posterior a la era de los Antiguos Dragones de ',
         link('Placidusax', 'character', 'placidusax'),
-        '. Su régimen pudo ser una transición intermedia, no la primera era humana; las cosmologías de las Tierras Intermedias sugieren capas múltiples de civilización ',
+        '. Su régimen pudo ser una transición intermedia, no la primera era humana; las cosmologías de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' sugieren capas múltiples de civilización ',
         link('antes del Orden Dorado', 'timeline', 'antes-orden-dorado'),
         '.'
       ),
@@ -2478,7 +2580,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ['Su ', link('Llama Negra', 'concept', 'black-flame'), ' estaba dirigida originalmente contra los dioses externos rivales, no contra el Orden por venir'],
       'Su nombre "crepuscular" indica que reinó entre dos eras: era ya de transición cuando cayó',
       'Su muerte no fue completa — fragmentos de su voluntad sobreviven en cada apóstol Piel de Dios activo',
-      'Los Deathbirds que rondan las Tierras Intermedias actuales son reliquias rituales de su clero, no enemigos olvidados'
+      ['Los Deathbirds que rondan las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' actuales son reliquias rituales de su clero, no enemigos olvidados']
     ],
     ambiguous: [
       ['Su nombre verdadero, su forma física exacta, su origen pre-', link('Empyrean', 'concept', 'empyrean')],
@@ -2507,7 +2609,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Rennala es la tragedia de las Tierras Intermedias que el régimen no necesitó construir: simplemente le pasó. Era reina-hechicera plena, líder espiritual y académica de toda Liurnia, y su caída no fue cosmológica sino emocional — el abandono de un esposo. Que ese abandono haya destruido a una de las mentes más sofisticadas del cosmos es prueba de que ningún rango protege del duelo individual.'
+        'Rennala es la tragedia de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que el régimen no necesitó construir: simplemente le pasó. Era reina-hechicera plena, líder espiritual y académica de toda Liurnia, y su caída no fue cosmológica sino emocional — el abandono de un esposo. Que ese abandono haya destruido a una de las mentes más sofisticadas del cosmos es prueba de que ningún rango protege del duelo individual.'
       ),
       h(2, 'Rol en el mundo', 'rol'),
       p(
@@ -2519,7 +2623,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         em('Gran Maestra'),
         ' de ',
         link('Raya Lucaria', 'region', 'raya-lucaria'),
-        ' dirigía la institución académica más prestigiosa de las Tierras Intermedias. Como ',
+        ' dirigía la institución académica más prestigiosa de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Como ',
         em('madre'),
         ' de tres demidioses (',
         link('Ranni', 'character', 'ranni'),
@@ -2531,7 +2637,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada', 'historia'),
       p(
-        'Su origen exacto en Liurnia no se documenta, pero su prestigio se anuncia desde el principio: era la mayor hechicera viva de las Tierras Intermedias, dominadora de la Magia de la ',
+        'Su origen exacto en Liurnia no se documenta, pero su prestigio se anuncia desde el principio: era la mayor hechicera viva de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', dominadora de la Magia de la ',
         link('Luna Llena', 'concept', 'full-moon'),
         ', custodia del Gran Amber Egg cuya función ritual sigue siendo objeto de inferencia. Su título de "Reina de la ',
         link('Luna Llena', 'concept', 'full-moon'),
@@ -2650,7 +2758,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         ' que la encerró en el bucle es lo que ahora permite a ',
         'los ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' rediseñar sus propios atributos: la mayor tragedia personal de las Tierras Intermedias se convirtió en la herramienta más útil para los aspirantes al trono.'
+        ' rediseñar sus propios atributos: la mayor tragedia personal de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' se convirtió en la herramienta más útil para los aspirantes al trono.'
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
@@ -2739,7 +2849,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial', 'resumen'),
       p(
-        'Radahn es la figura más trágicamente grande de las Tierras Intermedias post-fractura. Fue invicto durante toda su carrera militar, dominaba ',
+        'Radahn es la figura más trágicamente grande de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura. Fue invicto durante toda su carrera militar, dominaba ',
         link('magia gravitacional', 'concept', 'gravity-magic'),
         ' aprendida de Sellen, e idolatraba a ',
         link('Godfrey', 'character', 'godfrey'),
@@ -2763,7 +2875,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         '. Como ',
         em('idólatra'),
-        ' encarnó la última fidelidad pública al ideal del Primer Señor Elden, ',
+        ' encarnó la última fidelidad pública al ideal del Primer ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ', ',
         link('Godfrey', 'character', 'godfrey'),
         '. Y como ',
         em('víctima'),
@@ -2840,7 +2954,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Las motivaciones de Radahn son claras y trágicas. Quería ser ',
         em('como Godfrey'),
-        ': rey guerrero ideal, fidelidad marcial absoluta, modelo eterno del Señor Elden. Idolatraba el modelo paterno-ancestral, no a su padre biológico ',
+        ': rey guerrero ideal, fidelidad marcial absoluta, modelo eterno del ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        '. Idolatraba el modelo paterno-ancestral, no a su padre biológico ',
         link('Radagon', 'character', 'radagon'),
         ' (cuya fusión con ',
         link('Marika', 'character', 'marika'),
@@ -2911,7 +3027,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Simbolismo e interpretación temática', 'simbolismo'),
       p(
-        'Radahn encarna la fuerza honorable arruinada por una guerra que él no entendió del todo. Su cuerpo masivo cabalgando un caballo demasiado pequeño es la imagen más reveladora de las Tierras Intermedias: la fidelidad al ideal antiguo, sostenida hasta el ridículo cósmico, sin abandonar nunca la postura. Su silencio durante la batalla con el ',
+        'Radahn encarna la fuerza honorable arruinada por una guerra que él no entendió del todo. Su cuerpo masivo cabalgando un caballo demasiado pequeño es la imagen más reveladora de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': la fidelidad al ideal antiguo, sostenida hasta el ridículo cósmico, sin abandonar nunca la postura. Su silencio durante la batalla con el ',
         link('Tarnished', 'concept', 'tarnished'),
         ' — Radahn ya no habla, sólo embiste con honor mecánico — es la prueba de que la podredumbre devoró su mente sin tocar su disciplina marcial. Es la marcialidad sin sujeto: un cuerpo que sigue ejecutando códigos cuando el ejecutor ya se ha ido.'
       ),
@@ -3021,7 +3139,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Casado dos veces — primero con Tanith, luego con otra noble — instaló su corte en el Volcano Manor de ',
         link('Mt. Gelmir', 'region', 'mt-gelmir'),
-        ' como contrapeso institucional a Leyndell. Sus primeras décadas como demidiós fueron las de un reformista respetable. Mantenía relaciones diplomáticas con la Academia, con la familia Caria, con los nobles de Altus. Aún era hijo legítimo del régimen.'
+        ' como contrapeso institucional a Leyndell. Sus primeras décadas como ',
+        link('demidiós', 'concept', 'demidios'),
+        ' fueron las de un reformista respetable. Mantenía relaciones diplomáticas con la Academia, con la familia Caria, con los nobles de Altus. Aún era hijo legítimo del régimen.'
       ),
       p(
         'Tras ',
@@ -3052,7 +3172,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Rykard descendió al santuario subterráneo del Volcano Manor y permitió que la serpiente lo devorara. La fusión que resultó es físicamente monstruosa: cabeza humana en cuello de hombre saliendo del cuerpo descomunal de la serpiente, todo bañado en ',
         link('magma', 'character', 'magma-wyrm-makar'),
-        ' y carne fundida. Conservó memoria, voluntad y autoridad — pero su cuerpo es ahora indistinguible del de Eiglay. La frontera entre el demidiós y el dios devorador se ha disuelto.'
+        ' y carne fundida. Conservó memoria, voluntad y autoridad — pero su cuerpo es ahora indistinguible del de Eiglay. La frontera entre el ',
+        link('demidiós', 'concept', 'demidios'),
+        ' y el dios devorador se ha disuelto.'
       ),
       p(
         'Desde esa fusión, opera una secta llamada los ',
@@ -3173,7 +3295,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       'Eiglay es una entidad estelar caída — su cuerpo ardiente sugiere origen cósmico, no terrestre',
       'Rykard conserva su voluntad humana plena: la serpiente sólo le presta el cuerpo',
       'Tanith lo devoraba por compasión — preservar al amado en lugar de dejarlo desintegrarse',
-      'Su carrera como inquisidor le dio el conocimiento textual sobre Eiglay que ningún otro demidiós tenía',
+      ['Su carrera como inquisidor le dio el conocimiento textual sobre Eiglay que ningún otro ', link('demidiós', 'concept', 'demidios'), ' tenía'],
       'La devoración fue ritual planificado durante años, no acto impulsivo de desesperación'
     ],
     ambiguous: [
@@ -3242,7 +3364,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godwyn', 'character', 'godwyn'),
         ', etc.). Tres o cuatro generaciones lo separan del modelo ancestral, y cada generación diluyó la sangre ',
         link('Empyrean', 'concept', 'empyrean'),
-        '. Por eso su poder, aún siendo demidiós, está estructuralmente disminuido.'
+        '. Por eso su poder, aún siendo ',
+        link('demidiós', 'concept', 'demidios'),
+        ', está estructuralmente disminuido.'
       ),
       p(
         'Tras ',
@@ -3283,7 +3407,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         ' obtuvo amistad cosmológica con un Antiguo Dragón mediante pacto sagrado, Godrick obtiene un colgante decorativo mediante carnicería ritual. La diferencia es exactamente la distancia entre el linaje vivo y el linaje muerto.'
       ),
       p(
-        'Sus salas en Stormveil están decoradas con cuerpos injertados de soldados caídos: brazos múltiples saliendo de los muros, manos humanas como ornamentos, miembros extra cosidos a estatuas. La estética del injerto es su firma arquitectónica. Es el lenguaje material de un demidiós que solo puede mantener apariencia de poder mediante acumulación ostentosa de partes ajenas.'
+        'Sus salas en Stormveil están decoradas con cuerpos injertados de soldados caídos: brazos múltiples saliendo de los muros, manos humanas como ornamentos, miembros extra cosidos a estatuas. La estética del injerto es su firma arquitectónica. Es el lenguaje material de un ',
+        link('demidiós', 'concept', 'demidios'),
+        ' que solo puede mantener apariencia de poder mediante acumulación ostentosa de partes ajenas.'
       ),
       p(
         'Cuando el ',
@@ -3296,7 +3422,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Sus motivaciones son patéticas y completamente reconocibles. Quiere ',
         em('parecer'),
-        ' un Señor Elden ancestral cuando sabe que no tiene materia para serlo. Su devoción al linaje no es ideológica — es desesperada. Si el linaje pierde valor cosmológico, él pierde el único recurso que justifica su existencia. De ahí su obsesión arquitectónica con marcas familiares dorádas, con rituales del Orden, con la lanza-dragón que imita el pacto de ',
+        ' un ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' ancestral cuando sabe que no tiene materia para serlo. Su devoción al linaje no es ideológica — es desesperada. Si el linaje pierde valor cosmológico, él pierde el único recurso que justifica su existencia. De ahí su obsesión arquitectónica con marcas familiares dorádas, con rituales del Orden, con la lanza-dragón que imita el pacto de ',
         link('Godwyn', 'character', 'godwyn'),
         '.'
       ),
@@ -3309,7 +3437,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Godfrey', 'character', 'godfrey'),
         '. Su modelo simbólico imposible: ',
         link('Godwyn', 'character', 'godwyn'),
-        ' (el demidiós perfecto que él jamás puede emular). Su heredera natural — si la legitimidad funcionara por mérito — es ',
+        ' (el ',
+        link('demidiós', 'concept', 'demidios'),
+        ' perfecto que él jamás puede emular). Su heredera natural — si la legitimidad funcionara por mérito — es ',
         link('Nepheli Loux', 'character', 'nepheli-loux'),
         ', posible descendiente más directa de ',
         link('Godfrey', 'character', 'godfrey'),
@@ -3336,11 +3466,15 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La caída de Godrick es la primera victoria simbólica del ',
         link('Tarnished', 'concept', 'tarnished'),
-        ': derrota al demidiós más débil, obtiene su ',
+        ': derrota al ',
+        link('demidiós', 'concept', 'demidios'),
+        ' más débil, obtiene su ',
         link('Gran Runa', 'concept', 'great-rune'),
         ', accede al circuito legítimo de la sucesión Elden. Pero también es lección estructural: si el régimen del ',
         link('Orden Dorado', 'concept', 'golden-order'),
-        ' se sostiene con figuras como Godrick, el régimen ya está muerto. Su muerte no traumatiza a las Tierras Intermedias — al contrario, sus súbditos se dispersan con alivio. El castillo Stormveil queda libre para ser reclamado por una heredera más legítima como ',
+        ' se sostiene con figuras como Godrick, el régimen ya está muerto. Su muerte no traumatiza a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' — al contrario, sus súbditos se dispersan con alivio. El castillo Stormveil queda libre para ser reclamado por una heredera más legítima como ',
         link('Nepheli', 'character', 'nepheli-loux'),
         ', si el ',
         link('Tarnished', 'concept', 'tarnished'),
@@ -3368,9 +3502,13 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Malenia', 'character', 'malenia'),
         ' sostuvo, ',
         link('Rykard', 'character', 'rykard'),
-        ' blasfemó. Godrick solo cosió. Es el único demidiós cuyo verbo característico es transitivo y patético: él no hace, él pega. Su muerte injertando al ',
+        ' blasfemó. Godrick solo cosió. Es el único ',
+        link('demidiós', 'concept', 'demidios'),
+        ' cuyo verbo característico es transitivo y patético: él no hace, él pega. Su muerte injertando al ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' mismo cierra el bucle perfectamente: hasta el último gesto del demidiós más débil del ',
+        ' mismo cierra el bucle perfectamente: hasta el último gesto del ',
+        link('demidiós', 'concept', 'demidios'),
+        ' más débil del ',
         link('Linaje Dorado', 'faction', 'golden-lineage'),
         ' es un injerto.'
       ),
@@ -3465,7 +3603,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Varré es la imagen más nítida de la hospitalidad como anzuelo. Demuestra que el peor culto de las Tierras Intermedias se presenta primero como conversación cortés. La sangre se gana por etiqueta, no por violencia abierta. Su máscara blanca es metonimia perfecta: cubre el rostro real para presentar la cara que el aspirante quiere ver.'
+        'Varré es la imagen más nítida de la hospitalidad como anzuelo. Demuestra que el peor culto de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' se presenta primero como conversación cortés. La sangre se gana por etiqueta, no por violencia abierta. Su máscara blanca es metonimia perfecta: cubre el rostro real para presentar la cara que el aspirante quiere ver.'
       )
     ],
     confirmed: [
@@ -3565,7 +3705,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Yura llegó a las Tierras Intermedias desde Land of Reeds con propósito específico: cazar a los ',
+        'Yura llegó a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' desde Land of Reeds con propósito específico: cazar a los ',
         link('Bloody Fingers', 'faction', 'bloody-fingers'),
         ', invasores ',
         link('Tarnished', 'concept', 'tarnished'),
@@ -3611,7 +3753,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       [link('Eleonora', 'character', 'eleonora'), ' no distingue al Yura original del poseído']
     ],
     theories: [
-      'Conoció al Blind Swordsman histórico antes de su llegada a las Tierras Intermedias',
+      ['Conoció al Blind Swordsman histórico antes de su llegada a las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Sabía del riesgo de posesión pero aceptó la cacería igualmente',
       'Su cuerpo conserva consciencia residual durante la posesión'
     ],
@@ -3765,7 +3907,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Resumen esencial'),
       p(
-        'Patches existe en muchos mundos de FromSoftware. En las Tierras Intermedias aparece como bandido en ',
+        'Patches existe en muchos mundos de FromSoftware. En las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' aparece como bandido en ',
         link('Limgrave', 'region', 'limgrave'),
         ', con la trampa estándar: emboscada, derrota, mendiga perdón, intenta venderte cosas como si nada hubiera pasado. La rutina es deliberada — Patches ha tendido la misma trampa durante eras y siempre funciona la misma disculpa.'
       ),
@@ -3773,14 +3917,18 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Tras la primera derrota, Patches se convierte en ',
         link('mercader', 'character', 'merchant-kale'),
-        ' itinerante con ofertas dudosas. Reaparece en múltiples regiones de las Tierras Intermedias: ',
+        ' itinerante con ofertas dudosas. Reaparece en múltiples regiones de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': ',
         link('Limgrave', 'region', 'limgrave'),
         ', Mt Gelmir (al servicio de ',
         link('Tanith', 'character', 'tanith'),
         '), y ocasionalmente en otros lugares. Su oficio es vender lo que sea a quien sea por lo que sea.'
       ),
       p(
-        'En el Volcano Manor sirve nominalmente a la causa Recusante pero su fidelidad es pragmática, no doctrinal. Cuando otra opción mejor aparece, cambiará de bando. Es uno de los pocos personajes de las Tierras Intermedias que no tiene ideología cosmológica — solo cálculo de supervivencia.'
+        'En el Volcano Manor sirve nominalmente a la causa Recusante pero su fidelidad es pragmática, no doctrinal. Cuando otra opción mejor aparece, cambiará de bando. Es uno de los pocos personajes de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que no tiene ideología cosmológica — solo cálculo de supervivencia.'
       ),
       p(
         'Aparece también en relación con ',
@@ -3789,7 +3937,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Patches es el bufón cósmico. Su existencia recuerda que ningún sistema sagrado está libre de la astucia menor del oportunista. Sobrevive a todos los dioses por puro pragmatismo. Su trampa siempre falla; su disculpa siempre funciona; mañana lo intentará de nuevo. Es la prueba de que el cosmos de las Tierras Intermedias no es solo trágico — también es absurdo.'
+        'Patches es el bufón cósmico. Su existencia recuerda que ningún sistema sagrado está libre de la astucia menor del oportunista. Sobrevive a todos los dioses por puro pragmatismo. Su trampa siempre falla; su disculpa siempre funciona; mañana lo intentará de nuevo. Es la prueba de que el cosmos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' no es solo trágico — también es absurdo.'
       )
     ],
     confirmed: [
@@ -3806,7 +3956,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     theories: [
       'Patches es manifestación del mismo arquetipo en múltiples cosmologías',
       'Su inmortalidad es estructural, no biológica',
-      'Conoce secretos de las Tierras Intermedias que ninguna facción reconoce'
+      ['Conoce secretos de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' que ninguna facción reconoce']
     ],
     ambiguous: [
       'Si Patches actual es el mismo individuo que Patches anteriores o reencarnación',
@@ -3975,7 +4125,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'Aparece en costas dispersas de las Tierras Intermedias: ',
+        'Aparece en costas dispersas de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': ',
         link('Limgrave', 'region', 'limgrave'),
         ', Liurnia, otros puntos costeros. Su oficio nunca cambia: pescar, vender, conversar amablemente con quien pase. La persecución del pueblo nómada que ',
         link('Kale', 'character', 'merchant-kale'),
@@ -3993,7 +4145,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
     confirmed: [
       'Boggart es miembro del pueblo nómada que se disfrazó dentro de una jarra',
       'Vende cebos de pescado y técnicas',
-      'Aparece en costas dispersas de las Tierras Intermedias',
+      ['Aparece en costas dispersas de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       [link('Patches', 'character', 'patches'), ' puede asesinarlo en algunas variantes']
     ],
     inferred: [
@@ -4036,7 +4188,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Historia detallada'),
       p(
-        'Llegó a las Tierras Intermedias con ',
+        'Llegó a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' con ',
         link('Kenneth', 'character', 'kenneth-haight'),
         ' como padre adoptivo. Su crianza fue marcial pero sin pretensión real. Aprendió a pelear como noble menor de ',
         link('Limgrave', 'region', 'limgrave'),
@@ -4121,7 +4275,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Azur', 'character', 'azur'),
         ', ',
         link('Lusat', 'character', 'lusat'),
-        ') y a fragmentos de su propio cuerpo dispersos por las Tierras Intermedias.'
+        ') y a fragmentos de su propio cuerpo dispersos por las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
       p(
         'Entrenó a ',
@@ -4388,7 +4544,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Resumen esencial'),
       p(
         link('Diallos', 'character', 'diallos'),
-        ' es noble de Casa Hoslow que llegó a las Tierras Intermedias buscando a ',
+        ' es noble de Casa Hoslow que llegó a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' buscando a ',
         link('Lanya', 'character', 'lanya'),
         ', su sirvienta personal. Su filosofía de vida fue siempre pacifista: la espada existe para no ser usada, el noble debe gobernar por palabra, no por hierro.'
       ),
@@ -4398,7 +4556,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
         link('Mesa Redonda', 'concept', 'roundtable-hold'),
         ' en estado de melancolía profunda. Su búsqueda de ',
         link('Lanya', 'character', 'lanya'),
-        ' nunca termina — ella ya está muerta, asesinada por los conflictos de las Tierras Intermedias post-fractura. El ',
+        ' nunca termina — ella ya está muerta, asesinada por los conflictos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura. El ',
         link('Tarnished', 'concept', 'tarnished'),
         ' puede dirigirlo a ',
         link('Tanith', 'character', 'tanith'),
@@ -4522,7 +4682,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Resumen esencial'),
       p(
         link('Hyetta', 'character', 'hyetta'),
-        ' aparece como doncella ciega vagando por las Tierras Intermedias. Pide al ',
+        ' aparece como doncella ciega vagando por las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Pide al ',
         link('Tarnished', 'concept', 'tarnished'),
         ' encontrar Granos Brillantes (',
         link('Shabriri', 'character', 'shabriri'),
@@ -4556,7 +4718,7 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       )
     ],
     confirmed: [
-      'Hyetta vaga ciega por las Tierras Intermedias pidiendo Granos Brillantes',
+      ['Hyetta vaga ciega por las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' pidiendo Granos Brillantes'],
       'Los Granos son ojos humanos extraídos',
       'Cada Grano consumido le devuelve gradualmente la visión',
       ['Su iluminación final la convierte en doncella de la ', link('Llama Frenética', 'concept', 'frenzied-flame')]
@@ -4887,7 +5049,9 @@ export const charactersDeepLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'La aldea pacífica'),
       p(
-        'Jarburg es uno de los pocos lugares plenamente no-violentos de las Tierras Intermedias. Sus habitantes cultivan flores, cuidan a los más jóvenes, mantienen tradiciones rituales sin pretensiones cosmológicas. La paz es deliberada: el pueblo eligió esta forma de existencia precisamente para escapar de las violencias del régimen exterior.'
+        'Jarburg es uno de los pocos lugares plenamente no-violentos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Sus habitantes cultivan flores, cuidan a los más jóvenes, mantienen tradiciones rituales sin pretensiones cosmológicas. La paz es deliberada: el pueblo eligió esta forma de existencia precisamente para escapar de las violencias del régimen exterior.'
       ),
       h(2, 'El ataque y el sacrificio'),
       p(

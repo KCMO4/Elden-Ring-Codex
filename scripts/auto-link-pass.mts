@@ -47,7 +47,7 @@ const BANNED_NAMES = new Set<string>([
 const ALIAS_STOPWORDS = new Set<string>([
   'reina', 'rey', 'lord', 'lady', 'caballero', 'caballeros', 'caballera',
   'orden', 'dios', 'diosa', 'la', 'el', 'los', 'las', 'una', 'uno',
-  'gran', 'gran', 'primer', 'primera', 'antiguo', 'antigua',
+  'gran', 'primer', 'primera', 'antiguo', 'antigua',
   'era', 'edad', 'siglo', 'epoca', 'tiempo',
   'aquellos', 'aquellas', 'señor', 'señora',
 ])

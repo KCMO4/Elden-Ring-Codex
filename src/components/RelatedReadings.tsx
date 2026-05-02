@@ -4,6 +4,8 @@ import { ArrowRight } from 'lucide-react'
 import { findRelatedReadings } from '../lib/relatedReadings'
 import { entityTypeLabel } from './RichLoreText'
 import type { EntityType } from '../data/types'
+import { useExpansion } from '../lib/expansion'
+import { getEntityPreview } from '../data/lookups'
 
 interface Props {
   type: EntityType
@@ -20,7 +22,13 @@ interface Props {
  * progress and mounts this).
  */
 export function RelatedReadings({ type, slug, min = 2 }: Props) {
-  const related = findRelatedReadings(type, slug, 5)
+  const { hideSote } = useExpansion()
+  /* Filter out SOTE-marked targets when reader is in base mode. */
+  const related = findRelatedReadings(type, slug, 5).filter((r) => {
+    if (!hideSote) return true
+    const p = getEntityPreview(r.type, r.slug)
+    return p?.expansion !== 'sote'
+  })
   if (related.length < min) return null
 
   return (

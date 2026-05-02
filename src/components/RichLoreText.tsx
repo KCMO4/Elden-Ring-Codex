@@ -7,6 +7,7 @@ import {
   findCharacter, findRegion, findFaction, findConcept, findTimelineEntry, findEnding,
 } from '../data/lookups'
 import { enrichText } from '../lib/enrichText'
+import { useExpansion } from '../lib/expansion'
 
 const entityRouteMap: Record<EntityType, string> = {
   character: '/personajes',
@@ -221,12 +222,25 @@ function blockKey(b: RichBlock, i: number): string {
 }
 
 export function RichLoreText({ blocks }: { blocks: RichBlock[] }) {
+  const { hideSote } = useExpansion()
+  /* Headings are computed over the FULL set so the ToC stays stable —
+     filtering happens at render time only. Hidden blocks simply don't
+     appear in the article body. */
   const headingIds = buildHeadingIdMap(blocks)
+  const visibleBlocks = hideSote ? blocks.filter((b) => b.expansion !== 'sote') : blocks
+  const hiddenCount = blocks.length - visibleBlocks.length
+
   return (
     <div className="space-y-5">
-      {blocks.map((b, i) => (
+      {visibleBlocks.map((b, i) => (
         <BlockNode key={blockKey(b, i)} block={b} headingId={headingIds.get(b)} />
       ))}
+      {hideSote && hiddenCount > 0 && (
+        <p className="font-body text-[11px] text-codex-parchment-dim/45 italic border-t border-codex-gold-dim/15 pt-3">
+          {hiddenCount} {hiddenCount === 1 ? 'bloque oculto' : 'bloques ocultos'} marcado{hiddenCount === 1 ? '' : 's'} como SOTE.
+          Activa el filtro <em>Todo</em> en la barra lateral para verlos.
+        </p>
+      )}
     </div>
   )
 }

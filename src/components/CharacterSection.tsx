@@ -9,6 +9,7 @@ import { EmptyState } from './EmptyState'
 import { ColorLegend } from './ColorLegend'
 import { useFilters } from '../lib/useFilters'
 import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
+import { useEntityFilter } from '../lib/expansion'
 
 interface Props {
   characters: Character[]
@@ -42,9 +43,11 @@ export function CharacterSection({ characters }: Props) {
     [characters],
   )
 
+  const { visible: byExpansion } = useEntityFilter()
+
   const filtered = useMemo(() => {
     const q = f.search.toLowerCase()
-    const result = characters.filter((c) => {
+    const result = byExpansion(characters).filter((c) => {
       const matchSearch =
         !f.search ||
         c.name.toLowerCase().includes(q) ||
@@ -70,7 +73,7 @@ export function CharacterSection({ characters }: Props) {
       default:
         return result
     }
-  }, [characters, f.search, f.certainty, f.secondaryTags, f.tags, f.sort])
+  }, [characters, byExpansion, f.search, f.certainty, f.secondaryTags, f.tags, f.sort])
 
   return (
     <section id="personajes">
@@ -78,6 +81,7 @@ export function CharacterSection({ characters }: Props) {
 
       <div className="codex-section pt-6">
         <SectionHeader
+          asPageHeading
           title="Enciclopedia de Personajes"
           subtitle="Las almas que dieron forma a las Tierras Intermedias"
           readingCategory="personajes"

@@ -14,7 +14,14 @@ interface Props {
   onTermClick?: (term: string) => void
 }
 
-export function GlossarySection({ entries, onTermClick }: Props) {
+/**
+ * Grid of glossary cards with click-to-open modal. Despite the file being
+ * called `GlossaryModal.tsx` (legacy — historically only the modal lived
+ * here), the export is named `GlossaryGrid` because it is consumed as the
+ * grid renderer of `GlossarySection`. Don't rename without renaming the
+ * import in `./GlossarySection.tsx`.
+ */
+export function GlossaryGrid({ entries, onTermClick }: Props) {
   const [selected, setSelected] = useState<GlossaryEntry | null>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const previouslyFocused = useRef<HTMLElement | null>(null)

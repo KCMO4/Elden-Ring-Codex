@@ -18,12 +18,13 @@ export function EraBadge({ entity, size = 'full', className = '' }: Props) {
   return (
     <span
       title={`Era: ${ERA_LABEL[era]}`}
+      aria-label={`Era: ${ERA_LABEL[era]}`}
       className={`inline-flex items-center gap-1.5 rounded-sm border px-1.5 py-0.5
                   font-heading text-[9px] tracking-wider uppercase
                   ${ERA_TONE[era]} ${className}`}
     >
       <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-current" />
-      {size === 'full' && <span>{ERA_LABEL[era]}</span>}
+      {size === 'full' ? <span>{ERA_LABEL[era]}</span> : <span className="sr-only">{ERA_LABEL[era]}</span>}
     </span>
   )
 }

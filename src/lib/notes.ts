@@ -46,14 +46,6 @@ export function setNote(type: EntityType, slug: string, content: string): void {
   write(map)
 }
 
-export function getAllNotes(): { type: EntityType; slug: string; content: string }[] {
-  const map = read()
-  return Object.entries(map).map(([k, content]) => {
-    const [type, slug] = k.split(':') as [EntityType, string]
-    return { type, slug, content }
-  })
-}
-
 /** Reactive hook — returns the note for a given entity and a setter that
    updates localStorage + broadcasts change events. */
 export function useNote(type: EntityType, slug: string): [string, (next: string) => void] {

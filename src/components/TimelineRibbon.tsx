@@ -41,12 +41,15 @@ function romanToInt(s: string): number {
   return total
 }
 
+/* Era tokens routed through codex-* CSS-var palette so light mode adapts.
+   Previously used Tailwind palette (purple-300, amber-400, blue-300) which
+   were dark-tuned and washed out on the cream background. */
 const eraStyles: Record<string, { label: string; bg: string; border: string; dot: string; text: string }> = {
-  'pre-orden':     { label: 'Pre-Orden',         bg: 'bg-purple-900/15',  border: 'border-purple-500/30',  dot: 'bg-purple-400',  text: 'text-purple-300' },
-  'orden-dorado':  { label: 'Orden Dorado',      bg: 'bg-codex-gold/10',  border: 'border-codex-gold/40',  dot: 'bg-codex-gold',  text: 'text-codex-gold' },
-  'pre-fractura':  { label: 'Pre-Fractura',      bg: 'bg-amber-900/15',   border: 'border-amber-600/40',   dot: 'bg-amber-500',   text: 'text-amber-400' },
-  'fractura':      { label: 'Era de la Fractura', bg: 'bg-codex-rot/15',  border: 'border-codex-rot/40',   dot: 'bg-codex-rot',   text: 'text-rose-300' },
-  'Tarnished':    { label: 'Era del Tarnished', bg: 'bg-blue-900/15',   border: 'border-blue-500/30',    dot: 'bg-blue-400',    text: 'text-blue-300' },
+  'pre-orden':     { label: 'Pre-Orden',          bg: 'bg-codex-rot/10',     border: 'border-codex-rot/30',     dot: 'bg-codex-rot',     text: 'text-codex-rot' },
+  'orden-dorado':  { label: 'Orden Dorado',       bg: 'bg-codex-gold/10',    border: 'border-codex-gold/40',    dot: 'bg-codex-gold',    text: 'text-codex-gold' },
+  'pre-fractura':  { label: 'Pre-Fractura',       bg: 'bg-codex-flame/10',   border: 'border-codex-flame/40',   dot: 'bg-codex-flame',   text: 'text-codex-flame' },
+  'fractura':      { label: 'Era de la Fractura', bg: 'bg-codex-crimson/10', border: 'border-codex-crimson/40', dot: 'bg-codex-crimson', text: 'text-codex-crimson' },
+  'Tarnished':     { label: 'Era del Tarnished',  bg: 'bg-codex-ghost/10',   border: 'border-codex-ghost/30',   dot: 'bg-codex-ghost',   text: 'text-codex-ghost' },
 }
 
 const ZOOM_LEVELS = [180, 240, 320, 420] // card widths in px
@@ -77,8 +80,8 @@ export function TimelineRibbon({ entries }: Props) {
 
   return (
     <div className="parchment-panel p-4 mb-8">
-      {/* Controls */}
-      <div className="flex items-center justify-between gap-4 mb-4">
+      {/* Controls — stack vertically on mobile, side-by-side from sm: up */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
         <div className="flex items-center gap-3 flex-wrap">
           <p className="font-heading text-xs text-codex-gold-dim tracking-widest uppercase">
             Línea cosmológica · {entries.length} eventos
@@ -181,7 +184,7 @@ export function TimelineRibbon({ entries }: Props) {
 
                       {/* Connector to spine */}
                       <div className={`flex justify-center ${isAbove ? 'mt-2' : 'mb-2'}`}>
-                        <div className={`w-px h-6 ${styles.bg.replace('bg-', 'border-l border-')}`} style={{ borderLeftColor: 'rgba(138,112,64,0.4)' }} />
+                        <div className="w-px h-6 border-l" style={{ borderLeftColor: 'rgba(138,112,64,0.4)' }} />
                       </div>
 
                       {/* Spine dot */}

@@ -9,6 +9,7 @@ import { EmptyState } from './EmptyState'
 import { ColorLegend } from './ColorLegend'
 import { useFilters } from '../lib/useFilters'
 import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
+import { useEntityFilter } from '../lib/expansion'
 
 interface Props {
   regions: Region[]
@@ -36,9 +37,11 @@ export function RegionSection({ regions }: Props) {
     [regions],
   )
 
+  const { visible: byExpansion } = useEntityFilter()
+
   const filtered = useMemo(() => {
     const q = f.search.toLowerCase()
-    const result = regions.filter((r) => {
+    const result = byExpansion(regions).filter((r) => {
       const matchSearch =
         !f.search ||
         r.name.toLowerCase().includes(q) ||
@@ -60,7 +63,7 @@ export function RegionSection({ regions }: Props) {
       default:
         return result
     }
-  }, [regions, f.search, f.certainty, f.tags, f.sort])
+  }, [regions, byExpansion, f.search, f.certainty, f.tags, f.sort])
 
   return (
     <section id="regiones">
@@ -68,6 +71,7 @@ export function RegionSection({ regions }: Props) {
 
       <div className="codex-section pt-6">
         <SectionHeader
+          asPageHeading
           title="Regiones de las Tierras Intermedias"
           subtitle="Cada tierra, su historia, su tragedia oculta"
           poeticIntro="El mapa no es solo geografía — es memoria. Cada región lleva el peso de lo que ocurrió allí."

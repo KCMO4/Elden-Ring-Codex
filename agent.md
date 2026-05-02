@@ -1,12 +1,13 @@
 # Elden Ring: Códice — Instrucciones para el Agente
 
 ## Proyecto
-Wiki SPA React de lore para Elden Ring **juego base** (sin Shadow of the Erdtree). UI completa en español. Stack: React 18 + TypeScript + Vite + Tailwind CSS + Framer Motion + lucide-react + React Router v6.
+Wiki SPA React de lore para Elden Ring. UI completa en español. Stack: React 18 + TypeScript + Vite + Tailwind CSS + Framer Motion + lucide-react + React Router v6.
 
-**Estado**: codex completo al 100 %. **375 entradas base con deep lore** (107 personajes + 68 facciones + 34 regiones + 90 conceptos + 70 eventos + 6 finales). **Las 14 fases completas + UX expansion + glow-up final**. **0 referencias rotas** verificado por script automatizado. Cobertura cosmológica integral del juego base — todas las reliquias remembrance individualmente, sacramentos del régimen (Estacas / Wondrous Physick / Sites of Grace / Roundtable Hold), y figuras históricas referenciadas (Storm-Hawk King). **Imágenes 100 % ≥1080p** (Real-ESRGAN AI upscaling para sub-1080p).
+**Estado**: codex base completo al 100 %. **381 entradas base con deep lore** (107 personajes + 68 facciones + **36 regiones** + **94 conceptos** + 70 eventos + 6 finales). **Las 14 fases + UX expansion + glow-up + arquitectura SOTE + entrada macro Tierras Intermedias + 5 conceptos macro deep-tier + auditoría de código (24 fixes) + auditoría visual (36 fixes)**. **0 referencias rotas** verificado por script automatizado. Cobertura cosmológica integral del juego base — todas las reliquias remembrance individualmente, sacramentos del régimen (Estacas / Wondrous Physick / Sites of Grace / Roundtable Hold), figuras históricas referenciadas (Storm-Hawk King), entrada macro de **Las Tierras Intermedias** como continente cosmológico (6 secciones), 4 conceptos macro deep-tier (`Llama de Ruina`, `Señor Elden`, `Fundamentalismo del Orden Dorado`, `Demidioses`) y región periférica deep-tier `Tierras de los Cañaverales`. **Imágenes 100 % ≥1080p** (Real-ESRGAN AI upscaling para sub-1080p; 10 imágenes faltantes documentadas con SVG fallback temático). **Arquitectura para SOTE (Shadow of the Erdtree) implementada** — la información del DLC se intercala en las entradas existentes (no en bloques al final), con filtro global "Todo / Base" que oculta tanto bloques como entidades enteras marcadas SOTE. **Light mode totalmente theme-aware** vía CSS vars `rgb(var(--codex-X))` — sin hardcoded hex/rgb fuera de inline glow effects intencionales.
 
 ## Reglas críticas
-- **Solo juego base.** Cero contenido del DLC. Tratar el codex como si Shadow of the Erdtree no existiera.
+- **Modelo de expansión**: el contenido del DLC se **integra inline** en las entradas existentes (no se segrega a un apartado al final). Marcar bloques o entidades nuevas con `expansion: 'sote'`. El reader puede ocultar todo SOTE con el toggle de la sidebar (Todo / Base).
+- Por defecto el codex sigue siendo **base only** — añadir contenido SOTE es opcional y deliberado, no automático. Cuando se añada, debe usar las marcas `expansion: 'sote'` en bloques (`p()`, `h()`, `q()`, `ul()`, `ol()`), items de buckets (envueltos en `{ expansion: 'sote', content: ... }`), o entidades enteras (campo `expansion` en el objeto raíz de `Character | Faction | Region | GlossaryEntry | TimelineEntry | Ending`).
 - **Terminología "Tierras Intermedias"**, no "Interregno". El término "Lands Between" se traduce como **Tierras Intermedias** (plural femenino) en todo el codex. Cualquier nuevo lore debe respetar el género/número (las Tierras Intermedias son, están, fueron, etc.).
 - **Terminología "Árbol Áureo"**, no "Erdtree" ni "Árbol del Inmenso". Es la traducción oficial española de FromSoft. Capitalizado en texto visible. Los IDs/slugs lowercase (`erdtree`, `minor-erdtrees`) se preservan tal cual — son identificadores internos, no texto visible.
 - **"Tarnished" NO se traduce.** Nunca usar "Mancillado/Mancillados" (traducción imprecisa rechazada). Mantener "Tarnished" en singular y plural.
@@ -91,7 +92,6 @@ src/data/
 ├── timeline.ts                   # baseTimeline + merge con lore (70 entradas)
 ├── endings.ts                    # endingsData (datos completos inline, 6 entradas)
 ├── narrativeRoutes.ts            # Rutas narrativas (Ranni, Fia, etc.)
-├── coveragePlan.ts               # Plan de cobertura programable (legado, 100 % cubierto)
 ├── lookups.ts                    # findBySlug<T>, resolveByIds<T>, pathFor, ROUTE_PREFIX, neighbors, randomEntryPath
 ├── index.ts                      # Re-exports
 └── lore/
@@ -272,9 +272,9 @@ Función O(1) que normaliza cualquier entidad a la forma `{ id, name, summary, f
 
 ## Coverage plan
 
-`src/data/coveragePlan.ts` queda como artefacto histórico programable; cobertura efectiva: **100 %**. Helpers `computeCoverageStats()`, `getMissingCore()`, `getPartialCore()` siguen disponibles si se quiere auditar.
+`src/data/coveragePlan.ts` fue eliminado en sesiones anteriores; cobertura ahora se verifica vía `audit-cross-links.mts` y conteo manual sobre los archivos `data/*.ts`.
 
-**Estado actual: 375 entradas base con deep lore. Cero missing. Phases 1-14 + UX expansion + glow-up completos. Cobertura cosmológica integral.**
+**Estado actual: 381 entradas base con deep lore (incluye entrada macro Tierras Intermedias + 5 conceptos macro añadidos 2026-05-02: `flame-of-ruin`, `elden-lord`, `golden-order-fundamentalism`, `demidios`, `lands-of-reeds`). Cero missing. Phases 1-14 + UX expansion + glow-up + arquitectura SOTE completos. Cobertura cosmológica integral.**
 
 ## Phases (mejora continua)
 
@@ -448,6 +448,87 @@ El renderer `<InlineProse node={string | RichInline[]} />` (export de `RichLoreT
 2. `git status --short` no debe incluir `public/image-sources.local.json` ni archivos de `tools/`, `.trash-art/`, `reports/`
 3. `git check-ignore -v public/image-sources.local.json` debe coincidir con `.gitignore`
 4. `agent.md`, `memory.md`, `PHASES.md` están untracked deliberadamente (docs personales del usuario)
+
+## Arquitectura SOTE (Shadow of the Erdtree)
+
+**Decisión de diseño**: el DLC **expande** información de entidades existentes (Marika, Mogh, Miquella, etc.) en lugar de generar entradas paralelas. Verlo al final como bloque "DLC" rompe la lectura cuando el DLC revela origen/motivación que sustituye lo que se sabía antes. Por eso el SOTE se intercala dentro de las secciones que afecta y se etiqueta a nivel de **bloque**, **item**, o **entidad completa**.
+
+### Tipos involucrados (`src/data/types.ts`)
+- `Expansion = 'base' | 'sote'`
+- `RichBlock` (paragraph / heading / quote / list) tiene campo opcional `expansion?: Expansion`
+- `BucketItem = string | RichInline[] | { expansion?: Expansion; content: string | RichInline[] }` — la variante envuelta marca el item completo como SOTE
+- `DeepEntity` (mixin que heredan Character / Region / Faction / GlossaryEntry / TimelineEntry / Ending) tiene `expansion?: Expansion` — marca la entidad **entera**
+
+### Filtro global (`src/lib/expansion.ts`)
+- `useExpansion()` — hook reactivo, devuelve `{ filter, setFilter, hideSote }`. Estado en `localStorage[codex-expansion-v1]` con custom event `codex-expansion-change` para sync entre instancias.
+- `useEntityFilter()` — wrapper que devuelve `{ hideSote, visible<T>, isVisible, hiddenCount<T> }`. `visible(items)` filtra arrays de entidades por su `expansion?` field.
+- `isVisible(expansion, filter)` — helper puro para uso fuera de componentes.
+- Toggle en `src/components/ExpansionToggle.tsx` (segmentado 2-state Todo / Base, montado en sidebar).
+
+### Puntos de integración del filtro
+| Componente | Comportamiento bajo `hideSote` |
+|---|---|
+| `RichLoreText` (renderer de RichBlock[]) | Oculta bloques con `expansion: 'sote'`; muestra contador "N bloques de SOTE ocultos" |
+| `DetailLayout` (KnowledgeBox buckets) | Oculta items envueltos `{ expansion: 'sote', content }`; renderiza `content` para items visibles |
+| `CharacterSection / FactionSection / RegionSection / GlossarySection / TimelineSection / EndingsSection` | Aplican `byExpansion(items)` antes del filtro de búsqueda/tags/sort |
+| `SearchPage` | Filtra los 6 índices de Fuse antes de indexar |
+| `TagPage` | Filtra los matches de cada categoría tras `findEntriesByTag` |
+| `RelatedReadings` | Resuelve cada candidato con `getEntityPreview` y descarta los `expansion === 'sote'` |
+| `EntityGraph` | Skipea nodos relacionados cuyo preview es SOTE-only |
+| `EntityHoverCard` | Muestra siempre la card (el link existe), pero añade badge "SOTE" en el title row si `preview.expansion === 'sote'` |
+| `getEntityPreview` (`lookups.ts`) | Propaga el campo `expansion` desde la entidad al preview |
+
+### Flujo para añadir contenido SOTE
+
+**Bloque dentro de una entrada existente** (caso típico — el DLC añade información sobre Marika):
+```ts
+// src/data/lore/charactersDeepLore.ts
+{
+  id: 'marika',
+  deepLore: [
+    h(2, 'Historia detallada'),
+    p('...lore base...'),
+    p({ expansion: 'sote' }, '...lore SOTE intercalado...'),  // ← marcador a nivel bloque
+    p('...continúa lore base...'),
+  ],
+}
+```
+
+**Item dentro de un bucket** (`confirmed`/`inferred`/`theories`/`ambiguous`):
+```ts
+confirmed: [
+  'Hecho del juego base',
+  { expansion: 'sote', content: 'Hecho revelado en SOTE' },  // ← wrapper
+  ['Mixto: ', em('inline'), ' rich text'],
+]
+```
+
+**Entidad entera nueva** (ej. NPC exclusivo del DLC):
+```ts
+// src/data/characters.ts
+{
+  id: 'st-trina',
+  name: 'St. Trina',
+  expansion: 'sote',  // ← oculta la entrada entera de listados/búsqueda/grafos en modo Base
+  // ...resto de campos
+}
+```
+
+### Convenciones para autoría SOTE
+1. **Nunca segregar al final** — el bloque SOTE va donde temáticamente pertenece. Si la sección "Origen" cambia con el DLC, el bloque SOTE va dentro de "Origen", no en un apéndice.
+2. **Headings nuevos también pueden marcarse** — si el DLC añade una sección entera (ej. "Encuentro en la tierra de las sombras"), `h(2, 'Encuentro...', undefined, { expansion: 'sote' })` la oculta limpiamente.
+3. **Cross-links SOTE → base están permitidos** — un bloque SOTE puede `link()` a una entrada base. Cuando el reader oculta SOTE, el bloque desaparece y el link nunca se renderiza.
+4. **Cross-links base → SOTE se filtran automáticamente** — `RelatedReadings` y `EntityGraph` ya saltan los targets SOTE en modo Base. El link en prosa sigue existiendo (vivo en SOTE mode), pero la sidebar/grafo no lo destacan.
+5. **El hover-card no se filtra** — si el reader hace hover sobre un link a una entidad SOTE en modo Base, la card aparece con badge "SOTE" para señalar que la entrada es DLC-only. Decisión deliberada: el link ya está ahí, ocultar la card crearía links muertos sin feedback.
+6. **`expansion: 'base'` no es necesario explícito** — el default es base. Solo marcar lo que sea SOTE.
+
+### Verificación post-cambio SOTE
+```bash
+npx tsc --noEmit                                # tipos limpios (DeepEntity ya tiene expansion?)
+npm run build                                    # build limpio
+npx tsx scripts/audit-cross-links.mts           # cross-links resuelven (incluye refs a/desde SOTE)
+```
+Probar el toggle Todo / Base manualmente en el dev server con una entrada que tenga bloques SOTE — verificar que el contador "N bloques ocultos" aparece y que cambiar el toggle re-renderiza sin parpadeos.
 
 ## GitHub
 - Remote: `https://github.com/KCMO4/Elden-Ring-Codex.git`

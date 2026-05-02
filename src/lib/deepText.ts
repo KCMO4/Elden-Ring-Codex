@@ -25,7 +25,14 @@ function flattenBlock(b: RichBlock): string {
 }
 
 function flattenBucket(items: BucketItem[]): string {
-  return items.map((it) => (typeof it === 'string' ? it : flattenInline(it))).join(' ')
+  return items
+    .map((it) => {
+      if (typeof it === 'string') return it
+      if (Array.isArray(it)) return flattenInline(it)
+      /* Wrapped variant with expansion marker — flatten the inner content */
+      return typeof it.content === 'string' ? it.content : flattenInline(it.content)
+    })
+    .join(' ')
 }
 
 function flattenProse(p: ProseField): string {

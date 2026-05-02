@@ -6,14 +6,18 @@ import { CodexImage } from './images/CodexImage'
 import { endingsData } from '../data/endings'
 import { pathFor } from '../data/lookups'
 import { EnrichedText } from './RichLoreText'
+import { useEntityFilter } from '../lib/expansion'
 
 export function EndingsSection() {
+  const { visible: byExpansion } = useEntityFilter()
+  const filtered = byExpansion(endingsData)
   return (
     <section id="finales">
       <SectionHero fallbackType="ending-fracture" />
 
       <div className="codex-section pt-6">
         <SectionHeader
+          asPageHeading
           title="Los Finales"
           subtitle="Las seis eras que el Tarnished puede instaurar"
           poeticIntro="No hay final correcto. Solo diferentes respuestas a la misma pregunta: si tuvieras el poder de definir una era, ¿qué elegirías?"
@@ -34,7 +38,7 @@ export function EndingsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {endingsData.map((ending, i) => (
+          {filtered.map((ending, i) => (
             <motion.article
               key={ending.id}
               initial={{ opacity: 0, y: 20 }}
@@ -82,7 +86,12 @@ export function EndingsSection() {
                 <div className="p-4">
                   <h3
                     className="font-heading text-base leading-tight mb-3"
-                    style={{ color: ending.accentColor }}
+                    style={{
+                      color: ending.accentColor,
+                      /* Subtle text-shadow keeps the unique accentColor legible
+                         on the cream background of light mode. */
+                      textShadow: '0 1px 0 rgb(var(--codex-black) / 0.15)',
+                    }}
                   >
                     {ending.name}
                   </h3>

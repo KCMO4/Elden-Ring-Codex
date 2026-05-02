@@ -5,13 +5,16 @@ import { SectionHero } from '../components/SectionHero'
 import { narrativeRoutes } from '../data/narrativeRoutes'
 import { EnrichedText } from '../components/RichLoreText'
 
+/* Tokens mapped to codex-* CSS-var palette so light mode adapts.
+   Tailwind palette colors (amber-400, blue-300, etc.) were dark-tuned and
+   washed out on the cream background. */
 const accentClasses: Record<string, { border: string; text: string; bg: string }> = {
-  gold:     { border: 'border-codex-gold/40',    text: 'text-codex-gold',         bg: 'bg-codex-gold/5' },
-  order:    { border: 'border-amber-500/40',    text: 'text-amber-400',          bg: 'bg-amber-500/5' },
-  dusk:     { border: 'border-blue-500/40',     text: 'text-blue-300',           bg: 'bg-blue-500/5' },
-  frenzied: { border: 'border-yellow-600/40',   text: 'text-yellow-400',         bg: 'bg-yellow-600/5' },
-  stars:    { border: 'border-purple-500/40',   text: 'text-purple-300',         bg: 'bg-purple-500/5' },
-  despair:  { border: 'border-red-700/40',      text: 'text-red-400',            bg: 'bg-red-700/5' },
+  gold:     { border: 'border-codex-gold/40',     text: 'text-codex-gold',        bg: 'bg-codex-gold/5' },
+  order:    { border: 'border-codex-gold-dim/40', text: 'text-codex-gold-dim',    bg: 'bg-codex-gold-dim/5' },
+  dusk:     { border: 'border-codex-ghost/40',    text: 'text-codex-ghost',       bg: 'bg-codex-ghost/5' },
+  frenzied: { border: 'border-codex-flame/40',    text: 'text-codex-flame',       bg: 'bg-codex-flame/5' },
+  stars:    { border: 'border-codex-rot/40',      text: 'text-codex-rot',         bg: 'bg-codex-rot/5' },
+  despair:  { border: 'border-codex-crimson/40',  text: 'text-codex-crimson',     bg: 'bg-codex-crimson/5' },
 }
 
 export function RoutesListPage() {

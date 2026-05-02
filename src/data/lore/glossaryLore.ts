@@ -16,12 +16,16 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Naturaleza ontológica del Anillo'),
       p(
-        'El Anillo Elden es estructura cosmológica, no objeto material. Existe simultáneamente como red conceptual (las leyes que rigen las Tierras Intermedias), como entidad vinculada (',
+        'El Anillo Elden es estructura cosmológica, no objeto material. Existe simultáneamente como red conceptual (las leyes que rigen las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '), como entidad vinculada (',
         'la ',
         link('Bestia Elden', 'concept', 'bestia-elden'),
         ' es su forma autónoma divorciada de voluntad humana), y como contenido de una vasija humana (',
         link('Marika', 'character', 'marika'),
-        ' es su portadora central). Las Grandes Runas que lo componen no son fragmentos discretos — son aspectos diferenciables de la misma estructura unificada. Cuando todas funcionan en sincronía, el cosmos de las Tierras Intermedias tienen leyes coherentes.'
+        ' es su portadora central). Las Grandes Runas que lo componen no son fragmentos discretos — son aspectos diferenciables de la misma estructura unificada. Cuando todas funcionan en sincronía, el cosmos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' tienen leyes coherentes.'
       ),
       h(2, 'Las Grandes Runas como ley'),
       p(
@@ -55,9 +59,13 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Godwyn', 'character', 'godwyn'),
         ', ',
         link('Marika', 'character', 'marika'),
-        ' tomó un martillo y rompió el Anillo Elden contra el suelo de las Tierras Intermedias. La fragmentación fue inmediata: cada ',
+        ' tomó un martillo y rompió el Anillo Elden contra el suelo de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. La fragmentación fue inmediata: cada ',
         link('Gran Runa', 'concept', 'great-rune'),
-        ' quedó dispersa entre los demidiós que la podía sostener. La ',
+        ' quedó dispersa entre los ',
+        link('demidiós', 'concept', 'demidios'),
+        ' que la podía sostener. La ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' se retiró parcialmente al perder vasija coordinadora. La ',
         link('Ley de la Causalidad', 'concept', 'law-of-causality'),
@@ -134,7 +142,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La ',
         link('Bestia Elden', 'concept', 'bestia-elden-concept'),
-        ' no es dios externo, ni vasija, ni demidiós. Es algo más raro y más estructural: el ',
+        ' no es dios externo, ni vasija, ni ',
+        link('demidiós', 'concept', 'demidios'),
+        '. Es algo más raro y más estructural: el ',
         link('Anillo Elden', 'concept', 'elden-ring'),
         ' mismo en forma autónoma, divorciado de la voluntad humana de ',
         link('Marika', 'character', 'marika'),
@@ -227,7 +237,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La Voluntad Mayor es uno de los muchos ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
-        ' que pugnan por imponer leyes a las Tierras Intermedias. A diferencia de divinidades menores que operan mediante un solo huésped, la Voluntad Mayor opera mediante red institucional: vasija humana central (',
+        ' que pugnan por imponer leyes a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. A diferencia de divinidades menores que operan mediante un solo huésped, la Voluntad Mayor opera mediante red institucional: vasija humana central (',
         link('Marika', 'character', 'marika'),
         '), mensajeros físicos (',
         link('Dos Dedos', 'faction', 'dos-dedos'),
@@ -287,7 +299,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ),
     ],
     confirmed: [
-      'La Voluntad Mayor es uno de los muchos dioses externos de las Tierras Intermedias',
+      ['La Voluntad Mayor es uno de los muchos dioses externos de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       ['Eligió a ', link('Marika', 'character', 'marika'), ' como vasija humana central'],
       ['Opera mediante red institucional sofisticada (', link('Dos Dedos', 'faction', 'dos-dedos'), ', Lectoras, ', link('Orden Dorado', 'concept', 'golden-order'), ')'],
       ['Se ha retirado parcialmente tras la rotura del ', link('Anillo Elden', 'concept', 'elden-ring')],
@@ -300,7 +312,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       'Es el dios externo más institucionalmente sofisticado documentado por el juego',
     ],
     theories: [
-      'No murió ni se debilitó — solo busca nueva vasija fuera del cosmos de las Tierras Intermedias',
+      ['No murió ni se debilitó — solo busca nueva vasija fuera del cosmos de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Conoce el destino futuro del cosmos y opera con horizonte temporal mayor',
       'Es hermana cosmológica de la Madre Informe o derivación de un mismo dios externo más antiguo',
       'Los seis finales del juego son alternativas que la Voluntad Mayor permite — no opciones contra ella',
@@ -309,7 +321,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       'Identidad y forma física fuera de su manifestación institucional',
       'Si tiene voluntad coherente o solo procesos cosmológicos automáticos',
       'Cuántos otros regímenes ha mantenido en otras dimensiones',
-      'Si retornaría plenamente bajo cosmología reformada o rechazaría el cosmos de las Tierras Intermedias definitivamente',
+      ['Si retornaría plenamente bajo cosmología reformada o rechazaría el cosmos de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' definitivamente'],
     ],
     relatedCharacters: ['marika', 'radagon', 'goldmask', 'enia', 'gloam-eyed-queen'],
     relatedFactions: ['orden-dorado', 'dos-dedos', 'finger-readers'],
@@ -324,7 +336,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Categoría ontológica'),
       p(
-        'Los dioses exteriores son entidades cuyo dominio cosmológico procede de fuera de las Tierras Intermedias como mundo. No son dioses locales: son agentes externos que han alcanzado capacidad de imponer leyes al cosmos. Cada uno representa un dominio específico — orden, sangre, fuego, decaimiento, sufrimiento, vacío estelar. La pugna entre ellos es la dinámica cosmológica subyacente que el régimen actual del ',
+        'Los dioses exteriores son entidades cuyo dominio cosmológico procede de fuera de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como mundo. No son dioses locales: son agentes externos que han alcanzado capacidad de imponer leyes al cosmos. Cada uno representa un dominio específico — orden, sangre, fuego, decaimiento, sufrimiento, vacío estelar. La pugna entre ellos es la dinámica cosmológica subyacente que el régimen actual del ',
         link('Orden Dorado', 'concept', 'golden-order'),
         ' intenta administrar.'
       ),
@@ -383,7 +397,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Millicent', 'character', 'millicent'),
         ' las usa contra la Podredumbre). El proyecto del ',
         link('Haligtree', 'concept', 'haligtree'),
-        ' es la única utopía documentada de las Tierras Intermedias. Que ',
+        ' es la única utopía documentada de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Que ',
         link('Miquella', 'character', 'miquella'),
         ' fuera secuestrado por ',
         link('Mohg', 'character', 'mohg'),
@@ -399,21 +415,23 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Pieles de Dios', 'faction', 'pieles-de-dios'),
         ' dice sí pero a costa de matar a los dioses uno a uno. El proyecto ',
         link('Miquella', 'character', 'miquella'),
-        ' dice sí mediante metalurgia teológica. Cada cosmología de las Tierras Intermedias son respuesta distinta. La pregunta nunca cierra del todo.'
+        ' dice sí mediante metalurgia teológica. Cada cosmología de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' son respuesta distinta. La pregunta nunca cierra del todo.'
       ),
     ],
     confirmed: [
-      'Los dioses exteriores son entidades cosmológicas externas a las Tierras Intermedias',
+      ['Los dioses exteriores son entidades cosmológicas externas a las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Operan infectando huéspedes humanos como vehículos',
       [link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ', Madre Informe, ', link('Llama Frenética', 'concept', 'frenzied-flame'), ' y dios del decaimiento están confirmados'],
       [link('Miquella', 'character', 'miquella'), ' desarrolló el ', link('Oro sin Aleación', 'concept', 'unalloyed-gold'), ' como proyecto antiteo'],
       ['Las agujas de ', link('Oro sin Aleación', 'concept', 'unalloyed-gold'), ' pueden expulsar a un dios del cuerpo de su huésped'],
     ],
     inferred: [
-      'La pugna entre ellos es la dinámica cosmológica subyacente de las Tierras Intermedias',
+      ['La pugna entre ellos es la dinámica cosmológica subyacente de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Cada huésped es simultáneamente vehículo y prisionero del dios',
       ['El proyecto ', link('Miquella', 'character', 'miquella'), ' era amenaza estructural para todos los dioses exteriores simultáneamente'],
-      'Los regímenes cosmológicos de las Tierras Intermedias son seriales — uno reemplaza a otro al colapsar',
+      ['Los regímenes cosmológicos de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' son seriales — uno reemplaza a otro al colapsar'],
     ],
     theories: [
       'Existen dioses exteriores adicionales no documentados que esperan vacante cosmológica',
@@ -449,7 +467,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Antes del ',
         link('Árbol Áureo', 'concept', 'erdtree'),
-        ' dorado existió un árbol del Crisol — formación cósmica que distribuía la energía primigenia por todas las Tierras Intermedias. Sus iconografías sobreviven como reliquias: las espinas del Crisol que algunos hechizos invocan, los ojos del Crisol embebidos en armaduras pre-Orden, los cuernos del Crisol que aparecen en armaduras de ',
+        ' dorado existió un árbol del Crisol — formación cósmica que distribuía la energía primigenia por todas las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Sus iconografías sobreviven como reliquias: las espinas del Crisol que algunos hechizos invocan, los ojos del Crisol embebidos en armaduras pre-Orden, los cuernos del Crisol que aparecen en armaduras de ',
         link('Crucible Knights', 'faction', 'crucible-knights'),
         '. La forma exacta del árbol original se ha perdido — el ',
         link('Árbol Áureo', 'concept', 'erdtree'),
@@ -483,13 +503,17 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Maliketh', 'character', 'maliketh'),
         ' y ',
         link('Blaidd', 'character', 'blaidd'),
-        '. Cada manifestación viva del Crisol en las Tierras Intermedias actuales es declaración silenciosa de que el régimen no pudo purificar a fondo.'
+        '. Cada manifestación viva del Crisol en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' actuales es declaración silenciosa de que el régimen no pudo purificar a fondo.'
       ),
       h(2, 'Significado simbólico'),
       p(
         'El Crisol es el monumento del juego a la cosmología que el régimen reprimió. La pregunta implícita: ¿es el Crisol más primitivo o solo distinto? El régimen del ',
         link('Orden Dorado', 'concept', 'golden-order'),
-        ' lo trata como inferior; las tradiciones que lo conservan lo tratan como primordial. La diferencia es política, no ontológica. Cada cuerpo Crisol en las Tierras Intermedias actuales plantea la posibilidad de cosmología alternativa donde la diferenciación cosmológica fuera menos rígida. La quemadura del ',
+        ' lo trata como inferior; las tradiciones que lo conservan lo tratan como primordial. La diferencia es política, no ontológica. Cada cuerpo Crisol en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' actuales plantea la posibilidad de cosmología alternativa donde la diferenciación cosmológica fuera menos rígida. La quemadura del ',
         link('Árbol Áureo', 'concept', 'erdtree'),
         ' en cualquier final libera al menos parcialmente la posibilidad de que el Crisol regrese — no como retorno literal sino como apertura cosmológica para configuraciones que el régimen dorado prohibió.'
       ),
@@ -549,7 +573,11 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'El Árbol Áureo opera tres funciones simultáneas. Primera: distribuye la ',
         link('Gracia', 'concept', 'grace'),
-        ' — la luz dorada que marca a los elegidos del régimen. Segunda: recicla almas — los muertos de las Tierras Intermedias son absorbidos por el árbol y redistribuidos como nueva vida. Tercera: ancla legitimidad cosmológica — solo lo bendecido por el árbol es plenamente válido en el régimen. Sus raíces se extienden por todas las Tierras Intermedias; cada ',
+        ' — la luz dorada que marca a los elegidos del régimen. Segunda: recicla almas — los muertos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' son absorbidos por el árbol y redistribuidos como nueva vida. Tercera: ancla legitimidad cosmológica — solo lo bendecido por el árbol es plenamente válido en el régimen. Sus raíces se extienden por todas las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '; cada ',
         link('Árbol Áureo Menor', 'concept', 'minor-erdtrees'),
         ' es satélite distribuidor de su ',
         link('gracia', 'concept', 'grace'),
@@ -606,7 +634,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ],
     inferred: [
       ['Su construcción fue acto fundacional consciente del ', link('Orden Dorado', 'concept', 'golden-order'), ', no fenómeno natural'],
-      'La Llama de Ruina del último Gigante del Fuego es la única que puede quemarlo',
+      ['La ', link('Llama de Ruina', 'concept', 'flame-of-ruin'), ' del último Gigante del Fuego es la única que puede quemarlo'],
       'Su quema es estructuralmente necesaria para cualquier reforma cosmológica',
       ['La ', link('gracia', 'concept', 'grace'), ' distribuida es simultáneamente bendición y mecanismo de control político'],
     ],
@@ -709,7 +737,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Maliketh', 'character', 'maliketh'),
         ' está deteriorándose tras el robo de ',
         link('Ranni', 'character', 'ranni'),
-        '. La jerarquía está fragmentada: cada demidiós sostiene su ',
+        '. La jerarquía está fragmentada: cada ',
+        link('demidiós', 'concept', 'demidios'),
+        ' sostiene su ',
         link('Gran Runa', 'concept', 'great-rune'),
         ' autónomamente. La ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
@@ -778,7 +808,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La Muerte Predestinada — ',
         em('Destined Death'),
-        ' — es la forma cosmológica original de la muerte real. No es ausencia de vida ni descomposición material: es la conclusión legítima del proceso vital. En su forma original, cada ser de las Tierras Intermedias tenía un destino mortal predeterminado y la Muerte garantizaba que ese destino se cumpliera. Su materialización como objeto cosmológico es la ',
+        ' — es la forma cosmológica original de la muerte real. No es ausencia de vida ni descomposición material: es la conclusión legítima del proceso vital. En su forma original, cada ser de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' tenía un destino mortal predeterminado y la Muerte garantizaba que ese destino se cumpliera. Su materialización como objeto cosmológico es la ',
         link('Runa de la Muerte', 'concept', 'rune-of-death'),
         '.'
       ),
@@ -799,7 +831,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' — había tenido la Runa antes; ',
         link('Maliketh', 'character', 'maliketh'),
-        ' la recuperó al derrotarla. El sello transformó a las Tierras Intermedias: los seres dejaron de poder morir verdaderamente, sus almas regresaban al ',
+        ' la recuperó al derrotarla. El sello transformó a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': los seres dejaron de poder morir verdaderamente, sus almas regresaban al ',
         link('Árbol Áureo', 'concept', 'erdtree'),
         ' para reciclaje, la inmortalidad funcional se volvió ley cosmológica.'
       ),
@@ -815,7 +849,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Deathroot', 'concept', 'deathroot'),
         ' fluye porque su descomposición no encuentra ciclo cosmológico que la procese. 4) La ',
         link('Ley de la Causalidad', 'concept', 'law-of-causality'),
-        ' está fragmentada — eventos no producen sus efectos esperables. Cada anomalía cosmológica de las Tierras Intermedias actuales rastrea hasta este sello.'
+        ' está fragmentada — eventos no producen sus efectos esperables. Cada anomalía cosmológica de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' actuales rastrea hasta este sello.'
       ),
       h(2, 'El robo y la mecha'),
       p(
@@ -871,8 +907,8 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ['La ', link('Era del Crepúsculo', 'ending', 'duskborn'), ' de Fia es el único final que la restaura al Anillo'],
     ],
     inferred: [
-      'Su sello es la causa estructural última de todos los problemas cosmológicos de las Tierras Intermedias',
-      'Cada anomalía de las Tierras Intermedias actuales rastrea hasta este sello',
+      ['Su sello es la causa estructural última de todos los problemas cosmológicos de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
+      ['Cada anomalía de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' actuales rastrea hasta este sello'],
       ['La inmortalidad funcional del ', link('Orden Dorado', 'concept', 'golden-order'), ' depende del sello permanente'],
       ['El robo de ', link('Ranni', 'character', 'ranni'), ' fue operación crítica que requirió conocimiento interno del régimen'],
     ],
@@ -907,7 +943,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Anillo Elden', 'concept', 'elden-ring'),
         ' — la que codifica la ley cosmológica de la ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
-        '. A diferencia de las Grandes Runas que cada demidiós sostiene tras la ',
+        '. A diferencia de las Grandes Runas que cada ',
+        link('demidiós', 'concept', 'demidios'),
+        ' sostiene tras la ',
         link('fractura', 'timeline', 'la-fractura'),
         ', la Runa de la Muerte fue extraída del Anillo eras antes y sellada dentro de un cuerpo-vasija. Su existencia material la hace robable, modificable, fraccionable — propiedades que el régimen del ',
         link('Orden Dorado', 'concept', 'golden-order'),
@@ -944,7 +982,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Las dagas: tecnología deicida limitada'),
       p(
-        'Las dagas forjadas con la mecha tienen una propiedad cosmológica única: pueden matar parcialmente a un demidiós. La limitación específica es que cada daga ejecuta media muerte — el alma O el cuerpo, no ambos. La ',
+        'Las dagas forjadas con la mecha tienen una propiedad cosmológica única: pueden matar parcialmente a un ',
+        link('demidiós', 'concept', 'demidios'),
+        '. La limitación específica es que cada daga ejecuta media muerte — el alma O el cuerpo, no ambos. La ',
         link('Noche de los Cuchillos Negros', 'timeline', 'ranni-noche-cuchillos'),
         ' aplicó esto deliberadamente: el alma de ',
         link('Godwyn', 'character', 'godwyn'),
@@ -1108,7 +1148,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       ['Si ', link('Godwyn', 'character', 'godwyn'), ' sufre conscientemente durante el proceso de descomposición eterna'],
-      'Cuántos brotes activos existen actualmente en las Tierras Intermedias',
+      ['Cuántos brotes activos existen actualmente en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Si la Deathroot puede ser purificada bajo cosmología distinta',
       'Si la propagación tiene límite cosmológico o seguirá indefinidamente',
     ],
@@ -1213,7 +1253,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       ['Si ', link('Godwyn', 'character', 'godwyn'), ' conserva alguna forma de consciencia bajo Deeproot Depths'],
-      'Cuántos hay actualmente en las Tierras Intermedias',
+      ['Cuántos hay actualmente en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Si la condición es reversible bajo cosmología distinta',
       'Si los Skeletons que se reactivan son la misma categoría o variante distinta',
     ],
@@ -1558,7 +1598,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Para que el ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' sea coronado como Señor Elden, debe recolectar dos Grandes Runas como mínimo (criterio que los ',
+        ' sea coronado como ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ', debe recolectar dos Grandes Runas como mínimo (criterio que los ',
         link('Dos Dedos', 'faction', 'dos-dedos'),
         ' de la ',
         link('Mesa Redonda', 'concept', 'roundtable-hold'),
@@ -1574,15 +1616,23 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Morgott', 'character', 'morgott'),
         ', y enfrentar a ',
         link('Marika', 'character', 'marika'),
-        ' misma. Cada demidiós que cae libera su Gran Runa para reclamación.'
+        ' misma. Cada ',
+        link('demidiós', 'concept', 'demidios'),
+        ' que cae libera su Gran Runa para reclamación.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Las Grandes Runas son el monumento del juego a la fragmentación del cosmos como problema operativo. Cada demidiós no eligió simplemente un poder — eligió ',
+        'Las Grandes Runas son el monumento del juego a la fragmentación del cosmos como problema operativo. Cada ',
+        link('demidiós', 'concept', 'demidios'),
+        ' no eligió simplemente un poder — eligió ',
         em('una ley cosmológica'),
-        ' que ahora opera autónomamente sin coordinación central. Por eso las Tierras Intermedias post-fractura es incoherente: cada región opera bajo ley distinta. El sistema de recolección del juego es metáfora exacta del problema cosmológico: para reformar el cosmos, el ',
+        ' que ahora opera autónomamente sin coordinación central. Por eso las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura es incoherente: cada región opera bajo ley distinta. El sistema de recolección del juego es metáfora exacta del problema cosmológico: para reformar el cosmos, el ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' debe convencer (mediante combate ritual) a cada demidiós de que entregue su pedazo. La coronación final es restauración estructural, no solo política.'
+        ' debe convencer (mediante combate ritual) a cada ',
+        link('demidiós', 'concept', 'demidios'),
+        ' de que entregue su pedazo. La coronación final es restauración estructural, no solo política.'
       ),
     ],
     confirmed: [
@@ -1596,7 +1646,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       'La distribución entre demidióses correspondió a afinidad cosmológica natural',
       ['La ', link('Runa de la Muerte', 'concept', 'rune-of-death'), ' es Gran Runa adicional separada del Anillo al fundarlo'],
       'Cada Gran Runa opera autónomamente cuando no está coordinada con las demás',
-      'La incoherencia regional de las Tierras Intermedias post-fractura es síntoma de la dispersión',
+      ['La incoherencia regional de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' post-fractura es síntoma de la dispersión'],
     ],
     theories: [
       'Existen Grandes Runas no asignadas a demidióses que esperan reclamación',
@@ -1655,7 +1705,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         '. La marca dorada en sus ojos se apagó (literalmente), su autoridad institucional se desvaneció, su pertenencia cosmológica fue revocada. Los ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' vivieron generaciones lejos de las Tierras Intermedias como personas-no-personas. Es una de las pocas operaciones del régimen donde el filtro cosmológico se aplica con propósito político transparente.'
+        ' vivieron generaciones lejos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como personas-no-personas. Es una de las pocas operaciones del régimen donde el filtro cosmológico se aplica con propósito político transparente.'
       ),
       h(2, 'La restitución parcial post-fractura'),
       p(
@@ -1667,7 +1719,11 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         ' exiliados. La operación: los puntos dorados en los ojos volvieron a brillar, las visiones de la Gracia Errante reaparecieron, y los ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' pudieron regresar a las Tierras Intermedias como candidatos al trono. La razón es estructural: el régimen necesita Señor Elden urgentemente, los demidióses están enfrentados entre sí, los ',
+        ' pudieron regresar a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como candidatos al trono. La razón es estructural: el régimen necesita ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' urgentemente, los demidióses están enfrentados entre sí, los ',
         link('Tarnished', 'concept', 'tarnished'),
         ' son los únicos candidatos exteriores al sistema que ',
         em('podrían'),
@@ -1723,7 +1779,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Cuando ',
         link('Godfrey', 'character', 'godfrey'),
-        ' completó la conquista de las Tierras Intermedias bajo el régimen del ',
+        ' completó la conquista de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' bajo el régimen del ',
         link('Orden Dorado', 'concept', 'golden-order'),
         ', ',
         link('Marika', 'character', 'marika'),
@@ -1731,11 +1789,15 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Gracia', 'concept', 'grace'),
         ' y lo exilió junto con sus seguidores. La razón pública: ya no quedaban enemigos por los que pelear, su función estaba cumplida. La razón cosmológica: ',
         link('Marika', 'character', 'marika'),
-        ' necesitaba descartar al Primer Señor Elden antes de tomar como segundo consorte a ',
+        ' necesitaba descartar al Primer ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' antes de tomar como segundo consorte a ',
         link('Radagon', 'character', 'radagon'),
         ' (que es ella misma). Los seguidores de ',
         link('Godfrey', 'character', 'godfrey'),
-        ' siguieron a su rey al exilio. Sus descendientes vivieron generaciones lejos de las Tierras Intermedias como personas sin ',
+        ' siguieron a su rey al exilio. Sus descendientes vivieron generaciones lejos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como personas sin ',
         link('Gracia', 'concept', 'grace'),
         '.'
       ),
@@ -1743,7 +1805,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Vivir como Tarnished es vivir sin ',
         link('Gracia', 'concept', 'grace'),
-        '. La marca dorada en los ojos se apagó. La autoridad institucional desapareció. La protección cosmológica del régimen se revocó. Pero no todo se perdió: los Tarnished conservaron memoria racial de las Tierras Intermedias, conocimiento marcial heredado de ',
+        '. La marca dorada en los ojos se apagó. La autoridad institucional desapareció. La protección cosmológica del régimen se revocó. Pero no todo se perdió: los Tarnished conservaron memoria racial de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', conocimiento marcial heredado de ',
         link('Godfrey', 'character', 'godfrey'),
         ', y un linaje que el régimen sabía existir aunque ya no reconocía oficialmente. Vivían en regiones exteriores cuya geografía exacta el juego no documenta. Algunos se establecieron como mercenarios; otros como ermitaños; otros como linajes nobiliarios menores en cosmologías ajenas.'
       ),
@@ -1753,7 +1817,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Anillo Elden', 'concept', 'elden-ring'),
         ' y la retirada parcial de la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        ', el régimen necesitó urgentemente Señor Elden nuevo. Los demidióses estaban enfrentados entre sí; ninguno podía coronarse sin reproducir las grietas existentes. La solución fue restaurar la ',
+        ', el régimen necesitó urgentemente ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' nuevo. Los demidióses estaban enfrentados entre sí; ninguno podía coronarse sin reproducir las grietas existentes. La solución fue restaurar la ',
         link('Gracia', 'concept', 'grace'),
         ' a los Tarnished exiliados como candidatos exteriores. La operación: el ',
         link('Árbol Áureo', 'concept', 'erdtree'),
@@ -1761,15 +1827,23 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Godfrey', 'character', 'godfrey'),
         ', dispersos por las regiones exteriores. Cada uno comenzó a recibir visiones de la ',
         link('Gracia', 'concept', 'grace'),
-        ' Errante guiándolos a las Tierras Intermedias.'
+        ' Errante guiándolos a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
       h(2, 'La elegibilidad inesperada'),
       p(
-        'El Tarnished es candidato improbable al trono Elden. No es demidiós ni ',
+        'El Tarnished es candidato improbable al trono Elden. No es ',
+        link('demidiós', 'concept', 'demidios'),
+        ' ni ',
         link('Empyrean', 'concept', 'empyrean'),
         '. No tiene ',
         link('Gran Runa', 'concept', 'great-rune'),
-        ' propia. No nació en el régimen actual. Pero precisamente por su origen exterior puede ser instrumento de cambio cosmológico que un demidiós no podría ser. Los demidióses son partes del régimen quebrado; cada uno representa una grieta. El Tarnished es exterior al sistema fragmentado — puede recolectar Grandes Runas sin estar adherido a ninguna en particular, puede coronarse sin estar comprometido con cosmología específica, puede elegir entre los seis finales con neutralidad estructural que ningún demidiós tiene.'
+        ' propia. No nació en el régimen actual. Pero precisamente por su origen exterior puede ser instrumento de cambio cosmológico que un ',
+        link('demidiós', 'concept', 'demidios'),
+        ' no podría ser. Los demidióses son partes del régimen quebrado; cada uno representa una grieta. El Tarnished es exterior al sistema fragmentado — puede recolectar Grandes Runas sin estar adherido a ninguna en particular, puede coronarse sin estar comprometido con cosmología específica, puede elegir entre los seis finales con neutralidad estructural que ningún ',
+        link('demidiós', 'concept', 'demidios'),
+        ' tiene.'
       ),
       h(2, 'Los Tarnished documentados'),
       p(
@@ -1807,7 +1881,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       [link('Marika', 'character', 'marika'), ' les retiró la ', link('Gracia', 'concept', 'grace'), ' y los exilió tras completar la conquista'],
       ['Vivieron generaciones lejos de las Tierras Intermedias sin ', link('Gracia', 'concept', 'grace')],
       ['Tras la ', link('fractura', 'timeline', 'la-fractura'), ', el ', link('Árbol Áureo', 'concept', 'erdtree'), ' restituyó parcialmente su ', link('Gracia', 'concept', 'grace')],
-      'Son los únicos candidatos posibles a Señor Elden tras el conflicto entre demidióses',
+      ['Son los únicos candidatos posibles a ', link('Señor Elden', 'concept', 'elden-lord'), ' tras el conflicto entre demidióses'],
     ],
     inferred: [
       ['Su exilio fue cálculo político de ', link('Marika', 'character', 'marika'), ' antes de tomar a ', link('Radagon', 'character', 'radagon'), ' como segundo consorte'],
@@ -1823,7 +1897,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       'Geografía exacta de las regiones exteriores donde vivieron exiliados',
-      'Cuántos Tarnished hay actualmente operando en las Tierras Intermedias',
+      ['Cuántos Tarnished hay actualmente operando en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       ['Si la ', link('Gracia', 'concept', 'grace'), ' restituida es revocable nuevamente o permanente'],
       ['Si los Tarnished pueden engendrar nueva descendencia con ', link('Gracia', 'concept', 'grace'), ' o solo poseen ellos mismos la marca'],
     ],
@@ -1849,7 +1923,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Malenia como vasija humana'),
       p(
         link('Malenia', 'character', 'malenia'),
-        ' nació infectada con la Podredumbre Escarlata como condición ontológica. No es enfermedad adquirida — es manifestación humana del dios desde el momento del nacimiento. Su cuerpo es el medio del dios en las Tierras Intermedias. Cada acto de ',
+        ' nació infectada con la Podredumbre Escarlata como condición ontológica. No es enfermedad adquirida — es manifestación humana del dios desde el momento del nacimiento. Su cuerpo es el medio del dios en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Cada acto de ',
         link('Malenia', 'character', 'malenia'),
         ' es simultáneamente expresión de su voluntad humana y operación cosmológica del dios. La condición es paradójica: combatir la Podredumbre es combatir su propio cuerpo; aceptarla plenamente es entregarse a la disolución universal.'
       ),
@@ -1995,7 +2071,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'El Oro sin Aleación es el monumento del juego al único proyecto cosmológico genuinamente positivo. La mayoría de proyectos de las Tierras Intermedias son destructivos (la ',
+        'El Oro sin Aleación es el monumento del juego al único proyecto cosmológico genuinamente positivo. La mayoría de proyectos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' son destructivos (la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
         ' extingue el cosmos), reformistas (la ',
         link('Era del Orden', 'ending', 'order'),
@@ -2019,7 +2097,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ['El ', link('Haligtree', 'concept', 'haligtree'), ' es aplicación a escala cosmológica del principio'],
     ],
     inferred: [
-      'Es el único proyecto cosmológico positivo documentado de las Tierras Intermedias',
+      ['Es el único proyecto cosmológico positivo documentado de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       ['La fórmula original predata a ', link('Miquella', 'character', 'miquella'), ' pero él la reactivó'],
       'El proyecto era amenaza estructural para todos los dioses externos simultáneamente',
       ['El secuestro por ', link('Mohg', 'character', 'mohg'), ' fue ataque coordinado al proyecto cosmológico, no solo al individuo'],
@@ -2051,9 +2129,13 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La Llama Frenética es uno de los ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
-        ' que pugnan por imponer leyes a las Tierras Intermedias. Su domino: el sufrimiento universalizado. Su mecanismo cosmológico: convertir consciencia en fuego, fundir a todos los seres en una llama yermo donde ya nadie pueda sufrir porque ya nadie es. La doctrina es internamente coherente — y eso la hace particularmente difícil de refutar. Sus ',
+        ' que pugnan por imponer leyes a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Su domino: el sufrimiento universalizado. Su mecanismo cosmológico: convertir consciencia en fuego, fundir a todos los seres en una llama yermo donde ya nadie pueda sufrir porque ya nadie es. La doctrina es internamente coherente — y eso la hace particularmente difícil de refutar. Sus ',
         link('Tres Dedos', 'faction', 'tres-dedos'),
-        ' son su manifestación física en las Tierras Intermedias.'
+        ' son su manifestación física en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
       h(2, 'Doctrina del fin universal'),
       p(
@@ -2128,7 +2210,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ],
     theories: [
       'El dios externo es el sufrimiento personificado del cosmos entero',
-      'Si el sello cae sin Señor designado, todas las Tierras Intermedias se transformaría espontáneamente',
+      ['Si el sello cae sin Señor designado, todas las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' se transformaría espontáneamente'],
       ['Los ', link('Tarnished', 'concept', 'tarnished'), ' con suficiente sufrimiento acumulado son particularmente susceptibles'],
       [link('Vyke', 'character', 'vyke'), ' falló en culminar la quema porque retuvo voluntad propia residual'],
     ],
@@ -2154,7 +2236,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'La Madre Informe es uno de los ',
         link('dioses exteriores', 'concept', 'dioses-exteriores'),
-        ' que pugnan por imponer leyes a las Tierras Intermedias. Su nombre describe su naturaleza: no tiene forma fija, opera mediante fluido, no se manifiesta como entidad localizable. Donde la ',
+        ' que pugnan por imponer leyes a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Su nombre describe su naturaleza: no tiene forma fija, opera mediante fluido, no se manifiesta como entidad localizable. Donde la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' opera mediante red institucional sofisticada, la Madre Informe opera mediante contagio sanguíneo directo. Su dominio cosmológico: la disolución carnal, la transmutación de la individualidad mediante fluido, la sangre como vehículo divino.'
       ),
@@ -2181,7 +2265,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Varré', 'character', 'varre'),
         ' invaden a otros ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' a través de las Tierras Intermedias; cada ',
+        ' a través de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '; cada ',
         link('Tarnished', 'concept', 'tarnished'),
         ' asesinado es ofrenda. La sangre se acumula en ',
         link('Mohgwyn Palace', 'region', 'mohgwyn'),
@@ -2329,7 +2415,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         ' elige libertad. La ',
         link('Era de las Estrellas', 'concept', 'age-of-stars'),
-        ' es su respuesta filosófica al problema cosmológico de las Tierras Intermedias.'
+        ' es su respuesta filosófica al problema cosmológico de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
     ],
     confirmed: [
@@ -2431,7 +2519,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ],
     confirmed: [
       ['La Llama Negra es derivada de la ', link('Runa de la Muerte', 'concept', 'rune-of-death')],
-      'Único fuego de las Tierras Intermedias capaz de quemar carne divina',
+      ['Único fuego de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' capaz de quemar carne divina'],
       ['Otorgada por la ', link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'), ' a los ', link('Pieles de Dios', 'faction', 'pieles-de-dios')],
       'Cada apóstol porta pieles de divinidades previamente asesinadas',
       'Sus derivaciones menores son accesibles como hechizos mortales',
@@ -2470,7 +2558,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Orden Dorado', 'concept', 'golden-order'),
         '. Antes del sello de la ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
-        ', cuando los seres de las Tierras Intermedias aún podían morir verdaderamente, los procesos rituales requerían fuego cosmológicamente válido — fuego capaz de separar alma de cuerpo de manera ordenada. La Llama Espectral fue ese fuego. Su composición exacta nunca se documenta plenamente, pero es filogenéticamente relacionada con la ',
+        ', cuando los seres de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' aún podían morir verdaderamente, los procesos rituales requerían fuego cosmológicamente válido — fuego capaz de separar alma de cuerpo de manera ordenada. La Llama Espectral fue ese fuego. Su composición exacta nunca se documenta plenamente, pero es filogenéticamente relacionada con la ',
         link('Llama Negra', 'concept', 'black-flame'),
         ' — ambos fuegos pre-Orden vinculados a la cosmología de la Muerte.'
       ),
@@ -2494,7 +2584,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
         '. La hipótesis: la Llama Espectral es uno de los pocos instrumentos cosmológicos capaces de afectar a los ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
-        '. Cuando los Skeletons se reactivan en las Tierras Intermedias actuales, destruirlos definitivamente puede requerir aplicación de Llama Espectral sobre sus huesos. Los Crematorios actuales, sin saberlo claramente, operan como sistema inmune cosmológico residual contra la corrupción que el sello de la Muerte produjo.'
+        '. Cuando los Skeletons se reactivan en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' actuales, destruirlos definitivamente puede requerir aplicación de Llama Espectral sobre sus huesos. Los Crematorios actuales, sin saberlo claramente, operan como sistema inmune cosmológico residual contra la corrupción que el sello de la Muerte produjo.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -2563,7 +2655,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Capacidad deicida'),
       p(
-        'La Bloodflame es uno de los pocos fuegos de las Tierras Intermedias capaces de quemar carne divina. Junto con la ',
+        'La Bloodflame es uno de los pocos fuegos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' capaces de quemar carne divina. Junto con la ',
         link('Llama Negra', 'concept', 'black-flame'),
         ' (de los ',
         link('Pieles de Dios', 'faction', 'pieles-de-dios'),
@@ -2656,7 +2750,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'La utopía de los excluidos'),
       p(
-        'Los Seguidores del Haligtree fueron la única utopía documentada de las Tierras Intermedias. Refugiados ',
+        'Los Seguidores del Haligtree fueron la única utopía documentada de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Refugiados ',
         link('Albinaurics', 'faction', 'albinauricos'),
         ', ',
         link('Misbegotten', 'faction', 'misbegotten'),
@@ -2664,7 +2760,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Orden Dorado', 'concept', 'golden-order'),
         ' peregrinaron a través del Snowfield para llegar al árbol. La travesía costó vidas — la nieve consume vida no autorizada — pero los que llegaron vivieron como ciudadanos plenos del proyecto. Su clero era mixto, su gobierno distribuido, su seguridad militar de los Cleanrot Knights bajo ',
         link('Malenia', 'character', 'malenia'),
-        '. Por primera vez en la historia de las Tierras Intermedias, un sistema cosmológico reconocía como personas a los que el régimen oficial clasificaba como aberración.'
+        '. Por primera vez en la historia de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', un sistema cosmológico reconocía como personas a los que el régimen oficial clasificaba como aberración.'
       ),
       h(2, 'Caída: Aeonia y secuestro'),
       p(
@@ -2704,7 +2802,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ['La Podredumbre lo infectó tras Aeonia y el secuestro de ', link('Miquella', 'character', 'miquella')],
     ],
     inferred: [
-      'Era la única utopía documentada de las Tierras Intermedias',
+      ['Era la única utopía documentada de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       ['Su éxito dependía de tres condiciones simultáneas (', link('Miquella', 'character', 'miquella'), ', ', link('Malenia', 'character', 'malenia'), ', aislamiento)'],
       'El régimen oficial lo toleraba mientras estaba aislado pero lo sabía amenaza estructural',
       'El Snowfield Consagrado era protección geográfica diseñada cosmológicamente',
@@ -2742,7 +2840,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Dos Dedos', 'faction', 'dos-dedos'),
         ', Lectoras, clero); cada institución es simultáneamente vehículo de bendición y mecanismo de control. La Madre Informe opera por contagio sanguíneo; la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
-        ' por contagio cosmológico; el dios del decaimiento por infección de nacimiento. Ningún dios externo de las Tierras Intermedias son benigno — incluso los aparentemente compasivos producen prisiones específicas. La conclusión de ',
+        ' por contagio cosmológico; el dios del decaimiento por infección de nacimiento. Ningún dios externo de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' son benigno — incluso los aparentemente compasivos producen prisiones específicas. La conclusión de ',
         link('Ranni', 'character', 'ranni'),
         ': la única cosmología viable es alejar a los dioses lo suficiente como para que su influencia sea estructural pero no íntima.'
       ),
@@ -2794,9 +2894,13 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Las consecuencias específicas de la Era de las Estrellas: 1) La ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
-        ' pierde acceso a las Tierras Intermedias como cosmos disponible — debe buscar otro mundo si quiere mantener actividad. 2) Los demás dioses externos pierden la mayor parte de su capacidad de operar — sin la red institucional dorada que servía como infraestructura, la Madre Informe, la ',
+        ' pierde acceso a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como cosmos disponible — debe buscar otro mundo si quiere mantener actividad. 2) Los demás dioses externos pierden la mayor parte de su capacidad de operar — sin la red institucional dorada que servía como infraestructura, la Madre Informe, la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
-        ' y el dios del decaimiento quedan parcialmente desconectados. 3) Los humanos de las Tierras Intermedias quedan solos cosmológicamente — sin guía divina, sin atención, sin control. 4) ',
+        ' y el dios del decaimiento quedan parcialmente desconectados. 3) Los humanos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' quedan solos cosmológicamente — sin guía divina, sin atención, sin control. 4) ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
         ' continúan existiendo (la Era de las Estrellas no restaura la Muerte como Fia haría) pero su corrupción se estabiliza al detener la influencia activa del régimen anterior. 5) El cosmos se vuelve frío, lejano, libre.'
       ),
@@ -2808,7 +2912,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         ' — sobre ser su consorte cósmico, llevarlo en su viaje eterno hacia el cosmos lejano — es una de las propuestas más extrañas del juego: amor que requiere distancia cosmológica absoluta. La pregunta filosófica del final: ¿es preferible un cosmos huérfano de dios cercano? Para algunos jugadores, indudablemente sí — ',
         link('Ranni', 'character', 'ranni'),
-        ' es respuesta racional al problema acumulado de las Tierras Intermedias. Para otros, la frialdad es precio demasiado alto. El juego no decide. Cada ',
+        ' es respuesta racional al problema acumulado de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Para otros, la frialdad es precio demasiado alto. El juego no decide. Cada ',
         link('Tarnished', 'concept', 'tarnished'),
         ' elige.'
       ),
@@ -2823,7 +2929,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     inferred: [
       ['La ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' pierde acceso a las Tierras Intermedias como cosmos disponible'],
       'Los demás dioses externos pierden la mayor parte de su capacidad de operar',
-      'Los humanos de las Tierras Intermedias quedan cosmológicamente solos',
+      ['Los humanos de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' quedan cosmológicamente solos'],
       [link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'), ' continúan existiendo pero estabilizados'],
     ],
     theories: [
@@ -2833,7 +2939,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ['Los ', link('Nox', 'faction', 'nox'), ' supervivientes asisten secretamente a la transición'],
     ],
     ambiguous: [
-      'Si el régimen económico, social y político de las Tierras Intermedias colapsa o solo se reconfigura',
+      ['Si el régimen económico, social y político de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' colapsa o solo se reconfigura'],
       'Si la Era de las Estrellas es reversible bajo cosmología posterior',
       ['Cuándo el cosmos de ', link('Ranni', 'character', 'ranni'), ' se establece plenamente (la transición es gradual)'],
       ['Si ', link('Marika', 'character', 'marika'), ' sobrevive en alguna forma o se disuelve plenamente'],
@@ -3009,7 +3115,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Naturaleza de la corriente'),
       p(
-        'La Corriente Primigenia es flujo cosmológico real, no metáfora. Los cuerpos celestes ejercen gravedad sobre las Tierras Intermedias; esa gravedad sigue trayectorias específicas a través del cosmos; la Corriente es esa trayectoria misma. Manipularla requiere intervención magnífica avanzada.'
+        'La Corriente Primigenia es flujo cosmológico real, no metáfora. Los cuerpos celestes ejercen gravedad sobre las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '; esa gravedad sigue trayectorias específicas a través del cosmos; la Corriente es esa trayectoria misma. Manipularla requiere intervención magnífica avanzada.'
       ),
       h(2, 'Investigadores'),
       p(
@@ -3141,11 +3249,15 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Godwyn', 'character', 'godwyn'),
         ' fue asesinado pero no murió. ',
         link('Marika', 'character', 'marika'),
-        ' rompió el cosmos pero queda encadenada en su propio árbol. Estos son síntomas: la causalidad de las Tierras Intermedias post-fractura ya no funciona como antes.'
+        ' rompió el cosmos pero queda encadenada en su propio árbol. Estos son síntomas: la causalidad de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' post-fractura ya no funciona como antes.'
       ),
       h(2, 'Manifestaciones del quiebre'),
       p(
-        'Cada anomalía cosmológica de las Tierras Intermedias actuales es manifestación del quiebre causal. ',
+        'Cada anomalía cosmológica de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' actuales es manifestación del quiebre causal. ',
         link('Aquellos que Viven en la Muerte', 'concept', 'those-who-live-in-death'),
         ' existen porque la causa "muerte del alma" ya no produce el efecto "muerte del cuerpo". La ',
         link('Deathroot', 'concept', 'deathroot'),
@@ -3158,7 +3270,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       'La Ley de la Causalidad regulaba el flujo de eventos pre-fractura',
       ['La rotura del ', link('Anillo Elden', 'concept', 'elden-ring'), ' la fragmentó'],
       'Eventos imposibles coexisten sin contradicción visible',
-      'Cada anomalía cosmológica de las Tierras Intermedias son síntoma del quiebre causal'
+      ['Cada anomalía cosmológica de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' son síntoma del quiebre causal']
     ],
     inferred: [
       ['La Ley es estructural al ', link('Anillo Elden', 'concept', 'elden-ring'), ', no externa'],
@@ -3250,7 +3362,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     deepLore: [
       h(2, 'Naturaleza del bloqueo'),
       p(
-        'Las estrellas de las Tierras Intermedias no son puramente decorativas — son inscripción material del destino. Bloquearlas detiene un destino específico. ',
+        'Las estrellas de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' no son puramente decorativas — son inscripción material del destino. Bloquearlas detiene un destino específico. ',
         link('Radahn', 'character', 'radahn'),
         ' usó su ',
         link('Magia Gravitacional', 'concept', 'gravity-magic'),
@@ -3304,7 +3418,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       'Su muerte en el Festival libera el flujo astronómico'
     ],
     inferred: [
-      'Era el único demidiós con capacidad técnica para bloquear las estrellas',
+      ['Era el único ', link('demidiós', 'concept', 'demidios'), ' con capacidad técnica para bloquear las estrellas'],
       ['Sabía que la liberación eventual permitiría la ', link('Era de las Estrellas', 'concept', 'age-of-stars')],
       ['Su bloqueo retrasó la rebelión cosmológica de ', link('Ranni', 'character', 'ranni'), ' durante eras']
     ],
@@ -3342,7 +3456,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Anillo Elden', 'concept', 'elden-ring'),
         ' tras la ',
         link('Fractura', 'timeline', 'la-fractura'),
-        '. Codifica linaje en su forma más diluida: el portador es bisnieto del Primer Señor Elden ',
+        '. Codifica linaje en su forma más diluida: el portador es bisnieto del Primer ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' ',
         link('Godfrey', 'character', 'godfrey'),
         ', con sangre tan disminuida que apenas pudo reclamar su ',
         link('Gran Runa', 'concept', 'great-rune'),
@@ -3400,7 +3516,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ambiguous: [
       ['Por qué ', link('Godrick', 'character', 'godrick'), ' reclama Stormveil específicamente y no otra fortaleza'],
       ['Si los ', link('Caballeros Desterrados', 'faction', 'banished-knights'), ' aceptan a ', link('Godrick', 'character', 'godrick'), ' por la runa o por desesperación'],
-      'Si el injerto le habría servido a un demidiós con runa más poderosa',
+      ['Si el injerto le habría servido a un ', link('demidiós', 'concept', 'demidios'), ' con runa más poderosa'],
     ],
     relatedCharacters: ['godrick', 'godfrey', 'morgott'],
     relatedFactions: ['banished-knights', 'golden-lineage'],
@@ -3421,7 +3537,11 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Radahn', 'character', 'radahn'),
         ' es la runa del cuerpo. Su efecto restaurado —+15% de salud, vigor y resistencia máximos simultáneamente— es la firma cosmológica del portador: ',
         link('Radahn', 'character', 'radahn'),
-        ' fue el demidiós más físicamente imponente de las Tierras Intermedias. Donde otras runas amplifican aspectos parciales (linaje, vínculos sangrientos, regeneración), esta consagra la masa marcial pura. La runa no le añade habilidad; le hace al cuerpo lo que la disciplina marcial le había hecho desde joven: ampliarlo más allá del límite humano.'
+        ' fue el ',
+        link('demidiós', 'concept', 'demidios'),
+        ' más físicamente imponente de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Donde otras runas amplifican aspectos parciales (linaje, vínculos sangrientos, regeneración), esta consagra la masa marcial pura. La runa no le añade habilidad; le hace al cuerpo lo que la disciplina marcial le había hecho desde joven: ampliarlo más allá del límite humano.'
       ),
       h(2, 'Mecánica cosmológica'),
       p(
@@ -3435,11 +3555,15 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Radahn', 'character', 'radahn'),
         ' evitó esa transformación porque su masa marcial específica, amplificada por la runa, le permitía sostener el campo gravitacional sin desmaterializarse. Cuando la ',
         link('Podredumbre Escarlata', 'concept', 'scarlet-rot'),
-        ' lo infectó tras la Batalla de Aeonia, su cuerpo runificado resistió eras enteras la corrupción que habría disuelto a cualquier demidiós menor.'
+        ' lo infectó tras la Batalla de Aeonia, su cuerpo runificado resistió eras enteras la corrupción que habría disuelto a cualquier ',
+        link('demidiós', 'concept', 'demidios'),
+        ' menor.'
       ),
       h(2, 'Significado simbólico'),
       p(
-        'La runa hace patente la doctrina marcial de las Tierras Intermedias: el cuerpo del soldado es lo que sostiene el cosmos. Mientras sus hermanos demidioses fueron lores institucionales (',
+        'La runa hace patente la doctrina marcial de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': el cuerpo del soldado es lo que sostiene el cosmos. Mientras sus hermanos demidioses fueron lores institucionales (',
         link('Morgott', 'character', 'morgott'),
         ' el Rey, ',
         link('Mohg', 'character', 'mohg'),
@@ -3548,7 +3672,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     theories: [
       ['El juramento de fidelidad al ', link('Árbol Áureo', 'concept', 'erdtree'), ' fue impuesto por la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' mediante los ', link('Dos Dedos', 'faction', 'dos-dedos')],
       [link('Morgott', 'character', 'morgott'), ' desea ser rechazado como una forma de redención teológica'],
-      'Si hubiera nacido sin marca Omen, habría sido un demidiós ortodoxo poco interesante',
+      ['Si hubiera nacido sin marca Omen, habría sido un ', link('demidiós', 'concept', 'demidios'), ' ortodoxo poco interesante'],
     ],
     ambiguous: [
       ['Si ', link('Marika', 'character', 'marika'), ' sabía que sus dos hijos Omen también recibirían runas'],
@@ -3674,7 +3798,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       h(2, 'Origen y la fusión con Eiglay'),
       p(
         link('Rykard', 'character', 'rykard'),
-        ', demidiós hijo de ',
+        ', ',
+        link('demidiós', 'concept', 'demidios'),
+        ' hijo de ',
         link('Rennala', 'character', 'rennala'),
         ' y ',
         link('Radagon', 'character', 'radagon'),
@@ -4221,7 +4347,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Astel', 'character', 'astel'),
         ' y la ',
         link('Estrella Putrefacta', 'concept', 'outer-god-of-rot'),
-        ', o uno anterior asociado a la formación misma del cosmos de las Tierras Intermedias. La hipótesis comunitaria mayoritaria es el primero: la masa pétrea del Espadón está anímicamente vinculada a la cosmología malformada que Astel encarna. Su Skill —una onda destructora— invoca la fuerza cinética original del impacto.'
+        ', o uno anterior asociado a la formación misma del cosmos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. La hipótesis comunitaria mayoritaria es el primero: la masa pétrea del Espadón está anímicamente vinculada a la cosmología malformada que Astel encarna. Su Skill —una onda destructora— invoca la fuerza cinética original del impacto.'
       ),
       h(2, 'El portador Misbegotten'),
       p(
@@ -4351,7 +4479,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Crumbling Farum Azula', 'region', 'farum-azula'),
         ' (la fortaleza fuera del tiempo) sugiere que el martillo opera ahora en estado litúrgico permanente: no se usa, se vigila. Crumbling ',
         link('Farum Azula', 'region', 'farum-azula'),
-        ' es escenario apropiado por estar fuera del flujo temporal de las Tierras Intermedias —el martillo allí está temporalmente protegido, no accesible mediante el viaje ordinario.'
+        ' es escenario apropiado por estar fuera del flujo temporal de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' —el martillo allí está temporalmente protegido, no accesible mediante el viaje ordinario.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -4436,7 +4566,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Ranni', 'character', 'ranni'),
         ' robó —forjando los cuchillos. Tiche conserva la técnica activa en su ceniza: cada vez que se invoca y mata enemigos endgame, el principio del ',
         link('Cuchillo Negro', 'faction', 'cuchillos-negros'),
-        ' se reactiva en las Tierras Intermedias presente. Es la única ceniza del juego cuya técnica conserva resonancia política, no solo combatiente.'
+        ' se reactiva en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' presente. Es la única ceniza del juego cuya técnica conserva resonancia política, no solo combatiente.'
       ),
       h(2, 'Significado simbólico'),
       p(
@@ -4571,7 +4703,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Tarnished', 'concept', 'tarnished'),
         ' antes de que el régimen actual (',
         link('Godrick', 'character', 'godrick'),
-        ') lo enfrente. Es ironía cosmológica de las Tierras Intermedias: los regímenes vencidos preservan competencia residual que los regímenes vencedores degradaron. Si ',
+        ') lo enfrente. Es ironía cosmológica de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ': los regímenes vencidos preservan competencia residual que los regímenes vencedores degradaron. Si ',
         link('Nepheli Loux', 'character', 'nepheli-loux'),
         ' (descendiente del Storm-Hawk King) reclama eventualmente Stormveil, la disciplina de Oleg le pertenece por linaje.'
       ),
@@ -4717,7 +4851,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'El Skill Taker\'s Flames libera fuego negro que restaura salud al portador con cada impacto — exacto reflejo de la ',
         link('Gran Runa de Rykard', 'concept', 'rykards-great-rune'),
-        ': matar es comulgar, devorar es legitimarse. Es la única arma del juego base donde el efecto runico de un demidiós se replica en mecánica de arma específica. Que los textos del juego sugieran susurros provenientes de la hoja documenta voluntad residual: ',
+        ': matar es comulgar, devorar es legitimarse. Es la única arma del juego base donde el efecto runico de un ',
+        link('demidiós', 'concept', 'demidios'),
+        ' se replica en mecánica de arma específica. Que los textos del juego sugieran susurros provenientes de la hoja documenta voluntad residual: ',
         link('Rykard', 'character', 'rykard'),
         ', fusionado a Eiglay y luego forjado en arma, opera todavía a través del filo. El portador no la blande pasivamente; la hoja "predica" su doctrina mediante cada herida que inflige.'
       ),
@@ -4760,9 +4896,13 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Elden Ring', 'concept', 'elden-ring'),
         ' (la comunidad lo asocia con un Japón mítico cosmológicamente análogo). En esa tierra, el culto a la ',
         link('Madre de la Verdad', 'concept', 'formless-mother'),
-        ' (mismo dios externo conocido como Madre Informe en las Tierras Intermedias) opera como religión establecida, no como secta marginal. ',
+        ' (mismo dios externo conocido como Madre Informe en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ') opera como religión establecida, no como secta marginal. ',
         link('Okina', 'character', 'okina'),
-        ' es uno de sus apóstoles itinerantes, quien viajó a las Tierras Intermedias tras enterarse de la presencia de ',
+        ' es uno de sus apóstoles itinerantes, quien viajó a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' tras enterarse de la presencia de ',
         link('Mohg', 'character', 'mohg'),
         ' como Lord coreligionario.'
       ),
@@ -4774,7 +4914,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Iglesia del Reposo', 'region', 'mountaintops'),
         ' (cumbre nevada que custodia el paso al ',
         link('Haligtree', 'region', 'haligtree'),
-        ') documenta coordinación geopolítica sutil: el culto sangriento global tiene representantes en puntos estratégicos de las Tierras Intermedias, no solo en el palacio Mohgwyn. ',
+        ') documenta coordinación geopolítica sutil: el culto sangriento global tiene representantes en puntos estratégicos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', no solo en el palacio Mohgwyn. ',
         link('Mohg', 'character', 'mohg'),
         ' no es el único Lord de Sangre — solo es el que el régimen oficial ha localizado.'
       ),
@@ -4783,7 +4925,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       ['Drop de Bloody Finger ', link('Okina', 'character', 'okina'), ' en la Iglesia del Reposo'],
       'Provoca hemorragia rápida con cada corte',
       'Skill Corpse Piler encadena cortes ofrendatarios',
-      'La katana proviene de tierra lejana a las Tierras Intermedias',
+      ['La katana proviene de tierra lejana a las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
     ],
     inferred: [
       [link('Okina', 'character', 'okina'), ' es apóstol del culto sangriento extranjero, no aliado de ', link('Mohg', 'character', 'mohg')],
@@ -5027,7 +5169,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Mohg', 'character', 'mohg'),
         ': la conquista no es objetivo, la consagración sí. ',
         link('Mohg', 'character', 'mohg'),
-        ' no buscaba el trono de las Tierras Intermedias — buscaba inaugurar un nuevo régimen dinástico bajo su diosa.'
+        ' no buscaba el trono de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' — buscaba inaugurar un nuevo régimen dinástico bajo su diosa.'
       ),
       h(2, 'Bloodflame ritual'),
       p(
@@ -5081,7 +5225,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' existió otro régimen cosmológico, encabezado por ',
         link('Placidusax', 'character', 'placidusax'),
-        ' como Señor Elden bajo un dios externo distinto a la ',
+        ' como ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' bajo un dios externo distinto a la ',
         link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
         ' —el ',
         link('Dios Dragón Desaparecido', 'concept', 'vanished-dragon-god'),
@@ -5150,7 +5296,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Las Estrellas del Bastardo son anomalía dentro del esquema de armas del juego base: no fueron forjadas, son fragmentos del cuerpo cosmológicamente malformado de ',
         link('Astel', 'character', 'astel'),
-        ' separados ritualmente. Cada nodo del mangual es meteorito menor con la misma firma del cuerpo principal —material exterior a las Tierras Intermedias, traído por la caída original que destruyó la Ciudad Eterna ',
+        ' separados ritualmente. Cada nodo del mangual es meteorito menor con la misma firma del cuerpo principal —material exterior a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', traído por la caída original que destruyó la Ciudad Eterna ',
         link('Nokron', 'region', 'nokron'),
         '—. El arma es por tanto literal extracción del enemigo: la "forja" consistió en separar partes del cuerpo de Astel y mantener su cohesión cosmológica mediante encadenamiento ritual.'
       ),
@@ -5221,7 +5369,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Árboles Áureos Menores', 'concept', 'minor-erdtrees'),
         ' —los árboles satélite que el ',
         link('Árbol Áureo', 'concept', 'erdtree'),
-        ' central plantó por las Tierras Intermedias como puntos de cosecha cosmológica—. Cada Lágrima codifica un efecto cosmológico específico: cura masiva, restauración de FP, fuerza física, defensa elemental, neutralización de podredumbre, hemorragia, sangre fría, etc. Hay aproximadamente 25 Lágrimas distintas en el juego base. El ',
+        ' central plantó por las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' como puntos de cosecha cosmológica—. Cada Lágrima codifica un efecto cosmológico específico: cura masiva, restauración de FP, fuerza física, defensa elemental, neutralización de podredumbre, hemorragia, sangre fría, etc. Hay aproximadamente 25 Lágrimas distintas en el juego base. El ',
         link('Tarnished', 'concept', 'tarnished'),
         ' combina dos por sesión, creando "rezo" temporal personalizado adaptado a cada encuentro. Es el sistema de buffs más flexible del juego, y simultáneamente el más teológicamente cargado: cada Lágrima es cristalización de una decisión cosmológica de ',
         link('Marika', 'character', 'marika'),
@@ -5308,7 +5458,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Que solo los portadores de ',
         link('gracia', 'concept', 'grace'),
-        ' los vean es central: los demás habitantes de las Tierras Intermedias (',
+        ' los vean es central: los demás habitantes de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' (',
         link('Misbegotten', 'faction', 'misbegotten'),
         ', fundamentalistas, peregrinos no-',
         link('Tarnished', 'concept', 'tarnished'),
@@ -5397,7 +5549,9 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
         link('Orden Dorado', 'concept', 'golden-order'),
         ' funcional, mantenido por los ',
         link('Dos Dedos', 'faction', 'dos-dedos'),
-        ' contra la decadencia general. Algunos teóricos sugieren que la Mesa existe en bolsillo temporal estabilizado por presencia continua de los Dedos —no es plenamente parte de las Tierras Intermedias fracturadas, sino burbuja preservada por intervención cosmológica directa—. Su pérdida final cuando ',
+        ' contra la decadencia general. Algunos teóricos sugieren que la Mesa existe en bolsillo temporal estabilizado por presencia continua de los Dedos —no es plenamente parte de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' fracturadas, sino burbuja preservada por intervención cosmológica directa—. Su pérdida final cuando ',
         link('Gideon', 'character', 'gideon'),
         ' enloquece tras leer demasiado del cosmos, todos los habitantes mueren o parten, y los Dedos son corrompidos, documenta el colapso terminal del régimen institucional dorado: cuando ni siquiera la Mesa funciona, no queda burocracia cosmológica. La línea final del juego base sobre la Mesa es deliberadamente desolada — la antesala del trono ya no opera como antesala.'
       ),
@@ -5410,7 +5564,7 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     ],
     inferred: [
       ['Existe en bolsillo temporal estabilizado por los ', link('Dos Dedos', 'faction', 'dos-dedos')],
-      'No es parte plenamente de las Tierras Intermedias fracturadas',
+      ['No es parte plenamente de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' fracturadas'],
       'Atrae específicamente a operadores cosmológicos, no marciales',
     ],
     theories: [
@@ -5503,6 +5657,539 @@ export const glossaryLore: Record<string, Partial<DeepEntity>> = {
     relatedRegions: ['stormveil', 'limgrave'],
     relatedConcepts: ['inseparable-sword', 'banished-knight-oleg', 'crucible'],
     relatedTimelineEvents: ['marika-godfrey', 'exilio-godfrey'],
+  },
+
+  /* ═══════ Phase 15 — Macro concepts deep-tier (sesión 2026-05-02) ═══════ */
+
+  'flame-of-ruin': {
+    summary:
+      'Fuerza cosmológica primigenia portada por los Gigantes del Fuego en las Cumbres del norte. Antagonista directa del Árbol Áureo: es la única llama capaz de quemarlo. La guerra contra los Gigantes terminó con su extinción ritual y el último gigante encadenado a la cumbre como custodio forzado de las brasas residuales. Cuando el Tarnished libera esa llama final, el régimen áureo pierde su última garantía estructural — el régimen mismo eligió no eliminarla del todo, y eso es lo que finalmente puede destruirlo.',
+    deepLore: [
+      h(2, 'Cosmología rival pre-Orden'),
+      p(
+        'La Llama de Ruina precede al ',
+        link('Orden Dorado', 'concept', 'golden-order'),
+        ' y representa cosmología paralela. No es "fuego salvaje" — es liturgia ígnea de los ',
+        link('Gigantes del Fuego', 'faction', 'fire-giants'),
+        ' que operaba en las Cumbres del norte mientras el régimen del ',
+        link('Crisol', 'concept', 'crucible'),
+        ' dominaba el resto del continente. Donde el ',
+        link('Crisol', 'concept', 'crucible'),
+        ' mezclaba formas vivas, los Gigantes mantenían el fuego como estructura: liturgia, cuerpo, ofrenda. Sus ritos no eran pirotecnia simbólica sino prácticas teológicas en las que la llama era simultáneamente medio de adoración y materialidad de su dios.'
+      ),
+      h(2, 'La amenaza existencial al Árbol Áureo'),
+      p(
+        'La Llama de Ruina es notable cosmológicamente porque puede quemar el ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        ' — algo que ningún otro fuego del cosmos puede. El ',
+        link('Renacimiento Áureo', 'concept', 'golden-order'),
+        ' depende del árbol como dispositivo central, así que mientras la llama existiera viva, ningún orden áureo podía consolidarse sin riesgo permanente de incineración total. La guerra fundacional contra los Gigantes no fue conflicto territorial sino preventivo cosmológico: el régimen tenía que neutralizar esa llama antes de poder estabilizarse.'
+      ),
+      h(2, 'La guerra de extinción'),
+      p(
+        'La guerra fue librada conjuntamente por ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' y ',
+        link('Maliketh', 'character', 'maliketh'),
+        ' — coalición exacta del régimen áureo. ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' aportó la fuerza marcial y la legitimidad como ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' inicial. ',
+        link('Maliketh', 'character', 'maliketh'),
+        ' aportó la legitimidad cosmológica de la sombra: solo una entidad con autoridad sobre el dominio de la muerte podía clausurar liturgias rivales sin generar contradicción ontológica. Los Gigantes fueron derrotados, sus dioses extinguidos, sus cumbres confiscadas. Pero el régimen tomó decisión deliberada en el último paso: no exterminar la llama del todo.'
+      ),
+      h(2, 'El último gigante encadenado'),
+      p(
+        'En lugar de apagar la llama definitivamente, el régimen optó por encadenar al último Gigante del Fuego a la cumbre como custodio forzado. Su trabajo eterno: vigilar las brasas residuales, mantenerlas atenuadas, no dejarlas reavivar. La razón cosmológica: extinguir la llama del todo habría requerido ritual de clausura permanente del fuego mismo como categoría — riesgo de inestabilidad cosmológica mayor. Mantenerla bajo guardián cautivo resolvía el problema con tecnología ritual menor (encadenamiento) y conservaba la llama como recurso latente. El régimen, en efecto, decidió que tener la llama disponible bajo control era más seguro que clausurarla.'
+      ),
+      h(2, 'El dispositivo simétrico'),
+      p(
+        'Filosóficamente, la Llama de Ruina termina siendo dispositivo simétrico del ',
+        link('Árbol Áureo', 'concept', 'erdtree'),
+        '. El árbol es lo que el régimen plantó; la llama es lo que el régimen no eliminó. Ambos son cosmológicamente fundamentales — uno como base del orden, otro como única amenaza estructural al orden. Cuando ',
+        link('Marika', 'character', 'marika'),
+        ' rompe el ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ', no toca la llama — eso requiere agente externo (',
+        link('Tarnished', 'concept', 'tarnished'),
+        '). La ironía cosmológica es exacta: lo único que el régimen conservó pero no eliminó es lo único que finalmente puede destruirlo. Cuando el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' libera la llama del último Gigante para quemar el árbol, la decisión áurea de hace eras se vuelve la condición de su propia caída.'
+      ),
+    ],
+    confirmed: [
+      ['Es la única llama cosmológica capaz de quemar el ', link('Árbol Áureo', 'concept', 'erdtree')],
+      ['Era portada por los ', link('Gigantes del Fuego', 'faction', 'fire-giants'), ' en las Cumbres del norte'],
+      ['Fue extinguida ritualmente por ', link('Godfrey', 'character', 'godfrey'), ' y ', link('Maliketh', 'character', 'maliketh')],
+      'El último Gigante quedó encadenado como custodio de las brasas residuales',
+      ['El ', link('Tarnished', 'concept', 'tarnished'), ' libera esta llama para quemar el árbol durante el endgame del juego'],
+    ],
+    inferred: [
+      'Representa cosmología pre-Orden con su propia liturgia teológica',
+      'Su existencia bajo el régimen áureo era amenaza estructural permanente',
+      'El régimen eligió no eliminarla del todo — riesgo cosmológico de clausura permanente',
+      ['Es dispositivo simétrico del ', link('Árbol Áureo', 'concept', 'erdtree'), ': lo conservado-pero-no-eliminado se vuelve condición de la caída'],
+    ],
+    theories: [
+      'Existieron múltiples llamas rituales rivales además de la principal — solo la del último Gigante sobrevivió',
+      'El régimen consideró brevemente clausurarla y descartó la opción por consideraciones ontológicas no documentadas',
+      ['La conexión con la ', link('Llama Frenética', 'concept', 'frenzied-flame'), ' es indirecta — son fuegos cosmológicos distintos pero adyacentes'],
+      'Los Fire Knights del régimen áureo descienden parcialmente de Gigantes capturados, no de humanos puros',
+    ],
+    ambiguous: [
+      'Si la llama tiene voluntad propia o es simplemente recurso ritual',
+      ['Cuántos ', link('Gigantes del Fuego', 'faction', 'fire-giants'), ' existieron antes de la guerra'],
+      ['Si el régimen pudo haber aprovechado la llama defensivamente sin ', link('Tarnished', 'concept', 'tarnished'), ' como vector externo'],
+      'Si quemar el árbol también extingue la llama o si esta persiste post-incendio',
+    ],
+    relatedCharacters: ['godfrey', 'maliketh', 'marika', 'melina'],
+    relatedFactions: ['fire-giants', 'orden-dorado'],
+    relatedRegions: ['mountaintops', 'tierras-intermedias'],
+    relatedConcepts: ['erdtree', 'crucible', 'elden-ring', 'frenzied-flame', 'tarnished', 'elden-lord'],
+    relatedTimelineEvents: ['guerra-gigantes-fuego', 'flame-of-ruin-confined', 'erdtree-quemado'],
+  },
+
+  'elden-lord': {
+    summary:
+      'Título cosmológico del consorte ritual de la divinidad portadora del Anillo Elden. No es rey en sentido político ordinario — es vasija humana del orden cósmico, contraparte masculina del Empíreo que sostiene el Anillo. Han habido tres en eras conocidas: Placidusax (era de los Antiguos Dragones, bajo un dios distinto a la Voluntad Mayor), Godfrey (Edad Dorada, bajo Marika), y potencialmente el Tarnished (configurable según el final elegido). Los seis finales del juego son seis configuraciones distintas de qué tipo de Señor Elden es.',
+    deepLore: [
+      h(2, 'Naturaleza ontológica del título'),
+      p(
+        'El Señor Elden no es heredable por linaje sanguíneo sino consagrado por proceso ritual. La divinidad portadora del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' (un ',
+        link('Empíreo', 'concept', 'empyrean'),
+        ' elegido por el dios externo dominante) elige consorte; ese consorte recibe ',
+        link('Gracia', 'concept', 'grace'),
+        ' plena del Anillo y se transforma en marido cosmológico. La función primaria es ejecutar el lado activo-violento del orden — librar las guerras fundacionales, suprimir cosmologías rivales, mantener la coherencia política del régimen. La divinidad-portadora no puede librar esas guerras directamente sin comprometer su rol cosmológico de equilibrio; necesita consorte humano que pueda ensuciarse en el proceso histórico.'
+      ),
+      h(2, 'Placidusax: el Señor de la era anterior'),
+      p(
+        link('Placidusax', 'character', 'placidusax'),
+        ' fue Señor Elden bajo un dios distinto a la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        ' — un dios anterior cuyo nombre el régimen actual ha borrado deliberadamente. Cuando ese dios se retiró del cosmos (por motivo no documentado), ',
+        link('Placidusax', 'character', 'placidusax'),
+        ' quedó técnicamente sin contraparte divina pero con el título intacto. Su solución fue retirarse a ',
+        link('Crumbling Farum Azula', 'region', 'farum-azula'),
+        ' — región que el régimen áureo eventualmente suspenderá fuera del flujo temporal regular — donde permanece dormido como vestigio cosmológico. Su existencia continua confirma que el título Señor Elden sobrevive al dios que lo otorgó: una vez consagrado, el portador queda fijado al rol incluso si la cosmología que lo sostenía cambia.'
+      ),
+      h(2, 'Godfrey: el Señor de la Edad Dorada'),
+      p(
+        link('Godfrey', 'character', 'godfrey'),
+        ' fue elegido por ',
+        link('Marika', 'character', 'marika'),
+        ' tras la llegada de la ',
+        link('Voluntad Mayor', 'concept', 'voluntad-mayor'),
+        '. Lideró las guerras fundacionales del régimen áureo: contra los ',
+        link('Gigantes del Fuego', 'faction', 'fire-giants'),
+        ', contra el linaje del ',
+        link('Storm-Hawk King', 'concept', 'storm-hawk-king'),
+        ' en lo que hoy es ',
+        link('Limgrave', 'region', 'limgrave'),
+        ', contra los ',
+        link('Antiguos Dragones', 'faction', 'dragones-antiguos'),
+        ' supervivientes de la era de ',
+        link('Placidusax', 'character', 'placidusax'),
+        '. Su exilio cuando la ',
+        link('Gracia', 'concept', 'grace'),
+        ' lo abandonó fue evento cosmológico, no decisión política: el régimen necesitaba reforma estructural y ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' ya no encajaba con la nueva fase. Tras su exilio, el título quedó vacante.'
+      ),
+      h(2, 'El interregno del título'),
+      p(
+        'Tras el exilio de ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' no hubo Señor Elden coronado durante la Edad Dorada tardía. ',
+        link('Radagon', 'character', 'radagon'),
+        ' ocupó parcialmente el rol como segundo aspecto de ',
+        link('Marika', 'character', 'marika'),
+        ' — pero nunca con el título completo, porque ',
+        link('Radagon', 'character', 'radagon'),
+        ' es ',
+        em('parte'),
+        ' de la divinidad-portadora, no consorte externo. El sistema requiere otredad cosmológica entre divinidad y consorte; ',
+        link('Marika', 'character', 'marika'),
+        '/',
+        link('Radagon', 'character', 'radagon'),
+        ' como entidad doble no satisface esa condición. La ',
+        link('Fractura', 'timeline', 'la-fractura'),
+        ' ocurre con el trono vacante — y eso es parte de su lógica cosmológica: el Anillo no puede sostenerse sin consorte humano, y la única salida es romperlo.'
+      ),
+      h(2, 'El Tarnished como candidato'),
+      p(
+        'El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' que regresa a las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' es el primer candidato cosmológico al título en eras. Las ',
+        link('Gracias', 'concept', 'grace'),
+        ' áureas se han retirado de los líderes establecidos y eligen ahora a los exiliados. El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' puede convertirse en Señor Elden bajo varias configuraciones distintas — y los seis ',
+        em('finales'),
+        ' del juego son seis tipos distintos de Señor Elden:'
+      ),
+      h(3, 'Las seis configuraciones'),
+      p(
+        em('Era de la Fractura'),
+        ': Señor Elden ortodoxo bajo régimen áureo restaurado en su forma básica. ',
+        em('Era del Orden'),
+        ': Señor Elden bajo doctrina perfeccionada (',
+        link('Goldmask', 'character', 'goldmask'),
+        '). ',
+        em('Era del Crepúsculo'),
+        ': Señor Elden separado del cosmos cotidiano (alianza con ',
+        link('Ranni', 'character', 'ranni'),
+        '). ',
+        em('Era de la Desesperación'),
+        ': Señor Elden bajo doctrina del exterminio (',
+        link('Dung Eater', 'character', 'dung-eater'),
+        '). ',
+        em('Era de la Llama Frenética'),
+        ': el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' no es coronado Señor Elden propiamente sino que destruye el sistema entero (',
+        link('Tres Dedos', 'faction', 'tres-dedos'),
+        '). ',
+        em('Era de las Estrellas'),
+        ': mismo que Crepúsculo pero con consorte ',
+        link('Ranni', 'character', 'ranni'),
+        '.'
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'El título es entonces dispositivo narrativo: la pregunta del juego no es ',
+        em('"¿quién gobierna?"'),
+        ' sino ',
+        em('"¿qué tipo de orden cosmológico se consolida con este consorte?"'),
+        '. El Señor Elden no es protagonista del orden — es el ',
+        em('vector ejecutor'),
+        ' de un orden que la divinidad-portadora ha decidido. Lo que el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' elige al final del juego no es solo la configuración política sino la configuración del rol mismo: si el régimen siguiente requerirá ejecución violenta (régimen áureo, doctrina perfecta, despair), reescribirá las reglas (estrellas, crepúsculo), o se autoinmolará (frenzied flame).'
+      ),
+    ],
+    confirmed: [
+      ['Es título consagrado por ritual, no heredado por linaje sanguíneo'],
+      ['La divinidad portadora del ', link('Anillo Elden', 'concept', 'elden-ring'), ' elige al consorte que se transforma en Señor Elden'],
+      [link('Placidusax', 'character', 'placidusax'), ' fue Señor Elden bajo un dios anterior a la Voluntad Mayor'],
+      [link('Godfrey', 'character', 'godfrey'), ' fue Señor Elden bajo Marika; su exilio dejó el título vacante'],
+      ['Tras el exilio de Godfrey no hubo Señor Elden coronado hasta el regreso del ', link('Tarnished', 'concept', 'tarnished')],
+      'Cada uno de los seis finales del juego define una configuración distinta del título',
+    ],
+    inferred: [
+      ['El sistema requiere otredad cosmológica entre divinidad-portadora y consorte; ', link('Marika', 'character', 'marika'), '/', link('Radagon', 'character', 'radagon'), ' como entidad doble no satisface esa condición'],
+      ['La ', link('Fractura', 'timeline', 'la-fractura'), ' ocurre con el trono vacante por lógica estructural, no por accidente'],
+      ['Las ', link('Gracias', 'concept', 'grace'), ' áureas eligen Tarnished porque ningún agente interno del régimen es candidato válido'],
+      'El título sobrevive al dios que lo otorgó (caso Placidusax)',
+    ],
+    theories: [
+      'Existieron Señores Elden previos a Placidusax cuyos nombres el régimen borró del registro',
+      'El título tiene componente temporal — el portador queda fijado a su era cosmológica aunque el régimen evolucione',
+      ['La condición real para el título no es la ', link('Gracia', 'concept', 'grace'), ' sino la disposición del Anillo a aceptar consorte'],
+      ['La selección del Tarnished por las ', link('Gracias', 'concept', 'grace'), ' es decisión de la propia Voluntad Mayor, no automatismo cosmológico'],
+    ],
+    ambiguous: [
+      'Si Placidusax retiene el título técnicamente o si lo perdió cuando su dios se retiró',
+      ['Si el ', link('Tarnished', 'concept', 'tarnished'), ' que elige Frenzied Flame retiene el título o lo destruye junto con el cosmos'],
+      'Si pueden coexistir múltiples Señores Elden simultáneos',
+      'Cuál es el ritual exacto de coronación — ningún ítem lo describe en detalle',
+    ],
+    relatedCharacters: ['godfrey', 'placidusax', 'marika', 'radagon', 'goldmask', 'ranni', 'dung-eater'],
+    relatedFactions: ['orden-dorado', 'tres-dedos'],
+    relatedRegions: ['leyndell', 'farum-azula', 'tierras-intermedias'],
+    relatedConcepts: ['elden-ring', 'grace', 'tarnished', 'voluntad-mayor', 'empyrean', 'demidios'],
+    relatedTimelineEvents: ['marika-godfrey', 'placidusax-elden-lord', 'la-fractura', 'godfrey-regresa', 'finales'],
+  },
+
+  'golden-order-fundamentalism': {
+    summary:
+      'Doctrina teológica reformada de Radagon que codificó el Orden Dorado como sistema cerrado de leyes puras: pureza de categorías ontológicas, supresión total del Crisol, encarcelamiento de los Omen, repudio de toda mezcla pre-Orden. Es la versión doctrinaria endurecida que reemplazó la Edad Dorada inicial más sincrética. La reforma fundamentalista cerró las grietas del régimen al precio de cerrar también su capacidad de auto-reformarse — paradoja estructural que eventualmente fuerza la Fractura como única salida.',
+    deepLore: [
+      h(2, 'La Edad Dorada inicial era más sincrética'),
+      p(
+        'El Fundamentalismo no fue siempre el régimen. La Edad Dorada inicial bajo ',
+        link('Marika', 'character', 'marika'),
+        ' y ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' toleraba residuos del ',
+        link('Crisol', 'concept', 'crucible'),
+        ': los ',
+        link('Caballeros del Crisol', 'faction', 'crucible-knights'),
+        ' seguían operando con magia híbrida (alas, cola, cuernos como ornamentos rituales del régimen activo); los ',
+        link('Omen', 'faction', 'omens'),
+        ' no eran sistemáticamente perseguidos sino tolerados como casos individuales; los rituales pre-Orden persistían en aldeas periféricas sin interferencia central. El régimen áureo en su versión inicial era régimen ',
+        em('expansivo'),
+        ' — incorporaba lo que conquistaba, no lo extinguía.'
+      ),
+      h(2, 'La reforma de Radagon'),
+      p(
+        link('Radagon', 'character', 'radagon'),
+        ' (académico, devoto teológico, marido de ',
+        link('Rennala', 'character', 'rennala'),
+        ' antes de transformarse en segundo aspecto de ',
+        link('Marika', 'character', 'marika'),
+        ') consolidó la reforma fundamentalista. Su instinto era de cierre, no de expansión: si el régimen áureo era verdadera doctrina cosmológica, debía ser ',
+        em('coherente'),
+        ', y coherente significaba excluir todo lo que contradijera la pureza categorial. Declaró todo lo del ',
+        link('Crisol', 'concept', 'crucible'),
+        ' impuro — los ',
+        link('Caballeros del Crisol', 'faction', 'crucible-knights'),
+        ' pasaron de élite ritual a anomalía tolerada en bucles eternos custodiando catacumbas; los ',
+        link('Omen', 'faction', 'omens'),
+        ' (humanos con sangre del ',
+        link('Crisol', 'concept', 'crucible'),
+        ') fueron categorizados como maldiciones encarnadas y encarcelados o exiliados a las alcantarillas; los rituales sincréticos fueron suprimidos.'
+      ),
+      h(2, 'Las dos leyes complementarias'),
+      p(
+        'La doctrina fundamentalista añadió dos leyes nuevas al cuerpo teológico del Orden:'
+      ),
+      p(
+        em('Ley de Regresión'),
+        ' (',
+        link('Law of Regression', 'concept', 'law-of-regression'),
+        '): todo debe volver a su forma original/dorada. Las contradicciones se resuelven mediante reversión a la categoría pura subyacente. Si dos cosas no pueden coexistir bajo el régimen, una de las dos no es realmente ella misma sino versión corrupta de algo más simple. ',
+        em('Ley de Causalidad'),
+        ' (',
+        link('Law of Causality', 'concept', 'law-of-causality'),
+        '): todo efecto requiere causa visible y ortodoxa. Lo no-causado o lo causado por agentes no reconocidos por el régimen no es real. Estas dos leyes funcionan juntas como motor doctrinario: la Regresión permite suprimir lo que no encaja redefiniéndolo como impuro; la Causalidad permite negar la existencia de cosas inconvenientes redefiniéndolas como ilusiones.'
+      ),
+      h(2, 'Goldmask y la conclusión lógica'),
+      p(
+        link('Goldmask', 'character', 'goldmask'),
+        ' es el discípulo silencioso del Fundamentalismo que lo lleva a su conclusión natural. Si el Orden tiene leyes que pueden ser refinadas, deben ',
+        em('seguir'),
+        ' siendo refinadas hasta que toda contradicción interna se elimine. Su silencio no es ascesis ritual — es trabajo intelectual continuo: está calculando qué reforma final permitiría al régimen funcionar sin grietas. Su descubrimiento eventual (que la ',
+        link('Fractura', 'timeline', 'la-fractura'),
+        ' es síntoma de error doctrinario, no de agresión externa) habilita la ',
+        em('Era de la Perfección'),
+        ' como uno de los seis finales del juego. ',
+        link('Corhyn', 'character', 'corhyn'),
+        ' lo acompaña como discípulo-asistente, no como filósofo igual.'
+      ),
+      h(2, 'La paradoja estructural'),
+      p(
+        'El Fundamentalismo es dispositivo paradójico: era reforma reformista — su origen fue voluntad de mejorar el régimen — pero al consolidarse cerró toda posibilidad de reforma posterior. Un sistema con Ley de Regresión no puede aceptar reformas estructurales (cualquier reforma es reversión a categoría más pura, no innovación legítima), y un sistema con Ley de Causalidad no puede admitir que sus propias contradicciones internas existen (cualquier "contradicción" es ilusión causada por agentes no ortodoxos). Cuando ',
+        link('Marika', 'character', 'marika'),
+        ' rompe el ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ', parte de lo que rompe es esta doctrina — es reconocimiento implícito de que el régimen había hecho el Fundamentalismo demasiado rígido para auto-corregirse desde dentro.'
+      ),
+      h(2, 'Los proyectos disidentes'),
+      p(
+        'Los proyectos disidentes del juego se definen explícitamente contra distintos aspectos del Fundamentalismo, no contra el ',
+        link('Orden Dorado', 'faction', 'orden-dorado'),
+        ' original más laxo. ',
+        link('Ranni', 'character', 'ranni'),
+        ' rechaza la presencia divina cotidiana que el Fundamentalismo requiere para sostener su Causalidad. ',
+        link('Goldmask', 'character', 'goldmask'),
+        ' acepta el Fundamentalismo pero radicaliza su Regresión hasta convertirla en Perfección final. La ',
+        link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'),
+        ' rechaza la suspensión de la muerte que el Fundamentalismo institucionalizó. La ',
+        link('Llama Frenética', 'concept', 'frenzied-flame'),
+        ' rechaza la noción misma de orden categorial. Cada disidente es respuesta a un aspecto distinto del cierre fundamentalista.'
+      ),
+    ],
+    confirmed: [
+      [link('Radagon', 'character', 'radagon'), ' es el reformador principal de la doctrina'],
+      'Introduce la Ley de Regresión y la Ley de Causalidad como motor doctrinario',
+      ['Declaró impuro todo lo del ', link('Crisol', 'concept', 'crucible'), ' que la Edad Dorada inicial toleraba'],
+      ['Encarceló sistemáticamente a los ', link('Omen', 'faction', 'omens'), ' como maldiciones encarnadas'],
+      [link('Goldmask', 'character', 'goldmask'), ' es discípulo que lleva la doctrina a su conclusión lógica (Era de la Perfección)'],
+    ],
+    inferred: [
+      ['La Edad Dorada inicial bajo ', link('Marika', 'character', 'marika'), '+', link('Godfrey', 'character', 'godfrey'), ' era régimen expansivo, no fundamentalista'],
+      'El Fundamentalismo cerró el régimen contra reforma estructural posterior',
+      ['Los ', link('Caballeros del Crisol', 'faction', 'crucible-knights'), ' pasaron de élite ritual activa a anomalía tolerada por la reforma'],
+      ['La ', link('Fractura', 'timeline', 'la-fractura'), ' es respuesta estructural al cierre fundamentalista'],
+      ['Los proyectos disidentes son respuestas a aspectos específicos del Fundamentalismo, no al ', link('Orden Dorado', 'concept', 'golden-order'), ' original'],
+    ],
+    theories: [
+      ['El Fundamentalismo fue iniciado por ', link('Radagon', 'character', 'radagon'), ' antes de su fusión con ', link('Marika', 'character', 'marika'), ', no después'],
+      'Existió oposición interna al Fundamentalismo durante su consolidación que el régimen suprimió',
+      ['La transformación de ', link('Radagon', 'character', 'radagon'), ' en aspecto de ', link('Marika', 'character', 'marika'), ' fue consecuencia de la reforma, no su origen'],
+      ['La Era de la Perfección de ', link('Goldmask', 'character', 'goldmask'), ' es la única configuración posible que repara el cosmos sin abandonar el Fundamentalismo'],
+    ],
+    ambiguous: [
+      ['Si ', link('Marika', 'character', 'marika'), ' apoyó la reforma fundamentalista voluntariamente o si ', link('Radagon', 'character', 'radagon'), ' la impuso'],
+      'Cuándo exactamente comenzó la persecución sistemática de los Omen',
+      'Si los Crucible Knights atrapados en bucles eternos están conscientes de su nuevo estatus',
+      ['Si Goldmask considera la doctrina del Fundamentalismo correcta o solo la considera la única posible dada la situación actual'],
+    ],
+    relatedCharacters: ['radagon', 'marika', 'goldmask', 'corhyn', 'godfrey'],
+    relatedFactions: ['orden-dorado', 'crucible-knights', 'omens', 'fundamentalistas'],
+    relatedRegions: ['leyndell', 'altus-plateau', 'tierras-intermedias'],
+    relatedConcepts: ['golden-order', 'crucible', 'law-of-regression', 'law-of-causality', 'omen-curse', 'elden-ring', 'demidios'],
+    relatedTimelineEvents: ['birth-golden-order', 'crucible-purge', 'la-fractura'],
+  },
+
+  'demidios': {
+    summary:
+      'Categoría cosmológica de los hijos de Marika nacidos con sangre divina parcial. Son seres con poder mayor que cualquier humano pero menor que la divinidad plena de su madre. Cada uno hereda fragmento del Anillo Elden tras la Fractura — la Gran Runa que define su autoridad cosmológica residual. Las Grandes Runas son simultáneamente fuente de poder y prisión: el portador no puede deshacerse de ellas sin perder identidad cosmológica, pero tampoco puede usar el poder pleno sin reactivar el Anillo entero. Por eso los Demidioses guerrean entre sí en la Guerra de la Fractura.',
+    deepLore: [
+      h(2, 'Categoría cosmológica específica del régimen áureo'),
+      p(
+        'Los Demidioses no son "semi-dioses" en sentido mitológico genérico. Son categoría específica del régimen áureo: hijos de ',
+        link('Empíreo', 'concept', 'empyrean'),
+        ' (',
+        link('Marika', 'character', 'marika'),
+        ') gestados con consortes humanos o quasi-humanos. La sangre de la divinidad-portadora se transmite parcialmente a la descendencia — suficiente para conferir poder cosmológico significativo, no suficiente para constituir nueva divinidad plena. Esta condición intermedia es estructural, no accidental: el régimen depende de que existan agentes con autoridad mayor que la humana ordinaria pero menor que la divinidad central.'
+      ),
+      h(2, 'Las dos camadas y la dilución generacional'),
+      p(
+        'Los Demidioses plenos son hijos directos de ',
+        link('Marika', 'character', 'marika'),
+        ' con consortes consagrados. Los hijos con ',
+        link('Godfrey', 'character', 'godfrey'),
+        ' (humano elevado a ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        '): ',
+        link('Godwyn', 'character', 'godwyn'),
+        ', ',
+        link('Morgott', 'character', 'morgott'),
+        ', y ',
+        link('Mohg', 'character', 'mohg'),
+        ' (los gemelos Omen). Los hijos con ',
+        link('Radagon', 'character', 'radagon'),
+        ' (',
+        link('Empíreo', 'concept', 'empyrean'),
+        ' aspecto interno de ',
+        link('Marika', 'character', 'marika'),
+        '): ',
+        link('Miquella', 'character', 'miquella'),
+        ' y ',
+        link('Malenia', 'character', 'malenia'),
+        ' (los gemelos Empíreos), más los hijos previos de ',
+        link('Radagon', 'character', 'radagon'),
+        ' con ',
+        link('Rennala', 'character', 'rennala'),
+        ' que pasaron al árbol genealógico tras el segundo matrimonio: ',
+        link('Radahn', 'character', 'radahn'),
+        ', ',
+        link('Rykard', 'character', 'rykard'),
+        ', y ',
+        link('Ranni', 'character', 'ranni'),
+        '.'
+      ),
+      p(
+        'Los hijos a su vez producen Demidioses diluidos. ',
+        link('Godrick', 'character', 'godrick'),
+        ' es descendiente lateral cuya sangre divina ha decaído tanto que necesita sostenimiento cosmológico artificial — su práctica de injertar miembros de soldados caídos no es vanidad estética sino necesidad ritual: cada injerto refuerza temporalmente la ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' diluida que apenas sostiene su identidad cosmológica. La dilución generacional es uno de los problemas estructurales del régimen — sin reformas explícitas, cada generación tiene Demidioses cosmológicamente más débiles, hasta que la categoría misma se vuelve insostenible.'
+      ),
+      h(2, 'La Gran Runa como herencia forzada'),
+      p(
+        'Tras la ',
+        link('Fractura', 'timeline', 'la-fractura'),
+        ', cada Demidiós retiene fragmento del ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' como ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' propia — herencia cosmológica forzada, no elección. Las Grandes Runas son simultáneamente fuente de poder cosmológico y prisión ontológica. El portador no puede deshacerse de ellas sin perder identidad (la Runa es parte de su definición cosmológica post-Fractura), pero tampoco puede activar el poder pleno sin reactivar el ',
+        link('Anillo Elden', 'concept', 'elden-ring'),
+        ' entero — operación que requiere todas las Grandes Runas reunidas en una sola vasija. La condición es contradictoria: cada Demidiós necesita absorber las Grandes Runas ajenas para usar plenamente la propia, pero ningún Demidiós tiene legitimidad cosmológica para hacerlo (eso requeriría coronación como nuevo ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ', y los Demidioses no son candidatos válidos al título — son consanguíneos de ',
+        link('Marika', 'character', 'marika'),
+        ', no consortes externos).'
+      ),
+      h(2, 'La Guerra de la Fractura como guerra civil cosmológica'),
+      p(
+        'Por la condición anterior, los Demidioses guerrean entre sí. La ',
+        link('Guerra de la Fractura', 'timeline', 'shattering-war'),
+        ' no es ambición política sino lógica cosmológica: cada Demidiós intenta absorber las Grandes Runas ajenas como única manera de usar el poder pleno de la propia. Pero la guerra es estructuralmente irresoluble entre ellos. ',
+        link('Malenia', 'character', 'malenia'),
+        ' floreció en ',
+        link('Aeonia', 'region', 'aeonia'),
+        ' contra ',
+        link('Radahn', 'character', 'radahn'),
+        ' sin lograr derrotarlo (empate por ',
+        link('Floración Escarlata', 'concept', 'scarlet-rot'),
+        ' que arruinó ambos cuerpos). ',
+        link('Mohg', 'character', 'mohg'),
+        ' se retiró al ',
+        link('Palacio Mohgwyn', 'region', 'mohgwyn'),
+        ' a establecer régimen alternativo de Sangre, fuera del juego principal. ',
+        link('Rykard', 'character', 'rykard'),
+        ' se fundió con la serpiente del ',
+        link('Monte Gelmir', 'region', 'mt-gelmir'),
+        ' renunciando a competir cosmológicamente. ',
+        link('Godrick', 'character', 'godrick'),
+        ' se atrincheró en ',
+        link('Stormveil', 'region', 'stormveil'),
+        ' con su solución de injertos. ',
+        link('Morgott', 'character', 'morgott'),
+        ' permaneció en ',
+        link('Leyndell', 'region', 'leyndell'),
+        ' como guardián residual del régimen áureo. ',
+        link('Miquella', 'character', 'miquella'),
+        ' se retiró al ',
+        link('Haligtree', 'region', 'haligtree'),
+        ' a planear orden alternativo.'
+      ),
+      h(2, 'El Tarnished como solución cosmológica externa'),
+      p(
+        'El ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' que regresa puede absorber las Grandes Runas sin contradicción ontológica precisamente porque es externo al ciclo cosmológico. No tiene ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ' propia, no es Demidiós, no fue parte de la ',
+        link('Fractura', 'timeline', 'la-fractura'),
+        '. Su absorción de las Grandes Runas no es usurpación entre semejantes sino reactivación del Anillo desde fuera. Por eso los Demidioses son derrotables uno a uno por el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' cuando son irresolubles entre sí: la asimetría cosmológica entre Demidiós (atado por su ',
+        link('Gran Runa', 'concept', 'great-rune'),
+        ') y ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' (libre de cualquiera) hace que el ',
+        link('Tarnished', 'concept', 'tarnished'),
+        ' tenga ventaja estructural.'
+      ),
+      h(2, 'Significado simbólico'),
+      p(
+        'Los Demidioses son la prueba viva de que el régimen áureo, al apostar por sucesión por descendencia divina, condenó la siguiente generación a la inestabilidad estructural. La Edad Dorada produjo dinastía aparentemente robusta — siete Demidioses plenos, varios diluidos, herederos por todas partes — y simultáneamente produjo guerra civil cosmológica inevitable. La paradoja es exacta: cuanta más descendencia divina genera el régimen, más inestable se vuelve, porque cada Demidiós es legítimo cosmológicamente solo si los demás están subordinados, y ninguno puede subordinar a los demás sin convertirse en ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ', y ninguno puede convertirse en ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' por ser consanguíneo. La sucesión por linaje divino es estructuralmente imposible — y el régimen apostó toda su continuidad a esa imposibilidad.'
+      ),
+    ],
+    confirmed: [
+      ['Son hijos de ', link('Marika', 'character', 'marika'), ' con sangre divina parcial'],
+      ['Cada uno hereda una ', link('Gran Runa', 'concept', 'great-rune'), ' tras la ', link('Fractura', 'timeline', 'la-fractura')],
+      ['La ', link('Gran Runa', 'concept', 'great-rune'), ' es simultáneamente fuente de poder y prisión cosmológica'],
+      ['La ', link('Guerra de la Fractura', 'timeline', 'shattering-war'), ' es guerra civil entre Demidioses'],
+      ['La sangre divina se diluye con cada generación (caso ', link('Godrick', 'character', 'godrick'), ')'],
+      ['Solo el ', link('Tarnished', 'concept', 'tarnished'), ' puede absorber las Grandes Runas sin contradicción cosmológica'],
+    ],
+    inferred: [
+      'La categoría es estructural del régimen áureo, no solo descriptiva',
+      ['Ningún Demidiós puede legítimamente derrotar a los demás (asimetría requeriría título ', link('Señor Elden', 'concept', 'elden-lord'), ')'],
+      'La dilución generacional condena la categoría a inestabilidad creciente',
+      'El régimen apostó toda su continuidad a sucesión cosmológicamente imposible',
+    ],
+    theories: [
+      [link('Marika', 'character', 'marika'), ' tuvo más Demidioses cuyos nombres el régimen ha borrado'],
+      ['La condición ', link('Empyrean', 'concept', 'empyrean'), ' de ', link('Miquella', 'character', 'miquella'), ' y ', link('Malenia', 'character', 'malenia'), ' los exime parcialmente de la condición Demidiós'],
+      ['Si ', link('Godwyn', 'character', 'godwyn'), ' hubiera sobrevivido la Noche de los Cuchillos Negros, la Fractura habría sido distinta'],
+      ['Existe ritual cosmológico que permitiría a un Demidiós convertirse en ', link('Señor Elden', 'concept', 'elden-lord'), ' — pero el régimen lo borró del registro'],
+    ],
+    ambiguous: [
+      ['Si los Empíreos (', link('Miquella', 'character', 'miquella'), ', ', link('Malenia', 'character', 'malenia'), ', ', link('Ranni', 'character', 'ranni'), ') son técnicamente Demidioses o categoría aparte'],
+      'Cuántas generaciones de dilución son necesarias antes de que la sangre divina se pierda del todo',
+      ['Si los descendientes laterales como ', link('Nepheli Loux', 'character', 'nepheli-loux'), ' tienen rastro de sangre Demidiós'],
+      ['Si la ', link('Gran Runa', 'concept', 'great-rune'), ' puede ser destruida sin matar al portador'],
+    ],
+    relatedCharacters: ['marika', 'godwyn', 'morgott', 'mohg', 'malenia', 'miquella', 'radahn', 'rykard', 'ranni', 'godrick', 'godfrey', 'radagon'],
+    relatedFactions: ['orden-dorado', 'haligtree'],
+    relatedRegions: ['leyndell', 'haligtree', 'mohgwyn', 'mt-gelmir', 'stormveil', 'tierras-intermedias'],
+    relatedConcepts: ['great-rune', 'elden-ring', 'elden-lord', 'empyrean', 'tarnished', 'golden-order'],
+    relatedTimelineEvents: ['hijos-marika-godfrey', 'la-fractura', 'shattering-war', 'demidioses-fractura'],
   },
 
 }

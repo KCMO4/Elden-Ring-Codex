@@ -12,9 +12,9 @@ const config: Record<Certainty, {
   },
   inferencia: {
     label: 'Inferencia Fuerte',
-    color: 'text-amber-300',
-    bg: 'bg-amber-900/20',
-    border: 'border-amber-700/40',
+    color: 'text-codex-flame',
+    bg: 'bg-codex-flame/10',
+    border: 'border-codex-flame/40',
     tooltip: 'Consecuencia lógica fuerte sostenida por la cosmología, no enunciada literalmente.',
   },
   teoria: {
@@ -31,10 +31,12 @@ export function CertaintyBadge({ certainty }: { certainty: Certainty }) {
   return (
     <span
       title={c.tooltip}
+      aria-label={`${c.label}: ${c.tooltip}`}
       className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm text-xs font-medium tracking-wider uppercase border cursor-help ${c.color} ${c.bg} ${c.border}`}
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-current inline-block" />
+      <span className="w-1.5 h-1.5 rounded-full bg-current inline-block" aria-hidden />
       {c.label}
+      <span className="sr-only"> — {c.tooltip}</span>
     </span>
   )
 }

@@ -565,6 +565,189 @@ Cualquier sesión futura puede operar sobre la base estable que estas 8 fases co
 
 ---
 
+## Phase 10-14 — Las 7 Grandes Runas + remembrances + sacramentos (✅ completas, 2026-04-30)
+
+### Objetivo
+Cobertura cosmológica integral del juego base — todas las reliquias remembrance individualmente, sacramentos del régimen y figuras históricas referenciadas en lore.
+
+### Bloques ejecutados
+- **Phase 10**: Las 7 Grandes Runas individualizadas como entries de glossary (`godricks-great-rune`, `radahns-great-rune`, `morgotts-great-rune`, `mohgs-great-rune`, `rykards-great-rune`, `malenias-great-rune`, `great-rune-of-the-unborn`).
+- **Phase 11**: 16 armas remembrance del juego base como entries de glossary (`bolt-of-gransax`, `sword-of-night-and-flame`, `helphens-steeple`, `eclipse-shotel`, `devourers-scepter`, `ruins-greatsword`, `marais-executioners-sword`, `marikas-hammer`, `blasphemous-blade`, `rivers-of-blood`, `inseparable-sword`, `maliketh-black-blade`, `dark-moon-greatsword`, `mohgwyn-sacred-spear`, `dragon-king-cragblade`, `bastards-stars`).
+- **Phase 12**: 3 cenizas espirituales clave (`black-knife-tiche`, `lhutel-the-headless`, `banished-knight-oleg`).
+- **Phase 13**: Sacramentos cosmológicos (`stake-of-marika`, `wondrous-physick`, `sites-of-grace`, `roundtable-hold`).
+- **Phase 14**: Figuras históricas referenciadas (`storm-hawk-king`, `gloam-eyed-queen` — primera promovida a character, segunda histórica), 3 conceptos teológicos (`primeval-current`, `law-of-regression`, `law-of-causality`), `crucible-knights` y `omen-curse`.
+
+### Build impact
+- Lore-glossary chunk creció de ~50 kB → 80 kB gz (todos los items por categoría).
+- 0 broken refs tras cada batch.
+
+---
+
+## UX expansion — Tag pages + reading history + QoL global (✅ completa, 2026-04-30)
+
+### Objetivo
+Capa de descubrimiento + retorno + serendipia para que el lector con 350+ entradas no se ahogue.
+
+### Bloques ejecutados
+- `/etiqueta/:slug` con `TagPage` + `tagAggregator.ts` (lookup cross-categoría).
+- `readingHistory.ts` + "Continuar leyendo" en portada.
+- `PageSkeleton` con shimmer.
+- `MobileToC` con bottom-sheet drawer.
+- Botón random entry en sidebar (`randomEntryPath()`).
+- Atajos `j` / `k` con page-turn slide direccional.
+- `CertaintyBadge` con tooltip explicativo.
+- `ScrollToTop` global (respeta hash anchors).
+- SVG illustrations rewrite (24 escenas atmosféricas multi-capa).
+
+---
+
+## Image audit + AI upscaling (✅ completa, 2026-05-01)
+
+### Objetivo
+100 % imágenes ≥1080p con identidad visual consistente (no personajes con la imagen de otro; vistas, no mapas, en regiones).
+
+### Bloques ejecutados
+- `audit-assets.mjs` — verifica resolución / ratio / formato.
+- Real-ESRGAN ncnn-vulkan 4x para sub-1080p.
+- Pillow JPEG q90 con max edge 2400 tras upscale.
+- `verify-upscaled.py` — confirma ≥1080px.
+- `convert-to-webp.py` evitado (causó breakage histórico de 375 archivos).
+
+---
+
+## Code audit + 12 fixes (✅ completa, 2026-05-01)
+
+### Objetivo
+Refactor sin cambio de comportamiento + fixes de issues sutiles.
+
+### Bloques ejecutados
+- `AbortController` en `imageSources.ts` (evita leak en strict mode).
+- Refs vs stale closure en `DetailLayout` (j/k handlers).
+- Helpers genéricos en `lookups.ts` (`findBySlug<T>`, `resolveByIds<T>` reemplazan 6 funciones).
+- `compareByCertainty<T>()` y `buildTagOptions<T>()` extraídos a `filterHelpers.ts`.
+- `CERTAINTY_RANK` único en `certaintyRank.ts` (eliminó 5 duplicados).
+- `RouteDetailPage` con key+remount fix.
+- `RichLoreText` con heading IDs únicos.
+- Lazy chunk `fallback-illustrations` (~10 kB gz).
+- Color contrast tweaks.
+
+---
+
+## Terminología massiva (✅ completa, 2026-05-01)
+
+### Objetivo
+Renames terminológicos canon — Interregno → Tierras Intermedias, Erdtree → Árbol Áureo.
+
+### Bloques ejecutados
+- `rename-erdtree.mjs` — Erdtree → Árbol Áureo (preserva slugs lowercase).
+- `rename-interregno.mjs` — Interregno → Tierras Intermedias (581 reemplazos).
+- `fix-tierras-grammar.mjs` — concordancia fem/plur post-rename (56 fixes).
+- `gloam-eyed-queen` corregido a "Reina del Ojo Velado" (traducción oficial FromSoft).
+- "Tarnished" se preserva sin traducir (rechazo "Mancillado").
+
+---
+
+## Auto-link masivo (✅ completa, 2026-05-01)
+
+### Objetivo
+TODA mención de entidad en prosa visible se convierte en `link()` (option C, no first-mention-only).
+
+### Bloques ejecutados
+- `scripts/auto-link-pass.mts` — build-time: paragraphs, buckets, prose-fields, listas. 360 link insertions iniciales + 360 retroactivas tras cada nueva entrada.
+- `src/lib/enrichText.ts` + `<EnrichedText>` — runtime: string fields de `data/*.ts`.
+- `MANUAL_ALIASES` sincronizados en ambos.
+- Política: NO se enrichen quotes ni headings (decisión deliberada por estética).
+- Self-reference handling via `selfId` exclusion (build-time + runtime).
+
+---
+
+## Glow-up final (✅ completa, 2026-05-02)
+
+### Objetivo
+Polish UI + features de retorno (FeaturedEntry diario, ShareButton, etc.).
+
+### Bloques ejecutados
+- Light mode con CSS vars `rgb(var(--codex-X) / <alpha-value>)` + `[data-theme="light"]`.
+- PWA via `manifest.webmanifest` + `sw.js` (skipea localhost).
+- EntityCard refactor con stagger entrance + multi-layer gold glow.
+- Comparador de finales (`/finales/comparador` lazy).
+- Markdown export para entries individuales.
+- Quote share copy-link.
+- Notes per entry en `localStorage`.
+- Search facets (`tag:rot cert:teoria type:character`).
+- `RelatedReadings` panel tras 70 % de scroll.
+- Genealogía expandida a 47 personas, 14 secciones (incluye Millicent/Gowry, Goldmask/Corhyn).
+- 4 nuevos NPCs con deep lore: Yura, Shabriri, Eleonora, Lanya.
+- Imagen de Boc actualizada a forma Misbegotten.
+- Hero summary fallback enriquecido.
+
+---
+
+## Arquitectura SOTE (✅ completa, 2026-05-02)
+
+### Objetivo
+Preparar el codex para integrar Shadow of the Erdtree sin segregar el contenido a un apartado al final.
+
+### Bloques ejecutados
+- `Expansion = 'base' | 'sote'` en `types.ts`.
+- `expansion?: Expansion` en `RichBlock`, `BucketItem` wrapper, y `DeepEntity` mixin (Opción B — entidades enteras).
+- `useExpansion()` + `useEntityFilter()` hooks en `expansion.ts`.
+- `ExpansionToggle` segmented control en sidebar (Todo / Base).
+- Filtro aplicado en: `RichLoreText` (bloques), `DetailLayout` (bucket items), 6 listing sections, `SearchPage`, `TagPage`, `RelatedReadings`, `EntityGraph`.
+- `EntityHoverCard` muestra badge "SOTE" si preview es DLC-only (no oculta — el link sigue siendo navegable).
+- Política: NO filtrar bookmarks (intencionales del usuario), NO tri-estado (solo all/base), NO marker a nivel `RichInline`.
+
+---
+
+## Tierras Intermedias macro entry + 5 conceptos faltantes (✅ completa, 2026-05-02)
+
+### Objetivo
+Cerrar la carencia de la entrada macro del continente (568 menciones cross-codex sin entry propio) + 5 conceptos detectados como gaps al crear la entrada.
+
+### Bloques ejecutados
+- **`tierras-intermedias`** (region) con 6 secciones (naturaleza cosmológica / geografía detallada / historia en 5 sub-eras / Erdtree-como-prisión / significado simbólico) + 4 buckets + cross-links a 17 personajes / 12 facciones / 16 regiones / 15 conceptos / 5 timeline events.
+- **5 conceptos relacionados** añadidos: `Llama de Ruina`, `Land of Reeds` (region), `Señor Elden`, `Fundamentalismo del Orden Dorado`, `Demidioses`.
+- Auto-link retroactivo: 360 link insertions distribuidas en 8 archivos de lore.
+- 335 cross-links totales hacia tierras-intermedias.
+- 47 slugs corregidos en pasada inicial (lección: validar slug exacto en glossary/factions/characters antes de cross-link).
+
+### Build impact
+- Initial bundle: 154 → 155 kB gz (+1 kB por entrada masiva).
+- `lore-regions` chunk: 220 kB → 60 kB gz.
+- Cero refs rotas tras audit.
+
+---
+
+## Estado actual
+
+**Las 14 fases completas + UX expansion + glow-up + arquitectura SOTE + macro entry Tierras Intermedias.**
+
+- **376+ entradas** con deep lore (107 personajes + 68 facciones + **35 regiones** [+ Tierras Intermedias + Land of Reeds] + 90+ conceptos + 70 eventos + 6 finales).
+- **0 referencias rotas** verificado automáticamente tras cada batch.
+- Arquitectura SOTE ready: el siguiente trabajo es añadir contenido DLC real intercalado.
+- Initial bundle: ~155 kB gz.
+
+---
+
+## Phase 15 (próxima) — Contenido DLC SOTE
+
+### Objetivo (cuando se inicie)
+Integrar lore real de Shadow of the Erdtree dentro del codex, marcado con `expansion: 'sote'`.
+
+### Plan tentativo
+- **Entradas nuevas DLC-only** marcadas `expansion: 'sote'` en raíz: Messmer, Bayle, Romina, Rellana, Putrescent Knight, Promised Consort Radahn, St. Trina (separada de Miquella?). Realm of Shadow / Land of Shadow / Scadu Altus / Shadow Keep / Specimen Storehouse / Belurat / Enir-Ilim. Hornsent (faction), Black Knights of Messmer (faction), Fingercreepers (faction). Crucible Orthodoxy, Shadowtree, Frenzy of the Tower, Specimens (concepts).
+- **Bloques `p({ expansion: 'sote' }, ...)` intercalados** en entradas base que SOTE expande: Marika, Mogh, Miquella, Maliketh, Radahn (resurrección), Goldmask, Crucible (concept), Erdtree, Greater Will.
+- **Items wrapper `{ expansion: 'sote', content }`** en buckets para revelaciones puntuales.
+
+### Verificación tras cada batch
+```bash
+npx tsx scripts/auto-link-pass.mts --all
+npx tsx scripts/audit-cross-links.mts
+npm run build
+```
+
+---
+
 ## Cómo usar este documento
 
 ### Al iniciar una sesión nueva

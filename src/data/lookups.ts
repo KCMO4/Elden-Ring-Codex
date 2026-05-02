@@ -174,6 +174,8 @@ export interface EntityPreview {
   imageId: string
   /** Underlying entity id for the era badge / link rendering */
   id: string
+  /** Expansion marker — used to flag SOTE-only entities in hover cards */
+  expansion?: 'base' | 'sote'
 }
 
 /** Resolve an EntityType + slug to a normalized hover-preview shape. */
@@ -186,6 +188,7 @@ export function getEntityPreview(type: EntityType, slug: string): EntityPreview 
         type, id: c.id, name: c.name,
         summary: c.role, faction: c.faction,
         tags: c.tags, imageCategory: 'characters', imageId: c.id,
+        expansion: c.expansion,
       }
     }
     case 'region': {
@@ -196,6 +199,7 @@ export function getEntityPreview(type: EntityType, slug: string): EntityPreview 
         summary: truncate(r.historical, 110),
         faction: r.mainFaction,
         tags: r.tags, imageCategory: 'regions', imageId: r.id,
+        expansion: r.expansion,
       }
     }
     case 'faction': {
@@ -205,6 +209,7 @@ export function getEntityPreview(type: EntityType, slug: string): EntityPreview 
         type, id: f.id, name: f.name,
         summary: f.what,
         tags: f.tags, imageCategory: 'factions', imageId: f.id,
+        expansion: f.expansion,
       }
     }
     case 'concept': {
@@ -216,6 +221,7 @@ export function getEntityPreview(type: EntityType, slug: string): EntityPreview 
         type, id: g.id, name: g.term,
         summary: truncate(g.definition, 220),
         tags: g.related, imageCategory: 'concepts', imageId: g.id,
+        expansion: g.expansion,
       }
     }
     case 'timeline': {
@@ -225,6 +231,7 @@ export function getEntityPreview(type: EntityType, slug: string): EntityPreview 
         type, id: t.id, name: t.title,
         summary: t.poeticIntro ?? t.chapter,
         tags: t.tags, imageCategory: 'timelineEvents', imageId: t.id,
+        expansion: t.expansion,
       }
     }
     case 'ending': {
@@ -234,6 +241,7 @@ export function getEntityPreview(type: EntityType, slug: string): EntityPreview 
         type, id: e.id, name: e.name,
         summary: truncate(e.description, 110),
         imageCategory: 'endings', imageId: e.id,
+        expansion: e.expansion,
       }
     }
   }

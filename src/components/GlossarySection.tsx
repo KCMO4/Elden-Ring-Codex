@@ -2,13 +2,14 @@ import { useMemo } from 'react'
 import type { GlossaryEntry } from '../data/types'
 import { SectionHeader } from './SectionHeader'
 import { SectionHero } from './SectionHero'
-import { GlossarySection as GlossaryGrid } from './GlossaryModal'
+import { GlossaryGrid } from './GlossaryModal'
 import { FilterBar, type SortOption } from './FilterBar'
 import type { TagOption } from './TagPicker'
 import { EmptyState } from './EmptyState'
 import { ColorLegend } from './ColorLegend'
 import { useFilters } from '../lib/useFilters'
 import { buildTagOptions, compareByCertainty } from '../lib/filterHelpers'
+import { useEntityFilter } from '../lib/expansion'
 
 interface Props {
   entries: GlossaryEntry[]
@@ -36,9 +37,11 @@ export function GlossarySection({ entries }: Props) {
     [entries],
   )
 
+  const { visible: byExpansion } = useEntityFilter()
+
   const filtered = useMemo(() => {
     const q = f.search.toLowerCase()
-    const result = entries.filter((e) => {
+    const result = byExpansion(entries).filter((e) => {
       const matchSearch =
         !f.search ||
         e.term.toLowerCase().includes(q) ||
@@ -60,7 +63,7 @@ export function GlossarySection({ entries }: Props) {
       default:
         return result
     }
-  }, [entries, f.search, f.certainty, f.tags, f.sort])
+  }, [entries, byExpansion, f.search, f.certainty, f.tags, f.sort])
 
   return (
     <section id="glosario">
@@ -68,6 +71,7 @@ export function GlossarySection({ entries }: Props) {
 
       <div className="codex-section pt-6">
         <SectionHeader
+          asPageHeading
           title="Glosario de las Tierras Intermedias"
           subtitle="Los conceptos que definen el cosmos del Orden Dorado"
           poeticIntro="Para entender las Tierras Intermedias, primero debes entender su lenguaje sagrado."

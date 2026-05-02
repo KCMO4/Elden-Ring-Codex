@@ -82,7 +82,12 @@ function bucketToMd(items: BucketItem[], baseUrl: string): string {
   return items
     .map((it) => {
       if (typeof it === 'string') return `- ${it}`
-      return `- ${inlinesToMd(it, baseUrl)}`
+      if (Array.isArray(it)) return `- ${inlinesToMd(it, baseUrl)}`
+      /* Wrapped variant with expansion marker — annotate the line and
+         flatten its content. */
+      const tag = it.expansion === 'sote' ? ' _(SOTE)_' : ''
+      const content = typeof it.content === 'string' ? it.content : inlinesToMd(it.content, baseUrl)
+      return `- ${content}${tag}`
     })
     .join('\n')
 }

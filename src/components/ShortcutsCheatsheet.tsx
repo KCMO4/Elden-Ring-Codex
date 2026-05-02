@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
+import { acquireScrollLock } from '../lib/scrollLock'
 
 /* Shortcut cheatsheet modal — opens when the user presses `?`. Lists all
    keyboard navigation, search, and content-color conventions in one place
@@ -17,7 +18,7 @@ const SHORTCUT_LIST: Array<{ keys: string[]; label: string; section: string }> =
 
 export function ShortcutsCheatsheet() {
   const [open, setOpen] = useState(false)
-  const closeBtnRef = useRef<HTMLButtonElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
 
   /* Open on `?`. Inert when typing in a field. */
@@ -37,17 +38,45 @@ export function ShortcutsCheatsheet() {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
-  /* Esc to close + body scroll lock + restore focus on close. */
+  /* Focus trap + Esc to close + body scroll lock + restore focus on close.
+     Pattern mirrors GlossaryModal — Tab cycles within the dialog. */
   useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+
+    const focusables = () => {
+      if (!modalRef.current) return [] as HTMLElement[]
+      const sel = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      return Array.from(modalRef.current.querySelectorAll<HTMLElement>(sel))
+    }
+
+    const list0 = focusables()
+    list0[0]?.focus()
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        setOpen(false)
+        return
+      }
+      if (e.key !== 'Tab') return
+      const list = focusables()
+      if (list.length === 0) return
+      const first = list[0]
+      const last = list[list.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+
     document.addEventListener('keydown', onKey)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    closeBtnRef.current?.focus()
+    const releaseLock = acquireScrollLock()
     return () => {
       document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prevOverflow
+      releaseLock()
       previousFocusRef.current?.focus?.()
     }
   }, [open])
@@ -77,6 +106,7 @@ export function ShortcutsCheatsheet() {
             exit={{ opacity: 0 }}
           >
             <motion.div
+              ref={modalRef}
               initial={{ y: 20, scale: 0.96 }}
               animate={{ y: 0, scale: 1 }}
               exit={{ y: 8, scale: 0.97 }}
@@ -94,7 +124,6 @@ export function ShortcutsCheatsheet() {
                   </p>
                 </div>
                 <button
-                  ref={closeBtnRef}
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Cerrar"

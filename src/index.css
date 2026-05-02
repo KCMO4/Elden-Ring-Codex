@@ -113,7 +113,7 @@
      Hidden for mouse users (no :focus-visible match), visible for keyboard users. */
   :focus { outline: none; }
   :focus-visible {
-    outline: 2px solid #c5a059;
+    outline: 2px solid rgb(var(--codex-gold));
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -136,8 +136,8 @@
   left: 8px;
   z-index: 100;
   padding: 0.5rem 1rem;
-  background: #c5a059;
-  color: #0a0a08;
+  background: rgb(var(--codex-gold));
+  color: rgb(var(--codex-black));
   font-family: 'Cinzel', serif;
   font-size: 0.75rem;
   letter-spacing: 0.1em;

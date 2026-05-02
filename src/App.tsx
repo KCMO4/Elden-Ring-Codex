@@ -241,7 +241,7 @@ function AppShell() {
 
         <footer className="border-t border-codex-gold-dim/15 py-8 px-6 text-center">
           <p className="font-heading text-xs text-codex-parchment-dim/60 tracking-widest uppercase">
-            Códice del Orden Fracturado · Solo juego base · Sin afiliación con FromSoftware
+            Códice del Orden Fracturado · Sin afiliación con FromSoftware
           </p>
         </footer>
       </div>

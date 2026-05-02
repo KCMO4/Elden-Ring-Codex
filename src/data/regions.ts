@@ -4,6 +4,18 @@ import { regionsDeepLore } from './lore/regionsDeepLore'
 
 const baseRegions: Region[] = [
   {
+    id: 'tierras-intermedias',
+    name: 'Las Tierras Intermedias',
+    historical: 'Continente bendecido por el Árbol Áureo y dominio cosmológico actual de la Voluntad Mayor. Antes del Orden Dorado fue territorio del Crisol primigenio, los Antiguos Dragones y los Gigantes. Su nombre canon — "tierras entre" — alude a su condición liminal: entre vida y muerte, entre dioses externos en pugna, entre la era pasada del Crisol y el régimen áureo actual.',
+    mainFaction: 'Orden Dorado (régimen actual) / Voluntad Mayor (dios externo dominante)',
+    bosses: ['Marika la Eterna (encadenada al Árbol Áureo)', 'Radagon del Orden Dorado', 'Bestia Elden'],
+    hiddenTragedy: 'El Árbol Áureo no es solo eje cosmológico — es prisión de almas. Las almas de los muertos no pueden escapar; son recicladas en el ciclo del Renacimiento Áureo. La Reina del Ojo Velado y los Death-Birds intuyen que el Orden Dorado robó la muerte verdadera para sostenerse. Las Tierras Intermedias son el lugar donde nadie puede morir del todo, y eso, no la vida, es el corazón de la tragedia cosmológica.',
+    timelineRelation: 'Escenario completo del juego. Cosmológicamente, son el campo de batalla entre la Voluntad Mayor (régimen áureo) y los dioses externos rivales (Llama Frenética, Madre Sin Forma, dios externo del decaimiento, Formless Mother de la sangre). Tras la Fractura, el régimen pierde control efectivo y el Tarnished regresa a decidir el siguiente orden.',
+    certainty: 'confirmado',
+    tags: ['Tierras Intermedias', 'Continente', 'Cosmología', 'Árbol Áureo', 'Orden Dorado', 'Voluntad Mayor', 'Liminal'],
+    fallbackType: 'golden-order',
+  },
+  {
     id: 'limgrave',
     name: 'Limgrave',
     historical: 'La tierra de entrada a las Tierras Intermedias, gobernada en otro tiempo por vasallos de Godrick. Antes de la Fractura era un territorio próspero del Orden Dorado.',
@@ -381,6 +393,18 @@ const baseRegions: Region[] = [
     timelineRelation: 'Custodia el medallón secreto que abre el camino al Haligtree. El eclipse Carian es eco del eclipse cosmológico que mató a Godwyn — Castle Sol mantiene viva la liturgia que el régimen prohibió.',
     certainty: 'confirmado',
     tags: ['Castle Sol', 'Eclipse', 'Carian', 'Mountaintops', 'Niall', 'Haligtree'],
+    fallbackType: 'region',
+  },
+  {
+    id: 'lands-of-reeds',
+    name: 'Las Tierras de los Cañaverales',
+    historical: 'Región periférica al este del mar que rodea las Tierras Intermedias. Reino histórico de los samuráis, operaba fuera del régimen del Orden Dorado bajo cosmología propia no vinculada al Anillo Elden. Sus exiliados (como Okina) llegaron a las Tierras Intermedias como Tarnished asimilados al cuerpo militar áureo.',
+    mainFaction: 'Samuráis del Reino de los Cañaverales (cosmología externa al Orden Dorado)',
+    bosses: [],
+    hiddenTragedy: 'Las Tierras de los Cañaverales no fueron destruidas por el Orden Dorado — fueron simplemente no asimiladas. Operan en cosmología paralela. Sus refugiados políticos llegan a las Tierras Intermedias buscando Gracia áurea, pero el precio cosmológico es la pérdida de su régimen original: Okina ya no es simplemente samurái sino Tarnished asimilado, con disciplina marcial preservada pero linaje cosmológico cortado. La región-origen sigue allí, intacta, pero inalcanzable para quien ha cruzado el mar y aceptado Gracia.',
+    timelineRelation: 'Origen de los samuráis del juego (Okina como ejemplo principal). La existencia de las Tierras de los Cañaverales documenta que el continente principal no es el cosmos entero — hay regiones cosmológicas paralelas operando bajo otros principios.',
+    certainty: 'inferencia',
+    tags: ['Tierras de los Cañaverales', 'Samuráis', 'Periferia', 'Cosmología externa', 'Tarnished'],
     fallbackType: 'region',
   },
   {

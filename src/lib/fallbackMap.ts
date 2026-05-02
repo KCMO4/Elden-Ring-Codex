@@ -37,6 +37,8 @@ export const characterFallbacks: Record<string, FallbackType> = {
 }
 
 export const regionFallbacks: Record<string, FallbackType> = {
+  'tierras-intermedias': 'golden-order',
+  'lands-of-reeds':     'region',
   limgrave:             'golden-order',
   stormveil:            'war',
   'peninsula-llorosa':  'character',
@@ -108,4 +110,12 @@ export const glossaryFallbacks: Record<string, FallbackType> = {
   bloodflame:         'blood',
   haligtree:          'haligtree',
   'age-of-stars':     'ending-stars',
+  /* Macro concepts added 2026-05-02 — no canonical FromSoft image, fall to themed SVG */
+  'flame-of-ruin':              'flame',
+  'elden-lord':                 'golden-order',
+  'golden-order-fundamentalism': 'golden-order',
+  'demidios':                   'golden-order',
+  'storm-hawk-king':            'war',
+  'law-of-causality':           'cosmic',
+  'blind-swordsman':            'character',
 }

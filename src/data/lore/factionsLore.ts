@@ -29,10 +29,14 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Anillo Elden', 'concept', 'elden-ring'),
         ' y la sellase en su propio cuerpo-bestia. Sin ',
         link('Muerte Predestinada', 'concept', 'destined-death'),
-        ' operativa, los seres de las Tierras Intermedias dejaron de poder morir verdaderamente. La inmortalidad de la era dorada nació, así, de un acto de violencia ontológica.'
+        ' operativa, los seres de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' dejaron de poder morir verdaderamente. La inmortalidad de la era dorada nació, así, de un acto de violencia ontológica.'
       ),
       p(
-        'Tomó como Primer Señor Elden a ',
+        'Tomó como Primer ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' a ',
         link('Godfrey', 'character', 'godfrey'),
         ', conquistador exterior, y consolidó el régimen mediante la subyugación de las civilizaciones rivales: dragónica de ',
         link('Placidusax', 'character', 'placidusax'),
@@ -217,7 +221,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
     confirmed: [
       ['Son extensiones físicas de la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor'), ' que comunican mediante gestos'],
       ['Las ', link('Lectoras de Dedos', 'faction', 'finger-readers'), ' traducen sus gestos a palabras humanas'],
-      'Designan al Señor Elden y autorizan la coronación',
+      ['Designan al ', link('Señor Elden', 'concept', 'elden-lord'), ' y autorizan la coronación'],
       'Se están deteriorando visiblemente tras la rotura del Anillo',
       ['Pueden ser asesinados con la ', link('Hoja Mata-Dedos', 'concept', 'fingerslayer-blade'), ' forjada por los ', link('Nox', 'faction', 'nox')],
     ],
@@ -237,7 +241,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ['Cómo exactamente reciben información de la ', link('Voluntad Mayor', 'concept', 'voluntad-mayor')],
       'Si pueden interpretar mal o solo transmiten correctamente',
       'Si su deterioro es reversible',
-      'Cuántos pares de Dedos hay actualmente activos en las Tierras Intermedias',
+      ['Cuántos pares de Dedos hay actualmente activos en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
     ],
     relatedCharacters: ['enia', 'marika', 'gideon', 'goldmask', 'corhyn'],
     relatedFactions: ['orden-dorado', 'tres-dedos', 'finger-readers'],
@@ -259,7 +263,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Three Fingers', 'concept', 'frenzied-flame'),
         ' como llave, viven los Tres Dedos: la presencia física de la ',
         link('Llama Frenética', 'concept', 'frenzied-flame'),
-        ' en las Tierras Intermedias. Son tres dedos retorcidos, ardientes, conectados a un dios externo cuya identidad no se nombra. El régimen del ',
+        ' en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Son tres dedos retorcidos, ardientes, conectados a un dios externo cuya identidad no se nombra. El régimen del ',
         link('Orden Dorado', 'concept', 'golden-order'),
         ' los selló en lugar de exterminarlos — quizá porque no podía exterminarlos.'
       ),
@@ -321,7 +327,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
     ],
     theories: [
       'El dios externo de los Tres Dedos es el sufrimiento personificado del cosmos entero',
-      'Si el sello cae, todas las Tierras Intermedias se transformaría en víctimas',
+      ['Si el sello cae, todas las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' se transformaría en víctimas'],
       ['Los ', link('Tarnished', 'concept', 'tarnished'), ' con suficiente sufrimiento acumulado son particularmente susceptibles'],
       'Algunas víctimas conservan consciencia residual y predican voluntariamente',
     ],
@@ -329,7 +335,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       'Identidad exacta del dios externo',
       'Si la transformación es reversible',
       'Si los Tres Dedos son tres entidades o tres aspectos de una',
-      'Cuántas víctimas frenéticas hay actualmente operando en las Tierras Intermedias',
+      ['Cuántas víctimas frenéticas hay actualmente operando en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
     ],
     relatedCharacters: ['hyetta', 'shabriri', 'melina'],
     relatedFactions: ['orden-dorado', 'dos-dedos', 'frenzied-victims'],
@@ -362,7 +368,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Maliketh', 'character', 'maliketh'),
         '. Solo estas armas pueden ',
         { type: 'em', text: 'matar' },
-        ' a un demidiós; cualquier otra herida cierra. La mecha era limitada — bastaba para media muerte (alma o cuerpo, no ambos), lo que produjo las muertes incompletas de ',
+        ' a un ',
+        link('demidiós', 'concept', 'demidios'),
+        '; cualquier otra herida cierra. La mecha era limitada — bastaba para media muerte (alma o cuerpo, no ambos), lo que produjo las muertes incompletas de ',
         link('Godwyn', 'character', 'godwyn'),
         ' (alma) y ',
         link('Ranni', 'character', 'ranni'),
@@ -419,7 +427,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
     inferred: [
       ['El reclutamiento de ', link('Numen', 'concept', 'numen'), ' para una conspiración contra el Lineaje Dorado tiene componente étnico — no es coincidencia que sean del pueblo de ', link('Marika', 'character', 'marika')],
       ['La operación requirió acceso interno al cuerpo de ', link('Maliketh', 'character', 'maliketh'), ' para robar la mecha de ', link('Runa de la Muerte', 'concept', 'rune-of-death'), ' — alguien dentro del Orden colaboró'],
-      'Algunas Cuchillos Negros sobrevivieron y permanecen activas en las Tierras Intermedias actuales',
+      ['Algunas Cuchillos Negros sobrevivieron y permanecen activas en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' actuales'],
     ],
     theories: [
       ['Sirvieron antes a la ', link('Reina del Ojo Velado', 'character', 'gloam-eyed-queen'), ' — teoría popular basada en la conexión ', link('Numen', 'concept', 'numen'), ' y en el paralelo con los ', link('Pieles de Dios', 'faction', 'pieles-de-dios'), ', no afirmada por items'],
@@ -526,7 +534,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ['Su ', link('Llama Negra', 'concept', 'black-flame'), ' puede quemar incluso a un dios'],
       'Llevan pieles de divinidades previamente asesinadas',
       [link('Maliketh', 'character', 'maliketh'), ' derrotó a la Reina y selló la ', link('Runa de la Muerte', 'concept', 'rune-of-death')],
-      'Los apóstoles siguen operativos en las Tierras Intermedias actuales',
+      ['Los apóstoles siguen operativos en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' actuales'],
     ],
     inferred: [
       'Su tradición sobrevive sin necesidad de la Reina viva',
@@ -604,9 +612,13 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado simbólico'),
       p(
-        'Los Nox son el primer experimento documentado de rebelión cosmológica de las Tierras Intermedias. Su castigo establece la regla del régimen: ningún pueblo puede forjar divinidad propia. Su supervivencia subterránea establece el contraejemplo: incluso castigado, el proyecto persiste. Cada Mimic Tear que el ',
+        'Los Nox son el primer experimento documentado de rebelión cosmológica de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Su castigo establece la regla del régimen: ningún pueblo puede forjar divinidad propia. Su supervivencia subterránea establece el contraejemplo: incluso castigado, el proyecto persiste. Cada Mimic Tear que el ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' invoca es eco de la blasfemia más sofisticada de las Tierras Intermedias; cada estrella falsa de sus cielos es declaración silenciosa de que el cosmos podría haber sido distinto.'
+        ' invoca es eco de la blasfemia más sofisticada de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '; cada estrella falsa de sus cielos es declaración silenciosa de que el cosmos podría haber sido distinto.'
       ),
     ],
     confirmed: [
@@ -652,7 +664,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Marika', 'character', 'marika'),
         ' hubo dragones. ',
         link('Placidusax', 'character', 'placidusax'),
-        ' fue Señor Elden de un régimen cósmico cuya datación exacta se ha perdido. ',
+        ' fue ',
+        link('Señor Elden', 'concept', 'elden-lord'),
+        ' de un régimen cósmico cuya datación exacta se ha perdido. ',
         link('Farum Azula', 'region', 'farum-azula'),
         ' fue su capital — ciudad-fortaleza dragónica suspendida en una tormenta atemporal. Sus habitantes incluían dragones, ',
         link('Hombres-Bestia', 'faction', 'hombres-bestia'),
@@ -712,7 +726,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ),
     ],
     confirmed: [
-      'Placidusax fue Señor Elden de la era dragónica',
+      ['Placidusax fue ', link('Señor Elden', 'concept', 'elden-lord'), ' de la era dragónica'],
       [link('Farum Azula', 'region', 'farum-azula'), ' fue capital del régimen dragónico, hoy suspendida fuera del tiempo'],
       'Su dios externo desapareció sin batalla registrada',
       ['Fortissax pactó con ', link('Godwyn', 'character', 'godwyn'), ' y guarda hoy su alma corrompida bajo Deeproot Depths'],
@@ -994,7 +1008,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Miquella', 'character', 'miquella'),
         ' los acogió en el ',
         link('Haligtree', 'region', 'haligtree'),
-        ' como ciudadanos plenos del proyecto utópico que estaba construyendo. Por primera vez en la historia documentada de las Tierras Intermedias, un sistema cosmológico los reconocía como personas. El éxodo a través del ',
+        ' como ciudadanos plenos del proyecto utópico que estaba construyendo. Por primera vez en la historia documentada de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ', un sistema cosmológico los reconocía como personas. El éxodo a través del ',
         link('Snowfield Consagrado', 'region', 'consecrated-snowfield'),
         ' costó vidas, pero los que llegaron a Elphael vivieron como iguales. ',
         link('Boc', 'character', 'boc'),
@@ -1104,7 +1120,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Mohg', 'character', 'mohg'),
         ' probaba que cualquier alternativa cosmológica al ',
         link('Orden Dorado', 'concept', 'golden-order'),
-        ' puede ser arrasada por otra cosmología más violenta. Sus cuerpos colgantes en Mohgwyn son el cementerio invisible de las Tierras Intermedias.'
+        ' puede ser arrasada por otra cosmología más violenta. Sus cuerpos colgantes en Mohgwyn son el cementerio invisible de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
     ],
     confirmed: [
@@ -1128,7 +1146,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ['Existen Albinaurics ocultos en regiones marginales que ningún ', link('Tarnished', 'concept', 'tarnished'), ' encuentra'],
     ],
     ambiguous: [
-      'Cuántos Albinaurics sobreviven en las Tierras Intermedias actuales',
+      ['Cuántos Albinaurics sobreviven en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' actuales'],
       'Quién desarrolló originalmente la fórmula de fabricación',
       'Si la fragilidad física es estructural o consecuencia de generaciones de persecución',
       'Si conservan capacidad reproductiva natural o solo pueden ser fabricados',
@@ -1241,7 +1259,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Los Redmanes fueron caballería de elite leal a ',
         link('Radahn', 'character', 'radahn'),
-        ', su general y demidiós. Su nombre proviene del rojo distintivo de su melena guerrera y de la heráldica del ',
+        ', su general y ',
+        link('demidiós', 'concept', 'demidios'),
+        '. Su nombre proviene del rojo distintivo de su melena guerrera y de la heráldica del ',
         link('Castillo Redmane', 'region', 'redmane-castle'),
         ' en ',
         link('Caelid', 'region', 'caelid'),
@@ -1249,7 +1269,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('magia gravitacional', 'concept', 'gravity-magic'),
         ' aprendida en la ciudad-academia de ',
         link('Sellia', 'region', 'caelid'),
-        ' — la única tradición mágica de las Tierras Intermedias comparable en sofisticación a la magia estelar de Raya Lucaria.'
+        ' — la única tradición mágica de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' comparable en sofisticación a la magia estelar de Raya Lucaria.'
       ),
       h(2, 'Doctrina marcial'),
       p(
@@ -1257,7 +1279,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Radahn', 'character', 'radahn'),
         ' era el ejemplo absoluto: sostenía a su caballo Leonard en el aire mediante ',
         link('magia gravitacional', 'concept', 'gravity-magic'),
-        ' propia, una proeza imposible para cualquier otro jinete de las Tierras Intermedias.'
+        ' propia, una proeza imposible para cualquier otro jinete de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
       h(2, 'La Batalla de Aeonia'),
       p(
@@ -1283,11 +1307,15 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Bajo la dirección de ',
         link('Jerren', 'character', 'jerren'),
-        ', Señor de la Guerra superviviente, los Redmanes organizaron un Festival ritual: invitar a guerreros legendarios de todas las Tierras Intermedias a desafiar al ',
+        ', Señor de la Guerra superviviente, los Redmanes organizaron un Festival ritual: invitar a guerreros legendarios de todas las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' a desafiar al ',
         link('Radahn', 'character', 'radahn'),
         ' corrompido. La premisa cosmológica es teológicamente compleja — ',
         link('Radahn', 'character', 'radahn'),
-        ' como demidiós con ',
+        ' como ',
+        link('demidiós', 'concept', 'demidios'),
+        ' con ',
         link('Gran Runa', 'concept', 'great-rune'),
         ' no puede morir de causas naturales (la Muerte sigue sellada), solo puede ser vencido en combate ritualmente válido. El Festival es el cierre piadoso: ofrecerle la muerte digna que su locura ya no le permite alcanzar por sí mismo. Su ',
         link('Gran Runa', 'concept', 'great-rune'),
@@ -1297,7 +1325,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Los Redmanes son el monumento del juego a la lealtad transformada en piedad. No abandonaron a ',
         link('Radahn', 'character', 'radahn'),
-        ' cuando se volvió monstruo — eligieron orquestar su muerte ritual con los honores que merecía como señor. El Festival es uno de los pocos eventos de las Tierras Intermedias donde un colectivo guerrero acepta ',
+        ' cuando se volvió monstruo — eligieron orquestar su muerte ritual con los honores que merecía como señor. El Festival es uno de los pocos eventos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' donde un colectivo guerrero acepta ',
         em('cuidar a su señor matándolo'),
         '. Es lealtad llevada hasta su extremo lógico: si no podemos salvarlo, le daremos al menos una muerte digna.'
       ),
@@ -1373,7 +1403,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         em('inmortal'),
         ' — pero la entidad lo devoró. Ahora la serpiente opera a través del nombre de ',
         link('Rykard', 'character', 'rykard'),
-        '. La voz que emite es la del demidiós; la voluntad es la del dios serpentino.'
+        '. La voz que emite es la del ',
+        link('demidiós', 'concept', 'demidios'),
+        '; la voluntad es la del dios serpentino.'
       ),
       h(2, 'Doctrina implícita: blasfemia funcional'),
       p(
@@ -1453,7 +1485,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Mohg', 'character', 'mohg'),
         '. Bajo él operan invasores anónimos: Bloody Fingers que cazan ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' a través de las Tierras Intermedias mediante la mecánica multiplayer del juego. Cada invasión exitosa es ofrenda. Cada ',
+        ' a través de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' mediante la mecánica multiplayer del juego. Cada invasión exitosa es ofrenda. Cada ',
         link('Tarnished', 'concept', 'tarnished'),
         ' asesinado es alimento para la Madre Informe.'
       ),
@@ -1463,7 +1497,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('sangre flameante', 'concept', 'bloodflame'),
         ' no es metáfora — es magia ritual específica. ',
         link('Mohg', 'character', 'mohg'),
-        ' la canaliza durante combate. Los Bloody Fingers iniciados pueden adquirir versiones diluidas. Sus armas características — Reduvia, Cinquedea, Bloody Helice — están imbuidas con el efecto. Es una de las pocas formas de fuego de las Tierras Intermedias que pueden quemar carne divina además de carne mortal. Combinada con la maldición del Lord of Blood, hace al cuerpo de ',
+        ' la canaliza durante combate. Los Bloody Fingers iniciados pueden adquirir versiones diluidas. Sus armas características — Reduvia, Cinquedea, Bloody Helice — están imbuidas con el efecto. Es una de las pocas formas de fuego de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' que pueden quemar carne divina además de carne mortal. Combinada con la maldición del Lord of Blood, hace al cuerpo de ',
         link('Mohg', 'character', 'mohg'),
         ' literalmente intransferible al canon dorado.'
       ),
@@ -1507,7 +1543,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       'Identidad exacta y origen de la Madre Informe',
-      'Cuántos Bloody Fingers operan actualmente en las Tierras Intermedias',
+      ['Cuántos Bloody Fingers operan actualmente en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       ['Si ', link('Mohg', 'character', 'mohg'), ' conocía el plan completo de la Madre Informe o solo lo seguía'],
       'Si Varré creía genuinamente o operaba como manipulador autónomo',
     ],
@@ -1610,7 +1646,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
     ],
     ambiguous: [
       ['Si ', link('Godwyn', 'character', 'godwyn'), ' conserva alguna forma de consciencia bajo Deeproot Depths'],
-      'Cuántos Aquellos que Viven en la Muerte hay actualmente en las Tierras Intermedias',
+      ['Cuántos Aquellos que Viven en la Muerte hay actualmente en las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       'Si la condición es reversible bajo cosmología distinta',
       'Si los Skeletons que se reactivan son la misma categoría o una distinta',
     ],
@@ -1630,7 +1666,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Los Deathbirds son aves carroñeras de tamaño gigante, anteriores al ',
         link('Orden Dorado', 'concept', 'golden-order'),
-        '. Originalmente se alimentaban de cadáveres dispersos por las Tierras Intermedias antiguo. Tras la ',
+        '. Originalmente se alimentaban de cadáveres dispersos por las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' antiguo. Tras la ',
         link('Noche de los Cuchillos Negros', 'timeline', 'ranni-noche-cuchillos'),
         ' y la aparición de la ',
         link('Deathroot', 'concept', 'deathroot'),
@@ -1748,7 +1786,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Malenia', 'character', 'malenia'),
         ' distribuida. Cada infectado por ',
         link('podredumbre escarlata', 'concept', 'scarlet-rot'),
-        ' en las Tierras Intermedias está parcialmente conectado a este enjambre. Si ',
+        ' en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' está parcialmente conectado a este enjambre. Si ',
         link('Malenia', 'character', 'malenia'),
         ' floreciera plenamente, todas las Kindred convergerían en una sola entidad y la podredumbre se convertiría en la cosmología dominante. Que el enjambre exista en estado fragmentado es prueba de que ',
         link('Malenia', 'character', 'malenia'),
@@ -1803,7 +1843,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Cuando el clero estricto del ',
         link('Orden Dorado', 'concept', 'golden-order'),
-        ' consolidó autoridad doctrinal, las Perfumers fueron progresivamente marginalizadas. Su mezcla de funciones rituales y bélicas era incómoda para teólogos que preferían separación clara entre sacramento y guerra. Sus comunidades fueron reducidas a aldeas dispersas (Perfumer Ruins en Altus). Sus textos fueron desclasificados a uso doméstico. Pero el conocimiento técnico permaneció intacto: nadie más en las Tierras Intermedias pueden destilar aceites con su precisión alquímica.'
+        ' consolidó autoridad doctrinal, las Perfumers fueron progresivamente marginalizadas. Su mezcla de funciones rituales y bélicas era incómoda para teólogos que preferían separación clara entre sacramento y guerra. Sus comunidades fueron reducidas a aldeas dispersas (Perfumer Ruins en Altus). Sus textos fueron desclasificados a uso doméstico. Pero el conocimiento técnico permaneció intacto: nadie más en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' pueden destilar aceites con su precisión alquímica.'
       ),
       h(2, 'Aplicaciones militares actuales'),
       p(
@@ -1923,7 +1965,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ),
     ],
     confirmed: [
-      'Raya Lucaria es la academia de magia más prestigiosa de las Tierras Intermedias',
+      ['Raya Lucaria es la academia de magia más prestigiosa de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       [link('Rennala', 'character', 'rennala'), ' fue Gran Maestra antes de ser abandonada por ', link('Radagon', 'character', 'radagon')],
       ['El ', link('matrimonio Radagon-Rennala', 'timeline', 'radagon-rennala-marriage'), ' integró oficialmente la Academia al ', link('Orden Dorado', 'concept', 'golden-order')],
       'Sellen fue excomulgada por estudiar magia primordial prohibida',
@@ -1991,7 +2033,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Era de las Estrellas', 'concept', 'age-of-stars'),
         '. ',
         link('Radahn', 'character', 'radahn'),
-        ' es la respuesta marcial: lealtad obstinada al régimen pese a su origen mestizo, general supremo, demidiós ejemplar — hasta que la Podredumbre lo reduce a animal. ',
+        ' es la respuesta marcial: lealtad obstinada al régimen pese a su origen mestizo, general supremo, ',
+        link('demidiós', 'concept', 'demidios'),
+        ' ejemplar — hasta que la Podredumbre lo reduce a animal. ',
         link('Rykard', 'character', 'rykard'),
         ' es la respuesta blasfema: rechaza el régimen, pacta con la entidad serpentina pre-Orden, busca inmortalidad cosmológica fuera del canon dorado. Tres hijos, tres respuestas opuestas al mismo trauma.'
       ),
@@ -2018,13 +2062,19 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
         link('Seluvis', 'character', 'seluvis'),
         ' (mago manipulador) operan como tutores de ',
         link('Ranni', 'character', 'ranni'),
-        ' adulta. La familia ha producido los conspiradores más sofisticados de las Tierras Intermedias precisamente porque su trauma fundacional fue cosmológico, no privado.'
+        ' adulta. La familia ha producido los conspiradores más sofisticados de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        ' precisamente porque su trauma fundacional fue cosmológico, no privado.'
       ),
       h(2, 'Significado simbólico'),
       p(
         'La Casa Caria es el monumento del juego a cómo el linaje mestizo produce inestabilidad estructural. Cada uno de los tres hijos heredó porciones distintas del trauma: rebelión cosmológica, lealtad obstinada, blasfemia activa. Ninguno de los tres pudo simplemente ',
         em('continuar'),
-        ' como demidiós dorado normal. Su existencia plantea la pregunta más fina del juego sobre identidad: ¿se hereda el conflicto entre cosmologías como sangre, o se construye como respuesta? Caria responde que ambas cosas son la misma — y que su producto es el plan más radical de rebelión documentado en las Tierras Intermedias.'
+        ' como ',
+        link('demidiós', 'concept', 'demidios'),
+        ' dorado normal. Su existencia plantea la pregunta más fina del juego sobre identidad: ¿se hereda el conflicto entre cosmologías como sangre, o se construye como respuesta? Caria responde que ambas cosas son la misma — y que su producto es el plan más radical de rebelión documentado en las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       ),
     ],
     confirmed: [
@@ -2109,7 +2159,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ['La Podredumbre de ', link('Malenia', 'character', 'malenia'), ' infectó el árbol post-Aeonia']
     ],
     inferred: [
-      'Era la única utopía documentada de las Tierras Intermedias',
+      ['Era la única utopía documentada de las ', link('Tierras Intermedias', 'region', 'tierras-intermedias')],
       ['Su éxito dependía estructuralmente de la protección de ', link('Malenia', 'character', 'malenia')],
       ['El secuestro de ', link('Miquella', 'character', 'miquella'), ' detuvo el proyecto definitivamente']
     ],
@@ -2414,7 +2464,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       p(
         'Los Mimic Tears son variantes superiores. Copian al observador con perfección absoluta — equipo, estadísticas, tácticas, todo. El ',
         link('Tarnished', 'concept', 'tarnished'),
-        ' puede invocar uno como espíritu durante combates específicos. Cada uso es eco residual del proyecto blasfemo más sofisticado de las Tierras Intermedias.'
+        ' puede invocar uno como espíritu durante combates específicos. Cada uso es eco residual del proyecto blasfemo más sofisticado de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '.'
       )
     ],
     confirmed: [
@@ -2466,7 +2518,9 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
       ),
       h(2, 'Significado'),
       p(
-        'Su tradición es uno de los pocos cultos no-violentos de las Tierras Intermedias. Su existencia documenta que el cuerpo humano es modificable más profundamente de lo que el ',
+        'Su tradición es uno de los pocos cultos no-violentos de las ',
+        link('Tierras Intermedias', 'region', 'tierras-intermedias'),
+        '. Su existencia documenta que el cuerpo humano es modificable más profundamente de lo que el ',
         link('Orden Dorado', 'faction', 'orden-dorado'),
         ' oficialmente permite. Su vulnerabilidad — son frágiles cerámicamente — los hace blanco fácil de cualquier atacante.'
       )
@@ -2634,7 +2688,7 @@ export const factionsLore: Record<string, Partial<DeepEntity>> = {
     theories: [
       'Algunas víctimas sobreviven con consciencia residual de su yo previo',
       'La radiación crece más fuerte cuanto más cerca del sello',
-      'Si el sello cae, todas las Tierras Intermedias se transformaría en víctimas'
+      ['Si el sello cae, todas las ', link('Tierras Intermedias', 'region', 'tierras-intermedias'), ' se transformaría en víctimas']
     ],
     ambiguous: [
       'Cuántas víctimas hay actualmente',

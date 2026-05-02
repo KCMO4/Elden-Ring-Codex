@@ -41,19 +41,6 @@ export function markRead(type: EntityType, slug: string) {
   save(idx)
 }
 
-export function unmarkRead(type: EntityType, slug: string) {
-  const idx = load()
-  const list = idx[type] ?? []
-  if (!list.includes(slug)) return
-  idx[type] = list.filter((s) => s !== slug)
-  save(idx)
-}
-
-export function isRead(type: EntityType, slug: string): boolean {
-  const idx = load()
-  return Boolean(idx[type]?.includes(slug))
-}
-
 /** Hook: returns a snapshot Set<slug> for the given type, synced via storage events. */
 export function useReadSet(type: EntityType): Set<string> {
   const [set, setSet] = useState<Set<string>>(() => new Set(load()[type] ?? []))
