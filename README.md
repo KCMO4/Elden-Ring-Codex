@@ -2,7 +2,7 @@
 
 Lore book / wiki personal y sin fines de lucro sobre el lore del **juego base** de Elden Ring. Aplicación React de página única, en español, con estética de manuscrito oscuro y dorado envejecido.
 
-**Estado:** **381 entradas** con lore profundo (107 personajes + 36 regiones + 68 facciones + 94 conceptos + 70 eventos + 6 finales), **0 referencias rotas** verificadas por script, **14 fases de mejora + UX expansion + glow-up + arquitectura SOTE + entrada macro Tierras Intermedias + 5 conceptos macro adicionales**. Cobertura cosmológica integral del juego base: las 7 Grandes Runas individuales, todas las armas remembrance, principales cenizas espirituales, sacramentos cosmológicos (Estacas de Marika, Sites of Grace, Wondrous Physick), figuras históricas referenciadas (Storm-Hawk King), entrada macro de **Las Tierras Intermedias** como continente con 6 secciones cosmológicas, conceptos macro `Llama de Ruina` / `Señor Elden` / `Fundamentalismo del Orden Dorado` / `Demidioses` y región periférica `Tierras de los Cañaverales`. Todas las imágenes ≥1080p. **Arquitectura para contenido SOTE (Shadow of the Erdtree)** preparada — el DLC se intercala inline en entradas existentes, con filtro global "Todo / Base" que oculta tanto bloques como entidades enteras marcadas SOTE.
+**Estado:** **382 entradas** con lore profundo (107 personajes + 36 regiones + 68 facciones + 94 conceptos + 71 eventos + 6 finales), **0 referencias rotas** verificadas por script, **14 fases de mejora + UX expansion + glow-up + arquitectura SOTE + entrada macro Tierras Intermedias + 5 conceptos macro adicionales**. Cobertura cosmológica integral del juego base: las 7 Grandes Runas individuales, todas las armas remembrance, principales cenizas espirituales, sacramentos cosmológicos (Estacas de Marika, Sites of Grace, Wondrous Physick), figuras históricas referenciadas (Storm-Hawk King), entrada macro de **Las Tierras Intermedias** como continente con 6 secciones cosmológicas, conceptos macro `Llama de Ruina` / `Señor Elden` / `Fundamentalismo del Orden Dorado` / `Demidioses` y región periférica `Tierras de los Cañaverales`. Todas las imágenes ≥1080p. **Arquitectura para contenido SOTE (Shadow of the Erdtree)** preparada — el DLC se intercala inline en entradas existentes, con filtro global "Todo / Base" que oculta tanto bloques como entidades enteras marcadas SOTE.
 
 ---
 
@@ -297,7 +297,7 @@ src/
 ## Características
 
 ### Contenido
-- **Wiki completo** con páginas dedicadas para cada entidad (381 entradas con lore profundo)
+- **Wiki completo** con páginas dedicadas para cada entidad (382 entradas con lore profundo)
 - **Enlaces internos cruzados** entre lore via `RichLoreText` (con render tolerante)
 - **Cobertura cosmológica integral**: las 7 Grandes Runas, armas remembrance, cenizas espirituales clave, sacramentos cosmológicos, figuras históricas referenciadas, entrada macro **Las Tierras Intermedias** (continente entero, 6 secciones cosmológicas)
 - **0 referencias rotas** verificadas por `scripts/audit-cross-links.mts`
